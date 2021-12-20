@@ -1,0 +1,129 @@
+/*WEBHOOKS*/
+.wrapper_webhooks .head{
+    margin-bottom: 20px;
+    width: 100%;
+    float:left;
+}
+
+.wrapper_webhooks .head p{
+    width:77%; 
+    float:left;
+    color: #4a5057;
+    font-size: 14px;
+}
+
+.wrapper_webhooks .head a{
+    text-decoration: underline;
+}
+
+.wrapper_webhooks .head button{
+   
+    float:right;
+    color:  #2863eb;
+    border-color:  #2863eb;
+    border-radius: 3px;
+    padding:5px;
+    background-color: #f4f6f8;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    
+}
+
+.wrapper_webhooks .table table{
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wrapper_webhooks .table table thead tr{
+    height: 3em;
+    
+    
+}
+.wrapper_webhooks .table table thead tr th{
+    text-align: left;
+    padding: 5px;
+    color:  #212b36;
+    font-family: Inter-Medium;
+    font-size: 14px;
+
+}
+
+.wrapper_webhooks .table table tbody{
+    background-color: white;
+}
+
+.wrapper_webhooks .table table tbody tr td{
+    padding-left: 5px;
+    word-break: break-all;
+    color: #212b36;
+    font-family: Inter-Regular;
+    font-size: 14px;
+}
+
+
+
+.wrapper_webhooks .table table tbody tr{
+    border-bottom:1px solid #ecedef;
+    height: 3em;
+    
+}
+.wrapper_webhooks .table table tbody tr td img{
+    padding:0px 5px;
+}
+
+/*toggle button in webhooks*/
+.input{
+    position: relative;
+    width: 20px;
+    height: 10px;
+    -webkit-appearance: none;
+    background: grey;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    transition: .5s;
+
+
+}
+
+.input:checked{
+    background-color: #03a9f4;
+}
+.input::before{
+    content: '';
+    position:absolute;
+    width: 10px;
+    height: 10px;
+    border-radius:20px ;
+    top:0;
+    left:0;
+    background:#fff;
+    transform:scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .5s;
+
+
+}
+
+.input:checked::before{
+    left:10px ;
+}
+
+.webhooks img{
+    margin-left: 0px;
+}
+
+/*--------------media quries of webhooks---------------*/
+
+@media screen and (max-width: 1024px)  {
+    .wrapper_webhooks .head p {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 768px)  {
+    .wrapper_webhooks .head p {
+        width: 65%;
+    }
+}

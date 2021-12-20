@@ -1,0 +1,305 @@
+
+.containercomponents{
+    background-color:  #333740;
+    width: 15%;
+    box-sizing: border-box;
+    color: white;
+    padding: 5px;  
+    float: left;
+    position: fixed;
+    height: 100%;
+    
+}
+.containercomponents h2{
+    color: white;
+    text-align: center;
+    padding: 0px 20px 20px;
+}
+.containercomponents .uppercomponents ul li{
+    padding: 1em 20px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    list-style: none;
+    color: #8798ac;
+}
+
+
+.containercomponents .uppercomponents ul li img{
+    padding-right:10px;
+}
+
+.containercomponents .uppercomponents ul li a{
+    padding-left: 15px;
+   
+}
+.containercomponents .uppercomponents ul{
+    padding-inline-start: 0px;
+}
+.uppercomponents{
+    margin-bottom: 6em;
+}
+
+/*lowercomponents*/
+.containercomponents .lowercomponents ul{
+    padding-inline-start: 0px;
+}
+.containercomponents .lowercomponents ul li{
+    padding: 1em 20px;
+    font-family: 'Inter-Medium';
+    font-size: 14px;
+    list-style: none;
+    color: #8798ac;
+    position: relative;
+} 
+.containercomponents .lowercomponents ul li img{
+    padding-right:10px;
+} 
+
+.containercomponents .lowercomponents ul li a{
+    padding-left: 15px;
+} 
+.containercomponents .lowercomponents ul li p{
+    position: absolute;
+    left: 53px;
+    top: 0px;
+    width: 100%;
+    margin: 0;
+    color: #8798ac;
+}
+.lowercomponents{
+    margin-bottom: 30px;
+}
+
+.settings {
+   padding:30px 73px;
+   width: 85%;
+   float: right; 
+}
+
+.settings .header  h2{
+    float: left;
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 28px;
+
+} 
+.settings .header  h3{
+    float: right;
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 20px;
+    
+
+}
+.settings .topnav ul li a{
+    color: #56606e;
+}
+
+
+.settings .general{
+    margin: 0em 0em 2em 0em;
+} 
+.settings .general{
+    color: #56606e;
+}
+ .settings .general h3{
+    margin-bottom:1em ;
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 22px;
+} 
+.general label{
+    display: block;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    color: #212b36;
+}
+.settings .general input{
+    width: 400px;
+    height: 50px;
+    padding: 10px 65px 10px 10px;
+    margin: 5px 0px;
+    border: 1px solid #8080804d;
+    border-radius: 5px;
+}
+.settings .general img{
+    padding-right: 5px;
+    cursor: pointer;
+}
+.settings .general span{
+    margin: 0-55px;
+}
+.settings div ul{
+    margin-top: 10px;
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #00000026;
+    margin-bottom: 0;
+    
+}
+
+  
+    
+
+.topnav ul li.active{
+    padding-bottom: 4px;
+    border-bottom: 2px solid  #2863eb;   
+}
+
+.topnav ul li a.active1{
+    color: black;
+}
+
+
+
+.settings div ul li{
+    float: left;
+    margin-right: 20px;
+}
+
+.settings .general span a{
+    color: #2863eb;
+}
+.settings .members{
+    width: 100%;
+}
+.settings .members h3{
+    float:left;
+    color:#212b36;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-family: Inter-Medium;
+}
+.settings .members button{
+    float:right;
+    color:  #2863eb;
+    border-color:  #2863eb;
+    border-radius: 4px;
+    margin-top:5px;
+    cursor: pointer;
+    background-color:#f4f6f8;
+    padding: 2px 10px;
+    font-size: 14px;
+    font-family: Inter-Medium;
+}
+.settings .member_table{
+    width: 100%;
+    float: left;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+    
+}
+.member_table table{
+    border-spacing: 0px 0px;
+    border-collapse: collapse;
+    border-radius: 2px;
+    text-align: left;
+    width: 100%;
+}
+.member_table table thead{
+    background-color: #f4f5f7;
+}
+.member_table table tr th{
+    padding:10px 13px 10px 5px;
+    color:  #212b36;
+    font-size: 14px;
+    font-family: Inter-Medium;
+
+    
+}
+ .member_table table tbody{
+    background-color: white;
+    margin: 25px 0px;
+    border: none;
+    padding: 0px;
+    font-family: Inter-Regular;
+    font-size: 14px;
+   
+}
+.settings .member_table table thead tr{
+    border-bottom:1px solid #ecedef;
+
+}
+.settings .member_table tbody tr td{
+    color:  #212b36;
+    font-size: 14px;
+    padding:10px 16px 10px 10px;
+  
+}
+.settings .member_table tbody tr td img{
+    margin-left: 7px;
+}
+.settings .member_table tbody tr td select {
+    color:  #212b36;
+}
+
+.settings .member_table tbody tr{
+    border-bottom:1px solid #ecedef;
+
+}
+.settings .member_table tbody tr td a{
+    color:  #2863eb;
+    text-decoration:underline;
+}
+
+
+.settings .member_table tbody tr td select{
+    border:none;
+  
+}
+
+/*-------------Media queries of organisation----------*/
+
+@media screen and (max-width:1024px){
+    .containercomponents{
+        width:20%;
+    }
+    .containercomponents .lowercomponents ul li{
+        padding: 10px 10px;
+    }
+    .containercomponents .lowercomponents {
+        margin-bottom: 32px;
+    }
+    .containercomponents .uppercomponents {
+        margin-bottom:13rem;
+
+    }
+    .containercomponents .uppercomponents ul li{
+        padding: 10px 10px;
+       
+
+    }
+    .settings {
+        padding: 30px 34px;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .containercomponents{
+        width:23%;
+    }
+    .containercomponents .uppercomponents {
+        margin-bottom:6rem;
+
+    }
+    .containercomponents .lowercomponents ul li{
+        padding: 8px 2px;
+    }
+    .containercomponents .uppercomponents ul li{
+        padding: 8px 2px;
+
+    }
+    .settings {
+        padding: 30px 34px;
+        width: 77%;
+    }
+    .member_table table tr th{
+        padding: 10px 6px 10px 5px;
+    }
+    .settings .member_table tbody tr td{
+        font-size: 14px;
+    }
+}
+

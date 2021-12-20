@@ -1,0 +1,142 @@
+/*API Access Tokens*/
+
+.wrapper_access_tokes .head p{
+    width:57%;
+    float:left; 
+    color: #4a5057;
+    font-size: 14px;
+}
+
+.wrapper_access_tokes .head a{
+    text-decoration: underline;
+}
+
+.wrapper_access_tokes .head button{
+    width: 15%;
+    float:right;
+    color:  #2863eb;
+    border-color:  #2863eb;
+    border-radius: 3px;
+    
+    background-color: #f4f6f8;
+    font-size: 14px;
+    font-family: Inter-Medium;
+}
+.wrapper_access_tokes .table{
+    width: 100%;
+    float:left;
+    margin-top: 30px;
+}
+.wrapper_access_tokes .table table{
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    width: 100%;
+    border-collapse: collapse;
+    word-break: break-all;
+    
+}
+
+.wrapper_access_tokes .table table thead tr{
+    height: 4em;
+    
+}
+.wrapper_access_tokes .table table thead tr th{
+    text-align: left;
+    padding:0px  10px;
+    color:#212b36;
+    font-family: Inter-Medium;
+}
+
+.wrapper_access_tokes .table table tbody{
+    background-color: white;
+    
+}
+
+.wrapper_access_tokes .table table tbody tr td{
+    padding-left: 5px;
+    color:#212b36;
+    word-break: break-all;
+    font-family: Inter-Regular;
+    font-size: 14px;
+
+}
+.wrapper_access_tokes .table table tbody tr td .development{
+    font-size: 16px;
+    font-family: Inter-Regular;
+    color: #212b36;
+}
+.wrapper_access_tokes .table table tbody tr td .tokens{
+    font-size: 14px;
+    font-family: Inter-Regular;
+    color: #6e6e6e;
+}
+.wrapper_access_tokes .table table tbody tr td img{
+    padding-left: 5px;
+}
+
+.wrapper_access_tokes .table table tbody tr td span{
+    
+    font-size: 12px;
+    color:#7b7b7b;
+}
+.wrapper_access_tokes .table table tbody tr td .border{
+    border: 1px solid rgba(99, 115, 129, 0.63);
+   
+    color:#212b36;
+    border-radius: 3px;
+    padding:2px 5px 0px 2px;
+    text-decoration: none;
+    font-family: Inter-Regular;
+    font-size: 16px;
+}
+.wrapper_access_tokes .table table tbody tr td .save{
+    margin-left: 5px;
+    text-decoration: underline;
+}
+
+
+.wrapper_access_tokes .table table tbody tr td a{
+    color:  #2863eb;
+    font-size: 16px;
+}
+
+.wrapper_access_tokes .table table tbody tr td tr{
+    border:none;
+    height: 3px;
+    
+}
+.wrapper_access_tokes .table table tbody tr{
+    border-bottom:1px solid #ecedef;
+    height: 5em;
+    
+}
+
+/*--------------media quries of access tokenks-------------*/
+@media screen and (max-width: 1024px) {
+    
+    .wrapper_access_tokes .head p{
+        width: 65%;
+        float: left;
+        color: #4a5057;
+    }
+    .wrapper_access_tokes .head button{
+        
+        width: 19%;
+        padding:2px;
+    }
+    
+    
+   
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper_access_tokes .head p{
+        width: 65%;
+        float: left;
+        color: #4a5057;
+    }
+    .wrapper_access_tokes .head button{
+        
+        width: 26%;
+        padding: 2px;
+    }   
+}
