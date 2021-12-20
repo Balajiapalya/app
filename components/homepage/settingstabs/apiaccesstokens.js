@@ -4,7 +4,7 @@ import styles from '../../../styles/apiaccess.module.css';
 function Apiaccesstokes() {
     return (
         <Fragment>
-            <section class={styles.wrapper_access_tokes}>
+            <section className={styles.wrapper_access_tokes}>
                 <div className={styles.head}>
                     <p>You can create or  revoke API access tokens. Tokens are used to authenticate API request and are environment specific. To know more visit our <a href="#">guide</a>.</p>
                     <button className="btn">Create new Token</button>

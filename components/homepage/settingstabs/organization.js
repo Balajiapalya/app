@@ -1,5 +1,8 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
+import Newmember from '../../../pages/newmember';
+import Newwebhook from '../../../pages/newwebhook';
+
 
 function Organisation() {
     return (
@@ -15,7 +18,10 @@ function Organisation() {
             </div>
             <div className={styles.members}>
                 <h3>Members</h3>
-                <button className="btn">Invite Member</button>
+                {/* <Link> */}
+                    <a href="#"><button className="btn">Invite Member</button></a>
+                {/* </Link> */}
+
             </div>
             <div className={styles.member_table}>
                 <table>
@@ -40,7 +46,7 @@ function Organisation() {
                         <tr>
                             <td>Venkatesh</td>
                             <td>Venkatesh@yupptv.com</td>
-                           
+
                             <td>
                                 <select>
                                     <option>Admin</option>

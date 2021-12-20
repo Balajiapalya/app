@@ -9,7 +9,7 @@ function Billing() {
                     <p>
                         Manage Billing for both Video and Data plans here.Feel free to <a href="#">contact us</a> for any queries related billing.
                     </p>
-                    <button class="btn">Edit Payment details</button>
+                    <button className="btn">Edit Payment details</button>
                 </div>
                 <div className={styles.payment}>
                     <h4>Next payment:Nov 08,2021</h4>

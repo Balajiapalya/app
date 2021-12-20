@@ -15,7 +15,7 @@ export default function Newtoken() {
                 <button type="button" className={styles.copy}><img src="copy.png"></img>  </button>
    
                     <label className={styles.model_label}>Secret Key:</label>
-                    <p>We don't store the key.Please copy or download it into your system.</p>
+                    <p>We don&apos;t store the key.Please copy or download it into your system.</p>
                     <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development"/>
                     <button type="button" className={styles.copy}><img src="copy.png"></img>  </button>
                     

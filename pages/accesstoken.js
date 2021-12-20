@@ -6,7 +6,7 @@ export default function Accesstoken() {
     <div className={`${styles.container} ${styles.accesstoken_model}`}>
        <div className={styles.body}>
        <div className={styles.model_nav}>
-       <a href="" className={styles.model_close}  role="button"><img src="close.png"/> </a>
+       <a href="#" className={styles.model_close}  role="button"><img src="close.png"/> </a>
        </div>
        <div className={styles.main}>
        <h3 className={styles.model_title}>New Access Token</h3>
@@ -27,13 +27,13 @@ export default function Accesstoken() {
        </div>
        <div className={styles.access_token_checkbox}>
        <input type="checkbox"  name="video" id="video" value="video"/>
-        <label for="video"> video</label><br/>
+        <label htmlFor="video"> video</label><br/>
         <input type="checkbox" className={styles.read} name="read" id="read" value="read"/>
-        <label for="read" > read</label><br/>
+        <label htmlFor="read" > read</label><br/>
         <input type="checkbox" className={styles.write} name="write" id="write" value="write"/>
-        <label for="write" >write</label><br/>
+        <label htmlFor="write" >write</label><br/>
         <input type="checkbox" name="data" id="data" value="data"/>
-        <label for="data">Data(read-only)</label>                 
+        <label htmlFor="data">Data(read-only)</label>                 
        </div>
        <label className={styles.model_label}>Access token name</label>
        <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development"/>
