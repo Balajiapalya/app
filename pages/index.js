@@ -25,6 +25,7 @@ import Signingkey from './signingkey'
 import Editpaymentdetials from './editpaymentdetials'
 import Paymenthistory from './paymenthistory'
 import Newtoken from './newtoken'
+import Stream_monitor from './stream_monitor'
 
 
 export default function Home() {
@@ -37,11 +38,12 @@ export default function Home() {
       </Head>
 
       {/* <Login/> */}
-      <Settings />
+      {/* <Settings /> */}
       {/* < Billings/> */}
       {/* <Apiaccess/> */}
       {/* <Webhooks/> */}
       {/* < Signinkeys/> */}
+      <Stream_monitor/>
 
 
       {/* <Revoke/> */}
@@ -50,7 +52,6 @@ export default function Home() {
       {/* <Deletewebhook/> */}
       {/* <Deletekey/> */}
       {/* <Paymenthistory/> */}
-
       {/* <Newtoken/> */}
       {/* <Signingkey/> */}
       {/*<Newwebhook/>*/}

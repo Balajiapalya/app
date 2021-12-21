@@ -1,7 +1,10 @@
-import styles from '../styles/settings.module.css'
-import Tabs from '../components/homepage/Tabs'
+import Stream_tabs from '../components/homepage/Stream_tabs'
+import styles from '../styles/stream_monitor.module.css'
 
-export default function Settings() {
+
+
+
+export default function Stream_monitor() {
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -49,18 +52,29 @@ export default function Settings() {
                     </ul>
                 </div>
             </div>
-            <div className={styles.settings}>
+            <div className={styles.stream_Monitor}>
 
                 <div className={styles.header}>
                     <h2>
-                        Settings
-                    </h2>
-                    <h3>
-                        Yupptv
-                    </h3>
+                        Stream Monitor
+                    </h2>  
                 </div>
+                <div className={styles.stream_details}>
+                    <p>
+                        Our straem monitoring tool provides uptime of your HLS streams and performance of the streams measured at diffrent GEO's
+                    </p>
+                    <a><button className='btn'>
+                        <img></img>
+                        Add New stream
+                    </button></a>
+                
+                
 
-                <Tabs />
+                </div>
+                <Stream_tabs/>
+
+
+                
 
 
             </div>
