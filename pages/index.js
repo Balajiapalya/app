@@ -38,12 +38,12 @@ export default function Home() {
       </Head>
 
       {/* <Login/> */}
-      {/* <Settings /> */}
+      <Settings />
       {/* < Billings/> */}
       {/* <Apiaccess/> */}
       {/* <Webhooks/> */}
       {/* < Signinkeys/> */}
-      <Stream_monitor/>
+      {/* <Stream_monitor/> */}
 
 
       {/* <Revoke/> */}

@@ -61,7 +61,7 @@ export default function Stream_monitor() {
                 </div>
                 <div className={styles.stream_details}>
                     <p>
-                        Our straem monitoring tool provides uptime of your HLS streams and performance of the streams measured at diffrent GEO's
+                        Our straem monitoring tool provides uptime of your HLS streams and performance of the streams measured at diffrent GEO&apos;s
                     </p>
                     <a><button className='btn'>
                         <img></img>
