@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
-import Newmember from '../../../pages/newmember';
-import Newwebhook from '../../../pages/newwebhook';
+import Link from 'next/link'
 
 
 function Organisation() {
@@ -13,14 +12,16 @@ function Organisation() {
                 <input placeholder="YuppTv"></input>
                 <span>
 
-                    <a href="#"><img src="Icon material-edit.png"></img>Edit</a>
+                   <Link href="/editorganization"><a><img src="Icon material-edit.png"></img>Edit</a></Link>
                 </span>
             </div>
             <div className={styles.members}>
                 <h3>Members</h3>
-                {/* <Link> */}
-                    <a href="#"><button className="btn">Invite Member</button></a>
-                {/* </Link> */}
+                <Link href="/newmember">
+                <a><button className="btn">Invite Member</button></a>
+                </Link>
+                   
+                
 
             </div>
             <div className={styles.member_table}>
@@ -54,7 +55,7 @@ function Organisation() {
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><Link href="/removeuser"><a><img src="Icon material-delete.png"></img></a></Link></td>
                         </tr>
                         <tr>
                             <td>Ashok</td>
@@ -66,7 +67,7 @@ function Organisation() {
                                 </select>
                             </td>
                             <td>Invite Sent <a href="#">Resend</a> </td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><Link href="/removeuser"><a><img src="Icon material-delete.png"></img></a></Link></td>
                         </tr>
 
                     </tbody>

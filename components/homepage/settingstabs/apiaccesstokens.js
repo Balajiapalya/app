@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import styles from '../../../styles/apiaccess.module.css';
+import Link from "next/link";
 
 function Apiaccesstokes() {
     return (
@@ -7,7 +8,7 @@ function Apiaccesstokes() {
             <section className={styles.wrapper_access_tokes}>
                 <div className={styles.head}>
                     <p>You can create or  revoke API access tokens. Tokens are used to authenticate API request and are environment specific. To know more visit our <a href="#">guide</a>.</p>
-                    <button className="btn">Create new Token</button>
+                    <Link href="/newtoken"><a><button className="btn">Create new Token</button></a></Link>
 
                 </div>
                 <div className={styles.table}>
@@ -35,7 +36,7 @@ function Apiaccesstokes() {
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
                                 <td>Active</td>
-                                <td><a href="#">Revoke</a></td>
+                                <td><Link href="/revoke"><a>Revoke</a></Link></td>
                             </tr>
                             <tr>
                                 <td><span className={styles.border}>Development</span><a className={styles.save}>Save</a><br></br>
@@ -52,7 +53,7 @@ function Apiaccesstokes() {
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
                                 <td>Active</td>
-                                <td><a href="#">Revoke</a></td>
+                                <td><Link href="/revoke"><a>Revoke</a></Link></td>
                             </tr>
                             <tr>
                                 <td><span className={styles.development}>Development</span><img src="Icon material-edit.png"></img><br></br>

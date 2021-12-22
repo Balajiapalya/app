@@ -1,4 +1,5 @@
 import styles from '../styles/model.module.css'
+import Link from 'next/link'
 
 export default function Newmember() {
     return (
@@ -6,7 +7,9 @@ export default function Newmember() {
         <div className={styles.model_main}>
             <div className={styles.model_nav}>
            <h3 className={styles.model_title}>Invite New Member</h3>
+             <Link href="/">
              <a href="" className={styles.model_close}  role="button"><img src="close.png"/> </a>
+             </Link>
             </div>
     
               <label className={styles.model_label}>Email Address</label>
@@ -21,7 +24,7 @@ export default function Newmember() {
                 </select>
                 </div>
                  <div className={styles.model_btn}>
-               <button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Send Invitation</button>
+               <Link href="/"><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Send Invitation</button></a></Link>
 
                </div>
         </div>

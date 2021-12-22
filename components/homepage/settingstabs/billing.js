@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import styles from '../../../styles/billings.module.css';
+import Link from "next/link";
 
 function Billing() {
     return (
@@ -9,7 +10,7 @@ function Billing() {
                     <p>
                         Manage Billing for both Video and Data plans here.Feel free to <a href="#">contact us</a> for any queries related billing.
                     </p>
-                    <button className="btn">Edit Payment details</button>
+                    <Link href="/editpaymentdetials"><a><button className="btn">Edit Payment details</button></a></Link>
                 </div>
                 <div className={styles.payment}>
                     <h4>Next payment:Nov 08,2021</h4>
@@ -65,7 +66,7 @@ function Billing() {
                     <div className={styles.payment_details}>
                         <span className={styles.payment_details_heading}>Account Payment Details</span>
 
-                        <span> <a href="#">Veiw Payment history</a></span>
+                        <span> <Link href="/paymenthistory"><a>Veiw Payment history</a></Link></span>
                         <table>
                             <tbody>
                                 <tbody>
