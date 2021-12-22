@@ -7,7 +7,7 @@ export default function Revoke() {
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Revoke Access</h3>
-                    <Link href="/"><a  className={styles.model_close} role="button"><img src="close.png" /> </a></Link>
+                    <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" /> </a></Link>
                 </div>
 
                 <div className={styles.model_removeuser}>

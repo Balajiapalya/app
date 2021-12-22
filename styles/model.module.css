@@ -1,3 +1,4 @@
+
 .model{
     background-color:gray;
     width:100%;
@@ -246,24 +247,7 @@ float: left;
     margin-right: 20px;
 }
 
-.accesstoken_model .model_input:first-child::placeholder{
-    padding-left: 28px;
- }
-.accesstoken_model .file{
-    
-    float: left;
-    margin-top: -29px;
-    padding-left: 27px;
-  
-}
-.accesstoken_model .up{
-    float: right;
-    margin-top: -27px;
-    margin-right: 33px;
-    border: none;
-    background: none;
-  
-}
+
 .access_token_link{
     font-size: 14px;
     font-family: Inter-Regular;
@@ -369,10 +353,10 @@ float: left;
     margin-right: 20px;
 }
 
-.newkey .up,.newwebhook_model .up{
-    float: right;
-    margin-top: -27px;
-        margin-right: 33px;
+.newkey .up,.newwebhook_model .up,.accesstoken_model .up{
+    position: absolute;
+    margin-top: 9px;
+    margin-left: -25px;
         border: none;
         background: none;
   
@@ -392,6 +376,9 @@ float: left;
     margin: 100px auto;
     
 }
+.newwebhook_model .development , .newkey .development , .accesstoken_model .development{
+    -webkit-appearance: none;   
+}
 .newkey .select ,.newwebhook_model .select , .accesstoken_model .select{
     position: relative;
     width: 100%;
@@ -399,11 +386,11 @@ float: left;
     font-family:Inter-Regular;
     font-size: 14px;
     color: #212b36;
+  
 }
 
-.newkey  .model_input::placeholder{
-    padding-left: 27px;
-}
+
+
 .newkey .file ,.newwebhook_model .file , .accesstoken_model .file{
     margin-top: 9px;
         position: absolute;
@@ -411,11 +398,11 @@ float: left;
         padding-left: 27px;
 }
 .newkey .development , .newwebhook_model .development ,.accesstoken_model .development{
-    padding-left: 27px;
+    padding-left: 30px;
 }
- .model_selection::-ms-expand {
-    display: none;
-}
+
+
+
 
 .newkey .access_token_link{
     font-size: x-small;
@@ -431,7 +418,16 @@ float: left;
 @media (min-width: 280px)  and (max-width:510px){
 
 
- .model_main,.newtoken .main, .signingkey .main,.newkey .main {
+ .model_main{
+     width: calc(100% - 20px);
+ }
+ .model_main .model_title{
+     font-size: 15px;
+ }
+ .model_data{
+     font-size: 12px;
+ }
+ .newtoken .main, .signingkey .main,.newkey .main {
      width: 100%;
  }
 .newwebhook_model .main{
@@ -458,9 +454,7 @@ float: left;
    padding: 200px;
 
 }
-.remove_user_modal .model_main{
-    margin-top: 130px;
-}
+
 .newtoken .main, .newwebhook_model .main,.signingkey .main{
     margin-top: 24vh;
 }
@@ -481,9 +475,7 @@ float: left;
     .newkey .main{
         margin-top: 37vh;
     }   
-    .remove_user_modal {
-        padding: 20vh;
-    }  
+  
     
      .newtoken .body,.signingkey .body{
          padding: 5vh;
@@ -496,7 +488,7 @@ float: left;
 @media (min-width:1201px) {
     
     .remove_user_modal {
-        padding: 18vh;
+        padding: 0vh;
     }
     .accesstoken_model .body{
         padding: 5vh;

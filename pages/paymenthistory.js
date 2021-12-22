@@ -7,7 +7,7 @@ export default function Paymenthistory() {
       <div className={styles.model_main}>
         <div className={styles.model_nav}>
           <h3 className={styles.model_title}>Payment History</h3>
-           <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" /></a></Link>
+          <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" /></a></Link>
         </div>
 
         <table className={styles.table}>
