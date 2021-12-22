@@ -3,6 +3,13 @@
     float: left;
     margin-bottom: 1.5em;
 }
+.search img{
+    width:21px;
+    float: right;
+    position: relative;
+    top:1em;
+    left: 11.8em;
+}
 .search input{
     float: right;
     width: 200px;

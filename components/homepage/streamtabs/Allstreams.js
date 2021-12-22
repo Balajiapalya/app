@@ -7,6 +7,7 @@ export default function Allstreams(){
             <div className={styles.wrapper}>
                 <div className={styles.search}>
                     <input placeholder='Search'></input>
+                    <img src='/search_icon.png'></img>
                 </div>
                 <div className={styles.stream_table}>
                     <table>
