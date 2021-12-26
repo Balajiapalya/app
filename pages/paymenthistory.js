@@ -1,13 +1,13 @@
 import styles from '../styles/model.module.css'
 import Link from 'next/link'
 
-export default function Paymenthistory({closepaymenthistory}) {
+export default function Paymenthistory({ closepaymenthistory }) {
   return (
     <div className={`${styles.model} ${styles.paymenthistory}`}>
       <div className={styles.model_main}>
         <div className={styles.model_nav}>
           <h3 className={styles.model_title}>Payment History</h3>
-          <a className={styles.model_close} role="button" onClick={()=>closepaymenthistory(false)}><img src="close.png" /></a>
+          <a className={styles.model_close} role="button" onClick={() => closepaymenthistory(false)}><img src="close.png" /></a>
         </div>
 
         <table className={styles.table}>
@@ -37,7 +37,7 @@ export default function Paymenthistory({closepaymenthistory}) {
           </tbody>
         </table>
         <div className={styles.model_btn}>
-          <a onClick={()=>closepaymenthistory(false)}><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Done</button></a>
+          <a onClick={() => closepaymenthistory(false)}><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Done</button></a>
 
         </div>
       </div>

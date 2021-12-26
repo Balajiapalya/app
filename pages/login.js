@@ -10,15 +10,15 @@ export default function Login() {
         </h1>
 
         <div className={styles.signup_area}>
-        <h3 className={styles.signup_title}>
-          create your Videograph account
-        </h3>
-        <input type="text" placeholder="Enter your email address" name="login" className={`${styles.signup_input} form_control`}  />
+          <h3 className={styles.signup_title}>
+            create your Videograph account
+          </h3>
+          <input type="text" placeholder="Enter your email address" name="login" className={`${styles.signup_input} form_control`} />
 
-        <Link href="signupinvitation"><a><button type="button" className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button></a></Link>
+          <Link href="signupinvitation"><a><button type="button" className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button></a></Link>
 
-        <h4 className={styles.already_account}>Already have an account?</h4>
-        <a href="#" className={styles.signin_link}>Sign in</a>  
+          <h4 className={styles.already_account}>Already have an account?</h4>
+          <a href="#" className={styles.signin_link}>Sign in</a>
         </div>
       </main>
     </div>

@@ -9,7 +9,7 @@ export default function Apiaccess() {
                 <button >Create new Token</button>
 
             </div>
-            
+
             <div className={styles.table}>
                 <table>
                     <thead>
@@ -56,7 +56,7 @@ export default function Apiaccess() {
                         </tr>
                         <tr>
                             <td>Development<img src="Icon material-edit.png"></img><br></br>
-                            <span>a857d839-4a10-be9e-41b66cdde9ea</span>
+                                <span>a857d839-4a10-be9e-41b66cdde9ea</span>
                             </td>
                             <td>Development</td>
                             <td>Video</td>
