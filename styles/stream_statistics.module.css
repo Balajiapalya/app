@@ -1,0 +1,519 @@
+.containercomponents{
+    background-color:  #333740;
+    width: 15%;
+    box-sizing: border-box;
+    color: white;
+    /* padding: 5px;   */
+    float: left;
+    position: fixed;
+    height: 100%;
+    
+}
+.containercomponents h2{
+    color: white;
+    text-align: center;
+    padding: 0px 20px 20px;
+}
+.containercomponents .uppercomponents ul li{
+    padding: 1em 20px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    list-style: none;
+    color: #8798ac;
+}
+
+
+.containercomponents .uppercomponents ul li img{
+    padding-right:10px;
+}
+
+.containercomponents .uppercomponents ul li a{
+    padding-left: 15px;
+   
+}
+.containercomponents .uppercomponents ul{
+    padding-inline-start: 0px;
+}
+.uppercomponents{
+    margin-bottom: 6em;
+}
+.uppercomponents ul li ul {
+    display: none;
+}
+.tools{
+    padding-right:0px ;
+}
+.tools ul li{
+    padding: 10px!important;
+   
+}
+.tools ul li a{
+    padding-left: 30px!important;
+    font-size: 12px;
+}
+.tools:hover{
+    background-color: #202227;
+}
+
+.tools:hover .list_heading{
+    color: white;
+}
+.tools:hover .list{
+    display: block;
+}
+.list a:hover{
+    color: white;
+}
+.tools:hover .uppercomponents{
+    margin-bottom: 0em;
+}
+
+/*lowercomponents*/
+.containercomponents .lowercomponents ul{
+    padding-inline-start: 0px;
+}
+.containercomponents .lowercomponents ul li{
+    padding: 1em 20px;
+    font-family: 'Inter-Medium';
+    font-size: 14px;
+    list-style: none;
+    color: #8798ac;
+    position: relative;
+} 
+.containercomponents .lowercomponents ul li img{
+    padding-right:10px;
+} 
+
+.containercomponents .lowercomponents ul li a{
+    padding-left: 15px;
+} 
+.containercomponents .lowercomponents ul li p{
+    position: absolute;
+    left: 53px;
+    top: 0px;
+    width: 100%;
+    margin: 0;
+    color: #8798ac;
+    padding-left: 10px;
+}
+.lowercomponents{
+    margin-bottom: 30px;
+}
+
+.stream_statistics {
+   padding:30px 73px;
+   width: 85%;
+   float: right; 
+}
+.stream_list a{
+    text-decoration: underline;
+}
+.stream_statistics .stream_list p{
+    display: inline;
+}
+.stream_statistics .header{
+    float: left;
+    width: 100%;
+    margin-bottom:20px ;
+}
+
+
+.stream_statistics .header  h2{
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 28px;
+
+} 
+
+.stream_statistics .stream_url_check{
+    width: 50%;
+    float: left;
+}
+.stream_url_check .stream_url{
+    float: left;
+    width: 60%;
+}
+.stream_url span{
+    background-color: white;
+    padding: 5px;
+}
+.stream_url_check .stream_check{
+    float: right;
+    width: 40%;
+}
+.stream_check select{
+    border: 1px solid #999;
+    padding: 4px;
+    border-radius:4px ;
+}
+
+.functional_buttons{
+    float: right;
+    display: flex;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+.functional_buttons button{
+    color:  #2863eb;
+    border-color:  #2863eb;
+    border-radius: 4px;
+    font-family: Inter-Medium;
+    background-color: inherit;
+    text-align: right;
+   
+
+}
+.actions button,.delete_stream button{
+    color: #999;
+    border-color: #999;
+    margin-left: 10px;
+}
+/* .delete_stream button{
+    color: #999;
+    border-color: #999;
+    margin-left: 10px;
+} */
+.margin_bottom{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.border_bottom{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+    border-bottom:1px solid #d5dbe2;
+}
+.Utime_check{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.Utime_check .uptime_header{
+    width: 60%;
+    float: left;
+}
+.uptime_header h3{
+    margin-top: 2em;
+    color: #212b36;
+}
+.uptime_header h3 span{
+    font-weight: lighter;
+    color: #4a5057;
+    font-size: 16px;
+}
+
+.Preview{
+    /* width: 30%; */
+    float: right;
+    display: flex;
+}
+.Preview .image_preview{
+    margin-right: 10px;
+    padding: 0px 5px;
+    height: 27px;
+    margin-top: 30px;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+.Preview .image_preview  .input{
+    position: relative;
+    width: 20px;
+    height: 10px;
+    -webkit-appearance: none;
+    background: grey;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    transition: .5s;
+
+
+}
+.Preview .image_preview .input:checked{
+    background-color: #03a9f4;
+}
+.Preview .image_preview .input::before{
+    content: '';
+    position:absolute;
+    width: 10px;
+    height: 10px;
+    border-radius:20px ;
+    top:0;
+    left:0;
+    background:#fff;
+    transform:scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .5s;
+
+
+}
+
+.Preview .image_preview .input:checked::before{
+    left:10px ;
+}
+.Preview .time_line label{
+    display: inherit;
+    margin-top: 9px;
+    color: #4a5057;
+}
+.Preview .time_line select{
+    padding:1px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    margin-bottom: 0.4em;
+}
+
+.scte{
+    width: 100%;
+    float: left;
+    margin-bottom: 1em;
+}
+.scte_header{
+    width: 100%;
+    float: left;
+}
+.scte_header h3{
+    color: #212b36;
+}
+.scte_markers{
+    width: 100%;
+    float: left;
+    height: 200px;
+    background-color: white;
+    /* border: 1px solid black; */
+}
+.scte_markers .text_align{
+    text-align: center;
+    margin: 3em 11.5em;
+}
+.master_manifest{
+    width:100%;
+    float: left;
+    margin-bottom: 1em;
+}
+.master_manifest_header{
+    width: 100%;
+    float: left;
+}
+.master_manifest_header h3{
+    color: #212b36;
+}
+.master_manifest_header span{
+    font-weight: lighter;
+    font-size: 16px;
+    color: #4a5057;
+}
+.master_manifest table{
+    /* border:1px solid black; */
+    border-collapse: collapse;
+    width: 100%;
+  
+    
+}
+/* .master_manifest table thead{
+    border-bottom:1px solid black ;
+} */
+.master_manifest table thead tr{
+    height: 3em;
+}
+.master_manifest table thead tr th{
+    text-align: left;
+    padding: 0px 5px;
+    color: #212b36;
+    font-size: 14px;
+}
+.master_manifest table tbody{
+    background-color: white;
+}
+.master_manifest table tbody tr{
+    height: 3em;
+}
+.master_manifest table tbody tr td{
+    text-align: left;
+    padding: 0px 5px;
+}
+.child_manifest{
+    width:100%;
+    float:left;
+    margin-bottom: 1em;
+}
+.child_manifest_header{
+    float:left;
+    width: 100%;
+}
+.child_manifest_header h3{
+    color: #212b36;
+}
+
+.child_manifest_header h3 span{
+    font-weight: lighter;
+    font-size: 16px;
+    color: #4a5057;
+}
+.child_manifest table{
+    /* border: 1px solid black; */
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+.child_manifest table thead tr{
+    height: 2em;
+}
+.child_manifest table thead tr th{
+    padding: 0px 5px;
+    color: #212b36;
+    text-align: left;
+    font-size: 14px;
+}
+.child_manifest table tbody tr{
+    height: 2em;
+    background-color: white;
+    border-bottom:1px solid #ecedef;
+}
+.child_manifest table tbody tr td{
+    padding:0px 5px;
+    text-align: left;
+}
+.track_pts{
+    width: 100%;
+    float: left;
+    margin-bottom: 1em;
+}
+.track_pts_header{
+    width:100%;
+    float:left;
+}
+.track_pts_header h3{
+    color: #212b36;
+}
+.timestamp{
+    width: 100%;
+    float: left;
+    height: 12em;
+    background-color: white;
+    /* border:1px solid black */
+}
+.timestamp .timestamp_details{
+    text-align: center;
+    margin: 3em 11.5em;
+}
+.geo_locations{
+    width: 100%;
+    float: left;
+}
+.geo_loacations_header{
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+}
+.geo_loacations_header h3{
+    color: #212b36;
+}
+.geo_loacations_header h3 span{
+    font-weight: lighter;
+    font-size: 16px;
+    color: #4a5057;
+}
+.select_loaction{
+  /* width: 50%; */
+  float: right;
+  
+}
+.select_loaction label{
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.select_loaction select{
+    padding: 5px 20px 5px 5px;
+    margin-bottom: 15px;
+}
+.geo_locations table{
+    width: 100%;
+    /* border:1px solid black; */
+    border-collapse: collapse;
+}
+.geo_locations table thead tr{
+    height: 3em;
+    text-align: left;
+    padding: 0px 20px;
+    
+}
+.geo_locations table thead tr td{
+    padding: 0px 5px;
+    color: #212b36;
+    font-size: 14px;
+}
+.geo_locations table tbody tr{
+    background-color: white;
+}
+.geo_locations table tbody tr td{
+    padding: 0px 5px;
+}
+/*------------------------------------------------------------------------------------------------------*/
+
+/*-------------Media queries of organisation----------*/
+@media screen and (max-width:1200px) {
+    .stream_statistics .stream_details button{
+        width: 22%;
+    }
+}
+@media screen and (max-width:1024px){
+    .containercomponents{
+        width:20%;
+    }
+    .containercomponents .lowercomponents ul li{
+        padding: 10px 10px;
+    }
+    .containercomponents .lowercomponents {
+        margin-bottom: 32px;
+    }
+    .containercomponents .uppercomponents {
+        margin-bottom:6rem;
+
+    }
+    .containercomponents .uppercomponents ul li{
+        padding: 10px 10px;
+       
+
+    }
+    .settings {
+        padding: 30px 34px;
+        width: 80%;
+    }
+    .stream_statistics .stream_details button{
+        width: 28%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .containercomponents{
+        width:23%;
+    }
+    .containercomponents .uppercomponents {
+        margin-bottom:6rem;
+
+    }
+    .containercomponents .lowercomponents ul li{
+        padding: 8px 2px;
+    }
+    .containercomponents .uppercomponents ul li{
+        padding: 8px 2px;
+
+    }
+    .settings {
+        padding: 30px 34px;
+        width: 77%;
+    }
+    .member_table table tr th{
+        padding: 10px 6px 10px 5px;
+    }
+    .settings .member_table tbody tr td{
+        font-size: 14px;
+    }
+    .stream_statistics .stream_details button{
+        width: 33%;
+    }
+}
+

@@ -6,18 +6,15 @@
     color: #4a5057;
     font-size: 14px;
 }
-
 .wrapper_access_tokes .head a{
     text-decoration: underline;
 }
-
 .wrapper_access_tokes .head button{
     width: 15%;
     float:right;
     color:  #2863eb;
     border-color:  #2863eb;
     border-radius: 3px;
-    
     background-color: #f4f6f8;
     font-size: 14px;
     font-family: Inter-Medium;
@@ -31,13 +28,11 @@
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     width: 100%;
     border-collapse: collapse;
-    word-break: break-all;
-    
+    word-break: break-all;   
 }
 
 .wrapper_access_tokes .table table thead tr{
-    height: 4em;
-    
+    height: 4em; 
 }
 .wrapper_access_tokes .table table thead tr th{
     text-align: left;
@@ -48,7 +43,6 @@
 
 .wrapper_access_tokes .table table tbody{
     background-color: white;
-    
 }
 
 .wrapper_access_tokes .table table tbody tr td{
@@ -57,7 +51,6 @@
     word-break: break-all;
     font-family: Inter-Regular;
     font-size: 14px;
-
 }
 .wrapper_access_tokes .table table tbody tr td .development{
     font-size: 16px;
@@ -72,15 +65,12 @@
 .wrapper_access_tokes .table table tbody tr td img{
     padding-left: 5px;
 }
-
 .wrapper_access_tokes .table table tbody tr td span{
-    
     font-size: 12px;
     color:#7b7b7b;
 }
 .wrapper_access_tokes .table table tbody tr td .border{
     border: 1px solid rgba(99, 115, 129, 0.63);
-   
     color:#212b36;
     border-radius: 3px;
     padding:2px 5px 0px 2px;
@@ -92,22 +82,18 @@
     margin-left: 5px;
     text-decoration: underline;
 }
-
-
 .wrapper_access_tokes .table table tbody tr td a{
     color:  #2863eb;
     font-size: 16px;
+    cursor: pointer;
 }
-
 .wrapper_access_tokes .table table tbody tr td tr{
     border:none;
-    height: 3px;
-    
+    height: 3px;  
 }
 .wrapper_access_tokes .table table tbody tr{
     border-bottom:1px solid #ecedef;
-    height: 5em;
-    
+    height: 5em;  
 }
 
 /*--------------media quries of access tokenks-------------*/
@@ -123,9 +109,6 @@
         width: 19%;
         padding:2px;
     }
-    
-    
-   
 }
 
 @media screen and (max-width: 768px) {

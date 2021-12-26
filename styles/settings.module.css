@@ -1,13 +1,14 @@
 
 .containercomponents{
     background-color:  #333740;
-    width: 15%;
+    width: 17%;
     box-sizing: border-box;
     color: white;
-    padding: 5px;  
+    /* padding: 5px;   */
     float: left;
     position: fixed;
     height: 100%;
+    
     
 }
 .containercomponents h2{
@@ -38,6 +39,37 @@
 .uppercomponents{
     margin-bottom: 6em;
 }
+.uppercomponents ul li ul {
+    display: none;
+}
+.tools{
+    padding-right:0px ;
+}
+.tools ul li{
+    padding: 10px!important;
+   
+}
+.tools ul li a{
+    padding-left: 30px!important;
+    font-size: 12px;
+}
+.tools:hover{
+    background-color: #202227;
+}
+
+.tools:hover .list_heading{
+    color: white;
+}
+.tools:hover .list{
+    display: block;
+}
+.list a:hover{
+    color: white;
+}
+.tools:hover .uppercomponents{
+    margin-bottom: 0em;
+}
+
 
 /*lowercomponents*/
 .containercomponents .lowercomponents ul{
@@ -60,7 +92,7 @@
 } 
 .containercomponents .lowercomponents ul li p{
     position: absolute;
-    left: 53px;
+    left: 55px;
     top: 0px;
     width: 100%;
     margin: 0;
@@ -69,10 +101,13 @@
 .lowercomponents{
     margin-bottom: 30px;
 }
+.lowercomponents ul li .user_detail{
+    padding-left: 10px;
+}
 
 .settings {
    padding:30px 73px;
-   width: 85%;
+   width: 87%;
    float: right; 
 }
 
@@ -81,15 +116,12 @@
     color: #212b36;
     font-family: Inter-Medium;
     font-size: 28px;
-
 } 
 .settings .header  h3{
     float: right;
     color: #212b36;
     font-family: Inter-Medium;
     font-size: 20px;
-    
-
 }
 .settings .topnav ul li a{
     color: #56606e;
@@ -128,6 +160,7 @@
 }
 .settings .general span{
     margin: 0-55px;
+    cursor: pointer;
 }
 .settings div ul{
     margin-top: 10px;
@@ -187,8 +220,7 @@
 .settings .member_table{
     width: 100%;
     float: left;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
-    
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
 }
 .member_table table{
     border-spacing: 0px 0px;
@@ -229,6 +261,7 @@
 }
 .settings .member_table tbody tr td img{
     margin-left: 7px;
+    cursor: pointer;
 }
 .settings .member_table tbody tr td select {
     color:  #212b36;
@@ -261,6 +294,9 @@
     .containercomponents .lowercomponents {
         margin-bottom: 32px;
     }
+    .containercomponents .lowercomponents ul li p{
+        left:45px;
+    }
     .containercomponents .uppercomponents {
         margin-bottom:13rem;
 
@@ -286,6 +322,9 @@
     }
     .containercomponents .lowercomponents ul li{
         padding: 8px 2px;
+    }
+    .containercomponents .lowercomponents ul li p{
+        left:34px;
     }
     .containercomponents .uppercomponents ul li{
         padding: 8px 2px;

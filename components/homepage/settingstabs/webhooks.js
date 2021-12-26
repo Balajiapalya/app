@@ -1,7 +1,12 @@
 import { Fragment } from "react";
 import styles from '../../../styles/webhooks.module.css';
+import { useState } from "react";
+import Newwebhook from "../../../pages/newwebhook";
+import Deletewebhook from "../../../pages/deletewebhook";
 
 function Webhooks() {
+    const[openwebhook,setopenwebhook]=useState(false);
+    const[removewebhook,setremovewebhook]=useState(false);
     return (
         <Fragment>
             <section className={styles.wrapper_webhooks}>
@@ -10,9 +15,9 @@ function Webhooks() {
                         Webhooks can be configured for any environment and notifications will be sent for all events for the environment.
                     </p>
                     
-                    <button className="btn">Create new Webhook</button>
-
+                    <button className="btn" onClick={()=>setopenwebhook(true)}>Create new Webhook</button>
                 </div>
+                {openwebhook && <Newwebhook closewebhook={setopenwebhook}/>}
                 <div className={styles.table}>
                     <table>
                         <thead>
@@ -36,8 +41,9 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <img src="Icon material-delete.png"></img>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" ></img></a>
                                 </td>
+                                {removewebhook && <Deletewebhook closedeletewebhook={setremovewebhook}/>}
                             </tr>
                             <tr>
                                 <td>https://example.com/videograp-endpoint</td>
@@ -48,7 +54,7 @@ function Webhooks() {
                                 <td>Disabled</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <img src="Icon material-delete.png"></img>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" ></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -60,7 +66,7 @@ function Webhooks() {
                                 <td>Disabled</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <img src="Icon material-delete.png"></img>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" ></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -72,7 +78,7 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <img src="Icon material-delete.png"></img>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" ></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -84,7 +90,7 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <img src="Icon material-delete.png"></img>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" ></img></a>
                                 </td>
                             </tr>
                         </tbody>

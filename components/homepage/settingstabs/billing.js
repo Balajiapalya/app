@@ -1,8 +1,12 @@
 import { Fragment } from "react";
+import { useState } from "react/cjs/react.development";
+import Editpaymentdetials from "../../../pages/editpaymentdetials";
+import Paymenthistory from "../../../pages/paymenthistory";
 import styles from '../../../styles/billings.module.css';
-import Link from "next/link";
 
 function Billing() {
+    const[openpaymentdetails,setopenpaymentdetails]=useState(false);
+    const[openpaymenthistory,setopenpaymenthistory]=useState(false);
     return (
         <Fragment>
             <div className={styles.container1}>
@@ -10,8 +14,9 @@ function Billing() {
                     <p>
                         Manage Billing for both Video and Data plans here.Feel free to <a href="#">contact us</a> for any queries related billing.
                     </p>
-                    <Link href="/editpaymentdetials"><a><button className="btn">Edit Payment details</button></a></Link>
+                    <a onClick={()=>setopenpaymentdetails(true)}><button className="btn">Edit Payment details</button></a>
                 </div>
+                {openpaymentdetails && <Editpaymentdetials closepaymentdetails={setopenpaymentdetails}/>}
                 <div className={styles.payment}>
                     <h4>Next payment:Nov 08,2021</h4>
                 </div>
@@ -62,11 +67,13 @@ function Billing() {
                         </table>
                     </div>
                 </div>
+                {openpaymenthistory && <Paymenthistory closepaymenthistory={setopenpaymenthistory}/>}
                 <div className={styles.tables_right}>
                     <div className={styles.payment_details}>
                         <span className={styles.payment_details_heading}>Account Payment Details</span>
 
-                        <span> <Link href="/paymenthistory"><a>Veiw Payment history</a></Link></span>
+                        <span> <a onClick={()=>setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+                        
                         <table>
                             <tbody>
                                 <tbody>

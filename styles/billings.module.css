@@ -1,23 +1,19 @@
 /*---------BILLING--------------*/
 
 .query{
-   
     width: 100%;
     float: left;
 }
 .query p{
     width:51%;
     float:left;
-    margin-right: 150px;
-   
-   
-    
+    margin-right: 150px;  
 }
 .query p a{
     color: #4a5057;
     text-decoration: underline;
 }
-.query button{
+.query a button{
     width:18%;
     float:right;
     border-color: #2863eb;
@@ -28,7 +24,6 @@
     background-color: #f4f6f8;
     font-family: Inter-Medium;
     font-size: 14px;
-
 }
 .payment{
     width:100%;
@@ -39,9 +34,7 @@
     margin:20px 0px;
     font-size: 14px;
     color: #4a5057;
-    font-weight: 600;
-
-    
+    font-weight: 600;  
 }
 
 .tables_left{
@@ -51,8 +44,6 @@
 }
 
 /*Video consumption*/
-
-
 
 .Video_consumption{
     width: 100;
@@ -64,13 +55,10 @@
     font-family: Inter-Semibold;
     margin-right: 3px;
     color: #212b36;
-    
-
 }
 
 
 .Video_consumption_date{
-    
     font-family: Inter-Regular;
     font-size: 14px;
 }
@@ -106,32 +94,18 @@
     font-family: Inter-Regular;
     font-weight: 600;
 }
-
-
-
-
-
-
 /*Right table*/
 
 .tables_right{
     width:42%;
     float: right;
 }
-    
-    
-
 .tables_right .payment_details span{
     float: left;
-    margin-bottom: 10px;
-    
-    
+    margin-bottom: 10px; 
 }
-.tables_right .payment_details span a{
-    
+.tables_right .payment_details span a{   
     font-size: 14px;
-   
-
 }
 .payment_details_heading{
     font-family: Inter-Semibold;
@@ -139,7 +113,6 @@
     color: #212b36;
     font-weight: 600;
 }
-
 .payment_details_date{
     margin-right: 10px;
 }
@@ -147,7 +120,7 @@
     color: #2863eb;
     text-decoration: underline;
     font-family: Inter-Regular;
-
+    cursor: pointer;
 }
 .payment_details table{
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -159,17 +132,14 @@
     border-collapse: collapse;
     font-family: Inter-Regular;
     font-size: 14px;
-
 }
 .payment_details table tbody tr {
     border-bottom:1px solid #ecedef;
-    
 }
 
 .payment_details table tbody tr td{
     padding: 10px 93px 10px 20px;
     color:#212b36;
-   
 }
 .payment_details table tbody tr td img{
     margin-right: 10px;
@@ -181,7 +151,6 @@
     padding: 10px 30px 10px 91px;
 } 
 
-
 /*Data cunsumption*/
 .data_consumption_heading{
     font-size: 22px;
@@ -189,11 +158,9 @@
     font-family: Inter-Semibold;
     margin-right: 3px;
     color: #212b36;
-
 }
 
-.data_consumption_date{
-    
+.data_consumption_date{ 
     font-family: Inter-Regular;
     font-size: 14px;
 }
@@ -213,15 +180,13 @@
     border-collapse: collapse;
     font-family: Inter-Regular;
     font-size: 14px;
-
 }
 .data_consumption table tbody tr{
     border-bottom:1px solid #ecedef; 
 }
 .data_consumption table tbody tr td{
     padding: 10px 17px;
-    color: #212b36;
-    
+    color: #212b36;  
 }
 .data_consumption table tbody tr .views{
     padding: 10px 10px 10px 35px;
@@ -288,16 +253,11 @@
         text-align: left;
         margin: 10px 0px 30px 0px;
         width: 100%;
-    
     }
     .data_consumption table tbody tr td{
         padding: 10px 123px 10px 20px;
-        color: #212b36;
-        
+        color: #212b36;   
     }
-
-
-
 }
 
 @media screen and (max-width:768px){
@@ -341,8 +301,7 @@
     
     .data_consumption table tbody tr td{
         padding: 10px 50px 10px 20px;
-        color: #212b36;
-        
+        color: #212b36; 
     }
 
     .data_consumption table{
@@ -351,8 +310,5 @@
         text-align: left;
         margin: 10px 0px 30px 0px;
         width: 100%;
-    
-    }
-
-   
+    }   
 }

@@ -1,5 +1,6 @@
 import Stream_tabs from '../components/homepage/Stream_tabs'
 import styles from '../styles/stream_monitor.module.css'
+import Link from 'next/link'
 
 
 
@@ -8,7 +9,7 @@ export default function Stream_monitor() {
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
-                <h2>Videograph</h2>
+               <Link href="settings"><a> <h2>Videograph</h2></a></Link>
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
