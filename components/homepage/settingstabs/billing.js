@@ -129,25 +129,21 @@ function Billing() {
                                     <td>Subscription Plan</td>
                                     <td>Starter(monthly)</td>
                                     <td>($ 0.00) paid</td>
-
                                 </tr>
                                 <tr>
                                     <td>Total Views</td>
                                     <td>0 Views</td>
                                     <td>at 0.05</td>
-
                                 </tr>
                                 <tr>
                                     <td className={styles.views}>Views from MUX Video(free)</td>
                                     <td>0 views</td>
                                     <td></td>
-
                                 </tr>
                                 <tr>
                                     <td  className={styles.views}>Views covered by plan</td>
                                     <td>0 views</td>
                                     <td>at 0.0012</td>
-
                                 </tr>
                                 <tr className={styles.current_video_cost}>
                                     <td >Current Video Cost</td>

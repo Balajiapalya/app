@@ -14,7 +14,6 @@ function Webhooks() {
                     <p>Use Webhooks to get real time updates on any events that happens outside of an API request cycle.
                         Webhooks can be configured for any environment and notifications will be sent for all events for the environment.
                     </p>
-                    
                     <button className="btn" onClick={()=>setopenwebhook(true)}>Create new Webhook</button>
                 </div>
                 {openwebhook && <Newwebhook closewebhook={setopenwebhook}/>}
