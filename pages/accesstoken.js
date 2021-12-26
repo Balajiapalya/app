@@ -1,12 +1,12 @@
 import styles from '../styles/model.module.css'
-import Signingkey from './signingkey'
 
-export default function Accesstoken() {
+
+export default function Accesstoken({closetoken}) {
     return (
     <div className={`${styles.container} ${styles.accesstoken_model}`}>
        <div className={styles.body}>
        <div className={styles.model_nav}>
-       <a href="#" className={styles.model_close}  role="button"><img src="close.png"/> </a>
+       <a className={styles.model_close}  role="button" onClick={()=>closetoken(false)}><img src="close.png"/> </a>
        </div>
        <div className={styles.main}>
        <h3 className={styles.model_title}>New Access Token</h3>
@@ -38,8 +38,8 @@ export default function Accesstoken() {
        <label className={styles.model_label}>Access token name</label>
        <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development"/>
         <div className={styles.model_btn}>
-        <button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
-        <button type="button" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
+        <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={()=>closetoken(false)}>Cancel</button>
+        <button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={()=>closetoken(false)}>create Token</button>
         </div>
 
        </div>

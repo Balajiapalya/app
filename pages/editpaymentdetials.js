@@ -1,20 +1,16 @@
 import styles from '../styles/model.module.css'
-import Link from 'next/link'
 
 
-export default function Editpaymentdetials() {
+export default function Editpaymentdetials({closepaymentdetails}) {
   return (
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>
       <div className={styles.body}>
         <div className={styles.model_nav}>
-          <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" /> </a></Link>
-
+          <a className={styles.model_close} role="button" onClick={()=>closepaymentdetails(false)}><img src="close.png" /> </a>
         </div>
         <div className={styles.main}>
           <h3 className={styles.model_title}>Edit Payment Details</h3>
-
           <form>
-
             <label className={styles.model_label}>Credit or Debit Card</label>
             <div className={styles.cerditcard_number}>
               <input type="text" className={`${styles.model_input} form_control`} name="cardnumber" placeholder="Cardnumber" />
@@ -40,7 +36,6 @@ export default function Editpaymentdetials() {
             </div>
             <div className={styles.state}>
               <label className={styles.model_label}>State</label>
-
               <select name="state" placeholder="Selete state" className={styles.model_selection}>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -48,7 +43,6 @@ export default function Editpaymentdetials() {
                 <option value="4">4</option>
               </select>
             </div>
-
             <label className={styles.model_label}>Country</label>
             <select name="Country" placeholder="Selete country" className={styles.model_selection}>
               <option value="1">1</option>
@@ -56,25 +50,15 @@ export default function Editpaymentdetials() {
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
-
-
-
             <label className={styles.model_label}>Biling Email</label>
-            <input type="text" className={`${styles.model_input} form_control`} name="email" placeholder="Enter email address" />
-
+            <input type="text" className={`${styles.model_input} form_control`} name="email" placeholder="Enter email address"/>
             <div className={styles.model_btn}>
-              <Link href="/"><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a></Link>
-              <Link href="/"><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Save Payment Detials</button></a></Link>
+              <button onClick={()=>closepaymentdetails(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
+              <button onClick={()=>closepaymentdetails(false)} type="button" className={`${styles.model_save_btn} btn btn-primary`}>Save Payment Detials</button>
             </div>
           </form>
         </div>
       </div>
-
     </div>
-
-
-
-
-
   )
 }

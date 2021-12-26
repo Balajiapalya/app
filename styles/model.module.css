@@ -1,11 +1,14 @@
 .model{
-    background-color:gray;
+    background-color:#000000a9 ;
     width:100%;
     height: 100vh;
     float: left;
     display: table;
-
-    
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0; 
+    opacity: 0.99;
 }
 .model_main{
     width: 517px;
@@ -27,7 +30,7 @@
    }
 
 .model_title{
-    margin: 15px;
+    margin: 10px 15px;
     font-size: 22px;
     float: left;
     color: #212b36;
@@ -39,14 +42,15 @@
    padding: 14px;
   cursor: pointer;
   float: right;
-  }
+}
+
 .model_label{
     width:calc(100% - 41px);
     float:left;
-    margin:10px 0px 10px 20px;
+    margin:5px 0px 5px 20px;
     font-size: 16px;
     font-family:Inter-Regular;
-     color: #212b36;
+    color: #212b36;
 }
 .model_input{
     width:calc(100% - 40px);
@@ -86,8 +90,9 @@
 .model_btn{
     float: initial;
     text-align: right;
-    margin: 10px;
+    margin: 10px 20px 10px 10px;
     font-family: OpenSans-SemiBold;
+    
 }
 
 .model_canel_btn{
@@ -152,6 +157,10 @@
     border: 1px solid whitesmoke;
    width:100%;
    display: table;
+   position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0; 
    
 }
 .editpaymentdetials .main{

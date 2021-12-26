@@ -1,13 +1,15 @@
 import styles from '../styles/apiaccess.module.css'
+import Accesstoken from './accesstoken';
 
 export default function Apiaccess() {
     return (
         <div className={styles.container}>
             <div className={styles.head}>
                 <p>You can create or  revoke API access tokens. Tokens are used to authenticate API request and are environment specific. To know more visit our <a href="#">guide</a>.</p>
-                <button>Create new Token</button>
+                <button >Create new Token</button>
 
             </div>
+            
             <div className={styles.table}>
                 <table>
                     <thead>

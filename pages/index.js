@@ -26,6 +26,7 @@ import Editpaymentdetials from './editpaymentdetials'
 import Paymenthistory from './paymenthistory'
 import Newtoken from './newtoken'
 import Stream_monitor from './stream_monitor'
+import Stream_statistics from './stream_statistics'
 
 
 export default function Home() {
@@ -37,13 +38,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Login/> */}
-      <Settings />
+      <Login/>
+      {/* <Settings /> */}
       {/* < Billings/> */}
       {/* <Apiaccess/> */}
       {/* <Webhooks/> */}
       {/* < Signinkeys/> */}
       {/* <Stream_monitor/> */}
+      {/* <Stream_statistics/> */}
 
 
       {/* <Revoke/> */}

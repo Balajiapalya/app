@@ -1,5 +1,6 @@
 import head from 'next/head'
 import styles from '../styles/Emailverification.module.css'
+import Link from 'next/link'
 export default function Emailverification() {
     return (
         <div className={styles.wapper_email} >
@@ -18,7 +19,11 @@ export default function Emailverification() {
                     <label className={styles.createaccount_label}>Password</label>
                     <input type="password" placeholder="Must have atleast 8 characters" name="password" className={`${styles.createaccount_input} form_control`} />
                     <p className={styles.condition}> By creating an account you agree to our <a href="#" className={styles.createaccount_link}>Terms of Service</a> and <a href="#" className={styles.createaccount_link}>Privacy policy</a></p>
+                    <Link href="settings">
+                    <a>
                     <button type="button" className={`${styles.createaccount_btn} btn btn-primary`}>Create an Account</button>
+                    </a>
+                    </Link>
                 </form>
                 <div className={styles.streamingneeds}>
                     <h3 className={styles.streamingneeds_title}>One-stop-shop for all your streaming needs!</h3>

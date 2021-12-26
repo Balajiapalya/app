@@ -1,9 +1,15 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
-import Link from 'next/link'
+import {useState} from 'react'
+import Newmember from '../../../pages/newmember';
+import Editorganization from '../../../pages/editorganization';
+import Removeuser from '../../../pages/removeuser';
 
 
 function Organisation() {
+    const[openModel,setopeninvitemember]=useState(false);
+    const[openorganization,setopeneditorganization]=useState(false);
+    const[openremove,setopenremove]=useState(false);
     return (
         <Fragment>
             <div className={styles.general}>
@@ -11,19 +17,15 @@ function Organisation() {
                 <label>Organization</label>
                 <input placeholder="YuppTv"></input>
                 <span>
-
-                   <Link href="/editorganization"><a><img src="Icon material-edit.png"></img>Edit</a></Link>
+                   <a onClick={()=>setopeneditorganization(true)}><img src="Icon material-edit.png"></img>Edit</a>
                 </span>
             </div>
+            {openorganization && <Editorganization closeorganization={setopeneditorganization}/>}
             <div className={styles.members}>
                 <h3>Members</h3>
-                <Link href="/newmember">
-                <a><button className="btn">Invite Member</button></a>
-                </Link>
-                   
-                
-
+                <a><button className="btn" onClick={()=>setopeninvitemember(true)}>Invite Member</button></a> 
             </div>
+            {openModel && <Newmember closeModel={setopeninvitemember}/>}  
             <div className={styles.member_table}>
                 <table>
                     <thead>
@@ -36,7 +38,6 @@ function Organisation() {
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
                             <td>Anil Singh</td>
                             <td>anil@yupptv.com</td>
@@ -47,7 +48,6 @@ function Organisation() {
                         <tr>
                             <td>Venkatesh</td>
                             <td>Venkatesh@yupptv.com</td>
-
                             <td>
                                 <select>
                                     <option>Admin</option>
@@ -55,7 +55,7 @@ function Organisation() {
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
-                            <td><Link href="/removeuser"><a><img src="Icon material-delete.png"></img></a></Link></td>
+                            <td><a onClick={()=>setopenremove(true)}><img src="Icon material-delete.png"></img></a></td> 
                         </tr>
                         <tr>
                             <td>Ashok</td>
@@ -67,12 +67,12 @@ function Organisation() {
                                 </select>
                             </td>
                             <td>Invite Sent <a href="#">Resend</a> </td>
-                            <td><Link href="/removeuser"><a><img src="Icon material-delete.png"></img></a></Link></td>
+                            <td><a onClick={()=>setopenremove(true)}><img src="Icon material-delete.png"></img></a></td>
                         </tr>
-
+                        {openremove && <Removeuser closeremoveuser={setopenremove}/>}
                     </tbody>
                 </table>
-            </div>
+            </div> 
         </Fragment>
     )
 }

@@ -1,11 +1,11 @@
 import styles from '../styles/model.module.css'
 
-export default function Newkey() {
+export default function Newkey({closesigninkeys}) {
     return (
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
              <div className={styles.model_nav}>
-             <a href="" className={styles.model_close}   role="button"><img src="close.png"/> </a>
+             <a onClick={()=>closesigninkeys(false)} className={styles.model_close}   role="button"><img src="close.png"/> </a>
 
              </div>
         <div className={styles.main}>
@@ -33,8 +33,8 @@ export default function Newkey() {
                             </select>
                             </div>
                          <div className={styles.model_btn}>
-                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
-                             <button type="button" className={`${styles.model_save_btn} btn btn-primary`}>create Signing Key</button>
+                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={()=>closesigninkeys(false)}>Cancel</button>
+                             <button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={()=>closesigninkeys(false)}>create Signing Key</button>
                              </div>
                              
         </div>
