@@ -1,7 +1,7 @@
 
 .containercomponents{
     background-color:  #333740;
-    width: 15%;
+    width: 205px;
     box-sizing: border-box;
     color: white;
     /* padding: 5px;   */
@@ -102,9 +102,12 @@
 }
 
 .stream_Monitor {
-   padding:30px 73px;
-   width: 85%;
-   float: right; 
+    padding:40px 5% ;
+    /* width: 87%;
+    float: right;  */
+}
+ .stream_Monitor .padding{
+    padding-left: 205px;
 }
 .stream_Monitor .header{
     float: left;
@@ -155,7 +158,7 @@
     }
 }
 @media screen and (max-width:1024px){
-    .containercomponents{
+    /* .containercomponents{
         width:20%;
     }
     .containercomponents .lowercomponents ul li{
@@ -176,21 +179,24 @@
     .settings {
         padding: 30px 34px;
         width: 80%;
-    }
+    } */
     .stream_Monitor .stream_details button{
         width: 28%;
+    }
+    .stream_Monitor{
+        padding:40px 3% ;
     }
 }
 
 @media screen and (max-width:768px){
-    .containercomponents{
+    /* .containercomponents{
         width:23%;
-    }
+    } */
     .containercomponents .uppercomponents {
         margin-bottom:6rem;
 
     }
-    .containercomponents .lowercomponents ul li{
+    /* .containercomponents .lowercomponents ul li{
         padding: 8px 2px;
     }
     .containercomponents .uppercomponents ul li{
@@ -200,7 +206,7 @@
     .settings {
         padding: 30px 34px;
         width: 77%;
-    }
+    } */
     .member_table table tr th{
         padding: 10px 6px 10px 5px;
     }
@@ -209,6 +215,9 @@
     }
     .stream_Monitor .stream_details button{
         width: 33%;
+    }
+    .stream_Monitor{
+        padding:40px 2% ;
     }
 }
 

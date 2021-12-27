@@ -30,7 +30,7 @@ export default function Webhooks() {
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
                             <td>Active</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='icon'></img></td>
                         </tr>
                         <tr>
                             <td>https://example.com/videograp-endpoint</td>
@@ -39,7 +39,7 @@ export default function Webhooks() {
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
                             <td>Disabled</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='icon'></img></td>
                         </tr>
                         <tr>
                             <td>https://example.com/videograp-endpoint</td>
@@ -48,7 +48,7 @@ export default function Webhooks() {
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
                             <td>Disabled</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='icon'></img></td>
                         </tr>
                         <tr>
                             <td>https://example.com/videograp-endpoint</td>
@@ -57,7 +57,7 @@ export default function Webhooks() {
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
                             <td>Active</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='icon'></img></td>
                         </tr>
                         <tr>
                             <td>https://example.com/videograp-endpoint</td>
@@ -66,7 +66,7 @@ export default function Webhooks() {
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
                             <td>Active</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='icon'></img></td>
                         </tr>
                     </tbody>
                 </table>

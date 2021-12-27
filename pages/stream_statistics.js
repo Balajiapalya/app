@@ -10,16 +10,16 @@ export default function Stream_statistics() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="/Icon material-home.png"></img>Environments</a>
+                            <a href="#"><img src="/Icon material-home.png" alt='home'></img>Environments</a>
                         </li>
                         <li>
-                            <a href="#"><img src="/Icon material-video-library.png"></img>Videos</a>
+                            <a href="#"><img src="/Icon material-video-library.png" alt='library'></img>Videos</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Icon simple-googleanalytics.png"></img>Analytics</a>
+                            <a href="#"><img src="Icon simple-googleanalytics.png" alt='alalytics'></img>Analytics</a>
                         </li>
                         <li className={styles.tools}>
-                            <a href="#" className={styles.list_heading}><img src="Icon awesome-tools.png"></img>Tools</a>
+                            <a href="#" className={styles.list_heading}><img src="Icon awesome-tools.png" alt='tools'></img>Tools</a>
                             <ul className={styles.list}>
                                 <li><a>Stream Monitor</a></li>
                                 <li><a>Image Optimization</a></li>
@@ -34,17 +34,17 @@ export default function Stream_statistics() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="Icon awesome-file-alt.png"></img>Events & logs</a>
+                            <a href="#"><img src="Icon awesome-file-alt.png" alt='file'></img>Events & logs</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Icon ionic-ios-settings.png"></img>Settings</a>
+                            <a href="#"><img src="Icon ionic-ios-settings.png" alt='settings'></img>Settings</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Icon awesome-user-alt.png" className={styles.user_icon}></img><p>Anil <br />Yupp TV</p></a>
+                            <a href="#"><img src="Icon awesome-user-alt.png" alt='user' className={styles.user_icon}></img><p>Anil <br />Yupp TV</p></a>
 
                         </li>
                         <li>
-                            <a href="#"><img src="Icon feather-log-out.png"></img>Logout</a>
+                            <a href="#"><img src="Icon feather-log-out.png" alt='logout'></img>Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -271,11 +271,8 @@ export default function Stream_statistics() {
                             </tbody>
                         </table>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

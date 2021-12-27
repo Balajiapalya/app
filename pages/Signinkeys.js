@@ -34,7 +34,7 @@ export default function Signinkeys() {
                                     <div className={styles.switch}></div>
                                     
                                 </label> */}
-                                <img src="Icon material-delete.png"></img>
+                                <img src="Icon material-delete.png" alt='delete'></img>
                             </td>
                         </tr>
                         <tr>
@@ -43,7 +43,7 @@ export default function Signinkeys() {
                             <td>Data</td>
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='delete'></img></td>
                         </tr>
                         <tr>
                             <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
@@ -51,7 +51,7 @@ export default function Signinkeys() {
                             <td>Video</td>
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='delete'></img></td>
                         </tr>
                         <tr>
                             <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
@@ -59,7 +59,7 @@ export default function Signinkeys() {
                             <td>Data</td>
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='delete'></img></td>
                         </tr>
                         <tr>
                             <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
@@ -67,7 +67,7 @@ export default function Signinkeys() {
                             <td>Data</td>
                             <td>10/21/2021</td>
                             <td>anil@yupptv.com</td>
-                            <td><img src="Icon material-delete.png"></img></td>
+                            <td><img src="Icon material-delete.png" alt='delete'></img></td>
                         </tr>
 
                     </tbody>

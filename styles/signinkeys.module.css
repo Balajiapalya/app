@@ -15,7 +15,7 @@
 
 
 .wrapper_signing_keys .head button{
-    width: 15%;
+    /* width: 15%; */
     float:right;
     color: #2863eb;
     border-color: #2863eb;
@@ -89,13 +89,13 @@
 
 /*---------------------Media quries of signing keys-------------------*/
 @media screen and (max-width: 1024px)  {
-    .wrapper_signing_keys .head button{
+    /* .wrapper_signing_keys .head button{
         width: 20%;
-    }
+    } */
 }
 
 @media screen and (max-width: 768px)  {
-    .wrapper_signing_keys .head button{
+    /* .wrapper_signing_keys .head button{
         width: 25%;
-    }
+    } */
 }

@@ -17,7 +17,7 @@ function Organisation() {
                 <label>Organization</label>
                 <input placeholder="YuppTv"></input>
                 <span>
-                   <a onClick={()=>setopeneditorganization(true)}><img src="Icon material-edit.png"></img>Edit</a>
+                   <a onClick={()=>setopeneditorganization(true)}><img src="Icon material-edit.png" alt="icon"></img>Edit</a>
                 </span>
             </div>
             {openorganization && <Editorganization closeorganization={setopeneditorganization}/>}
@@ -55,7 +55,7 @@ function Organisation() {
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
-                            <td><a onClick={()=>setopenremove(true)}><img src="Icon material-delete.png"></img></a></td> 
+                            <td><a onClick={()=>setopenremove(true)}><img src="Icon material-delete.png" alt="icon"></img></a></td> 
                         </tr>
                         <tr>
                             <td>Ashok</td>
@@ -67,7 +67,7 @@ function Organisation() {
                                 </select>
                             </td>
                             <td>Invite Sent <a href="#">Resend</a> </td>
-                            <td><a onClick={()=>setopenremove(true)}><img src="Icon material-delete.png"></img></a></td>
+                            <td><a onClick={()=>setopenremove(true)}><img src="Icon material-delete.png" alt="icon"></img></a></td>
                         </tr>
                         {openremove && <Removeuser closeremoveuser={setopenremove}/>}
                     </tbody>

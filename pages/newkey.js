@@ -5,7 +5,7 @@ export default function Newkey({ closesigninkeys }) {
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closesigninkeys(false)} className={styles.model_close} role="button"><img src="close.png" /> </a>
+                    <a onClick={() => closesigninkeys(false)} className={styles.model_close} role="button"><img src="close.png" alt='icon'/> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -19,9 +19,9 @@ export default function Newkey({ closesigninkeys }) {
                             <option value="4">4</option>
                         </select>
 
-                        <img className={styles.file} src="Icon awesome-folder.png"></img>
+                        <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
                     </div>
-                    <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                    <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
                     <div>
                         <label className={styles.model_label}>Product</label>
 

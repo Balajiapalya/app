@@ -79,7 +79,7 @@ function Billing() {
                                 <tbody>
                                     <tr>
                                         <td>Card</td>
-                                        <td className={styles.text_align}><img src="Icon awesome-cc-visa.png"></img>4845</td>
+                                        <td className={styles.text_align}><img src="Icon awesome-cc-visa.png" alt="icon"></img>4845</td>
                                     </tr>
                                     <tr>
                                         <td>Expiration Date</td>

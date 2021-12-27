@@ -5,7 +5,7 @@ export default function Newwebhook({ closewebhook }) {
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closewebhook(false)}><img src="close.png" /> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closewebhook(false)}><img src="close.png" alt='icon'/> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -19,10 +19,10 @@ export default function Newwebhook({ closewebhook }) {
                             <option value="4">4</option>
                         </select>
 
-                        <img className={styles.file} src="Icon awesome-folder.png"></img>
+                        <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
                     </div>
 
-                    <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                    <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
                     <label className={styles.model_label}>URL to notify:</label>
                     <input type="text" className={`${styles.model_input} form_control`} name="URL" placeholder="Enter url" />
                     <p className={styles.access_token_link}>All events will be sent to this URL.To learn more about the types of events see our <a href="" className={styles.access_token_data}>docs</a></p>
