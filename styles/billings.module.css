@@ -14,7 +14,7 @@
     text-decoration: underline;
 }
 .query a button{
-    width:18%;
+    /* width:18%; */
     float:right;
     border-color: #2863eb;
     border-radius: 5px;
@@ -176,7 +176,7 @@
     background-color: white;
     text-align: left;
     margin: 10px 0px 30px 0px;
-    width:48%;
+    /* width:48%; */
     border-collapse: collapse;
     font-family: Inter-Regular;
     font-size: 14px;
@@ -204,8 +204,8 @@
         float: left;
         margin-right: 0;
     }
-    .query button{
-        width:23%;
+    .query a button{
+        /* width:23%; */
         float: right;
         margin-bottom: 3em;
     }
@@ -261,8 +261,8 @@
 }
 
 @media screen and (max-width:768px){
-    .query button{
-        width:32%;
+    .query a button{
+        /* width:32%; */
     }
 
 

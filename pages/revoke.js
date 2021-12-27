@@ -7,7 +7,7 @@ export default function Revoke({closerevoke}) {
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Revoke Access</h3>
-                    <a  className={styles.model_close} role="button" onClick={()=>closerevoke(false)}><img src="close.png" /> </a>
+                    <a  className={styles.model_close} role="button" onClick={()=>closerevoke(false)}><img src="close.png" alt='icon'/> </a>
                 </div>
 
                 <div className={styles.model_removeuser}>

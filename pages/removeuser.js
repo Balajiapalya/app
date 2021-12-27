@@ -8,7 +8,7 @@ export default function Removeuser({ closeremoveuser }) {
       <div className={styles.model_main}>
         <div className={styles.model_nav}>
           <h3 className={styles.model_title}>Remove User</h3>
-          <a className={styles.model_close} onClick={() => closeremoveuser(false)}><img src="close.png" /> </a>
+          <a className={styles.model_close} onClick={() => closeremoveuser(false)}><img src="close.png" alt='icon'/> </a>
         </div>
 
         <div className={styles.model_removeuser}>

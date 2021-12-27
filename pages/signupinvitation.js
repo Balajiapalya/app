@@ -7,7 +7,7 @@ export default function Signupinvitation() {
 
       <main className={styles.main_signup}>
         <div className={styles.logo_title}>
-          <img className={styles.file} src="Logo.png" ></img>
+          <img className={styles.file} src="Logo.png" alt='logo'></img>
         </div>
 
         <div className={styles.signup_area}>

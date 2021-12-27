@@ -29,7 +29,7 @@ function Apiaccesstokes() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span className={styles.development}>Development</span><img src="Icon material-edit.png"></img><br></br>
+                                <td><span className={styles.development}>Development</span><img src="Icon material-edit.png" alt="icon"></img><br></br>
                                     <span className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
                                 </td>
                                 <td>Development</td>
@@ -51,8 +51,6 @@ function Apiaccesstokes() {
                                     <tr>Video<span>(read-only)</span></tr>
                                     <tr>Data<span>(read-only)</span></tr>
                                     <tr>System<span>(read-only)</span></tr>
-
-
                                 </td>
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
@@ -60,7 +58,7 @@ function Apiaccesstokes() {
                                 <td><a onClick={()=>setrevoke(true)}>Revoke</a></td>
                             </tr>
                             <tr>
-                                <td><span className={styles.development}>Development</span><img src="Icon material-edit.png"></img><br></br>
+                                <td><span className={styles.development}>Development</span><img src="Icon material-edit.png" alt="icon"></img><br></br>
                                     <span  className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
                                 </td>
                                 <td>Development</td>

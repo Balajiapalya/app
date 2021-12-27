@@ -35,7 +35,7 @@ function Signingkeys() {
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
                                 <td>
-                                    <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png"></img></a>
+                                    <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                                 
                             </tr>
@@ -47,7 +47,7 @@ function Signingkeys() {
                                 <td>anil@yupptv.com</td>
                                 <td>
 
-                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png"></img></a>
+                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -58,7 +58,7 @@ function Signingkeys() {
                                 <td>anil@yupptv.com</td>
                                 <td>
 
-                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png"></img></a>
+                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -69,7 +69,7 @@ function Signingkeys() {
                                 <td>anil@yupptv.com</td>
                                 <td>
 
-                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png"></img></a>
+                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -80,7 +80,7 @@ function Signingkeys() {
                                 <td>anil@yupptv.com</td>
                                 <td>
 
-                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png"></img></a>
+                                <a onClick={()=>setremovekeys(true)}><img src="Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                             </tr>
 

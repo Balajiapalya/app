@@ -60,17 +60,11 @@ function Tabs() {
         >
           <Billing />
         </div>
-          <div
-            className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
-          >
-            <Apiaccesstokes />
-          </div>
         <div
           className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
           <Apiaccesstokes />
         </div>
-
         <div
           className={toggleState === 4 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >

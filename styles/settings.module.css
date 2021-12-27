@@ -1,7 +1,7 @@
 
 .containercomponents{
     background-color:  #333740;
-    width: 17%;
+    width: 205px;
     box-sizing: border-box;
     color: white;
     /* padding: 5px;   */
@@ -21,17 +21,18 @@
     font-family: Inter-Medium;
     font-size: 14px;
     list-style: none;
-    color: #8798ac;
+    color: #8798ac;  
 }
 
 
 .containercomponents .uppercomponents ul li img{
     padding-right:10px;
+    position: relative;
+    top: 3.2px;
 }
 
 .containercomponents .uppercomponents ul li a{
     padding-left: 15px;
-   
 }
 .containercomponents .uppercomponents ul{
     padding-inline-start: 0px;
@@ -39,11 +40,13 @@
 .uppercomponents{
     margin-bottom: 6em;
 }
-.uppercomponents ul li ul {
+/* .uppercomponents ul li ul {
     display: none;
-}
+} */
 .tools{
     padding-right:0px ;
+    cursor: pointer;
+    background-color: transparent;
 }
 .tools ul li{
     padding: 10px!important;
@@ -53,15 +56,25 @@
     padding-left: 30px!important;
     font-size: 12px;
 }
-.tools:hover{
+
+/* .tools:hover{    
     background-color: #202227;
+} */
+.active_links{
+    background-color: #00000041;
+    color: white;
+    padding-right:0px ;
+    cursor: pointer;
 }
 
 .tools:hover .list_heading{
     color: white;
 }
-.tools:hover .list{
+/* .tools:hover .list{
     display: block;
+} */
+.list{
+    padding-top: 15px;
 }
 .list a:hover{
     color: white;
@@ -85,6 +98,8 @@
 } 
 .containercomponents .lowercomponents ul li img{
     padding-right:10px;
+    position: relative;
+    top: 3.2px;
 } 
 
 .containercomponents .lowercomponents ul li a{
@@ -93,7 +108,7 @@
 .containercomponents .lowercomponents ul li p{
     position: absolute;
     left: 55px;
-    top: 0px;
+    top: 9px;
     width: 100%;
     margin: 0;
     color: #8798ac;
@@ -106,9 +121,13 @@
 }
 
 .settings {
-   padding:30px 73px;
-   width: 87%;
-   float: right; 
+   padding:40px 5% ;
+   /* width: 87%;
+   float: right;  */
+}
+.settings .padding{
+    padding-left: 205px;
+   
 }
 
 .settings .header  h2{
@@ -229,6 +248,9 @@
     text-align: left;
     width: 100%;
 }
+.member_table table{
+    word-break: break-all;
+}
 .member_table table thead{
     background-color: #f4f5f7;
 }
@@ -285,10 +307,10 @@
 /*-------------Media queries of organisation----------*/
 
 @media screen and (max-width:1024px){
-    .containercomponents{
+    /* .containercomponents{
         width:20%;
-    }
-    .containercomponents .lowercomponents ul li{
+    } */
+    /* .containercomponents .lowercomponents ul li{
         padding: 10px 10px;
     }
     .containercomponents .lowercomponents {
@@ -305,40 +327,50 @@
         padding: 10px 10px;
        
 
-    }
-    .settings {
+    } */
+    /* .settings {
         padding: 30px 34px;
         width: 80%;
-    }
+    } */
+    .settings {
+        padding:40px 3% ;
+        /* width: 87%;
+        float: right;  */
+     }
 }
 
 @media screen and (max-width:768px){
-    .containercomponents{
+    /* .containercomponents{
         width:23%;
-    }
+    } */
     .containercomponents .uppercomponents {
         margin-bottom:6rem;
 
     }
-    .containercomponents .lowercomponents ul li{
+    /* .containercomponents .lowercomponents ul li{
         padding: 8px 2px;
-    }
-    .containercomponents .lowercomponents ul li p{
+    } */
+    /* .containercomponents .lowercomponents ul li p{
         left:34px;
-    }
-    .containercomponents .uppercomponents ul li{
+    } */
+    /* .containercomponents .uppercomponents ul li{
         padding: 8px 2px;
 
-    }
-    .settings {
+    } */
+    /* .settings {
         padding: 30px 34px;
         width: 77%;
-    }
+    } */
     .member_table table tr th{
         padding: 10px 6px 10px 5px;
     }
     .settings .member_table tbody tr td{
         font-size: 14px;
     }
+    .settings {
+        padding:40px 2% ;
+        /* width: 87%;
+        float: right;  */
+     }
 }
 

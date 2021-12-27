@@ -1,38 +1,6 @@
 import Head from 'next/head'
-// import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-// import Apiaccess from './apiaccess'
 import Login from './login'
-
-// import Settings from './settings'
-// import Billingss from './billings'
-// import Signinkeys from './Signinkeys'
-// import Webhooks from './Webhooks'
-// import Settings from './settings'
-// import Billings from './billings'
-// import Signinkeys from './Signinkeys'
-// import Webhooks from './Webhooks'
-/*----------------------------------- */
-
-
-// import Emailverification from './emailverification'
-// import Editorganization from './editorganization'
-// import Newmember from './newmember'
-// import Removeuser from './removeuser'
-// import Signupinvitation from './signupinvitation'
-// import Revoke from './revoke'
-// import Deletekey from './detelekey'
-// import Deletewebhook from './deletewebhook'
-// import Newwebhook from './newwebhook'
-// import Newkey from './newkey'
-// import Accesstoken from './accesstoken'
-// import Signingkey from './signingkey'
-// import Editpaymentdetials from './editpaymentdetials'
-// import Paymenthistory from './paymenthistory'
-// import Newtoken from './newtoken'
-// import Stream_monitor from './stream_monitor'
-// import Stream_statistics from './stream_statistics'
-
 
 export default function Home() {
   return (
@@ -44,29 +12,7 @@ export default function Home() {
       </Head>
 
       <Login />
-      {/* <Settings /> */}
-      {/* < Billings/> */}
-      {/* <Apiaccess/> */}
-      {/* <Webhooks/> */}
-      {/* < Signinkeys/> */}
-      {/* <Stream_monitor/> */}
-      {/* <Stream_statistics/> */}
-
-
-      {/* <Revoke/> */}
-      {/* <Editorganization/> */}
-      {/* <Newmember/> */}
-      {/* <Deletewebhook/> */}
-      {/* <Deletekey/> */}
-      {/* <Paymenthistory/> */}
-      {/* <Newtoken/> */}
-      {/* <Signingkey/> */}
-      {/*<Newwebhook/>*/}
-      {/* <Newkey/> */}
-      {/* <Signupinvitation/> */}
-      {/* <Accesstoken/> */}
-      {/* <Editpaymentdetials/> */}
-      {/* <Emailverification/> */}
+    
     </div>
   )
 }
