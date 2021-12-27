@@ -34,7 +34,7 @@ export default function Settings() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="Icon awesome-file-alt.png"></img>Events & logs</a>
+                            <a href="#"><img src="Icon awesome-file-alt.png"></img>Events  logs</a>
                         </li>
                         <li>
                             <a href="#"><img src="Icon ionic-ios-settings.png"></img>Settings</a>
