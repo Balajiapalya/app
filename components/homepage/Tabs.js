@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from '../../styles/tabs.module.css';
 import Organisation from "./settingstabs/organization";
-// import Billings from "./settingstabs/billing";
+import Billings from "./settingstabs/billing";
 import Apiaccesstokes from "./settingstabs/apiaccesstokens";
 import Webhooks from "./settingstabs/webhooks";
 import Signingkeys from "./settingstabs/signingkeys";
@@ -57,7 +57,7 @@ function Tabs(){
           <div
             className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
           >
-           {/* <Billings /> */}
+           <Billing/>
           </div>
   
           <div
