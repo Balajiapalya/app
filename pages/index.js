@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import Apiaccess from './apiaccess'
 import Login from './login'
 import Settings from './settings'
-import Billings from './billings'
+// import Billingss from './billings'
 import Signinkeys from './Signinkeys'
 import Webhooks from './Webhooks'
 /*----------------------------------- */
@@ -38,7 +38,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Login/>
+      <Login />
       {/* <Settings /> */}
       {/* < Billings/> */}
       {/* <Apiaccess/> */}
@@ -62,19 +62,6 @@ export default function Home() {
       {/* <Accesstoken/> */}
       {/* <Editpaymentdetials/> */}
       {/* <Emailverification/> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   )
 }
