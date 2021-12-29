@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { useState } from "react/cjs/react.development";
+import React, { Fragment, useState, useEffect }  from "react";
+// import { useState } from "react/cjs/react.development";
 import Editpaymentdetials from "../../../pages/editpaymentdetials";
 import Paymenthistory from "../../../pages/paymenthistory";
 import styles from '../../../styles/billings.module.css';
