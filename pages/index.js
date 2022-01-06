@@ -1,6 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Login from './login'
+import Premiumfeatures from './premiumfeatures'
+import Activities_tabs from '../components/homepage/activities_tabs'
+import Activities from './activities'
+import Stream_statistics from './stream_statistics'
 
 export default function Home() {
   return (
@@ -11,7 +15,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Login />
+      {/* <Login /> */}
+      {/* <Premiumfeatures/> */}
+      {/* <Activities_tabs/> */}
+      {/* <Activities/> */}
+      {/* <Stream_statistics/> */}
+
     
     </div>
   )

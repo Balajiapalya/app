@@ -1,8 +1,9 @@
 import styles from '../styles/stream_statistics.module.css'
+import Link from 'next/link'
 
 
 
-export default function Stream_statistics() {
+export default function Stream_statistics({setmonitoring}) {
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -52,7 +53,7 @@ export default function Stream_statistics() {
             <div className={styles.stream_statistics}>
 
                 <div className={styles.stream_list}>
-                    <a>Stream List</a>
+                    <Link href='stream_monitor'><a>Stream List</a></Link>
                     <p> &gt; Asianet-Roku </p>
                 </div>
                 <div className={styles.header}>
@@ -65,7 +66,7 @@ export default function Stream_statistics() {
 
                     <div className={styles.stream_url_check}>
                         <div className={styles.stream_url}>
-                            <h4>
+                            <h4>    
                                 Stream URL
                             </h4>
                             <span>http://akamaiaus1.akamaized.net</span>

@@ -1,11 +1,13 @@
 import Stream_tabs from '../components/homepage/Stream_tabs'
 import styles from '../styles/stream_monitor.module.css'
 import Link from 'next/link'
-
+import { useState } from 'react'
+import Newstream from './newstream';
 
 
 
 export default function Stream_monitor() {
+    const[opennewstream,setnewstream]=useState(false);
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -63,11 +65,13 @@ export default function Stream_monitor() {
                         <p>
                             Our straem monitoring tool provides uptime of your HLS streams and performance of the streams measured at diffrent GEO&apos;s
                         </p>
-                        <a>
+                        <a onClick={()=>setnewstream(true)}>
                             <button className='btn'>Add New stream</button>
                             <img src='/plus-icon.png' alt='icon' ></img>
                         </a>
+                        
                     </div>
+                    {opennewstream && < Newstream closestream={setnewstream}/>}
                     <Stream_tabs />
                 </div>
             </div>
