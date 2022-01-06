@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Login /> */}
+      <Login />
       {/* <Premiumfeatures/> */}
       {/* <Activities_tabs/> */}
       {/* <Activities/> */}
