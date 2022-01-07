@@ -5,9 +5,6 @@ import { useState } from 'react'
 
 export default function Settings() {
     const[opendropdown,setdropdown]=useState(false);
-    const colorchange = ()=>{
-        setdropdown(!opendropdown);
-    };
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>

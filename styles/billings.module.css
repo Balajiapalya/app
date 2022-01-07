@@ -152,6 +152,10 @@
 } 
 
 /*Data cunsumption*/
+.data_consumption{
+    width: 53%;
+    float: left;
+}
 .data_consumption_heading{
     font-size: 22px;
     font-weight: 600;
@@ -244,6 +248,10 @@
         text-align: right;
         padding: 10px 30px 10px 118px;
     } 
+    .data_consumption{
+        width: 100%;
+        float: left;
+    }
     .data_consumption_date{
         margin-right: 18.5em;
     }
@@ -261,11 +269,6 @@
 }
 
 @media screen and (max-width:768px){
-    .query a button{
-        /* width:32%; */
-    }
-
-
     .tables_left .Video_consumption span a{ 
         margin-left: 0em;
     }
