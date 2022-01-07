@@ -35,7 +35,7 @@ export default function Home() {
       {/* <Unlockpremiumfeatures/> */}
       {/* <Enablepremiumfeatures/> */}
       {/* <Stream_premiumenable/> */}
-      <Stream_unlockfeatures/>
+      {/* <Stream_unlockfeatures/> */}
     </div>
   )
 }
