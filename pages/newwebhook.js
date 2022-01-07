@@ -20,9 +20,10 @@ export default function Newwebhook({ closewebhook }) {
                         </select>
 
                         <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
+                        <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
                     </div>
 
-                    <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
+           
                     <label className={styles.model_label}>URL to notify:</label>
                     <input type="text" className={`${styles.model_input} form_control`} name="URL" placeholder="Enter url" />
                     <p className={styles.access_token_link}>All events will be sent to this URL.To learn more about the types of events see our <a href="" className={styles.access_token_data}>docs</a></p>

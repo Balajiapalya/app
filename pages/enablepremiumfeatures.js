@@ -14,8 +14,10 @@ export default function Enablepremiumfeatures() {
                 <div className={styles.premiumfeatures}>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
-
+                        <div className={styles.outlineimg}>
                         <label className={styles.model_label}>Track PTS</label>
+                        <img src="outline.png" alt="outline"></img>
+                        </div>
                         <div className={styles.select}>
                             <select name="product" className={`${styles.development} ${styles.model_selection}`}>
                                 <option value="1">select a location</option>

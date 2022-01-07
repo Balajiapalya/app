@@ -1,11 +1,10 @@
 import styles from '../styles/stream_statistics.module.css'
-import Link from 'next/link'
 
 
 
-export default function Stream_statistics({setmonitoring}) {
+export default function Stream_statistics_enable() {
     return (
-        <div className={styles.container}>
+        <div className={styles.streamenable}>
             <div className={styles.containercomponents}>
                 <h2>Videograph</h2>
                 <div className={styles.uppercomponents}>
@@ -53,7 +52,7 @@ export default function Stream_statistics({setmonitoring}) {
             <div className={styles.stream_statistics}>
 
                 <div className={styles.stream_list}>
-                    <Link href='stream_monitor'><a>Stream List</a></Link>
+                    <a>Stream List</a>
                     <p> &gt; Asianet-Roku </p>
                 </div>
                 <div className={styles.header}>
@@ -67,31 +66,32 @@ export default function Stream_statistics({setmonitoring}) {
 
                     <div className={styles.stream_url_check}>
                         <div className={styles.stream_url}>
-                            <h4>    
+                            <h4>
                                 Stream URL
                             </h4>
                             <div className={styles.copyurl}>
-                            <span>http://akamaiaus1.akamaized.net</span>
-                            <img src="copy.png" alt="copy"></img>
+                                <span>http://akamaiaus1.akamaized.net</span>
+                                <img src="copy.png" alt="copy"></img>
                             </div>
+
                         </div>
                         <div className={styles.stream_check}>
                             <h4>
                                 Check Stream:
                             </h4>
                             <select>
-                                <option >Every 6 months</option>
+                                <option >Realtime</option>
                             </select>
 
                         </div>
                     </div>
                     <div className={styles.functional_buttons}>
                         <div className={styles.premium_features}>
-                            <button className='btn'>Enable Premium Features</button>
-                            <img src="Unionblue.png" alt="unionblue"></img>
+                            <button className='btn'>Disable Premium Features</button>
+                            <img src="Union.png" alt="union"></img>
                         </div>
                         <div className={styles.actions}>
-                            <button className='btn'>Actions</button>
+                            <button className='btn'>Activities</button>
                             <img src="Icon awesome-file-alt.png" alt="file"></img>
                         </div>
                         <div className={styles.delete_stream}>
@@ -105,11 +105,11 @@ export default function Stream_statistics({setmonitoring}) {
 
                     <div className={styles.Utime_check}>
                         <div className={styles.uptime_header}>
-                            <h3>Uptime check <span>(Last Checked:6 mins)</span></h3>
+                            <h3>Uptime check <span>(Last Checked:Realtime)</span></h3>
 
                         </div>
                         <div className={styles.Preview}>
-                            <div className={styles.image_preview}>Image Preview <input type="checkbox" className={styles.input}></input></div>
+                           
                             <div className={styles.time_line}>
                                 <label>Time Line:</label>
                                 <select>
@@ -124,19 +124,20 @@ export default function Stream_statistics({setmonitoring}) {
                     {/* <div></div> for preview pi graph*/}
                     <div className={styles.scte}>
                         <div className={styles.scte_header}>
-                            <h3>SCTE -35/104</h3>
+                            <h3>SCTE -35/104 <span>(Last Checked:Realtime)</span></h3>
                         </div>
-                        <div className={styles.scte_markers}>
-                            <div className={styles.text_align}>
-                                <h4>SCTE-35/104 Markers</h4>
-                                <p>Detects the markers in the strem.Get details info such as duration and the time line at which the marker occur in the stream.</p>
-                                <a>Enable Premium Features</a>
+                            <div className={styles.time_line}>
+                                <label>Time Line:</label>
+                                <select>
+                                    <option >12 hours</option>
+                                </select>
                             </div>
+                        <div className={styles.scte_markers}>
                         </div>
                     </div>
                     <div className={styles.master_manifest}>
                         <div className={styles.master_manifest_header}>
-                            <h3>Master Manifest<span>(Last Checked:6mins)</span></h3>
+                            <h3>Master Manifest<span>(Last Checked:Realtime)</span></h3>
                         </div>
                         <table>
                             <thead>
@@ -161,7 +162,7 @@ export default function Stream_statistics({setmonitoring}) {
                     </div>
                     <div className={styles.child_manifest}>
                         <div className={styles.child_manifest_header}>
-                            <h3>Child Manifest<span>(Last Checked:6mins)</span></h3>
+                            <h3>Child Manifest<span>(Last Checked:Realtime)</span></h3>
                         </div>
                         <table>
                             <thead>
@@ -189,57 +190,83 @@ export default function Stream_statistics({setmonitoring}) {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br>Enable Premium Features</td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
                                 </tr>
                                 <tr>
                                     <td>Stream2</td>
                                     <td>480p</td>
-                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png"></img></td>
                                     <td>60 kbps</td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
                                 </tr>
                                 <tr>
                                     <td>Stream3</td>
                                     <td>720p</td>
-                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png"></img></td>
                                     <td>90 kbps</td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                   
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
                                 </tr>
                                 <tr>
                                     <td>Stream4</td>
                                     <td>1080p</td>
-                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png"></img></td>
                                     <td>120 kbps</td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div className={styles.track_pts}>
                         <div className={styles.track_pts_header}>
-                            <h3>Track PTS</h3>
+                            <h3>Track PTS<span>(Last Checked:Realtime)</span></h3>
                         </div>
-                        <div className={styles.timestamp}>
-                            <div className={styles.timestamp_details}>
-                                <h4>Track Presentation Timestamp(PTS)</h4>
-                                <p>Early track PTS of streamS for any location.</p>
-                                <p>For optional monitoring choose a location that is close to stream origin.</p>
-                                <a>Enable Premium Features</a>
-                            </div>
+                        <div className={styles.select_loaction}>
+                            <label>Change Location:</label>
+                            <select>
+                                <option>United states</option>
+                            </select>
                         </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stream</th>
+                                    <th>United states</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Asianet-Roku</td>
+                                    <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                  
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div className={styles.geo_locations}>
                         <div className={styles.geo_loacations_header}>
-                            <h3>Geo Locations<span>(Last Checked:6 mins)</span></h3>
+                            <h3>Geo Locations<span>(Last Checked:Realtime)</span></h3>
                         </div>
                         <div className={styles.select_loaction}>
                             <label>Change Location:</label>

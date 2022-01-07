@@ -5,6 +5,15 @@ import Premiumfeatures from './premiumfeatures'
 import Activities_tabs from '../components/homepage/activities_tabs'
 import Activities from './activities'
 import Stream_statistics from './stream_statistics'
+import Stream_statistics_enable from './stream_statistics_enable'
+import Statistics_unlockpremium from './statistics_unlockpremium'
+import Stream_preview from './stream_preview'
+import Unlockpremiumfeatures from './unlockedpremiumfeatures'
+import Enablepremiumfeatures from './enablepremiumfeatures'
+import Stream_premiumenable from './stream_premiumenable'
+import Stream_unlockfeatures from './stream_unlockfeatures'
+
+
 
 export default function Home() {
   return (
@@ -15,13 +24,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Login />
+      {/* <Login /> */}
       {/* <Premiumfeatures/> */}
       {/* <Activities_tabs/> */}
       {/* <Activities/> */}
-      {/* <Stream_statistics/> */}
-
-    
+      <Stream_statistics/>
+      {/* <Stream_statistics_enable/> */}
+      {/* <Statistics_unlockpremium/> */}
+      {/* <Stream_preview/> */}
+      {/* <Unlockpremiumfeatures/> */}
+      {/* <Enablepremiumfeatures/> */}
+      {/* <Stream_premiumenable/> */}
+      {/* <Stream_unlockfeatures/> */}
     </div>
   )
 }

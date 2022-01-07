@@ -1,11 +1,10 @@
 import styles from '../styles/stream_statistics.module.css'
-import Link from 'next/link'
 
 
 
-export default function Stream_statistics({setmonitoring}) {
+export default function Statistics_unlockpremium() {
     return (
-        <div className={styles.container}>
+        <div className={styles.statistics_unlockpremium}>
             <div className={styles.containercomponents}>
                 <h2>Videograph</h2>
                 <div className={styles.uppercomponents}>
@@ -53,7 +52,7 @@ export default function Stream_statistics({setmonitoring}) {
             <div className={styles.stream_statistics}>
 
                 <div className={styles.stream_list}>
-                    <Link href='stream_monitor'><a>Stream List</a></Link>
+                    <a>Stream List</a>
                     <p> &gt; Asianet-Roku </p>
                 </div>
                 <div className={styles.header}>
@@ -67,12 +66,12 @@ export default function Stream_statistics({setmonitoring}) {
 
                     <div className={styles.stream_url_check}>
                         <div className={styles.stream_url}>
-                            <h4>    
+                            <h4>
                                 Stream URL
                             </h4>
                             <div className={styles.copyurl}>
-                            <span>http://akamaiaus1.akamaized.net</span>
-                            <img src="copy.png" alt="copy"></img>
+                                <span>http://akamaiaus1.akamaized.net</span>
+                                <img src="copy.png" alt="copy"></img>
                             </div>
                         </div>
                         <div className={styles.stream_check}>
@@ -87,11 +86,12 @@ export default function Stream_statistics({setmonitoring}) {
                     </div>
                     <div className={styles.functional_buttons}>
                         <div className={styles.premium_features}>
-                            <button className='btn'>Enable Premium Features</button>
-                            <img src="Unionblue.png" alt="unionblue"></img>
+                            <button className='btn'>Unlock Premium Features</button>
+                            <img src="lock.png" alt="lock"></img>
+
                         </div>
                         <div className={styles.actions}>
-                            <button className='btn'>Actions</button>
+                            <button className='btn'>Activities</button>
                             <img src="Icon awesome-file-alt.png" alt="file"></img>
                         </div>
                         <div className={styles.delete_stream}>
@@ -123,14 +123,16 @@ export default function Stream_statistics({setmonitoring}) {
 
                     {/* <div></div> for preview pi graph*/}
                     <div className={styles.scte}>
+                     
                         <div className={styles.scte_header}>
                             <h3>SCTE -35/104</h3>
                         </div>
                         <div className={styles.scte_markers}>
                             <div className={styles.text_align}>
+                            <img src="Icon material-lock.png" alt="lock"></img>
                                 <h4>SCTE-35/104 Markers</h4>
                                 <p>Detects the markers in the strem.Get details info such as duration and the time line at which the marker occur in the stream.</p>
-                                <a>Enable Premium Features</a>
+                                <a>Unlock Premium</a>
                             </div>
                         </div>
                     </div>
@@ -189,7 +191,8 @@ export default function Stream_statistics({setmonitoring}) {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br>Enable Premium Features</td>
+                                    <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br>Unlock Premium</td>
+                               
                                 </tr>
                                 <tr>
                                     <td>Stream2</td>
@@ -199,7 +202,8 @@ export default function Stream_statistics({setmonitoring}) {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    
+                                  
+                                   
                                 </tr>
                                 <tr>
                                     <td>Stream3</td>
@@ -209,7 +213,8 @@ export default function Stream_statistics({setmonitoring}) {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                   
+                                  
+                    
                                 </tr>
                                 <tr>
                                     <td>Stream4</td>
@@ -219,6 +224,7 @@ export default function Stream_statistics({setmonitoring}) {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
+                                   
                                     
                                 </tr>
                             </tbody>
@@ -230,10 +236,11 @@ export default function Stream_statistics({setmonitoring}) {
                         </div>
                         <div className={styles.timestamp}>
                             <div className={styles.timestamp_details}>
+                            <img src="Icon material-lock.png"></img>
                                 <h4>Track Presentation Timestamp(PTS)</h4>
-                                <p>Early track PTS of streamS for any location.</p>
+                                <span>Early track PTS of streamS for any location.</span>
                                 <p>For optional monitoring choose a location that is close to stream origin.</p>
-                                <a>Enable Premium Features</a>
+                                <a>Unlock Premium</a>
                             </div>
                         </div>
                     </div>

@@ -36,14 +36,15 @@
 }
 .model_close{
    color: #d1d1d1; 
-   /* padding: 14px; */
+
   cursor: pointer;
   float: right;
+  padding: 15px 10px;
   }
 .model_label{
     width:calc(100% - 41px);
     float:left;
-    margin:10px 0px 10px 20px;
+    margin:10px 0px 8px 20px;
     font-size: 16px;
     font-family:Inter-Regular;
      color: #212b36;
@@ -220,7 +221,7 @@ float: left;
     margin-top: 148px;
 }
 .paymenthistory .table {
-    width: 100;
+    width: 100%;
     background:white; 
     border:0; 
     border-spacing:0 5px;
@@ -275,6 +276,9 @@ float: left;
     margin-left: 20px;
     color: #444;
     font-size: 14px;
+}
+.access_token_checkbox input{
+    margin-bottom: 10px;
 }
 .accesstoken_model .read, .write{
  margin-left: 20px;
@@ -544,7 +548,83 @@ float: left;
     font-family: Inter-Regular;
     padding: 0px 5px;
 }
+.unlockpremiumfeatures .main img{
+margin: auto;
+left: 0;
+right: 0;
+position: absolute;
+}
+.unlockpremiumfeatures .main h3{
+    padding-top: 4em;
+}
+.outlineimg {
+    position:relative;
+    width: 100%;
+    float: left;
+}
+.outlineimg img{
+    position: absolute;
+    margin-left: 6.4em;
+    margin-top: 15px;
+    left: 0;
+}
+.check_unlockfeatures{
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.input{
+width: 20px;
+height: 10px;
+-webkit-appearance: none;
+background: grey;
+outline: none;
+border-radius: 20px;
+box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+transition: .5s;
+position: absolute;
+left: 0;
+margin-left: 10em;
+margin-top: 1em;
 
+}
+.input::before{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    transition: .5s;
+}
+.unlock_features{
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.unlock_features img{
+    position: absolute;
+left: 0;
+padding-left: 10em;
+padding-top: 10px;
+}
+.unlock_features a{
+    text-decoration: underline;
+    color:#2863eb;
+    float: right;
+    padding-right:25px;
+    margin-top:-25px;
+    font-family: Inter-Regular;
+}
 @media (min-width: 280px)  and (max-width:510px){
 
 
