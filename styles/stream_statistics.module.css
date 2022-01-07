@@ -75,7 +75,7 @@
 }
 .containercomponents .lowercomponents ul li{
     padding: 1em 20px;
-    font-family: 'Inter-Medium';
+    font-family:Inter-Medium;
     font-size: 14px;
     list-style: none;
     color: #8798ac;
@@ -108,6 +108,7 @@
 }
 .stream_list a{
     text-decoration: underline;
+    font-family: Inter-Regular;
 }
 .stream_statistics .stream_list p{
     display: inline;
@@ -137,15 +138,20 @@
 .stream_url span{
     background-color: white;
     padding: 5px;
+    font-family: Inter-Regular;
 }
 .stream_url_check .stream_check{
     float: right;
     width: 40%;
 }
+.stream_url_check .stream_check h4{
+    font-family: Inter-Medium;
+}
 .stream_check select{
     border: 1px solid #999;
     padding: 4px;
     border-radius:4px ;
+    font-family: Inter-Regular;
 }
 
 .functional_buttons{
@@ -197,11 +203,13 @@
 .uptime_header h3{
     margin-top: 2em;
     color: #212b36;
+    font-family: Inter-SemiBold;
 }
 .uptime_header h3 span{
     font-weight: lighter;
     color: #4a5057;
     font-size: 16px;
+    font-family: Inter-Regular;
 }
 
 .Preview{
@@ -209,16 +217,17 @@
     float: right;
     display: flex;
 }
-.Preview .image_preview{
+.image_preview{
     margin-right: 10px;
-    padding: 0px 5px;
-    height: 27px;
-    margin-top: 30px;
+    padding: 7px 5px;
+    height: 34px;
+    margin-top: 32px;
     background-color: white;
     border: 1px solid #999;
     border-radius: 4px;
+    font-family: Inter-Regular;  
 }
-.Preview .image_preview  .input{
+ .image_preview  .input{
     position: relative;
     width: 20px;
     height: 10px;
@@ -231,10 +240,10 @@
 
 
 }
-.Preview .image_preview .input:checked{
+ .image_preview .input:checked{
     background-color: #03a9f4;
 }
-.Preview .image_preview .input::before{
+ .image_preview .input::before{
     content: '';
     position:absolute;
     width: 10px;
@@ -246,23 +255,24 @@
     transform:scale(1.1);
     box-shadow: 0 2px 5px rgba(0,0,0,.2);
     transition: .5s;
-
-
 }
-
-.Preview .image_preview .input:checked::before{
+ .image_preview .input:checked::before{
     left:10px ;
 }
-.Preview .time_line label{
+.time_line label{
     display: inherit;
     margin-top: 9px;
     color: #4a5057;
 }
-.Preview .time_line select{
-    padding:1px;
-    border: 1px solid #999;
+ .time_line select{
     border-radius: 4px;
-    margin-bottom: 0.4em;
+    padding: 5px;
+    outline: none;
+    font-family: Inter-Regular;
+    color: #212b36;
+    background-color: white;
+    border: solid 1px rgba(99, 115, 129, 0.3);
+    margin:5px 0px 10px;
 }
 
 .scte{
@@ -276,6 +286,7 @@
 }
 .scte_header h3{
     color: #212b36;
+    font-family: Inter-SemiBold;
 }
 .scte_markers{
     width: 100%;
@@ -287,6 +298,7 @@
 .scte_markers .text_align{
     text-align: center;
     margin: 3em 11.5em;
+    font-family: Inter-Regular;
 }
 .master_manifest{
     width:100%;
@@ -299,16 +311,19 @@
 }
 .master_manifest_header h3{
     color: #212b36;
+    font-family: Inter-SemiBold;
 }
 .master_manifest_header span{
     font-weight: lighter;
     font-size: 16px;
     color: #4a5057;
+    font-family: Inter-Regular;
 }
 .master_manifest table{
     /* border:1px solid black; */
     border-collapse: collapse;
     width: 100%;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
   
     
 }
@@ -317,6 +332,7 @@
 } */
 .master_manifest table thead tr{
     height: 3em;
+    font-family: Inter-Medium;
 }
 .master_manifest table thead tr th{
     text-align: left;
@@ -333,6 +349,7 @@
 .master_manifest table tbody tr td{
     text-align: left;
     padding: 0px 5px;
+    font-family: Inter-Regular;
 }
 .child_manifest{
     width:100%;
@@ -345,26 +362,30 @@
 }
 .child_manifest_header h3{
     color: #212b36;
+    font-family: Inter-SemiBold;
 }
 
 .child_manifest_header h3 span{
     font-weight: lighter;
     font-size: 16px;
     color: #4a5057;
+    font-family: Inter-Regular;
 }
 .child_manifest table{
     /* border: 1px solid black; */
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
     
 }
 .child_manifest table thead tr{
     height: 2em;
+    font-family: Inter-Medium;
 }
 .child_manifest table thead tr th{
     padding: 0px 5px;
     color: #212b36;
-    text-align: left;
+    text-align: center;
     font-size: 14px;
 }
 .child_manifest table tbody tr{
@@ -374,7 +395,8 @@
 }
 .child_manifest table tbody tr td{
     padding:0px 5px;
-    text-align: left;
+    text-align: center;
+    font-family: Inter-Regular;
 }
 .track_pts{
     width: 100%;
@@ -387,6 +409,7 @@
 }
 .track_pts_header h3{
     color: #212b36;
+    font-family: Inter-SemiBold;
 }
 .timestamp{
     width: 100%;
@@ -398,6 +421,7 @@
 .timestamp .timestamp_details{
     text-align: center;
     margin: 3em 11.5em;
+    font-family: Inter-Regular;
 }
 .geo_locations{
     width: 100%;
@@ -410,11 +434,13 @@
 }
 .geo_loacations_header h3{
     color: #212b36;
+    font-family: Inter-SemiBold;
 }
 .geo_loacations_header h3 span{
     font-weight: lighter;
     font-size: 16px;
     color: #4a5057;
+    font-family: Inter-Regular;
 }
 .select_loaction{
   /* width: 50%; */
@@ -425,21 +451,24 @@
     display: block;
     margin-top: 5px;
     font-size: 14px;
+    font-family: Inter-Regular;
 }
 .select_loaction select{
     padding: 5px 20px 5px 5px;
     margin-bottom: 15px;
+    font-family: Inter-Regular;
 }
 .geo_locations table{
     width: 100%;
     /* border:1px solid black; */
     border-collapse: collapse;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 }
 .geo_locations table thead tr{
     height: 3em;
     text-align: left;
     padding: 0px 20px;
-    
+    font-family: Inter-Medium;
 }
 .geo_locations table thead tr td{
     padding: 0px 5px;
@@ -452,8 +481,128 @@
 .geo_locations table tbody tr td{
     padding: 0px 5px;
 }
+.geo_locations table tbody tr td{
+    padding: 10px 5px;
+    font-family: Inter-Regular;
+}
+.copyurl{
+    border: 1px solid #fff;
+    background-color: white;
+    width: 91%;
+    float: left;
+    padding:5px;
+}
+.copyurl img{
+    float:right;
+    width: 15px;
+}
+.actions,.delete_stream ,.premium_features{
+    position: relative;
+    float: left;
+    font-family:Inter-Regular;
+    font-size: 14px;
+    color: #212b36;
+}
+.actions img,.delete_stream img, .premium_features img{
+    position: absolute;
+    right: 0;
+    left: 15px;
+    margin-top: 12px;
+    width: 12px;
+}
+.actions button ,.delete_stream button{
+    padding-left: 22px;
+}
+.premium_features button{
+    padding-left: 36px;
+}
+.premium_features img{
+    width: 20px;
+}
+.header{
+    position: relative;
+}
+.header img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+}
+.header h2{
+    padding-left: 34px;
+}
+.scte_markers a,.track_pts a{
+    text-decoration: underline;
+    color: #2863eb;
+}
+.timestamp_details span{
+    color: #4a5057;
+    font-family: Inter-Regular;
+}
+.stream_url_check .stream_url h4{
+    font-family: Inter-Medium;
+}
 /*------------------------------------------------------------------------------------------------------*/
+.streamenable .functional_buttons button{
+    color:#999;
+    border-color: #999;
+}
+.streamenable .scte_header{
+    width: 60%;
+    float: left;
+    padding-top: 19px;
+}
+.streamenable .Preview label{
+    margin-top: 0px;
+}
+.streamenable .time_line{
+    float: right;
+}
+.streamenable .track_pts_header{
+    width:60%;
+    float:left;
+    padding-top:20px ;
+}
+.streamenable .track_pts table{
+    width: 100%;
+    /* border:1px solid black; */
+    border-collapse: collapse;
+}
+.streamenable .track_pts table thead tr{
+    height: 3em;
+    text-align: left;
+    padding: 0px 20px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
+    
+}
+.streamenable .track_pts table thead tr td{
+    padding: 0px 5px;
+    color: #212b36;
+    font-size: 14px;
+}
+.streamenable .track_pts table tbody tr{
+    background-color: white;
+}
+.streamenable .track_pts table tbody tr td{
+    padding: 10px 5px;
+}
 
+/* statisticsunlockpremium */
+.statistics_unlockpremium .timestamp .timestamp_details{
+    text-align: center;
+    margin: 1em 11.5em;
+}
+.statistics_unlockpremium .timestamp .timestamp_details img, .statistics_unlockpremium .scte_markers .text_align img{
+    vertical-align: middle;
+}
+.statistics_unlockpremium .scte_markers .text_align{
+    text-align: center;
+    margin: 28px 11.5em;
+}
+.statistics_unlockpremium .premium_features img{
+    width: 12px;
+    margin-top: 10px;
+}
 /*-------------Media queries of organisation----------*/
 @media screen and (max-width:1200px) {
     .stream_statistics .stream_details button{

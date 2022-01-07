@@ -20,8 +20,8 @@ export default function Newkey({ closesigninkeys }) {
                         </select>
 
                         <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
+                        <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
                     </div>
-                    <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
                     <div>
                         <label className={styles.model_label}>Product</label>
 

@@ -19,8 +19,9 @@ export default function Accesstoken({ closetoken }) {
                      <option value="4">4</option>
                   </select>
                   <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
+                  <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
                </div>
-               <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
+            
                <div className={styles.access_token}>
                   <h4 className={styles.access_token_permission}>Permission</h4>
                   <p className={styles.access_token_link}>To know more permission please visit our <a href="" className={styles.access_token_data}>token access guide</a></p>
