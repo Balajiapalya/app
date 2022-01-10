@@ -1,54 +1,14 @@
 import styles from '../styles/stream_statistics.module.css'
 import Link from 'next/link'
+import Navbar from './navbar'
 
 
 
 export default function Stream_statistics({setmonitoring}) {
     return (
         <div className={styles.container}>
-            <div className={styles.containercomponents}>
-                <h2>Videograph</h2>
-                <div className={styles.uppercomponents}>
-                    <ul>
-                        <li>
-                            <a href="#"><img src="/Icon material-home.png" alt='home'></img>Environments</a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="/Icon material-video-library.png" alt='library'></img>Videos</a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="Icon simple-googleanalytics.png" alt='alalytics'></img>Analytics</a>
-                        </li>
-                        <li className={styles.tools}>
-                            <a href="#" className={styles.list_heading}><img src="Icon awesome-tools.png" alt='tools'></img>Tools</a>
-                            <ul className={styles.list}>
-                                <li><a>Stream Monitor</a></li>
-                                <li><a>Image Optimization</a></li>
-                                <li><a>Subtitle Converter</a></li>
-                                <li><a>Video player</a></li>
-                                <li><a>Player Validator</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </div>
-                <div className={styles.lowercomponents}>
-                    <ul>
-                        <li>
-                            <a href="#"><img src="Icon awesome-file-alt.png" alt='file'></img>Events & logs</a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="Icon ionic-ios-settings.png" alt='settings'></img>Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="Icon awesome-user-alt.png" alt='user' className={styles.user_icon}></img><p>Anil <br />Yupp TV</p></a>
-
-                        </li>
-                        <li>
-                            <a href="#"><img src="Icon feather-log-out.png" alt='logout'></img>Logout</a>
-                        </li>
-                    </ul>
-                </div>
+            <div>
+                <Navbar/>
             </div>
             <div className={styles.stream_statistics}>
 
