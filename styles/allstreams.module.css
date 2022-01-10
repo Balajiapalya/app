@@ -18,6 +18,7 @@
     margin: 5px 0px;
     border: 1px solid #8080804d;
     border-radius: 5px;
+    outline: none;
 }
 .search .actions{
     padding: 9px;
@@ -27,6 +28,7 @@
     background-color: white;
     border: solid 1px rgba(99, 115, 129, 0.3);
     margin: 5px 0px;
+    height: 40px;
 }
 .stream_table{
     width: 100%;
@@ -54,7 +56,9 @@
 .stream_table table tbody{
     background-color: white;
 }
-
+.stream_table table tbody tr .check {
+    text-align: center;
+}
 .stream_table table tbody tr td{
     padding: 5px 10px;
     word-break: break-all;
@@ -67,6 +71,53 @@
 .stream_table table tbody .color_red td{
     color: red;
 }
+.mins img{
+    padding-left: 2px;
+    vertical-align: middle;
+    padding-top: 0px;
+}
+.pts_background{
+    display: inline;
+}
+.pts_background img{
+    padding: 3px;
+}
+.pts_background:hover .error_alert{
+    display: block;
+}
+.pts_background img:hover{
+    background-color:#e8e8e8;
+    border-radius: 50%;
+}
+.background img{
+    padding: 5px;
+}
+.background img:hover{
+    background-color: #e8e8e8;
+    border-radius: 50%; 
+    
+}
+.background:hover .error_alert{
+    display: block;
+}
+.error_alert{
+    width: 20em;
+    color: black;
+    border-radius: 2px;
+    margin: 6px 0 0;
+    padding: 10px;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.08);
+    border: solid 1px #d6d6d6;
+    background-color: #fff;
+    position:absolute;
+    z-index: 99;
+    display:none;
+    text-align: left;
+}
+.pts img{
+    padding-left: 2px;
+    vertical-align: middle;
+}
 .stream_table table tbody .opacity td{
     color: #999;
 }
@@ -75,5 +126,5 @@
 }
 
 .actionicons img{
-    margin-right: 10px;
+    margin-right: 5px;
 }

@@ -4,13 +4,12 @@ import { useState } from 'react'
 import Stream_statistics from './stream_statistics';
 
 export default function Newstream({closestream}) {
-    // const[openmonitoring,setmonitoring]=useState(false);
+    
     return (
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={()=>closestream(false)} className={styles.model_close} role="button"><img src="close.png" /> </a>
-
+                    <a className={styles.model_close} role="button"><img src="close.png" /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add new stream to monitor</h3>
@@ -67,12 +66,11 @@ export default function Newstream({closestream}) {
                         <p>Receive email alerts every time we detect an isue with streams.</p>
                     </div>
                     <div className={styles.model_btn}>
-                       <a onClick={()=>closestream(false)}><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a>
-                        <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a>
+                       <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a>
+                       <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a>
                     </div>
                 </div>
             </div>
-            {/* {openmonitoring && <Stream_statistics closemonitoring={setmonitoring}/>} */}
         </div>
     )
 }
