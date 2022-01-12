@@ -376,6 +376,7 @@
     width: 100%;
     border-collapse: collapse;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
+    word-break: break-all;
     
 }
 .child_manifest table thead tr{
@@ -397,6 +398,35 @@
     padding:0px 5px;
     text-align: center;
     font-family: Inter-Regular;
+}
+.child_manifest table tbody tr td a{
+    color: #2863eb;
+    text-decoration: underline;
+}
+.stream_info:hover{
+    width: 27px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    height: 26px;
+    padding: 2px;
+}
+.stream_info_table{
+    position: absolute;
+    width: 400px !important;
+    right: 40px;
+    visibility: hidden;
+    
+}
+.stream_info_table thead tr .Video{
+    border-right: 1px solid #ecedef;
+}
+.stream_info_table tbody tr .table_Video{
+    border-right: 1px solid #ecedef;
+}
+.stream_info:hover .stream_info_table{
+    visibility: visible;
 }
 .track_pts{
     width: 100%;
@@ -485,6 +515,31 @@
     padding: 10px 5px;
     font-family: Inter-Regular;
 }
+.alert_box{
+    width: 25px;
+}
+.alert:hover{
+    width:25px;
+    height:25px;
+    padding: 2px 2px 2px 2px;
+    background-color: #e8e8e8;
+    border-radius:50% ;
+    margin: 0px;
+}
+.alert:hover .alert_box{
+    visibility: visible;
+}
+.alert_box{
+  position: absolute;
+  right: 250px;
+  width: 350px;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.08);
+  border: solid 1px #d6d6d6;
+  background-color: #fff;
+  visibility: hidden;
+}
 .copyurl{
     border: 1px solid #fff;
     background-color: white;
@@ -567,6 +622,7 @@
     width: 100%;
     /* border:1px solid black; */
     border-collapse: collapse;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
 .streamenable .track_pts table thead tr{
     height: 3em;
@@ -634,6 +690,9 @@
     }
     .stream_statistics .stream_details button{
         width: 28%;
+    }
+    .stream_info_table{
+        right:20px
     }
 }
 

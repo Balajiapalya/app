@@ -1,8 +1,11 @@
 import { Fragment } from 'react'
 import styles from '../../../styles/allstreams.module.css'
 import { useState } from 'react'
+import Stream_preview from '../../../pages/stream_preview';
+import Link from 'next/link';
 
 export default function Allstreams() {
+    const[openpreview,setpreview]=useState(false);
     return (
         <Fragment>
             <div className={styles.wrapper}>
@@ -45,9 +48,9 @@ export default function Allstreams() {
                                 <td><label htmlFor="roku">Realtime</label></td>
                                 <td><label htmlFor="roku">Active</label></td>
                                 <td className={styles.actionicons}> <label htmlFor="roku"></label>
-                                    <img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img>
-                                    <img src="Icon ionic-ios-stats.png" alt="ios-stats"></img>
-                                    <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                    <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                    <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <a><img src="Icon awesome-eye-slash.png" alt="eye-slash"></img></a>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -80,8 +83,8 @@ export default function Allstreams() {
                                 <td>6 mins ago</td>
                                 <td>Active</td>
                                 <td className={styles.actionicons}>
-                                    <img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img>
-                                    <img src="Icon ionic-ios-stats.png" alt="ios-stats"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
                                     <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
@@ -124,8 +127,8 @@ export default function Allstreams() {
                                 <td>6 mins ago</td>
                                 <td>Active</td>
                                 <td className={styles.actionicons}>
-                                    <img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img>
-                                    <img src="Icon ionic-ios-stats.png" alt="ios-stats"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                   <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
                                     <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
@@ -140,8 +143,8 @@ export default function Allstreams() {
                                 <td>--</td>
                                 <td>In active</td>
                                 <td className={styles.actionicons}>
-                                    <img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img>
-                                    <img src="Icon ionic-ios-stats.png" alt="ios-stats"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
                                     <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
@@ -156,8 +159,8 @@ export default function Allstreams() {
                                 <td>NA</td>
                                 <td>30 mins ago</td>
                                 <td className={styles.actionicons}>
-                                    <img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img>
-                                    <img src="Icon ionic-ios-stats.png" alt="ios-stats"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
                                     <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
@@ -165,7 +168,7 @@ export default function Allstreams() {
                     </table>
 
                 </div>
-
+                {openpreview && <Stream_preview closepreview={setpreview}/>}
             </div>
 
         </Fragment>

@@ -1,12 +1,13 @@
 import styles from '../styles/model.module.css'
+import Link from 'next/link'
 
-export default function Enablepremiumfeatures() {
+export default function Enablepremiumfeatures({closepremium}) {
     return (
         <div className={`${styles.model} ${styles.enablepremiumfeatures}`} >
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Premium Features</h3>
-                    <a href="" className={styles.model_close} role="button"><img src="close.png" /> </a>
+                    <a onClick={()=>closepremium(false)} className={styles.model_close} role="button"><img src="close.png" /> </a>
                     <p>The stream will be continuosly monitored.You will be charged $0.03/minute for the entire duration of stream monitoring. you can disable this feature anytime.</p>
                 </div>
 
@@ -43,8 +44,8 @@ export default function Enablepremiumfeatures() {
                     
                 </div>
                 <div className={styles.model_btn}>
-                    <button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
-                    <button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Enable</button>
+                    <button onClick={()=>closepremium(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
+                    <Link href='stream_statistics_enable'><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Enable</button></a></Link>
                 </div>
             </div>
         </div>

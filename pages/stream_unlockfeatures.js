@@ -41,7 +41,7 @@ export default function Stream_unlockfeatures({closestream}) {
                     <div className={styles.unlock_features}>
                     <label className={styles.model_label}>premiumfeatures</label>
                     <img src="Icon material-lock.png" alt="lock"></img>
-                    <a>unlock premium</a>
+                    <Link href='premiumpayment'><a>unlock premium</a></Link>
                     </div>
                     <div className={styles.premiumfeatures}>
                         <label className={styles.model_label}>Realtime Monitoring</label>
@@ -64,11 +64,10 @@ export default function Stream_unlockfeatures({closestream}) {
                     </div>
                     <div className={styles.model_btn}>
                        <a onClick={()=>closestream(false)}><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a>
-                        <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a>
+                        <Link href='stream_statistics_enable'><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a></Link>
                     </div>
                 </div>
             </div>
-            {/* {openmonitoring && <Stream_statistics closemonitoring={setmonitoring}/>} */}
         </div>
     )
 }

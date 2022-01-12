@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Stream_statistics from './stream_statistics';
 
-export default function Newstream({closestream}) {
+export default function Newstream() {
     
     return (
         <div className={`${styles.container} ${styles.newstream}`} >
