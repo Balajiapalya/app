@@ -1,18 +1,26 @@
 import styles from '../styles/stream_statistics.module.css'
 import Navbar from './navbar'
+import Link from 'next/link'
+import { useState } from 'react'
+import Activities from './activities';
+import Disablepremiumfeatures from './disablepremiumfeatures';
+import Deletestream from './deletestream';
 
 
 
 export default function Stream_statistics_enable() {
+    const [openactivities, setactivities] = useState(false);
+    const[open_disablestream,set_disablestream]=useState(false);
+    const[open_delete_stream,set_delete_stream]=useState(false);
     return (
         <div className={styles.streamenable}>
             <div>
-                <Navbar/>
+                <Navbar />
             </div>
             <div className={styles.stream_statistics}>
 
                 <div className={styles.stream_list}>
-                    <a>Stream List</a>
+                    <Link href='stream_monitor  '><a>Stream List</a></Link>
                     <p> &gt; Asianet-Roku </p>
                 </div>
                 <div className={styles.header}>
@@ -47,15 +55,15 @@ export default function Stream_statistics_enable() {
                     </div>
                     <div className={styles.functional_buttons}>
                         <div className={styles.premium_features}>
-                            <button className='btn'>Disable Premium Features</button>
+                            <a onClick={()=>set_disablestream(true)}><button className='btn'>Disable Premium Features</button></a>
                             <img src="Union.png" alt="union"></img>
                         </div>
                         <div className={styles.actions}>
-                            <button className='btn'>Activities</button>
+                            <a onClick={() => setactivities(true)}><button className='btn'>Activities</button></a>
                             <img src="Icon awesome-file-alt.png" alt="file"></img>
                         </div>
                         <div className={styles.delete_stream}>
-                            <button className='btn'>Delete Stream</button>
+                            <button onClick={()=>set_delete_stream(true)} className='btn'>Delete Stream</button>
                             <img src="Icon material-delete.png" alt="delete"></img>
                         </div>
                     </div>
@@ -69,7 +77,7 @@ export default function Stream_statistics_enable() {
 
                         </div>
                         <div className={styles.Preview}>
-                           
+
                             <div className={styles.time_line}>
                                 <label>Time Line:</label>
                                 <select>
@@ -86,12 +94,12 @@ export default function Stream_statistics_enable() {
                         <div className={styles.scte_header}>
                             <h3>SCTE -35/104 <span>(Last Checked:Realtime)</span></h3>
                         </div>
-                            <div className={styles.time_line}>
-                                <label>Time Line:</label>
-                                <select>
-                                    <option >12 hours</option>
-                                </select>
-                            </div>
+                        <div className={styles.time_line}>
+                            <label>Time Line:</label>
+                            <select>
+                                <option >12 hours</option>
+                            </select>
+                        </div>
                         <div className={styles.scte_markers}>
                         </div>
                     </div>
@@ -153,7 +161,63 @@ export default function Stream_statistics_enable() {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
+                                    <td className={styles.details}>
+                                        <div className={styles.stream_info}>
+                                            <img src="Icon material-info-outline(blue).png" alt="outline"></img>
+                                            <table className={styles.stream_info_table}>
+                                                <thead>
+                                                    <tr>
+                                                        <th className={styles.Video}>Video</th>
+                                                        <th>Audio</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Stream2</td>
@@ -166,8 +230,65 @@ export default function Stream_statistics_enable() {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
+                                    <td className={styles.details}>
+                                        <div className={styles.stream_info}>
+                                            <img src="Icon material-info-outline(blue).png" alt="outline"></img>
+                                            <table className={styles.stream_info_table}>
+                                                <thead>
+                                                    <tr>
+                                                        <th className={styles.Video}>Video</th>
+                                                        <th>Audio</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </td>
                                 </tr>
+                                
                                 <tr>
                                     <td>Stream3</td>
                                     <td>720p</td>
@@ -179,8 +300,65 @@ export default function Stream_statistics_enable() {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
+                                    <td className={styles.details}>
+                                        <div className={styles.stream_info}>
+                                            <img src="Icon material-info-outline(blue).png" alt="outline"></img>
+                                            <table className={styles.stream_info_table}>
+                                                <thead>
+                                                    <tr>
+                                                        <th className={styles.Video}>Video</th>
+                                                        <th>Audio</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </td>
                                 </tr>
+                                
                                 <tr>
                                     <td>Stream4</td>
                                     <td>1080p</td>
@@ -192,7 +370,63 @@ export default function Stream_statistics_enable() {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="Icon material-info-outline.png" alt="outline"></img></td>
+                                    <td className={styles.details}>
+                                        <div className={styles.stream_info}>
+                                            <img src="Icon material-info-outline(blue).png" alt="outline"></img>
+                                            <table className={styles.stream_info_table}>
+                                                <thead>
+                                                    <tr>
+                                                        <th className={styles.Video}>Video</th>
+                                                        <th>Audio</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td><span>Codec:</span>  <span>AAC</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -212,14 +446,14 @@ export default function Stream_statistics_enable() {
                                 <tr>
                                     <th>Stream</th>
                                     <th>United states</th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Asianet-Roku</td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                  
+
                                 </tr>
                             </tbody>
                         </table>
@@ -247,7 +481,16 @@ export default function Stream_statistics_enable() {
                                 <tr>
                                     <td>Asianet-Roku</td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="Icon material-error.png" alt="error"></img></td>
+                                    <td className={styles.error}>
+                                        <div className={styles.alert}>
+                                            <img src="Icon material-error.png" alt="error"></img>
+                                            <div className={styles.alert_box}>
+                                                <span>All checks failed</span><br></br>
+                                                <span>Connection Error - Host Unreachable</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                 </tr>
                             </tbody>
@@ -255,6 +498,9 @@ export default function Stream_statistics_enable() {
                     </div>
                 </div>
             </div>
+            {openactivities && <Activities closeactivities={setactivities} />}
+            {open_disablestream && <Disablepremiumfeatures close_disable_premiumfeatures={set_disablestream}/>}
+            {open_delete_stream && <Deletestream open_delete_stream={set_delete_stream}/>}
         </div>
     )
 }

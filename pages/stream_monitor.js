@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Newstream from './newstream';
 import Navbar from './navbar';
+import Stream_unlockfeatures from './stream_unlockfeatures';
 
 
 
@@ -31,7 +32,7 @@ export default function Stream_monitor() {
                         </a>
                         
                     </div>
-                    {opennewstream && < Newstream closestream={setnewstream}/>}
+                    {opennewstream && < Stream_unlockfeatures closestream={setnewstream}/>}
                     <Stream_tabs />
                 </div>
             </div>

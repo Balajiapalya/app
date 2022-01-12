@@ -1,10 +1,17 @@
 import styles from '../styles/stream_statistics.module.css'
 import Link from 'next/link'
 import Navbar from './navbar'
+import { useState } from 'react'
+import Enablepremiumfeatures from './enablepremiumfeatures';
+import Activities from './activities';
+import Deletestream from './deletestream';
 
 
 
 export default function Stream_statistics({setmonitoring}) {
+    const[openpremium,setpremium]=useState(false);
+    const[open_activities,set_activities]=useState(false);
+    const[open_delete_stream,set_delete_stream]=useState(false);
     return (
         <div className={styles.container}>
             <div>
@@ -47,15 +54,15 @@ export default function Stream_statistics({setmonitoring}) {
                     </div>
                     <div className={styles.functional_buttons}>
                         <div className={styles.premium_features}>
-                            <button className='btn'>Enable Premium Features</button>
+                            <button onClick={()=>setpremium(true)} className='btn'>Enable Premium Features</button>
                             <img src="Unionblue.png" alt="unionblue"></img>
                         </div>
                         <div className={styles.actions}>
-                            <button className='btn'>Actions</button>
+                            <button onClick={()=>set_activities(true)} className='btn'>Activities</button>
                             <img src="Icon awesome-file-alt.png" alt="file"></img>
                         </div>
                         <div className={styles.delete_stream}>
-                            <button className='btn'>Delete Stream</button>
+                            <button onClick={()=>set_delete_stream(true)} className='btn'>Delete Stream</button>
                             <img src="Icon material-delete.png" alt="delete"></img>
                         </div>
                     </div>
@@ -90,7 +97,7 @@ export default function Stream_statistics({setmonitoring}) {
                             <div className={styles.text_align}>
                                 <h4>SCTE-35/104 Markers</h4>
                                 <p>Detects the markers in the strem.Get details info such as duration and the time line at which the marker occur in the stream.</p>
-                                <a>Enable Premium Features</a>
+                                <a onClick={()=>setpremium(true)}>Enable Premium Features</a>
                             </div>
                         </div>
                     </div>
@@ -149,7 +156,7 @@ export default function Stream_statistics({setmonitoring}) {
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                    <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br>Enable Premium Features</td>
+                                    <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br><a onClick={()=>setpremium(true)}>Enable Premium Features</a></td>
                                 </tr>
                                 <tr>
                                     <td>Stream2</td>
@@ -193,7 +200,7 @@ export default function Stream_statistics({setmonitoring}) {
                                 <h4>Track Presentation Timestamp(PTS)</h4>
                                 <p>Early track PTS of streamS for any location.</p>
                                 <p>For optional monitoring choose a location that is close to stream origin.</p>
-                                <a>Enable Premium Features</a>
+                                <a onClick={()=>setpremium(true)}>Enable Premium Features</a>
                             </div>
                         </div>
                     </div>
@@ -228,6 +235,9 @@ export default function Stream_statistics({setmonitoring}) {
                     </div>
                 </div>
             </div>
+            {openpremium && <Enablepremiumfeatures closepremium={setpremium}/>}
+            {open_activities && <Activities closeactivities={set_activities}/>} 
+            {open_delete_stream && <Deletestream close_delete_stream={set_delete_stream}/>}
         </div>
     )
 }
