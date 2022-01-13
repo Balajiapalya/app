@@ -126,7 +126,7 @@
     float: left;
 }
 .stream_details a img{
-    width:25px;
+    width:20px;
     float: right;
     position: relative;
     top:6px;
@@ -137,9 +137,10 @@
     width: 50%;
     float: left;
     color: #4a5057;
+    font-size: 14px;
 }
 .stream_Monitor .stream_details button{
-    width: 17%;
+    width: 165px;
     float: right;
     color:  #2863eb;
     border-color:  #2863eb;
@@ -147,16 +148,12 @@
     font-family: Inter-Medium;
     background-color: inherit;
     text-align: right;
+    font-size: 14px;
     
 }
 /*------------------------------------------------------------------------------------------------------*/
 
 /*-------------Media queries of organisation----------*/
-@media screen and (max-width:1200px) {
-    .stream_Monitor .stream_details button{
-        width: 22%;
-    }
-}
 @media screen and (max-width:1024px){
     /* .containercomponents{
         width:20%;
@@ -180,9 +177,6 @@
         padding: 30px 34px;
         width: 80%;
     } */
-    .stream_Monitor .stream_details button{
-        width: 28%;
-    }
     .stream_Monitor{
         padding:40px 3% ;
     }
@@ -212,9 +206,6 @@
     }
     .settings .member_table tbody tr td{
         font-size: 14px;
-    }
-    .stream_Monitor .stream_details button{
-        width: 33%;
     }
     .stream_Monitor{
         padding:40px 2% ;

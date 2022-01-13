@@ -36,6 +36,7 @@ export default function Newstreampremiumenable() {
                     </div>
                     <label className={styles.model_label}>premiumfeatures</label>
                     <div className={styles.premiumfeatures}>
+                    <img src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
 

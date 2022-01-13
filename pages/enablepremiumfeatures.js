@@ -13,8 +13,13 @@ export default function Enablepremiumfeatures({closepremium}) {
 
                 <div className={styles.newstream}>
                 <div className={styles.premiumfeatures}>
+                <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img  className={styles.check} src="Icon awesome-check.png"></img>
                         <div className={styles.outlineimg}>
                         <label className={styles.model_label}>Track PTS</label>
                         <img src="outline.png" alt="outline"></img>
@@ -28,18 +33,37 @@ export default function Enablepremiumfeatures({closepremium}) {
                             </select>
                             <button type="text" className={styles.up}><img src="updown.png"></img></button>
                         </div>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Detailed Stream info</label>
                         <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Frame freeze detection</label>
                         <p>Detects frame freeze events in a stream.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Black frame detection</label>
                         <p>Detects frame freeze events in a stream.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Audio loss detection</label>
                         <p>Notifies when audio is missing from the stream.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Preview Thumbnail</label>
                         <p>Image thumbnails will be automatically generated for the entire video timeline for a quick preview.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
                         <label className={styles.model_label}>Receive alerts</label>
                         <p>Receive email alerts every time we detect an isue with streams.</p>
+                        </div>
                     </div>
                     
                 </div>

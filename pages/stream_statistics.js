@@ -18,7 +18,7 @@ export default function Stream_statistics({setmonitoring}) {
                 <Navbar/>
             </div>
             <div className={styles.stream_statistics}>
-
+            <div className={styles.padding}>
                 <div className={styles.stream_list}>
                     <Link href='stream_monitor'><a>Stream List</a></Link>
                     <p> &gt; Asianet-Roku </p>
@@ -38,7 +38,7 @@ export default function Stream_statistics({setmonitoring}) {
                                 Stream URL
                             </h4>
                             <div className={styles.copyurl}>
-                            <span>http://akamaiaus1.akamaized.net</span>
+                            <h4>http://akamaiaus1.akamaized.net</h4>
                             <img src="copy.png" alt="copy"></img>
                             </div>
                         </div>
@@ -234,6 +234,7 @@ export default function Stream_statistics({setmonitoring}) {
                         </table>
                     </div>
                 </div>
+            </div>
             </div>
             {openpremium && <Enablepremiumfeatures closepremium={setpremium}/>}
             {open_activities && <Activities closeactivities={set_activities}/>} 
