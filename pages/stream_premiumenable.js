@@ -9,7 +9,7 @@ export default function Stream_premiumenable() {
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a  className={styles.model_close} role="button"><img src="close.png" /> </a>
+                    <a className={styles.model_close} role="button"><img src="close.png" /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -39,30 +39,53 @@ export default function Stream_premiumenable() {
                         <button type="text" className={styles.up}><img src="updown.png"></img></button>
                     </div>
                     <div className={styles.check_unlockfeatures}>
-                    <label className={styles.model_label}>premiumfeatures</label>
-                    <input type="checkbox" className={styles.input}></input>
+                        <label className={styles.model_label}>premiumfeatures</label>
+                        <input type="checkbox" className={styles.input}></input>
                     </div>
                     <div className={styles.premiumfeatures}>
-                        <label className={styles.model_label}>Realtime Monitoring</label>
-                        <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
-
-                        <label className={styles.model_label}>Track PTS</label>
-                     <p>Track Presentation Time Stamp(PTS) of streams from location close to stream origin.</p>
-                        <label className={styles.model_label}>Detailed Stream info</label>
-                        <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>
-                        <label className={styles.model_label}>Frame freeze detection</label>
-                        <p>Detects frame freeze events in a stream.</p>
-                        <label className={styles.model_label}>Black frame detection</label>
-                        <p>Detects frame freeze events in a stream.</p>
-                        <label className={styles.model_label}>Audio loss detection</label>
-                        <p>Notifies when audio is missing from the stream.</p>
-                        <label className={styles.model_label}>Preview Thumbnail</label>
-                        <p>Image thumbnails will be automatically generated for the entire video timeline for a quick preview.</p>
-                        <label className={styles.model_label}>Receive alerts</label>
-                        <p>Receive email alerts every time we detect an isue with streams.</p>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Realtime Monitoring</label>
+                            <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Track PTS</label>
+                            <p>Track Presentation Time Stamp(PTS) of streams from location close to stream origin.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Detailed Stream info</label>
+                            <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Frame freeze detection</label>
+                            <p>Detects frame freeze events in a stream.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Black frame detection</label>
+                            <p>Detects frame freeze events in a stream.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Audio loss detection</label>
+                            <p>Notifies when audio is missing from the stream.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Preview Thumbnail</label>
+                            <p>Image thumbnails will be automatically generated for the entire video timeline for a quick preview.</p>
+                        </div>
+                        <div className={styles.premiumfeatures_check}>
+                            <img className={styles.check} src="Icon awesome-check.png"></img>
+                            <label className={styles.model_label}>Receive alerts</label>
+                            <p>Receive email alerts every time we detect an isue with streams.</p>
+                        </div>
                     </div>
                     <div className={styles.model_btn}>
-                      <Link href='stream_monitor'><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a></Link>
+                        <Link href='stream_monitor'><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a></Link>
                         <Link href='stream_statistics'><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a></Link>
                     </div>
                 </div>

@@ -24,13 +24,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Login />
+      {/* <Login /> */}
       {/* <Premiumfeatures/> */}
       {/* <Activities_tabs/> */}
       {/* <Activities/> */}
       {/* <Stream_statistics/> */}
       {/* <Stream_statistics_enable/> */}
-      {/* <Statistics_unlockpremium/> */}
+      <Statistics_unlockpremium/>
       {/* <Stream_preview/> */}
       {/* <Unlockpremiumfeatures/> */}
       {/* <Enablepremiumfeatures/> */}
