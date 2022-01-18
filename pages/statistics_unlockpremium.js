@@ -1,9 +1,16 @@
 import styles from '../styles/stream_statistics.module.css'
 import Navbar from './navbar'
+import Link from 'next/link'
+import { useState } from 'react'
+import Activities from '../pages/activities'
+import delete_stream from '../pages/deletestream'
+import Deletestream from '../pages/deletestream'
 
 
 
 export default function Statistics_unlockpremium() {
+    const[openactivities,setactivities]=useState(false);
+    const[open_deletestream,set_delete_stream]=useState(false);
     return (
         <div className={styles.statistics_unlockpremium}>
             <div>
@@ -46,16 +53,16 @@ export default function Statistics_unlockpremium() {
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.premium_features}>
-                                <button className='btn'>Unlock Premium Features</button>
+                                <Link href='unlock_premiumpayment'><a><button className='btn'>Unlock Premium Features</button></a></Link>
                                 <img src="lock.png" alt="lock"></img>
 
                             </div>
                             <div className={styles.actions}>
-                                <button className='btn'>Activities</button>
+                                <a onClick={()=>setactivities(true)}><button className='btn'>Activities</button></a>
                                 <img src="Icon awesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
-                                <button className='btn'>Delete Stream</button>
+                               <a onClick={()=>set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
                                 <img src="Icon material-delete.png" alt="delete"></img>
                             </div>
                         </div>
@@ -236,6 +243,8 @@ export default function Statistics_unlockpremium() {
                     </div>
                 </div>
             </div>
+            {openactivities && <Activities closeactivities={setactivities}/>}
+            {open_deletestream && <Deletestream close_delete_stream={set_delete_stream}/>}
         </div>
     )
 }
