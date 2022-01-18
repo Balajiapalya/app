@@ -149,7 +149,7 @@
 .editpaymentdetials .body,.accesstoken_model .body, .newtoken .body,
 .signingkey .body,.newwebhook_model .body,.newkey .body,.unlockpremiumfeatures .body,.newstream .body{
     background-color:#f4f6f8;
-    height:100vh ;
+    height:120vh ;
     border: 1px solid whitesmoke;
    width:100%;
    display: table;
@@ -419,6 +419,20 @@ float: left;
 }
 .newkey .model_btn{
   margin-right: 10px;
+}
+.content{
+    width: 100%;
+    padding-top: 14em;
+
+}
+.content img{
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+}
+.content h3{
+    padding-top: 4em;
 }
 .unlockpremiumfeatures .model_title{
     float: initial;

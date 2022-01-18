@@ -1,15 +1,15 @@
 import styles from '../styles/model.module.css'
 import Link from 'next/link'
 
-export default function Unlockpremiumfeatures() {
+export default function Unlockpremiumfeatures({close_unlockpremium}) {
     return (
         <div className={`${styles.container} ${styles.unlockpremiumfeatures}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" /> </a></Link>
+                    <a onClick={()=>close_unlockpremium(false)} className={styles.model_close} role="button"><img src="close.png" /> </a>
 
                 </div>
-                <div className={styles.main}>
+                <div className={styles.content}>
                     <img src="Exclusion.png" alt="Exclusion"></img>
                     <div className={styles.premium_data}>
                         <h3 className={styles.model_title}>Congrats! you have unlocked premium features.</h3>
@@ -18,7 +18,7 @@ export default function Unlockpremiumfeatures() {
                     </div>
                     <div className={styles.model_btn}>
 
-                        <Link href="/"><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>continue</button></a></Link>
+                        <Link href="stream_statistics"><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>continue</button></a></Link>
                     </div>
                 </div>
             </div>
