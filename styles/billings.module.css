@@ -39,7 +39,7 @@
 
 .tables_left{
     float:left;
-    width:45%;
+    width:55%;
     margin-right: 20px;
 }
 
@@ -97,7 +97,7 @@
 /*Right table*/
 
 .tables_right{
-    width:50%;
+    width:42%;
     float: right;
 }
 .tables_right .payment_details span{
@@ -106,10 +106,6 @@
 }
 .tables_right .payment_details span a{   
     font-size: 14px;
-}
-.view_paymenthistory{
-    font-size: 14px;
-    margin-top: 5px;
 }
 .payment_details_heading{
     font-family: Inter-Semibold;
@@ -157,7 +153,7 @@
 
 /*Data cunsumption*/
 .data_consumption{
-    width: 50%;
+    width: 53%;
     float: left;
 }
 .data_consumption_heading{
