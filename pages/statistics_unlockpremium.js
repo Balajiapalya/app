@@ -1,5 +1,5 @@
 import styles from '../styles/stream_statistics.module.css'
-import Navbar from './navbar'
+import Navbar from '../components/homepage/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
 import Activities from '../pages/activities'
@@ -9,8 +9,8 @@ import Deletestream from '../pages/deletestream'
 
 
 export default function Statistics_unlockpremium() {
-    const[openactivities,setactivities]=useState(false);
-    const[open_deletestream,set_delete_stream]=useState(false);
+    const [openactivities, setactivities] = useState(false);
+    const [open_deletestream, set_delete_stream] = useState(false);
     return (
         <div className={styles.statistics_unlockpremium}>
             <div>
@@ -58,11 +58,11 @@ export default function Statistics_unlockpremium() {
 
                             </div>
                             <div className={styles.actions}>
-                                <a onClick={()=>setactivities(true)}><button className='btn'>Activities</button></a>
+                                <a onClick={() => setactivities(true)}><button className='btn'>Activities</button></a>
                                 <img src="Icon awesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
-                               <a onClick={()=>set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
+                                <a onClick={() => set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
                                 <img src="Icon material-delete.png" alt="delete"></img>
                             </div>
                         </div>
@@ -158,7 +158,7 @@ export default function Statistics_unlockpremium() {
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                        <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br>Unlock Premium</td>
+                                        <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br><a>Unlock Premium</a></td>
 
                                     </tr>
                                     <tr>
@@ -234,7 +234,16 @@ export default function Statistics_unlockpremium() {
                                     <tr>
                                         <td>Asianet-Roku</td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="Icon material-error.png" alt="error"></img></td>
+                                        <td className={styles.check}>
+                                            <div className={styles.background}>
+                                                <img src="Icon material-error.png" alt="error"></img>
+                                                <div className={styles.error_alert}>
+                                                    <span>All checks failed.</span>
+                                                    <br></br>
+                                                    <span>Connection Error - Host Unreachable</span>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
@@ -243,8 +252,8 @@ export default function Statistics_unlockpremium() {
                     </div>
                 </div>
             </div>
-            {openactivities && <Activities closeactivities={setactivities}/>}
-            {open_deletestream && <Deletestream close_delete_stream={set_delete_stream}/>}
+            {openactivities && <Activities closeactivities={setactivities} />}
+            {open_deletestream && <Deletestream close_delete_stream={set_delete_stream} />}
         </div>
     )
 }
