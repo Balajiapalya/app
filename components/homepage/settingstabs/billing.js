@@ -72,7 +72,7 @@ function Billing() {
                     <div className={styles.payment_details}>
                         <span className={styles.payment_details_heading}>Account Payment Details</span>
 
-                        <span> <a onClick={()=>setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+                        <span className={styles.view_paymenthistory}> <a onClick={()=>setopenpaymenthistory(true)}>Veiw Payment history</a></span>
                         
                         <table>
                             <tbody>

@@ -1,6 +1,8 @@
-import styles from '../styles/settings.module.css'
+
 import Link from 'next/link'
 import { useState } from 'react'
+
+import styles from '../../styles/settings.module.css'
 
 export default function Navbar() {
     const[opendropdown,setdropdown]=useState(false);
