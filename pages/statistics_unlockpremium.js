@@ -1,5 +1,5 @@
 import styles from '../styles/stream_statistics.module.css'
-import Navbar from './navbar'
+import Navbar from '../components/homepage/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
 import Activities from '../pages/activities'
@@ -158,7 +158,7 @@ export default function Statistics_unlockpremium() {
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                        <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br>Unlock Premium</td>
+                                        <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br><a>Unlock Premium</a></td>
 
                                     </tr>
                                     <tr>
@@ -234,7 +234,17 @@ export default function Statistics_unlockpremium() {
                                     <tr>
                                         <td>Asianet-Roku</td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="Icon material-error.png" alt="error"></img></td>
+                                
+                                        <td className={styles.check}>
+                                    <div className={styles.background}>
+                                        <img src="Icon material-error.png" alt="error"></img>
+                                        <div className={styles.error_alert}>
+                                            <span>All checks failed.</span>
+                                            <br></br>
+                                            <span>Connection Error - Host Unreachable</span>
+                                        </div>
+                                    </div>
+                                </td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>

@@ -39,7 +39,7 @@
 
 .tables_left{
     float:left;
-    width:55%;
+    width:47%;
     margin-right: 20px;
 }
 
@@ -199,7 +199,9 @@
     font-family: Inter-Regular;
     font-weight: 600;
 }
-
+.view_payment_history{
+    margin-top: 6px;
+}
 
 /*---------media quries of billing-------------*/
 @media screen and (max-width:1024px) {

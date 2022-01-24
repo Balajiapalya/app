@@ -72,11 +72,11 @@ function Billing() {
                     <div className={styles.payment_details}>
                         <span className={styles.payment_details_heading}>Account Payment Details</span>
 
-                        <span> <a onClick={()=>setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+                        <span className={styles.view_payment_history}> <a onClick={()=>setopenpaymenthistory(true)}>Veiw Payment history</a></span>
                         
                         <table>
                             <tbody>
-                                <tbody>
+                                
                                     <tr>
                                         <td>Card</td>
                                         <td className={styles.text_align}><img src="Icon awesome-cc-visa.png" alt="icon"></img>4845</td>
@@ -114,7 +114,7 @@ function Billing() {
                                         <td className={styles.text_align}>United States</td>
                                     </tr>
                                 </tbody>
-                            </tbody>
+                            
                         </table>
                     </div>
                 </div>

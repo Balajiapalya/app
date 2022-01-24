@@ -1,4 +1,4 @@
-import styles from '../styles/settings.module.css'
+import styles from '../../styles/settings.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
 
