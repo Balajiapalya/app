@@ -1,6 +1,6 @@
 import styles from '../styles/stream_statistics.module.css'
 import Link from 'next/link'
-import Navbar from '../components/homepage/navbar';
+import Navbar from './navbar'
 import { useState } from 'react'
 import Enablepremiumfeatures from './enablepremiumfeatures';
 import Activities from './activities';
