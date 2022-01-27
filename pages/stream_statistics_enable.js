@@ -177,39 +177,39 @@ export default function Stream_statistics_enable() {
                                                             <td><span>Codec:</span>  <span>AAC</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
-                                                            <td><span>Codec:</span>  <span>AAC</span></td>
+                                                            <td><span>Aspect Ratio:</span>  <span>16:9</span></td>
+                                                            <td><span>Sampling Rate:</span>  <span>44.1 khz</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
-                                                            <td><span>Codec:</span>  <span>AAC</span></td>
+                                                            <td><span>Frame Rate:</span>  <span>24 fps</span></td>
+                                                            <td><span>Channels:</span>  <span>48</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
-                                                            <td><span>Codec:</span>  <span>AAC</span></td>
+                                                            <td><span>Width:</span>  <span>1920</span></td>
+                                                            <td><span>Bitrate:</span>  <span>96 kbps</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
-                                                            <td><span>Codec:</span>  <span>AAC</span></td>
+                                                            <td><span>Height:</span>  <span>1080</span></td>
+                                                            <td><span>Duration</span>  <span>00:05:33.48</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
-                                                            <td><span>Codec:</span>  <span>AAC</span></td>
+                                                            <td><span>Bitrate:</span>  <span>8 Mps</span></td>
+                                                            <td><span><th>Subtitle</th></span>  <span></span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
-                                                            <td><span>Codec:</span>  <span>AAC</span></td>
+                                                            <td><span>Profile:</span>  <span>H. 264</span></td>
+                                                            <td><span>File Type:</span> <span>SRT</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                            <td><span>Color Space:</span>  <span>sRGB </span></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                            <td><span>Bit Depth:</span>  <span>32-bit</span></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><span>Codec:</span>  <span>MPEG-4</span></td>
+                                                            <td><span>Duration:</span>  <span>00:05:33.48</span></td>
                                                             <td></td>
                                                         </tr>
 
