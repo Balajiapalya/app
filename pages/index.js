@@ -12,6 +12,7 @@ import Unlockpremiumfeatures from './unlockedpremiumfeatures'
 import Enablepremiumfeatures from './enablepremiumfeatures'
 import Stream_premiumenable from './stream_premiumenable'
 import Stream_unlockfeatures from './stream_unlockfeatures'
+import Settings from './settings'
 
 
 
@@ -25,12 +26,13 @@ export default function Home() {
       </Head>
 
       {/* <Login /> */}
+      <Settings/>
       {/* <Premiumfeatures/> */}
       {/* <Activities_tabs/> */}
       {/* <Activities/> */}
       {/* <Stream_statistics/> */}
       {/* <Stream_statistics_enable/> */}
-      <Statistics_unlockpremium/>
+      {/* <Statistics_unlockpremium/> */}
       {/* <Stream_preview/> */}
       {/* <Unlockpremiumfeatures/> */}
       {/* <Enablepremiumfeatures/> */}
