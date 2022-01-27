@@ -429,6 +429,7 @@
 .child_manifest table tbody tr td a{
     color: #2863eb;
     text-decoration: underline;
+    cursor: pointer;
 }
 .stream_info:hover{
     width: 27px;
@@ -531,6 +532,9 @@
     font-family: Inter-Regular;
     outline: none;
     font-size: 12px;
+}
+.geo_locations{
+    margin-bottom: 40px;
 }
 .geo_locations table{
     width: 100%;
@@ -640,6 +644,7 @@
     text-decoration: underline;
     color: #2863eb;
     font-size: 14px;
+    cursor: pointer;
 }
 .timestamp_details span{
     color: #4a5057;

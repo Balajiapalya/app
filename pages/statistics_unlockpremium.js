@@ -3,14 +3,15 @@ import Navbar from '../components/homepage/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
 import Activities from '../pages/activities'
-import delete_stream from '../pages/deletestream'
 import Deletestream from '../pages/deletestream'
+import Enablepremiumfeatures from './enablepremiumfeatures'
 
 
 
 export default function Statistics_unlockpremium() {
     const[openactivities,setactivities]=useState(false);
     const[open_deletestream,set_delete_stream]=useState(false);
+    const[open_premium,set_premium]=useState(false);  
     return (
         <div className={styles.statistics_unlockpremium}>
             <div>
@@ -19,7 +20,7 @@ export default function Statistics_unlockpremium() {
             <div className={styles.stream_statistics}>
                 <div className={styles.padding}>
                     <div className={styles.stream_list}>
-                        <a>Stream List</a>
+                        <Link href='stream_monitor'><a>Stream List</a></Link>
                         <p> &gt; Asianet-Roku </p>
                     </div>
                     <div className={styles.header}>
@@ -30,7 +31,6 @@ export default function Statistics_unlockpremium() {
                         </h2>
                     </div>
                     <div className={styles.border_bottom}>
-
                         <div className={styles.stream_url_check}>
                             <div className={styles.stream_url}>
                                 <h4>
@@ -48,7 +48,6 @@ export default function Statistics_unlockpremium() {
                                 <select>
                                     <option >Every 6 months</option>
                                 </select>
-
                             </div>
                         </div>
                         <div className={styles.functional_buttons}>
@@ -66,7 +65,6 @@ export default function Statistics_unlockpremium() {
                                 <img src="Icon material-delete.png" alt="delete"></img>
                             </div>
                         </div>
-
                     </div>
                     <div className={styles.content}>
 
@@ -83,14 +81,11 @@ export default function Statistics_unlockpremium() {
                                         <option >12 hours</option>
                                     </select>
                                 </div>
-
                             </div>
                             <div className={styles.scte_markers}></div>
                         </div>
-
                         {/* <div></div> for preview pi graph*/}
                         <div className={styles.scte}>
-
                             <div className={styles.scte_header}>
                                 <h3>SCTE -35/104</h3>
                             </div>
@@ -99,7 +94,7 @@ export default function Statistics_unlockpremium() {
                                     <img src="Icon material-lock.png" alt="lock"></img>
                                     <h4>SCTE-35/104 Markers</h4>
                                     <p>Detects the markers in the strem.Get details info such as duration and the time line at which the marker occur in the stream.</p>
-                                    <a>Unlock Premium</a>
+                                    <a onClick={()=>set_premium(true)}>Unlock Premium</a>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +141,6 @@ export default function Statistics_unlockpremium() {
                                         <th>Check for Black Frame</th>
                                         <th>Check for Audio Loss</th>
                                         <th>Detailed Stream Info</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -158,8 +152,7 @@ export default function Statistics_unlockpremium() {
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-                                        <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br><a>Unlock Premium</a></td>
-
+                                        <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br> <a onClick={()=>set_premium(true)}>Unlock Premium</a></td>
                                     </tr>
                                     <tr>
                                         <td>Stream2</td>
@@ -169,8 +162,6 @@ export default function Statistics_unlockpremium() {
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-
-
                                     </tr>
                                     <tr>
                                         <td>Stream3</td>
@@ -180,8 +171,6 @@ export default function Statistics_unlockpremium() {
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-
-
                                     </tr>
                                     <tr>
                                         <td>Stream4</td>
@@ -191,8 +180,6 @@ export default function Statistics_unlockpremium() {
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
-
-
                                     </tr>
                                 </tbody>
                             </table>
@@ -207,7 +194,7 @@ export default function Statistics_unlockpremium() {
                                     <h4>Track Presentation Timestamp(PTS)</h4>
                                     <span>Early track PTS of streamS for any location.</span>
                                     <p>For optional monitoring choose a location that is close to stream origin.</p>
-                                    <a>Unlock Premium</a>
+                                    <a onClick={()=>set_premium(true)}>Unlock Premium</a>
                                 </div>
                             </div>
                         </div>
@@ -255,6 +242,7 @@ export default function Statistics_unlockpremium() {
             </div>
             {openactivities && <Activities closeactivities={setactivities}/>}
             {open_deletestream && <Deletestream close_delete_stream={set_delete_stream}/>}
+            {open_premium && <Enablepremiumfeatures closepremium={set_premium}/>}
         </div>
     )
 }
