@@ -222,7 +222,7 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream2</td>
                                         <td>480p</td>
-                                        <td><img src="check-circle.png"></img></td>
+                                        <td><img src="check-circle.png" alt="check"></img></td>
                                         <td>60 kbps</td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
@@ -292,7 +292,7 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream3</td>
                                         <td>720p</td>
-                                        <td><img src="check-circle.png"></img></td>
+                                        <td><img src="check-circle.png" alt="check"></img></td>
                                         <td>90 kbps</td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
@@ -362,7 +362,7 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream4</td>
                                         <td>1080p</td>
-                                        <td><img src="check-circle.png"></img></td>
+                                        <td><img src="check-circle.png" alt="check"></img></td>
                                         <td>120 kbps</td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>
                                         <td><img src="check-circle.png" alt="check-circle"></img></td>

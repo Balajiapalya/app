@@ -7,7 +7,7 @@ export default function Premiumpayment() {
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>
       <div className={styles.body}>
         <div className={styles.model_nav}>
-          <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" /> </a></Link>
+          <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" alt="close" /> </a></Link>
 
         </div>
         <div className={styles.main}>
@@ -21,7 +21,7 @@ export default function Premiumpayment() {
             <label className={styles.model_label}>Credit or Debit Card</label>
             <div className={styles.cerditcard_number}>
               <input type="text" className={`${styles.model_input} form_control`} name="cardnumber" placeholder="Cardnumber" />
-              <img className={styles.file} src="credit-card.png" ></img>
+              <img className={styles.file} src="credit-card.png" alt="credit" ></img>
             </div>
             <div className={styles.card}>
               <div className={styles.expiration_date}>

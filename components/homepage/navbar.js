@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
-                <Link href='settings'><h2>Videograph</h2></Link>
+                <Link href='settings'><a><h2>Videograph</h2></a></Link>
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
@@ -20,7 +20,7 @@ export default function Navbar() {
                             <a href="#"><img src="Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
                         </li>
                         <li className={styles.tools}> 
-                            <a  className={styles.list_heading} onClick={()=>setdropdown(!opendropdown)} ><img src="Icon awesome-tools.png"></img>Tools</a>
+                            <a  className={styles.list_heading} onClick={()=>setdropdown(!opendropdown)} ><img src="Icon awesome-tools.png" alt="icon"></img>Tools</a>
                             {opendropdown?<ul className={styles.list}>
                                 <li><Link href="stream_monitor"><a>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>

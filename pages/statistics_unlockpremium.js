@@ -190,7 +190,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.timestamp}>
                                 <div className={styles.timestamp_details}>
-                                    <img src="Icon material-lock.png"></img>
+                                    <img src="Icon material-lock.png" alt="lock"></img>
                                     <h4>Track Presentation Timestamp(PTS)</h4>
                                     <span>Early track PTS of streamS for any location.</span>
                                     <p>For optional monitoring choose a location that is close to stream origin.</p>

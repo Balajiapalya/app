@@ -18,7 +18,7 @@ export default function Subtitle_convertfile() {
                     </div>
                     <div className={styles.convertfile}>
                         <h3>Your file is ready for download!</h3>
-                        <p>if the download doesn't start automatically,<a>click here</a></p>
+                        <p>if the download doesnt start automatically<a>click here</a></p>
                         <div className={styles.model_btn}>
                         
                         <button type="button" className={`${styles.model_save_btn} btn btn-primary`}>convert another file</button>

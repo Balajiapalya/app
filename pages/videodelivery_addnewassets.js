@@ -7,7 +7,7 @@ export default function Videodelivery_addnewassets() {
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button"><img src="close.png" /> </a>
+                    <a className={styles.model_close} role="button"><img src="close.png" alt="close" /> </a>
 
                 </div>
             <div className={styles.Videodelivery_addnewassets}>
