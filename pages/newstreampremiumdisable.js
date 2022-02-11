@@ -5,7 +5,7 @@ export default function Newstreampremiumdisable() {
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a href="" className={styles.model_close} role="button"><img src="close.png" /> </a>
+                    <a href="" className={styles.model_close} role="button"><img src="close.png" alt="close" /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -22,7 +22,7 @@ export default function Newstreampremiumdisable() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                        <button type="text" className={styles.up}><img src="updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>Time interval</label>
                     <div className={styles.select}>
@@ -32,11 +32,11 @@ export default function Newstreampremiumdisable() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                        <button type="text" className={styles.up}><img src="updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>premiumfeatures</label>
                     <div className={styles.premiumfeatures}>
-                        <img src="Icon awesome-check.png"></img>
+                        <img src="Icon awesome-check.png" alt="check"></img>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
 

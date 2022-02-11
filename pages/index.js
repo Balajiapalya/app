@@ -13,6 +13,9 @@ import Enablepremiumfeatures from './enablepremiumfeatures'
 import Stream_premiumenable from './stream_premiumenable'
 import Stream_unlockfeatures from './stream_unlockfeatures'
 import Settings from './settings'
+import Videodelivery_addnewassets from './videodelivery_addnewassets'
+import Videodelivery_tabs from '../components/homepage/videodelivery_tabs'
+import Subtitles from '../components/videodeliverytabs/subtitles'
 
 
 
@@ -38,6 +41,13 @@ export default function Home() {
       {/* <Enablepremiumfeatures/> */}
       {/* <Stream_premiumenable/> */}
       {/* <Stream_unlockfeatures/> */}
+      {/* <Videodelivery_addnewassets/> */}
+      {/* <Videodelivery_tabs/> */}
+      {/* <Subtitles/> */}
+      {/* <Subtitleconvertor/> */}
+      {/* <Subtitleconvertfile/> */}
+      {/* <Video/> */}
+      {/* <Videos_delivery/> */}
     </div>
   )
 }

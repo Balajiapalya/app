@@ -25,7 +25,7 @@ export default function Newstream() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                        <button type="text" className={styles.up}><img src="updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>Time interval</label>
                     <div className={styles.select}>
@@ -35,11 +35,11 @@ export default function Newstream() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                        <button type="text" className={styles.up}><img src="updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>premiumfeatures</label>
                     <div className={styles.premiumfeatures}>
-                    <img src="Icon awesome-check.png"></img>
+                    <img src="Icon awesome-check.png" alt="check"></img>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
 
@@ -51,7 +51,7 @@ export default function Newstream() {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
-                            <button type="text" className={styles.up}><img src="updown.png"></img></button>
+                            <button type="text" className={styles.up}><img src="updown.png" alt="updown"></img></button>
                         </div>
                         <label className={styles.model_label}>Detailed Stream info</label>
                         <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>
