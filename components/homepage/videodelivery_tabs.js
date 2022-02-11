@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styles from '../../styles/tabs.module.css';
 import Subtitles from "../videodeliverytabs/subtitles";
-import Thumbnails from "../videodeliverytabs/thumbnails";
-import Allstreams from "./streamtabs/Allstreams";
 
 
 function Videodelivery_tabs() {
