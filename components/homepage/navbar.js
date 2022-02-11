@@ -14,7 +14,7 @@ export default function Navbar() {
                             <a href="#"><img src="/Icon material-home.png" alt='icon'></img>Environments</a>
                         </li>
                         <li>
-                            <a href="#"><img src="/Icon material-video-library.png" alt='icon'></img>Videos</a>
+                           <Link href="videos_delivery"><a><img src="/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
@@ -24,7 +24,7 @@ export default function Navbar() {
                             {opendropdown?<ul className={styles.list}>
                                 <li><Link href="stream_monitor"><a>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
-                                <li><a>Subtitle Converter</a></li>
+                                <li><Link href="subtitleconvertor"><a>Subtitle Converter</a></Link></li>
                                 <li><a>Video player</a></li>
                                 <li><a>Player Validator</a></li>
                             </ul>:null}
