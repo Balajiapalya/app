@@ -1,7 +1,7 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 import Link from 'next/link'
 
-export default function Deletestream({close_delete_stream}) {
+export default function Delete__stream({close_delete_stream}) {
     return (
         <div className={`${styles.model} ${styles.remove_user_modal}`} >
             <div className={styles.model_main}>

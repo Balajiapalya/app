@@ -1,7 +1,7 @@
 import styles from '../styles/model.module.css'
 
 
-export default function Accesstoken({ closetoken }) {
+export default function New_Access_token({ closetoken }) {
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>

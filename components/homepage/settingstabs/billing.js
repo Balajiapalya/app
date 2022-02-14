@@ -1,7 +1,6 @@
-import React, { Fragment, useState, useEffect }  from "react";
-// import { useState } from "react/cjs/react.development";
-import Editpaymentdetials from "../../../pages/editpaymentdetials";
-import Paymenthistory from "../../../pages/paymenthistory";
+import React, { Fragment, useState}  from "react";
+import Edit_payment_detials from "../../../pages/Edit_payment_detials";
+import Payment_history from "../../dialog/payment_history";
 import styles from '../../../styles/billings.module.css';
 
 function Billing() {
@@ -16,7 +15,7 @@ function Billing() {
                     </p>
                     <a onClick={()=>setopenpaymentdetails(true)}><button className="btn">Edit Payment details</button></a>
                 </div>
-                {openpaymentdetails && <Editpaymentdetials closepaymentdetails={setopenpaymentdetails}/>}
+                {openpaymentdetails && <Edit_payment_detials closepaymentdetails={setopenpaymentdetails}/>}
                 <div className={styles.payment}>
                     <h4>Next payment:Nov 08,2021</h4>
                 </div>
@@ -67,7 +66,7 @@ function Billing() {
                         </table>
                     </div>
                 </div>
-                {openpaymenthistory && <Paymenthistory closepaymenthistory={setopenpaymenthistory}/>}
+                {openpaymenthistory && <Payment_history closepaymenthistory={setopenpaymenthistory}/>}
                 <div className={styles.tables_right}>
                     <div className={styles.payment_details}>
                         <span className={styles.payment_details_heading}>Account Payment Details</span>

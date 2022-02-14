@@ -14,7 +14,7 @@ export default function Navbar() {
                             <a href="#"><img src="/Icon material-home.png" alt='icon'></img>Environments</a>
                         </li>
                         <li>
-                           <Link href="videos_delivery"><a><img src="/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                           <Link href="Videos"><a><img src="/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>

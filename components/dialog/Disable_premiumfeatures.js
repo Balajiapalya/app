@@ -1,7 +1,7 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 import Link from 'next/link'
 
-export default function Disablepremiumfeatures({close_disable_premiumfeatures}) {
+export default function Disable_premiumfeatures({close_disable_premiumfeatures}) {
     return (
         <div className={`${styles.model} ${styles.remove_user_modal}`} >
             <div className={styles.model_main}>

@@ -1,7 +1,7 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 import Link from 'next/link'
 
-export default function Enablepremiumfeatures({closepremium}) {
+export default function Premiumfeatures_Enable({closepremium}) {
     return (
         <div className={`${styles.model} ${styles.enablepremiumfeatures}`} >
             <div className={styles.model_main}>

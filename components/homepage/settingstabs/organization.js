@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
 import {useState} from 'react'
-import Newmember from '../../../pages/newmember';
-import Editorganization from '../../../pages/editorganization';
-import Removeuser from '../../../pages/removeuser';
+import Newmember_invite from '../../dialog/Newmember_invite';
+import Edit_organization_name from '../../dialog/Edit_organisation_name';
+import Removeuser from '../../dialog/removeuser';
 
 
 function Organisation() {
@@ -20,12 +20,12 @@ function Organisation() {
                    <a onClick={()=>setopeneditorganization(true)}><img src="Icon material-edit.png" alt="icon"></img>Edit</a>
                 </span>
             </div>
-            {openorganization && <Editorganization closeorganization={setopeneditorganization}/>}
+            {openorganization && <Edit_organization_name closeorganization={setopeneditorganization}/>}
             <div className={styles.members}>
                 <h3>Members</h3>
                 <a><button className="btn" onClick={()=>setopeninvitemember(true)}>Invite Member</button></a> 
             </div>
-            {openModel && <Newmember closeModel={setopeninvitemember}/>}  
+            {openModel && <Newmember_invite closeModel={setopeninvitemember}/>}  
             <div className={styles.member_table}>
                 <table>
                     <thead>

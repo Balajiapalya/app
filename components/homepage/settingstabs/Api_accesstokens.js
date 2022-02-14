@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import styles from '../../../styles/apiaccess.module.css';
 import { useState } from "react";
-import Accesstoken from "../../../pages/accesstoken";
-import Revoke from "../../../pages/revoke";
-function Apiaccesstokes() {
+import Accesstoken from "../../../pages/New_access_token";
+import Revoke from "../../dialog/Revoke_access";
+function Api_accesstokes() {
     const[opentoken,settoken]=useState(false);
     const[openrevoke,setrevoke]=useState(false);
     return (
@@ -77,4 +77,4 @@ function Apiaccesstokes() {
     )
 }
 
-export default Apiaccesstokes;
+export default Api_accesstokes;

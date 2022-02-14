@@ -2,7 +2,7 @@ import styles from '../styles/model.module.css'
 import { useState } from 'react'
 import Unlockpremiumfeatures from '../pages/unlockedpremiumfeatures'
 
-export default function Premiumpayment() {
+export default function Unlock_Premiumpayment() {
     const [open_unlockedpremium, set_unlockedpremium] = useState(false);
     return (
         <div className={`${styles.container} ${styles.editpaymentdetials}`}>

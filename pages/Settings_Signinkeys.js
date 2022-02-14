@@ -1,7 +1,7 @@
 import styles from '../styles/signinkeys.module.css'
 
 
-export default function Signinkeys() {
+export default function Settings_Signinkeys() {
     return (
         <div className={styles.wrapper_signing_keys}>
             <div className={styles.head}>

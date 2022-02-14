@@ -1,6 +1,6 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 
-export default function Revoke({ closereovekeys }) {
+export default function Delete_signing_key({ closereovekeys }) {
     return (
         <div className={`${styles.model} ${styles.remove_user_modal}`} >
             <div className={styles.model_main}>

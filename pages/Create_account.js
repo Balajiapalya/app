@@ -1,7 +1,7 @@
 import head from 'next/head'
 import styles from '../styles/Emailverification.module.css'
 import Link from 'next/link'
-export default function Emailverification() {
+export default function Create_account() {
     return (
         <div className={styles.wapper_email} >
             <div className={styles.logo_title}>

@@ -1,6 +1,6 @@
 import styles from '../styles/model.module.css'
 
-export default function Newwebhook({ closewebhook }) {
+export default function Create_new_webhook({ closewebhook }) {
     return (
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
             <div className={styles.body}>

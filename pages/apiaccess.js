@@ -1,5 +1,5 @@
 import styles from '../styles/apiaccess.module.css'
-import Accesstoken from './accesstoken';
+// import Accesstoken from './accesstoken';
 
 export default function Apiaccess() {
     return (

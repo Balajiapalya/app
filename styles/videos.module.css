@@ -138,6 +138,8 @@
 }
 .checkcircle{
     width: 10px;
+    margin-left: 5px;
+    vertical-align: middle;
 }
 /* videosdelivery_addnewassets */
 .model_close{

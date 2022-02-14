@@ -1,10 +1,10 @@
 import styles from '../styles/stream_statistics.module.css'
 import Link from 'next/link'
-import Navbar from '../components/homepage/navbar';
+import Navbar from '../components/common/navbar';
 import { useState } from 'react'
-import Enablepremiumfeatures from './enablepremiumfeatures';
+import Premiumfeatures_monitor from '../components/dialog/Premiumfeatures_monitor';
 import Activities from './activities';
-import Deletestream from './deletestream';
+import Delete_stream from '../components/dialog/Delete_stream';
 
 
 
@@ -236,9 +236,9 @@ export default function Stream_statistics({setmonitoring}) {
                 </div>
             </div>
             </div>
-            {openpremium && <Enablepremiumfeatures closepremium={setpremium}/>}
+            {openpremium && < Premiumfeatures_monitor closepremium={setpremium}/>}
             {open_activities && <Activities closeactivities={set_activities}/>} 
-            {open_delete_stream && <Deletestream close_delete_stream={set_delete_stream}/>}
+            {open_delete_stream && <Delete_stream close_delete_stream={set_delete_stream}/>}
         </div>
     )
 }
