@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styles from '../../styles/tabs.module.css';
 import Subtitles from "../videodeliverytabs/subtitles";
+import Overview from "../videodeliverytabs/overview";
+import Gifs from "../videodeliverytabs/gifs";
+import Thumbnails from "../videodeliverytabs/thumbnails";   
 
 
 function Videodelivery_tabs() {
@@ -54,7 +57,7 @@ function Videodelivery_tabs() {
                 <div
                     className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    
+                    <Overview/>
                     {/* <Allstreams/> */}
                 </div>
 
@@ -68,7 +71,7 @@ function Videodelivery_tabs() {
                     className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
                     {/* <Apiaccesstokes /> */}
-                    {/* <Thumbnails/> */}
+                    <Thumbnails/>
                 </div>
 
                 <div
@@ -82,6 +85,8 @@ function Videodelivery_tabs() {
                     className={toggleState === 5 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
                     {/* <Signingkeys /> */}
+                    <Gifs/>
+                
                 </div>
                 <div
                     className={toggleState === 6 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
