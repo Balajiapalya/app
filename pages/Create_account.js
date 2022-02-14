@@ -1,4 +1,4 @@
-import head from 'next/head'
+// import head from 'next/head'
 import styles from '../styles/Emailverification.module.css'
 import Link from 'next/link'
 export default function Create_account() {
