@@ -1,7 +1,7 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 import Link from 'next/link'
 
-export default function Paymenthistory({ closepaymenthistory }) {
+export default function Payment_history({ closepaymenthistory }) {
   return (
     <div className={`${styles.model} ${styles.paymenthistory}`}>
       <div className={styles.model_main}>

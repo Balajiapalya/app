@@ -1,6 +1,6 @@
 import styles from '../styles/model.module.css'
 
-export default function Newkey({ closesigninkeys }) {
+export default function Create_signing_key({ closesigninkeys }) {
     return (
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>

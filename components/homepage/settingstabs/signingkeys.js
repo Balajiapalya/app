@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import styles from '../../../styles/signinkeys.module.css';
 import { useState } from "react";
-import Newkey from "../../../pages/newkey";
-import Revoke from "../../../pages/detelekey";
+import Create_signing_key from "../../../pages/Create_signing_key";
+import Delete_signing_key from "../../dialog/Delete_signing_key";
 
 function Signingkeys() {
     const[opensigninkeys,setopensigninkeys]=useState(false);
@@ -14,7 +14,7 @@ function Signingkeys() {
                     <p>Signin keys are used to sign JSON Web Tokens (JWTs) for securing certain requests. Video keys can be used to secure playback URLs,and Data keys can be used to secure access to real-time viewer counts.</p>
                     <button className="btn" onClick={()=>setopensigninkeys(true)}>Create new Key</button>
                 </div>
-                {opensigninkeys && <Newkey closesigninkeys={setopensigninkeys}/>}
+                {opensigninkeys && <Create_signing_key closesigninkeys={setopensigninkeys}/>}
                 <div className={styles.table}>
                     <table>
                         <thead>
@@ -87,7 +87,7 @@ function Signingkeys() {
                         </tbody>
                     </table>
                 </div>
-                {removekeys && <Revoke closereovekeys={setremovekeys}/>}
+                {removekeys && <Delete_signing_key closereovekeys={setremovekeys}/>}
             </section>
         </Fragment>
     )

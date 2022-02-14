@@ -1,6 +1,6 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 
-export default function Newmember({ closeModel }) {
+export default function Newmember_invite({ closeModel }) {
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>
       <div className={styles.model_main}>

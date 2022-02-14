@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import styles from '../../../styles/webhooks.module.css';
 import { useState } from "react";
-import Newwebhook from "../../../pages/newwebhook";
-import Deletewebhook from "../../../pages/deletewebhook";
+import Create_new_webhook from "../../../pages/create_new_webhook";
+import Delete_webhook from "../../dialog/Delete_webhook";
 
 function Webhooks() {
     const[openwebhook,setopenwebhook]=useState(false);
@@ -16,7 +16,7 @@ function Webhooks() {
                     </p>
                     <button className="btn" onClick={()=>setopenwebhook(true)}>Create new Webhook</button>
                 </div>
-                {openwebhook && <Newwebhook closewebhook={setopenwebhook}/>}
+                {openwebhook && <Create_new_webhook closewebhook={setopenwebhook}/>}
                 <div className={styles.table}>
                     <table>
                         <thead>
@@ -42,7 +42,7 @@ function Webhooks() {
                                     <input type="checkbox" className={styles.input}></input>
                                     <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
-                                {removewebhook && <Deletewebhook closedeletewebhook={setremovewebhook}/>}
+                                {removewebhook && <Delete_webhook closedeletewebhook={setremovewebhook}/>}
                             </tr>
                             <tr>
                                 <td>https://example.com/videograp-endpoint</td>

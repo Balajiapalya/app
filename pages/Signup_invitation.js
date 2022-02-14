@@ -1,7 +1,7 @@
 import head from 'next/head'
 import styles from '../styles/signupinvitation.module.css'
 import Link from 'next/link'
-export default function Signupinvitation() {
+export default function Signup_invitation() {
   return (
     <div className={styles.wrapper_signup}>
 

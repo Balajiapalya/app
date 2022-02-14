@@ -1,6 +1,6 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 
-export default function Premiumfeatures() {
+export default function Premiumfeatures_Enable() {
     return (
         <div className={`${styles.model} ${styles.remove_user_modal}`} >
             <div className={styles.model_main}>

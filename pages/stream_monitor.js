@@ -2,8 +2,8 @@ import Stream_tabs from '../components/homepage/Stream_tabs'
 import styles from '../styles/stream_monitor.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
-import Newstream from './newstream';
-import Navbar from '../components/homepage/navbar';
+// import Newstream from './newstream';
+import Navbar from '../components/common/navbar';
 import Stream_unlockfeatures from './stream_unlockfeatures';
 
 

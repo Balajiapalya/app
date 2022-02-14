@@ -1,5 +1,5 @@
 import styles from '../styles/stream_statistics.module.css'
-import Navbar from '../components/homepage/navbar'
+import Navbar from '../components/common/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
 

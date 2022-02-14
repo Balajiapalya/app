@@ -1,10 +1,9 @@
-
 import styles from '../styles/videos.module.css'
 import Link from 'next/link';
-import Navbar from '../components/homepage/navbar';
+import Navbar from '../components/common/navbar';
 
 
-export default function Videos_delivery() {
+export default function Videos() {
 
     return (
         <div className={styles.container}>

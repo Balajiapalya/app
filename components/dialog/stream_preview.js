@@ -1,4 +1,4 @@
-import styles from '../styles/stream_preview.module.css'
+import styles from '../../styles/stream_preview.module.css'
 
 export default function Stream_preview({closepreview}){
     return (

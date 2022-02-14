@@ -1,7 +1,7 @@
-import styles from '../styles/model.module.css'
-import Link from 'next/link'
+import styles from '../../styles/model.module.css'
 
-export default function Editorganization({closeorganization}) {
+
+export default function Edit_organization_name({closeorganization}) {
     return (
         <div className={styles.model}>
             <div className={styles.model_main}>

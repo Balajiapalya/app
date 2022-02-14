@@ -1,7 +1,7 @@
 import styles from '../styles/settings.module.css'
 import Tabs from '../components/homepage/Tabs'
 import Link from 'next/link'
-import Navbar from '../components/homepage/navbar'
+import Navbar from '../components/common/navbar'
 
 export default function Settings() {
     return (

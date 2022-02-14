@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import styles from '../../../styles/allstreams.module.css'
 import { useState } from 'react'
-import Stream_preview from '../../../pages/stream_preview';
+import Stream_preview from '../../dialog/stream_preview';
 import Link from 'next/link';
 
 export default function Allstreams() {

@@ -1,27 +1,20 @@
 import styles from '../styles/model.module.css'
-import Link from 'next/link'
 
 
-export default function Premiumpayment() {
+export default function Edit_payment_detials({closepaymentdetails}) {
   return (
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>
       <div className={styles.body}>
         <div className={styles.model_nav}>
-          <Link href="/"><a className={styles.model_close} role="button"><img src="close.png" alt="close" /> </a></Link>
-
+          <a className={styles.model_close} role="button" onClick={()=>closepaymentdetails(false)}><img src="close.png" alt='icon'/> </a>
         </div>
         <div className={styles.main}>
-          <h3 className={styles.model_title}>Unlock Premium Features</h3>
-          <p>Setup a valid payment method and get access to all our premium features. <br></br>You will be charged only when you enable the premium features,at the end of eachbilling cycle.</p>
-          <hr></hr>
           <h3 className={styles.model_title}>Edit Payment Details</h3>
-
           <form>
-
             <label className={styles.model_label}>Credit or Debit Card</label>
             <div className={styles.cerditcard_number}>
               <input type="text" className={`${styles.model_input} form_control`} name="cardnumber" placeholder="Cardnumber" />
-              <img className={styles.file} src="credit-card.png" alt="credit" ></img>
+              <img className={styles.file} src="credit-card.png" alt='icon' ></img>
             </div>
             <div className={styles.card}>
               <div className={styles.expiration_date}>
@@ -43,7 +36,6 @@ export default function Premiumpayment() {
             </div>
             <div className={styles.state}>
               <label className={styles.model_label}>State</label>
-
               <select name="state" placeholder="Selete state" className={styles.model_selection}>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -51,7 +43,6 @@ export default function Premiumpayment() {
                 <option value="4">4</option>
               </select>
             </div>
-
             <label className={styles.model_label}>Country</label>
             <select name="Country" placeholder="Selete country" className={styles.model_selection}>
               <option value="1">1</option>
@@ -59,25 +50,15 @@ export default function Premiumpayment() {
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
-
-
-
             <label className={styles.model_label}>Biling Email</label>
-            <input type="text" className={`${styles.model_input} form_control`} name="email" placeholder="Enter email address" />
-
+            <input type="text" className={`${styles.model_input} form_control`} name="email" placeholder="Enter email address"/>
             <div className={styles.model_btn}>
-              <Link href="stream_premiumenable"><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a></Link>
-              <Link href="stream_premiumenable"><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Save Payment Detials</button></a></Link>
+              <button onClick={()=>closepaymentdetails(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
+              <button onClick={()=>closepaymentdetails(false)} type="button" className={`${styles.model_save_btn} btn btn-primary`}>Save Payment Detials</button>
             </div>
           </form>
         </div>
       </div>
-
     </div>
-
-
-
-
-
   )
 }

@@ -41,7 +41,8 @@ export default function Stream_unlockfeatures({closestream}) {
                     <div className={styles.unlock_features}>
                         <label className={styles.model_label}>premiumfeatures</label>
                         <img src="Icon material-lock.png" alt="lock"></img>
-                        <Link href='premiumpayment'><a>unlock premium</a></Link>
+                        <Link href='unlock_premiumpayment
+                        '><a>unlock premium</a></Link>
                     </div>
                     <div className={styles.premiumfeatures}>
                         <div className={styles.premiumfeatures_check}>

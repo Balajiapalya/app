@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from '../../styles/tabs.module.css';
 import Organisation from "./settingstabs/organization";
 import Billing from "./settingstabs/billing";
-import Apiaccesstokes from "./settingstabs/apiaccesstokens";
+import Apiaccesstokes from "./settingstabs/Api_accesstokens";
 import Webhooks from "./settingstabs/webhooks";
 import Signingkeys from "./settingstabs/signingkeys";
 

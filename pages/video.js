@@ -1,6 +1,6 @@
 import styles from '../styles/videos.module.css'
 import Link from 'next/link'
-import Navbar from '../components/homepage/navbar'
+import Navbar from '../components/common/navbar'
 import Videodelivery_tabs from '../components/homepage/videodelivery_tabs'
 
 export default function Video() {
