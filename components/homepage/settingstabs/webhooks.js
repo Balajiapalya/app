@@ -40,7 +40,7 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" alt="icon" ></img></a>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
                                 {removewebhook && <Delete_webhook closedeletewebhook={setremovewebhook}/>}
                             </tr>
@@ -53,7 +53,7 @@ function Webhooks() {
                                 <td>Disabled</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" alt="icon" ></img></a>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -65,7 +65,7 @@ function Webhooks() {
                                 <td>Disabled</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" alt="icon" ></img></a>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -77,7 +77,7 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" alt="icon"></img></a>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                             </tr>
                             <tr>
@@ -89,7 +89,7 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Icon material-delete.png" alt="icon" ></img></a>
+                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
                             </tr>
                         </tbody>

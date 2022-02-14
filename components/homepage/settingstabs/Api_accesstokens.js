@@ -29,7 +29,7 @@ function Api_accesstokes() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span className={styles.development}>Development</span><img src="Icon material-edit.png" alt="icon"></img><br></br>
+                                <td><span className={styles.development}>Development</span><img src="Images/Icon material-edit.png" alt="icon"></img><br></br>
                                     <span className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
                                 </td>
                                 <td>Development</td>
@@ -58,7 +58,7 @@ function Api_accesstokes() {
                                 <td><a onClick={()=>setrevoke(true)}>Revoke</a></td>
                             </tr>
                             <tr>
-                                <td><span className={styles.development}>Development</span><img src="Icon material-edit.png" alt="icon"></img><br></br>
+                                <td><span className={styles.development}>Development</span><img src="Images/Icon material-edit.png" alt="icon"></img><br></br>
                                     <span  className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
                                 </td>
                                 <td>Development</td>

@@ -6,7 +6,7 @@ export default function Delete_webhook({ closedeletewebhook }) {
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Delete Webhook</h3>
-                    <a onClick={() => closedeletewebhook(false)} className={styles.model_close} role="button"><img src="close.png" alt='icon' /> </a>
+                    <a onClick={() => closedeletewebhook(false)} className={styles.model_close} role="button"><img src="Images/close.png" alt='icon' /> </a>
                 </div>
 
                 <div className={styles.model_removeuser}>

@@ -16,11 +16,11 @@ export default function Overview() {
                 <div className={styles.functional_buttons}>
                 <div className={styles.actions}>
                         <button className='btn'>Activities</button>
-                                <img src="Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="Images/Icon awesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                             <button className='btn'>Delete</button>
-                                <img src="Icon material-delete.png" alt="delete"></img>
+                                <img src="Images/Icon material-delete.png" alt="delete"></img>
                             </div>
                            
                 </div>

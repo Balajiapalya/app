@@ -28,7 +28,7 @@ export default function Stream_monitor() {
                         </p>
                         <a onClick={()=>setnewstream(true)}>
                             <button className='btn'>Add New stream</button>
-                            <img src="Icon feather-plus.png"alt='icon' ></img>
+                            <img src="Images/Icon feather-plus.png"alt='icon' ></img>
                         </a>
                         
                     </div>

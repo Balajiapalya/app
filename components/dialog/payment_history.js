@@ -7,7 +7,7 @@ export default function Payment_history({ closepaymenthistory }) {
       <div className={styles.model_main}>
         <div className={styles.model_nav}>
           <h3 className={styles.model_title}>Payment History</h3>
-          <a className={styles.model_close} role="button" onClick={() => closepaymenthistory(false)}><img src="close.png" alt='close' /></a>
+          <a className={styles.model_close} role="button" onClick={() => closepaymenthistory(false)}><img src="Images/close.png" alt='close' /></a>
         </div>
 
         <table className={styles.table}>
@@ -22,17 +22,17 @@ export default function Payment_history({ closepaymenthistory }) {
             <tr className={styles.tr}>
               <td>12/23/24</td>
               <td>$10.00</td>
-              <td><img src="download.png" alt='icon'></img></td>
+              <td><img src="Images/download.png" alt='icon'></img></td>
             </tr>
             <tr>
               <td>12/23/2024</td>
               <td>$10.00</td>
-              <td><img src="download.png" alt='icon'></img></td>
+              <td><img src="Images/download.png" alt='icon'></img></td>
             </tr>
             <tr>
               <td>12/23/2024</td>
               <td>$10.00</td>
-              <td><img src="download.png" alt='icon'></img></td>
+              <td><img src="Images/download.png" alt='icon'></img></td>
             </tr>
           </tbody>
         </table>
