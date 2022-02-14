@@ -25,7 +25,7 @@ export default function Apiaccess() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Development<img src="Icon material-edit.png" alt='icon'></img><br></br>
+                            <td>Development<img src="Images/Icon material-edit.png" alt='icon'></img><br></br>
                                 <span>a857d839-4a10-be9e-41b66cdde9ea</span>
                             </td>
                             <td>Development</td>
@@ -55,7 +55,7 @@ export default function Apiaccess() {
                             <td><a href="#">Revoke</a></td>
                         </tr>
                         <tr>
-                            <td>Development<img src="Icon material-edit.png" alt='icon'></img><br></br>
+                            <td>Development<img src="Images/Icon material-edit.png" alt='icon'></img><br></br>
                                 <span>a857d839-4a10-be9e-41b66cdde9ea</span>
                             </td>
                             <td>Development</td>

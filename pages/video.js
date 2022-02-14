@@ -18,7 +18,7 @@ export default function Video() {
                 </div>
                 <div className={styles.header}>
                     {/* <img/> */}
-                    <img src="Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                    <img src="Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
                     <h2>
                         Asianet-Roku 
                     </h2>

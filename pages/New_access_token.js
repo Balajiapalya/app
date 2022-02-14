@@ -6,7 +6,7 @@ export default function New_Access_token({ closetoken }) {
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
             <div className={styles.model_nav}>
-               <a className={styles.model_close} role="button" onClick={() => closetoken(false)}><img src="close.png" alt='icon' /> </a>
+               <a className={styles.model_close} role="button" onClick={() => closetoken(false)}><img src="Images/close.png" alt='icon' /> </a>
             </div>
             <div className={styles.main}>
                <h3 className={styles.model_title}>New Access Token</h3>
@@ -18,8 +18,8 @@ export default function New_Access_token({ closetoken }) {
                      <option value="3">3</option>
                      <option value="4">4</option>
                   </select>
-                  <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
-                  <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
+                  <img className={styles.file} src="Images/Icon awesome-folder.png" alt='icon'></img>
+                  <button type="text" className={styles.up}><img src="Images/updown.png" alt='icon'></img></button>
                </div>
             
                <div className={styles.access_token}>

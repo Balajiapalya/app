@@ -7,7 +7,7 @@ export default function Edit_organization_name({closeorganization}) {
             <div className={styles.model_main}>
                  <div className={styles.model_nav}>
                  <h3 className={styles.model_title}>Edit Organisation Name</h3>
-                 <a  className={styles.model_close} onClick={()=>closeorganization(false)} ><img src="close.png" alt='icon'/> </a>
+                 <a  className={styles.model_close} onClick={()=>closeorganization(false)} ><img src="Images/close.png" alt='icon'/> </a>
                  </div>
         
                   <label className={styles.model_label}>Organisation Name</label>

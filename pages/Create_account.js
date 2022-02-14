@@ -5,7 +5,7 @@ export default function Create_account() {
     return (
         <div className={styles.wapper_email} >
             <div className={styles.logo_title}>
-                <img className={styles.file} src="Logo.png" alt='LOGO' ></img>
+                <img className={styles.file} src="Images/Logo.png" alt='LOGO' ></img>
             </div>
             <main className={styles.createaccount}>
 

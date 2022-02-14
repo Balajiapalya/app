@@ -11,16 +11,16 @@ export default function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="/Icon material-home.png" alt='icon'></img>Environments</a>
+                            <a href="#"><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a>
                         </li>
                         <li>
-                           <Link href="Videos"><a><img src="/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                           <Link href="Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
-                            <a href="#"><img src="Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
+                            <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
                         </li>
                         <li className={styles.tools}> 
-                            <a  className={styles.list_heading} onClick={()=>setdropdown(!opendropdown)} ><img src="Icon awesome-tools.png" alt="icon"></img>Tools</a>
+                            <a  className={styles.list_heading} onClick={()=>setdropdown(!opendropdown)} ><img src="Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
                             {opendropdown?<ul className={styles.list}>
                                 <li><Link href="stream_monitor"><a>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
@@ -34,17 +34,17 @@ export default function Navbar() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
+                            <a href="#"><img src="Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Icon ionic-ios-settings.png" alt='icon'></img>Settings</a>
+                            <a href="#"><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>Anil <br />Yupp TV</p></a>
+                            <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>Anil <br />Yupp TV</p></a>
 
                         </li>
                         <li>
-                            <a href="#"><img src="Icon feather-log-out.png" alt='icon'></img>Logout</a>
+                            <a href="#"><img src="Images/Icon feather-log-out.png" alt='icon'></img>Logout</a>
                         </li>
                     </ul>
                 </div>

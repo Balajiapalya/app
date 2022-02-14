@@ -17,7 +17,7 @@ export default function Allstreams() {
                         <option value="4">4</option>
                     </select>
                     <input placeholder='Search'></input>
-                    <img src='/search_icon.png' alt='icon'></img>
+                    <img src='Images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.stream_table}>
                     <table>
@@ -41,16 +41,16 @@ export default function Allstreams() {
                                 <td><input type="checkbox" id="roku"></input></td>
                                 <td><label htmlFor="roku"><a>Asianet-Roku</a></label></td>
                                 <td><label htmlFor="roku">http://akamaiaus1.akamaized.net</label></td>
-                                <td className={styles.check}><label htmlFor="roku"></label><img src="check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.check}><label htmlFor="roku"></label><img src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td><label htmlFor="roku">60 mins</label></td>
                                 <td><label htmlFor="roku">50 kbps</label></td>
                                 <td><label htmlFor="roku">Healthy</label></td>
                                 <td><label htmlFor="roku">Realtime</label></td>
                                 <td><label htmlFor="roku">Active</label></td>
                                 <td className={styles.actionicons}> <label htmlFor="roku"></label>
-                                    <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                    <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <a><img src="Icon awesome-eye-slash.png" alt="eye-slash"></img></a>
+                                    <a onClick={()=>setpreview(true)}><img src="Images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                    <Link href='statistics_unlockpremium'><a><img src="Images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <a><img src="Images/Icon awesome-eye-slash.png" alt="eye-slash"></img></a>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -59,7 +59,7 @@ export default function Allstreams() {
                                 <td>http://akamaiaus1.akamaized.net</td>
                                 <td className={styles.check}>
                                     <div className={styles.background}>
-                                        <img src="Icon material-error.png" alt="error"></img>
+                                        <img src="Images/Icon material-error.png" alt="error"></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -69,7 +69,7 @@ export default function Allstreams() {
                                 </td>
                                 <td className={styles.mins}>-15 mins
                                 <div className={styles.pts_background}>
-                                        <img src='Icon material-info-outline.png' alt='error'></img>
+                                        <img src='Images/Icon material-info-outline.png' alt='error'></img>
                                         <div className={styles.error_alert}>
                                             <span>Down time ~ 15mins</span>
                                             <br></br>
@@ -83,9 +83,9 @@ export default function Allstreams() {
                                 <td>6 mins ago</td>
                                 <td>Active</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="Images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="Images/Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -94,7 +94,7 @@ export default function Allstreams() {
                                 <td>http://akamaiaus1.akamaized.net</td>
                                 <td className={styles.check}>
                                     <div className={styles.background}>
-                                        <img src="Icon material-error.png" alt="error"></img>
+                                        <img src="Images/Icon material-error.png" alt="error"></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -104,7 +104,7 @@ export default function Allstreams() {
                                 </td>
                                 <td className={styles.mins}>-6 mins
                                 <div className={styles.pts_background}>
-                                        <img src='Icon material-info-outline.png' alt='error'></img>
+                                        <img src='Images/Icon material-info-outline.png' alt='error'></img>
                                         <div className={styles.error_alert}>
                                             <span>Down time ~ 15mins</span>
                                             <br></br>
@@ -116,7 +116,7 @@ export default function Allstreams() {
                                 <td>50 kbps</td>
                                 <td className={styles.pts}>Error
                                     <div className={styles.pts_background}>
-                                        <img src='Icon material-info-outline.png' alt='error'></img>
+                                        <img src='Images/Icon material-info-outline.png' alt='error'></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -127,9 +127,9 @@ export default function Allstreams() {
                                 <td>6 mins ago</td>
                                 <td>Active</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                   <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                   <Link href='statistics_unlockpremium'><a><img src="Images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="Images/Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.opacity}>
@@ -143,25 +143,25 @@ export default function Allstreams() {
                                 <td>--</td>
                                 <td>In active</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="Images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="Images/Icon awesome-eye-slash.png" alt="Images/eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.color_yellow}>
                                 <td><input type="checkbox"></input></td>
                                 <td>Asianet-Roku</td>
                                 <td>http://akamaiaus1.akamaized.net</td>
-                                <td className={styles.check}><img src="check-yellowcircle.png" alt="yellowcircle"></img></td>
+                                <td className={styles.check}><img src="Images/check-yellowcircle.png" alt="yellowcircle"></img></td>
                                 <td>60 mins</td>
                                 <td>50 kbps</td>
                                 <td>Healthy</td>
                                 <td>NA</td>
                                 <td>30 mins ago</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                <Link href='statistics_unlockpremium'><a><img src="Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="Images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="Images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="Images/Icon awesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
                         </tbody>

@@ -22,14 +22,14 @@ export default function Videos() {
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
                        <Link href="videodelivery_addnewassets"><a>
                             <button className='btn'>Add New assets</button>
-                            <img src="Icon feather-plus.png"alt='icon' ></img>
+                            <img src="Images/Icon feather-plus.png"alt='icon' ></img>
                         </a></Link>
                     </div>
                      <hr></hr>
                 </div>
                 <div className={styles.search}>
                     <input placeholder='Search'></input>
-                    <img src='/search_icon.png' alt='icon'></img>
+                    <img src='Images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>
                     <table>
@@ -57,7 +57,7 @@ export default function Videos() {
                                 <td></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
-                                <td>Ready<img className={styles.checkcircle} src="check-circle.png" alt="check-circle"></img></td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
                                 </td>
                             </tr>
@@ -70,7 +70,7 @@ export default function Videos() {
                                 <td></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
-                                <td>Ready<img className={styles.checkcircle} src="check-circle.png" alt="check-circle"></img></td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@ export default function Videos() {
                                 <td></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
-                                <td>Ready<img className={styles.checkcircle} src="check-circle.png" alt="check-circle"></img></td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
                                 </td>
                             </tr>
@@ -97,7 +97,7 @@ export default function Videos() {
                                 <td></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
-                                <td>Ready<img className={styles.checkcircle} src="check-circle.png" alt="check-circle"></img></td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
                                 </td>
                             </tr>
@@ -110,7 +110,7 @@ export default function Videos() {
                                 <td></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
-                                <td>Ready<img className={styles.checkcircle} src="check-circle.png" alt="check-circle"></img></td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
                                 </td>
                             </tr>

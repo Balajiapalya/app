@@ -5,7 +5,7 @@ export default function Create_new_webhook({ closewebhook }) {
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closewebhook(false)}><img src="close.png" alt='icon'/> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closewebhook(false)}><img src="Images/close.png" alt='icon'/> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -19,8 +19,8 @@ export default function Create_new_webhook({ closewebhook }) {
                             <option value="4">4</option>
                         </select>
 
-                        <img className={styles.file} src="Icon awesome-folder.png" alt='icon'></img>
-                        <button type="text" className={styles.up}><img src="updown.png" alt='icon'></img></button>
+                        <img className={styles.file} src="Images/Icon awesome-folder.png" alt='icon'></img>
+                        <button type="text" className={styles.up}><img src="Images/updown.png" alt='icon'></img></button>
                     </div>
 
            
