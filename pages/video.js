@@ -14,14 +14,17 @@ export default function Video() {
                     <div className={styles.header}>
                     <div className={styles.assets}>
                     <a>Asset List</a>
-                    <p> &gt; Asianet-Roku </p>
+                    <p> &gt; Asianet-Roku  </p>
+                   
                 </div>
                 <div className={styles.header}>
                     {/* <img/> */}
                     <img src="Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
                     <h2>
                         Asianet-Roku 
+                        <span>Edit</span>  
                     </h2>
+                    
                 </div>
                     </div>
                     <Videodelivery_tabs/>
