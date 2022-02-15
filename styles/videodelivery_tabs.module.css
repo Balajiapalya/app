@@ -44,65 +44,50 @@
     float: left;
    
 }
-.Videodelivery_addnewassets{
-        width: 45%;
-        background-color: #f4f6f8;
-        display: block;
-        float:right;  
-        margin-top: -3em;  
-    
-}
-.Videodelivery_addnewassets h2{
-    font-size: 20px;
-    font-family: Inter-Regular;
-    padding-right: 10px;
-    
-}
+
 .upload_btn_wrapper {
     position: relative;
     overflow: hidden;
     display: inline-block;
-  }
+}
   
-  .btn {
+.btn {
+    color: #2863eb;
+    padding: 10px 49px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #fff;
+    border: solid 1px #2863eb;
+    margin: 0px 20px 20px;
+}
   
-  color: #2863eb;
-      padding: 10px 49px;
-      border-radius: 5px;
-      font-size: 20px;
-      background-color: #fff;
-      border: solid 1px #2863eb;
-      margin: 0px 20px 20px;
-  }
-  
-  .upload_btn_wrapper input[type=file] {
+.upload_btn_wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
-
-  }
-  .upload_file{
-      border: 1px solid #fff;
-      background-color: #fff;
-      width: 100%;
-      float: left;
-      font-family:Inter-Regular;
-  }
-  .upload_file h2{
-    font-size: 16px;
-    font-family: Inter-Regular;
-    padding-right: 10px;
-    margin: 20px;  
-   }
-  
-   .post{
+}
+.upload_file{
     border: 1px solid #fff;
     background-color: #fff;
     width: 100%;
     float: left;
-    margin-top: 10px;
+    font-family:Inter-Regular;
+}
+.upload_file h2{
+    font-size: 16px;
+    font-family: Inter-Regular;
+    padding-right: 10px;
+    margin: 20px;  
+}
+  
+.post{
+    border: 1px solid #fff;
+    background-color: #fff;
+    width: 100%;
+    float: left;
+    /* margin-top: 10px; */
 }
 .model_btn{
     color: #212b36;
@@ -431,12 +416,101 @@ width: calc(100% - 20%);
 }
 
 /* videoclips*/
+.videoclips{
+    width: 100%;
+    float: left;
+}
+.subtitles_list{
+    width: 50%;
+    float: left;
+}
+.subtitles_list_table{
+    width: 100%;
+}
+.subtitles_list_table table{
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    border-collapse: collapse;
+}
+.subtitles_list_table table thead tr th{
+    text-align: left;
+    padding: 5px 10px;
+    color:  #212b36;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 600;
+    word-break: break-all;
+    font-size: 14px;
+}
+.subtitles_list_table table thead tr th input {
+    background-color: inherit;
+    
+}
+
+.subtitles_list_table table tbody{
+    background-color: white;
+}
+.subtitles_list_table table tbody tr .check {
+    text-align: center;
+}
+.subtitles_list_table table tbody tr td{
+    padding: 5px 10px;
+    word-break: break-all;
+    color: #212b36;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    height: 3em;
+    border-bottom: 1px solid #ecedef;
+}
 .videoclips table tbody tr td a {
  color:  #2863eb; 
 }
 .videoclips  h2{
+    padding-top: 10px;
     font-size: 18px;
     font-family: Inter-Medium;
+}
+.create_videoclips{
+    width: 45%;
+    float: right;
+}
+
+.video_editor_content{
+    width: 100%;
+    float: left;
+    background-color: #fff;
+}
+.video_editor_player{
+    height: 150px;
+}
+.start_end_time{
+    width: 100%;
+    float: left;
+    margin: 10px;
+}
+.start_time{
+    width: 50%;
+    float: left;
+}
+.end_time{
+    width: 50%;
+    float: right;
+}
+.start_time input,.end_time input{
+    padding: 5px;
+    outline: none;
+}
+.create_video_clip_button{
+    width: 100%;
+    float: left;
+    margin: 15px 10px 10px 10px ;
+}
+.create_video_clip_button button{
+    padding: 7px;
+    background-color: white;
+    border-radius:5px ;
+    border: 1px solid #2863eb;
+    color: #2863eb;
 }
 
 
