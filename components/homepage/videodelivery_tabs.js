@@ -3,7 +3,9 @@ import styles from '../../styles/tabs.module.css';
 import Subtitles from "../videodeliverytabs/subtitles";
 import Overview from "../videodeliverytabs/overview";
 import Gifs from "../videodeliverytabs/gifs";
-import Thumbnails from "../videodeliverytabs/thumbnails";   
+import Thumbnails from "../videodeliverytabs/thumbnails";  
+import Others from "../videodeliverytabs/others"; 
+import Videoclips from "../videodeliverytabs/videoclips";
 
 
 function Videodelivery_tabs() {
@@ -64,6 +66,7 @@ function Videodelivery_tabs() {
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
+                    <Videoclips/>
                     {/* <Billings /> */}
                 </div>
 
@@ -92,6 +95,7 @@ function Videodelivery_tabs() {
                     className={toggleState === 6 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
                     {/* <Signingkeys /> */}
+                    <Others/>
                 </div>
 
             </div>
