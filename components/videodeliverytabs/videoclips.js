@@ -1,25 +1,17 @@
 import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
-import { useState } from 'react'
-import Link from 'next/link';
-import styles1 from '../../styles/activities_tabs.module.css';
-import Videoditor from './create_videoclips.js/videoeditor';
-import Using_api from './create_videoclips.js/using_api';
+import Videoclips_tabs from '../homepage/videoclips_tabs';
 
 
 export default function Videoclips() {
-    const [toggleState, setToggleState] = useState(1);
-
-    const toggleTab = (index) => {
-        setToggleState(index);
-    };
+    
     return (
         <Fragment>
 
             <div className={styles.videoclips}>
                 <div className={styles.subtitles_list}>
                     <h2>Video Clips</h2>
-                    <div className={styles.videos_table}>
+                    <div className={styles.subtitles_list_table}>
                         <table>
                             <thead>
                                 <tr>
@@ -68,39 +60,10 @@ export default function Videoclips() {
 
                 </div>
                 <div className={styles.create_videoclips}>
-                    <div className={styles1.Activities_tabs}>
-                        <div className={styles1.wrapper_tabs}>
-                            <div className={styles1.bloc_tabs}>
-                                <button
-                                    className={toggleState === 1 ? `${styles1.tabs_item} ${styles1.active_tabs}` : `${styles1.tabs_item}`}
-                                    onClick={() => toggleTab(1)}
-                                >
-                                    <span>Video Editor</span>
-                                </button>
-                                <button
-                                    className={toggleState === 2 ? `${styles1.tabs_item} ${styles1.active_tabs}` : `${styles1.tabs_item}`}
-                                    onClick={() => toggleTab(2)}
-                                >
-                                    <span>Use APIs</span>
-                                </button>
-                            </div>
-
-                            <div className={styles1.content_tabs_area}>
-                                <div
-                                    className={toggleState === 1 ? `${styles1.content_tabs} ${styles1.active_content}` : `${styles1.content_tabs}`}
-                                >
-                                    <Videoditor />
-                                </div>
-
-                                <div
-                                    className={toggleState === 2 ? `${styles1.content_tabs} ${styles1.active_content}` : `${styles1.content_tabs}`}
-                                >
-                                    <Using_api />
-                                </div>
-                            </div>
-
-                        </div>
+                    <div className={styles.create_videoclips_header}>
+                        <h2>Creat Video Clips</h2>
                     </div>
+                    <Videoclips_tabs/>
                 </div>
             </div>
 
