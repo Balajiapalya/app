@@ -65,3 +65,6 @@
 .active_content{
     display: block;
 }
+.videoclips .Activities_tabs{
+    width: 48%;
+}
