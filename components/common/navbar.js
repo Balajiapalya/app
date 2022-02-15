@@ -1,8 +1,10 @@
-import styles from '../../styles/settings.module.css'
-import Link from 'next/link'
-import { useState } from 'react'
+import styles from '../../styles/settings.module.css';
+import Link from 'next/link';
+import { useState } from 'react';
+import { memo } from "react";
 
-export default function Navbar() {
+ function Navbar() {
+     console.log("hii");
     const[opendropdown,setdropdown]=useState(false);
     return (
         <div className={styles.container}>
@@ -53,3 +55,5 @@ export default function Navbar() {
     )
 
 }
+
+export default memo(Navbar);
