@@ -220,10 +220,12 @@ float: left;
     margin-top: 148px;
 }
 .paymenthistory .table {
-    width: 100%;
+    width:95%;
     background:white; 
-    border:0; 
-    border-spacing:0 5px;
+    border:0;
+    margin-top: 6%;
+    margin: 3%;
+    /* border-spacing:0 5px; */
     /* margin-left: 10px;
     padding-left: 10px;
     padding: 8px; */
