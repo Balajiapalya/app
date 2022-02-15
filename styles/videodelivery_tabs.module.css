@@ -1,5 +1,5 @@
 .videos_table{
-    width: 51%;
+    width: 100%;
     float: left;
 
 }
@@ -138,9 +138,9 @@
 .create_image{
     border: 1px solid #fff;
     background-color: #fff;
-    width: 50%;
+    width: 100%;
     float: left;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     height:500px;
 }
 .model_label{
@@ -513,7 +513,29 @@ width: calc(100% - 20%);
     color: #2863eb;
 }
 
-
+/* thumbnails */
+.thumbnail_image{
+    width: 50%;
+    float: left;
+}
+.thumbnail_api{
+    width: 48%;
+    float: right;
+}
+/* subtitle */
+.subtitle_file{
+    width: 48%;
+    float: right;
+}
+/* gifs */
+.git_video{
+    width: 50%;
+    float: left;
+}
+.gif_api{
+    width: 48%;
+    float: right;
+}
 /* others */
 .title_description{
     width: 49%;
