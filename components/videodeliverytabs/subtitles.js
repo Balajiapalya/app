@@ -15,7 +15,7 @@ export default function Subtitles() {
                         <table>
                             <thead>
                                 <tr>
-                                   
+
                                     <th>Added on</th>
                                     <th>Name</th>
                                     <th>Subtitle ID</th>
@@ -26,7 +26,7 @@ export default function Subtitles() {
                             </thead>
                             <tbody >
                                 <tr>
-                                   
+
                                     <td>02/12/21<br></br>6:03pm</td>
                                     <td>English</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
@@ -43,7 +43,7 @@ export default function Subtitles() {
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>02/12/21<br></br>6:03pm</td>
+                                    <td>02/12/21<br></br>6:03pm</td>
                                     <td>Spanish</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
@@ -51,7 +51,7 @@ export default function Subtitles() {
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>02/12/21<br></br>6:03pm</td>
+                                    <td>02/12/21<br></br>6:03pm</td>
                                     <td>German</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
@@ -63,33 +63,36 @@ export default function Subtitles() {
                     </div>
 
                 </div>
-                <div className={styles.Videodelivery_addnewassets}>
-                    <h2>Upload subtitle files</h2>
-                    <div className={styles.upload_file}>
-                        <h2>upload your file</h2>
-                        <div className={styles.upload_btn_wrapper}>
-                            <button className={styles.btn}>Select File</button>
-                            <input type="file" name="myfile" />
-                        </div>
-
-                    </div>
-                    <div className={styles.post}>
-                        <h4>Post using Video URL:</h4>
-                        <p>Post https://api.videograph.com/vodeos/v1/assets</p>
-                        <span>Post body editor:</span>
-                        <div className={styles.language_select}>
-                            <button className={styles.model_btn}>Python</button>
-                            <button className={styles.model_btn}>Node</button>
-                            <button className={styles.model_btn}>Php</button>
-                            <button className={styles.model_btn}>Go</button>
-                        </div>
-                        <div className={styles.code}>
-
+                <div className={styles.subtitle_file}>
+                    <div className={styles.Videodelivery_addnewassets}>
+                        <h2>Upload subtitle files</h2>
+                        <div className={styles.upload_file}>
+                            <h2>upload your file</h2>
+                            <div className={styles.upload_btn_wrapper}>
+                                <button className={styles.btn}>Select File</button>
+                                <input type="file" name="myfile" />
+                            </div>
 
                         </div>
-                        <button className={styles.btn}>Run Request</button>
+                        <div className={styles.post}>
+                            <h4>Post using Video URL:</h4>
+                            <p>Post https://api.videograph.com/vodeos/v1/assets</p>
+                            <span>Post body editor:</span>
+                            <div className={styles.language_select}>
+                                <button className={styles.model_btn}>Python</button>
+                                <button className={styles.model_btn}>Node</button>
+                                <button className={styles.model_btn}>Php</button>
+                                <button className={styles.model_btn}>Go</button>
+                            </div>
+                            <div className={styles.code}>
+
+
+                            </div>
+                            <button className={styles.btn}>Run Request</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
 
