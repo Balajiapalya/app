@@ -9,7 +9,7 @@ export default function Newstream_monitor() {
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button"><img src="Images/close.png" /> </a>
+                    <a className={styles.model_close} role="button"><img src="Images/close.png" alt="close" /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add new stream to monitor</h3>
