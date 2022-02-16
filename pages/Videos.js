@@ -7,9 +7,9 @@ export default function Videos() {
 
     return (
         <div className={styles.container}>
-            <div>
+            {/* <div>
                 <Navbar />
-            </div>
+            </div> */}
             <div className={styles.videos}>
                 <div className={styles.videos_delivery}>
                     <div className={styles.header}>

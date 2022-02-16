@@ -12,9 +12,9 @@ export default function Stream_monitor() {
     const[opennewstream,setnewstream]=useState(false);
     return (
         <div className={styles.container}>
-            <div>
+            {/* <div>
                 <Navbar/>
-            </div>
+            </div> */}
             <div className={styles.stream_Monitor}>
                 <div className={styles.padding}>
                     <div className={styles.header}>

@@ -14,9 +14,9 @@ export default function Stream_statistics_enable() {
     const [open_delete_stream, set_delete_stream] = useState(false);
     return (
         <div className={styles.streamenable}>
-            <div>
+            {/* <div>
                 <Navbar />
-            </div>
+            </div> */}
             <div className={styles.stream_statistics}>
                 <div className={styles.padding}>
                     <div className={styles.stream_list}>

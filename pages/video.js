@@ -6,9 +6,9 @@ import Videodelivery_tabs from '../components/homepage/videodelivery_tabs'
 export default function Video() {
     return (
         <div className={styles.container}>
-            <div>
+            {/* <div>
                 <Navbar/>
-            </div>
+            </div> */}
             <div className={styles.videosdelivery_assets}>
                 <div className={styles.padding}>
                     <div className={styles.header}>

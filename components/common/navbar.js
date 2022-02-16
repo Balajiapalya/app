@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { memo } from "react";
 
- function Navbar() {
-     console.log("hii");
-    const[opendropdown,setdropdown]=useState(false);
+function Navbar() {
+    // console.log("hii");
+    const [opendropdown, setdropdown] = useState(false);
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -16,20 +16,20 @@ import { memo } from "react";
                             <a href="#"><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a>
                         </li>
                         <li>
-                           <Link href="Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                            <Link href="Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
                         </li>
-                        <li className={styles.tools}> 
-                            <a  className={styles.list_heading} onClick={()=>setdropdown(!opendropdown)} ><img src="Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
-                            {opendropdown?<ul className={styles.list}>
+                        <li className={styles.tools}>
+                            <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)} ><img src="Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
+                            {opendropdown ? <ul className={styles.list}>
                                 <li><Link href="stream_monitor"><a>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
                                 <li><Link href="subtitleconvertor"><a>Subtitle Converter</a></Link></li>
                                 <li><a>Video player</a></li>
                                 <li><a>Player Validator</a></li>
-                            </ul>:null}
+                            </ul> : null}
                         </li>
                     </ul>
                 </div>
