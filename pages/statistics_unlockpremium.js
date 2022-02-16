@@ -14,9 +14,9 @@ export default function Statistics_unlockpremium() {
     const[open_premium,set_premium]=useState(false);  
     return (
         <div className={styles.statistics_unlockpremium}>
-            <div>
+            {/* <div>
                 <Navbar />
-            </div>
+            </div> */}
             <div className={styles.stream_statistics}>
                 <div className={styles.padding}>
                     <div className={styles.stream_list}>

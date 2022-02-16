@@ -29,7 +29,7 @@ import Settings from './settings'
 // import Premium_payment_details_edit from '../components/dialog/Premium_payment_details_edit'
 // import Removeuser from '../components/dialog/removeuser'
 // import Revoke_access from '../components/dialog/Revoke_access'
-
+import Layout from './layout'
 
 
 
@@ -45,7 +45,6 @@ export default function Home() {
         <meta name="description" content="powered by yupp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       {/* <Login /> */}
       <Settings/>
       {/* <Premiumfeatures/> */}
@@ -65,7 +64,7 @@ export default function Home() {
       {/* <Subtitleconvertor/> */}
       {/* <Subtitleconvertfile/> */}
       {/* <Video/> */}
-
+      {/* <Layout/> */}
       {/* <Create_new_webhook/> */}
       {/* <Delete_signing_key/> */}
       {/* <Delete__stream/> */}

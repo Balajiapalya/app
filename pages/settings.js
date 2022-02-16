@@ -6,9 +6,9 @@ import Navbar from '../components/common/navbar'
 export default function Settings() {
     return (
         <div className={styles.container}>
-            <div>
+            {/* <div>
                 <Navbar/>
-            </div>
+            </div> */}
             <div className={styles.settings}>
                 <div className={styles.padding}>
                     <div className={styles.header}>

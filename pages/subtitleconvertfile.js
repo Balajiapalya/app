@@ -7,9 +7,9 @@ export default function Subtitle_convertfile() {
 
     return (
         <div className={styles.container}>
-            <div>
+            {/* <div>
                 <Navbar />
-            </div>
+            </div> */}
             <div className={styles.Subtitleconvertor}>
                 <div className={styles.padding}>
                     <div className={styles.Subtitleconvertor_title}>
