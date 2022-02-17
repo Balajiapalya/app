@@ -37,27 +37,27 @@ export default function Overview() {
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Created</td>
-                                    <td>12/23/21 03:37 pm</td>
+                                    <td className={styles.content}>12/23/21 03:37 pm</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Status</td>
-                                    <td>Ready</td>
+                                    <td className={styles.content}>Ready</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Duration</td>
-                                    <td>29:56:07</td>
+                                    <td className={styles.content}>29:56:07</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Max Resolution</td>
-                                    <td>HD</td>
+                                    <td className={styles.content}>HD</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Max Frame Rate</td>
-                                    <td>25.000</td>
+                                    <td className={styles.content}>25.000</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Aspect Ratio</td>
-                                    <td>16:9</td>
+                                    <td className={styles.content}>16:9</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -67,7 +67,7 @@ export default function Overview() {
                 <div className={styles.playback}>
                     <h2>Playback Sample</h2>
                     <div className={styles.playback_content} >
-
+                        <img src='/Images/Image 3@3x.png' alt='image' />
                     </div>
                 </div>
 
@@ -77,22 +77,54 @@ export default function Overview() {
                         <div className={styles.video_hls}>
                             <div className={styles.link_video}>
                                 <h4>Link to video</h4>
-                                <p>https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0</p>
+                                <div className={styles.copy_link}>
+                                    <div className={styles.link}>
+                                        <p> &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34;</p>
+                                    </div>
+                                    <div className={styles.copy_img}>
+                                        <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                    </div>
+                                </div>
                             </div>
                             <div className={styles.link_hls}>
                                 <h4>Link to HLS</h4>
-                                <p>https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0</p>
+                                <div className={styles.copy_link}>
+                                    <div className={styles.link}>
+                                        <p> &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34;</p>
+                                    </div>
+                                    <div className={styles.copy_img}>
+                                        <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div className={styles.embed_thubnail}>
                             <div className={styles.link_embedcode}>
                                 <h4>Embed code</h4>
-                                <p> iframe src=&quothttps://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&quot width </p>
+                                <div className={styles.copy_link}>
+                                    <div className={styles.link}>
+                                        <p> iframe src= &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34; Width=</p>
+                                    </div>
+                                    <div className={styles.copy_img}>
+                                        <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
                             <div className={styles.link_thumbnail}>
                                 <h4>Link to Thumbnail</h4>
-                                <p>iframe src=&quothttps://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&quot width</p>
+                                <div className={styles.copy_link}>
+                                    <div className={styles.link}>
+                                        <p> iframe src= &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34; Width=</p>
+                                    </div>
+                                    <div className={styles.copy_img}>
+                                        <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -105,52 +137,63 @@ export default function Overview() {
                     <h2>Input File Media Info</h2>
                     <div className={styles.media_info}>
                         <h4>Video URL</h4>
-                        <p>https://d70jkbWEDJkdjcJNDKJDNJSDCNvnbkj.mp4</p>
+                        <div className={styles.video_url}>
+                            <div className={styles.copy_link}>
+                                <div className={styles.link}>
+                                    <p> https://d70jkbWEDJkdjcJNDKJDNJSDCNvnbkj.mp4</p>
+                                </div>
+                                <div className={styles.copy_img}>
+                                    <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.Video_info}>
+                            <h4>Video Info</h4>
 
-                        <h4>Video Info</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Width</th>
+                                        <th>Height</th>
+                                        <th>Frame Rate</th>
+                                        <th>Encoding</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1280px</td>
+                                        <td>720px</td>
+                                        <td>25 fps</td>
+                                        <td>H.264</td>
+                                        <td>29:56:07</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Width</th>
-                                    <th>Height</th>
-                                    <th>Frame Rate</th>
-                                    <th>Encoding</th>
-                                    <th>Duration</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1280px</td>
-                                    <td>720px</td>
-                                    <td>25 fps</td>
-                                    <td>H.264</td>
-                                    <td>29:56:07</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <h4>Audio Info</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Sample Rate</th>
+                                        <th>Encoding</th>
+                                        <th>Channels</th>
 
-                        <h4>Audio Info</h4>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Sample Rate</th>
-                                    <th>Encoding</th>
-                                    <th>Channels</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>44 Khz</td>
+                                        <td>ACC</td>
+                                        <td>2</td>
 
-                                    <th>Duration</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>44 Khz</td>
-                                    <td>ACC</td>
-                                    <td>2</td>
+                                        <td>29:56:07</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                                    <td>29:56:07</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

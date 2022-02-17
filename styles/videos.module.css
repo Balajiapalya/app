@@ -104,7 +104,7 @@
 }
 .videos_table table thead tr th{
     text-align: left;
-    padding: 5px 10px;
+    padding: 5px 3px;
     color:  #212b36;
     font-family: Inter-Medium;
     font-size: 14px;
@@ -112,6 +112,7 @@
     word-break: break-all;
     font-size: 14px;
 }
+
 .videos_table table thead tr th input {
     background-color: inherit;
     
@@ -124,13 +125,16 @@
     text-align: center;
 }
 .videos_table table tbody tr td{
-    padding: 5px 10px;
+    padding: 5px 3px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
     font-size: 14px;
     height: 3em;
     border-bottom: 1px solid #ecedef;
+}
+.videos_table table tbody tr .asset_id{
+    width: 250px;
 }
 
 .actionicons img{
