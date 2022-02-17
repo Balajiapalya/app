@@ -7,6 +7,7 @@
 .Activities_tabs .wrapper_tabs{
     float: none;
     padding-top: 0px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 }
 .Activities_tabs .bloc_tabs{
     display: block;

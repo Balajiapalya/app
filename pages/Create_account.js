@@ -2,18 +2,26 @@
 import styles from "../styles/Emailverification.module.css";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export default function Create_account() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const createaccount_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/users'
     const onSubmit = data => {
-
-        console.log(data);
-
+           
+        // console.log(data);
+        axios.post(createaccount_url,data)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
     return (
         <div className={styles.wapper_email}>
             <div className={styles.logo_title}>
-                <img className={styles.file} src="Images/Logo.png" alt="LOGO"></img>
+                <img className={styles.file} src="/Images/Logo.png" alt="LOGO"></img>
             </div>
             <main className={styles.createaccount}>
                 <form className={styles.createaccount_form} onSubmit={handleSubmit(onSubmit)}>
