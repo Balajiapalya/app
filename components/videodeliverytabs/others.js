@@ -26,7 +26,7 @@ export default function Others() {
                     <div className={styles.tags_metadata_box}>
                         <label className={styles.model_label}>Tags</label>
                         <div className={styles.tags}>
-                            <h4>Movies</h4>
+                            <h4 className={styles.filter}>Movies</h4>
                             <h4>
                                 Thiller
                             </h4>

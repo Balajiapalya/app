@@ -33,7 +33,7 @@ export default function Create_account() {
                         className={`${styles.createaccount_input} form_control`}
                         {...register("firstname", { required: true })}
                     />
-                    {errors.firstname && <p>This field is required</p>}
+                    {errors.firstname && <p className={'validations'}>This field is required</p>}
 
                     <label className={styles.createaccount_label}>Last Name</label>
                     <input
@@ -43,7 +43,7 @@ export default function Create_account() {
                         className={`${styles.createaccount_input} form_control`}
                         {...register("lastname", { required: true })}
                     />
-                    {errors.lastname && <p>This field is required</p>}
+                    {errors.lastname && <p className={'validations'}>This field is required</p>}
                     <label className={styles.createaccount_label}>
                         Organisation Name
                     </label>
@@ -54,7 +54,7 @@ export default function Create_account() {
                         className={`${styles.createaccount_input} form_control`}
                         {...register("organisationname", {required: true})}
                     />
-                    {errors.organisationname && <p>This field is required</p>}
+                    {errors.organisationname && <p className={'validations'}>This field is required</p>}
                     <label className={styles.createaccount_label}>Password</label>
                     <input
                         type="password"
@@ -63,7 +63,7 @@ export default function Create_account() {
                         className={`${styles.createaccount_input} form_control`}
                         {...register("password", {required: true})}
                     />
-                    {errors.password && <p>This field is required</p>}
+                    {errors.password && <p className={'validations'}>This field is required</p>}
                     <p className={styles.condition}>
                         {" "}
                         By creating an account you agree to our{" "}
