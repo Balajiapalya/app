@@ -27,7 +27,7 @@ export default function Overview() {
                 </div>
 
                 <div className={styles.asset_detials}>
-                    <h2>Asset Details</h2>
+                    <h2>Video Detials</h2>
                     <div className={styles.asset_detials_content}>
                         <table className={styles.content_table}>
                             <tbody>

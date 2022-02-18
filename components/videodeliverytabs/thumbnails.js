@@ -12,6 +12,8 @@ export default function Thumbnails() {
                 <div className={styles.thumbnail_image}>
                     <h2>Create Thumbnail using tool</h2>
                     <div className={styles.create_image}>
+                    <img src="Images/Image 11.png" alt="image"/>
+
                         <label className={styles.model_label}>Time</label>
 
                         <input type="text" className={styles.model_input} name="Time" placeholder="00:22:33" />
