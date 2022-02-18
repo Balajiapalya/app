@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Premiumfeatures_monitor from '../components/dialog/Premiumfeatures_monitor';
 import Activities from './activities';
 import Delete_stream from '../components/dialog/Delete_stream';
+import Layout from './layout';
 
 
 
@@ -240,5 +241,12 @@ export default function Stream_statistics({setmonitoring}) {
             {open_activities && <Activities closeactivities={set_activities}/>} 
             {open_delete_stream && <Delete_stream close_delete_stream={set_delete_stream}/>}
         </div>
+    )
+}
+Stream_statistics.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
     )
 }

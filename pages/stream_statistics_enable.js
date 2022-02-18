@@ -1,10 +1,10 @@
 import styles from '../styles/stream_statistics.module.css'
-import Navbar from '../components/common/navbar';
 import Link from 'next/link'
 import { useState } from 'react'
 import Activities from './activities';
 import Disablepremiumfeatures from '../components/dialog/Disable_premiumfeatures';
 import Deletestream from '../components/dialog/Delete_stream';
+import Layout from './layout';
 
 
 
@@ -503,5 +503,13 @@ export default function Stream_statistics_enable() {
             {open_disablestream && <Disablepremiumfeatures close_disable_premiumfeatures={set_disablestream} />}
             {open_delete_stream && <Deletestream close_delete_stream={set_delete_stream} />}
         </div>
+    )
+}
+
+Stream_statistics_enable.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
     )
 }
