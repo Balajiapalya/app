@@ -723,9 +723,13 @@ margin: 10px;
     float: left;
 }
 .tags h4{
-float: left;
-    
+    float: left;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #ededed;
+    margin-right: 5px;
 }
+    
 .tags_metadata_box table{
     
     border-collapse: collapse;

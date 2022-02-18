@@ -287,12 +287,14 @@ margin: 20px;
 .videosdelivery_assets .header h2 span{
     color: #2863eb;
     font-size: 12px;
-    padding-left: 5px;
+    /* padding-left: 5px; */
     font-family:Inter-Medium ;
 }
-.header img{
+.header .icon_stat{
     position: absolute;
-   width: 20px;
-   margin-top: 5px;
-   margin-left:-5px;
+   width: 15px;
+   margin-top: 3px;
+}
+.edit_img{
+    margin-left: 3px;
 }

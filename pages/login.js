@@ -37,7 +37,7 @@ export default function Login() {
               className={`${styles.signup_input} form_control`}
               {...register("Mail_Id", { required: true })}
             />
-            {errors.Mail_Id && <p>This field is required</p>}
+            {errors.Mail_Id && <p className={'validations'}>This field is required</p>}
 
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button>
 

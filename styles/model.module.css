@@ -49,6 +49,9 @@
     font-family:Inter-Regular;
      color: #212b36;
 }
+.validations{
+    margin-left: 20px;
+}
 .model_input{
     width:calc(100% - 40px);
     border-bottom: 2px solid #ddd;
@@ -283,6 +286,12 @@ float: left;
 }
 .accesstoken_model .read, .write{
  margin-left: 20px;
+}
+.write{
+    margin-right: 5px;
+}
+.data{
+    margin-right: 5px;
 }
 .access_token{
     float: left;
