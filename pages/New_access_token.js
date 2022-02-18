@@ -1,6 +1,5 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 
 
 export default function New_Access_token({ closetoken }) {
@@ -55,17 +54,17 @@ export default function New_Access_token({ closetoken }) {
                         value="video"
                         {...register("video", { required: true })} 
                      />
-                     {errors.video && <p className={`${styles.validations} validations`}>This field is required</p>}
                      <label htmlFor="video"> Video</label><br />
                      <input type="checkbox" className={styles.read} name="read" id="read" value="read" {...register("video", { required: false })} />
                      <label htmlFor="read" > Read</label><br />
-                     <input type="checkbox" className={styles.write} name="write" id="write" value="write" />
+                     <input type="checkbox" className={styles.write} name="write" id="write" value="write" {...register("write", { required: false })} />
                      <label htmlFor="write" >Write</label><br />
-                     <input type="checkbox" className={styles.data} name="data" id="data" value="data" />
+                     <input type="checkbox" className={styles.data} name="data" id="data" value="data" {...register("data", { required: false })} />
                      <label htmlFor="data">Data(read-only)</label>
                   </div>
                   <label className={styles.model_label}>Access token name</label>
-                  <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" />
+                  <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
+                  {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
                   <div className={styles.model_btn}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closetoken(false)}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
