@@ -59,12 +59,12 @@ export default function Videos() {
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png'></img>
-                                    <img src='/Images/film-editing.png'></img>
-                                    <img src='/Images/insert-picture-icon.png'></img>
-                                    <img src='/Images/gif-file-format-symbol.png'></img>
-                                    <img src='/Images/closed-caption.png'></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png'></img>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
                             </tr>
                             <tr>
@@ -73,17 +73,17 @@ export default function Videos() {
                                 <td>Asianet-Roku</td>
                                 <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
 
-                                <td><img src='/Images/Image 12.png' /></td>
+                                <td><img src='/Images/Image 12.png' alt="image" /></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png'></img>
-                                    <img src='/Images/film-editing.png'></img>
-                                    <img src='/Images/insert-picture-icon.png'></img>
-                                    <img src='/Images/gif-file-format-symbol.png'></img>
-                                    <img src='/Images/closed-caption.png'></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png'></img>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
                             </tr>
                             <tr>
@@ -98,12 +98,12 @@ export default function Videos() {
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png'></img>
-                                    <img src='/Images/film-editing.png'></img>
-                                    <img src='/Images/insert-picture-icon.png'></img>
-                                    <img src='/Images/gif-file-format-symbol.png'></img>
-                                    <img src='/Images/closed-caption.png'></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png'></img>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png'alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
                             </tr>
                             <tr>
@@ -112,17 +112,17 @@ export default function Videos() {
                                 <td>Asianet-Roku</td>
                                 <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
 
-                                <td><img src='/Images/Image 14.png' /></td>
+                                <td><img src='/Images/Image 14.png' alt="image" /></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png'></img>
-                                    <img src='/Images/film-editing.png'></img>
-                                    <img src='/Images/insert-picture-icon.png'></img>
-                                    <img src='/Images/gif-file-format-symbol.png'></img>
-                                    <img src='/Images/closed-caption.png'></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png'></img>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
                             </tr>
                             <tr>
@@ -131,17 +131,17 @@ export default function Videos() {
                                 <td>Asianet-Roku</td>
                                 <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
 
-                                <td><img src='/Images/Image 15.png' /></td>
+                                <td><img src='/Images/Image 15.png' alt="image"/></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
                                 <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png'></img>
-                                    <img src='/Images/film-editing.png'></img>
-                                    <img src='/Images/insert-picture-icon.png'></img>
-                                    <img src='/Images/gif-file-format-symbol.png'></img>
-                                    <img src='/Images/closed-caption.png'></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png'></img>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
                             </tr>
                         </tbody>

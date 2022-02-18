@@ -65,14 +65,24 @@ export default function Others() {
                 <div className={styles.image_poster}>
                     <h2>image poster</h2>
                     <div className={styles.image_poster_box}>
-
+                        <img src="/Images/Image 19.png" className={styles.image_layer} alt="image" />
+                        <img src="/Images/Image 18.png" className={styles.image_layer1} alt="image"/>
+                        <img src="/Images/Image 18.png" className={styles.image_layer2} alt="image"/>
+                        <div className={styles.upload_image_btn}>
+                            <button className={styles.upload_btn}>upload Image</button>
+                        </div>
                     </div>
                 </div>
 
                 <div className={styles.quickpreview_poster}>
                     <h2>Quick preview poster</h2>
                     <div className={styles.quickpreview_poster_box}>
-
+                    <img src="/Images/Image 19.png" className={styles.image_layer} alt="image" />
+                    <img src="/Images/Image 18.png" className={styles.image_layer1} alt="image"/>
+                        <img src="/Images/Image 18.png" className={styles.image_layer2} alt="image"/>
+                    <div className={styles.upload_image_btn}>
+                            <button className={styles.upload_btn}>Create Gif</button>
+                        </div>
                     </div>
                 </div>
 
@@ -80,11 +90,16 @@ export default function Others() {
                     <h2>controls</h2>
                     <div className={styles.controls_box}>
                         <div className={styles.seek_bar}>
-                      <h4>Seek bar preview</h4>
-                      <p>Enable seek bar preview to generate quick thumbail previews for the entire video duration &#44; which will be shown while using the seek bar on player</p>
-                      </div>
-                      <h4>Offline Download</h4>
-                      <p>Enabling this feature will create a download a &#46; mp4 file of the video which can be used for watching the content offline &#46; </p>
+                        <input type="checkbox" className={styles.input}></input>
+                            <h4>Seek bar preview</h4>
+                           
+                            <p>Enable seek bar preview to generate quick thumbail previews for the entire video duration &#44; which will be shown while using the seek bar on player</p>
+  
+                        </div>
+                        <h4>Offline Download</h4>
+                        <input type="checkbox" className={styles.input}></input>
+
+                        <p>Enabling this feature will create a download a &#46; mp4 file of the video which can be used for watching the content offline &#46; </p>
                     </div>
                 </div>
             </div>

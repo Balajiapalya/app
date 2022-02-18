@@ -1,4 +1,4 @@
-import styles from '../styles/stream_statistics.module.css'
+import styles from '../styles/subtitleconverter.module.css'
 import Navbar from '../components/common/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
