@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Activities from '../pages/activities'
 import Deletestream from '../components/dialog/Delete_stream'
 import Enablepremiumfeatures from '../components/dialog/Premiumfeatures_monitor'
+import Layout from './layout'
 
 
 
@@ -244,5 +245,12 @@ export default function Statistics_unlockpremium() {
             {open_deletestream && <Deletestream close_delete_stream={set_delete_stream}/>}
             {open_premium && <Enablepremiumfeatures closepremium={set_premium}/>}
         </div>
+    )
+}
+Statistics_unlockpremium.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
     )
 }

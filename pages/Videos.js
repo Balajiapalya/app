@@ -1,6 +1,6 @@
 import styles from '../styles/videos.module.css'
 import Link from 'next/link';
-import Navbar from '../components/common/navbar';
+import Layout from './layout';
 
 
 export default function Videos() {
@@ -153,3 +153,11 @@ export default function Videos() {
 
     )
 }
+
+Videos.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
+    )
+  }

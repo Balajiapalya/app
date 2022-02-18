@@ -5,6 +5,8 @@ import { useState } from 'react'
 // import Newstream from './newstream';
 import Navbar from '../components/common/navbar';
 import Stream_unlockfeatures from './stream_unlockfeatures';
+import Layout from './layout';
+
 
 
 
@@ -37,5 +39,13 @@ export default function Stream_monitor() {
                 </div>
             </div>
         </div>
+    )
+}
+
+Stream_monitor.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
     )
 }

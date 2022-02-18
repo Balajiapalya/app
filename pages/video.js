@@ -1,5 +1,5 @@
 import styles from '../styles/videos.module.css'
-import Link from 'next/link'
+import Layout from './layout'
 import Videodelivery_tabs from '../components/homepage/videodelivery_tabs'
 
 export default function Video() {
@@ -29,4 +29,11 @@ export default function Video() {
         </div>
     )
 
+}
+Video.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
+    )
 }
