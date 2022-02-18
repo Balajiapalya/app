@@ -5,7 +5,10 @@ function Videoditor() {
     return (
 
         <div className={styles.video_editor_content}>
-            <div className={styles.video_editor_player}></div>
+            <div className={styles.video_editor_player}>
+            <img src="Images/Image 11.png" alt="image"/>
+            </div>
+            
             <div className={styles.start_end_time}>
                 <div className={styles.start_time}>
                     <h5>Start time*</h5>
