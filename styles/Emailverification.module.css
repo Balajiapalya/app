@@ -14,7 +14,6 @@
 }
 .createaccount{
     width: 850px;
-    
     padding: 35px;
     margin: 0 auto;
     background-color:#f4f6f8;
@@ -72,11 +71,23 @@
 .createaccount_input{
     border-bottom: 2px solid #ddd;
     border-radius: 0;
-    padding: 5px;
+    padding: 8px;
     outline: none;
     color: #000;
     font-family:Inter-Regular ;
     
+}
+.createaccount_input::placeholder {
+ color: #797979;
+ opacity: 1; /* Firefox */
+}
+  
+.createaccount_input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #797979;
+}
+  
+.createaccount_inpu::-ms-input-placeholder { /* Microsoft Edge */
+   color: #797979;
 }
 .createaccount_input:focus{
     border-color: #2863eb;
