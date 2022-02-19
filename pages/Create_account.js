@@ -1,22 +1,11 @@
-// import head from 'next/head'
 import styles from "../styles/Emailverification.module.css";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import Api from "./api/api";
 
 export default function Create_account() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const createaccount_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/users'
-    const onSubmit = data => {
-           
-        // console.log(data);
-        axios.post(createaccount_url,data)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    const onSubmit = createaccount_data => {
+        Api.Create_account_data(createaccount_data)
     }
     return (
         <div className={styles.wapper_email}>
@@ -75,16 +64,12 @@ export default function Create_account() {
                             Privacy policy
                         </a>
                     </p>
-                    {/* <Link href="settings"> */}
-                    {/* <a> */}
                     <button
                         type="submit"
                         className={`${styles.createaccount_btn} btn btn-primary`}
                     >
                         Create an Account
                     </button>
-                    {/* </a> */}
-                    {/* </Link> */}
                 </form>
                 <div className={styles.streamingneeds}>
                     <h3 className={styles.streamingneeds_title}>

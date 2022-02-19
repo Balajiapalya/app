@@ -1,22 +1,12 @@
 import styles from '../styles/Login.module.css';
-import Link from 'next/link';
 import { useForm } from "react-hook-form";
-import axios from 'axios';
-
+import Api from './api/api';
 
 export default function Login() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const login_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/users/signup'
-  const onSubmit = data => {
-
-    // console.log(data);
-    axios.post(login_url, data)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  const onSubmit = login_details => {
+    Api.Sign_up_data(login_details)
   }
   return (
     <div className={styles.wrapper_signup}>

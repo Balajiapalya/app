@@ -2,6 +2,8 @@ import styles from '../styles/subtitleconverter.module.css'
 import Navbar from '../components/common/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
+import Layout from './layout'
+
 
 export default function Subtitle_convertfile() {
 
@@ -29,5 +31,12 @@ export default function Subtitle_convertfile() {
                 </div>
             </div>
         </div>
+    )
+}
+Subtitle_convertfile.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
     )
 }

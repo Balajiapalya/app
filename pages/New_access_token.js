@@ -1,19 +1,13 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form';
+import Api from './api/api';
 
 
 export default function New_Access_token({ closetoken }) {
    const url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/api-access-tokens'
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-   const onSubmit = data => {
-      console.log(data)
-      // axios.post(organisation_name_url, data)
-      //     .then(response => {
-      //         console.log(response)
-      //     })
-      //     .catch(error => {
-      //         console.log(error)
-      //     })
+   const onSubmit = access_data => {
+      Api.Create_aaccess_token_data(access_data)
   }
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
