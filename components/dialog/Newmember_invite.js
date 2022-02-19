@@ -1,19 +1,11 @@
 import styles from '../../styles/model.module.css'
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import Api from '../../pages/api/api';
 
 export default function Newmember_invite({ closeModel }) {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const invite_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/organizations/1/invite'
-  const onSubmit = data => {
-    // console.log(data)
-    axios.post(invite_url,data)
-    .then(response => {
-        console.log(response)
-    })
-    .catch(error => {
-        console.log(error)
-    })
+  const onSubmit = admin_invite_code => {
+    Api.Newmember_invite_data(admin_invite_code)
   }
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>

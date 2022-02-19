@@ -9,7 +9,7 @@ function Navbar() {
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
-                <Link href='settings'><a><h2>Videograph</h2></a></Link>
+                <Link href='/'><a><h2>Videograph</h2></a></Link>
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>

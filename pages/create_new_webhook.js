@@ -1,20 +1,13 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import Api from './api/api';
 
 
 export default function Create_new_webhook({ closewebhook }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const webhook_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/webhooks'
-    const onSubmit = data => {
-        // console.log(data)
-        axios.post(webhook_url,data)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    const onSubmit = webhook_data => {
+       Api.Create_webhook_data(webhook_data) 
     }
     return (
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
