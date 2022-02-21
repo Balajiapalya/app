@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 export default function Edit_organization_name({ closeorganization }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const organisation_name_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/organizations'
+    const organisation_name_url = 'http://13.235.3.29:8080/profile/services/api/v1/organizations'
     const onSubmit = data => {
         console.log(data)
         axios.post(organisation_name_url, data)
@@ -28,10 +28,10 @@ export default function Edit_organization_name({ closeorganization }) {
                     <input
                         type="text"
                         className={`${styles.model_input} form_control`}
-                        name="Orgnization Name"
-                        {...register("Organizationname", { required: true })}
+                        name="name"
+                        {...register("name", { required: true })}
                     />
-                    {errors.Organizationname && <p className={`${styles.validations} validations`}>This field is required</p>}
+                    {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                     <div className={styles.model_btn}>
                         <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeorganization(false)}>Cancel</button></a>
                         <a> <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Save Changes</button></a>

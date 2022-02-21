@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { memo } from "react";
 
 function Navbar() {
-    // console.log("hii");
     const [opendropdown, setdropdown] = useState(false);
     return (
         <div className={styles.container}>

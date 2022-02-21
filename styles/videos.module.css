@@ -9,10 +9,22 @@
     padding-left: 205px;
 }
 .header_development{
-    padding-left: 6%;
+    padding-left: 6%;;
 }
 .content_development{
     padding: 20px 5px 20px 0px ;
+}
+.content_development .store_icon_png{
+    padding-right: 10px;
+    position: relative;
+    top: 3.2px
+}
+.content_development p{
+    position: relative;
+    bottom: 40px;
+    left:30px;
+    margin: 0;
+    width: 90%;
 }
 .videos_delivery{
     padding-left: 205px;

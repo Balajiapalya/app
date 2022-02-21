@@ -24,9 +24,9 @@ export default function Login() {
               placeholder="Enter your email address"
               name="login"
               className={`${styles.signup_input} form_control`}
-              {...register("Mail_Id", { required: true })}
+              {...register("email", { required: true })}
             />
-            {errors.Mail_Id && <p className={'validations'}>This field is required</p>}
+            {errors.email && <p className={'validations'}>This field is required</p>}
 
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button>
 
