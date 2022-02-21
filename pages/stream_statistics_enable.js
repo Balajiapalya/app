@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Activities from './activities';
 import Disablepremiumfeatures from '../components/dialog/Disable_premiumfeatures';
 import Deletestream from '../components/dialog/Delete_stream';
-import Layout from './layout';
+import Layout from '../components/common/layout';
 
 
 

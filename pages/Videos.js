@@ -1,16 +1,27 @@
 import styles from '../styles/videos.module.css'
 import Link from 'next/link';
-import Layout from './layout';
+import Layout from '../components/common/layout';
 
 
 export default function Videos() {
 
     return (
         <div className={styles.container}>
-            {/* <div>
-                <Navbar />
-            </div> */}
+            <div className={styles.background_develepment}>
+                <div className={styles.header_development}>
+                    <div className={styles.content_development}>
+                        <img src='/Images/Store icon.png'/>
+                        <div>
+                        <span >YuppTV</span>
+                        <br/>
+                        <span>Development</span>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>  
             <div className={styles.videos}>
+                
                 <div className={styles.videos_delivery}>
                     <div className={styles.header}>
                         <h2>
@@ -101,7 +112,7 @@ export default function Videos() {
                                     <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
                                     <img src='/Images/film-editing.png' alt="image"></img>
                                     <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                                    <img src='/Images/gif-file-format-symbol.png'alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
                                     <img src='/Images/closed-caption.png' alt="image"></img>
                                     <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
@@ -131,7 +142,7 @@ export default function Videos() {
                                 <td>Asianet-Roku</td>
                                 <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
 
-                                <td><img src='/Images/Image 15.png' alt="image"/></td>
+                                <td><img src='/Images/Image 15.png' alt="image" /></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
@@ -156,8 +167,8 @@ export default function Videos() {
 
 Videos.getLayout = function getLayout(page) {
     return (
-      <Layout>
-        {page}
-      </Layout>
+        <Layout>
+            {page}
+        </Layout>
     )
-  }
+}

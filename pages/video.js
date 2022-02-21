@@ -1,5 +1,5 @@
 import styles from '../styles/videos.module.css'
-import Layout from './layout'
+import Layout from '../components/common/layout'
 import Videodelivery_tabs from '../components/homepage/videodelivery_tabs'
 
 export default function Video() {
