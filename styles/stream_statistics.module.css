@@ -196,6 +196,9 @@
     margin-bottom: 20px;
     border-bottom:1px solid #d5dbe2;
 }
+.padding{
+    padding-left: 205px;
+}
 .Utime_check{
     width: 100%;
     float: left;
