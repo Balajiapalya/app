@@ -1,23 +1,26 @@
 import axios from "axios";
 // let LINK = process.env.APIURL;
-const BASE_URL = () => 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io';
+const BASE_URL = () => 'http://13.235.3.29:8080';
 
 
 export const Sign_up = () => {
     return `${BASE_URL()}/profile/services/api/v1/users/signup`;
-}
+};
 export const Create_user_account = () => {
     return `${BASE_URL()}/profile/services/api/v1/users`;
 };
 export const Newmember_invite = () => {
-    return `${BASE_URL()}/profile/services/api/v1/organizations/1/invite`
-}
+    return `${BASE_URL()}/profile/services/api/v1/organizations/1/invite`;
+};
 export const Create_webhook = () => {
     return `${BASE_URL()}/profile/services/api/v1/webhooks`;
 };
 export const Create_aaccess_token = () => {
-    return `${BASE_URL()}/profile/services/api/v1/api-access-tokens`
-}
+    return `${BASE_URL()}/profile/services/api/v1/api-access-tokens`;
+};
+export const Create_signin_keys = () =>{
+    return `${BASE_URL()}/profile/services/api/v1/signingkeys`;
+};
 
 const Api = {
     Sign_up_data: (login_details) =>
@@ -80,7 +83,19 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }), //this is called in new_access_token
-
+    Create_signin_keys_data: (signin_key) => {
+        axios({
+            method:'POST',
+            url:Create_signin_keys(),
+            data: signin_key,
+        })
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(error =>{
+            console.log(error)
+        })//this is called in Create_signin_keys
+    }
 }
 
 

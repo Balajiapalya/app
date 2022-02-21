@@ -4,7 +4,6 @@ import Api from './api/api';
 
 export default function Login() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const login_url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/users/signup'
   const onSubmit = login_details => {
     Api.Sign_up_data(login_details)
   }

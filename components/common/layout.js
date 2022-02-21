@@ -1,5 +1,5 @@
 
-import Navbar from '../components/common/navbar';
+import Navbar from './navbar';
 
 
 const Layout = ({ children }) => {

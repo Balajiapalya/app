@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Activities from '../pages/activities'
 import Deletestream from '../components/dialog/Delete_stream'
 import Enablepremiumfeatures from '../components/dialog/Premiumfeatures_monitor'
-import Layout from './layout'
+import Layout from '../components/common/layout'
 
 
 

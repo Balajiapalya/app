@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Settings from './settings';
-import Layout from './layout';
+import Layout from '../components/common/layout';
 
 export default function Home() {
   return (

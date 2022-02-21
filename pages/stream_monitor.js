@@ -5,7 +5,7 @@ import { useState } from 'react'
 // import Newstream from './newstream';
 import Navbar from '../components/common/navbar';
 import Stream_unlockfeatures from './stream_unlockfeatures';
-import Layout from './layout';
+import Layout from '../components/common/layout';
 
 
 
