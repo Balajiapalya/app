@@ -10,18 +10,13 @@ export default function Videos() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
-                        <img src='/Images/Store icon.png'/>
-                        <div>
-                        <span >YuppTV</span>
-                        <br/>
-                        <span>Development</span>
-                        </div>
-                       
+                        <img className={styles.store_icon_png} src='/Images/Store icon.png' />
+                        <p>Yupp tv <br /> Development <img src='/Images/Group 1817.png' alt='img'/></p>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div className={styles.videos}>
-                
+
                 <div className={styles.videos_delivery}>
                     <div className={styles.header}>
                         <h2>
@@ -104,7 +99,7 @@ export default function Videos() {
                                 <td>Asianet-Roku</td>
                                 <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
 
-                                <td><img src='/Images/Image 13.png' alt="image"/></td>
+                                <td><img src='/Images/Image 13.png' alt="image" /></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>

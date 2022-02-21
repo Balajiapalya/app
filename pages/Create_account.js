@@ -18,19 +18,19 @@ export default function Create_account() {
                     <input
                         type="text"
                         placeholder="Enter your first name"
-                        name="First Name"
+                        name="firstName"
                         className={`${styles.createaccount_input} form_control`}
-                        {...register("firstname", { required: true })}
+                        {...register("firstName", { required: true })}
                     />
-                    {errors.firstname && <p className={'validations'}>This field is required</p>}
+                    {errors.firstName && <p className={'validations'}>This field is required</p>}
 
                     <label className={styles.createaccount_label}>Last Name</label>
                     <input
                         type="text"
                         placeholder="Enter your last name"
-                        name="Last Name"
+                        name="lastName"
                         className={`${styles.createaccount_input} form_control`}
-                        {...register("lastname", { required: true })}
+                        {...register("lastName", { required: true })}
                     />
                     {errors.lastname && <p className={'validations'}>This field is required</p>}
                     <label className={styles.createaccount_label}>
@@ -39,11 +39,11 @@ export default function Create_account() {
                     <input
                         type="text"
                         placeholder="Enter your organisation name"
-                        name="organisation name"
+                        name="organizationName"
                         className={`${styles.createaccount_input} form_control`}
-                        {...register("organisationname", {required: true})}
+                        {...register("organizationName", {required: true})}
                     />
-                    {errors.organisationname && <p className={'validations'}>This field is required</p>}
+                    {errors.organizationName && <p className={'validations'}>This field is required</p>}
                     <label className={styles.createaccount_label}>Password</label>
                     <input
                         type="password"
@@ -53,6 +53,15 @@ export default function Create_account() {
                         {...register("password", {required: true})}
                     />
                     {errors.password && <p className={'validations'}>This field is required</p>}
+                    <label className={styles.createaccount_label}>invite Code</label>
+                    <input
+                        type="text"
+                        placeholder="code"
+                        name="inviteCode"
+                        className={`${styles.createaccount_input} form_control`}
+                        {...register("inviteCode", {required: true})}
+                    />
+                    {errors.inviteCode && <p className={'validations'}>This field is required</p>}
                     <p className={styles.condition}>
                         {" "}
                         By creating an account you agree to our{" "}
