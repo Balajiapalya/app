@@ -104,7 +104,7 @@ export default function Videos() {
                                 <td>Asianet-Roku</td>
                                 <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
 
-                                <td><img src='/Images/Image 13.png' /></td>
+                                <td><img src='/Images/Image 13.png' alt="image"/></td>
                                 <td>30m20s</td>
                                 <td>HD</td>
                                 <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
