@@ -15,7 +15,7 @@
     font-family: Inter-Medium;
     font-size: 14px;
     font-weight: 600;
-    word-break: break-all;
+    /* word-break: break-all; */
     font-size: 14px;
 }
 .videos_table table thead tr th input {
@@ -380,6 +380,7 @@ margin-top: 20px;
 .playback_content img{
     vertical-align: middle;
     width: 100%;
+    height: 280px;
 }
 .video_urls{
     width: 100%;

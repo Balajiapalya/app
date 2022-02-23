@@ -7,8 +7,13 @@ export default function Edit_organization_name({ closeorganization }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const organisation_name_url = 'http://13.235.3.29:8080/profile/services/api/v1/organizations'
     const onSubmit = data => {
-        console.log(data)
-        axios.post(organisation_name_url, data)
+        axios({
+            method:'POST',
+            url:organisation_name_url,
+            // headers:{
+            //     "Autorization":"Bearer 5k5lim83b0mptiliu6",
+            // }
+        })
             .then(response => {
                 console.log(response)
             })

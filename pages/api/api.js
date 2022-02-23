@@ -9,6 +9,9 @@ export const Sign_up = () => {
 export const Create_user_account = () => {
     return `${BASE_URL()}/profile/services/api/v1/users`;
 };
+export const Edit_organisation_name = () => {
+    return `${BASE_URL}/profile/services/api/v1/organizations`;
+};
 export const Newmember_invite = () => {
     return `${BASE_URL()}/profile/services/api/v1/organizations/1/invite`;
 };
@@ -47,6 +50,21 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Create account
+    Edit_organisation_name_data: (organization_data) =>
+    axios({
+        method: 'POST',
+        url: Edit_organisation_name(),
+        data: organization_data,
+        // headers: {
+            
+        // }
+    })
+        .then(res =>{
+            console.log(res)
+        })
+        .catch(error =>{
+            console.log(error)
+        }),
     Newmember_invite_data: (admin_invite_code) =>
         axios({
             method: 'POST',
