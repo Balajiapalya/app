@@ -1,0 +1,152 @@
+.wapper_email{
+    background-color: #f4f6f8;
+    width: 100%;
+    display: table;
+    height: 100vh;
+  
+    
+}
+.logo_title{
+ 
+    margin-bottom: 1rem;
+    margin-top: 100px;
+    text-align: center;
+}
+.createaccount{
+    width: 850px;
+    padding: 35px;
+    margin: 0 auto;
+    background-color:#f4f6f8;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px 0px #ddd;  
+    border-radius: 6px;
+    margin-top: 50px;  
+
+}
+.streamingneeds{
+  
+  width:300px;
+  margin-left: -4px;
+  
+}
+.streamingneeds_title{
+   
+    font-family:Inter-Medium;
+    font-size: 22px;
+
+}
+.streamingneeds_main{
+    font-family:Inter-Regular;
+    color: #4a5057;
+    font-size: 16px;
+   
+}
+.streamingneeds_list{
+    margin-left: -26px;
+    color: #4a5057;
+    font-family:Inter-Regular;
+    font-size: 16px;
+
+}
+.listdata{
+    margin-top: 5px;
+    padding: 10px;
+    
+
+}
+.createaccount_form{
+    margin-left: 25px;
+    float: right;
+    
+}
+.createaccount_label{
+    float:left;
+    margin-bottom: 2px;
+    margin-top: 10px;
+  font-family: Inter-Regular;
+  font-size: 16px;
+  color: #212b36;
+
+}
+.createaccount_input{
+    border-bottom: 2px solid #ddd;
+    border-radius: 0;
+    padding: 8px;
+    outline: none;
+    color: #000;
+    font-family:Inter-Regular ;
+    
+}
+.createaccount_input::placeholder {
+ color: #797979;
+ opacity: 1; /* Firefox */
+}
+  
+.createaccount_input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #797979;
+}
+  
+.createaccount_inpu::-ms-input-placeholder { /* Microsoft Edge */
+   color: #797979;
+}
+.createaccount_input:focus{
+    border-color: #2863eb;
+}
+.createaccount_input::placeholder {
+    color: #56606e;
+}
+.createaccount_input::-ms-input-placeholder{
+    color: #56606e;
+}
+.condition{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #4a5057;
+    font-family: Inter-Regular;
+   
+}
+.createaccount_link{
+    text-decoration: underline;
+    font-size: 14px; 
+    font-family: Inter-Regular;
+}
+.createaccount_btn{
+   width: 100%;
+   font-size: 16px;
+   font-family:Inter-Medium;
+   color: #fff;
+   
+}
+@media (min-width: 320px) and (max-width:500px) {
+  .wapper_email{
+      width: 100%;
+      height: 100vh;
+  }
+}
+@media screen and (min-width:520px) and (max-width: 767px) {
+    .wapper_email{
+        height: 154px;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .wapper_email{
+        height: 111vh;
+    }
+    .title{
+        margin-top: 24vh;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+ 
+}
+
+@media (min-width: 1200px)  {
+     .wapper_email{
+         height: 100vh;
+     }
+    .title{
+     margin-top: 68px;
+ }
+}

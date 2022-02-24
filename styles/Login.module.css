@@ -1,0 +1,78 @@
+.wrapper_signup{
+    background-color: #f1f1ff;
+    width: 100%;
+    float: left;
+    height: 100vh;
+    display: table;
+}
+.main_signup{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+}
+.logo_title{
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.signup_title{
+    margin-bottom: 3rem;
+}
+.signup_area{
+    width: 350px;
+    padding: 2.2rem;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px 0px #ddd;  
+    border-radius: 6px;
+}
+.signup_input{
+    border: none;
+    border-bottom: 2px solid #ddd;
+    border-radius: 0;
+    padding: 0.3rem;
+    outline: none;
+    color: #000;
+}
+.signup_input:focus{
+    border-color: #007bff;
+}
+.signup_input::placeholder {
+    color: #999;
+}
+.signup_input::-ms-input-placeholder{
+    color: #999;
+}
+.signup_btn{
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom:3.5rem;
+}
+.already_account{
+    font-size: 1rem;
+    color: #999;
+}
+.signin_link{
+    color: #007bff;
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .signup_btn{
+        background-color: #007bff;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+@media (min-width: 1200px) and (max-width: 1280px) {
+
+}
