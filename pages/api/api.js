@@ -1,13 +1,15 @@
 import axios from "axios";
-// let LINK = process.env.APIURL;
-const BASE_URL = () => 'http://13.235.3.29:8080';
-
+let LINK = process.env.APIURL;
+const BASE_URL = () => LINK;
 
 export const Sign_up = () => {
     return `${BASE_URL()}/profile/services/api/v1/users/signup`;
 };
 export const Create_user_account = () => {
     return `${BASE_URL()}/profile/services/api/v1/users`;
+};
+export const Edit_organisation_name = () => {
+    return `${BASE_URL}/profile/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
     return `${BASE_URL()}/profile/services/api/v1/organizations/1/invite`;
@@ -30,7 +32,9 @@ const Api = {
             data: login_details,
         })
             .then(res => {
-                console.log(res)
+                console.log(res.data)
+                localStorage.setItem('auth-key',JSON.stringify(res.data.data.inviteCode))
+                localStorage.getItem('auth-key')
             })
             .catch(error => {
                 console.log(error)
@@ -47,6 +51,21 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Create account
+    Edit_organisation_name_data: (organization_data) =>
+    axios({
+        method: 'POST',
+        url: Edit_organisation_name(),
+        data: organization_data,
+        // headers: {
+            
+        // }
+    })
+        .then(res =>{
+            console.log(res)
+        })
+        .catch(error =>{
+            console.log(error)
+        }),
     Newmember_invite_data: (admin_invite_code) =>
         axios({
             method: 'POST',

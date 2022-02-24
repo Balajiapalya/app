@@ -745,6 +745,9 @@
     background-color:#e8e8e8;
     border-radius: 50%;
 }
+.background{
+    width: fit-content;
+}
 .background img{
     padding: 5px;
 }

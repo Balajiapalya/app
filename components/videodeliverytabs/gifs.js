@@ -12,7 +12,7 @@ export default function Gifs() {
                 <div className={styles.git_video}>
                     <h2>Create GIF using Video Editor</h2>
                     <div className={styles.create_image}>
-                        <img src="Images/Image 11.png" alt="image"/>
+                        <img className={styles.editor_img} src="Images/Image 11.png" alt="image" />
                         <div className={styles.time}>
                             <div className={styles.time_start}>
                                 <label className={styles.model_label}>Start Time</label>
@@ -36,9 +36,11 @@ export default function Gifs() {
                             <button className={styles.btn}>create GIF</button>
                         </div>
                         <h4>Download image from below URL</h4>
-                        <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7</p>
+                        <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.copy_img} src='/Images/Icon ionic-ios-copy.png' /></span></p>
+
 
                     </div>
+
                 </div>
 
 
@@ -58,14 +60,11 @@ export default function Gifs() {
                                 <button className={styles.model_btn}>Go</button>
                             </div>
                             <div className={styles.code}>
-
-                                {
-
-                                }
                             </div>
                             <button className={styles.btn}>Run Request</button>
                             <h4>Download image from below URL</h4>
-                            <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7</p>
+                            <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.copy_img} src='/Images/Icon ionic-ios-copy.png' /></span></p>
+
                         </div>
                     </div>
                 </div>

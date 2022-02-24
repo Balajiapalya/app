@@ -16,24 +16,25 @@ export default function Newmember_invite({ closeModel }) {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} >
           <label className={styles.model_label}>Email Address</label>
-          <input 
+          <input
             type="email"
             className={`${styles.model_input} form_control`}
             name="email"
-            {...register("Email_address", { required: true })}
+            {...register("email", { required: true })}
           />
-          {errors.Email_address && <p className={`${styles.validations} validations`}>This field is required</p>}
+          {errors.email && <p className={`${styles.validations} validations`}>This field is required</p>}
 
           <div>
             <label className={styles.model_label}>Role</label>
-            <select name="roles" 
-            className={styles.model_selection}
-            {...register("roles", { required: true })}
+            <select
+              name="roleId"
+              className={styles.model_selection}
+              {...register("roleId", { required: true })}
             >
-              <option value="1">1</option>
-              <option value="admin">admin</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option value={1} >1</option>
+              <option value={2}>admin</option>
+              <option value={3}>Developer </option>
+              <option value={4}>4</option>
             </select>
           </div>
           <div className={styles.model_btn}>
