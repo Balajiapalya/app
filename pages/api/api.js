@@ -1,7 +1,6 @@
 import axios from "axios";
-// let LINK = process.env.APIURL;
-const BASE_URL = () => 'http://13.235.3.29:8080';
-
+let LINK = process.env.APIURL;
+const BASE_URL = () => LINK;
 
 export const Sign_up = () => {
     return `${BASE_URL()}/profile/services/api/v1/users/signup`;
@@ -33,7 +32,9 @@ const Api = {
             data: login_details,
         })
             .then(res => {
-                console.log(res)
+                console.log(res.data)
+                localStorage.setItem('auth-key',JSON.stringify(res.data.data.inviteCode))
+                localStorage.getItem('auth-key')
             })
             .catch(error => {
                 console.log(error)

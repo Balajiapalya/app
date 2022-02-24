@@ -32,8 +32,9 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
+                                        <img src="/Images/download.png" alt="download"/>    
                                         <img src="/Images/Icon material-delete.png" alt="delete"/>
-                                        <img src="/Images/download.png" alt="download"/>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -42,8 +43,8 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
+                                    <img src="/Images/download.png" alt="download"/>    
                                     <img src="/Images/Icon material-delete.png" alt="delete"/>
-                                        <img src="/Images/download.png" alt="download"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -52,8 +53,8 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
+                                    <img src="/Images/download.png" alt="download"/>    
                                     <img src="/Images/Icon material-delete.png" alt="delete"/>
-                                        <img src="/Images/download.png" alt="download"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -62,8 +63,8 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
+                                    <img src="/Images/download.png" alt="download"/>    
                                     <img src="/Images/Icon material-delete.png" alt="delete"/>
-                                        <img src="/Images/download.png" alt="download"/>
                                     </td>
                                 </tr>
                             </tbody>
@@ -82,6 +83,8 @@ export default function Subtitles() {
                             </div>
 
                         </div>
+                        <div className={styles.or}></div>
+                        <div className={styles.or_text}><p >[or]</p></div>
                         <div className={styles.post}>
                             <h4>Post using Video URL:</h4>
                             <p>Post https://api.videograph.com/vodeos/v1/assets</p>
