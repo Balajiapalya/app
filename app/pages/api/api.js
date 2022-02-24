@@ -1,27 +1,27 @@
 import axios from "axios";
-let LINK = process.env.APIURL;
-const BASE_URL = () => LINK;
+let LINK = process.env.VG_PROFILE_SERVICE_API;
+const PROFILE_BASE_URL = () => LINK;
 
 export const Sign_up = () => {
-    return `${BASE_URL()}/profile/services/api/v1/users/signup`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/signup`;
 };
 export const Create_user_account = () => {
-    return `${BASE_URL()}/profile/services/api/v1/users`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/users`;
 };
 export const Edit_organisation_name = () => {
-    return `${BASE_URL}/profile/services/api/v1/organizations`;
+    return `${PROFILE_BASE_URL}/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
-    return `${BASE_URL()}/profile/services/api/v1/organizations/1/invite`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/1/invite`;
 };
 export const Create_webhook = () => {
-    return `${BASE_URL()}/profile/services/api/v1/webhooks`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
 export const Create_aaccess_token = () => {
-    return `${BASE_URL()}/profile/services/api/v1/api-access-tokens`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
 };
 export const Create_signin_keys = () =>{
-    return `${BASE_URL()}/profile/services/api/v1/signingkeys`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
 
 const Api = {
