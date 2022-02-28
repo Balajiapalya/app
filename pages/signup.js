@@ -1,13 +1,25 @@
 import styles from '../styles/Login.module.css';
 import { useForm } from "react-hook-form";
 import Api from './api/api';
+import { useRouter } from 'next/router';
 
 export default function Login() {
+  const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = login_details => {
     Api.Sign_up_data(login_details)
-  }
+    .then(
+      router.push({
+        pathname:'/register'
+      })
+    )
+    
+  };
+
+  
+  
   return (
+    
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
         <h1 className={styles.logo_title}>
@@ -20,6 +32,7 @@ export default function Login() {
           </h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
+              autoComplete='current-password'
               type="email"
               placeholder="Enter your email address"
               name="login"
@@ -28,7 +41,7 @@ export default function Login() {
             />
             {errors.email && <p className={'validations'}>This field is required</p>}
 
-            <a href={'Create_account'}><button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button></a>
+            <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button>
 
 
           </form>
