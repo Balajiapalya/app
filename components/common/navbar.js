@@ -15,7 +15,7 @@ function Navbar() {
                             <a href="#"><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a>
                         </li>
                         <li>
-                            <Link href="Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                            <Link href="/Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>

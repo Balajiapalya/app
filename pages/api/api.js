@@ -23,8 +23,29 @@ export const Create_aaccess_token = () => {
 export const Create_signin_keys = () =>{
     return `${BASE_URL()}/profile/services/api/v1/signingkeys`;
 };
+export const get_roles = () =>{
+    return `${BASE_URL()}/services/api/v1/organizations/1/roles`
+}
+
+export const authkey = ( )=>{
+    return (
+        localStorage.getItem('auth-key')
+    )
+}
 
 const Api = {
+    Get_roles_data: (role,id)=>
+        axios({
+            method:'GET',
+            url:get_roles(role,id),
+        })
+            .then(res =>{
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error)
+            }),   
+            
     Sign_up_data: (login_details) =>
         axios({
             method: 'POST',
@@ -56,9 +77,6 @@ const Api = {
         method: 'POST',
         url: Edit_organisation_name(),
         data: organization_data,
-        // headers: {
-            
-        // }
     })
         .then(res =>{
             console.log(res)
@@ -102,7 +120,7 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }), //this is called in new_access_token
-    Create_signin_keys_data: (signin_key) => {
+    Create_signin_keys_data: (signin_key) => 
         axios({
             method:'POST',
             url:Create_signin_keys(),
@@ -113,8 +131,8 @@ const Api = {
         })
         .catch(error =>{
             console.log(error)
-        })//this is called in Create_signin_keys
-    }
+        }),//this is called in Create_signin_keys
+    
 }
 
 

@@ -1,11 +1,11 @@
-import React, { Fragment, useState}  from "react";
+import React, { Fragment, useState } from "react";
 import Edit_payment_detials from "../../../pages/Edit_payment_detials";
 import Payment_history from "../../dialog/payment_history";
 import styles from '../../../styles/billings.module.css';
 
 function Billing() {
-    const[openpaymentdetails,setopenpaymentdetails]=useState(false);
-    const[openpaymenthistory,setopenpaymenthistory]=useState(false);
+    const [openpaymentdetails, setopenpaymentdetails] = useState(false);
+    const [openpaymenthistory, setopenpaymenthistory] = useState(false);
     return (
         <Fragment>
             <div className={styles.container1}>
@@ -13,9 +13,9 @@ function Billing() {
                     <p>
                         Manage Billing for both Video and Data plans here.Feel free to <a href="#">contact us</a> for any queries related billing.
                     </p>
-                    <a onClick={()=>setopenpaymentdetails(true)}><button className="btn">Edit Payment details</button></a>
+                    <a onClick={() => setopenpaymentdetails(true)}><button className="btn">Edit Payment details</button></a>
                 </div>
-                {openpaymentdetails && <Edit_payment_detials closepaymentdetails={setopenpaymentdetails}/>}
+                {openpaymentdetails && <Edit_payment_detials closepaymentdetails={setopenpaymentdetails} />}
                 <div className={styles.payment}>
                     <h4>Next payment:Nov 08,2021</h4>
                 </div>
@@ -66,54 +66,54 @@ function Billing() {
                         </table>
                     </div>
                 </div>
-                {openpaymenthistory && <Payment_history closepaymenthistory={setopenpaymenthistory}/>}
+                {openpaymenthistory && <Payment_history closepaymenthistory={setopenpaymenthistory} />}
                 <div className={styles.tables_right}>
                     <div className={styles.payment_details}>
                         <span className={styles.payment_details_heading}>Account Payment Details</span>
 
-                        <span className={styles.view_payment_history}> <a onClick={()=>setopenpaymenthistory(true)}>Veiw Payment history</a></span>
-                        
+                        <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+
                         <table>
                             <tbody>
-                                
-                                    <tr>
-                                        <td>Card</td>
-                                        <td className={styles.text_align}><img src="Images/Icon awesome-cc-visa.png" alt="icon"></img>4845</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Expiration Date</td>
-                                        <td className={styles.text_align} >01/2027</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email</td>
-                                        <td className={styles.text_align}>anil@yupptv.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Zip code</td>
-                                        <td className={styles.text_align}>30022</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Billing Address</td>
-                                        <td className={styles.text_align}>11175 cecrioro drive in</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Billing Address 2</td>
-                                        <td className={styles.text_align}>suit 100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>City</td>
-                                        <td className={styles.text_align}>Alpharetta</td>
-                                    </tr>
-                                    <tr>
-                                        <td>State</td>
-                                        <td className={styles.text_align}>Georgia</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Country</td>
-                                        <td className={styles.text_align}>United States</td>
-                                    </tr>
-                                </tbody>
-                            
+
+                                <tr>
+                                    <td>Card</td>
+                                    <td className={styles.text_align}><img src="Images/Icon awesome-cc-visa.png" alt="icon"></img>4845</td>
+                                </tr>
+                                <tr>
+                                    <td>Expiration Date</td>
+                                    <td className={styles.text_align} >01/2027</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td className={styles.text_align}>anil@yupptv.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Zip code</td>
+                                    <td className={styles.text_align}>30022</td>
+                                </tr>
+                                <tr>
+                                    <td>Billing Address</td>
+                                    <td className={styles.text_align}>11175 cecrioro drive in</td>
+                                </tr>
+                                <tr>
+                                    <td>Billing Address 2</td>
+                                    <td className={styles.text_align}>suit 100</td>
+                                </tr>
+                                <tr>
+                                    <td>City</td>
+                                    <td className={styles.text_align}>Alpharetta</td>
+                                </tr>
+                                <tr>
+                                    <td>State</td>
+                                    <td className={styles.text_align}>Georgia</td>
+                                </tr>
+                                <tr>
+                                    <td>Country</td>
+                                    <td className={styles.text_align}>United States</td>
+                                </tr>
+                            </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -123,33 +123,32 @@ function Billing() {
                     <span> <a href="#">change Plan</a></span>
                     <table>
                         <tbody>
-                            <tbody>
-                                <tr>
-                                    <td>Subscription Plan</td>
-                                    <td>Starter(monthly)</td>
-                                    <td>($ 0.00) paid</td>
-                                </tr>
-                                <tr>
-                                    <td>Total Views</td>
-                                    <td>0 Views</td>
-                                    <td>at 0.05</td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.views}>Views from MUX Video(free)</td>
-                                    <td>0 views</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td  className={styles.views}>Views covered by plan</td>
-                                    <td>0 views</td>
-                                    <td>at 0.0012</td>
-                                </tr>
-                                <tr className={styles.current_video_cost}>
-                                    <td >Current Video Cost</td>
-                                    <td ></td>
-                                    <td>$ 0.00 </td>
-                                </tr>
-                            </tbody>
+
+                            <tr>
+                                <td>Subscription Plan</td>
+                                <td>Starter(monthly)</td>
+                                <td>($ 0.00) paid</td>
+                            </tr>
+                            <tr>
+                                <td>Total Views</td>
+                                <td>0 Views</td>
+                                <td>at 0.05</td>
+                            </tr>
+                            <tr>
+                                <td className={styles.views}>Views from MUX Video(free)</td>
+                                <td>0 views</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td className={styles.views}>Views covered by plan</td>
+                                <td>0 views</td>
+                                <td>at 0.0012</td>
+                            </tr>
+                            <tr className={styles.current_video_cost}>
+                                <td >Current Video Cost</td>
+                                <td ></td>
+                                <td>$ 0.00 </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -44,7 +44,7 @@ export default function Thumbnails() {
                         <div className={styles.post}>
 
                             <div className={styles.language_select}>
-                                <button className={styles.model_btn}>Python</button>
+                                <button className={`${styles.model_btn} ${styles.active}`}>Python</button>
                                 <button className={styles.model_btn}>Node</button>
                                 <button className={styles.model_btn}>Php</button>
                                 <button className={styles.model_btn}>Go</button>
