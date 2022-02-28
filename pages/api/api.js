@@ -65,7 +65,7 @@ const Api = {
         })
             .then(res => {
                 console.log(res)
-                localStorage.setItem('Jwt-token',JSON.stringify(res.data.data.token))
+                localStorage.setItem('Jwt-token',(res.data.data.token))
                 localStorage.getItem('jwt-token')
             })
             .catch(error => {
