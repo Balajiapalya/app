@@ -1,11 +1,18 @@
 import styles from "../styles/Emailverification.module.css";
 import { useForm } from "react-hook-form";
 import Api from "./api/api";
+import { useRouter } from "next/router";
 
 export default function Create_account() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const reg = useRouter();
     const onSubmit = createaccount_data => {
         Api.Create_account_data(createaccount_data)
+        .then(
+            reg.push({
+                pathname:'/'
+            })
+        )
     }
     return (
         <div className={styles.wapper_email}>
@@ -17,16 +24,19 @@ export default function Create_account() {
                     <label className={styles.createaccount_label}>First Name</label>
                     <input
                         type="text"
+                        autoComplete="current-password"
                         placeholder="Enter your first name"
                         name="firstName"
                         className={`${styles.createaccount_input} form_control`}
                         {...register("firstName", { required: true })}
+                        
                     />
                     {errors.firstName && <p className={'validations'}>This field is required</p>}
 
                     <label className={styles.createaccount_label}>Last Name</label>
                     <input
                         type="text"
+                        autoComplete="current-password"
                         placeholder="Enter your last name"
                         name="lastName"
                         className={`${styles.createaccount_input} form_control`}
@@ -38,6 +48,7 @@ export default function Create_account() {
                     </label>
                     <input
                         type="text"
+                        autoComplete="current-password"
                         placeholder="Enter your organisation name"
                         name="organizationName"
                         className={`${styles.createaccount_input} form_control`}
@@ -47,6 +58,7 @@ export default function Create_account() {
                     <label className={styles.createaccount_label}>Password</label>
                     <input
                         type="password"
+                        autoComplete="current-password"
                         placeholder="Must have atleast 8 characters"
                         name="password"
                         className={`${styles.createaccount_input} form_control`}
@@ -56,6 +68,7 @@ export default function Create_account() {
                     <label className={styles.createaccount_label}>invite Code</label>
                     <input
                         type="text"
+                        autoComplete="current-password"
                         placeholder="code"
                         name="inviteCode"
                         className={`${styles.createaccount_input} form_control`}

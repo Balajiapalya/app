@@ -28,11 +28,7 @@ export const get_roles = () =>{
     return `${BASE_URL()}/services/api/v1/organizations/1/roles`
 }
 
-export const authkey = ( )=>{
-    return (
-        localStorage.getItem('auth-key')
-    )
-}
+
 
 const Api = {
     Get_roles_data: (role,id)=>
@@ -55,8 +51,8 @@ const Api = {
         })
             .then(res => {
                 console.log(res.data)
-                localStorage.setItem('auth-key',JSON.stringify(res.data.data.inviteCode))
-                localStorage.getItem('auth-key')
+                localStorage.setItem('invite-code',(res.data.data.inviteCode))
+                localStorage.getItem('invite-code')
             })
             .catch(error => {
                 console.log(error)
@@ -69,7 +65,7 @@ const Api = {
         })
             .then(res => {
                 console.log(res)
-                localStorage.setItem('Jwt-token',JSON.stringify(res.data.data.token))
+                localStorage.setItem('Jwt-token',(res.data.data.token))
                 localStorage.getItem('jwt-token')
             })
             .catch(error => {

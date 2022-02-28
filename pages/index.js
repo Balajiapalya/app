@@ -1,11 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Settings from './settings';
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Layout from '../components/common/layout';
-import { authkey } from './api/api';
-import Login from './signup';
-import MyApp from './_app';
 
 
 
@@ -19,6 +15,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Settings/>
+      
+      
     </div>
   )
 }
