@@ -31,12 +31,18 @@ export default function Gifs() {
                             <label className={styles.model_label}>Image height</label>
                             <input type="text" className={styles.model_input} name="imageheight" placeholder="Enter height in px" />
                         </div>
+                        <div className={styles.frame_per_second}>
+                            <label className={styles.model_label}>Image Width</label>
+                            <select type="text" className={styles.model_input} name="imagewidth">
+                                <option value='1'>15fps</option>
+                            </select>
+                        </div>
 
                         <div className={styles.create_btn}>
                             <button className={styles.btn}>create GIF</button>
                         </div>
                         <h4>Download image from below URL</h4>
-                        <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.copy_img} src='/Images/Icon ionic-ios-copy.png' /></span></p>
+                        <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.GIF_copy_img} src='/Images/Icon ionic-ios-copy.png' /></span></p>
 
 
                     </div>
@@ -54,7 +60,7 @@ export default function Gifs() {
                         <div className={styles.post}>
 
                             <div className={styles.language_select}>
-                                <button className={styles.model_btn}>Python</button>
+                                <button className={`${styles.model_btn} ${styles.active}`}>Python</button>
                                 <button className={styles.model_btn}>Node</button>
                                 <button className={styles.model_btn}>Php</button>
                                 <button className={styles.model_btn}>Go</button>
@@ -63,7 +69,7 @@ export default function Gifs() {
                             </div>
                             <button className={styles.btn}>Run Request</button>
                             <h4>Download image from below URL</h4>
-                            <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.copy_img} src='/Images/Icon ionic-ios-copy.png' /></span></p>
+                            <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.GIF_copy_img} src='/Images/Icon ionic-ios-copy.png' /></span></p>
 
                         </div>
                     </div>

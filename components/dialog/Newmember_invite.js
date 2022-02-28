@@ -3,10 +3,12 @@ import { useForm } from 'react-hook-form';
 import Api from '../../pages/api/api';
 
 export default function Newmember_invite({ closeModel }) {
+  
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = admin_invite_code => {
     Api.Newmember_invite_data(admin_invite_code)
   }
+  
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>
       <div className={styles.model_main}>
