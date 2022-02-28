@@ -28,7 +28,7 @@ export default function Login() {
             />
             {errors.email && <p className={'validations'}>This field is required</p>}
 
-            <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button>
+            <a href={'Create_account'}><button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button></a>
 
 
           </form>

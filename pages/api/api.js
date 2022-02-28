@@ -2,6 +2,7 @@ import axios from "axios";
 let LINK = process.env.APIURL;
 const BASE_URL = () => LINK;
 
+
 export const Sign_up = () => {
     return `${BASE_URL()}/profile/services/api/v1/users/signup`;
 };
@@ -68,6 +69,8 @@ const Api = {
         })
             .then(res => {
                 console.log(res)
+                localStorage.setItem('Jwt-token',JSON.stringify(res.data.data.token))
+                localStorage.getItem('jwt-token')
             })
             .catch(error => {
                 console.log(error)

@@ -4,12 +4,21 @@ import {useState} from 'react'
 import Newmember_invite from '../../dialog/Newmember_invite';
 import Edit_organization_name from '../../dialog/Edit_organisation_name';
 import Removeuser from '../../dialog/removeuser';
+import axios from 'axios';
 
 
 function Organisation() {
     const[openModel,setopeninvitemember]=useState(false);
     const[openorganization,setopeneditorganization]=useState(false);
     const[openremove,setopenremove]=useState(false);
+    axios({
+        method:'GET',
+        url:'http://13.235.3.29/profile/services/api/v1/organizations/1/users'
+    }).then(res=>{
+        console.log(res)
+    }).catch(errorr=>{
+        console.log(errorr)
+    })
     return (
         <Fragment>
             <div className={styles.general}>
