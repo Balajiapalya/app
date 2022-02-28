@@ -45,7 +45,7 @@ function Navbar() {
 
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon feather-log-out.png" alt='icon'></img>Logout</a>
+                           <Link  href="login"><a><img src="Images/Icon feather-log-out.png" alt='icon'></img>Logout</a></Link> 
                         </li>
                     </ul>
                 </div>
