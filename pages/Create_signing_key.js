@@ -1,6 +1,6 @@
 import styles from '../styles/model.module.css'
 import { useForm } from 'react-hook-form';
-import Api from './api/api';
+import Api from '../components/api/api';
 import Image from 'next/image'
 
 export default function Create_signing_key({ closesigninkeys }) {

@@ -1,6 +1,6 @@
 import styles from "../styles/Emailverification.module.css";
 import { useForm } from "react-hook-form";
-import Api from "./api/api";
+import Api from "../components/api/api";
 import { useRouter } from "next/router";
 
 export default function Create_account() {
