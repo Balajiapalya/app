@@ -21,68 +21,61 @@ export const Create_webhook = () => {
 export const Create_aaccess_token = () => {
     return `${BASE_URL()}/profile/services/api/v1/api-access-tokens`;
 };
-export const Create_signin_keys = () =>{
+export const Create_signin_keys = () => {
     return `${BASE_URL()}/profile/services/api/v1/signingkeys`;
 };
-export const get_roles = () =>{
+export const get_roles = () => {
     return `${BASE_URL()}/services/api/v1/organizations/1/roles`
 }
+let token;
+if (process.browser) {
+    token = localStorage.getItem("Jwt-token");
+}
+
+let headers = {
+    'Authorization': `Bearer ${token}`
+};
+
 
 
 
 const Api = {
-    Get_roles_data: (role,id)=>
+    Get_roles_data: (role, id) =>
         axios({
-            method:'GET',
-            url:get_roles(role,id),
+            method: 'GET',
+            url: get_roles(role, id),
         })
-            .then(res =>{
+            .then(res => {
                 console.log(res)
             })
             .catch(error => {
                 console.log(error)
-            }),   
-            
+            }),
+
     Sign_up_data: (login_details) =>
         axios({
             method: 'POST',
             url: Sign_up(),
             data: login_details,
-        })
-            .then(res => {
-                console.log(res.data)
-                localStorage.setItem('invite-code',(res.data.data.inviteCode))
-                localStorage.getItem('invite-code')
-            })
-            .catch(error => {
-                console.log(error)
-            }),//this is called in login
+        }),//this is called in login
     Create_account_data: (createaccount_data) =>
         axios({
             method: 'POST',
             url: Create_user_account(),
             data: createaccount_data,
+        }),//this is called in Create account
+    Edit_organisation_name_data: (organization_data) =>
+        axios({
+            method: 'POST',
+            url: Edit_organisation_name(),
+            data: organization_data,
         })
             .then(res => {
                 console.log(res)
-                localStorage.setItem('Jwt-token',(res.data.data.token))
-                localStorage.getItem('jwt-token')
             })
             .catch(error => {
                 console.log(error)
-            }),//this is called in Create account
-    Edit_organisation_name_data: (organization_data) =>
-    axios({
-        method: 'POST',
-        url: Edit_organisation_name(),
-        data: organization_data,
-    })
-        .then(res =>{
-            console.log(res)
-        })
-        .catch(error =>{
-            console.log(error)
-        }),
+            }),
     Newmember_invite_data: (admin_invite_code) =>
         axios({
             method: 'POST',
@@ -119,19 +112,19 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }), //this is called in new_access_token
-    Create_signin_keys_data: (signin_key) => 
+    Create_signin_keys_data: (signin_key) =>
         axios({
-            method:'POST',
-            url:Create_signin_keys(),
+            method: 'POST',
+            url: Create_signin_keys(),
             data: signin_key,
         })
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(error =>{
-            console.log(error)
-        }),//this is called in Create_signin_keys
-    
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error)
+            }),//this is called in Create_signin_keys
+
 }
 
 

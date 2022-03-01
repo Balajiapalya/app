@@ -8,11 +8,20 @@ export default function Login() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = login_details => {
     Api.Sign_up_data(login_details)
-    .then(
-      router.push({
-        pathname:'/register'
+      .then(res => {
+        console.log(res.data.data.inviteCode)
+        console.log(res.data.status)
+        if (res.data.status = "Success") {
+          localStorage.setItem('invite-code', (res.data.data.inviteCode))
+          localStorage.getItem('invite-code')
+          router.push({
+            pathname: '/register'
+          })
+        }
       })
-    )
+      .catch(error => {
+        console.log(error)
+      })
   };
   return (
     <div className={styles.wrapper_signup}>
