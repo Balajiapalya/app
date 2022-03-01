@@ -1,6 +1,6 @@
 import styles from "../styles/Emailverification.module.css";
 import { useForm } from "react-hook-form";
-import Api from "./api/api";
+import Api from "../components/api/api";
 import { useRouter } from "next/router";
 
 export default function Create_account() {
@@ -8,11 +8,19 @@ export default function Create_account() {
     const reg = useRouter();
     const onSubmit = createaccount_data => {
         Api.Create_account_data(createaccount_data)
-        .then(
+        .then(res => {
+            console.log(res.data.status)
+            if("success"){
+            localStorage.setItem('Jwt-token', (res.data.data.token))
+            localStorage.getItem('jwt-token')
             reg.push({
                 pathname:'/'
             })
-        )
+            } 
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
     return (
         <div className={styles.wapper_email}>

@@ -1,7 +1,7 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import Api from './api/api';
+import Api from '../components/api/api';
 
 
 export default function Create_new_webhook({ closewebhook }) {

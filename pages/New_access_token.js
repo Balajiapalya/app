@@ -1,6 +1,6 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form';
-import Api from './api/api';
+import Api from '../components/api/api';
 
 
 export default function New_Access_token({ closetoken }) {
