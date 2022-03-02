@@ -1,11 +1,18 @@
 import styles from '../styles/Login.module.css';
 import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
+import {useRouter} from 'next/router'
 
 export default function Signin() {
+const router=useRouter()
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = login_details => {
-    Api.Sign_up_data(login_details)
+    Api.SignIn_details(login_details)
+    .then(res=>{
+      if(res.data.status=="Success"){
+       router.push({pathname:'/'})
+      }
+    })
   }
   return (
     <div className={styles.wrapper_signup}>
@@ -26,10 +33,10 @@ export default function Signin() {
               placeholder="Enter your email address"
               name="login"
               className={`${styles.signup_input} form_control`}
-              {...register("email", { required: true })}
+              {...register("login", { required: true })}
             />
             </div>
-            {errors.email && <p className={'validations'}>This field is required</p>}
+            {errors.login && <p className={'validations'}>This field is required</p>}
             <div>
             <label className={styles.label}><h3>Password:</h3></label>
             <input
@@ -40,6 +47,7 @@ export default function Signin() {
               {...register("password", { required: true })}
             />
             </div>
+    
             {errors.password && <p className={'validations'}>This field is required</p>}
 
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Submit</button>

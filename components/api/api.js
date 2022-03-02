@@ -27,6 +27,10 @@ export const Create_signin_keys = () => {
 export const get_roles = () => {
     return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/roles`
 }
+
+export const SignIn_Data = () => {
+    return `${BASE_URL()}/profile/services/api/v1/users/authenticate`
+}
 export const get_organization = () => {
     return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/users`
 }
@@ -135,7 +139,12 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Create_signin_keys
-
+    SignIn_details: (signin_details) =>
+        axios({
+            method: 'POST',
+            url: SignIn_Data(),
+            data: signin_details
+        })//this is called in signin
 }
 
 
