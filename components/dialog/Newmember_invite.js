@@ -1,13 +1,24 @@
 import styles from '../../styles/model.module.css'
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
+import { useEffect, useState } from 'react';
 
 export default function Newmember_invite({ closeModel }) {
+  const [data,setdata]=useState([])
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = admin_invite_code => {
     Api.Newmember_invite_data(admin_invite_code)
   }
+  useEffect(() => {
+    Api.Get_roles_data()
+    .then(res => {
+      console.log(res.data)
+      setdata(res.data)
+    })
+  }, [])
   
+  
+
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>
       <div className={styles.model_main}>
@@ -36,6 +47,7 @@ export default function Newmember_invite({ closeModel }) {
               <option value={2}>admin</option>
               <option value={3}>Developer </option>
               <option value={4}>4</option>
+    
             </select>
           </div>
           <div className={styles.model_btn}>
