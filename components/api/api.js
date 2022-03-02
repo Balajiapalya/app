@@ -27,6 +27,10 @@ export const Create_signin_keys = () => {
 export const get_roles = () => {
     return `${BASE_URL()}/services/api/v1/organizations/1/roles`
 }
+export const SignIn_Data = () => {
+    return `${BASE_URL()}/profile/services/api/v1/users/authenticate`
+}
+
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
@@ -124,7 +128,12 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Create_signin_keys
-
+    SignIn_details: (signin_details) =>
+        axios({
+            method: 'POST',
+            url: SignIn_Data(),
+            data: signin_details
+        })//this is called in signin
 }
 
 
