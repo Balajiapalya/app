@@ -2,6 +2,14 @@ import styles from '../../styles/model.module.css'
 import axios from 'axios'
 import { useForm } from 'react-hook-form';
 
+let token;
+if (process.browser) {
+    token = localStorage.getItem("Jwt-token");
+}
+
+let headers = {
+    'Authorization': `Bearer ${token}`
+};
 
 export default function Edit_organization_name({ closeorganization }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -10,9 +18,7 @@ export default function Edit_organization_name({ closeorganization }) {
         axios({
             method:'POST',
             url:organisation_name_url,
-            // headers:{
-            //     "Autorization":"Bearer 5k5lim83b0mptiliu6",
-            // }
+            headers:headers,
         })
             .then(response => {
                 console.log(response)

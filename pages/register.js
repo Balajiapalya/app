@@ -14,6 +14,8 @@ export default function Create_account() {
             if("success"){
             localStorage.setItem('Jwt-token', (res.data.data.token))
             localStorage.getItem('jwt-token')
+            localStorage.setItem('uuid',res.data.data.organizations[0].uuid)
+            localStorage.getItem('uuid')
             reg.push({
                 pathname:'/'
             })

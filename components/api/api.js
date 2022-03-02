@@ -25,8 +25,12 @@ export const Create_signin_keys = () => {
     return `${BASE_URL()}/profile/services/api/v1/signingkeys`;
 };
 export const get_roles = () => {
-    return `${BASE_URL()}/services/api/v1/organizations/1/roles`
+    return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/roles`
 }
+export const get_organization = () => {
+    return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/users`
+}
+
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
@@ -36,21 +40,28 @@ let headers = {
     'Authorization': `Bearer ${token}`
 };
 
+let uuid_token;
+if (process.browser) {
+    uuid_token = localStorage.getItem("uuid");
+}
+const uuid = uuid_token;
 
 
 
 const Api = {
-    Get_roles_data: (role, id) =>
+    Get_roles_data: () =>
         axios({
             method: 'GET',
-            url: get_roles(role, id),
-        })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }),
+            url: get_roles(),
+            headers: headers,
+        }),//this is called in newmember_invite
+
+    Get_organization_data: () =>
+        axios({
+            method: 'GET',
+            url: get_organization(),
+            headers: headers,
+        }),//this is calleed in organization
 
     Sign_up_data: (login_details) =>
         axios({
