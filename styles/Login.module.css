@@ -60,11 +60,14 @@
     text-decoration: underline;
     font-size: 1rem;
 }
+.label{
+    float:left;
+}
 
 
 @media (min-width: 320px) and (max-width: 767px) {
     .signup_btn{
-        background-color: #007bff;
+        background-color: red;
     }
 }
 @media (min-width: 768px) and (max-width: 991px) {

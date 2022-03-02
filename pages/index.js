@@ -6,17 +6,14 @@ import Layout from '../components/common/layout';
 
 
 export default function Home() {
-  
-    return (
+  return (
     <div className={styles.wrapper}>
       <Head>
         <title>Videograph</title>
         <meta name="description" content="powered by yupp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Settings/>
-      
-      
+      <Settings />  
     </div>
   )
 }

@@ -22,7 +22,7 @@ function Organisation() {
     axios({
         method: 'GET',
         url: 'http://13.235.3.29/profile/services/api/v1/organizations/1/users',
-        headers:{headers},  
+        headers:headers,  
     }).then(res => {
         console.log(res)
     }).catch(errorr => {
