@@ -46,7 +46,7 @@ export default function Signin() {
 
 
           </form>
-          <h4 className={styles.already_account}>Don't have an account?</h4>
+          <h4 className={styles.already_account}>Don&#39;t have an account?</h4>
           <a type='button' className={styles.signin_link}>Sign up</a>
         </div>
       </main>
