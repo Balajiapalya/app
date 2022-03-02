@@ -9,6 +9,7 @@ export default function Create_account() {
     const onSubmit = createaccount_data => {
         Api.Create_account_data(createaccount_data)
         .then(res => {
+            console.log(res.data)
             console.log(res.data.status)
             if("success"){
             localStorage.setItem('Jwt-token', (res.data.data.token))
