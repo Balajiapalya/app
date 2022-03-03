@@ -2,10 +2,17 @@ import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Api from '../components/api/api';
-
+import {useState,useEffect} from 'react'
 
 export default function Create_new_webhook({ closewebhook }) {
+    const [data,setData]=useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    useEffect(()=>{
+        Api.Get_environment_types_data().then(res=>
+           setData(res.data.data))
+     },[])
+
     const onSubmit = webhook_data => {
        Api.Create_webhook_data(webhook_data) 
     }
@@ -23,10 +30,10 @@ export default function Create_new_webhook({ closewebhook }) {
                             <select name="Environment" 
                             className={`${styles.development} ${styles.model_selection}`}
                             {...register("Environment", { required: true })}>
-                                <option value="Devlopment">Development</option>
-                                <option value="video">video</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
+                            {data.map(option=>
+                                <>
+                                <option key={option.id} value={option.id}>{option.name}</option>
+                                </>)}
                             </select>
                             {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
                             <img className={styles.file} src="/Images/Icon awesome-folder.png" alt='icon'></img>

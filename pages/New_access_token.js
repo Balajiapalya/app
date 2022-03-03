@@ -1,11 +1,18 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../components/api/api';
-
+import {useEffect,useState} from 'react'
 
 export default function New_Access_token({ closetoken }) {
+   const [data,setData]=useState([])
    const url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/api-access-tokens'
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+   useEffect(()=>{
+      Api.Get_environment_types_data().then(res=>
+         setData(res.data.data))
+   },[])
+
    const onSubmit = access_data => {
       Api.Create_aaccess_token_data(access_data)
   }
@@ -27,10 +34,11 @@ export default function New_Access_token({ closetoken }) {
                         {...register("Environment", { required: true })}
                      >
                         {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
-                        <option value="Development">Development</option>
-                        <option value="video">video</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+
+                        {data.map(option=>
+                           <>
+                              <option key={option.id} value={option.id}>{option.name}</option>
+                           </>)}
                      </select>
                      <img className={styles.file} src="Images/Icon awesome-folder.png" alt='icon'></img>
                      <button type="text" className={styles.up}><img src="Images/updown.png" alt='icon'></img></button>
