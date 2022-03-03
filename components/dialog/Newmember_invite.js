@@ -43,9 +43,9 @@ export default function Newmember_invite({ closeModel }) {
             <select name="roleId"
               className={styles.model_selection}
               {...register("roleId", { required: true })}>
-              {data.map(item=>
+              {data.map((item,key)=>
                 <>
-                  <option value={item.id}>{item.name}</option>
+                  <option key={key} value={parseInt(item.id)}>{item.name}</option>
                 </>)}
             </select>
           </div>

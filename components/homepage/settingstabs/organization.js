@@ -1,12 +1,14 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
-import { useState } from 'react'
+import { useState,useEffect
+ } from 'react'
 import Newmember_invite from '../../dialog/Newmember_invite';
 import Edit_organization_name from '../../dialog/Edit_organisation_name';
 import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
 
 function Organisation() {
+    const [data,setdata]=useState([])
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
@@ -18,7 +20,14 @@ function Organisation() {
             console.log(error)
         })
 
-    return ( 
+    useEffect(() => {
+        Api.Get_roles_data()
+            .then(res => {
+                // console.log(res.data.data[0],"this is response")
+                setdata(res.data.data)
+            })
+    }, {})
+    return (
         <Fragment>
             <div className={styles.general}>
                 <h3>General</h3>
@@ -49,7 +58,12 @@ function Organisation() {
                         <tr>
                             <td>Anil Singh</td>
                             <td>anil@yupptv.com</td>
-                            <td>Admin</td>
+                            <td><select>
+                                {data.map((item, key) =>
+                                    <>
+                                        <option key={key} value={item.id}>{item.name}</option>
+                                    </>)}
+                            </select></td>
                             <td>Joined October 8th,2021</td>
                             <td></td>
                         </tr>
@@ -58,8 +72,10 @@ function Organisation() {
                             <td>Venkatesh@yupptv.com</td>
                             <td>
                                 <select>
-                                    <option>Admin</option>
-                                    <option>Member</option>
+                                    {data.map((item, key) =>
+                                        <>
+                                            <option key={key} value={item.id}>{item.name}</option>
+                                        </>)}
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
@@ -70,8 +86,10 @@ function Organisation() {
                             <td>ashok@yupptv.com</td>
                             <td>
                                 <select>
-                                    <option>Admin</option>
-                                    <option>Member</option>
+                                    {data.map((item, key) =>
+                                        <>
+                                            <option key={key} value={item.id}>{item.name}</option>
+                                        </>)}
                                 </select>
                             </td>
                             <td>Invite Sent <a href="#">Resend</a> </td>
@@ -79,7 +97,7 @@ function Organisation() {
                         </tr>
 
                         <tbody>
-                            
+
                         </tbody>
 
                         {openremove && <Removeuser closeremoveuser={setopenremove} />}

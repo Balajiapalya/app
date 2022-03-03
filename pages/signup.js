@@ -2,6 +2,7 @@ import styles from '../styles/Login.module.css';
 import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Signup() {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function Signup() {
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button>
           </form>
           <h4 className={styles.already_account}>Already have an account?</h4>
-          <a type='button' className={styles.signin_link}>Sign in</a>
+          <Link href="/signin"><a className={styles.signin_link}>Sign in</a></Link>
         </div>
       </main>
     </div>

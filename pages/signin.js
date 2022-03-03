@@ -2,6 +2,7 @@ import styles from '../styles/Login.module.css';
 import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
 import {useRouter} from 'next/router'
+import Link from 'next/link';
 
 export default function Signin() {
 const router=useRouter()
@@ -29,6 +30,7 @@ const router=useRouter()
               <div>
                 <label className={styles.label}><h3>Username or email:</h3></label>
             <input
+              autoComplete='current-password'
               type="email"
               placeholder="Enter your email address"
               name="login"
@@ -40,6 +42,7 @@ const router=useRouter()
             <div>
             <label className={styles.label}><h3>Password:</h3></label>
             <input
+              autoComplete='current-password'
               type="password"
               placeholder="Enter your password"
               name="password"
@@ -55,7 +58,7 @@ const router=useRouter()
 
           </form>
           <h4 className={styles.already_account}>Don&#39;t have an account?</h4>
-          <a type='button' className={styles.signin_link}>Sign up</a>
+          <Link href="/signup"><a className={styles.signin_link}>Sign up</a></Link>
         </div>
       </main>
     </div>
