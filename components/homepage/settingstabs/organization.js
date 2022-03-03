@@ -7,14 +7,12 @@ import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
 
 function Organisation() {
-
+const [details,setDetails]=useState()
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
     Api.Get_organization_data()
-        .then(res => {
-            console.log(res.data)
-        })
+        .then(res =>console.log(res,"this is res"))
         .catch(error => {
             console.log(error)
         })
@@ -78,6 +76,11 @@ function Organisation() {
                             <td>Invite Sent <a href="#">Resend</a> </td>
                             <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
                         </tr>
+
+                        <tbody>
+                            
+                        </tbody>
+
                         {openremove && <Removeuser closeremoveuser={setopenremove} />}
                     </tbody>
                 </table>
