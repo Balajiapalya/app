@@ -12,11 +12,12 @@ export default function Newmember_invite({ closeModel }) {
   useEffect(() => {
     Api.Get_roles_data()
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       setdata(res.data)
     })
-  }, [])
+  }, {})
   
+
   
 
   return (
@@ -43,6 +44,7 @@ export default function Newmember_invite({ closeModel }) {
               className={styles.model_selection}
               {...register("roleId", { required: true })}
             >
+              
               <option value={1} >1</option>
               <option value={2}>admin</option>
               <option value={3}>Developer </option>

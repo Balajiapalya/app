@@ -13,13 +13,13 @@ function Organisation() {
     const [openremove, setopenremove] = useState(false);
     Api.Get_organization_data()
         .then(res => {
-            console.log(res.data)
+            console.log(res.data,)
         })
         .catch(error => {
             console.log(error)
         })
 
-    return (
+    return ( 
         <Fragment>
             <div className={styles.general}>
                 <h3>General</h3>
