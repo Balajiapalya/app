@@ -1,47 +1,47 @@
 import axios from "axios";
-let LINK = process.env.APIURL;
-const BASE_URL = () => LINK;
+let LINK = process.env.VG_PROFILE_SERVICE_API;
+const PROFILE_BASE_URL = () => LINK;
 
 export const SignIn_Data = () => {
-    return `${BASE_URL()}/profile/services/api/v1/users/authenticate`
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
 }
 export const Sign_up = () => {
-    return `${BASE_URL()}/profile/services/api/v1/users/signup`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/signup`;
 };
 export const Create_user_account = () => {
-    return `${BASE_URL()}/profile/services/api/v1/users`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/users`;
 };
 export const Edit_organisation_name = () => {
-    return `${BASE_URL}/profile/services/api/v1/organizations`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
-    return `${BASE_URL()}/profile/services/api/v1/organizations/1/invite`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/1/invite`;
 };
 export const Create_webhook = () => {
-    return `${BASE_URL()}/profile/services/api/v1/webhooks`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
 export const Create_aaccess_token = () => {
-    return `${BASE_URL()}/profile/services/api/v1/api-access-tokens`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
 };
 export const Create_signin_keys = () => {
-    return `${BASE_URL()}/profile/services/api/v1/signingkeys`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
 export const get_roles = () => {
-    return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/roles`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/roles`
 }
 
 export const get_organization = () => {
-    return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
 }
 export const get_environment_types = () =>{
-    return `${BASE_URL}/profile/services/api/v1/environment-types`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
 }
 export const get_environment = ()=>{
-    return `${BASE_URL}/profile/services/api/v1/environments?organizationId={{organizationId}}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId={{organizationId}}`
 }//no used yet
 
 export const get_product = ()=>{
-    return `${BASE_URL}/profile/services/api/v1/product-types`
+    return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 }
 
 let token;

@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    APIURL: process.env.APIURL,
+    VG_PROFILE_SERVICE_API: process.env.VG_PROFILE_SERVICE_API,
   },
 }
