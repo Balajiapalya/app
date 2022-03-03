@@ -1,6 +1,6 @@
 import styles from '../styles/model.module.css'
-import { useForm, Controller } from "react-hook-form"
-import Select from 'react-select';
+import { useForm} from "react-hook-form"
+
 
 export default function Edit_payment_detials({ closepaymentdetails }) {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();

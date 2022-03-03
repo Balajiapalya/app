@@ -2,7 +2,9 @@ import axios from "axios";
 let LINK = process.env.APIURL;
 const BASE_URL = () => LINK;
 
-
+export const SignIn_Data = () => {
+    return `${BASE_URL()}/profile/services/api/v1/users/authenticate`
+}
 export const Sign_up = () => {
     return `${BASE_URL()}/profile/services/api/v1/users/signup`;
 };
@@ -28,11 +30,18 @@ export const get_roles = () => {
     return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/roles`
 }
 
-export const SignIn_Data = () => {
-    return `${BASE_URL()}/profile/services/api/v1/users/authenticate`
-}
 export const get_organization = () => {
     return `${BASE_URL()}/profile/services/api/v1/organizations/${uuid}/users`
+}
+export const get_environment_types = () =>{
+    return `${BASE_URL}/profile/services/api/v1/environment-types`
+}
+export const get_environment = ()=>{
+    return `${BASE_URL}/profile/services/api/v1/environments?organizationId={{organizationId}}`
+}//no used yet
+
+export const get_product = ()=>{
+    return `${BASE_URL}/profile/services/api/v1/product-types`
 }
 
 let token;
@@ -53,6 +62,18 @@ const uuid = uuid_token;
 
 
 const Api = {
+    Sign_up_data: (login_details) =>
+        axios({
+            method: 'POST',
+            url: Sign_up(),
+            data: login_details,
+        }),//this is called in login
+    SignIn_details: (signin_details) =>
+        axios({
+            method: 'POST',
+            url: SignIn_Data(),
+            data: signin_details
+        }),//this is called in signin
     Get_roles_data: () =>
         axios({
             method: 'GET',
@@ -66,13 +87,19 @@ const Api = {
             url: get_organization(),
             headers: headers,
         }),//this is calleed in organization
-
-    Sign_up_data: (login_details) =>
+    Get_environment_types_data: () =>
         axios({
-            method: 'POST',
-            url: Sign_up(),
-            data: login_details,
-        }),//this is called in login
+            method:'GET',
+            url:get_environment_types(),
+            headers:headers,
+        }),
+    Get_product_data: () =>
+        axios({
+            method:'GET',
+            url:get_product(),
+            headers:headers,
+        }),
+    
     Create_account_data: (createaccount_data) =>
         axios({
             method: 'POST',
@@ -103,23 +130,12 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Newmwmber_invite
-    Create_webhook_data: (webhook_data) =>
-        axios({
-            method: 'POST',
-            url: Create_webhook(),
-            data: webhook_data,
-        })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }), //this is called in Create_new_webhook
     Create_aaccess_token_data: (access_data) =>
         axios({
             method: 'POST',
             url: Create_aaccess_token(),
             data: access_data,
+            headers: headers,
         })
             .then(res => {
                 console.log(res)
@@ -127,11 +143,25 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }), //this is called in new_access_token
+    Create_webhook_data: (webhook_data) =>
+        axios({
+            method: 'POST',
+            url: Create_webhook(),
+            data: webhook_data,
+            headers: headers,
+        })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error)
+            }), //this is called in Create_new_webhook
     Create_signin_keys_data: (signin_key) =>
         axios({
             method: 'POST',
             url: Create_signin_keys(),
             data: signin_key,
+            headers: headers,
         })
             .then(res => {
                 console.log(res)
@@ -139,12 +169,6 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Create_signin_keys
-    SignIn_details: (signin_details) =>
-        axios({
-            method: 'POST',
-            url: SignIn_Data(),
-            data: signin_details
-        })//this is called in signin
 }
 
 

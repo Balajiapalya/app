@@ -15,8 +15,9 @@ export default function Newmember_invite({ closeModel }) {
       // console.log(res.data.data[0],"this is response")
       setdata(res.data.data)
     })
-  }, [])
+  }, {})
   
+
   
 
   return (

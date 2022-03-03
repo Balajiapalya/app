@@ -7,17 +7,18 @@ import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
 
 function Organisation() {
-const [details,setDetails]=useState()
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
     Api.Get_organization_data()
-        .then(res =>console.log(res,"this is res"))
+        .then(res => {
+            console.log(res.data,)
+        })
         .catch(error => {
             console.log(error)
         })
 
-    return (
+    return ( 
         <Fragment>
             <div className={styles.general}>
                 <h3>General</h3>
