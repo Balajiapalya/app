@@ -17,9 +17,6 @@ export default function Newmember_invite({ closeModel }) {
     })
   }, {})
   
-
-  
-
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>
       <div className={styles.model_main}>
