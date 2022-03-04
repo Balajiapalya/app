@@ -5,6 +5,11 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default function Signup() {
+  let invite_code;
+  if (process.browser) {
+    invite_code = localStorage.getItem("invite-code");
+  }
+  const invitecode =invite_code ;
   const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = login_details => {
@@ -13,10 +18,11 @@ export default function Signup() {
         console.log(res.data.data.inviteCode)
         console.log(res.data.status)
         if (res.data.status = "Success") {
+
           localStorage.setItem('invite-code', (res.data.data.inviteCode))
           localStorage.getItem('invite-code')
           router.push({
-            pathname: '/register'
+            pathname: `/register/invitecode=${invitecode}`
           })
         }
       })

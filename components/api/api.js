@@ -33,14 +33,14 @@ export const get_roles = () => {
 export const get_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
 }
-export const get_environment_types = () =>{
+export const get_environment_types = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
 }
-export const get_environment = ()=>{
+export const get_environment = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId={{organizationId}}`
 }//no used yet
 
-export const get_product = ()=>{
+export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 }
 
@@ -68,7 +68,7 @@ const Api = {
             method: 'POST',
             url: Sign_up(),
             data: login_details,
-        }),//this is called in login
+        }),//this is called signup
     SignIn_details: (signin_details) =>
         axios({
             method: 'POST',
@@ -90,17 +90,17 @@ const Api = {
         }),//this is calleed in organization
     Get_environment_types_data: () =>
         axios({
-            method:'GET',
-            url:get_environment_types(),
-            headers:headers,
-        }),
+            method: 'GET',
+            url: get_environment_types(),
+            headers: headers,
+        }),// this is called where ever environments are there
     Get_product_data: () =>
         axios({
-            method:'GET',
-            url:get_product(),
-            headers:headers,
-        }),
-    
+            method: 'GET',
+            url: get_product(),
+            headers: headers,
+        }),//create_signing_key
+
     Create_account_data: (createaccount_data) =>
         axios({
             method: 'POST',
@@ -112,13 +112,14 @@ const Api = {
             method: 'POST',
             url: Edit_organisation_name(),
             data: organization_data,
+            headers: headers,
         })
             .then(res => {
                 console.log(res)
             })
             .catch(error => {
                 console.log(error)
-            }),
+            }),//this is called in edit_organisation_name
     Newmember_invite_data: (admin_invite_code) =>
         axios({
             method: 'POST',
@@ -171,7 +172,5 @@ const Api = {
                 console.log(error)
             }),//this is called in Create_signin_keys
 }
-
-
 export default Api
 

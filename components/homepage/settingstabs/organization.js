@@ -1,14 +1,12 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
-import {
-    useState, useEffect
-} from 'react'
+import {useState, useEffect} from 'react'
 import Newmember_invite from '../../dialog/Newmember_invite';
 import Edit_organization_name from '../../dialog/Edit_organisation_name';
 import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
 
-function Organisation() {
+function Organisation() {   
     const [data, setdata] = useState([])
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
@@ -20,11 +18,9 @@ function Organisation() {
         .catch(error => {
             console.log(error)
         })
-
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
-                // console.log(res.data.data[0],"this is response")
                 setdata(res.data.data)
             })
     }, {})
