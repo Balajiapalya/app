@@ -18,7 +18,7 @@ export default function Create_account() {
             localStorage.setItem('uuid',res.data.data.organizations[0].uuid)
             localStorage.getItem('uuid')
             reg.push({
-                pathname:'/'
+                // pathname:'/'
             })
             } 
         })

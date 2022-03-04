@@ -61,10 +61,11 @@ function Organisation() {
                             <td>Anil Singh</td>
                             <td>anil@yupptv.com</td>
                             <td><select>
-                                {data.map((item, key) =>
+                                {data.map(item =>
                                     <>
-                                        <option key={key} value={item.id}>{item.name}</option>
-                                    </>)}
+                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                    </>
+                                )}
                             </select></td>
                             <td>Joined October 8th,2021</td>
                             <td></td>
@@ -74,10 +75,9 @@ function Organisation() {
                             <td>Venkatesh@yupptv.com</td>
                             <td>
                                 <select>
-                                    {data.map((item, key) =>
-                                        <>
-                                            <option key={key} value={item.id}>{item.name}</option>
-                                        </>)}
+                                    {data.map(item =>
+                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                    )}
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
