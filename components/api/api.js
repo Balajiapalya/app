@@ -56,6 +56,7 @@ let headers = {
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
+    
 }
 const uuid = uuid_token;
 
