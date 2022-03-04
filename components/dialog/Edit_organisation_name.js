@@ -1,31 +1,11 @@
-import styles from '../../styles/model.module.css'
-import axios from 'axios'
+import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
-
-let token;
-if (process.browser) {
-    token = localStorage.getItem("Jwt-token");
-}
-
-let headers = {
-    'Authorization': `Bearer ${token}`
-};
+import Api from '../api/api';
 
 export default function Edit_organization_name({ closeorganization }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const organisation_name_url = 'http://13.235.3.29:8080/profile/services/api/v1/organizations'
-    const onSubmit = data => {
-        axios({
-            method:'POST',
-            url:organisation_name_url,
-            headers:headers,
-        })
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    const onSubmit = organisation_data => {
+        Api.Edit_organisation_name_data(organisation_data)
     }
     return (
         <div className={styles.model}>

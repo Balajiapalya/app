@@ -6,6 +6,7 @@ import Layout from '../components/common/layout';
 
 
 export default function Home() {
+  
   return (
     <div className={styles.wrapper}>
       <Head>

@@ -67,7 +67,7 @@
 
 @media (min-width: 320px) and (max-width: 767px) {
     .signup_btn{
-        background-color: red;
+        background-color: #007bff;
     }
 }
 @media (min-width: 768px) and (max-width: 991px) {
