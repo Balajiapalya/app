@@ -10,8 +10,11 @@ const router=useRouter()
   const onSubmit = login_details => {
     Api.SignIn_details(login_details)
     .then(res=>{
+      console.log(res)
       if(res.data.status=="Success"){
-       router.push({pathname:'/'})
+        localStorage.setItem("uuid",(res.data.data.uuid))
+        localStorage.setItem('Jwt-token', (res.data.data.token))
+      //  router.push({pathname:'/'})
       }
     })
   }
@@ -50,12 +53,9 @@ const router=useRouter()
               {...register("password", { required: true })}
             />
             </div>
-    
-            {errors.password && <p className={'validations'}>This field is required</p>}
-
+            {errors.password && <p className={'validations'}>This field is required</p>}<br/>
+            <Link href="/email"><h4 className={styles.forgotpw}>Forgotten password?</h4></Link>
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Submit</button>
-
-
           </form>
           <h4 className={styles.already_account}>Don&#39;t have an account?</h4>
           <Link href="/signup"><a className={styles.signin_link}>Sign up</a></Link>

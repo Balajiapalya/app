@@ -63,7 +63,11 @@
 .label{
     float:left;
 }
-
+.forgotpw{
+    float:right;
+    color: #007bff;
+    cursor: pointer;
+}
 
 @media (min-width: 320px) and (max-width: 767px) {
     .signup_btn{

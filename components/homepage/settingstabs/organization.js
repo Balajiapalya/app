@@ -1,14 +1,15 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
-import { useState,useEffect
- } from 'react'
+import {
+    useState, useEffect
+} from 'react'
 import Newmember_invite from '../../dialog/Newmember_invite';
 import Edit_organization_name from '../../dialog/Edit_organisation_name';
 import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
 
 function Organisation() {
-    const [data,setdata]=useState([])
+    const [data, setdata] = useState([])
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
@@ -59,10 +60,11 @@ function Organisation() {
                             <td>Anil Singh</td>
                             <td>anil@yupptv.com</td>
                             <td><select>
-                                {data.map((item, key) =>
+                                {data.map(item =>
                                     <>
-                                        <option key={key} value={item.id}>{item.name}</option>
-                                    </>)}
+                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                    </>
+                                )}
                             </select></td>
                             <td>Joined October 8th,2021</td>
                             <td></td>
@@ -72,10 +74,9 @@ function Organisation() {
                             <td>Venkatesh@yupptv.com</td>
                             <td>
                                 <select>
-                                    {data.map((item, key) =>
-                                        <>
-                                            <option key={key} value={item.id}>{item.name}</option>
-                                        </>)}
+                                    {data.map(item =>
+                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                    )}
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
