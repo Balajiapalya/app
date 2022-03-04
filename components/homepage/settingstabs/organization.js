@@ -5,8 +5,11 @@ import Newmember_invite from '../../dialog/Newmember_invite';
 import Edit_organization_name from '../../dialog/Edit_organisation_name';
 import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
+import { useRouter } from 'next/router';
+import Signin from '../../../pages/signin';
 
-function Organisation() {   
+function Organisation() {  
+    const router = useRouter(); 
     const [data, setdata] = useState([])
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
@@ -16,7 +19,9 @@ function Organisation() {
             console.log(res.data)
         })
         .catch(error => {
-            console.log(error)
+            if(error.status="Failure"){
+              
+            }
         })
     useEffect(() => {
         Api.Get_roles_data()

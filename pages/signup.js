@@ -22,7 +22,7 @@ export default function Signup() {
           localStorage.setItem('invite-code', (res.data.data.inviteCode))
           localStorage.getItem('invite-code')
           router.push({
-            pathname: `/register/invitecode=${invitecode}`
+            pathname: `/register /invitecode=${invitecode}`
           })
         }
       })
