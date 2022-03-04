@@ -12,9 +12,11 @@ const router=useRouter()
     .then(res=>{
       console.log(res)
       if(res.data.status=="Success"){
+        document.cookie = `Jwt-token=${res.data.data.token}`;
+
         localStorage.setItem("uuid",(res.data.data.uuid))
         localStorage.setItem('Jwt-token', (res.data.data.token))
-      //  router.push({pathname:'/'})
+       router.push({pathname:'/'})
       }
     })
   }

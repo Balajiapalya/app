@@ -18,7 +18,7 @@ export default function Signup() {
         console.log(res.data.data.inviteCode)
         console.log(res.data.status)
         if (res.data.status = "Success") {
-
+          
           localStorage.setItem('invite-code', (res.data.data.inviteCode))
           localStorage.getItem('invite-code')
           router.push({

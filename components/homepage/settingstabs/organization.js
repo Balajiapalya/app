@@ -16,12 +16,10 @@ function Organisation() {
     const [openremove, setopenremove] = useState(false);
     Api.Get_organization_data()
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
         })
         .catch(error => {
-            if(error.status="Failure"){
-              
-            }
+          console.log(error)
         })
     useEffect(() => {
         Api.Get_roles_data()
