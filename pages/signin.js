@@ -10,6 +10,7 @@ const router=useRouter()
   const onSubmit = login_details => {
     Api.SignIn_details(login_details)
     .then(res=>{
+      console.log(res.data)
       if(res.data.status=="Success"){
        router.push({pathname:'/'})
       }

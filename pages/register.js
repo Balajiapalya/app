@@ -4,6 +4,7 @@ import Api from "../components/api/api";
 import { useRouter } from "next/router";
 
 export default function Create_account() {
+    
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const reg = useRouter();
     const onSubmit = createaccount_data => {

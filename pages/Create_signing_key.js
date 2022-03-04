@@ -32,9 +32,9 @@ export default function Create_signing_key({ closesigninkeys }) {
                         <label className={styles.model_label}>Environment</label>
                         <div className={styles.select}>
                             <select
-                                name="Environment"
+                                name="environmentId"
                                 className={`${styles.development} ${styles.model_selection}`}
-                                {...register("Environment", { required: true })}
+                                {...register("environmentId", { required: true })}
                             >
                                 {data.map(item => <>
                                     <option key={item.id} value={item.id}>{item.name}</option>
@@ -48,9 +48,9 @@ export default function Create_signing_key({ closesigninkeys }) {
                             <label className={styles.model_label}>Product</label>
 
                             <select
-                                name="product"
+                                name="productTypeId"
                                 className={styles.model_selection}
-                                {...register("product", { required: true })}
+                                {...register("productTypeId", { required: true })}
                             >
                                 {prod.map(product=>
                                     <option key={product.id} value={product.id}>{product.name}</option>)}
