@@ -11,7 +11,7 @@ import Signin from '../../../pages/signin';
 function Organisation() {
     const router = useRouter();
     const [data, setdata] = useState([]);
-    const [orgdata,setorgdata] = useState([]);
+    const [orgdata, setorgdata] = useState([]);
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
@@ -24,9 +24,8 @@ function Organisation() {
             })
         Api.Get_organization_data()
             .then(res => {
-                console.log(res.data.users)
-                setorgdata(res.data)
-
+                setorgdata(res.data.data.users)
+                console.log(res.data.data.users, 'data')
             })
             .catch(error => {
                 console.log(error)
@@ -60,52 +59,24 @@ function Organisation() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Anil Singh</td>
-                            <td>
-                                {/* {orgdata.map(item =>
-                                <>
-                                   <a>{item.email}</a> 
-                                </>
-                                )} */}
-                                </td>
-                            <td><select>
+                       
+                            {orgdata.map((item,ind )=>
+                                <tr key={ind}>
+                                    <td>Anil Singh</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.roleId}</td>
+                                    <td>Invite Sent <a href="#">Resend</a> </td>
+                                    <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
+                                </tr>)}
+                            {/* <td><select>
                                 {data.map(item =>
                                     <>
                                         <option key={item.id} value={item.id}>{item.name}</option>
                                     </>
                                 )}
-                            </select></td>
-                            <td>Joined October 8th,2021</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Venkatesh</td>
-                            <td>Venkatesh@yupptv.com</td>
-                            <td>
-                                <select>
-                                    {/* {data.map(item =>
-                                        <option key={item.id} value={item.id}>{item.name}</option>
-                                    )} */}
-                                </select>
-                            </td>
-                            <td>Joined October 8th,2021</td>
-                            <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
-                        </tr>
-                        <tr>
-                            <td>Ashok</td>
-                            <td>ashok@yupptv.com</td>
-                            <td>
-                                <select>
-                                    {/* {data.map((item, key) =>
-                                        <>
-                                            <option key={key} value={item.id}>{item.name}</option>
-                                        </>)} */}
-                                </select>
-                            </td>
-                            <td>Invite Sent <a href="#">Resend</a> </td>
-                            <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
-                        </tr>
+                            </select></td> */}
+                            {/* <td>Joined October 8th,2021</td>
+                            <td></td> */}
 
                         <tbody>
 
