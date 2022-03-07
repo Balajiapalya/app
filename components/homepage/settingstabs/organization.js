@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import styles from '../../../styles/settings.module.css';
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Newmember_invite from '../../dialog/Newmember_invite';
 import Edit_organization_name from '../../dialog/Edit_organisation_name';
 import Removeuser from '../../dialog/removeuser';
@@ -8,23 +8,28 @@ import Api from '../../api/api';
 import { useRouter } from 'next/router';
 import Signin from '../../../pages/signin';
 
-function Organisation() {  
-    const router = useRouter(); 
-    const [data, setdata] = useState([])
+function Organisation() {
+    const router = useRouter();
+    const [data, setdata] = useState([]);
+    const [orgdata,setorgdata] = useState([]);
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
-    Api.Get_organization_data()
-        .then(res => {
-            // console.log(res.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
+                console.log(res.data)
                 setdata(res.data.data)
+            })
+        Api.Get_organization_data()
+            .then(res => {
+                console.log(res.data.users)
+                setorgdata(res.data)
+
+            })
+            .catch(error => {
+                console.log(error)
             })
     }, {})
     return (
@@ -57,7 +62,13 @@ function Organisation() {
                     <tbody>
                         <tr>
                             <td>Anil Singh</td>
-                            <td>anil@yupptv.com</td>
+                            <td>
+                                {/* {orgdata.map(item =>
+                                <>
+                                   <a>{item.email}</a> 
+                                </>
+                                )} */}
+                                </td>
                             <td><select>
                                 {data.map(item =>
                                     <>
@@ -73,9 +84,9 @@ function Organisation() {
                             <td>Venkatesh@yupptv.com</td>
                             <td>
                                 <select>
-                                    {data.map(item =>
+                                    {/* {data.map(item =>
                                         <option key={item.id} value={item.id}>{item.name}</option>
-                                    )}
+                                    )} */}
                                 </select>
                             </td>
                             <td>Joined October 8th,2021</td>
@@ -86,10 +97,10 @@ function Organisation() {
                             <td>ashok@yupptv.com</td>
                             <td>
                                 <select>
-                                    {data.map((item, key) =>
+                                    {/* {data.map((item, key) =>
                                         <>
                                             <option key={key} value={item.id}>{item.name}</option>
-                                        </>)}
+                                        </>)} */}
                                 </select>
                             </td>
                             <td>Invite Sent <a href="#">Resend</a> </td>
