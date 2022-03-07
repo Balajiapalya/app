@@ -60,8 +60,8 @@ function Organisation() {
                     </thead>
                     <tbody>
                        
-                            {orgdata.map(item =>
-                                <tr>
+                            {orgdata.map((item,ind )=>
+                                <tr key={ind}>
                                     <td>Anil Singh</td>
                                     <td>{item.email}</td>
                                     <td>{item.roleId}</td>
