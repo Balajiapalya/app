@@ -15,7 +15,7 @@ export const Edit_organisation_name = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/1/invite`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/invite`;
 };
 export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
@@ -31,7 +31,7 @@ export const get_roles = () => {
 }
 
 export const get_organization = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
 }
 export const get_environment_types = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
@@ -60,7 +60,11 @@ if (process.browser) {
 }
 const uuid = uuid_token;
 
-
+let org_id;
+if(process.browser){
+    org_id = localStorage.getItem('orgID')
+}
+const orgId = org_id
 
 const Api = {
     Sign_up_data: (login_details) =>
@@ -73,7 +77,7 @@ const Api = {
         axios({
             method: 'POST',
             url: SignIn_Data(),
-            data: signin_details
+            data: signin_details,
         }),//this is called in signin
     Get_roles_data: () =>
         axios({
@@ -113,18 +117,13 @@ const Api = {
             url: Edit_organisation_name(),
             data: organization_data,
             headers: headers,
-        })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }),//this is called in edit_organisation_name
+        }),//this is called in edit_organisation_name
     Newmember_invite_data: (admin_invite_code) =>
         axios({
             method: 'POST',
             url: Newmember_invite(),
             data: admin_invite_code,
+            headers:headers,
         })
             .then(res => {
                 console.log(res)
