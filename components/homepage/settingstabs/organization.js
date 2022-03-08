@@ -62,7 +62,7 @@ function Organisation() {
                        
                             {orgdata.map((item,ind )=>
                                 <tr key={ind}>
-                                    <td>Anil Singh</td>
+                                    <td>Null</td>
                                     <td>{item.email}</td>
                                     <td>{item.roleId}</td>
                                     <td>Invite Sent <a href="#">Resend</a> </td>

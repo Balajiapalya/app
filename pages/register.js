@@ -7,18 +7,21 @@ export default function Create_account() {
     
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const reg = useRouter();
+    const id = reg.query
+
     const onSubmit = createaccount_data => {
+        console.log(id)
         Api.Create_account_data(createaccount_data)
         .then(res => {
-            console.log(res.data)
-            console.log(res.data.status)
+            // console.log(res.data)
+            // console.log(res.data.status)
             if("success"){
             localStorage.setItem('Jwt-token', (res.data.data.token))
             localStorage.getItem('jwt-token')
             localStorage.setItem('uuid',res.data.data.organizations[0].uuid)
             localStorage.getItem('uuid')
             reg.push({
-                pathname:'/'
+                // pathname:'/'
             })
             } 
         })
@@ -77,7 +80,7 @@ export default function Create_account() {
                         {...register("password", {required: true})}
                     />
                     {errors.password && <p className={'validations'}>This field is required</p>}
-                    <label className={styles.createaccount_label}>invite Code</label>
+                    {/* <label className={styles.createaccount_label}>invite Code</label>
                     <input
                         type="text"
                         autoComplete="current-password"
@@ -86,7 +89,11 @@ export default function Create_account() {
                         className={`${styles.createaccount_input} form_control`}
                         {...register("inviteCode", {required: true})}
                     />
-                    {errors.inviteCode && <p className={'validations'}>This field is required</p>}
+                    {errors.inviteCode && <p className={'validations'}>This field is required</p>} */}
+                    <div
+                    {...register("invitecode",{required:true})}>
+                        {id.invitecode}
+                    </div>
                     <p className={styles.condition}>
                         {" "}
                         By creating an account you agree to our{" "}

@@ -3,8 +3,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { memo } from "react";
 
+
 function Navbar() {
     const [opendropdown, setdropdown] = useState(false);
+    const handlelogout = () => {
+        window.localStorage.clear();
+        
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -12,7 +18,7 @@ function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a>
+                            <Link href="/environment"><a><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
                         </li>
                         <li>
                             <Link href="/Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
@@ -45,7 +51,7 @@ function Navbar() {
 
                         </li>
                         <li>
-                            <Link href="/signin"><a><img src="Images/Icon feather-log-out.png" alt='icon'></img>Logout</a></Link>
+                            <Link href="/signin"><a onClick={handlelogout}><img src="Images/Icon feather-log-out.png" alt='icon'></img>Logout</a></Link>
                         </li>
                     </ul>
                 </div>
