@@ -17,6 +17,11 @@ function Organisation() {
     const [openremove, setopenremove] = useState(false);
     const [editData,setEditData]=useState()
 
+    const createdDate = (date) =>{
+        var d = new Date(date);
+        return d.toLocaleString();
+    }
+
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
@@ -66,13 +71,11 @@ function Organisation() {
                             <tr key={ind}>
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
-            
                                     <td><select>
                                         <option value={item.roleId}>{item.roleId}</option>
                                         </select>
                                     </td>
-
-                                <td>Invite Sent <a href="#">Resend</a> </td>
+                                <td>{createdDate(item.createdOn)}</td>
                                 <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
                             </tr>)}
                         {openremove && <Removeuser closeremoveuser={setopenremove} />}
