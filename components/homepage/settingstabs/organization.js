@@ -15,33 +15,35 @@ function Organisation() {
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
+    const [editData,setEditData]=useState()
 
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
-                console.log(res.data)
                 setdata(res.data.data)
             })
         Api.Get_organization_data()
             .then(res => {
                 setorgdata(res.data.data.users)
-                console.log(res.data.data.users, 'data')
             })
             .catch(error => {
                 console.log(error)
             })
+          
     }, {})
     return (
         <Fragment>
             <div className={styles.general}>
                 <h3>General</h3>
                 <label>Organization</label>
-                <input placeholder="YuppTv"></input>
-                <span>
-                    <a onClick={() => setopeneditorganization(true)}><img src="Images/Icon material-edit.png" alt="icon"></img>Edit</a>
-                </span>
+                <div className={styles.edit}>{editData?editData.name:''}
+                    <span>
+                        <a onClick={() => setopeneditorganization(true)}><img src="Images/Icon material-edit.png" alt="icon"></img>Edit</a>
+                    </span>
+                </div>
+
             </div>
-            {openorganization && <Edit_organization_name closeorganization={setopeneditorganization} />}
+            {openorganization && <Edit_organization_name closeorganization={setopeneditorganization} setEditData={setEditData}/>}
             <div className={styles.members}>
                 <h3>Members</h3>
                 <a><button className="btn" onClick={() => setopeninvitemember(true)}>Invite Member</button></a>
@@ -59,29 +61,20 @@ function Organisation() {
                         </tr>
                     </thead>
                     <tbody>
-                       
-                            {orgdata.map((item,ind )=>
-                                <tr key={ind}>
-                                    <td>Null</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.roleId}</td>
-                                    <td>Invite Sent <a href="#">Resend</a> </td>
-                                    <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
-                                </tr>)}
-                            {/* <td><select>
-                                {data.map(item =>
-                                    <>
-                                        <option key={item.id} value={item.id}>{item.name}</option>
-                                    </>
-                                )}
-                            </select></td> */}
-                            {/* <td>Joined October 8th,2021</td>
-                            <td></td> */}
 
-                        <tbody>
+                        {orgdata.map((item, ind) =>
+                            <tr key={ind}>
+                                <td>{item.firstName} {item.lastName}</td>
+                                <td>{item.email}</td>
+            
+                                    <td><select>
+                                        <option value={item.roleId}>{item.roleId}</option>
+                                        </select>
+                                    </td>
 
-                        </tbody>
-
+                                <td>Invite Sent <a href="#">Resend</a> </td>
+                                <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
+                            </tr>)}
                         {openremove && <Removeuser closeremoveuser={setopenremove} />}
                     </tbody>
                 </table>

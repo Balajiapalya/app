@@ -2,20 +2,22 @@ import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../api/api';
 
-export default function Edit_organization_name({ closeorganization }) {
+export default function Edit_organization_name({ closeorganization, setEditData }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = organisation_data => {
         Api.Edit_organisation_name_data(organisation_data)
-        .then(res => {
-            // console.log(res)
-            // console.log(res.data.data.uuid)
-            localStorage.setItem('orgID',res.data.data.uuid)
-            localStorage.getItem('orgID')
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(res => {
+                localStorage.setItem('orgID', res.data.data.uuid)
+                localStorage.getItem('orgID')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+        Api.Editted_data(organisation_data).then(res => setEditData(res.data.data))
+
     }
+    
     return (
         <div className={styles.model}>
             <div className={styles.model_main}>
