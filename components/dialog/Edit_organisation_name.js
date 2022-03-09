@@ -7,8 +7,8 @@ export default function Edit_organization_name({ closeorganization }) {
     const onSubmit = organisation_data => {
         Api.Edit_organisation_name_data(organisation_data)
         .then(res => {
-            console.log(res)
-            console.log(res.data.data.uuid)
+            // console.log(res)
+            // console.log(res.data.data.uuid)
             localStorage.setItem('orgID',res.data.data.uuid)
             localStorage.getItem('orgID')
         })

@@ -17,6 +17,9 @@ export const Edit_organisation_name = () => {
 export const Newmember_invite = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/invite`;
 };
+export const Remove_user = () =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
+}
 export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
@@ -92,6 +95,12 @@ const Api = {
             url: get_organization(),
             headers: headers,
         }),//this is calleed in organization
+    Remove_user_data: ()=>
+        axios({
+            method:'DELETE',
+            url:Remove_user(),
+            headers:headers,
+        }),
     Get_environment_types_data: () =>
         axios({
             method: 'GET',
@@ -105,7 +114,7 @@ const Api = {
             headers: headers,
         }),//create_signing_key
 
-    Create_account_data: (createaccount_data) =>
+    Create_account_data: (createaccount_data,id) =>
         axios({
             method: 'POST',
             url: Create_user_account(),
@@ -126,7 +135,7 @@ const Api = {
             headers:headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
@@ -139,7 +148,7 @@ const Api = {
             headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
@@ -152,7 +161,7 @@ const Api = {
             headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
@@ -165,7 +174,7 @@ const Api = {
             headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)

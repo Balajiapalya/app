@@ -6,7 +6,7 @@ export default function Edit_payment_detials({ closepaymentdetails }) {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const onSubmit = (details) => {
-    console.log(details, "this is data")
+    // console.log(details, "this is data")
   }
   return (
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>

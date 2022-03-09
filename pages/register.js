@@ -4,27 +4,30 @@ import Api from "../components/api/api";
 import { useRouter } from "next/router";
 
 export default function Create_account() {
-    
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const reg = useRouter();
+    const id = reg.query
+
     const onSubmit = createaccount_data => {
+        console.log(id)
         Api.Create_account_data(createaccount_data)
-        .then(res => {
-            console.log(res.data)
-            console.log(res.data.status)
-            if("success"){
-            localStorage.setItem('Jwt-token', (res.data.data.token))
-            localStorage.getItem('jwt-token')
-            localStorage.setItem('uuid',res.data.data.organizations[0].uuid)
-            localStorage.getItem('uuid')
-            reg.push({
-                pathname:'/'
+            .then(res => {
+                // console.log(res.data)
+                // console.log(res.data.status)
+                if ("success") {
+                    localStorage.setItem('Jwt-token', (res.data.data.token))
+                    localStorage.getItem('jwt-token')
+                    localStorage.setItem('uuid', res.data.data.organizations[0].uuid)
+                    localStorage.getItem('uuid')
+                    reg.push({
+                        pathname:'/'
+                    })
+                }
             })
-            } 
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className={styles.wapper_email}>
@@ -41,7 +44,7 @@ export default function Create_account() {
                         name="firstName"
                         className={`${styles.createaccount_input} form_control`}
                         {...register("firstName", { required: true })}
-                        
+
                     />
                     {errors.firstName && <p className={'validations'}>This field is required</p>}
 
@@ -64,7 +67,7 @@ export default function Create_account() {
                         placeholder="Enter your organisation name"
                         name="organizationName"
                         className={`${styles.createaccount_input} form_control`}
-                        {...register("organizationName", {required: true})}
+                        {...register("organizationName", { required: true })}
                     />
                     {errors.organizationName && <p className={'validations'}>This field is required</p>}
                     <label className={styles.createaccount_label}>Password</label>
@@ -74,7 +77,7 @@ export default function Create_account() {
                         placeholder="Must have atleast 8 characters"
                         name="password"
                         className={`${styles.createaccount_input} form_control`}
-                        {...register("password", {required: true})}
+                        {...register("password", { required: true })}
                     />
                     {errors.password && <p className={'validations'}>This field is required</p>}
                     <label className={styles.createaccount_label}>invite Code</label>
@@ -87,6 +90,10 @@ export default function Create_account() {
                         {...register("inviteCode", {required: true})}
                     />
                     {errors.inviteCode && <p className={'validations'}>This field is required</p>}
+                    {/* <div
+                        {...register("invitecode", { required: true })}>
+                        {id.invitecode}
+                    </div> */}
                     <p className={styles.condition}>
                         {" "}
                         By creating an account you agree to our{" "}

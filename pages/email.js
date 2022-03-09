@@ -9,7 +9,7 @@ export default function Signin() {
 
 const onSubmit=(data)=>{
     router.push({pathname:'/forgot_password'})
-    console.log(data)
+    // console.log(data)
 }
 
     return (
