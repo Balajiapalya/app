@@ -8,13 +8,12 @@ export default function Create_account() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const reg = useRouter();
     const id = reg.query
-
+    console.log(reg.query)
     const onSubmit = createaccount_data => {
-        console.log(id)
+       
         Api.Create_account_data(createaccount_data)
             .then(res => {
-                // console.log(res.data)
-                // console.log(res.data.status)
+                
                 if ("success") {
                     localStorage.setItem('Jwt-token', (res.data.data.token))
                     localStorage.getItem('jwt-token')
@@ -80,20 +79,15 @@ export default function Create_account() {
                         {...register("password", { required: true })}
                     />
                     {errors.password && <p className={'validations'}>This field is required</p>}
-                    <label className={styles.createaccount_label}>invite Code</label>
+                    <label className={`${styles.createaccount_label} ${styles.hidden}`}>invite Code</label>
                     <input
+                        value={id.invitecode}
                         type="text"
-                        autoComplete="current-password"
-                        placeholder="code"
                         name="inviteCode"
-                        className={`${styles.createaccount_input} form_control`}
-                        {...register("inviteCode", {required: true})}
+                        className={`${styles.createaccount_input} ${styles.hidden} form_control`}
+                        {...register("inviteCode", {required: false})}
                     />
-                    {errors.inviteCode && <p className={'validations'}>This field is required</p>}
-                    {/* <div
-                        {...register("invitecode", { required: true })}>
-                        {id.invitecode}
-                    </div> */}
+                    
                     <p className={styles.condition}>
                         {" "}
                         By creating an account you agree to our{" "}
