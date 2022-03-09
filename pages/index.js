@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Settings from './settings';
 import Layout from '../components/common/layout';
-import Environment from './environment';
+
 
 
 
@@ -16,7 +16,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Settings />  
-      {/* <Environment/> */}
     </div>
   )
 }
