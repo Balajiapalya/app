@@ -12,7 +12,6 @@ export default function Newmember_invite({ closeModel }) {
   useEffect(() => {
     Api.Get_roles_data()
     .then(res => {
-      // console.log(res.data.data[0],"this is response")
       setdata(res.data.data)
     })
   }, {})
@@ -37,10 +36,10 @@ export default function Newmember_invite({ closeModel }) {
           <div>
             <label className={styles.model_label}>Role</label>
 
-            <select name="roleId"
-              className={styles.model_selection}
+            <select 
+              className={styles.model_selection} name="roleId"
               {...register("roleId", { required: true,valueAsNumber: true,
-              })}>
+               })}>
               {data.map((item,key)=>
                 <>
                   <option key={key} value={parseInt(item.id)}>{item.name}</option>

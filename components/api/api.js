@@ -17,7 +17,7 @@ export const Edit_organisation_name = () => {
 export const Newmember_invite = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/invite`;
 };
-export const Remove_user = () =>{
+export const Remove_user = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
 }
 export const Create_webhook = () => {
@@ -46,6 +46,9 @@ export const get_environment = () => {
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 }
+export const editted_data = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}`
+}
 
 let token;
 if (process.browser) {
@@ -59,12 +62,12 @@ let headers = {
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
-    
+
 }
 const uuid = uuid_token;
 
 let org_id;
-if(process.browser){
+if (process.browser) {
     org_id = localStorage.getItem('orgID')
 }
 const orgId = org_id
@@ -95,11 +98,11 @@ const Api = {
             url: get_organization(),
             headers: headers,
         }),//this is calleed in organization
-    Remove_user_data: ()=>
+    Remove_user_data: () =>
         axios({
-            method:'DELETE',
-            url:Remove_user(),
-            headers:headers,
+            method: 'DELETE',
+            url: Remove_user(),
+            headers: headers,
         }),
     Get_environment_types_data: () =>
         axios({
@@ -114,7 +117,7 @@ const Api = {
             headers: headers,
         }),//create_signing_key
 
-    Create_account_data: (createaccount_data,id) =>
+    Create_account_data: (createaccount_data, id) =>
         axios({
             method: 'POST',
             url: Create_user_account(),
@@ -132,7 +135,7 @@ const Api = {
             method: 'POST',
             url: Newmember_invite(),
             data: admin_invite_code,
-            headers:headers,
+            headers: headers,
         })
             .then(res => {
                 // console.log(res)
@@ -179,6 +182,14 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }),//this is called in Create_signin_keys
+    Editted_data: (data) =>
+        axios({
+            method: 'PUT',
+            url: editted_data(),
+            data:data,
+            headers: headers,
+        }),//called in edit_organisation_name
+        
 }
 export default Api
 
