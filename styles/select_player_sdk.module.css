@@ -1,0 +1,69 @@
+.container{
+    width: 100%;
+    float: left;
+    height: 1vh;
+}
+.close_png{
+    width: 100%;
+}
+.close_png img{
+    margin: 4% 3%;
+    float: right;
+}
+.content{
+    margin: 10% 5%;
+    text-align: center;
+}
+.sdk_wrapper{
+    
+    width: 100%;
+    float: left;
+}
+.sdk_heading{
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.contact_us{
+    color: #2863eb;
+    font-size: 20px;
+    font-family: Inter-Regular;
+}
+.sdk_content{
+    width: 100%;
+    float: left;
+    color: #707070;
+    font-size: 20px;
+    font-family: Inter-Regular;
+    margin-bottom: 20px;
+
+}
+.sdk_wrapper_cards{
+    width: 20%;
+    float: left;
+    background-color: white;
+    padding: 10px;
+    margin:10px;
+    height: 13em;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+}
+.sdk_wrapper_cards img{
+    position: absolute;
+    top: 8%;
+    left: 25%;
+    right: 25%;
+    width: 40%;
+}
+.sdk_wrapper_cards span{
+    color: #212b36;
+    font-size: 16px;
+    font-family: Inter-Regular;
+    position: absolute;
+    bottom: 10px;
+    right: 25%;
+    left: 25%;
+    
+}
