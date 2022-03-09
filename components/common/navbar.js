@@ -20,7 +20,7 @@ function Navbar() {
                         <li>
                             <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
                         </li>
-                        <li className={styles.tools}>
+                        <li style={opendropdown?{backgroundColor:"#262b36"}:{backgroundColor:null}} className={styles.tools}>
                             <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)} ><img src="Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
                             {opendropdown ? <ul className={styles.list}>
                                 <li><Link href="stream_monitor"><a>Stream Monitor</a></Link></li>
