@@ -15,9 +15,9 @@ function Organisation() {
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
-    const [editData,setEditData]=useState()
+    const [editData, setEditData] = useState()
 
-    const createdDate = (date) =>{
+    const createdDate = (date) => {
         var d = new Date(date);
         return d.toLocaleString();
     }
@@ -34,21 +34,23 @@ function Organisation() {
             .catch(error => {
                 console.log(error)
             })
-          
+
     }, {})
+
     return (
         <Fragment>
             <div className={styles.general}>
                 <h3>General</h3>
                 <label>Organization</label>
-                <div className={styles.edit}>{editData?editData.name:''}
+
+                <div className={styles.edit}>{editData ? editData.name : ''}
                     <span>
                         <a onClick={() => setopeneditorganization(true)}><img src="Images/Icon material-edit.png" alt="icon"></img>Edit</a>
                     </span>
                 </div>
 
             </div>
-            {openorganization && <Edit_organization_name closeorganization={setopeneditorganization} setEditData={setEditData}/>}
+            {openorganization && <Edit_organization_name closeorganization={setopeneditorganization} setEditData={setEditData} />}
             <div className={styles.members}>
                 <h3>Members</h3>
                 <a><button className="btn" onClick={() => setopeninvitemember(true)}>Invite Member</button></a>
@@ -71,12 +73,17 @@ function Organisation() {
                             <tr key={ind}>
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
-                                    <td><select>
-                                        <option value={item.roleId}>{item.roleId}</option>
-                                        </select>
-                                    </td>
-                                <td>{createdDate(item.createdOn)}</td>
-                                <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td>
+                                <td><select value={item.roleId}>
+                                    {data.map(i => <>
+                                        {item.roleId === i.id ? <option value={item.roleId}>{i.name}</option> : <option value={i.roleId}>{i.name}</option>}
+                                    </>)}
+                                </select>
+                                </td>
+
+                                {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
+                                    <a href="/">Resend</a></td>}
+
+                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
                             </tr>)}
                         {openremove && <Removeuser closeremoveuser={setopenremove} />}
                     </tbody>

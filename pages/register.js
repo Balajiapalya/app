@@ -84,7 +84,7 @@ export default function Create_account() {
                         value={id.invitecode}
                         type="text"
                         name="inviteCode"
-                        className={`${styles.createaccount_input} ${styles.hidden} form_control`}
+                        className={`${styles.createaccount_input}  form_control`}
                         {...register("inviteCode", {required: false})}
                     />
                     
