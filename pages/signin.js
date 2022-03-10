@@ -10,10 +10,8 @@ const router=useRouter()
   const onSubmit = login_details => {
     Api.SignIn_details(login_details)
     .then(res=>{
-      // console.log(res)
       if(res.data.status=="Success"){
         document.cookie = `Jwt-token=${res.data.data.token}`;
-        // console.log(res.data)
         localStorage.setItem('uuid',(res.data.data.uuid))
         localStorage.setItem('Jwt-token', (res.data.data.token))
        router.push({pathname:'/'})

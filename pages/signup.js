@@ -15,11 +15,8 @@ export default function Signup() {
   const onSubmit = login_details => {
     Api.Sign_up_data(login_details)
       .then(res => {
-        // console.log(res.data.data.inviteCode)
-        // console.log(res.data.status)
+        
         if (res.data.status = "Success") {
-          localStorage.setItem('invite-code', (res.data.data.inviteCode))
-          localStorage.getItem('invite-code')
           router.push({
             pathname: `/invitationsent`
           })
