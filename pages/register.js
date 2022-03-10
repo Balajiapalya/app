@@ -79,13 +79,14 @@ export default function Create_account() {
                         {...register("password", { required: true })}
                     />
                     {errors.password && <p className={'validations'}>This field is required</p>}
-                    <label className={`${styles.createaccount_label} ${styles.hidden}`}>invite Code</label>
+                    <label  className={`${styles.createaccount_label} `}>invite Code</label>
                     <input
+                        readOnly
                         value={id.invitecode}
                         type="text"
                         name="inviteCode"
                         className={`${styles.createaccount_input}  form_control`}
-                        {...register("inviteCode", {required: false})}
+                        {...register("inviteCode", {required: true})}
                     />
                     
                     <p className={styles.condition}>
