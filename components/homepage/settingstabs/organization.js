@@ -81,7 +81,7 @@ function Organisation() {
                                 </td>
 
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
-                                    <a href="/">Resend</a></td>}
+                                    <a href="#">Resend</a></td>}
 
                                 {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
                             </tr>)}
