@@ -1,26 +1,23 @@
-import styles from '../../styles/model.module.css'
-import axios from 'axios'
+import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
+import Api from '../api/api';
 
-
-export default function Edit_organization_name({ closeorganization }) {
+export default function Edit_organization_name({ closeorganization, setEditData }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const organisation_name_url = 'http://13.235.3.29:8080/profile/services/api/v1/organizations'
-    const onSubmit = data => {
-        axios({
-            method:'POST',
-            url:organisation_name_url,
-            // headers:{
-            //     "Autorization":"Bearer 5k5lim83b0mptiliu6",
-            // }
-        })
-            .then(response => {
-                console.log(response)
+    const onSubmit = organisation_data => {
+        Api.Edit_organisation_name_data(organisation_data)
+            .then(res => {
+                localStorage.setItem('orgID', res.data.data.uuid)
+                localStorage.getItem('orgID')
             })
             .catch(error => {
                 console.log(error)
             })
+
+        Api.Editted_data(organisation_data).then(res => setEditData(res.data.data))
+
     }
+    
     return (
         <div className={styles.model}>
             <div className={styles.model_main}>

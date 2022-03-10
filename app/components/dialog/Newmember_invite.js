@@ -1,12 +1,21 @@
 import styles from '../../styles/model.module.css'
 import { useForm } from 'react-hook-form';
-import Api from '../../pages/api/api';
+import Api from '../../components/api/api';
+import { useEffect, useState } from 'react';
 
 export default function Newmember_invite({ closeModel }) {
+  const [data,setdata]=useState([])
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = admin_invite_code => {
     Api.Newmember_invite_data(admin_invite_code)
   }
+  useEffect(() => {
+    Api.Get_roles_data()
+    .then(res => {
+      setdata(res.data.data)
+    })
+  }, {})
+  
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>
       <div className={styles.model_main}>
@@ -26,15 +35,15 @@ export default function Newmember_invite({ closeModel }) {
 
           <div>
             <label className={styles.model_label}>Role</label>
-            <select
-              name="roleId"
-              className={styles.model_selection}
-              {...register("roleId", { required: true })}
-            >
-              <option value={1} >1</option>
-              <option value={2}>admin</option>
-              <option value={3}>Developer </option>
-              <option value={4}>4</option>
+
+            <select 
+              className={styles.model_selection} name="roleId"
+              {...register("roleId", { required: true,valueAsNumber: true,
+               })}>
+              {data.map((item,key)=>
+                <>
+                  <option key={key} value={parseInt(item.id)}>{item.name}</option>
+                </>)}
             </select>
           </div>
           <div className={styles.model_btn}>

@@ -1,14 +1,20 @@
 import styles from '../styles/model.module.css';
 import { useForm } from 'react-hook-form';
-import Api from './api/api';
-
+import Api from '../components/api/api';
+import { useEffect, useState } from 'react'
 
 export default function New_Access_token({ closetoken }) {
-   const url = 'https://0d7503d0-c9e6-4e89-8f65-7a7cb892e370.mock.pstmn.io/profile/services/api/v1/api-access-tokens'
+   const [data, setData] = useState([])
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+   useEffect(() => {
+      Api.Get_environment_types_data().then(res =>
+         setData(res.data.data))
+   }, [])
+
    const onSubmit = access_data => {
       Api.Create_aaccess_token_data(access_data)
-  }
+   }
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
@@ -22,15 +28,16 @@ export default function New_Access_token({ closetoken }) {
                   <label className={styles.model_label}>Environment</label>
                   <div className={styles.select}>
                      <select
-                        name="Environment"
+                        name="environmentId"
                         className={`${styles.development} ${styles.model_selection}`}
-                        {...register("Environment", { required: true })}
+                        {...register("environmentId", { required: true })}
                      >
                         {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
-                        <option value="Development">Development</option>
-                        <option value="video">video</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+
+                        {data.map(option =>
+                           <>
+                              <option key={option.id} value={option.id}>{option.name}</option>
+                           </>)}
                      </select>
                      <img className={styles.file} src="Images/Icon awesome-folder.png" alt='icon'></img>
                      <button type="text" className={styles.up}><img src="Images/updown.png" alt='icon'></img></button>
@@ -41,19 +48,19 @@ export default function New_Access_token({ closetoken }) {
                      <p className={styles.access_token_link}>To know more permission please visit our <a href="#" className={styles.access_token_data}>token access guide</a></p>
                   </div>
                   <div className={styles.access_token_checkbox}>
-                     <input 
+                     <input
                         type="checkbox"
                         name="video"
                         id="video"
                         value="video"
-                        {...register("video", { required: true })} 
+                        {...register("video", { required: true })}
                      />
                      <label htmlFor="video"> Video</label><br />
-                     <input type="checkbox" className={styles.read} name="read" id="read" value="read" {...register("video", { required: false })} />
+                     <input type="checkbox" className={styles.read} name="read" id="read"  {...register("video", { required: false })} />
                      <label htmlFor="read" > Read</label><br />
-                     <input type="checkbox" className={styles.write} name="write" id="write" value="write" {...register("write", { required: false })} />
+                     <input type="checkbox" className={styles.write} name="write" id="write"  {...register("write", { required: false })} />
                      <label htmlFor="write" >Write</label><br />
-                     <input type="checkbox" className={styles.data} name="data" id="data" value="data" {...register("data", { required: false })} />
+                     <input type="checkbox" className={styles.data} name="data" id="data" {...register("data", { required: false })} />
                      <label htmlFor="data">Data(read-only)</label>
                   </div>
                   <label className={styles.model_label}>Access token name</label>

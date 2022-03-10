@@ -26,7 +26,7 @@ export default function Others() {
                             <label className={styles.model_label}>Tags</label>
                             <div className={styles.tags}>
                                 <h4 className={styles.filter}>
-                                    Movies    
+                                    Movies
                                     <span className={styles.close_img}>x</span></h4>
                                 <h4>
                                     Thiller
@@ -35,7 +35,7 @@ export default function Others() {
                                 <h4>
                                     Intense suspense
                                     <span className={styles.close_img}>x</span>
-                                    </h4>
+                                </h4>
                             </div>
                             <span className={styles.comma_after_tag}>Enter a comma after each tag</span>
 
@@ -108,10 +108,14 @@ export default function Others() {
                             <p>Enable seek bar preview to generate quick thumbail previews for the entire video duration &#44; which will be shown while using the seek bar on player</p>
 
                         </div>
-                        <h4>Offline Download</h4>
-                        <input type="checkbox" className={styles.input}></input>
+                        <div className={styles.seek_bar}>
+                            <input type="checkbox" className={styles.input}></input>
+                            <h4>Offline Download</h4>
+                            
 
-                        <p>Enabling this feature will create a download a &#46; mp4 file of the video which can be used for watching the content offline &#46; </p>
+                            <p>Enabling this feature will create a download a &#46; mp4 file of the video which can be used for watching the content offline &#46; </p>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,10 +1,21 @@
 import styles from '../styles/model.module.css'
 import { useForm } from 'react-hook-form';
-import Api from './api/api';
+import Api from '../components/api/api';
 import Image from 'next/image'
+import {useEffect,useState} from 'react'
 
 export default function Create_signing_key({ closesigninkeys }) {
+    const [data, setData] = useState([])
+    const [prod,setProd]=useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    useEffect(() => {
+        Api.Get_environment_types_data()
+        .then(res =>
+            setData(res.data.data))
+        Api.Get_product_data()
+        .then(res=>
+            setProd(res.data.data))
+    }, [])
     const onSubmit = signin_key => {
         Api.Create_signin_keys_data(signin_key)
     }
@@ -21,31 +32,28 @@ export default function Create_signing_key({ closesigninkeys }) {
                         <label className={styles.model_label}>Environment</label>
                         <div className={styles.select}>
                             <select
-                                name="Environment"
+                                name="environmentId"
                                 className={`${styles.development} ${styles.model_selection}`}
-                                {...register("Environment", { required: true })}
+                                {...register("environmentId", { required: true })}
                             >
-                                <option value="Development">Development</option>
-                                <option value="video">video</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
+                                {data.map(item => <>
+                                    <option key={item.id} value={item.id}>{item.name}</option>
+                                </>)}
                             </select>
 
-                            <img className={styles.file} src="/Images/Icon awesome-folder.png" alt='icon'/>
+                            <img className={styles.file} src="/Images/Icon awesome-folder.png" alt='icon' />
                             <button type="text" className={styles.up}><img src="/Images/updown.png" alt='icon'></img></button>
                         </div>
                         <div>
                             <label className={styles.model_label}>Product</label>
 
-                            <select 
-                                name="product"
+                            <select
+                                name="productTypeId"
                                 className={styles.model_selection}
-                                {...register("product", { required: true })}
+                                {...register("productTypeId", { required: true })}
                             >
-                                <option value="1">1</option>
-                                <option value="video">video</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
+                                {prod.map(product=>
+                                    <option key={product.id} value={product.id}>{product.name}</option>)}
                             </select>
                         </div>
                         <div className={styles.model_btn}>

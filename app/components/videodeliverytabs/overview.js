@@ -1,7 +1,5 @@
 import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
-import { useState } from 'react'
-import Link from 'next/link';
 
 export default function Overview() {
 
@@ -41,7 +39,7 @@ export default function Overview() {
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Status</td>
-                                    <td className={styles.content}>Ready</td>
+                                    <td className={styles.content}>Ready <img src='/Images/check-circle.png'/></td>
                                 </tr>
                                 <tr>
                                     <td className={styles.title}>Duration</td>

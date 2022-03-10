@@ -84,13 +84,13 @@ export default function Subtitles() {
 
                         </div>
                         <div className={styles.or}></div>
-                        <div className={styles.or_text}><p >[or]</p></div>
+                        <div className={styles.or_text}><span>[or]</span></div>
                         <div className={styles.post}>
                             <h4>Post using Video URL:</h4>
-                            <p>Post https://api.videograph.com/vodeos/v1/assets</p>
-                            <span>Post body editor:</span>
+                            {/* <p>Post https://api.videograph.com/vodeos/v1/assets</p> */}
+                            {/* <span>Post body editor:</span> */}
                             <div className={styles.language_select}>
-                                <button className={styles.model_btn}>Python</button>
+                                <button className={`${styles.model_btn} ${styles.active}`}>Python</button>
                                 <button className={styles.model_btn}>Node</button>
                                 <button className={styles.model_btn}>Php</button>
                                 <button className={styles.model_btn}>Go</button>

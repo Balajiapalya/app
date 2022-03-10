@@ -8,8 +8,6 @@
     float: left;
     position: fixed;
     height: 100%;
-    
-    
 }
 .containercomponents h2{
     color: white;
@@ -166,20 +164,22 @@
     font-size: 14px;
     color: #212b36;
 }
-.settings .general input{
-    width: 400px;
+.settings .general .edit{
+   width: 40%;
+   float: left;
+   background-color: #fff;
+   border: solid 1px rgba(99, 115, 129, 0.3);
     height: 50px;
-    padding: 10px 65px 10px 10px;
+    padding: 10px 10px 10px 10px;
     margin: 5px 0px;
-    border: 1px solid #8080804d;
     border-radius: 5px;
 }
 .settings .general img{
     padding-right: 5px;
     cursor: pointer;
 }
-.settings .general span{
-    margin: 0-55px;
+.settings .general .edit span{
+    float: right;
     cursor: pointer;
 }
 .settings div ul{
@@ -217,6 +217,7 @@
 }
 .settings .members{
     width: 100%;
+    float: left;
 }
 .settings .members h3{
     float:left;
@@ -304,6 +305,167 @@
     border:none;
   
 }
+/* environments */
+.environments_button{
+    width: 100%;
+    float: left;
+    margin-top:40px;
+}
+.environments_button p{
+    width: 80%;
+    float: left;
+}
+.environments_button button{
+    float: right;
+    color:  #2863eb;
+    border-color:  #2863eb;
+    border-radius: 4px;
+    margin-top:5px;
+    cursor: pointer;
+    background-color:#f4f6f8;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-family: Inter-Medium;
+}
+.environments_table{
+    width: 100%;
+    float: left;
+    margin-top: 40px;
+}
+.environments_table table{
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
+    border-collapse: collapse;
+}
+.environments_table table thead th {
+    border-bottom: 1px solid #e3e3e3;
+    background-color: #f4f5f7;
+    border-collapse: collapse;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    padding: 10px 5px;
+}
+.environments_table tbody{
+    background-color: white;
+}
+/* .environments_table tbody tr{
+    border-bottom: 1px solid black;
+} */
+.environments_table tbody tr td{
+    padding: 15px;
+}
+.side_head{
+    color: #6e6e6e;
+    font-size: 14px;
+    font-family: Inter-Regular;
+}
+.table_box{
+    width: 100%;
+    float: left;
+    border: 1px solid #e0e0e0;
+    background-color: #f6f8fe;
+    padding: 5%;
+}
+.box_content{
+    width: 100%;
+    float: left;
+}
+.box_content_history{
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-family: Inter-Italic;
+}
+.box_data{
+    width: 100%;
+    float: left;
+}
+.box_data_types{
+    width: 33%;
+    float: left;
+}
+.types_heading{
+    font-size: 12px;
+    font-family: Inter-Regular;
+    color: #808080;
+}
+.types_value{
+    font-size: 14px;
+    font-family: Inter-Regular;
+    color: #212b36;
+}
+.token_key_value{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    color: #212b36;
+}
+.content_head{
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    color: #212b36;
+}
+.content_body{
+    font-family: Inter-Regular;
+    font-size: 12px;
+    color: #868686;
+    word-break: break-all;
+}
+.content_footer{
+    font-size: 14px;
+    font-family: Inter-Regular;
+    color:  #212b36;
+}
+.dev_head{
+    padding: 5px 0px;
+    width: 80%;
+    float: left;
+    border: 1px solid rgba(198, 198, 198, 0.63);
+    margin-bottom: 10px;
+    color: #212b36;
+    font-family: Inter-Regular;
+    font-size: 16px;
+}
+.dev_select{
+    width: 100%;
+    float: left;
+}
+.dev_select select{
+    padding: 5px 0px;
+    width: 35%;
+    border: solid 1px rgba(198, 198, 198, 0.63);
+    color: #212b36;
+    font-size: 14px;
+    font-family: Inter-Regular;
+}
+.dev_options{
+    width: 30%;
+    float: left;
+    margin-top: 5px;
+}
+.dev_Cancel{
+    width: 15%;
+    float: left;
+    text-decoration: underline;
+    color: #848484;
+    font-size: 14px;
+    font-family: Inter-Regular;
+}
+.dev_save{
+    width: 15%;
+    float: right;
+    color: #2863eb;
+    text-decoration: underline;
+    font-size: 14px;
+    font-family: Inter-Regular;
+}
+
 
 /*-------------Media queries of organisation----------*/
 

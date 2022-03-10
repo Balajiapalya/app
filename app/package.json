@@ -9,11 +9,15 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
     "next": "^12.1.0",
     "react": "17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.27.0",
-    "react-hook-form-resolvers": "^0.0.1"
+    "react-hook-form-resolvers": "^0.0.1",
+    "react-select": "^5.2.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",

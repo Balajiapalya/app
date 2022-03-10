@@ -1,6 +1,9 @@
 import axios from "axios";
-let LINK = process.env.VG_PROFILE_SERVICE_API;
-const PROFILE_BASE_URL = () => LINK;
+let PROFILE_LINK = process.env.VG_PROFILE_SERVICE_API;
+const PROFILE_BASE_URL = () => PROFILE_LINK;
+
+let VIDEO_LINK =process.env.VG_VEDIO_SERVICE_API;
+const VIDEO_BASE_URL =() => VIDEO_LINK;
 
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
@@ -15,8 +18,11 @@ export const Edit_organisation_name = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/1/invite`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/invite`;
 };
+export const Remove_user = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
+}
 export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
@@ -31,17 +37,29 @@ export const get_roles = () => {
 }
 
 export const get_organization = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
 }
-export const get_environment_types = () =>{
+export const get_environment_types = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
 }
-export const get_environment = ()=>{
+export const get_environment = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId={{organizationId}}`
 }//no used yet
 
-export const get_product = ()=>{
+export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
+}
+export const editted_data = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}`
+}
+export const get_new_env = () =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
+}
+export const post_env = () =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments`
+}
+export const video_url = () =>{
+    return `${VIDEO_BASE_URL()}`
 }
 
 let token;
@@ -56,10 +74,15 @@ let headers = {
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
+
 }
 const uuid = uuid_token;
 
-
+let org_id;
+if (process.browser) {
+    org_id = localStorage.getItem('orgID')
+}
+const orgId = org_id
 
 const Api = {
     Sign_up_data: (login_details) =>
@@ -67,12 +90,12 @@ const Api = {
             method: 'POST',
             url: Sign_up(),
             data: login_details,
-        }),//this is called in login
+        }),//this is called signup
     SignIn_details: (signin_details) =>
         axios({
             method: 'POST',
             url: SignIn_Data(),
-            data: signin_details
+            data: signin_details,
         }),//this is called in signin
     Get_roles_data: () =>
         axios({
@@ -87,20 +110,26 @@ const Api = {
             url: get_organization(),
             headers: headers,
         }),//this is calleed in organization
+    Remove_user_data: () =>
+        axios({
+            method: 'DELETE',
+            url: Remove_user(),
+            headers: headers,
+        }),
     Get_environment_types_data: () =>
         axios({
-            method:'GET',
-            url:get_environment_types(),
-            headers:headers,
-        }),
+            method: 'GET',
+            url: get_environment_types(),
+            headers: headers,
+        }),// this is called where ever environments are there
     Get_product_data: () =>
         axios({
-            method:'GET',
-            url:get_product(),
-            headers:headers,
-        }),
-    
-    Create_account_data: (createaccount_data) =>
+            method: 'GET',
+            url: get_product(),
+            headers: headers,
+        }),//create_signing_key
+
+    Create_account_data: (createaccount_data, id) =>
         axios({
             method: 'POST',
             url: Create_user_account(),
@@ -111,21 +140,17 @@ const Api = {
             method: 'POST',
             url: Edit_organisation_name(),
             data: organization_data,
-        })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }),
+            headers: headers,
+        }),//this is called in edit_organisation_name
     Newmember_invite_data: (admin_invite_code) =>
         axios({
             method: 'POST',
             url: Newmember_invite(),
             data: admin_invite_code,
+            headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
@@ -138,7 +163,7 @@ const Api = {
             headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
@@ -151,7 +176,7 @@ const Api = {
             headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
@@ -164,13 +189,31 @@ const Api = {
             headers: headers,
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(error => {
                 console.log(error)
             }),//this is called in Create_signin_keys
+    Editted_data: (data) =>
+        axios({
+            method: 'PUT',
+            url: editted_data(),
+            data:data,
+            headers: headers,
+        }),//called in edit_organisation_name
+    Env_data: ()=>
+        axios({
+            method:'GET',
+            url:get_new_env(),
+            headers:headers,
+        }),
+    Post_env:(new_env_data)=>
+        axios({
+            method:'POST',
+            data:new_env_data,
+            url:post_env(),
+            headers:headers,
+        })
 }
-
-
 export default Api
 
