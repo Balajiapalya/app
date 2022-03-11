@@ -147,8 +147,8 @@ export default function Environment() {
                                         <div className={styles.dev_head}>Development</div>
                                         <div className={styles.dev_select}>
                                             <select >
-                                                {env.map(item =>
-                                                    <option value={parseInt(item.id)}>{item.name}</option>
+                                                {env.map((item,key) =>
+                                                    <option key={key} value={parseInt(item.id)}>{item.name}</option>
                                                 )}
                                             </select>
                                         </div>
