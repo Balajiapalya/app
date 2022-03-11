@@ -23,6 +23,7 @@ export default function Create_account() {
                     reg.push({
                         pathname:'/'
                     })
+                    window.location.reload();
                 }
             })
             .catch(error => {

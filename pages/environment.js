@@ -1,6 +1,22 @@
 import styles from '../styles/settings.module.css'
-import Layout from '../components/common/layout'
+import Layout from '../components/common/layout';
+import Api from '../components/api/api';
+import { useEffect,useState } from 'react';
+
+
 export default function Environment() {
+    const[env,setenv]=useState([]);
+    useEffect(() => {
+        Api.Env_data()
+            .then(res => {
+                console.log(res.data)
+                setenv(res.data.data)
+            })
+            .catch(error => {
+                console.log(error)
+    
+            })
+    }, {})
     return (
         <div className={styles.container}>
             <div className={styles.settings}>
@@ -131,7 +147,9 @@ export default function Environment() {
                                         <div className={styles.dev_head}>Development</div>
                                         <div className={styles.dev_select}>
                                             <select >
-                                                <option>Development</option>
+                                                {env.map((item,key) =>
+                                                    <option key={key} value={parseInt(item.id)}>{item.name}</option>
+                                                )}
                                             </select>
                                         </div>
 

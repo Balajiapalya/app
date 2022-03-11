@@ -1,6 +1,9 @@
 import axios from "axios";
-let LINK = process.env.VG_PROFILE_SERVICE_API;
-const PROFILE_BASE_URL = () => LINK;
+let PROFILE_LINK = process.env.VG_PROFILE_SERVICE_API;
+const PROFILE_BASE_URL = () => PROFILE_LINK;
+
+let VIDEO_LINK =process.env.VG_VEDIO_SERVICE_API;
+const VIDEO_BASE_URL =() => VIDEO_LINK;
 
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
@@ -48,6 +51,15 @@ export const get_product = () => {
 }
 export const editted_data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
+}
+export const get_new_env = () =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
+}
+export const post_env = () =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments`
+}
+export const video_url = () =>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
 
 let token;
@@ -178,7 +190,26 @@ const Api = {
             data:data,
             headers: headers,
         }),//called in edit_organisation_name
-        
+    Env_data: ()=>
+        axios({
+            method:'GET',
+            url:get_new_env(),
+            headers:headers,
+        }),
+    Post_env:(new_env_data)=>
+        axios({
+            method:'POST',
+            data:new_env_data,
+            url:post_env(),
+            headers:headers,
+        }),
+    post_video:(video_url_data)=>
+        axios({
+            method:'POST',
+            data:video_url_data,
+            url:video_url(),
+            headers:headers,
+        }),
 }
 export default Api
 

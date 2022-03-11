@@ -32,9 +32,9 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
-                                        <img src="/Images/download.png" alt="download"/>    
-                                        <img src="/Images/Icon material-delete.png" alt="delete"/>
-                                        
+                                        <img src="/Images/download.png" alt="download" />
+                                        <img src="/Images/Icon material-delete.png" alt="delete" />
+
                                     </td>
                                 </tr>
                                 <tr>
@@ -43,8 +43,8 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
-                                    <img src="/Images/download.png" alt="download"/>    
-                                    <img src="/Images/Icon material-delete.png" alt="delete"/>
+                                        <img src="/Images/download.png" alt="download" />
+                                        <img src="/Images/Icon material-delete.png" alt="delete" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,8 +53,8 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
-                                    <img src="/Images/download.png" alt="download"/>    
-                                    <img src="/Images/Icon material-delete.png" alt="delete"/>
+                                        <img src="/Images/download.png" alt="download" />
+                                        <img src="/Images/Icon material-delete.png" alt="delete" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -63,8 +63,8 @@ export default function Subtitles() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
-                                    <img src="/Images/download.png" alt="download"/>    
-                                    <img src="/Images/Icon material-delete.png" alt="delete"/>
+                                        <img src="/Images/download.png" alt="download" />
+                                        <img src="/Images/Icon material-delete.png" alt="delete" />
                                     </td>
                                 </tr>
                             </tbody>
@@ -90,14 +90,16 @@ export default function Subtitles() {
                             {/* <p>Post https://api.videograph.com/vodeos/v1/assets</p> */}
                             {/* <span>Post body editor:</span> */}
                             <div className={styles.language_select}>
-                                <button className={`${styles.model_btn} ${styles.active}`}>Python</button>
-                                <button className={styles.model_btn}>Node</button>
-                                <button className={styles.model_btn}>Php</button>
-                                <button className={styles.model_btn}>Go</button>
+                                <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/Images/python.png' alt='python' />Python</button>
+                                <button className={styles.model_btn}><img className={styles.languge_img} src='/Images/node-js.png' alt='node' />Node</button>
+                                <button className={styles.model_btn}><img className={styles.languge_img} src='/Images/php.png' alt='php' />Php</button>
+                                <button className={styles.model_btn}><img className={styles.languge_img} src='/Images/go.png' alt='go' />Go</button>
                             </div>
                             <div className={styles.code}>
-
-
+                                <textarea
+                                    className={styles.code_input}
+                                    type='text'
+                                />
                             </div>
                             <button className={styles.btn}>Run Request</button>
                         </div>
