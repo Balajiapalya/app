@@ -85,8 +85,8 @@
     
 }
 .videos hr{
-      background-color:#d5dbe2;
-     margin-top: 20px;
+    background-color:#d5dbe2;
+    margin-top: 20px;
 }
 .search{
     width: 100%;
@@ -200,26 +200,26 @@
 }
 .Videodelivery_addnewassets h2{
     font-size: 20px;
-    font-family: Inter-Regular;
-    padding-right: 10px;
-    
+    font-family: Inter-Medium;
+    font-weight: 500;
+    padding-right: 10px; 
+
 }
 .upload_btn_wrapper {
     position: relative;
     overflow: hidden;
     display: inline-block;
-  }
+}
   
-  .btn {
-  
-  color: #2863eb;
-      padding: 10px 49px;
-      border-radius: 5px;
-      font-size: 20px;
-      background-color: #fff;
-      border: solid 1px #2863eb;
-      margin: 0px 20px 20px;
-      font-family: Inter-Medium;
+.btn {
+    color: #2863eb;
+    padding: 10px 49px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #fff;
+    border: solid 1px #2863eb;
+    margin: 0px 20px 20px;
+    font-family: Inter-Medium;
   }
   
   .upload_btn_wrapper input[type=file] {
@@ -231,25 +231,53 @@
 
   }
   .upload_file{
-      border: 1px solid #fff;
-      background-color: #fff;
-      width: 100%;
-      float: left;
-      font-family:Inter-Regular;
-  }
-  .upload_file h2{
-    font-size: 16px;
-    font-family: Inter-Regular;
-    padding-right: 10px;
-    margin: 20px;  
-   }
-  
-   .post{
-    border: 1px solid #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
     background-color: #fff;
     width: 100%;
     float: left;
-    margin-top: 10px;
+    font-family:Inter-Regular;
+
+  }
+  .upload_file h2{
+    font-size: 18px;
+    font-family: Inter-Medium;
+    padding-right: 10px;
+    margin: 20px;  
+    font-weight: 500;
+   }
+   .or{
+    width: 100%;
+    float: left;
+    height: 20px;
+    border-bottom: 1px solid #cecece;
+}
+.or_text span{
+    color: #a7acb2;
+    background-color: #f4f6f8;
+    position: relative;
+    bottom: 13px;   
+    left: 10%;
+    padding: 0px 5px 0px 5px;   
+}
+.post{
+ box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+ border: 1px solid #fff;
+ background-color: #fff;
+ width: 100%;
+ float: left;
+ padding-top: 20px;
+}
+.post input{
+    margin-left: 15px;
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0px 0px 20px;
+    outline: none;
+    background-color: #fafafa;
+    color: #797979;
+    font-size: 14px;
+    font-family: Inter-Regular;
+    border: 1px solid #fafafa ;
 }
 .model_btn{
     color: #212b36;
@@ -258,34 +286,54 @@
     font-family: Inter-Regular;
     font-size: 12px;
     background-color: #fff;
-    border: solid 1px #212b36;
-    margin:10px 0px  10px 20px;
-      
+    border: solid 1px #9a9a9a;
+    margin:10px 0px  10px 20px;     
 }
-.post h4{
-margin: 20px;
-    font-size: 16px;
-    font-family:Inter-Regular;
+.active{
+    background-color: #f0f6ff;
+    border: solid 1px #c2d1db;
+}
+.languge_img{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.post label{
+    margin: 20px;
+    font-size: 18px;
+    font-family:Inter-Medium;
+    font-weight: 500;
 
 }
 .post span{
+    width: 90%;
     margin: 20px;
     font-size: 16px;
     font-family:Inter-Regular; 
+    color: #212b36;
 }
-.post p{
-    font-size:12px;
+/* .post p{
+    font-size:14px;
     font-family: Inter-Regular;
     margin-left: 20px;
-    background-color:#f4f6f8;
+    color: #797979;
+    background-color: #fafafa;
     padding: 10px;
     margin-right: 20px;
-}
+} */
 .code{
-    height:200px;
-    background-color: #f4f6f8;
+    width: 90%;
+    float: left;
+    height:200px; 
     margin: 10px 20px;
-
+    
+}
+.code_input{
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    background-color: #f7f7f7;
+    outline: none;
+    border: 1px solid rgba(99, 115, 129, 0.15); 
 }
 
 
