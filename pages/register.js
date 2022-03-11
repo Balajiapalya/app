@@ -12,9 +12,10 @@ export default function Create_account() {
     const onSubmit = createaccount_data => {
        
         Api.Create_account_data(createaccount_data)
-            .then(res => {
-                
+            .then(res => {   
                 if ("success") {
+            
+                    localStorage.setItem('orgName',res.data.data.organizations[0].name)
                     localStorage.setItem('Jwt-token', (res.data.data.token))
                     localStorage.getItem('jwt-token')
                     localStorage.setItem('uuid', res.data.data.organizations[0].uuid)

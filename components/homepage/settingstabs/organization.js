@@ -16,12 +16,12 @@ function Organisation() {
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
     const [editData, setEditData] = useState()
+    const [org, setOrg] = useState()
 
     const createdDate = (date) => {
         var d = new Date(date);
         return d.toLocaleString();
     }
-
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
@@ -30,20 +30,23 @@ function Organisation() {
         Api.Get_organization_data()
             .then(res => {
                 setorgdata(res.data.data.users)
+                setOrg(localStorage.getItem('orgName'))
+                
             })
             .catch(error => {
                 console.log(error)
             })
+        
 
     }, {})
-
+   
     return (
         <Fragment>
             <div className={styles.general}>
                 <h3>General</h3>
                 <label>Organization</label>
 
-                <div className={styles.edit}>{editData ? editData.name : ''}
+                <div className={styles.edit}>{editData ? editData.name : org}
                     <span>
                         <a onClick={() => setopeneditorganization(true)}><img src="Images/Icon material-edit.png" alt="icon"></img>Edit</a>
                     </span>
@@ -74,12 +77,12 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td><select value={item.roleId}>
-                                    {data.map(i => <>
-                                        {item.roleId === i.id ? <option value={item.roleId}>{i.name}</option> : <option value={i.roleId}>{i.name}</option>}
-                                    </>)}
+                                    <option value='1'>Owner</option>
+                                    <option value='2'>Admin</option>
+                                    <option value='3'>Member</option>
+
                                 </select>
                                 </td>
-
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
