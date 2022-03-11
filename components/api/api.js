@@ -18,10 +18,10 @@ export const Edit_organisation_name = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/invite`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/invite`;
 };
 export const Remove_user = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
 }
 export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
@@ -37,7 +37,7 @@ export const get_roles = () => {
 }
 
 export const get_organization = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
 }
 export const get_environment_types = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
@@ -50,7 +50,7 @@ export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 }
 export const editted_data = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${orgId}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
 }
 export const get_new_env = () =>{
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
@@ -78,11 +78,6 @@ if (process.browser) {
 }
 const uuid = uuid_token;
 
-let org_id;
-if (process.browser) {
-    org_id = localStorage.getItem('orgID')
-}
-const orgId = org_id
 
 const Api = {
     Sign_up_data: (login_details) =>
@@ -148,13 +143,7 @@ const Api = {
             url: Newmember_invite(),
             data: admin_invite_code,
             headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }),//this is called in Newmwmber_invite
+        }),
     Create_aaccess_token_data: (access_data) =>
         axios({
             method: 'POST',

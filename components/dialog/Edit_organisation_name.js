@@ -7,8 +7,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
     const onSubmit = organisation_data => {
         Api.Edit_organisation_name_data(organisation_data)
             .then(res => {
-                localStorage.setItem('orgID', res.data.data.uuid)
-                localStorage.getItem('orgID')
+                localStorage.setItem('orgName', res.data.data.name)
             })
             .catch(error => {
                 console.log(error)
@@ -17,7 +16,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
         Api.Editted_data(organisation_data).then(res => setEditData(res.data.data))
 
     }
-    
+
     return (
         <div className={styles.model}>
             <div className={styles.model_main}>
