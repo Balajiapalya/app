@@ -4,8 +4,11 @@ import Api from '../api/api'
 import { useState } from 'react/cjs/react.production.min'
 
 
-export default function Removeuser({ closeremoveuser }) {
-  
+export default function Removeuser({ closeremoveuser ,item }) {
+  console.log(item,'items')
+  const handleDelete=()=>{
+    Api.Remove_user_data(item).then(res=>console.log(res))
+  }
   return (
     <div className={`${styles.model} ${styles.remove_user_modal}`} >
       <div className={styles.model_main}>
@@ -20,7 +23,7 @@ export default function Removeuser({ closeremoveuser }) {
         </div>
         <div className={styles.model_btn}>
           <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeremoveuser(false)}>Cancel</button></a>
-          <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} >Yes, remove</button></a>
+          <a><button type="button" onClick={()=>handleDelete()} className={`${styles.model_save_btn} btn btn-primary`} >Yes, remove</button></a>
         </div>
       </div>
     </div>
