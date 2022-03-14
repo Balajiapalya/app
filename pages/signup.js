@@ -3,28 +3,32 @@ import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Signup() {
   let invite_code;
   if (process.browser) {
     invite_code = localStorage.getItem("invite-code");
   }
-  const invitecode =invite_code ;
+  const invitecode = invite_code;
   const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const [error,seterror] = useState([]);
   const onSubmit = login_details => {
     Api.Sign_up_data(login_details)
       .then(res => {
-        
+
         if (res.data.status = "Success") {
           router.push({
             pathname: `/invitationsent`
           })
+
         }
       })
-      .catch(error => {
-        console.log(error)
+        .catch(error=>{
+          seterror(error.response.data.message)
       })
+      
   };
   return (
     <div className={styles.wrapper_signup}>
@@ -47,6 +51,7 @@ export default function Signup() {
               {...register("email", { required: true })}
             />
             {errors.email && <p className={'validations'}>This field is required</p>}
+            <span className='error'>{error}</span>
             <button type='submit' className={`${styles.btn} btn btn-primary`}>Sign Up</button>
           </form>
           <h4 className={styles.already_account}>Already have an account?</h4>

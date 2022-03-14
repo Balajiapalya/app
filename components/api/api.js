@@ -86,18 +86,20 @@ if (process.browser) {
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
-
 }
 const uuid = uuid_token;
 
 let headers = {
     'Authorization': `Bearer ${token}`
-
 };
 
-let headers1 = {
-    'EnvironmentId': `Bearer ${uuid_token}`
+let Env_uuid;
+if (process.browser){
+    Env_uuid = localStorage.getItem("envuuid");
 }
+const envid = Env_uuid
+
+
 
 
 const Api = {
@@ -216,7 +218,8 @@ const Api = {
         axios({
             method: 'GET',
             url: getList_videos(),
-            headers: headers,
+            headers:{'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envid}`},
         }),
 
     Get_env_data: () =>
@@ -243,7 +246,8 @@ const Api = {
             method: 'POST',
             data: video_url_data,
             url: video_url(),
-            headers: headers,
+            headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envid}`}
         }),
     //get api token
     Get_access_token: () =>

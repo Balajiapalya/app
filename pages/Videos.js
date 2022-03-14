@@ -1,26 +1,29 @@
 import styles from '../styles/videos.module.css'
 import Link from 'next/link';
 import Layout from '../components/common/layout';
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import Api from '../components/api/api'
-import {useState} from 'react'
+import { useState } from 'react'
 
 export default function Videos() {
-const [videoData,setVideoData]=useState([])
-    useEffect(()=>{
-        Api.Video_list().then(res=>setVideoData(res.data.data))
-    },[])
-  const create_On=(date)=>{
-      var date=new Date(date)
-      date.toLocaleString()
-  }
+    const [videoData, setVideoData] = useState([]); 
+    
+    useEffect(() => {
+        Api.Video_list()
+        .then(res => 
+            setVideoData(res.data.data))
+    }, [])  
+    const create_On = (date) => {
+        var d = new Date(date)
+        return d.toLocaleString()
+    }
     return (
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
-                        <p>Yupp tv <br /> Development <img src='/Images/Group 1817.png' alt='img'/></p>
+                        <p>Yupp tv <br /> Development <img src='/Images/Group 1817.png' alt='img' /></p>
                     </div>
                 </div>
             </div>
@@ -63,29 +66,29 @@ const [videoData,setVideoData]=useState([])
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            {videoData.map(i=><>
-                            <tr>
-                                <td><input type="checkbox"></input></td>
-                                <td>{create_On(i.created_at)}</td>
-                                <td>{i.title}</td>
-                                <td>{i.videoId}</td>
-                                <td><img src='/Images/Image 3.png' /></td>
-                                <td>{i.duration}</td>
-                                <td>HD</td>
-                                <td>{i.status}</td>
-                                <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
-                                    <img src='/Images/film-editing.png' alt="image"></img>
-                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
-                                    <img src='/Images/closed-caption.png' alt="image"></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
-                                </td>
-                            </tr>
+
+                            {videoData.map((i,key) => <>
+                                <tr key={key}>
+                                    <td><input type="checkbox"></input></td>
+                                    <td>{create_On(i.created_at)}</td>
+                                    <td>{i.title}</td>
+                                    <td>{i.videoId}</td>
+                                    <td><img src='/Images/Image 3.png' /></td>
+                                    <td>{i.duration}</td>
+                                    <td>HD</td>
+                                    <td>{i.status}</td>
+                                    <td className={styles.actionicons}>
+                                        <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                        <img src='/Images/film-editing.png' alt="image"></img>
+                                        <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                        <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                        <img src='/Images/closed-caption.png' alt="image"></img>
+                                        <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                    </td>
+                                </tr>
                             </>)}
-                            
-    
+
+
 
 
                             {/* <tr>
@@ -107,7 +110,7 @@ const [videoData,setVideoData]=useState([])
                                     <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
                             </tr> */}
-                            <tr>
+                            {/* <tr>
                                 <td><input type="checkbox"></input></td>
                                 <td>02/12/21<br></br>6:03pm</td>
                                 <td>Asianet-Roku</td>
@@ -183,7 +186,7 @@ const [videoData,setVideoData]=useState([])
                                     <img src='/Images/closed-caption.png' alt="image"></img>
                                     <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
 

@@ -121,3 +121,7 @@ button, input, optgroup, select, textarea {
   margin-block-end: 0em;
   text-align: left;
 }
+.error{
+  color: red;
+  text-align: center;
+}

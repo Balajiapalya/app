@@ -1,15 +1,24 @@
 import styles from '../../styles/settings.module.css';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { memo } from "react";
 
 
 function Navbar() {
     const [opendropdown, setdropdown] = useState(false);
+    const [orgname,setorgname]=useState([]);
+    const [ownername,setownername]=useState([]);
     const handlelogout = () => {
         window.localStorage.clear();
-        
     }
+    useEffect(()=>{
+        setorgname(
+            localStorage.getItem("orgName")
+        )
+        setownername(
+            localStorage.getItem("ownername")
+        )
+    })
 
     return (
         <div className={styles.container}>
@@ -47,7 +56,7 @@ function Navbar() {
                             <Link href="/"><a><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>Anil <br />Yupp TV</p></a>
+                            <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a>
 
                         </li>
                         <li>

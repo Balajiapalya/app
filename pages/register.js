@@ -2,40 +2,41 @@ import styles from "../styles/Emailverification.module.css";
 import { useForm } from "react-hook-form";
 import Api from "../components/api/api";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Create_account() {
-
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [error,seterror] = useState([]);
     const reg = useRouter();
     const params = reg.query
     const onSubmit = createaccount_data => {
         createaccount_data.inviteCode = params.invitecode;
-        console.log(createaccount_data);
         Api.Create_account_data(createaccount_data)
             .then(res => {
-                if (resres.data.status = "Success") {
+                if (res.data.status = "Success") {
                     localStorage.setItem('orgName', res.data.data.organizations[0].name)
-                    localStorage.setItem('Jwt-token', (res.data.data.token))
-                    localStorage.getItem('jwt-token')
                     localStorage.setItem('uuid', res.data.data.organizations[0].uuid)
-                    localStorage.getItem('uuid')
                     reg.push({
                         pathname: '/'
                     })
-
                 }
             })
-            .catch(error => {
-                console.log(error)
-            })
+            .catch(error=>{ 
+                if(error.response.data.code = 400){
+                    seterror(error.response.data.message)
+                }
+            })   
     }
     return (
         <div className={styles.wapper_email}>
             <div className={styles.logo_title}>
                 <img className={styles.file} src="/Images/Logo.png" alt="LOGO"></img>
             </div>
+           
             <main className={styles.createaccount}>
+               
                 <form className={styles.createaccount_form} onSubmit={handleSubmit(onSubmit)}>
+                     <h3 className='error'>{error}</h3>
                     <label className={styles.createaccount_label}>First Name</label>
                     <input
                         type="text"
