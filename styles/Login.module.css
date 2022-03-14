@@ -18,7 +18,7 @@
     margin-bottom: 1rem;
 }
 .signup_title{
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     color:#211d1d;
 }
 .signup_area{
@@ -66,6 +66,10 @@
     font-size: 1rem;
     color: #637381;
     margin-top:3.5rem;
+}
+.account{
+    font-size: 1rem;
+    color: #637381;
 }
 .signin_link{
     color: #2863eb;
