@@ -1,12 +1,20 @@
 import { Fragment } from "react";
 import styles from '../../../styles/signinkeys.module.css';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Create_signing_key from "../../../pages/Create_signing_key";
 import Delete_signing_key from "../../dialog/Delete_signing_key";
+import Api from "../../api/api";
 
 function Signingkeys() {
     const[opensigninkeys,setopensigninkeys]=useState(false);
     const[removekeys,setremovekeys]=useState(false);
+
+    useEffect(()=>{
+       
+        Api.Get_sigin_keys()
+            .then(res=>{
+            })
+    },{})
     return (
         <Fragment>
             <section className={styles.wrapper_signing_keys}>

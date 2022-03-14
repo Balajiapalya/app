@@ -1,6 +1,9 @@
 import axios from "axios";
-let LINK = process.env.VG_PROFILE_SERVICE_API;
-const PROFILE_BASE_URL = () => LINK;
+let PROFILE_LINK = process.env.VG_PROFILE_SERVICE_API;
+const PROFILE_BASE_URL = () => PROFILE_LINK;
+
+let VIDEO_LINK = process.env.VG_VEDIO_SERVICE_API;
+const VIDEO_BASE_URL = () => VIDEO_LINK;
 
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
@@ -11,43 +14,66 @@ export const Sign_up = () => {
 export const Create_user_account = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users`;
 };
+//organization
 export const Edit_organisation_name = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
 };
 export const Newmember_invite = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/invite`;
 };
-export const Remove_user = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
-}
-export const Create_webhook = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
-};
-export const Create_aaccess_token = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
-};
-export const Create_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
-};
 export const get_roles = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/roles`
 }
-
+export const Remove_user = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+};
 export const get_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+};
+export const editted_data = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
+};
+//wbhook
+export const Create_webhook = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
+};
+export const get_webhook = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?environmentId=${uuid}`;
+};
+//access token
+export const Create_aaccess_token = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
+};
+export const get_access_token = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?includeRevoked=true&environmentId=${1}`;
 }
+//signin keys
+export const Create_signin_keys = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
+};
+export const get_signin_keys = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=1`
+};
+export const get_product = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
+};
+//used in wbhook,access token,,signin keys
 export const get_environment_types = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
 }
+//environment
 export const get_environment = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId={{organizationId}}`
-}//no used yet
-
-export const get_product = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId=${uuid}`
 }
-export const editted_data = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
+export const get_new_env = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
+}
+export const post_env = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments`
+}
+//video 
+export const video_url = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
 export const getList_videos = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/contents`
@@ -186,8 +212,55 @@ const Api = {
             method: 'GET',
             url: getList_videos(),
             headers: headers,
-        })
+        }),
 
+    Get_env_data: () =>
+        axios({
+            method: 'GET',
+            url: get_environment(),
+            headers: headers,
+        }),
+    Env_data: () =>
+        axios({
+            method: 'GET',
+            url: get_new_env(),
+            headers: headers,
+        }),
+    Post_env: (new_env_data) =>
+        axios({
+            method: 'POST',
+            data: new_env_data,
+            url: post_env(),
+            headers: headers,
+        }),
+    post_video: (video_url_data) =>
+        axios({
+            method: 'POST',
+            data: video_url_data,
+            url: video_url(),
+            headers: headers,
+        }),
+    //get api token
+    Get_access_token: () =>
+        axios({
+            method: 'GET',
+            url: get_access_token(),
+            headers: headers,
+        }),
+    //get signin keys
+    Get_sigin_keys: () =>
+        axios({
+            method: 'GET',
+            url: get_signin_keys(),
+            headers: headers,
+        }),
+    //get webhook
+    Get_webhook: () =>
+        axios({
+            method: 'GET',
+            url: get_webhook(),
+            headers: headers,
+        }), 
 }
 export default Api
 

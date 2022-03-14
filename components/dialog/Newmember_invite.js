@@ -11,6 +11,7 @@ export default function Newmember_invite({ closeModel }) {
   const onSubmit = admin_invite_code => {
     Api.Newmember_invite_data(admin_invite_code)
       .then(res=>{
+        window.location.reload()
       })
       .catch(error=>{
         console.log(error)
