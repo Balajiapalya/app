@@ -1,14 +1,16 @@
-import Link from 'next/link';
 import styles from '../styles/videos.module.css'
 import { useForm } from 'react-hook-form';
 import Api from '../components/api/api';
-import { useState } from 'react';
+import  Link from 'next/link'
+
 
 
 export default function Videodelivery_addnewassets() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    
     const onSubmit = video_url_data  => {
-        Api.post_video(video_url_data)
+        //json.parse 
+        Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
                 console.log(res)
             })
@@ -19,8 +21,7 @@ export default function Videodelivery_addnewassets() {
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
-
+               <Link href="/Videos"><a className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a></Link> 
             </div>
             <div className={styles.Videodelivery_addnewassets}>
                 <h2>Create new asset</h2>
@@ -30,7 +31,6 @@ export default function Videodelivery_addnewassets() {
                         <button className={styles.btn}>Select File</button>
                         <input type="file" name="myfile" />
                     </div>
-
                 </div>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
@@ -53,10 +53,10 @@ export default function Videodelivery_addnewassets() {
                             <textarea
                                 className={`${styles.code_input} form_control`}
                                 type='text'
-                                name='data'
+                                name='code'
                                 {...register("code", { required: true })}
                             />
-                            {errors.data && <p className={'validations'}>This field is required</p>}
+                            {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>
                         <button type='submit' className={styles.btn}>Run Request</button>
                     </form>

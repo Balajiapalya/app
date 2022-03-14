@@ -9,15 +9,16 @@ import { useRouter } from 'next/router';
 import Signin from '../../../pages/signin';
 
 function Organisation() {
-    const router = useRouter();
+    const reg = useRouter();
     const [data, setdata] = useState([]);
     const [orgdata, setorgdata] = useState([]);
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
-    const [editData, setEditData] = useState()
-    const [org, setOrg] = useState()
-    const [item,setItem]=useState()
+    const [editData, setEditData] = useState();
+    const [org, setOrg] = useState();
+    const [item,setItem]=useState();
+    
 
     const createdDate = (date) => {
         var d = new Date(date);
@@ -30,12 +31,17 @@ function Organisation() {
             })
         Api.Get_organization_data()
             .then(res => {
-                setorgdata(res.data.data.users)
-                setOrg(localStorage.getItem('orgName'))
+                if(res.data.status="succes"){
+                    setorgdata(res.data.data.users)
+                    setOrg(localStorage.getItem('orgName'))
+                    localStorage.setItem("ownername",res.data.data.users[0].firstName)
+                }
                 
             })
             .catch(error => {
-                console.log(error)
+                if(error.response.data.code = 401){
+                    window.location.href='/signin'
+                }
             })
         
 
@@ -78,10 +84,11 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td><select value={item.roleId}>
-                                    <option value='1'>Owner</option>
-                                    <option value='2'>Admin</option>
-                                    <option value='3'>Member</option>
-
+                                    {data.map((i,key)=>
+                                    <>
+                                    <option key={key}>{i.name}</option>
+                                    </>
+                                    )}
                                 </select>
                                 </td>
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent

@@ -11,15 +11,18 @@ export default function Environment() {
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
+
             })
             .catch(error => {
                 console.log(error)
-
             })
         Api.Get_env_data()
             .then(res => {
-                set_envdata(res.data.data)
-                console.log(envdata)
+                if (res.data.status) {
+                    set_envdata(res.data.data)
+                    localStorage.setItem( "envuuid",res.data.data[0].uuid)
+                    // localStorage.setItem(res.dat)
+                }
             })
     }, {})
     return (
