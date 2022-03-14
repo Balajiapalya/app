@@ -7,23 +7,22 @@ export default function Create_account() {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const reg = useRouter();
-    const id = reg.query
-    console.log(reg.query)
+    const params = reg.query
     const onSubmit = createaccount_data => {
-       
+        createaccount_data.inviteCode = params.invitecode;
+        console.log(createaccount_data);
         Api.Create_account_data(createaccount_data)
-            .then(res => {   
-                if ("success") {
-            
-                    localStorage.setItem('orgName',res.data.data.organizations[0].name)
+            .then(res => {
+                if (resres.data.status = "Success") {
+                    localStorage.setItem('orgName', res.data.data.organizations[0].name)
                     localStorage.setItem('Jwt-token', (res.data.data.token))
                     localStorage.getItem('jwt-token')
                     localStorage.setItem('uuid', res.data.data.organizations[0].uuid)
                     localStorage.getItem('uuid')
                     reg.push({
-                        pathname:'/'
+                        pathname: '/'
                     })
-                    
+
                 }
             })
             .catch(error => {
@@ -81,16 +80,16 @@ export default function Create_account() {
                         {...register("password", { required: true })}
                     />
                     {errors.password && <p className={'validations'}>This field is required</p>}
-                    <label  className={`${styles.createaccount_label} `}>invite Code</label>
+                    {/* <label  className={`${styles.createaccount_label} `}>invite Code</label>
                     <input
                         readOnly
-                        value={id.invitecode}
+                        value={params.invitecode}
                         type="text"
                         name="inviteCode"
                         className={`${styles.createaccount_input}  form_control`}
                         {...register("inviteCode", {required: true})}
-                    />
-                    
+                    /> */}
+
                     <p className={styles.condition}>
                         {" "}
                         By creating an account you agree to our{" "}
