@@ -1,12 +1,20 @@
 import { Fragment } from "react";
 import styles from '../../../styles/webhooks.module.css';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Create_new_webhook from "../../../pages/create_new_webhook";
 import Delete_webhook from "../../dialog/Delete_webhook";
+import Api from "../../api/api";
 
 function Webhooks() {
     const[openwebhook,setopenwebhook]=useState(false);
     const[removewebhook,setremovewebhook]=useState(false);
+
+    useEffect(()=>{
+        // Api.Get_webhook()
+        //     .then(res=>{
+        //         console.log(res.data)
+        //     })
+    },[])
     return (
         <Fragment>
             <section className={styles.wrapper_webhooks}>

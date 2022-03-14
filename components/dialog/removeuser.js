@@ -5,7 +5,6 @@ import { useState } from 'react/cjs/react.production.min'
 
 
 export default function Removeuser({ closeremoveuser }) {
-  const [removeuser,setremoveuser]=useState({});
   
   return (
     <div className={`${styles.model} ${styles.remove_user_modal}`} >

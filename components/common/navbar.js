@@ -44,7 +44,7 @@ function Navbar() {
                             <a href="#"><img src="Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a>
+                            <Link href="/"><a><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>Anil <br />Yupp TV</p></a>

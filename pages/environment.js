@@ -1,20 +1,25 @@
 import styles from '../styles/settings.module.css'
 import Layout from '../components/common/layout';
 import Api from '../components/api/api';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export default function Environment() {
-    const[env,setenv]=useState([]);
+    const [envdata, set_envdata] = useState([]);
+    const [env, setenv] = useState([]);
     useEffect(() => {
         Api.Env_data()
             .then(res => {
-                console.log(res.data)
                 setenv(res.data.data)
             })
             .catch(error => {
                 console.log(error)
-    
+
+            })
+        Api.Get_env_data()
+            .then(res => {
+                set_envdata(res.data.data)
+                console.log(envdata)
             })
     }, {})
     return (
@@ -45,67 +50,80 @@ export default function Environment() {
                                     <th>Analytics</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Development <img src='Images/Icon material-edit.png' /><br />
-                                        <span className={styles.side_head}>Development</span>
-                                    </td>
-                                    <td>
-                                        <div className={styles.table_box}>
-                                            <div className={styles.box_content}>
-                                                <span className={styles.box_content_history}>
-                                                    in last 7 days
-                                                </span>
-                                                <div className={styles.box_data}>
-                                                    <div className={styles.box_data_types}>
-                                                        <span className={styles.types_heading}>Encoded</span><br />
-                                                        <span className={styles.types_value}>40 mins</span>
-                                                    </div>
-                                                    <div className={styles.box_data_types}>
-                                                        <span className={styles.types_heading}>Stored</span><br />
-                                                        <span className={styles.types_value}>40 mins</span>
-                                                    </div>
-                                                    <div className={styles.box_data_types}>
-                                                        <span className={styles.types_heading}>Streamed</span><br />
-                                                        <span className={styles.types_value}>20 mins</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <span className={styles.token_key_value}>API tokens: 4</span>
-                                                </div>
+                            {envdata.map((items, key) =>
+                                <tbody key={key}>
+                                    <tr>
+                                        <td>
+                                            <div className={styles.dev_head}>{items.name}</div>
+                                            <div className={styles.dev_select}>
+                                                <select >
+                                                    {env.map((item, key) =>
+                                                        <option key={key} value={parseInt(item.id)}>{item.name}</option>
+                                                    )}
+                                                </select>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className={styles.table_box}>
-                                            <div className={styles.box_content}>
-                                                <span className={styles.box_content_history}>
-                                                    in last 7 days
-                                                </span>
-                                                <div className={styles.box_data}>
-                                                    <div className={styles.box_data_types}>
-                                                        <span className={styles.types_heading}>Views</span><br />
-                                                        <span className={styles.types_value}>20</span>
-                                                    </div>
-                                                    <div className={styles.box_data_types}>
-                                                        <span className={styles.types_heading}>Unique views</span><br />
-                                                        <span className={styles.types_value}>15</span>
-                                                    </div>
-                                                    <div className={styles.box_data_types}>
-                                                        <span className={styles.types_heading}>Playing time</span><br />
-                                                        <span className={styles.types_value}>20 mins</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <span className={styles.token_key_value}>Env Key: tr4or45ql10bclra3o85b490c</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
 
-                                </tr>
-                                <tr>
+                                            <div className={styles.dev_options}>
+                                                <a className={styles.dev_Cancel}>Cancel</a>
+                                                <a className={styles.dev_save}>Save</a>
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <div className={styles.table_box}>
+                                                <div className={styles.box_content}>
+                                                    <span className={styles.box_content_history}>
+                                                        in last 7 days
+                                                    </span>
+                                                    <div className={styles.box_data}>
+                                                        <div className={styles.box_data_types}>
+                                                            <span className={styles.types_heading}>Encoded</span><br />
+                                                            <span className={styles.types_value}>40 mins</span>
+                                                        </div>
+                                                        <div className={styles.box_data_types}>
+                                                            <span className={styles.types_heading}>Stored</span><br />
+                                                            <span className={styles.types_value}>40 mins</span>
+                                                        </div>
+                                                        <div className={styles.box_data_types}>
+                                                            <span className={styles.types_heading}>Streamed</span><br />
+                                                            <span className={styles.types_value}>20 mins</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <span className={styles.token_key_value}>API tokens: {items.accessTokensCount}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className={styles.table_box}>
+                                                <div className={styles.box_content}>
+                                                    <span className={styles.box_content_history}>
+                                                        in last 7 days
+                                                    </span>
+                                                    <div className={styles.box_data}>
+                                                        <div className={styles.box_data_types}>
+                                                            <span className={styles.types_heading}>Views</span><br />
+                                                            <span className={styles.types_value}>20</span>
+                                                        </div>
+                                                        <div className={styles.box_data_types}>
+                                                            <span className={styles.types_heading}>Unique views</span><br />
+                                                            <span className={styles.types_value}>15</span>
+                                                        </div>
+                                                        <div className={styles.box_data_types}>
+                                                            <span className={styles.types_heading}>Playing time</span><br />
+                                                            <span className={styles.types_value}>20 mins</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <span className={styles.token_key_value}>Env Key: {items.environmentKey}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    {/* <tr>
                                     <td>
                                         UAT
                                         <img src='Images/Icon material-edit.png' /><br />
@@ -141,13 +159,13 @@ export default function Environment() {
                                             </div>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
+                                </tr> */}
+                                    {/* <tr>
                                     <td>
                                         <div className={styles.dev_head}>Development</div>
                                         <div className={styles.dev_select}>
                                             <select >
-                                                {env.map((item,key) =>
+                                                {env.map((item, key) =>
                                                     <option key={key} value={parseInt(item.id)}>{item.name}</option>
                                                 )}
                                             </select>
@@ -212,11 +230,11 @@ export default function Environment() {
                                         </div>
                                     </td>
 
-                                </tr>
+                                </tr> */}
 
-                            </tbody>
+                                </tbody>
+                            )}
                         </table>
-
                     </div>
                 </div>
 
