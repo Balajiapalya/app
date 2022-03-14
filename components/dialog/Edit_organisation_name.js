@@ -8,6 +8,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
         Api.Edit_organisation_name_data(organisation_data)
             .then(res => {
                 localStorage.setItem('orgName', res.data.data.name)
+                window.location.reload()
             })
             .catch(error => {
                 console.log(error)
@@ -35,7 +36,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
                     {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                     <div className={styles.model_btn}>
                         <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeorganization(false)}>Cancel</button></a>
-                        <a> <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Save Changes</button></a>
+                        <a> <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >Save Changes</button></a>
                     </div>
                 </form>
 

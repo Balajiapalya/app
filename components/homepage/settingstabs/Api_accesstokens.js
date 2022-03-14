@@ -1,11 +1,23 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import styles from '../../../styles/apiaccess.module.css';
-import { useState } from "react";
 import Accesstoken from "../../../pages/New_access_token";
 import Revoke from "../../dialog/Revoke_access";
+import Api from "../../api/api";
 function Api_accesstokes() {
     const [opentoken, settoken] = useState(false);
     const [openrevoke, setrevoke] = useState(false);
+    const [get_accessdata, set_accessdata] = useState([]);
+    const createdDate = (date) => {
+        var d = new Date(date);
+        return d.toLocaleString();
+    }
+    useEffect(() => {
+        Api.Get_access_token()
+            .then(res => {
+                set_accessdata(res.data.data)
+            })
+    }, {})
+
     return (
         <Fragment>
             <section className={styles.wrapper_access_tokes}>
@@ -27,49 +39,29 @@ function Api_accesstokes() {
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span className={styles.development}>Development</span><img src="Images/Icon material-edit.png" alt="icon"></img><br></br>
-                                    <span className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
-                                </td>
-                                <td>Development</td>
-                                <td>Video
-                                    <span>(read-only)</span>
-                                </td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Active</td>
-                                <td><a onClick={() => setrevoke(true)}>Revoke</a></td>
-                            </tr>
-                            {openrevoke && <Revoke closerevoke={setrevoke} />}
-                            <tr>
-                                <td><span className={styles.border}>Development</span><a className={styles.save}>Save</a><br></br>
-                                    <span className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
-                                </td>
-                                <td>Development</td>
-                                <td>
-                                    <tr>Video<span>(read-only)</span></tr>
-                                    <tr>Data<span>(read-only)</span></tr>
-                                    <tr>System<span>(read-only)</span></tr>
-                                </td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Active</td>
-                                <td><a onClick={() => setrevoke(true)}>Revoke</a></td>
-                            </tr>
-                            <tr>
-                                <td><span className={styles.development}>Development</span><img src="Images/Icon material-edit.png" alt="icon"></img><br></br>
-                                    <span className={styles.tokens}>a857d839-4a10-be9e-41b66cdde9ea</span>
-                                </td>
-                                <td>Development</td>
-                                <td>Video</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Access Revoked</td>
-                                <td><a onClick={() => setrevoke(true)}>Revoke</a></td>
-                            </tr>
-                        </tbody>
+                        {get_accessdata.map((item, key) =>
+                            <tbody key={key}>
+                                <tr>
+                                    <td><span className={styles.border}>Development</span><a className={styles.save}>Save</a><img src="Images/Icon material-edit.png" alt="icon"></img><br></br>
+                                        <span className={styles.tokens}>{item.accessTokenId}</span>
+                                    </td>
+                                    <td>{item.name}</td>
+                                    <td>
+                                        <tr>Video<span>(read-only)</span></tr>
+                                        <tr>Data<span>(read-only)</span></tr>
+                                        <tr>System<span>(read-only)</span></tr>
+                                    </td>
+                                    <td>{createdDate(item.createdOn)}</td>
+                                    <td>{item.createdBy}</td>
+                                    <td>{item.isInUse}</td>
+                                    <td><a onClick={() => setrevoke(true)}>Revoke</a></td>
+                                </tr>
+                                {openrevoke && <Revoke closerevoke={setrevoke} />}
+
+                            </tbody>
+
+                        )}
+
                     </table>
 
                 </div>
@@ -78,4 +70,4 @@ function Api_accesstokes() {
     )
 }
 
-export default Api_accesstokes;
+export default Api_accesstokes; 
