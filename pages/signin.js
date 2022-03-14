@@ -15,7 +15,8 @@ const router=useRouter()
         localStorage.setItem('uuid',(res.data.data.organizations[0].uuid))
         localStorage.setItem('Jwt-token', (res.data.data.token))
         localStorage.setItem('orgName',res.data.data.organizations[0].name)
-       router.push({pathname: "/"})
+      //  router.push({pathname: "/"})
+      window.location.pathname='/'
       
       }
     })
@@ -29,15 +30,15 @@ const router=useRouter()
 
         <div className={styles.signup_area}>
           <h3 className={styles.signup_title}>
-           Sign In
+           Signin into your account
           </h3>
           <form onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <label className={styles.label}><h3>Username or email:</h3></label>
+                <label className={styles.label}><h4>Email</h4></label>
             <input
               autoComplete='current-password'
               type="email"
-              placeholder="Enter your email address"
+              placeholder="Enter email address"
               name="login"
               className={`${styles.signup_input} form_control`}
               {...register("login", { required: true })}
@@ -45,19 +46,19 @@ const router=useRouter()
             </div>
             {errors.login && <p className={'validations'}>This field is required</p>}
             <div>
-            <label className={styles.label}><h3>Password:</h3></label>
+            <label className={styles.label}><h4>Password</h4></label>
             <input
               autoComplete='current-password'
               type="password"
-              placeholder="Enter your password"
+              placeholder="Enter password"
               name="password"
               className={`${styles.signup_input} form_control`}
               {...register("password", { required: true })}
             />
             </div>
             {errors.password && <p className={'validations'}>This field is required</p>}<br/>
-            <Link href="/email"><h4 className={styles.forgotpw}>Forgotten password?</h4></Link>
-            <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Submit</button>
+            <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign in </button>
+            <Link href="/email"><h4 className={styles.forgotpw}>Forgot password?</h4></Link>
           </form>
           <h4 className={styles.already_account}>Don&#39;t have an account?</h4>
           <Link href="/signup"><a className={styles.signin_link}>Sign up</a></Link>
