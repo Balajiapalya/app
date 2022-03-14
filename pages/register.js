@@ -7,13 +7,18 @@ export default function Create_account() {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const reg = useRouter();
-    const id = reg.query
-    console.log(reg.query)
+    const params = reg.query
+    // console.log(reg.query)
     const onSubmit = createaccount_data => {
        
+        createaccount_data.inviteCode=params.invitecode;
+        console.log(createaccount_data);
         Api.Create_account_data(createaccount_data)
             .then(res => {   
-                if ("success") {
+
+                   console.log(res); 
+                // return false ;
+                if (res) {
             
                     localStorage.setItem('orgName',res.data.data.organizations[0].name)
                     localStorage.setItem('Jwt-token', (res.data.data.token))
@@ -80,7 +85,7 @@ export default function Create_account() {
                         className={`${styles.createaccount_input} form_control`}
                         {...register("password", { required: true })}
                     />
-                    {errors.password && <p className={'validations'}>This field is required</p>}
+                    {/* {errors.password && <p className={'validations'}>This field is required</p>}
                     <label  className={`${styles.createaccount_label} `}>invite Code</label>
                     <input
                         readOnly
@@ -89,7 +94,7 @@ export default function Create_account() {
                         name="inviteCode"
                         className={`${styles.createaccount_input}  form_control`}
                         {...register("inviteCode", {required: true})}
-                    />
+                    /> */}
                     
                     <p className={styles.condition}>
                         {" "}
