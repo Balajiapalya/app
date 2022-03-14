@@ -3,12 +3,17 @@ import Link from 'next/link';
 import Layout from '../components/common/layout';
 import {useEffect} from 'react'
 import Api from '../components/api/api'
+import {useState} from 'react'
 
 export default function Videos() {
-
+const [videoData,setVideoData]=useState([])
     useEffect(()=>{
-        Api.Video_list().then(res=>console.log(res))
+        Api.Video_list().then(res=>setVideoData(res.data.data))
     },[])
+  const create_On=(date)=>{
+      var date=new Date(date)
+      date.toLocaleString()
+  }
     return (
         <div className={styles.container}>
             <div className={styles.background_develepment}>
@@ -57,8 +62,33 @@ export default function Videos() {
 
                             </tr>
                         </thead>
-                        <tbody >
+                        <tbody>
+                            
+                            {videoData.map(i=><>
                             <tr>
+                                <td><input type="checkbox"></input></td>
+                                <td>{create_On(i.created_at)}</td>
+                                <td>{i.title}</td>
+                                <td>{i.videoId}</td>
+                                <td><img src='/Images/Image 3.png' /></td>
+                                <td>{i.duration}</td>
+                                <td>HD</td>
+                                <td>{i.status}</td>
+                                <td className={styles.actionicons}>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                </td>
+                            </tr>
+                            </>)}
+                            
+    
+
+
+                            {/* <tr>
                                 <td><input type="checkbox"></input></td>
                                 <td>02/12/21<br></br>6:03pm</td>
                                 <td>Asianet-Roku</td>
@@ -76,7 +106,7 @@ export default function Videos() {
                                     <img src='/Images/closed-caption.png' alt="image"></img>
                                     <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
                                 </td>
-                            </tr>
+                            </tr> */}
                             <tr>
                                 <td><input type="checkbox"></input></td>
                                 <td>02/12/21<br></br>6:03pm</td>
