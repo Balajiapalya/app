@@ -33,10 +33,11 @@ export default function Signup() {
           Videograph
         </h1>
         <div className={styles.signup_area}>
-          <h3 className={styles.signup_title}>
-            create your Videograph account
-          </h3>
+          <h2 className={styles.signup_title}>
+            Create your account
+          </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <h4 className={styles.label}>Email</h4>
             <input
               autoComplete='current-password'
               type="email"
@@ -46,7 +47,7 @@ export default function Signup() {
               {...register("email", { required: true })}
             />
             {errors.email && <p className={'validations'}>This field is required</p>}
-            <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign Up</button>
+            <button type='submit' className={`${styles.btn} btn btn-primary`}>Sign Up</button>
           </form>
           <h4 className={styles.already_account}>Already have an account?</h4>
           <Link href="/signin"><a className={styles.signin_link}>Sign in</a></Link>

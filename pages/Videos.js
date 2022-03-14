@@ -1,10 +1,14 @@
 import styles from '../styles/videos.module.css'
 import Link from 'next/link';
 import Layout from '../components/common/layout';
-
+import {useEffect} from 'react'
+import Api from '../components/api/api'
 
 export default function Videos() {
 
+    useEffect(()=>{
+        Api.Video_list().then(res=>console.log(res))
+    },[])
     return (
         <div className={styles.container}>
             <div className={styles.background_develepment}>

@@ -49,6 +49,9 @@ export const get_product = () => {
 export const editted_data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
 }
+export const getList_videos = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/contents`
+}
 
 let token;
 if (process.browser) {
@@ -175,10 +178,16 @@ const Api = {
         axios({
             method: 'PUT',
             url: editted_data(),
-            data:data,
+            data: data,
             headers: headers,
         }),//called in edit_organisation_name
-        
+    Video_list: () =>
+        axios({
+            method: 'GET',
+            url: getList_videos(),
+            headers: headers,
+        })
+
 }
 export default Api
 
