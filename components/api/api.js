@@ -38,7 +38,7 @@ export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
 export const get_webhook = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?environmentId=${uuid}`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?environmentId=1`;
 };
 //access token
 export const Create_aaccess_token = () => {
