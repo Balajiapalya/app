@@ -7,14 +7,14 @@ import { useState } from 'react';
 
 export default function Videodelivery_addnewassets() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = video_url_data =>{
+    const onSubmit = video_url_data  => {
         Api.post_video(video_url_data)
-            .then(res=>{
+            .then(res => {
                 console.log(res)
             })
-        .catch(error=>{
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)   
+            })
     }
     return (
         <div className={styles.videodelivery}>
@@ -34,16 +34,14 @@ export default function Videodelivery_addnewassets() {
                 </div>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
-                <div >
+                <div  >
                     <form className={styles.post} onSubmit={handleSubmit(onSubmit)}>
-                        <label>Post using Video URL:</label>
+                        <label >Post using Video URL:</label>
                         <input
-                            className='form_control'
-                            name='url'
-                            type='url'
-                            {...register("url", { required: true })}
+                            type='text'
+                            readOnly
+                            value={`http://13.235.3.29/video//services/api/v1/contents`}
                         />
-                        {errors.url && <p className={'validations'}>This field is required</p>}
                         <span>Post body editor:</span>
                         <div className={styles.language_select}>
                             <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/Images/python.png' alt='python' />Python</button>
@@ -55,10 +53,10 @@ export default function Videodelivery_addnewassets() {
                             <textarea
                                 className={`${styles.code_input} form_control`}
                                 type='text'
-                                name='code'
+                                name='data'
                                 {...register("code", { required: true })}
                             />
-                            {errors.code && <p className={'validations'}>This field is required</p>}
+                            {errors.data && <p className={'validations'}>This field is required</p>}
                         </div>
                         <button type='submit' className={styles.btn}>Run Request</button>
                     </form>
