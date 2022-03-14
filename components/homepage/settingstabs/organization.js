@@ -17,6 +17,7 @@ function Organisation() {
     const [openremove, setopenremove] = useState(false);
     const [editData, setEditData] = useState()
     const [org, setOrg] = useState()
+    const [item,setItem]=useState()
 
     const createdDate = (date) => {
         var d = new Date(date);
@@ -86,9 +87,10 @@ function Organisation() {
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
-                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
-                            </tr>)}
-                        {openremove && <Removeuser closeremoveuser={setopenremove} />}
+                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img  onClick={()=>setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
+                            </tr>
+                            )}
+                        {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}
                     </tbody>
                 </table>
             </div>

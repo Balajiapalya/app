@@ -76,24 +76,28 @@ export const video_url = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
 export const getList_videos = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/contents`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
 
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
 }
-
-let headers = {
-    'Authorization': `Bearer ${token}`
-};
-
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
 
 }
 const uuid = uuid_token;
+
+let headers = {
+    'Authorization': `Bearer ${token}`
+
+};
+
+let headers1 = {
+    'EnvironmentId': `Bearer ${uuid_token}`
+}
 
 
 const Api = {
@@ -122,10 +126,11 @@ const Api = {
             url: get_organization(),
             headers: headers,
         }),//this is calleed in organization
-    Remove_user_data: () =>
+    Remove_user_data: (data) =>
         axios({
             method: 'DELETE',
             url: Remove_user(),
+            data:data,
             headers: headers,
         }),
     Get_environment_types_data: () =>
@@ -260,7 +265,7 @@ const Api = {
             method: 'GET',
             url: get_webhook(),
             headers: headers,
-        }), 
+        }),
 }
 export default Api
 

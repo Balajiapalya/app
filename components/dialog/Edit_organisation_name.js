@@ -8,7 +8,8 @@ export default function Edit_organization_name({ closeorganization, setEditData 
         Api.Edit_organisation_name_data(organisation_data)
             .then(res => {
                 localStorage.setItem('orgName', res.data.data.name)
-                window.location.reload()
+                // window.location.reload()
+                closeorganization(false)
             })
             .catch(error => {
                 console.log(error)
