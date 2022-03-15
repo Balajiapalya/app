@@ -59,8 +59,8 @@ export default function Add_new_environment({ closetoken }) {
                             {...register("environmentTypeId", { required: true })}
                         >
                             {errors.environmentTypeId && <p className={`${styles.validations} validations`}>This field is required</p>}
-                            {env.map(item=>
-                                <option value={parseInt(item.id)}>{item.name}</option>
+                            {env.map((item,key)=>
+                                <option key={key} value={parseInt(item.id)}>{item.name}</option>
                             )}
                             
                             

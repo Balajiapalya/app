@@ -9,19 +9,21 @@ import { useRouter } from 'next/router';
 import Signin from '../../../pages/signin';
 
 function Organisation() {
-    const router = useRouter();
+    const reg = useRouter();
     const [data, setdata] = useState([]);
     const [orgdata, setorgdata] = useState([]);
     const [openModel, setopeninvitemember] = useState(false);
     const [openorganization, setopeneditorganization] = useState(false);
     const [openremove, setopenremove] = useState(false);
-    const [editData, setEditData] = useState()
+    const [editData, setEditData] = useState();
+    const [org, setOrg] = useState();
+    const [item, setItem] = useState();
+
 
     const createdDate = (date) => {
         var d = new Date(date);
         return d.toLocaleString();
     }
-
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
@@ -29,11 +31,25 @@ function Organisation() {
             })
         Api.Get_organization_data()
             .then(res => {
-                setorgdata(res.data.data.users)
+                if (res.data.status = "succes") {
+                    setorgdata(res.data.data.users)
+                    setOrg(localStorage.getItem('orgName'))
+                    localStorage.setItem("ownername", res.data.data.users[0].firstName)
+                }
+
             })
             .catch(error => {
-                console.log(error)
+                if (error.response.data.code = 401) {
+                    window.location.href = '/signin'
+                }
             })
+        Api.Get_env_data()
+            .then(res => {
+                if (res.data.status="Success") {
+                    localStorage.setItem("envuuid", res.data.data[0].uuid)
+                }
+            })
+
 
     }, {})
 
@@ -43,7 +59,7 @@ function Organisation() {
                 <h3>General</h3>
                 <label>Organization</label>
 
-                <div className={styles.edit}>{editData ? editData.name : ''}
+                <div className={styles.edit}>{editData ? editData.name : org}
                     <span>
                         <a onClick={() => setopeneditorganization(true)}><img src="Images/Icon material-edit.png" alt="icon"></img>Edit</a>
                     </span>
@@ -74,18 +90,20 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td><select value={item.roleId}>
-                                    {data.map(i => <>
-                                        {item.roleId === i.id ? <option value={item.roleId}>{i.name}</option> : <option value={i.roleId}>{i.name}</option>}
-                                    </>)}
+                                    {data.map((i, key) =>
+                                        <>
+                                            <option key={key}>{i.name}</option>
+                                        </>
+                                    )}
                                 </select>
                                 </td>
-
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
-                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
-                            </tr>)}
-                        {openremove && <Removeuser closeremoveuser={setopenremove} />}
+                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
+                            </tr>
+                        )}
+                        {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}
                     </tbody>
                 </table>
             </div>

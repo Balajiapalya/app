@@ -1,16 +1,26 @@
 import styles from '../../styles/settings.module.css';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { memo } from "react";
 
 
 function Navbar() {
     const [opendropdown, setdropdown] = useState(false);
+    const [orgname,setorgname]=useState([]);
+    const [ownername,setownername]=useState([]);
     const handlelogout = () => {
         window.localStorage.clear();
-        
     }
-
+    useEffect(()=>{
+        setorgname(
+            localStorage.getItem("orgName")
+        )
+        setownername(
+            localStorage.getItem("ownername")
+        )
+        
+    })
+    
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -18,10 +28,10 @@ function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                            <Link href="/environment"><a><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
+                           <Link href="/environment"><a><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
                         </li>
                         <li>
-                            <Link href="/Videos"><a><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                            <Link href='/Videos'><a ><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
@@ -44,10 +54,10 @@ function Navbar() {
                             <a href="#"><img src="Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a>
+                            <Link href="/"><a><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>Anil <br />Yupp TV</p></a>
+                            <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a>
 
                         </li>
                         <li>
