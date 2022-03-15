@@ -80,7 +80,7 @@ export default function Videos() {
                                     {/* HD */}
                                     <td>{i.status}</td>
                                     <td className={styles.actionicons}>
-                                       <a href='/video'><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a> 
+                                       <Link href='/video'><a ><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a></Link> 
                                         <img src='/Images/film-editing.png' alt="image"></img>
                                         <img src='/Images/insert-picture-icon.png' alt="image"></img>
                                         <img src='/Images/gif-file-format-symbol.png' alt="image"></img>

@@ -18,8 +18,9 @@ function Navbar() {
         setownername(
             localStorage.getItem("ownername")
         )
+        
     })
-
+    
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -27,10 +28,10 @@ function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                           <a href="/environment"><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a>
+                           <Link href="/environment"><a><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
                         </li>
                         <li>
-                            <a href='/Videos'><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a>
+                            <Link href='/Videos'><a ><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
