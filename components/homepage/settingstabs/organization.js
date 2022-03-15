@@ -47,6 +47,7 @@ function Organisation() {
             .then(res => {
                 if (res.data.status="Success") {
                     localStorage.setItem("envuuid", res.data.data[0].uuid)
+                    localStorage.setItem("envid",res.data.data[0].id)
                 }
             })
 

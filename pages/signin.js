@@ -8,7 +8,10 @@ export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  
   const onSubmit = login_details => {
+    login_details.password=btoa(login_details.password)
+    console.log(login_details.password)
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {

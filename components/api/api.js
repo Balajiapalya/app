@@ -45,14 +45,14 @@ export const Create_aaccess_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
 };
 export const get_access_token = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?includeRevoked=true&environmentId=${1}`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?includeRevoked=true&environmentId=${envid}`;
 }
 //signin keys
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
 export const get_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=1`
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`
 };
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
@@ -97,10 +97,13 @@ let Env_uuid;
 if (process.browser){
     Env_uuid = localStorage.getItem("envuuid");
 }
-const envid = Env_uuid
+const envuuid = Env_uuid;
 
-
-
+let Env_id;
+if(process.browser){
+    Env_id = localStorage.getItem("envid");
+}
+const  envid = Env_id;
 
 const Api = {
     Sign_up_data: (login_details) =>
@@ -219,7 +222,7 @@ const Api = {
             method: 'GET',
             url: getList_videos(),
             headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envid}`},
+            'EnvironmentId': `${envuuid}`},
         }),
 
     Get_env_data: () =>
@@ -247,7 +250,7 @@ const Api = {
             data: video_url_data,
             url: video_url(),
             headers: {'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envid}`}
+            'EnvironmentId': `${envuuid}`}
         }),
     //get api token
     Get_access_token: () =>
