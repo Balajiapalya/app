@@ -41,7 +41,7 @@ function Organisation() {
             })
             .catch(error => {
                 if (error.response.data.code = 401) {
-                    window.location.href = '/signin'
+                    window.location.href = '/'
                 }
             })
         Api.Get_env_data()

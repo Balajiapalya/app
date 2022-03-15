@@ -34,6 +34,12 @@
     margin: 0;
     width: 90%;
 }
+.content_development p .select{
+    background-color: #eaeaea;
+    border: none;
+    color: #196068;
+    outline: none;
+}
 .videos_delivery{
     padding-left: 205px;
 }
@@ -186,8 +192,15 @@
    padding: 15px 10px;
    }
 .videodelivery{
+    background-color: #f4f6f8;
+    height: 120vh;
+    border: 1px solid whitesmoke;
     width: 100%;
-    float: left;
+    display: table;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0
 }
 .Videodelivery_addnewassets{
         width: 517px;

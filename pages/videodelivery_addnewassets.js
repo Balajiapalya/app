@@ -1,37 +1,31 @@
 import styles from '../styles/videos.module.css'
 import { useForm } from 'react-hook-form';
 import Api from '../components/api/api';
-import  Link from 'next/link'
+import Link from 'next/link'
+import Direct_upload from '../components/direct_uploade';
 
 
 
-export default function Videodelivery_addnewassets() {
+export default function Videodelivery_addnewassets({close_asset}) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    
-    const onSubmit = video_url_data  => {
-        //json.parse 
+
+    const onSubmit = video_url_data => {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
-                console.log(res)
+                // console.log(res)
+                window.location.reload()
             })
             .catch(error => {
-                console.log(error)   
+                console.log(error)
             })
     }
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-               <Link href="/Videos"><a className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a></Link> 
+                <a onClick={()=>close_asset(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <h2>Create new asset</h2>
-                <div className={styles.upload_file}>
-                    <h2>upload your video file</h2>
-                    <div className={styles.upload_btn_wrapper}>
-                        <button className={styles.btn}>Select File</button>
-                        <input type="file" name="myfile" />
-                    </div>
-                </div>
+                <Direct_upload/>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
                 <div  >
