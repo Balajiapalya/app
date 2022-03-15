@@ -78,6 +78,9 @@ export const video_url = () => {
 export const getList_videos = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
+export const post_selected=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}users`
+}
 
 let token;
 if (process.browser) {
@@ -273,6 +276,13 @@ const Api = {
             url: get_webhook(),
             headers: headers,
         }),
+        Selected_option:(data)=>
+        axios({
+            method:'POST',
+            data:data,
+            url:post_selected(),
+            headers:headers
+        })
 }
 export default Api
 
