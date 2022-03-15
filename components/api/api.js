@@ -45,7 +45,7 @@ export const Create_aaccess_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
 };
 export const get_access_token = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?includeRevoked=true&environmentId=${envid}`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?organizationId=${uuid}&includeRevoked=true`;
 }
 //signin keys
 export const Create_signin_keys = () => {
