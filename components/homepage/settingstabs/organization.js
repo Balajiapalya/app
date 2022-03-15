@@ -17,8 +17,8 @@ function Organisation() {
     const [openremove, setopenremove] = useState(false);
     const [editData, setEditData] = useState();
     const [org, setOrg] = useState();
-    const [item,setItem]=useState();
-    
+    const [item, setItem] = useState();
+
 
     const createdDate = (date) => {
         var d = new Date(date);
@@ -31,22 +31,28 @@ function Organisation() {
             })
         Api.Get_organization_data()
             .then(res => {
-                if(res.data.status="succes"){
+                if (res.data.status = "succes") {
                     setorgdata(res.data.data.users)
                     setOrg(localStorage.getItem('orgName'))
-                    localStorage.setItem("ownername",res.data.data.users[0].firstName)
+                    localStorage.setItem("ownername", res.data.data.users[0].firstName)
                 }
-                
+
             })
             .catch(error => {
-                if(error.response.data.code = 401){
-                    window.location.href='/signin'
+                if (error.response.data.code = 401) {
+                    window.location.href = '/signin'
                 }
             })
-        
+        Api.Get_env_data()
+            .then(res => {
+                if (res.data.status="Success") {
+                    localStorage.setItem("envuuid", res.data.data[0].uuid)
+                }
+            })
+
 
     }, {})
-   
+
     return (
         <Fragment>
             <div className={styles.general}>
@@ -84,19 +90,19 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td><select value={item.roleId}>
-                                    {data.map((i,key)=>
-                                    <>
-                                    <option key={key}>{i.name}</option>
-                                    </>
+                                    {data.map((i, key) =>
+                                        <>
+                                            <option key={key}>{i.name}</option>
+                                        </>
                                     )}
                                 </select>
                                 </td>
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
-                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img  onClick={()=>setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
+                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
                             </tr>
-                            )}
+                        )}
                         {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}
                     </tbody>
                 </table>
