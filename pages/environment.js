@@ -18,7 +18,7 @@ export default function Environment() {
             })
         Api.Get_env_data()
             .then(res => {
-                if (res.data.status) {
+                if (res.data.status="Success") {
                     set_envdata(res.data.data)
                     localStorage.setItem( "envuuid",res.data.data[0].uuid)
                     // localStorage.setItem(res.dat)
