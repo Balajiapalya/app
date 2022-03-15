@@ -5,9 +5,11 @@ import { useState } from 'react/cjs/react.production.min'
 
 
 export default function Removeuser({ closeremoveuser ,item }) {
-  console.log(item,'items')
+  
   const handleDelete=()=>{
-    Api.Remove_user_data(item).then(res=>console.log(res))
+    let del=[item.email]
+    Api.Remove_user_data(del).then(res=>console.log(res))
+    window.location.reload()
   }
   return (
     <div className={`${styles.model} ${styles.remove_user_modal}`} >
