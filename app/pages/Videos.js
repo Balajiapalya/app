@@ -4,15 +4,31 @@ import Layout from '../components/common/layout';
 import { useEffect } from 'react'
 import Api from '../components/api/api'
 import { useState } from 'react'
+import Videodelivery_addnewassets from './videodelivery_addnewassets';
 
 export default function Videos() {
-    const [videoData, setVideoData] = useState([]); 
-    
+    const [videoData, setVideoData] = useState([]);
+    const [add_asset, set_asset] = useState(false);
+    const [env, setenv] = useState([]);
     useEffect(() => {
         Api.Video_list()
-        .then(res => 
-            setVideoData(res.data.data))
-    }, [])  
+            .then(res =>
+                setVideoData(res.data.data))
+            .catch(error => {
+                if (error.response.data.message = "Not a valid EnvironmentId") {
+                    window.location.href = '/Videos'
+                }
+            })
+        Api.Env_data()
+            .then(res => {
+                setenv(res.data.data)
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }, [])
     const create_On = (date) => {
         var d = new Date(date)
         return d.toLocaleString()
@@ -23,7 +39,13 @@ export default function Videos() {
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
-                        <p>Yupp tv <br /> Development <img src='/Images/Group 1817.png' alt='img' /></p>
+                        <p>Yupp tv <br />
+                            <select className={styles.select}>
+                                {env.map((item, key) =>
+                                    <option key={key} value={parseInt(item.id)}>{item.name}</option>
+                                )}
+                            </select> </p>
+                        {/* <img src='/Images/Group 1817.png' alt='img' /> */}
                     </div>
                 </div>
             </div>
@@ -38,10 +60,10 @@ export default function Videos() {
                     <div className={styles.videos_deliverydata}>
                         <p>Upload,Transcode,Store and Deliver your asset using our service</p>
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
-                        <Link href="/videodelivery_addnewassets"><a>
+                        <a onClick={() => set_asset(true)}>
                             <button className='btn'>Add New assets</button>
                             <img src="Images/Icon feather-plus.png" alt='icon' ></img>
-                        </a></Link>
+                        </a>
                     </div>
                     <hr></hr>
                 </div>
@@ -67,7 +89,7 @@ export default function Videos() {
                         </thead>
                         <tbody>
 
-                            {videoData.map((i,key) => <>
+                            {videoData.map((i, key) => <>
                                 <tr key={key}>
                                     <td><input type="checkbox"></input></td>
                                     <td>{create_On(i.created_at)}</td>
@@ -80,7 +102,7 @@ export default function Videos() {
                                     {/* HD */}
                                     <td>{i.status}</td>
                                     <td className={styles.actionicons}>
-                                       <Link href='/video'><a ><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a></Link> 
+                                        <Link href='/video'><a ><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a></Link>
                                         <img src='/Images/film-editing.png' alt="image"></img>
                                         <img src='/Images/insert-picture-icon.png' alt="image"></img>
                                         <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
@@ -193,6 +215,7 @@ export default function Videos() {
                     </table>
 
                 </div>
+                {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />}
             </div>
         </div>
 

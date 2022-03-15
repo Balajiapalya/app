@@ -7,6 +7,7 @@ import Removeuser from '../../dialog/removeuser';
 import Api from '../../api/api';
 import { useRouter } from 'next/router';
 import Signin from '../../../pages/signin';
+import Select from './Select'
 
 function Organisation() {
     const reg = useRouter();
@@ -40,13 +41,14 @@ function Organisation() {
             })
             .catch(error => {
                 if (error.response.data.code = 401) {
-                    window.location.href = '/signin'
+                    window.location.href = '/'
                 }
             })
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status="Success") {
                     localStorage.setItem("envuuid", res.data.data[0].uuid)
+                    localStorage.setItem("envid",res.data.data[0].id)
                 }
             })
 
@@ -89,13 +91,8 @@ function Organisation() {
                             <tr key={ind}>
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
-                                <td><select value={item.roleId}>
-                                    {data.map((i, key) =>
-                                        <>
-                                            <option key={key}>{i.name}</option>
-                                        </>
-                                    )}
-                                </select>
+                                <td>
+                                    <Select item={item} data={data}/>
                                 </td>
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}

@@ -10,6 +10,7 @@ function Navbar() {
     const [ownername,setownername]=useState([]);
     const handlelogout = () => {
         window.localStorage.clear();
+        document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
     }
     useEffect(()=>{
         setorgname(

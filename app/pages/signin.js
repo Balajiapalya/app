@@ -8,7 +8,10 @@ export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  
   const onSubmit = login_details => {
+    login_details.password=btoa(login_details.password)
+    console.log(login_details.password)
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {
@@ -16,7 +19,6 @@ export default function Signin() {
           localStorage.setItem('uuid', (res.data.data.organizations[0].uuid))
           localStorage.setItem('Jwt-token', (res.data.data.token))
           localStorage.setItem('orgName', res.data.data.organizations[0].name)
-          //  router.push({pathname: "/"})
           window.location.pathname = '/'
         }
       })

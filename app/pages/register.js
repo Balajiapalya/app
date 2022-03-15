@@ -11,6 +11,7 @@ export default function Create_account() {
     const params = reg.query
     const onSubmit = createaccount_data => {
         createaccount_data.inviteCode = params.invitecode;
+        createaccount_data.password = btoa(createaccount_data.password)
         Api.Create_account_data(createaccount_data)
             .then(res => {
                 if (res.data.status = "Success") {

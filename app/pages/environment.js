@@ -2,9 +2,11 @@ import styles from '../styles/settings.module.css'
 import Layout from '../components/common/layout';
 import Api from '../components/api/api';
 import { useEffect, useState } from 'react';
+import Add_new_environment from './add_new_environment';
 
 
 export default function Environment() {
+    const [addnewenv,set_addnewenv] = useState(false);
     const [envdata, set_envdata] = useState([]);
     const [env, setenv] = useState([]);
     useEffect(() => {
@@ -21,7 +23,6 @@ export default function Environment() {
                 if (res.data.status="Success") {
                     set_envdata(res.data.data)
                     localStorage.setItem( "envuuid",res.data.data[0].uuid)
-                    // localStorage.setItem(res.dat)
                 }
             })
     }, {})
@@ -42,7 +43,7 @@ export default function Environment() {
                             environments Development, QA, Staging, and Production. You can change the names or create
                             additional environments as needed.
                         </p>
-                        <button className='btn'> <img src='Images/Icon feather-plus.png' /> Add Environment</button>
+                        <button onClick={()=>set_addnewenv(true)} className='btn'> <img src='Images/Icon feather-plus.png' /> Add Environment</button>
                     </div>
                     <div className={styles.environments_table}>
                         <table>
@@ -242,6 +243,7 @@ export default function Environment() {
                 </div>
 
             </div>
+            {addnewenv && <Add_new_environment  closeenv={set_addnewenv} />}
         </div>
 
     )
