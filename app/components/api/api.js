@@ -51,9 +51,9 @@ export const get_access_token = () => {
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
-export const get_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`
-};
+// export const get_signin_keys = () => {
+//     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`
+// };
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 };
@@ -71,6 +71,9 @@ export const get_new_env = () => {
 export const post_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`
 }
+export const update_env =() =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/105`
+}
 //video 
 export const video_url = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`
@@ -80,6 +83,9 @@ export const getList_videos = () => {
 }
 export const post_selected=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}users`
+}
+export const get_video_data=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
 }
 
 let token;
@@ -102,12 +108,11 @@ if (process.browser){
 }
 const envuuid = Env_uuid;
 
-let Env_id;
-if(process.browser){
-    Env_id = localStorage.getItem("envid");
+let asset_id;
+if (process.browser) {
+    asset_id = localStorage.getItem("videoId");
 }
-const  envid = Env_id;
-
+const assetid =asset_id;
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -220,12 +225,12 @@ const Api = {
             data: data,
             headers: headers,
         }),//called in edit_organisation_name
-    Video_list: () =>
+    Video_list: (data) =>
         axios({
             method: 'GET',
             url: getList_videos(),
             headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`},
+            'EnvironmentId': `${data}`},
         }),
 
     Get_env_data: () =>
@@ -246,6 +251,13 @@ const Api = {
             data: new_env_data,
             url: post_env(),
             headers: headers,
+        }),
+    Update_env: (dev_data) =>
+        axios({
+            method:'POST',
+            data:dev_data,
+            url:update_env(),
+            headers:headers,
         }),
     post_video: (video_url_data) =>
         axios({
@@ -282,6 +294,13 @@ const Api = {
             data:data,
             url:post_selected(),
             headers:headers
+        }),
+        Get_Env_item:(ast_id)=>
+        axios({
+            method:'GET',
+            url:get_video_data(ast_id),
+            headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
         })
 }
 export default Api

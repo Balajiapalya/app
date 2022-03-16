@@ -41,18 +41,15 @@ function Organisation() {
             })
             .catch(error => {
                 if (error.response.data.code = 401) {
-                    window.location.href = '/'
+                    window.localStorage.clear();
+                    document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
                 }
             })
-        Api.Get_env_data()
+            Api.Get_env_data()
             .then(res => {
-                if (res.data.status="Success") {
-                    localStorage.setItem("envuuid", res.data.data[0].uuid)
-                    localStorage.setItem("envid",res.data.data[0].id)
-                }
+                localStorage.setItem("envuuid",res.data.data[0].uuid)
             })
-
-
     }, {})
 
     return (

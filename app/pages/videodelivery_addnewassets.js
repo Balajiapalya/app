@@ -6,13 +6,12 @@ import Direct_upload from '../components/direct_uploade';
 
 
 
-export default function Videodelivery_addnewassets({close_asset}) {
+export default function Videodelivery_addnewassets({ close_asset }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = video_url_data => {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
-                // console.log(res)
                 window.location.reload()
             })
             .catch(error => {
@@ -22,10 +21,10 @@ export default function Videodelivery_addnewassets({close_asset}) {
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-                <a onClick={()=>close_asset(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
+                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload/>
+                <Direct_upload />
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
                 <div  >
@@ -45,10 +44,37 @@ export default function Videodelivery_addnewassets({close_asset}) {
                         </div>
                         <div className={styles.code}>
                             <textarea
+                                value='[
+                                    {
+                                    "title": "Video title",
+                                    "description": "Video description",
+                                    "video": [
+                                    {
+                                    "url": "https://cr-vod-frndly.akamaized.net/vod/ss/xilinx/30mins_1920x1080.mp4",
+                                    "start_offset":0
+                                    }
+                                    ],
+                                    "tags": [
+                                    "tag1",
+                                    "tag2"
+                                    ],
+                                    "metadata": [
+                                    {
+                                    "key": "abc",
+                                    "value": "pqr"
+                                    }
+                                    ],
+                                    "playback_policy": ["public"],
+                                    "mp4_support": false,
+                                    "save_original_copy": false,
+                                    "test_video": true
+                                    }
+                                    ]'
                                 className={`${styles.code_input} form_control`}
                                 type='text'
                                 name='code'
                                 {...register("code", { required: true })}
+                                
                             />
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>

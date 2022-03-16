@@ -11,7 +11,7 @@ const Select = ({item,data}) => {
      
       setSelected([{email:item.email,roleId:parseInt(e.target.value)}])
 
-        // Api.Selected_option(selected).then(res=>console.log(res))
+        Api.Selected_option(selected).then(res=>console.log(res))
     }
     return (
         <>
