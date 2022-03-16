@@ -45,6 +45,32 @@ export default function Videodelivery_addnewassets({close_asset}) {
                         </div>
                         <div className={styles.code}>
                             <textarea
+                                value='[
+                                    {
+                                    "title": "Video title",
+                                    "description": "Video description",
+                                    "video": [
+                                    {
+                                    "url": "https://cr-vod-frndly.akamaized.net/vod/ss/xilinx/30mins_1920x1080.mp4",
+                                    "start_offset":0
+                                    }
+                                    ],
+                                    "tags": [
+                                    "tag1",
+                                    "tag2"
+                                    ],
+                                    "metadata": [
+                                    {
+                                    "key": "abc",
+                                    "value": "pqr"
+                                    }
+                                    ],
+                                    "playback_policy": ["public"],
+                                    "mp4_support": false,
+                                    "save_original_copy": false,
+                                    "test_video": true
+                                    }
+                                    ]'
                                 className={`${styles.code_input} form_control`}
                                 type='text'
                                 name='code'

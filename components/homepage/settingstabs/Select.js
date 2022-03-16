@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import Api from '../../api/api'
 
 const Select = ({item,data}) => {
+    
     const [opt,setOpt]=useState('state')
     const [selected,setSelected]=useState([{}])
    
