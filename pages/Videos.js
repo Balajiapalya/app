@@ -6,31 +6,31 @@ import Api from '../components/api/api'
 import { useState } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
+import VideoList from '../components/video_list'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
     const [add_asset, set_asset] = useState(false);
     const [env, setenv] = useState([]);
-    const [envSelect,setEnvSelect]=useState([]);
-    const [id,setId]=useState()
+    const [envSelect, setEnvSelect] = useState([]);
+    const [id, setId] = useState()
 
 
     useEffect(() => {
-    
-        const data=localStorage.getItem("envuuid")
-        Api.Video_list(data)
-        .then(res =>
-            setVideoData(res.data.data))
 
-        .catch(error => {
-            if (error.response.data.message = "Not a valid EnvironmentId") {
-            }
-        })
-    
+        const data = localStorage.getItem("envuuid")
+        Api.Video_list(data)
+            .then(res =>
+                setVideoData(res.data.data))
+            .catch(error => {
+                if (error.response.data.message = "Not a valid EnvironmentId") {
+                }
+            })
+
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
-               
+
             })
             .catch(error => {
                 console.log(error)
@@ -41,13 +41,11 @@ export default function Videos() {
                     setEnvSelect(res.data.data)
                 }
             })
+    }, [id])
 
-    }, [])
-    
-
-    const handleChange=(e)=>{
+    const handleChange = (e) => {
         setId(e.target.value)
-        localStorage.setItem("envuuid", e.target.value)  
+        localStorage.setItem("envuuid", e.target.value)
     }
     const create_On = (date) => {
         var d = new Date(date)
@@ -60,14 +58,14 @@ export default function Videos() {
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
                         <p>Yupp tv <br />
-                          
-                           <select className={styles.select} onChange={(e)=>handleChange(e)}>
-                               {envSelect.map(i=><>
-                               <option value={i.uuid}>{i.name}</option>
-                               </>)}
-                           </select>
-                             </p>
-                       
+
+                            <select className={styles.select} onChange={(e) => handleChange(e)}>
+                                {envSelect.map(i => <>
+                                    <option value={i.uuid}>{i.name}</option>
+                                </>)}
+                            </select>
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -113,24 +111,7 @@ export default function Videos() {
 
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
-                                    <td><input type="checkbox"></input></td>
-                                    <td>{create_On(i.created_at)}</td>
-                                    <td>{i.title}</td>
-                                    <td>{i.videoId}</td>
-                                    <td></td>
-                                    {/* <img src='/Images/Image 3.png' /> */}
-                                    <td>{i.duration}</td>
-                                    <td></td>
-                                    {/* HD */}
-                                    <td>{i.status}</td>
-                                    <td className={styles.actionicons}>
-                                        <Link href='/video'><a ><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a></Link>
-                                        <img src='/Images/film-editing.png' alt="image"></img>
-                                        <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                                        <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
-                                        <img src='/Images/closed-caption.png' alt="image"></img>
-                                        <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
-                                    </td>
+                                    <VideoList create_On={create_On} i={i} id={i.videoId} />
                                 </tr>
                             </>)}
 
