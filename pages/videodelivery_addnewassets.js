@@ -6,7 +6,7 @@ import Direct_upload from '../components/direct_uploade';
 
 
 
-export default function Videodelivery_addnewassets({close_asset}) {
+export default function Videodelivery_addnewassets({ close_asset }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = video_url_data => {
@@ -22,10 +22,10 @@ export default function Videodelivery_addnewassets({close_asset}) {
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-                <a onClick={()=>close_asset(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
+                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload/>
+                <Direct_upload />
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
                 <div  >
@@ -49,6 +49,32 @@ export default function Videodelivery_addnewassets({close_asset}) {
                                 type='text'
                                 name='code'
                                 {...register("code", { required: true })}
+                                value='[
+                                    {
+                                    "title": "Video title",
+                                    "description": "Video description",
+                                    "video": [
+                                    {
+                                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
+                                    "start_offset":0
+                                    }
+                                    ],
+                                    "tags": [
+                                    "tag1",
+                                    "tag2"
+                                    ],
+                                    "metadata": [
+                                    {
+                                    "key": "abc",
+                                    "value": "pqr"
+                                    }
+                                    ],
+                                    "playback_policy": ["public"],
+                                    "mp4_support": false,
+                                    "save_original_copy": false,
+                                    "test_video": true
+                                    }
+                                    ]'
                             />
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>

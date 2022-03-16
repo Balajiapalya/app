@@ -40,15 +40,14 @@ function Organisation() {
 
             })
             .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.location.href = '/'
-                }
+                // if (error.response.data.code = 401) {
+                //     window.location.href = '/'
+                // }
             })
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status="Success") {
                     localStorage.setItem("envuuid", res.data.data[0].uuid)
-                    localStorage.setItem("envid",res.data.data[0].id)
                 }
             })
 
