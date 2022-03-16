@@ -10,25 +10,41 @@ export default function Videos() {
     const [videoData, setVideoData] = useState([]);
     const [add_asset, set_asset] = useState(false);
     const [env, setenv] = useState([]);
+    const [envSelect,setEnvSelect]=useState([]);
+    const [id,setId]=useState()
+
     useEffect(() => {
         Api.Video_list()
             .then(res =>
                 setVideoData(res.data.data))
+
             .catch(error => {
                 if (error.response.data.message = "Not a valid EnvironmentId") {
-                    window.location.href = '/Videos'
                 }
             })
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
-
+               
             })
             .catch(error => {
                 console.log(error)
             })
+        Api.Get_env_data()
+            .then(res => {
+                if (res.data.status = "Success") {
+                    setEnvSelect(res.data.data)
+                }
+            })
 
     }, [])
+
+    const handleChange=(e)=>{
+        setId(e.target.value)
+        localStorage.setItem("envuuid", e.target.value)
+        
+        console.log(e.target.value)
+    }
     const create_On = (date) => {
         var d = new Date(date)
         return d.toLocaleString()
@@ -40,12 +56,15 @@ export default function Videos() {
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
                         <p>Yupp tv <br />
-                            <select className={styles.select}>
-                                {env.map((item, key) =>
-                                    <option key={key} value={parseInt(item.id)}>{item.name}</option>
-                                )}
-                            </select> </p>
-                        {/* <img src='/Images/Group 1817.png' alt='img' /> */}
+                          
+                           <select className={styles.select} onChange={(e)=>handleChange(e)}>
+                               {envSelect.map(i=><>
+                               
+                               <option value={i.uuid}>{i.name}</option>
+                               </>)}
+                           </select>
+                             </p>
+                       
                     </div>
                 </div>
             </div>
