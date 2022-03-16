@@ -84,6 +84,9 @@ export const getList_videos = () => {
 export const post_selected=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}users`
 }
+export const get_video_data=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
+}
 
 let token;
 if (process.browser) {
@@ -105,8 +108,11 @@ if (process.browser){
 }
 const envuuid = Env_uuid;
 
-
-
+let asset_id;
+if (process.browser) {
+    asset_id = localStorage.getItem("videoId");
+}
+const assetid =asset_id;
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -288,6 +294,13 @@ const Api = {
             data:data,
             url:post_selected(),
             headers:headers
+        }),
+        Get_Env_item:(ast_id)=>
+        axios({
+            method:'GET',
+            url:get_video_data(ast_id),
+            headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
         })
 }
 export default Api
