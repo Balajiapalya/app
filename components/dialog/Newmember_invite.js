@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import {useRouter} from 'next/router'
 
 export default function Newmember_invite({ closeModel }) {
-  const router=useRouter()
-  const [data,setdata]=useState([])
+  const router=useRouter();
+  const [data,setdata]=useState([]);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = admin_invite_code => {
     Api.Newmember_invite_data(admin_invite_code)
