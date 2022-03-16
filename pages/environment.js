@@ -13,7 +13,7 @@ export default function Environment() {
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
-
+                
             })
             .catch(error => {
                 console.log(error)
@@ -22,7 +22,6 @@ export default function Environment() {
             .then(res => {
                 if (res.data.status="Success") {
                     set_envdata(res.data.data)
-                    localStorage.setItem( "envuuid",res.data.data[0].uuid)
                 }
             })
     }, {})

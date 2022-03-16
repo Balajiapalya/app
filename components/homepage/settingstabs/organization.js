@@ -44,14 +44,6 @@ function Organisation() {
                 //     window.location.href = '/'
                 // }
             })
-        Api.Get_env_data()
-            .then(res => {
-                if (res.data.status="Success") {
-                    localStorage.setItem("envuuid", res.data.data[0].uuid)
-                }
-            })
-
-
     }, {})
 
     return (
