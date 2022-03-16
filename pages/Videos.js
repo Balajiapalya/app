@@ -6,6 +6,7 @@ import Api from '../components/api/api'
 import { useState } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
+import VideoList from './video_list'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -21,7 +22,6 @@ export default function Videos() {
         Api.Video_list(data)
         .then(res =>
             setVideoData(res.data.data))
-
         .catch(error => {
             if (error.response.data.message = "Not a valid EnvironmentId") {
             }
@@ -41,10 +41,8 @@ export default function Videos() {
                     setEnvSelect(res.data.data)
                 }
             })
-
-    }, [])
+    }, [id])
     
-
     const handleChange=(e)=>{
         setId(e.target.value)
         localStorage.setItem("envuuid", e.target.value)  
@@ -113,24 +111,7 @@ export default function Videos() {
 
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
-                                    <td><input type="checkbox"></input></td>
-                                    <td>{create_On(i.created_at)}</td>
-                                    <td>{i.title}</td>
-                                    <td>{i.videoId}</td>
-                                    <td></td>
-                                    {/* <img src='/Images/Image 3.png' /> */}
-                                    <td>{i.duration}</td>
-                                    <td></td>
-                                    {/* HD */}
-                                    <td>{i.status}</td>
-                                    <td className={styles.actionicons}>
-                                        <Link href='/video'><a ><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a></Link>
-                                        <img src='/Images/film-editing.png' alt="image"></img>
-                                        <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                                        <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
-                                        <img src='/Images/closed-caption.png' alt="image"></img>
-                                        <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
-                                    </td>
+                                    <VideoList  create_On={create_On} i={i} id={i.videoId}/>
                                 </tr>
                             </>)}
 
