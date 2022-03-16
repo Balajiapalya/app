@@ -216,12 +216,12 @@ const Api = {
             data: data,
             headers: headers,
         }),//called in edit_organisation_name
-    Video_list: () =>
+    Video_list: (data) =>
         axios({
             method: 'GET',
             url: getList_videos(),
             headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`},
+            'EnvironmentId': `${data}`},
         }),
 
     Get_env_data: () =>
