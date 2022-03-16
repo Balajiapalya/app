@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Api from '../components/api/api'
 import { useState } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
+import React from 'react'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -13,15 +14,19 @@ export default function Videos() {
     const [envSelect,setEnvSelect]=useState([]);
     const [id,setId]=useState()
 
-    useEffect(() => {
-        Api.Video_list()
-            .then(res =>
-                setVideoData(res.data.data))
 
-            .catch(error => {
-                if (error.response.data.message = "Not a valid EnvironmentId") {
-                }
-            })
+    useEffect(() => {
+    
+        const data=localStorage.getItem("envuuid")
+        Api.Video_list(data)
+        .then(res =>
+            setVideoData(res.data.data))
+
+        .catch(error => {
+            if (error.response.data.message = "Not a valid EnvironmentId") {
+            }
+        })
+    
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
@@ -38,12 +43,11 @@ export default function Videos() {
             })
 
     }, [])
+    
 
     const handleChange=(e)=>{
         setId(e.target.value)
-        localStorage.setItem("envuuid", e.target.value)
-        
-        console.log(e.target.value)
+        localStorage.setItem("envuuid", e.target.value)  
     }
     const create_On = (date) => {
         var d = new Date(date)
@@ -59,7 +63,6 @@ export default function Videos() {
                           
                            <select className={styles.select} onChange={(e)=>handleChange(e)}>
                                {envSelect.map(i=><>
-                               
                                <option value={i.uuid}>{i.name}</option>
                                </>)}
                            </select>
