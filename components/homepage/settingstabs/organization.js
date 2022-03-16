@@ -40,9 +40,9 @@ function Organisation() {
 
             })
             .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.location.href = '/'
-                }
+                // if (error.response.data.code = 401) {
+                //     window.location.href = '/'
+                // }
             })
     }, {})
 
