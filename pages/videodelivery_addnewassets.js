@@ -75,32 +75,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                                 type='text'
                                 name='code'
                                 {...register("code", { required: true })}
-                                value='[
-                                    {
-                                    "title": "Video title",
-                                    "description": "Video description",
-                                    "video": [
-                                    {
-                                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
-                                    "start_offset":0
-                                    }
-                                    ],
-                                    "tags": [
-                                    "tag1",
-                                    "tag2"
-                                    ],
-                                    "metadata": [
-                                    {
-                                    "key": "abc",
-                                    "value": "pqr"
-                                    }
-                                    ],
-                                    "playback_policy": ["public"],
-                                    "mp4_support": false,
-                                    "save_original_copy": false,
-                                    "test_video": true
-                                    }
-                                    ]'
+                                
                             />
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>
