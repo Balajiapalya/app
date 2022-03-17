@@ -22,17 +22,16 @@ export default function Videos() {
             .then(res =>
                 setVideoData(res.data.data))
             .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
+                // if (error.response.data.code = 401) {
+                //     window.localStorage.clear();
+                //     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                //     window.location.href = '/signin'
+                // }
             })
 
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
-
             })
             .catch(error => {
                 console.log(error)
@@ -47,11 +46,16 @@ export default function Videos() {
 
     const handleChange = (e) => {
         setId(e.target.value)
-        localStorage.setItem("envuuid", e.target.value)
+        localStorage.setItem("envuuid",e.target.value)
     }
+   
     const create_On = (date) => {
         var d = new Date(date)
         return d.toLocaleString()
+    }
+
+    const handleSearch=(e)=>{
+        console.log(e.target.value)
     }
     return (
         <div className={styles.container}>
@@ -61,9 +65,9 @@ export default function Videos() {
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
                         <p>Yupp tv <br />
 
-                            <select className={styles.select} onChange={(e) => handleChange(e)}>
+                            <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option value={i.uuid}>{i.name}</option>
+                                    <option selected={localStorage.getItem('envuuid')==i.uuid} value={i.uuid}>{i.name}</option>
                                 </>)}
                             </select>
                         </p>
@@ -90,7 +94,7 @@ export default function Videos() {
                     <hr></hr>
                 </div>
                 <div className={styles.search}>
-                    <input placeholder='Search'></input>
+                    <input type="text" onChange={(e)=>handleSearch(e)} placeholder='Search'></input>
                     <img src='/Images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>
@@ -113,12 +117,9 @@ export default function Videos() {
 
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
-                                    <VideoList create_On={create_On} i={i} id={i.videoId} />
+                                    <VideoList create_On={create_On} i={i}/>
                                 </tr>
                             </>)}
-
-
-
 
                             {/* <tr>
                                 <td><input type="checkbox"></input></td>
