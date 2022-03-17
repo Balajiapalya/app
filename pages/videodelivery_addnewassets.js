@@ -13,7 +13,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
                 // console.log(res)
-                window.location.reload()
+                // window.location.reload()
             })
             .catch(error => {
                 console.log(error)
@@ -51,7 +51,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                                     "description": "Video description",
                                     "video": [
                                     {
-                                    "url": "https://cr-vod-frndly.akamaized.net/vod/ss/xilinx/30mins_1920x1080.mp4",
+                                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
                                     "start_offset":0
                                     }
                                     ],
