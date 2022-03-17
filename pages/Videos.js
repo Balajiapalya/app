@@ -22,17 +22,16 @@ export default function Videos() {
             .then(res =>
                 setVideoData(res.data.data))
             .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
+                // if (error.response.data.code = 401) {
+                //     window.localStorage.clear();
+                //     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                //     window.location.href = '/signin'
+                // }
             })
 
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
-
             })
             .catch(error => {
                 console.log(error)
@@ -47,11 +46,16 @@ export default function Videos() {
 
     const handleChange = (e) => {
         setId(e.target.value)
-        localStorage.setItem("envuuid", e.target.value)
+        localStorage.setItem("envuuid",e.target.value)
     }
+   
     const create_On = (date) => {
         var d = new Date(date)
         return d.toLocaleString()
+    }
+
+    const handleSearch=(e)=>{
+        console.log(e.target.value)
     }
     return (
         <div className={styles.container}>
@@ -61,9 +65,9 @@ export default function Videos() {
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
                         <p>Yupp tv <br />
 
-                            <select className={styles.select} onChange={(e) => handleChange(e)}>
+                            <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option value={i.uuid}>{i.name}</option>
+                                    <option selected={localStorage.getItem('envuuid')==i.uuid} value={i.uuid}>{i.name}</option>
                                 </>)}
                             </select>
                         </p>
@@ -90,7 +94,7 @@ export default function Videos() {
                     <hr></hr>
                 </div>
                 <div className={styles.search}>
-                    <input placeholder='Search'></input>
+                    <input type="text" onChange={(e)=>handleSearch(e)} placeholder='Search'></input>
                     <img src='/Images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>
@@ -111,9 +115,106 @@ export default function Videos() {
                         <tbody>
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
-                                    <VideoList create_On={create_On} i={i} id={i.videoId} />
+                                    <VideoList create_On={create_On} i={i}/>
                                 </tr>
                             </>)}
+
+                            {/* <tr>
+                                <td><input type="checkbox"></input></td>
+                                <td>02/12/21<br></br>6:03pm</td>
+                                <td>Asianet-Roku</td>
+                                <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
+
+                                <td><img src='/Images/Image 3.png' /></td>
+                                <td>30m20s</td>
+                                <td>HD</td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.actionicons}>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                </td>
+                            </tr> */}
+                            {/* <tr>
+                                <td><input type="checkbox"></input></td>
+                                <td>02/12/21<br></br>6:03pm</td>
+                                <td>Asianet-Roku</td>
+                                <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
+
+                                <td><img src='/Images/Image 12.png' alt="image" /></td>
+                                <td>30m20s</td>
+                                <td>HD</td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.actionicons}>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td><input type="checkbox"></input></td>
+                                <td>02/12/21<br></br>6:03pm</td>
+                                <td>Asianet-Roku</td>
+                                <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
+
+                                <td><img src='/Images/Image 13.png' alt="image" /></td>
+                                <td>30m20s</td>
+                                <td>HD</td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.actionicons}>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></input></td>
+                                <td>02/12/21<br></br>6:03pm</td>
+                                <td>Asianet-Roku</td>
+                                <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
+
+                                <td><img src='/Images/Image 14.png' alt="image" /></td>
+                                <td>30m20s</td>
+                                <td>HD</td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.actionicons}>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></input></td>
+                                <td>02/12/21<br></br>6:03pm</td>
+                                <td>Asianet-Roku</td>
+                                <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
+
+                                <td><img src='/Images/Image 15.png' alt="image" /></td>
+                                <td>30m20s</td>
+                                <td>HD</td>
+                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.actionicons}>
+                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                    <img src='/Images/film-editing.png' alt="image"></img>
+                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                    <img src='/Images/closed-caption.png' alt="image"></img>
+                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                </td>
+                            </tr> */}
                         </tbody>
                     </table>
 

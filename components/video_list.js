@@ -1,14 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import styles from '../styles/videos.module.css'
 import Link from 'next/link';
-import {useRouter} from 'next/router'
 
 const VideoList = ({i,create_On}) => {
-    const router =useRouter()
     const [videoId,setVideoId]=useState()
     const handleChange=()=>{
-        setVideoId(i.videoId)
+      if(i.status!=='Failed'){
         window.location.pathname='./video'
+        setVideoId(i.videoId)
+        }
      }
   localStorage.setItem('videoId', videoId)
     return (
