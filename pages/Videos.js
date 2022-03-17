@@ -110,11 +110,9 @@ export default function Videos() {
                                 <th>Resolution</th>
                                 <th>Status</th>
                                 <th>Actions</th>
-
                             </tr>
                         </thead>
                         <tbody>
-
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
                                     <VideoList create_On={create_On} i={i}/>

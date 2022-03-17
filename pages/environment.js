@@ -111,10 +111,6 @@ export default function Environment() {
                             {items.name}
                             <a>
                               <img
-                                // onClick={() => {
-                                //   setopeninvitemember(true),
-                                //     setclosemodal(false);
-                                // }}
                                 onClick={()=>setPopups(i)}
                                 src="Images/Icon material-edit.png"
                               />

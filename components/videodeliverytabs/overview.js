@@ -74,7 +74,7 @@ export default function Overview() {
                     <div className={styles.playback}>
                         <h2>Playback Sample</h2>
                         <div className={styles.playback_content} >
-                            <video width="100%" height="300px" controls src={i.transcodingInfo.mediaUrl}></video>
+                            <video width="100%" height="295px" autoPlay controls  src={i.transcodingInfo.mediaUrl}></video>
                         </div>
                     </div>
                     <div className={styles.video_urls}>
