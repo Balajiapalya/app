@@ -8,19 +8,21 @@ export default function Overview() {
 
         Api.Get_Env_item()
             .then(res => {
-                setplayer(res.data)
-                console.log(player)
-                console.log(res.data.data)
+                setplayer([res.data.data])
             })
-    }, {});
+    }, []);
 
+    const created = (date) => {
+        const data = new Date(date)
+        return data.toLocaleString()
+    }
     return (
         <>
-    
-                <div    className={styles.overview}>
+            {player.map((i, ind) =>
+                <div key={ind} className={styles.overview}>
                     <div className={styles.url_buttons}>
-                        <div  className={styles.geturl}>
-                            <p>GET/videos/v1/assets/kH67tWxjPHW7c8J3Xd02N5W01v09hRkp4b4qnsijByKTm4</p>
+                        <div className={styles.geturl}>
+                            <p>GET/services/api/v1/contents/{i.videoId}</p>
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
@@ -35,48 +37,47 @@ export default function Overview() {
                         </div>
                     </div>
 
+
                     <div className={styles.asset_detials}>
+
                         <h2>Video Detials</h2>
+
                         <div className={styles.asset_detials_content}>
                             <table className={styles.content_table}>
                                 <tbody>
-                                    <tr>
-                                        <td className={styles.title}>Video ID</td>
-                                        <td className={styles.content}>kH67tWxjPHW7c8J3Xd02N5W01v09hRkp4b4qnsijByKTm4</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.title}>Created</td>
-                                        <td className={styles.content}></td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.title}>Status</td>
-                                        <td className={styles.content}>Ready <img src='/Images/check-circle.png' /></td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.title}>Duration</td>
-                                        <td className={styles.content}>29:56:07</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.title}>Max Resolution</td>
-                                        <td className={styles.content}>HD</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.title}>Max Frame Rate</td>
-                                        <td className={styles.content}>25.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.title}>Aspect Ratio</td>
-                                        <td className={styles.content}>16:9</td>
-                                    </tr>
+
+                                    <div>
+                                        <tr>
+                                            <td className={styles.title}>Video ID</td>
+                                            <td className={styles.content}>{i.videoId}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.title}>Created</td>
+                                            <td className={styles.content}>{created(i.created_at)}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.title}>Status</td>
+                                            <td className={styles.content}>{i.status} <img src='/Images/check-circle.png' /></td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.title}>Duration</td>
+                                            <td className={styles.content}>{i.duration}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.title}>Aspect Ratio</td>
+                                            <td className={styles.content}>{i.transcodingResponse.data.aspectRatio}</td>
+                                        </tr>
+                                    </div>
+
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
-
                     <div className={styles.playback}>
                         <h2>Playback Sample</h2>
                         <div className={styles.playback_content} >
-                            <img src='/Images/Image 3@3x.png' alt='image' />
+                            <video width="100%" height="300px" controls src={i.transcodingInfo.mediaUrl}></video>
                         </div>
                     </div>
 
@@ -187,7 +188,6 @@ export default function Overview() {
                                             <th>Sample Rate</th>
                                             <th>Encoding</th>
                                             <th>Channels</th>
-
                                             <th>Duration</th>
                                         </tr>
                                     </thead>
@@ -205,11 +205,9 @@ export default function Overview() {
 
                         </div>
                     </div>
-                </div>
+                </div>)}
+        </>
 
 
-</>
-
-     
     )
 }
