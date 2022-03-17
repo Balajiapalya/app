@@ -64,9 +64,11 @@ export default function Environment() {
         }
       });
   }, []);
-   const setPopups = (index) => {
-      
-        openModel[index] = !openModel[index] ;
+   const setPopups = (index,uuid) => {
+     if(uuid){
+      localStorage.setItem('envuuid',uuid)
+    }
+        openModel[index] = !openModel[index];
         closemodal[index] =  !closemodal[index]
         setopeninvitemember(openModel);
         setclosemodal([...closemodal]);
@@ -111,7 +113,7 @@ export default function Environment() {
                             {items.name}
                             <a>
                               <img
-                                onClick={()=>setPopups(i)}
+                                onClick={()=>setPopups(i,items.uuid)}
                                 src="Images/Icon material-edit.png"
                               />
                             </a>
