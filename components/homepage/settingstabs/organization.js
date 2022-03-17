@@ -40,9 +40,15 @@ function Organisation() {
 
             })
             .catch(error => {
-                // if (error.response.data.code = 401) {
-                //     window.location.href = '/'
-                // }
+                if (error.response.data.code = 401) {
+                    window.localStorage.clear();
+                    document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
+            })
+            Api.Get_env_data()
+            .then(res => {
+                localStorage.setItem("envuuid",res.data.data[0].uuid)
             })
     }, {})
 

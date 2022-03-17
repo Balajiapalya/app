@@ -71,6 +71,9 @@ export const get_new_env = () => {
 export const post_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`
 }
+export const update_env =() =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/105`
+}
 //video 
 export const video_url = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`
@@ -248,6 +251,13 @@ const Api = {
             data: new_env_data,
             url: post_env(),
             headers: headers,
+        }),
+    Update_env: (dev_data) =>
+        axios({
+            method:'POST',
+            data:dev_data,
+            url:update_env(),
+            headers:headers,
         }),
     post_video: (video_url_data) =>
         axios({
