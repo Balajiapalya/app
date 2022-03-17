@@ -13,11 +13,11 @@ export default function Overview() {
     }, []);
 
     const created = (date) => {
-        const data = new Date(date)
-        return data.toLocaleString()
+        const d = new Date(date)
+        return d.toLocaleString('en-GB', { hour:'numeric', minute:'numeric', second:'numeric', hour12:false } );
     }
     return (
-        <>
+        <Fragment>
             {player.map((i, ind) =>
                 <div key={ind} className={styles.overview}>
                     <div className={styles.url_buttons}>
@@ -45,7 +45,6 @@ export default function Overview() {
                         <div className={styles.asset_detials_content}>
                             <table className={styles.content_table}>
                                 <tbody>
-
                                     <div>
                                         <tr>
                                             <td className={styles.title}>Video ID</td>
@@ -68,10 +67,8 @@ export default function Overview() {
                                             <td className={styles.content}>{i.transcodingResponse.data.aspectRatio}</td>
                                         </tr>
                                     </div>
-
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                     <div className={styles.playback}>
@@ -80,7 +77,6 @@ export default function Overview() {
                             <video width="100%" height="300px" controls src={i.transcodingInfo.mediaUrl}></video>
                         </div>
                     </div>
-
                     <div className={styles.video_urls}>
                         <h2>Video URLs</h2>
                         <div className={styles.link_copy}>
@@ -108,7 +104,6 @@ export default function Overview() {
                                     </div>
                                 </div>
                             </div>
-
                             <div className={styles.embed_thubnail}>
                                 <div className={styles.link_embedcode}>
                                     <h4>Embed code</h4>
@@ -120,10 +115,6 @@ export default function Overview() {
                                             <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                                 <div className={styles.link_thumbnail}>
                                     <h4>Link to Thumbnail</h4>
@@ -137,12 +128,8 @@ export default function Overview() {
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
-
                     <div className={styles.input_file}>
                         <h2>Input File Media Info</h2>
                         <div className={styles.media_info}>
@@ -150,7 +137,7 @@ export default function Overview() {
                             <div className={styles.video_url}>
                                 <div className={styles.copy_link}>
                                     <div className={styles.link}>
-                                        <p> https://d70jkbWEDJkdjcJNDKJDNJSDCNvnbkj.mp4</p>
+                                        <p>{i.playback[0].url}</p>
                                     </div>
                                     <div className={styles.copy_img}>
                                         <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
@@ -159,7 +146,6 @@ export default function Overview() {
                             </div>
                             <div className={styles.Video_info}>
                                 <h4>Video Info</h4>
-
                                 <table>
                                     <thead>
                                         <tr>
@@ -172,11 +158,11 @@ export default function Overview() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1280px</td>
-                                            <td>720px</td>
-                                            <td>25 fps</td>
-                                            <td>H.264</td>
-                                            <td>29:56:07</td>
+                                            <td>{i.transcodingInfo.videoInfo[0].width}</td>
+                                            <td>{i.transcodingInfo.videoInfo[0].height}</td>
+                                            <td>{i.transcodingInfo.videoInfo[0].frameRate}</td>
+                                            <td>{i.transcodingInfo.videoInfo[0].encoding}</td>
+                                            <td>{created(i.transcodingInfo.videoInfo[0].duration)}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -193,11 +179,11 @@ export default function Overview() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>44 Khz</td>
-                                            <td>ACC</td>
-                                            <td>2</td>
+                                            <td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>
+                                            <td>{i.transcodingInfo.audioInfo[0].encoding}</td>
+                                            <td>{i.transcodingInfo.audioInfo[0].channels}</td>
 
-                                            <td>29:56:07</td>
+                                            <td>{created(i.transcodingInfo.audioInfo[0].duration)}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -206,7 +192,7 @@ export default function Overview() {
                         </div>
                     </div>
                 </div>)}
-        </>
+        </Fragment>
 
 
     )
