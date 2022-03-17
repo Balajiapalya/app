@@ -223,7 +223,9 @@
     overflow: hidden;
     display: inline-block;
 }
-  
+.form{
+    margin: 0px 20px 10px ;
+}
 .btn {
     color: #2863eb;
     padding: 10px 49px;
@@ -231,34 +233,44 @@
     font-size: 20px;
     background-color: #fff;
     border: solid 1px #2863eb;
-    margin: 0px 20px 20px;
+    margin: 0px 0px 5px;
     font-family: Inter-Medium;
   }
   
-  .upload_btn_wrapper input[type=file] {
+.upload_btn_wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
 
-  }
-  .upload_file{
+}
+.upload_file{
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
     background-color: #fff;
     width: 100%;
     float: left;
     font-family:Inter-Regular;
 
-  }
-  .upload_file h2{
+}
+.upload_file h2{
     font-size: 18px;
     font-family: Inter-Medium;
     padding-right: 10px;
     margin: 20px;  
     font-weight: 500;
-   }
-   .or{
+}
+.direct_upload_button button{
+    color: #2863eb;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #fff;
+    border: solid 1px #2863eb;
+    margin: 0px 0px 5px;
+    font-family: Inter-Medium;
+}
+.or{
     width: 100%;
     float: left;
     height: 20px;

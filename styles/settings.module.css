@@ -353,6 +353,7 @@
 } */
 .environments_table tbody tr td{
     padding: 15px;
+    width: 30%;
 }
 .side_head{
     color: #6e6e6e;
@@ -376,6 +377,9 @@
     margin-bottom: 10px;
     font-size: 12px;
     font-family: Inter-Italic;
+}
+.edit_img{
+    margin-left: 5px;
 }
 .box_data{
     width: 100%;
@@ -424,46 +428,51 @@
 }
 .dev_head{
     padding: 5px 5px;
-    width: 13em; 
+    width: 70%;
     float: left;
     border: 1px solid rgba(198, 198, 198, 0.63);
     margin-bottom: 10px;
     color: #212b36;
     font-family: Inter-Regular;
     font-size: 16px;
+    outline: none;
 }
-.dev_select{
+/* .dev_select{
     width: 100%;
     float: left;
-}
+} */
 .dev_select select{
     padding: 5px 0px;
-    width: 35%;
+    width: 70%;
     border: solid 1px rgba(198, 198, 198, 0.63);
     color: #212b36;
     font-size: 14px;
     font-family: Inter-Regular;
+    outline: none;
 }
 .dev_options{
-    width: 30%;
+    width:70%;
     float: left;
     margin-top: 5px;
 }
 .dev_Cancel{
-    width: 15%;
+    cursor: pointer;
     float: left;
     text-decoration: underline;
     color: #848484;
     font-size: 14px;
     font-family: Inter-Regular;
+    
 }
 .dev_save{
-    width: 15%;
+    cursor: pointer;
     float: right;
     color: #2863eb;
     text-decoration: underline;
     font-size: 14px;
     font-family: Inter-Regular;
+    border: none;
+    background-color: inherit
 }
 
 

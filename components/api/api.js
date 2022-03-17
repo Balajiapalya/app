@@ -72,7 +72,7 @@ export const post_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`
 }
 export const update_env =() =>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments/105`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${envuuid}`
 }
 //video 
 export const video_url = () => {
@@ -86,6 +86,10 @@ export const post_selected=()=>{
 }
 export const get_video_data=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
+}
+//direct upload
+export const post_direct_video=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
 
 let token;
@@ -254,7 +258,7 @@ const Api = {
         }),
     Update_env: (dev_data) =>
         axios({
-            method:'POST',
+            method:'PUT',
             data:dev_data,
             url:update_env(),
             headers:headers,
@@ -266,6 +270,17 @@ const Api = {
             url: video_url(),
             headers: {'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
+        }),
+
+    //direct upload
+    Direct_upload_post:(direct_video_upload)=>
+        axios({
+            method:'POST',
+            data:direct_video_upload,
+            url:post_direct_video(),
+            headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+
         }),
     //get api token
     Get_access_token: () =>
