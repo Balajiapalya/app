@@ -52,13 +52,13 @@ function Navbar() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="/Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
+                          <Link href="/events_logs/events_logs"><a ><img src="/Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a></Link> 
                         </li>
                         <li>
                             <Link href="/"><a><img src="/Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
-                            <a href="#"><img src="/Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a>
+                            <Link href="/account/accounts"><a><img src="/Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a></Link>
 
                         </li>
                         <li>

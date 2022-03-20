@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Api from './api/api';
 export default function Direct_upload() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [filename, set_filename] = useState("add file");
+    const [filename, set_filename] = useState("select file");
     let handleChange = e => {
         var files = e.target.files;
         var filesArray = [].slice.call(files);
