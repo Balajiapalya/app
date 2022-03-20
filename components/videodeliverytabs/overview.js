@@ -27,11 +27,11 @@ export default function Overview() {
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
                                 <button className='btn'>Activities</button>
-                                <img src="Images/Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="/Images/Icon awesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                 <button className='btn'>Delete Asset</button>
-                                <img src="Images/Icon material-delete.png" alt="delete"></img>
+                                <img src="/Images/Icon material-delete.png" alt="delete"></img>
                             </div>
 
                         </div>
@@ -88,7 +88,7 @@ export default function Overview() {
                                             <p> &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34;</p>
                                         </div>
                                         <div className={styles.copy_img}>
-                                            <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@ export default function Overview() {
                                             <p> &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34;</p>
                                         </div>
                                         <div className={styles.copy_img}>
-                                            <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ export default function Overview() {
                                             <p> iframe src= &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34; Width=</p>
                                         </div>
                                         <div className={styles.copy_img}>
-                                            <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@ export default function Overview() {
                                             <p> iframe src= &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34; Width=</p>
                                         </div>
                                         <div className={styles.copy_img}>
-                                            <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@ export default function Overview() {
                                         <p>{i.playback[0].url}</p>
                                     </div>
                                     <div className={styles.copy_img}>
-                                        <img src='Images/Icon ionic-ios-copy.png' alt='copy' />
+                                        <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
                                     </div>
                                 </div>
                             </div>

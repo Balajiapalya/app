@@ -29,20 +29,20 @@ function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                           <Link href="/environment"><a><img src="Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
+                           <Link href="/environments/environment"><a><img src="/Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
                         </li>
                         <li>
-                            <Link href='/Videos'><a ><img src="Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                            <Link href='/videos/Videos'><a ><img src="/Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
+                            <a href="#"><img src="/Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
                         </li>
                         <li style={opendropdown?{backgroundColor:"#262b36"}:{backgroundColor:null}} className={styles.tools}>
-                            <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)} ><img src="Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
+                            <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)} ><img src="/Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
                             {opendropdown ? <ul className={styles.list}>
-                                <li><Link href="stream_monitor"><a>Stream Monitor</a></Link></li>
+                                <li><Link href="/tools/streammonitor/stream_monitor"><a>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
-                                <li><Link href="subtitleconvertor"><a>Subtitle Converter</a></Link></li>
+                                <li><Link href="/tools/subtitleconverter/subtitleconvertor"><a>Subtitle Converter</a></Link></li>
                                 <li><a>Video player</a></li>
                                 <li><a>Player Validator</a></li>
                             </ul> : null}
@@ -52,17 +52,17 @@ function Navbar() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <a href="#"><img src="Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
+                            <a href="#"><img src="/Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a>
                         </li>
                         <li>
-                            <Link href="/"><a><img src="Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
+                            <Link href="/"><a><img src="/Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
-                            <a href="#"><img src="Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a>
+                            <a href="#"><img src="/Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a>
 
                         </li>
                         <li>
-                            <Link href="/signin"><a onClick={handlelogout}><img src="Images/Icon feather-log-out.png" alt='icon'></img>Logout</a></Link>
+                            <Link href="/signin"><a onClick={handlelogout}><img src="/Images/Icon feather-log-out.png" alt='icon'></img>Logout</a></Link>
                         </li>
                     </ul>
                 </div>

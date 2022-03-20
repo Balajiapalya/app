@@ -35,7 +35,7 @@ function Organisation() {
                 if (res.data.status = "succes") {
                     setorgdata(res.data.data.users)
                     setOrg(localStorage.getItem('orgName'))
-                    // localStorage.setItem("ownername", res.data.data.users[0].firstName)
+                    localStorage.setItem("ownername", res.data.data.users[0].firstName)
                 }
 
             })

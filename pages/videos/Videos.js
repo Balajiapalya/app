@@ -1,12 +1,12 @@
-import styles from '../styles/videos.module.css'
+import styles from '../../styles/videos.module.css'
 import Link from 'next/link';
-import Layout from '../components/common/layout';
+import Layout from '../../components/common/layout';
 import { useEffect } from 'react'
-import Api from '../components/api/api'
+import Api from '../../components/api/api'
 import { useState } from 'react'
-import Videodelivery_addnewassets from './videodelivery_addnewassets';
+import Videodelivery_addnewassets from '../../pages/videos/videodelivery_addnewassets';
 import React from 'react'
-import VideoList from '../components/video_list'
+import VideoList from '../../components/video_list'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -88,7 +88,7 @@ export default function Videos() {
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
                         <a onClick={() => set_asset(true)}>
                             <button className='btn'>Add New assets</button>
-                            <img src="Images/Icon feather-plus.png" alt='icon' ></img>
+                            <img src="/Images/Icon feather-plus.png" alt='icon' ></img>
                         </a>
                     </div>
                     <hr></hr>

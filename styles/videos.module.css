@@ -224,7 +224,7 @@
     display: inline-block;
 }
 .form{
-    margin: 0px 20px 10px ;
+    margin: 0px 20px 10px !important;
 }
 .btn {
     color: #2863eb;
@@ -233,7 +233,7 @@
     font-size: 20px;
     background-color: #fff;
     border: solid 1px #2863eb;
-    margin: 0px 0px 5px;
+    margin: 20px 20px 5px;
     font-family: Inter-Medium;
   }
   

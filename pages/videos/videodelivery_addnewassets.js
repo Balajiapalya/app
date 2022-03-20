@@ -1,8 +1,8 @@
-import styles from '../styles/videos.module.css'
+import styles from '../../styles/videos.module.css'
 import { useForm } from 'react-hook-form';
-import Api from '../components/api/api';
+import Api from '../../components/api/api';
 import Link from 'next/link'
-import Direct_upload from '../components/direct_uploade';
+import Direct_upload from '../../components/direct_uploade';
 
 
 
@@ -34,7 +34,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                         <input
                             type='text'
                             readOnly
-                            value={`http://13.235.3.29/video//services/api/v1/contents`}
+                            value={`http://13.235.3.29/video/services/api/v1/contents`}
                         />
                         <span>Post body editor:</span>
                         <div className={styles.language_select}>

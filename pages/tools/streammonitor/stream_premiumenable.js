@@ -1,7 +1,7 @@
-import styles from '../styles/model.module.css'
+import styles from '../../../styles/model.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
-import Stream_statistics from './stream_statistics';
+
 
 export default function Stream_premiumenable() {
     // const[openmonitoring,setmonitoring]=useState(false);
@@ -9,7 +9,7 @@ export default function Stream_premiumenable() {
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button"><img src="Images/close.png" alt="close"/> </a>
+                    <a className={styles.model_close} role="button"><img src="/Images/close.png" alt="close"/> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -26,7 +26,7 @@ export default function Stream_premiumenable() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="Images/updown.png" alt="updown"></img></button>
+                        <button type="text" className={styles.up}><img src="/Images/updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>Check Streams</label>
                     <div className={styles.select}>
@@ -36,7 +36,7 @@ export default function Stream_premiumenable() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="Images/updown.png" alt="updown"></img></button>
+                        <button type="text" className={styles.up}><img src="/Images/updown.png" alt="updown"></img></button>
                     </div>
                     <div className={styles.check_unlockfeatures}>
                         <label className={styles.model_label}>premiumfeatures</label>
@@ -44,50 +44,50 @@ export default function Stream_premiumenable() {
                     </div>
                     <div className={styles.premiumfeatures}>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Realtime Monitoring</label>
                             <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Track PTS</label>
                             <p>Track Presentation Time Stamp(PTS) of streams from location close to stream origin.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Detailed Stream info</label>
                             <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Frame freeze detection</label>
                             <p>Detects frame freeze events in a stream.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Black frame detection</label>
                             <p>Detects frame freeze events in a stream.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Audio loss detection</label>
                             <p>Notifies when audio is missing from the stream.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Preview Thumbnail</label>
                             <p>Image thumbnails will be automatically generated for the entire video timeline for a quick preview.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="Images/Icon awesome-check.png" alt="check"></img>
+                            <img className={styles.check} src="/Images/Icon awesome-check.png" alt="check"></img>
                             <label className={styles.model_label}>Receive alerts</label>
                             <p>Receive email alerts every time we detect an isue with streams.</p>
                         </div>
                     </div>
                     <div className={styles.model_btn}>
-                        <Link href='stream_monitor'><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a></Link>
-                        <Link href='stream_statistics'><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a></Link>
-                    </div>
+                        <Link href='/tools/streammonitor/stream_monitor'><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button></a></Link>
+                        <Link href='/tools/streammonitor/stream_statistics'><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Start Monitoring</button></a></Link>
+                    </div>  
                 </div>
             </div>
             {/* {openmonitoring && <Stream_statistics closemonitoring={setmonitoring}/>} */}

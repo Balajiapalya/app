@@ -1,6 +1,6 @@
-import styles from '../styles/videos.module.css'
-import Layout from '../components/common/layout'
-import Videodelivery_tabs from '../components/homepage/videodelivery_tabs'
+import styles from '../../styles/videos.module.css'
+import Layout from '../../components/common/layout'
+import Videodelivery_tabs from '../../components/homepage/videodelivery_tabs'
 
 export default function Video() {
     return (
@@ -14,10 +14,10 @@ export default function Video() {
 
                         </div>
                         <div className={styles.header_asianet}>
-                            <img className={styles.icon_stat} src="Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                            <img className={styles.icon_stat} src="/Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
                             <h2>
                                 Asianet-Roku
-                                <img className={styles.edit_img} src="Images/Icon material-edit.png" alt="edit" /><span> Edit</span>
+                                <img className={styles.edit_img} src="/Images/Icon material-edit.png" alt="edit" /><span> Edit</span>
                             </h2>
                         </div>
                         

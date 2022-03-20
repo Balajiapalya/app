@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Settings from './settings';
+import Settings from '../pages/settings/settings';
 import Layout from '../components/common/layout';
 
 

@@ -1,4 +1,4 @@
-import styles from '../styles/model.module.css'
+import styles from '../../../styles/model.module.css'
 import Link from 'next/link'
 
 export default function Unlockpremiumfeatures({close_unlockpremium}) {
