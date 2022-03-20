@@ -1,6 +1,6 @@
-import styles from '../../../styles/model.module.css'
-import { useState } from 'react'
-import Stream_premiumenable from './stream_premiumenable';
+import styles from '../../../styles/model.module.css';
+import { useState } from 'react';
+import Unlockpremiumfeatures from './unlockedpremiumfeatures';
 
 export default function Unlock_Premiumpayment() {
     const [open_unlockedpremium, set_unlockedpremium] = useState(false);
@@ -73,7 +73,7 @@ export default function Unlock_Premiumpayment() {
                     </form>
                 </div>
             </div>
-            {open_unlockedpremium && <Stream_premiumenable close_unlockpremium={set_unlockedpremium} />}
+            {open_unlockedpremium && <Unlockpremiumfeatures close_unlockpremium={set_unlockedpremium} />}
         </div>
 
 

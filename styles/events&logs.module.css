@@ -1,0 +1,65 @@
+
+.settings {
+    padding:40px 5% ;
+    /* width: 87%;
+    float: right;  */
+ }
+ .settings .padding{
+     padding-left: 205px;
+    
+ }
+ 
+ .settings .header  h2{
+     float: left;
+     color: #212b36;
+     font-family: Inter-Medium;
+     font-size: 28px;
+ } 
+ .settings .header  h3{
+     float: right;
+     color: #212b36;
+     font-family: Inter-Medium;
+     font-size: 20px;
+ }
+ .events_data{
+    width: 100%;
+    float: left;
+
+}
+
+.events_data table{
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    border-collapse: collapse;
+}
+.events_data table thead tr th{
+    text-align: left;
+    padding: 5px 3px;
+    color:  #212b36;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 600;
+    word-break: break-all;
+    font-size: 14px;
+}
+
+.events_data table thead tr th input {
+    background-color: inherit;
+    
+}
+
+.events_data table tbody{
+    background-color: white;
+}
+.events_data table tbody tr td{
+    padding: 5px 3px;
+    word-break: break-all;
+    color: #212b36;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    height: 3em;
+    border-bottom: 1px solid #ecedef;
+}
+.events_data table tbody tr td p{
+margin-bottom: 3px;
+}
