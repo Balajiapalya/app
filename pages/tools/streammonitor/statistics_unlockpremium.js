@@ -1,11 +1,10 @@
-import styles from '../styles/stream_statistics.module.css'
-import Navbar from '../components/common/navbar'
+import styles from '../../../styles/stream_statistics.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
-import Activities from '../pages/activities'
-import Deletestream from '../components/dialog/Delete_stream'
-import Enablepremiumfeatures from '../components/dialog/Premiumfeatures_monitor'
-import Layout from '../components/common/layout'
+import Activities from '../../../components/dialog/activities'
+import Deletestream from '../../../components/dialog/Delete_stream'
+import Enablepremiumfeatures from '../../../components/dialog/Premiumfeatures_monitor'
+import Layout from '../../../components/common/layout'
 
 
 
@@ -15,9 +14,6 @@ export default function Statistics_unlockpremium() {
     const[open_premium,set_premium]=useState(false);  
     return (
         <div className={styles.statistics_unlockpremium}>
-            {/* <div>
-                <Navbar />
-            </div> */}
             <div className={styles.stream_statistics}>
                 <div className={styles.padding}>
                     <div className={styles.stream_list}>

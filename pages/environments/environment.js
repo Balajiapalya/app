@@ -1,11 +1,13 @@
-import styles from "../styles/settings.module.css";
-import Layout from "../components/common/layout";
-import Api from "../components/api/api";
+import styles from "../../styles/settings.module.css";
+import Layout from "../../components/common/layout";
+import Api from "../../components/api/api";
 import { useEffect, useState } from "react";
-import Add_new_environment from "./add_new_environment";
+import Add_new_environment from "../../pages/environments/add_new_environment";
 import { useForm } from "react-hook-form";
 
+
 export default function Environment() {
+
   const {
     register,
     handleSubmit,
@@ -17,10 +19,15 @@ export default function Environment() {
   const [env, setenv] = useState([]);
   const [openModel, setopeninvitemember] = useState([]);
   const [closemodal, setclosemodal] = useState([]);
+
+
+
   const onSubmit = (dev_data) => {
     Api.Update_env(dev_data)
       .then((res) => {
-        console.log(res.data);
+        if(res.data.status="Success"){
+          window.location.pathname="/environments/environment"
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -42,10 +49,10 @@ export default function Environment() {
       .then((res) => {
         if ((res.data.status = "Success")) {
           set_envdata(res.data.data);
-          var envcount = res.data.data.length ;
+          var envcount = res.data.data.length;
           let openArr = [];
           let closeArr = [];
-          for(var i=0;i<envcount;i++){
+          for (var i = 0; i < envcount; i++) {
 
             openArr.push(false);
             closeArr.push(true);
@@ -53,7 +60,7 @@ export default function Environment() {
           }
           setopeninvitemember(openArr);
           setclosemodal(closeArr);
-            
+
         }
       })
       .catch((error) => {
@@ -64,13 +71,13 @@ export default function Environment() {
         }
       });
   }, []);
-   const setPopups = (index) => {
-      
-        openModel[index] = !openModel[index] ;
-        closemodal[index] =  !closemodal[index]
-        setopeninvitemember(openModel);
-        setclosemodal([...closemodal]);
-        console.log([...openModel]);
+  const setPopups = (index) => {
+
+    openModel[index] = !openModel[index];
+    closemodal[index] = !closemodal[index]
+    setopeninvitemember(openModel);
+    setclosemodal([...closemodal]);
+    console.log([...openModel]);
   }
   return (
     <div className={styles.container}>
@@ -88,7 +95,7 @@ export default function Environment() {
             </p>
             <button onClick={() => set_addnewenv(true)} className="btn">
               {" "}
-              <img src="Images/Icon feather-plus.png" /> Add Environment
+              <img src="/Images/Icon feather-plus.png" /> Add Environment
             </button>
           </div>
           <div className={styles.environments_table}>
@@ -102,31 +109,31 @@ export default function Environment() {
               </thead>
 
               <tbody>
-                {envdata.map((items,i) => (
+                {envdata.map((items, i) => (
                   <tr key={items.id}>
                     <td>
                       <form onSubmit={handleSubmit(onSubmit)}>
                         {closemodal[i] && (
-                          <div>
+                          <div   >
                             {items.name}
-                            <a>
+                            <a onClick={() => localStorage.setItem('envuuid', items.uuid)}>
                               <img
-                                onClick={()=>setPopups(i)}
-                                src="Images/Icon material-edit.png"
+                                onClick={() => setPopups(i)}
+                                src="/Images/Icon material-edit.png"
                               />
                             </a>
                             <br />
-                            <span className={styles.side_head}>QA</span>
+                            <span className={styles.side_head}>{items.environmentTypeId}</span>
                           </div>
                         )}
                         {openModel[i] && (
                           <div>
                             <input
                               className={styles.dev_head}
-                              name="tittle"
-                              {...register("title", { required: true })}
+                              name="name"
+                              {...register("name", { required: true })}
                             />
-                            {errors.title && (
+                            {errors.name && (
                               <p className={"validations"}>
                                 This field is required
                               </p>
@@ -149,11 +156,7 @@ export default function Environment() {
 
                             <div className={styles.dev_options}>
                               <a
-                                // onClick={() => {
-                                //   setopeninvitemember(false),
-                                //     setclosemodal(true);
-                                // }}
-                                onClick={()=>setPopups(i)}
+                                onClick={() => setPopups(i)}
                                 className={styles.dev_Cancel}
                               >
                                 Cancel

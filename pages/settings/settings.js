@@ -1,6 +1,6 @@
-import styles from '../styles/settings.module.css'
-import Tabs from '../components/homepage/Tabs'
-import Layout from '../components/common/layout'
+import styles from '../../styles/settings.module.css'
+import Tabs from '../../components/homepage/Tabs'
+import Layout from '../../components/common/layout'
 
 export default function Settings() {
     return (

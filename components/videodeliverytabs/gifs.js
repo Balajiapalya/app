@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
-import { useState } from 'react'
-import Link from 'next/link';
+
+
 
 export default function Gifs() {
 
@@ -12,7 +12,7 @@ export default function Gifs() {
                 <div className={styles.git_video}>
                     <h2>Create GIF using Video Editor</h2>
                     <div className={styles.create_image}>
-                        <img className={styles.editor_img} src="Images/Image 11.png" alt="image" />
+                        <img className={styles.editor_img} src="/Images/Image 11.png" alt="image" />
                         <div className={styles.time}>
                             <div className={styles.time_start}>
                                 <label className={styles.model_label}>Start Time</label>

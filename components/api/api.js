@@ -261,7 +261,8 @@ const Api = {
             method:'PUT',
             data:dev_data,
             url:update_env(),
-            headers:headers,
+            headers: {'Authorization': `Bearer ${token}`}
+           
         }),
     post_video: (video_url_data) =>
         axios({

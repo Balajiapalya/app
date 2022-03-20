@@ -1,8 +1,8 @@
-import styles from '../styles/subtitleconverter.module.css'
-import Navbar from '../components/common/navbar'
+import styles from '../../../styles/subtitleconverter.module.css'
+import Navbar from '../../../components/common/navbar'
 import Link from 'next/link'
 import { useState } from 'react'
-import Layout from '../components/common/layout'
+import Layout from '../../../components/common/layout'
 
 export default function Subtitleconvertor() {
 

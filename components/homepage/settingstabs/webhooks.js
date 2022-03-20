@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import styles from '../../../styles/webhooks.module.css';
 import { useState,useEffect } from "react";
-import Create_new_webhook from "../../../pages/create_new_webhook";
+import Create_new_webhook from "../../../pages/settings/create_new_webhook";
 import Delete_webhook from "../../dialog/Delete_webhook";
 import Api from "../../api/api";
 

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Api from './api/api';
 export default function Direct_upload() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [filename, set_filename] = useState([]);
+    const [filename, set_filename] = useState("add file");
     let handleChange = e => {
         var files = e.target.files;
         var filesArray = [].slice.call(files);
@@ -25,7 +25,7 @@ export default function Direct_upload() {
             <h2>Create new asset</h2>
             <div className={styles.upload_file}>
                 <h2>upload your video file</h2>
-                <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+                <form  onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.upload_btn_wrapper}>
                         <button className={styles.btn}>{filename}</button>
                         <input
@@ -34,10 +34,9 @@ export default function Direct_upload() {
                             {...register("myfile", { required: true })}
                             onChange={e => handleChange(e)}
                         />
-                        <div>{filename}</div>
                     </div>
                     <div className={styles.direct_upload_button}>
-                    <button className='.btn' type="submit">submit</button>
+                    <button className={`${styles.form} btn`} type="submit">submit</button>
                     </div>
                     
                 </form>

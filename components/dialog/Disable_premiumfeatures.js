@@ -7,7 +7,7 @@ export default function Disable_premiumfeatures({close_disable_premiumfeatures})
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Disable premium Features</h3>
-                    <a onClick={()=>close_disable_premiumfeatures(false)} className={styles.model_close} role="button"><img src="Images/close.png" alt="close" /> </a>
+                    <a onClick={()=>close_disable_premiumfeatures(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
                 </div>
 
                 <div className={styles.model_removeuser}>

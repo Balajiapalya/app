@@ -1,4 +1,4 @@
-import styles from '../styles/model.module.css'
+import styles from '../../../styles/model.module.css'
 import { useState } from 'react'
 import Stream_premiumenable from './stream_premiumenable';
 
@@ -8,7 +8,7 @@ export default function Unlock_Premiumpayment() {
         <div className={`${styles.container} ${styles.editpaymentdetials}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button"><img src="Images/close.png" alt="close" /> </a>
+                    <a className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -22,7 +22,7 @@ export default function Unlock_Premiumpayment() {
                         <label className={styles.model_label}>Credit or Debit Card</label>
                         <div className={styles.cerditcard_number}>
                             <input type="text" className={`${styles.model_input} form_control`} name="cardnumber" placeholder="Cardnumber" />
-                            <img className={styles.file} src="Images/credit-card.png" alt="credit" ></img>
+                            <img className={styles.file} src="/Images/credit-card.png" alt="credit" ></img>
                         </div>
                         <div className={styles.card}>
                             <div className={styles.expiration_date}>

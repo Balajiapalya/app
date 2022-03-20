@@ -1,11 +1,11 @@
-import Stream_tabs from '../components/homepage/Stream_tabs'
-import styles from '../styles/stream_monitor.module.css'
+import Stream_tabs from '../../../components/homepage/Stream_tabs'
+import styles from '../../../styles/stream_monitor.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
 // import Newstream from './newstream';
-import Navbar from '../components/common/navbar';
+import Navbar from '../../../components/common/navbar';
 import Stream_unlockfeatures from './stream_unlockfeatures';
-import Layout from '../components/common/layout';
+import Layout from '../../../components/common/layout';
 
 
 
@@ -30,7 +30,7 @@ export default function Stream_monitor() {
                         </p>
                         <a onClick={()=>setnewstream(true)}>
                             <button className='btn'>Add New stream</button>
-                            <img src="Images/Icon feather-plus.png"alt='icon' ></img>
+                            <img src="/Images/Icon feather-plus.png"alt='icon' ></img>
                         </a>
                         
                     </div>

@@ -1,6 +1,6 @@
-import styles from '../styles/model.module.css';
+import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
-import Api from '../components/api/api';
+import Api from '../../components/api/api';
 import { useEffect, useState } from 'react';
 
 
@@ -37,7 +37,7 @@ export default function Add_new_environment({ closeenv }) {
             <div className={styles.body}>
 
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closeenv(false)}><img src="Images/close.png" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closeenv(false)}><img src="/Images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add New Environment</h3>
@@ -56,7 +56,7 @@ export default function Add_new_environment({ closeenv }) {
                         <select
                             name="environmentTypeId"
                             className={styles.model_selection}
-                            {...register("environmentTypeId", { required: true })}
+                            {...register("environmentTypeId", { required: true,valueAsNumber: true, })}
                         >
                             {errors.environmentTypeId && <p className={`${styles.validations} validations`}>This field is required</p>}
                             {env.map((item, key) =>

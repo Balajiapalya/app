@@ -1,4 +1,4 @@
-import styles from '../styles/model.module.css'
+import styles from '../../styles/model.module.css'
 import { useForm} from "react-hook-form"
 
 

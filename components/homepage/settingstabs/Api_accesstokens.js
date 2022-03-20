@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import styles from '../../../styles/apiaccess.module.css';
-import Accesstoken from "../../../pages/New_access_token";
+import Accesstoken from "../../../pages/settings/New_access_token";
 import Revoke from "../../dialog/Revoke_access";
 import Api from "../../api/api";
 function Api_accesstokes() {
