@@ -71,8 +71,8 @@ export const get_new_env = () => {
 export const post_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`
 }
-export const update_env =() =>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${envuuid}`
+export const update_env =(data) =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${data}`
 }
 //video 
 export const video_url = () => {
@@ -270,11 +270,11 @@ const Api = {
             url: post_env(),
             headers: headers,
         }),
-    Update_env: (dev_data) =>
+    Update_env: (dev_data,data) =>
         axios({
             method:'PUT',
             data:dev_data,
-            url:update_env(),
+            url:update_env(data),
             headers: {'Authorization': `Bearer ${token}`}
            
         }),
