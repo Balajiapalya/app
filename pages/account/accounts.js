@@ -3,8 +3,8 @@ import Layout from '../../components/common/layout';
 import { useState } from 'react';
 
 export default function Accounts() {
-    const [password, set_password] = useState(true);
-    const [change_password, set_change_password] = useState(false);
+    const [password, set_password] = useState(false);
+    const [change_password, set_change_password] = useState(true);
     return (
         <div className={styles.container}>
 

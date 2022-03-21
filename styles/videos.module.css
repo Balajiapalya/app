@@ -260,13 +260,10 @@
     margin: 20px;  
     font-weight: 500;
 }
-.direct_upload_button button{
+.direct_upload_title h3{
     color: #2863eb;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 5px 20px;
     font-size: 20px;
-    background-color: #fff;
-    border: solid 1px #2863eb;
     margin: 0px 0px 5px;
     font-family: Inter-Medium;
 }
