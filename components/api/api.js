@@ -91,6 +91,12 @@ export const get_video_data=()=>{
 export const post_direct_video=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
+export const get_direct_video_data=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
+}
+export const get_direct_video=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${uploadid}`
+}
 
 let token;
 if (process.browser) {
@@ -117,6 +123,14 @@ if (process.browser) {
     asset_id = localStorage.getItem("videoId");
 }
 const assetid =asset_id;
+
+let upload_id;
+if (process.browser) {
+    upload_id = localStorage.getItem("upload_id");
+}
+const uploadid = upload_id;
+
+
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -283,6 +297,20 @@ const Api = {
             'EnvironmentId': `${envuuid}`}
 
         }),
+    Direct_upload_get_data:()=>
+        axios({
+            method:'GET',
+            url:get_direct_video_data(),
+            headers:{'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+        }),//called in videos
+    Direct_upload_get:()=>
+        axios({
+            method:'GET',
+            url:get_direct_video(),
+            headers:{'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+        }),//called in direct_uplaod
     //get api token
     Get_access_token: () =>
         axios({
