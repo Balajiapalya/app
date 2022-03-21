@@ -21,12 +21,12 @@ export default function Environment() {
   const [closemodal, setclosemodal] = useState([]);
 
 
-
   const onSubmit = (dev_data) => {
-    Api.Update_env(dev_data)
+   let data=localStorage.getItem('envuuid')
+    Api.Update_env(dev_data,data)
       .then((res) => {
         if(res.data.status="Success"){
-          window.location.pathname="/environments/environment"
+          // window.location.pathname="/environments/environment"
         }
       })
       .catch((error) => {
@@ -49,16 +49,17 @@ export default function Environment() {
       .then((res) => {
         if ((res.data.status = "Success")) {
           set_envdata(res.data.data);
+          console.log(res.data.data)
           var envcount = res.data.data.length;
           let openArr = [];
           let closeArr = [];
           for (var i = 0; i < envcount; i++) {
-
             openArr.push(false);
             closeArr.push(true);
 
           }
           setopeninvitemember(openArr);
+         
           setclosemodal(closeArr);
 
         }
@@ -71,13 +72,19 @@ export default function Environment() {
         }
       });
   }, []);
-  const setPopups = (index) => {
+  
+  const setPopups = (index,items) => {
+   
+if(items){
+localStorage.setItem('envuuid', items.uuid)
 
+
+}
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log([...openModel]);
+    console.log([...closemodal]);
   }
   return (
     <div className={styles.container}>
@@ -114,11 +121,11 @@ export default function Environment() {
                     <td>
                       <form onSubmit={handleSubmit(onSubmit)}>
                         {closemodal[i] && (
-                          <div   >
+                          <div>
                             {items.name}
-                            <a onClick={() => localStorage.setItem('envuuid', items.uuid)}>
+                            <a>
                               <img
-                                onClick={() => setPopups(i)}
+                                onClick={() => {setPopups(i,items)}}
                                 src="/Images/Icon material-edit.png"
                               />
                             </a>

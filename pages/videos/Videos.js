@@ -55,7 +55,20 @@ export default function Videos() {
     }
 
     const handleSearch=(e)=>{
-        console.log(e.target.value)
+       let input=e.target.value.toUpperCase()
+       let table=document.querySelector('.table_input')
+       let tRow=table.getElementsByTagName('tr')
+       for(let i=0;i<tRow.length;i++){
+         let td= tRow[i].getElementsByTagName('td')[2]
+         if(td){
+             let data=td.innerText.toUpperCase()
+             if(data.indexOf(input)>-1){
+                 tRow[i].style.display=''
+             }else{
+                 tRow[i].style.display='none'
+             }
+         }
+       }
     }
     return (
         <div className={styles.container}>
@@ -98,7 +111,7 @@ export default function Videos() {
                     <img src='/Images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>
-                    <table>
+                    <table className="table_input">
                         <thead>
                             <tr>
                                 <th><input type="checkbox"></input></th>

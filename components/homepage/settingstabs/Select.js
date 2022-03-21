@@ -2,22 +2,23 @@ import React,{useState} from 'react'
 import Api from '../../api/api'
 
 const Select = ({item,data}) => {
-    const [opt,setOpt]=useState('state')
-    const [selected,setSelected]=useState([{}])
-   
+    const [opt,setOpt]=useState(item.roleId)
+
     const handleChange=(e)=>{
         
         setOpt(e.target.value)
      
-      setSelected([{email:item.email,roleId:parseInt(e.target.value)}])
-
-        Api.Selected_option(selected).then(res=>console.log(res))
+    let element=new Object()
+        element.email=item.email
+        element.roleId=parseInt(e.target.value)
+        // let a=JSON.stringify(element)
+        Api.Selected_option(element).then(res=>console.log(res))
     }
     return (
         <>
-            <select value={opt==='state'?item.roleId:opt} onChange={(e) => handleChange(e)}>
+            <select onChange={(e) => handleChange(e)}>
                {data.map(i=><>
-                <option value={i.id}>{i.name}</option>
+                <option selected={opt==i.id} value={i.id}>{i.name}</option>
                </>)}
             </select>
         </>
