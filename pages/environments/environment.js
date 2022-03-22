@@ -4,10 +4,10 @@ import Api from "../../components/api/api";
 import { useEffect, useState } from "react";
 import Add_new_environment from "../../pages/environments/add_new_environment";
 import { useForm } from "react-hook-form";
+import Router from 'next/router'
 
 
 export default function Environment() {
-
   const {
     register,
     handleSubmit,
@@ -27,11 +27,13 @@ export default function Environment() {
       .then((res) => {
         if(res.data.status="Success"){
           // window.location.pathname="/environments/environment"
+          Router.reload()
         }
       })
       .catch((error) => {
         console.log(error);
       });
+ 
   };
   useEffect(() => {
     Api.Env_data()
@@ -130,7 +132,9 @@ localStorage.setItem('envuuid', items.uuid)
                               />
                             </a>
                             <br />
-                            <span className={styles.side_head}>{items.environmentTypeId}</span>
+                            {env.map(item=><>
+                            {item.id===items.environmentTypeId && <span className={styles.side_head}>{item.name}</span>}
+                            </>)}
                           </div>
                         )}
                         {openModel[i] && (
