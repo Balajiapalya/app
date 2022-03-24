@@ -97,6 +97,9 @@ export const get_direct_video_data=()=>{
 export const get_direct_video=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${uploadid}`
 }
+export const meta_update=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
+}
 
 let token;
 if (process.browser) {
@@ -129,6 +132,7 @@ if (process.browser) {
     upload_id = localStorage.getItem("upload_id");
 }
 const uploadid = upload_id;
+
 
 
 const Api = {
@@ -344,6 +348,14 @@ const Api = {
             method:'GET',
             url:get_video_data(ast_id),
             headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+        }),
+        Meta_tag:(data)=>
+        axios({
+            method:'PUT',
+            data:data,
+            url:meta_update(),
+            headers:  {'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
         })
 }
