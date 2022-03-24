@@ -81,8 +81,8 @@ export default function Others() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {meta.map(i =>
-                                            <tr>
+                                        {meta.map((i,index) =>
+                                            <tr key={index}>
                                                 <td>{i.key}</td>
                                                 <td>{i.value}</td>
                                             </tr>
