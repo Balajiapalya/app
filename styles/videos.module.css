@@ -141,7 +141,7 @@
 }
 .videos_table table thead tr th{
     text-align: left;
-    padding: 5px 3px;
+    padding: 15px 10px;
     color:  #212b36;
     font-family: Inter-Medium;
     font-size: 14px;
@@ -162,7 +162,7 @@
     text-align: center;
 }
 .videos_table table tbody tr td{
-    padding: 5px 3px;
+    padding: 15px 10px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
@@ -233,7 +233,7 @@
     font-size: 20px;
     background-color: #fff;
     border: solid 1px #2863eb;
-    margin: 20px 20px 5px;
+    margin: 20px 20px 15px;
     font-family: Inter-Medium;
   }
   
@@ -310,6 +310,7 @@
  width: 100%;
  float: left;
  padding-top: 20px;
+ margin-bottom: 30px;
 }
 .post input{
     margin-left: 15px;

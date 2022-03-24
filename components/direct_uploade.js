@@ -19,6 +19,7 @@ export default function Direct_upload() {
                 if (res.data.success = "Success") {
                     localStorage.setItem('upload_id', res.data.data.id);
                     let upload_data = localStorage.getItem('upload_id')
+                    // set_id("uploaded successfully")
                     // Api.Direct_upload_get(upload_data)
                     //     .then(res => {
                     //         console.log(res.data)
@@ -47,7 +48,9 @@ export default function Direct_upload() {
                         <button className={styles.btn}>Select file</button>
                         <input
                             type="file"
+                            name='file'
                             onChange={e => handleChange(e)}
+                            {...register("file",{ required: true })}  
                         />
                     </div>
 
@@ -56,8 +59,9 @@ export default function Direct_upload() {
                             readOnly
                             name="file_name"
                             defaultValue={filename}
-                            {...register("file_name",{ required: true })}
+                            // 
                         ></input>
+                        {/* {ids} */}
                     </div>
 
                     <div className={styles.direct_upload_submit}>

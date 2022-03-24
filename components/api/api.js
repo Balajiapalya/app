@@ -104,6 +104,9 @@ export const create_new_organization=()=>{
 export const update_user=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`
 }
+export const change_paswrd=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password`
+}
 //others
 export const meta_update=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
@@ -386,6 +389,13 @@ const Api = {
         axios({
             method:"GET",
             url:update_user(),
+            headers:headers
+        }),
+        Password_Change:(paswrd)=>
+        axios({
+            method:'POST',
+            data:paswrd,
+            url:change_paswrd(),
             headers:headers
         }),
         //others

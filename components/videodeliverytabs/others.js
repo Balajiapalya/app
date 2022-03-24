@@ -70,11 +70,11 @@ export default function Others() {
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input className={styles.model_input} type="text" onChange={(e) => handleData(e)} name="key" placeholder="Enter a key"/>
+                                                <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="key" placeholder="Enter a key"/>
                                             </th>
                                             <th>
                                         
-                                                <input className={styles.model_input} type="text" onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
+                                                <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
                                                 <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/Images/Icon feather-plus-grey.png' /> Add</button>
                                             </th>
 
@@ -87,7 +87,7 @@ export default function Others() {
                                                 <td>{i.value}</td>
                                             </tr>
                                         )}
-                                        <tr>
+                                        {/* <tr>
                                             <td>Frame Rate</td>
                                             <td className={styles.table_body}>25 fps</td>
                                         </tr>
@@ -95,12 +95,12 @@ export default function Others() {
                                             <td>Resoultion</td>
                                             <td className={styles.table_body}>1080 p</td>
 
-                                        </tr>
+                                        </tr> */}
                                     </tbody>
                                 </table>
-
+                                <button className={`${styles.others_submit_btn} btn`} type="submit">Submit</button>
                             </div>
-                            <button type="submit">Submit</button>
+                            
                         </div>
                     </div>
                     <div className={styles.image_guickpreview_poster}>
