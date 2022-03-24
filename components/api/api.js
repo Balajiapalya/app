@@ -104,7 +104,10 @@ export const create_new_organization=()=>{
 export const update_user=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`
 }
-
+//others
+export const meta_update=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
+}
 
 let user_id;
 if(process.browser){
@@ -384,8 +387,16 @@ const Api = {
             method:"GET",
             url:update_user(),
             headers:headers
+        }),
+        //others
+        Meta_tag:(data)=>
+        axios({
+            method:'PUT',
+            data:data,
+            url:meta_update(),
+            headers:  {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
         })
-
 }
 export default Api
 
