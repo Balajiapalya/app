@@ -17,15 +17,15 @@ export default function Direct_upload() {
         Api.Direct_upload_post(direct_video_upload)
             .then(res => {
                 if (res.data.success = "Success") {
-                    localStorage.setItem('upload_id', res.data.data.id)
-                    console.log(res.data.data.id)
-                    Api.Direct_upload_get()
-                        .then(res => {
-                            console.log(res.data)
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
+                    localStorage.setItem('upload_id', res.data.data.id);
+                    let upload_data = localStorage.getItem('upload_id')
+                    // Api.Direct_upload_get(upload_data)
+                    //     .then(res => {
+                    //         console.log(res.data)
+                    //     })
+                    //     .catch(error => {
+                    //         console.log(error)
+                    //     })
                 }
                 // console.log(res.data)
 
@@ -42,21 +42,27 @@ export default function Direct_upload() {
             <h2>Create new asset</h2>
             <div className={styles.upload_file}>
                 <h2>upload your video file</h2>
-                <form onChange={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.upload_btn_wrapper}>
                         <button className={styles.btn}>Select file</button>
                         <input
                             type="file"
-                            name="myfile"
-                            {...register("myfile", { required: true })}
                             onChange={e => handleChange(e)}
                         />
                     </div>
 
                     <div className={styles.direct_upload_title}>
-                        <h3>{filename}</h3>
+                        <input
+                            readOnly
+                            name="file_name"
+                            defaultValue={filename}
+                            {...register("file_name",{ required: true })}
+                        ></input>
                     </div>
 
+                    <div className={styles.direct_upload_submit}>
+                        <button type="submit">Upload</button>
+                    </div>
                 </form>
 
             </div>

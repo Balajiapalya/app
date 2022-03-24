@@ -86,7 +86,9 @@
     cursor: pointer;
     text-decoration: underline;
 }
-
+.hidden{
+    display: block;
+}
 @media (min-width: 320px) and (max-width: 767px) {
     .signup_btn{
         background-color: #007bff;

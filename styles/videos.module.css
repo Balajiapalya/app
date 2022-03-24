@@ -203,11 +203,11 @@
     left: 0
 }
 .Videodelivery_addnewassets{
-        width: 517px;
-        background-color: #f4f6f8;
-        display: block;
-        margin: auto;
-        margin-top: 100px; 
+    width: 517px;
+    background-color: #f4f6f8;
+    display: block;
+    margin: auto;
+    margin-top: 100px; 
           
     
 }
@@ -266,6 +266,28 @@
     font-size: 20px;
     margin: 0px 0px 5px;
     font-family: Inter-Medium;
+}
+.direct_upload_title input{
+    border: none;
+    outline: none;
+    color: #2863eb;
+    padding: 5px 20px;
+    margin: 0px 0px 5px;
+    cursor: pointer;
+}
+.direct_upload_submit{
+    width: 100%;
+    float: left;
+    padding: 5px 20px;
+    margin: 0px 0px 5px;
+}
+.direct_upload_submit button{
+    background-color: #2863eb;
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    float: left;
 }
 .or{
     width: 100%;
