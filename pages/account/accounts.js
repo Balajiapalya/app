@@ -4,17 +4,18 @@ import { useEffect, useState } from 'react';
 import Create_new_organization from './create_new_organization';
 import Api from '../../components/api/api';
 import { useForm } from 'react-hook-form';
+import ManageAccount from '../../components/ManageAccount'
 
 export default function Accounts({ parentToChild }) {
-    const [password, set_password] = useState(false);
-    const [change_password, set_change_password] = useState(true);
+    
+ 
     const [openneworg, set_openneworg] = useState(false);
     const [neworg, setnewrog] = useState([]);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     if (process.browser) {
         const orgnames = JSON.parse(localStorage.getItem("orgnames"))
-        // console.log(orgnames[0].name) 
+   
     }
 
     const onSubmit = update_user_data => {
@@ -27,13 +28,10 @@ export default function Accounts({ parentToChild }) {
         Api.Get_User_update()
             .then(res => {
                 setnewrog(res.data.data.organizations)
-                console.log(res.data.data.organizations)
             })
     }, [])
     return (
         <div className={styles.container}>
-
-
 
             <div className={styles.settings}>
                 <div className={styles.padding}>
@@ -94,12 +92,13 @@ export default function Accounts({ parentToChild }) {
                                 <table>
                                     <tbody>
                                         {neworg.map((items, key) => {
-                                            <tr key={key}>
+                                            return(
+                                                <tr key={key}>
                                                 <td className={styles.title}>
                                                     {items.name}
                                                 </td>
-
                                             </tr>
+                                            )
                                         })}
 
 
@@ -111,33 +110,7 @@ export default function Accounts({ parentToChild }) {
                             </div>
                         </div>
                         {openneworg && <Create_new_organization closeneworg={set_openneworg} />}
-                        <div className={styles.manage_account}>
-                            <h2>Manage Account</h2>
-                            {change_password &&
-                                <div className={styles.model_btn}>
-                                    <button onClick={() => { set_change_password(false); set_password(true) }} type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Change Password</button>
-                                </div>
-                            }
-                            {password &&
-                                <div>
-                                    <label className={styles.model_label}>Current Password</label>
-                                    <input type="password" className={`${styles.model_input} form_control`} name="currentpassword" />
-
-
-                                    <label className={styles.model_label}>New Password</label>
-                                    <input type="password" className={`${styles.model_input} form_control`} name="Newpassword" />
-
-
-                                    <label className={styles.model_label}>Confirm New Password</label>
-                                    <input type="password" className={`${styles.model_input} form_control`} name="confirm password" />
-
-                                    <div className={styles.model_btn}>
-                                        <button onClick={() => { set_change_password(true); set_password(false) }} type="submit" className={`${styles.model_save_btn} ${styles.bgcolor_blue} btn btn-primary`}>Change Password</button>
-                                    </div>
-                                </div>
-                            }
-
-                        </div>
+                        <ManageAccount/>
                     </div>
                 </div>
             </div>
