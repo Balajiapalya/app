@@ -1,16 +1,17 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../styles/videos.module.css'
-import Link from 'next/link';
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 
-const VideoList = ({i,create_On}) => {
-    const router =useRouter()
-    const [videoId,setVideoId]=useState()
-    const handleChange=()=>{
-        setVideoId(i.videoId)
-        window.location.pathname='./video'
-     }
-  localStorage.setItem('videoId', videoId)
+const VideoList = ({ i, create_On }) => {
+    const reg = useRouter();
+    const [videoId, setVideoId] = useState([]);
+    const handleChange = () => {
+        if (i.status == 'Ready') {
+            window.location.pathname = './videos/video'
+            setVideoId(i.videoId)
+        }   
+    }
+    localStorage.setItem('videoId', videoId)
     return (
         <>
             <td><input type="checkbox"></input></td>
@@ -24,7 +25,7 @@ const VideoList = ({i,create_On}) => {
             {/* HD */}
             <td>{i.status}</td>
             <td className={styles.actionicons}>
-                <a onClick={()=>handleChange()}><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a>
+                <a onClick={() => handleChange()}><img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img></a>
                 <img src='/Images/film-editing.png' alt="image"></img>
                 <img src='/Images/insert-picture-icon.png' alt="image"></img>
                 <img src='/Images/gif-file-format-symbol.png' alt="image"></img>

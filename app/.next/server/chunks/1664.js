@@ -152,7 +152,7 @@ exports["default"] = _default; //# sourceMappingURL=link.js.map
 
 /***/ }),
 
-/***/ 996:
+/***/ 2392:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -678,7 +678,7 @@ exports.isLocalURL = isLocalURL;
 exports.interpolateAs = interpolateAs;
 exports.resolveHref = resolveHref;
 exports["default"] = void 0;
-var _normalizeTrailingSlash = __webpack_require__(996);
+var _normalizeTrailingSlash = __webpack_require__(2392);
 var _routeLoader = __webpack_require__(2669);
 var _isError = _interopRequireWildcard(__webpack_require__(676));
 var _denormalizePagePath = __webpack_require__(562);

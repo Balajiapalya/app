@@ -71,8 +71,8 @@ export const get_new_env = () => {
 export const post_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`
 }
-export const update_env =() =>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments/105`
+export const update_env =(data) =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${data}`
 }
 //video 
 export const video_url = () => {
@@ -87,11 +87,45 @@ export const post_selected=()=>{
 export const get_video_data=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
 }
+//direct upload
+export const post_direct_video=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
+}
+export const get_direct_video_data=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
+}
+export const get_direct_video=(upload_data)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${upload_data}`
+}
+//account
+export const create_new_organization=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
+}
+export const update_user=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`
+}
+export const change_paswrd=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password`
+}
+//others
+export const meta_update=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
+}
+
+let user_id;
+if(process.browser){
+    user_id = localStorage.getItem("userID")
+    
+}
+const orgid= user_id
 
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
+    
 }
+
+
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
@@ -113,6 +147,14 @@ if (process.browser) {
     asset_id = localStorage.getItem("videoId");
 }
 const assetid =asset_id;
+
+let upload_id;
+if (process.browser) {
+    upload_id = localStorage.getItem("upload_id");
+}
+const uploadid = upload_id;
+
+
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -252,12 +294,13 @@ const Api = {
             url: post_env(),
             headers: headers,
         }),
-    Update_env: (dev_data) =>
+    Update_env: (dev_data,data) =>
         axios({
-            method:'POST',
+            method:'PUT',
             data:dev_data,
-            url:update_env(),
-            headers:headers,
+            url:update_env(data),
+            headers: {'Authorization': `Bearer ${token}`}
+           
         }),
     post_video: (video_url_data) =>
         axios({
@@ -267,6 +310,31 @@ const Api = {
             headers: {'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
         }),
+
+    //direct upload
+    Direct_upload_post:(direct_video_upload)=>
+        axios({
+            method:'POST',
+            data:direct_video_upload,
+            url:post_direct_video(),
+            headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+
+        }),
+    Direct_upload_get_data:()=>
+        axios({
+            method:'GET',
+            url:get_direct_video_data(),
+            headers:{'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+        }),//called in videos
+    Direct_upload_get:(upload_data)=>
+        axios({
+            method:'GET',
+            url:get_direct_video(upload_data),
+            headers:{'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+        }),//called in direct_uplaod
     //get api token
     Get_access_token: () =>
         axios({
@@ -300,6 +368,43 @@ const Api = {
             method:'GET',
             url:get_video_data(ast_id),
             headers: {'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`}
+        }),
+        //account
+        Create_new_organization:(new_org_name)=>
+        axios({
+            method:'POST',
+            url:create_new_organization(),
+            data:new_org_name,
+            headers:headers
+        }),
+        User_update:(update_user_data)=>
+        axios({
+            method:"PUT",
+            url:update_user(),
+            data:update_user_data,
+            headers:headers
+        }),
+        Get_User_update:()=>
+        axios({
+            method:"GET",
+            url:update_user(),
+            headers:headers
+        }),
+        Password_Change:(paswrd)=>
+        axios({
+            method:'POST',
+            data:paswrd,
+            url:change_paswrd(),
+            headers:headers
+        }),
+        //others
+        Meta_tag:(data)=>
+        axios({
+            method:'PUT',
+            data:data,
+            url:meta_update(),
+            headers:  {'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
         })
 }

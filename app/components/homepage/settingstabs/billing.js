@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import Edit_payment_detials from "../../../pages/Edit_payment_detials";
+import Edit_payment_detials from "../../../pages/settings/Edit_payment_detials";
 import Payment_history from "../../dialog/payment_history";
 import styles from '../../../styles/billings.module.css';
 

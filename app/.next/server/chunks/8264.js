@@ -31,6 +31,7 @@ module.exports = {
 	"table_box": "settings_table_box__aQeIb",
 	"box_content": "settings_box_content__5FZyl",
 	"box_content_history": "settings_box_content_history__6054G",
+	"edit_img": "settings_edit_img__3MkK2",
 	"box_data": "settings_box_data__XJnxC",
 	"box_data_types": "settings_box_data_types__ijD9Y",
 	"types_heading": "settings_types_heading__hi11t",
@@ -124,11 +125,11 @@ function Navbar() {
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                                    href: "/environment",
+                                    href: "/environments/environment",
                                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                src: "Images/Icon material-home.png",
+                                                src: "/Images/Icon material-home.png",
                                                 alt: "icon"
                                             }),
                                             "Environments"
@@ -138,11 +139,11 @@ function Navbar() {
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                                    href: "/Videos",
+                                    href: "/videos/Videos",
                                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                src: "Images/Icon material-video-library.png",
+                                                src: "/Images/Icon material-video-library.png",
                                                 alt: "icon"
                                             }),
                                             "Videos"
@@ -155,7 +156,7 @@ function Navbar() {
                                     href: "#",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                            src: "Images/Icon simple-googleanalytics.png",
+                                            src: "/Images/Icon simple-googleanalytics.png",
                                             alt: "icon"
                                         }),
                                         "Analytics"
@@ -176,7 +177,7 @@ function Navbar() {
                                         ,
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                src: "Images/Icon awesome-tools.png",
+                                                src: "/Images/Icon awesome-tools.png",
                                                 alt: "icon"
                                             }),
                                             "Tools"
@@ -187,7 +188,7 @@ function Navbar() {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                                                    href: "stream_monitor",
+                                                    href: "/tools/streammonitor/stream_monitor",
                                                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                                                         children: "Stream Monitor"
                                                     })
@@ -200,7 +201,7 @@ function Navbar() {
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                                                    href: "subtitleconvertor",
+                                                    href: "/tools/subtitleconverter/subtitleconvertor",
                                                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                                                         children: "Subtitle Converter"
                                                     })
@@ -228,15 +229,17 @@ function Navbar() {
                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                                    href: "#",
-                                    children: [
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                            src: "Images/Icon awesome-file-alt.png",
-                                            alt: "icon"
-                                        }),
-                                        "Events  logs"
-                                    ]
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                                    href: "/events_logs/events_logs",
+                                    children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
+                                        children: [
+                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                                src: "/Images/Icon awesome-file-alt.png",
+                                                alt: "icon"
+                                            }),
+                                            "Events  logs"
+                                        ]
+                                    })
                                 })
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
@@ -245,7 +248,7 @@ function Navbar() {
                                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                src: "Images/Icon ionic-ios-settings.png",
+                                                src: "/Images/Icon ionic-ios-settings.png",
                                                 alt: "icon"
                                             }),
                                             "Settings"
@@ -254,23 +257,25 @@ function Navbar() {
                                 })
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                                    href: "#",
-                                    children: [
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                            src: "Images/Icon awesome-user-alt.png",
-                                            alt: "icon"
-                                        }),
-                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                            className: (_styles_settings_module_css__WEBPACK_IMPORTED_MODULE_3___default().user_detail),
-                                            children: [
-                                                ownername,
-                                                " ",
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
-                                                orgname
-                                            ]
-                                        })
-                                    ]
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                                    href: "/account/accounts",
+                                    children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
+                                        children: [
+                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                                src: "/Images/Icon awesome-user-alt.png",
+                                                alt: "icon"
+                                            }),
+                                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                                                className: (_styles_settings_module_css__WEBPACK_IMPORTED_MODULE_3___default().user_detail),
+                                                children: [
+                                                    ownername,
+                                                    " ",
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
+                                                    orgname
+                                                ]
+                                            })
+                                        ]
+                                    })
                                 })
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
@@ -280,7 +285,7 @@ function Navbar() {
                                         onClick: handlelogout,
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                src: "Images/Icon feather-log-out.png",
+                                                src: "/Images/Icon feather-log-out.png",
                                                 alt: "icon"
                                             }),
                                             "Logout"

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import styles from '../../../styles/signinkeys.module.css';
 import { useState,useEffect } from "react";
-import Create_signing_key from "../../../pages/Create_signing_key";
+import Create_signing_key from "../../../pages/settings/Create_signing_key";
 import Delete_signing_key from "../../dialog/Delete_signing_key";
 import Api from "../../api/api";
 

@@ -19,7 +19,8 @@ module.exports = {
 	"account": "Login_account__gz7aP",
 	"signin_link": "Login_signin_link__PkI1I",
 	"label": "Login_label__wToWk",
-	"forgotpw": "Login_forgotpw__eVMft"
+	"forgotpw": "Login_forgotpw__eVMft",
+	"hidden": "Login_hidden__UWOAC"
 };
 
 
@@ -67,6 +68,7 @@ function Signin() {
                 localStorage.setItem('uuid', res.data.data.organizations[0].uuid);
                 localStorage.setItem('Jwt-token', res.data.data.token);
                 localStorage.setItem('orgName', res.data.data.organizations[0].name);
+                localStorage.setItem('userID', res.data.data.uuid);
                 window.location.pathname = '/';
             }
         }).catch((error)=>{

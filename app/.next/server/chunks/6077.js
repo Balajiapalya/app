@@ -37,7 +37,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                             role: "button",
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                    src: "Images/close.png",
+                                    src: "/Images/close.png",
                                     alt: "close"
                                 }),
                                 " "
@@ -58,7 +58,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -75,7 +75,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -86,7 +86,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                                 children: "Track PTS"
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                src: "Images/outline.png",
+                                                src: "/Images/outline.png",
                                                 alt: "outline"
                                             })
                                         ]
@@ -120,7 +120,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                                 type: "text",
                                                 className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().up),
                                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                    src: "Images/updown.png",
+                                                    src: "/Images/updown.png",
                                                     alt: "updown"
                                                 })
                                             })
@@ -133,7 +133,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -150,7 +150,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -167,7 +167,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -184,7 +184,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -201,7 +201,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -218,7 +218,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: (_styles_model_module_css__WEBPACK_IMPORTED_MODULE_2___default().check),
-                                        src: "Images/Icon awesome-check.png",
+                                        src: "/Images/Icon awesome-check.png",
                                         alt: "check"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("label", {
@@ -244,7 +244,7 @@ function Premiumfeatures_monitor({ closepremium  }) {
                             children: "Cancel"
                         }),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                            href: "stream_statistics_enable",
+                            href: "/tools/streammonitor/stream_statistics_enable",
                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                     type: "button",

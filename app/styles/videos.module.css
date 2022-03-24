@@ -141,7 +141,7 @@
 }
 .videos_table table thead tr th{
     text-align: left;
-    padding: 5px 3px;
+    padding: 15px 10px;
     color:  #212b36;
     font-family: Inter-Medium;
     font-size: 14px;
@@ -162,7 +162,7 @@
     text-align: center;
 }
 .videos_table table tbody tr td{
-    padding: 5px 3px;
+    padding: 15px 10px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
@@ -203,11 +203,11 @@
     left: 0
 }
 .Videodelivery_addnewassets{
-        width: 517px;
-        background-color: #f4f6f8;
-        display: block;
-        margin: auto;
-        margin-top: 100px; 
+    width: 517px;
+    background-color: #f4f6f8;
+    display: block;
+    margin: auto;
+    margin-top: 100px; 
           
     
 }
@@ -223,7 +223,9 @@
     overflow: hidden;
     display: inline-block;
 }
-  
+.form{
+    margin: 0px 20px 10px !important;
+}
 .btn {
     color: #2863eb;
     padding: 10px 49px;
@@ -231,34 +233,63 @@
     font-size: 20px;
     background-color: #fff;
     border: solid 1px #2863eb;
-    margin: 0px 20px 20px;
+    margin: 20px 20px 15px;
     font-family: Inter-Medium;
   }
   
-  .upload_btn_wrapper input[type=file] {
+.upload_btn_wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
 
-  }
-  .upload_file{
+}
+.upload_file{
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
     background-color: #fff;
     width: 100%;
     float: left;
     font-family:Inter-Regular;
 
-  }
-  .upload_file h2{
+}
+.upload_file h2{
     font-size: 18px;
     font-family: Inter-Medium;
     padding-right: 10px;
     margin: 20px;  
     font-weight: 500;
-   }
-   .or{
+}
+.direct_upload_title h3{
+    color: #2863eb;
+    padding: 5px 20px;
+    font-size: 20px;
+    margin: 0px 0px 5px;
+    font-family: Inter-Medium;
+}
+.direct_upload_title input{
+    border: none;
+    outline: none;
+    color: #2863eb;
+    padding: 5px 20px;
+    margin: 0px 0px 5px;
+    cursor: pointer;
+}
+.direct_upload_submit{
+    width: 100%;
+    float: left;
+    padding: 5px 20px;
+    margin: 0px 0px 5px;
+}
+.direct_upload_submit button{
+    background-color: #2863eb;
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    float: left;
+}
+.or{
     width: 100%;
     float: left;
     height: 20px;
@@ -279,6 +310,7 @@
  width: 100%;
  float: left;
  padding-top: 20px;
+ margin-bottom: 30px;
 }
 .post input{
     margin-left: 15px;

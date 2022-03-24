@@ -9,7 +9,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* unused harmony exports SignIn_Data, Sign_up, Create_user_account, Edit_organisation_name, Newmember_invite, get_roles, Remove_user, get_organization, editted_data, Create_webhook, get_webhook, Create_aaccess_token, get_access_token, Create_signin_keys, get_signin_keys, get_product, get_environment_types, get_environment, get_new_env, post_env, video_url, getList_videos, post_selected */
+/* unused harmony exports SignIn_Data, Sign_up, Create_user_account, Edit_organisation_name, Newmember_invite, get_roles, Remove_user, get_organization, editted_data, Create_webhook, get_webhook, Create_aaccess_token, get_access_token, Create_signin_keys, get_product, get_environment_types, get_environment, get_new_env, post_env, update_env, video_url, getList_videos, post_selected, get_video_data, post_direct_video, get_direct_video_data, get_direct_video, create_new_organization, update_user, change_paswrd, meta_update */
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2167);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -65,9 +65,9 @@ const get_access_token = ()=>{
 const Create_signin_keys = ()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
-const get_signin_keys = ()=>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`;
-};
+// export const get_signin_keys = () => {
+//     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`
+// };
 const get_product = ()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`;
 };
@@ -85,6 +85,9 @@ const get_new_env = ()=>{
 const post_env = ()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`;
 };
+const update_env = (data)=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${data}`;
+};
 //video 
 const video_url = ()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`;
@@ -95,6 +98,36 @@ const getList_videos = ()=>{
 const post_selected = ()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}users`;
 };
+const get_video_data = ()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`;
+};
+//direct upload
+const post_direct_video = ()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`;
+};
+const get_direct_video_data = ()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`;
+};
+const get_direct_video = (upload_data)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${upload_data}`;
+};
+//account
+const create_new_organization = ()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
+};
+const update_user = ()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`;
+};
+const change_paswrd = ()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password`;
+};
+//others
+const meta_update = ()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`;
+};
+let user_id;
+if (false) {}
+const orgid = user_id;
 let token;
 if (false) {}
 let uuid_token;
@@ -106,9 +139,12 @@ let headers = {
 let Env_uuid;
 if (false) {}
 const envuuid = Env_uuid;
-let Env_id;
+let asset_id;
 if (false) {}
-const envid = Env_id;
+const assetid = asset_id;
+let upload_id;
+if (false) {}
+const uploadid = (/* unused pure expression or super */ null && (upload_id));
 const Api = {
     Sign_up_data: (login_details)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
             method: 'POST',
@@ -213,12 +249,12 @@ const Api = {
             headers: headers
         })
     ,
-    Video_list: ()=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    Video_list: (data)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
             method: 'GET',
             url: getList_videos(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${data}`
             }
         })
     ,
@@ -241,10 +277,48 @@ const Api = {
             headers: headers
         })
     ,
+    Update_env: (dev_data, data)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'PUT',
+            data: dev_data,
+            url: update_env(data),
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    ,
     post_video: (video_url_data)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
             method: 'POST',
             data: video_url_data,
             url: video_url(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        })
+    ,
+    //direct upload
+    Direct_upload_post: (direct_video_upload)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'POST',
+            data: direct_video_upload,
+            url: post_direct_video(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        })
+    ,
+    Direct_upload_get_data: ()=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'GET',
+            url: get_direct_video_data(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        })
+    ,
+    Direct_upload_get: (upload_data)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'GET',
+            url: get_direct_video(upload_data),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
@@ -277,6 +351,54 @@ const Api = {
             data: data,
             url: post_selected(),
             headers: headers
+        })
+    ,
+    Get_Env_item: (ast_id)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'GET',
+            url: get_video_data(ast_id),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        })
+    ,
+    //account
+    Create_new_organization: (new_org_name)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'POST',
+            url: create_new_organization(),
+            data: new_org_name,
+            headers: headers
+        })
+    ,
+    User_update: (update_user_data)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: "PUT",
+            url: update_user(),
+            data: update_user_data,
+            headers: headers
+        })
+    ,
+    Get_User_update: ()=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: "GET",
+            url: update_user(),
+            headers: headers
+        })
+    ,
+    Password_Change: (paswrd)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'POST',
+            data: paswrd,
+            url: change_paswrd(),
+            headers: headers
+        })
+    ,
+    //others
+    Meta_tag: (data)=>axios__WEBPACK_IMPORTED_MODULE_0___default()({
+            method: 'PUT',
+            data: data,
+            url: meta_update(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
         })
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Api);
