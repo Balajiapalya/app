@@ -18,6 +18,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
         Api.Editted_data(organisation_data).then(res => setEditData(res.data.data))
 
     }
+    let data = localStorage.getItem('orgName')
 
     return (
         <div className={styles.model}>
@@ -29,6 +30,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label className={styles.model_label}>Organisation Name</label>
                     <input
+                        defaultValue={data}
                         type="text"
                         className={`${styles.model_input} form_control`}
                         name="name"
