@@ -125,3 +125,4 @@ button, input, optgroup, select, textarea {
   color: red;
   text-align: center;
 }
+.hidden{display: none;}

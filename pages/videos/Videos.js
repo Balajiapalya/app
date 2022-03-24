@@ -22,11 +22,11 @@ export default function Videos() {
             .then(res =>
                 setVideoData(res.data.data))
             .catch(error => {
-                // if (error.response.data.code = 401) {
-                //     window.localStorage.clear();
-                //     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                //     window.location.href = '/signin'
-                // }
+                if (error.response.data.code = 401) {
+                    window.localStorage.clear();
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
             })
 
         Api.Env_data()
@@ -46,29 +46,29 @@ export default function Videos() {
 
     const handleChange = (e) => {
         setId(e.target.value)
-        localStorage.setItem("envuuid",e.target.value)
+        localStorage.setItem("envuuid", e.target.value)
     }
-   
+
     const create_On = (date) => {
         var d = new Date(date)
         return d.toLocaleString()
     }
 
-    const handleSearch=(e)=>{
-       let input=e.target.value.toUpperCase()
-       let table=document.querySelector('.table_input')
-       let tRow=table.getElementsByTagName('tr')
-       for(let i=0;i<tRow.length;i++){
-         let td= tRow[i].getElementsByTagName('td')[2]
-         if(td){
-             let data=td.innerText.toUpperCase()
-             if(data.indexOf(input)>-1){
-                 tRow[i].style.display=''
-             }else{
-                 tRow[i].style.display='none'
-             }
-         }
-       }
+    const handleSearch = (e) => {
+        let input = e.target.value.toUpperCase()
+        let table = document.querySelector('.table_input')
+        let tRow = table.getElementsByTagName('tr')
+        for (let i = 0; i < tRow.length; i++) {
+            let td = tRow[i].getElementsByTagName('td')[2]
+            if (td) {
+                let data = td.innerText.toUpperCase()
+                if (data.indexOf(input) > -1) {
+                    tRow[i].style.display = ''
+                } else {
+                    tRow[i].style.display = 'none'
+                }
+            }
+        }
     }
     return (
         <div className={styles.container}>
@@ -80,7 +80,7 @@ export default function Videos() {
 
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option selected={localStorage.getItem('envuuid')==i.uuid} value={i.uuid}>{i.name}</option>
+                                    <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
                                 </>)}
                             </select>
                         </p>
@@ -107,7 +107,7 @@ export default function Videos() {
                     <hr></hr>
                 </div>
                 <div className={styles.search}>
-                    <input type="text" onChange={(e)=>handleSearch(e)} placeholder='Search'></input>
+                    <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search'></input>
                     <img src='/Images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>
@@ -128,7 +128,7 @@ export default function Videos() {
                         <tbody>
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
-                                    <VideoList create_On={create_On} i={i}/>
+                                    <VideoList create_On={create_On} i={i} />
                                 </tr>
                             </>)}
 

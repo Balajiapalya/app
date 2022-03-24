@@ -94,17 +94,38 @@ export const post_direct_video=()=>{
 export const get_direct_video_data=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
-export const get_direct_video=()=>{
-    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${uploadid}`
+export const get_direct_video=(upload_data)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${upload_data}`
 }
+
 export const meta_update=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
 }
 
+//account
+export const create_new_organization=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
+}
+export const update_user=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`
+}
+
+
+let user_id;
+if(process.browser){
+    user_id = localStorage.getItem("userID")
+    
+}
+const orgid= user_id
+
+
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
+    
 }
+
+
 let uuid_token;
 if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
@@ -308,10 +329,10 @@ const Api = {
             headers:{'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
         }),//called in videos
-    Direct_upload_get:()=>
+    Direct_upload_get:(upload_data)=>
         axios({
             method:'GET',
-            url:get_direct_video(),
+            url:get_direct_video(upload_data),
             headers:{'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
         }),//called in direct_uplaod
@@ -357,7 +378,30 @@ const Api = {
             url:meta_update(),
             headers:  {'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
+
+        //account
+        Create_new_organization:(new_org_name)=>
+        axios({
+            method:'POST',
+            url:create_new_organization(),
+            data:new_org_name,
+            headers:headers
+        }),
+        User_update:(update_user_data)=>
+        axios({
+            method:"PUT",
+            url:update_user(),
+            data:update_user_data,
+            headers:headers
+        }),
+        Get_User_update:()=>
+        axios({
+            method:"GET",
+            url:update_user(),
+            headers:headers
+
         })
+
 }
 export default Api
 
