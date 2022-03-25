@@ -9,7 +9,7 @@ import Api from '../api/api'
 export default function Others() {
     const [keys, setKey] = useState({ key: '', value: '' })
     const [meta, setMeta] = useState([])
-    const [selected, setSelected] = useState([""]);
+    const [selected, setSelected] = useState([]);
    
     const onSubmit = (video_data) => {  
         video_data['tags']=selected;

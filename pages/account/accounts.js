@@ -27,6 +27,11 @@ export default function Accounts() {
                 setnewrog(res.data.data.organizations)
             })
     }, [])
+    const handlelogout=()=>{
+        window.localStorage.clear();
+        document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
+        window.location.pathname='/signin'
+    }
     return (
         <div className={styles.container}>
 
@@ -48,7 +53,7 @@ export default function Accounts() {
                         </div>
                         <div className={styles.logout}>
                             <img className={styles.logout_img} src="/Images/Icon feather-log-out(blue).png" alt="logout"></img>
-                            <button>Log out</button>
+                            <button className={styles.logout_btn} onClick={()=>handlelogout()}>Log out</button>
                         </div>
                     </div>
                     <div className={styles.Accounts_detials}>
@@ -97,7 +102,6 @@ export default function Accounts() {
                                             </tr>
                                             )
                                         })}
-
 
                                     </tbody>
                                 </table>
