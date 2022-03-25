@@ -12,10 +12,9 @@ export default function Videodelivery_addnewassets({ close_asset }) {
     const onSubmit = video_url_data => {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
-
-                // console.log(res)
-                window.location.reload()
-
+                if(res.data.status="Success"){
+                    window.location.reload() 
+                }
             })
             .catch(error => {
                 console.log(error)
@@ -85,7 +84,6 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                                 type='text'
                                 name='code'
                                 {...register("code", { required: true })}
-                                
                             />
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>

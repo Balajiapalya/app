@@ -2,10 +2,11 @@ import styles from '../styles/videos.module.css'
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import Api from './api/api';
+import axios from 'axios';
 export default function Direct_upload() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [filename, set_filename] = useState();
-    const [ids, set_id] = useState('');
+    
     let handleChange = e => {
         var files = e.target.files;
         var filesArray = [].slice.call(files);
@@ -13,24 +14,20 @@ export default function Direct_upload() {
             set_filename(e.name)
         });
     };
+  
     const onSubmit = direct_video_upload => {
+        const file = direct_video_upload.file[0];
         Api.Direct_upload_post(direct_video_upload)
             .then(res => {
                 if (res.data.success = "Success") {
-                    localStorage.setItem('upload_id', res.data.data.id);
-                    let upload_data = localStorage.getItem('upload_id')
-                    // set_id("uploaded successfully")
-                    // Api.Direct_upload_get(upload_data)
-                    //     .then(res => {
-                    //         console.log(res.data)
-                    //     })
-                    //     .catch(error => {
-                    //         console.log(error)
-                    //     })
+                    const url = res.data.data.url;
+                    axios({
+                        method:"PUT",
+                        url:url,
+                        data:file,
+                    })
                 }
-                // console.log(res.data)
-
-
+              
             })
     }
     useEffect(() => {
@@ -49,8 +46,9 @@ export default function Direct_upload() {
                         <input
                             type="file"
                             name='file'
+                            {...register("file",{required:true})}
                             onChange={e => handleChange(e)}
-                            {...register("file",{ required: true })}  
+                           
                         />
                     </div>
 
@@ -59,7 +57,7 @@ export default function Direct_upload() {
                             readOnly
                             name="file_name"
                             defaultValue={filename}
-                            // 
+                            {...register("file_name",{ required: true })}  
                         ></input>
                         {/* {ids} */}
                     </div>

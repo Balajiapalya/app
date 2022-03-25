@@ -6,22 +6,19 @@ import Api from '../../components/api/api';
 import { useForm } from 'react-hook-form';
 import ManageAccount from '../../components/ManageAccount'
 
-export default function Accounts({ parentToChild }) {
+export default function Accounts() {
     
  
     const [openneworg, set_openneworg] = useState(false);
     const [neworg, setnewrog] = useState([]);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    if (process.browser) {
-        const orgnames = JSON.parse(localStorage.getItem("orgnames"))
-   
-    }
+    
 
     const onSubmit = update_user_data => {
         Api.User_update(update_user_data)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
             })
     }
     useEffect(() => {
