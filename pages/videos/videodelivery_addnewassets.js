@@ -84,7 +84,6 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                                 type='text'
                                 name='code'
                                 {...register("code", { required: true })}
-                                
                             />
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>
