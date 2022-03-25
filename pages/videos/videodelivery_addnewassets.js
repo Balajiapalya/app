@@ -20,6 +20,13 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                 console.log(error)
             })
     }
+    const printTheJSONInPrettyFormat =() => {
+        var badJSON = document.getElementById('prettyJSONFormat').value;
+        var parseJSON = JSON.parse(badJSON);
+        var JSONInPrettyFormat = JSON.stringify(parseJSON, undefined, 4);
+        document.getElementById('prettyJSONFormat').value =
+        JSONInPrettyFormat;
+     }
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
@@ -30,7 +37,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
                 <div  >
-                    <form className={styles.post} onSubmit={handleSubmit(onSubmit)}>
+                    <form className={styles.post} onSubmit={handleSubmit(onSubmit)} >
                         <label >Post using Video URL:</label>
                         <input
                             type='text'
@@ -46,7 +53,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                         </div>
                         <div className={styles.code}>
                             <textarea
-                                defaultValue='[
+                                defaultValue={`${JSON.stringify([
                                     {
                                     "title": "Video title",
                                     "description": "Video description",
@@ -71,7 +78,8 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                                     "save_original_copy": false,
                                     "test_video": true
                                     }
-                                    ]'
+                                    ], undefined, 2)}`}
+                                id="prettyJSONFormat"    
                                 className={`${styles.code_input} form_control`}
                                 type='text'
                                 name='code'
