@@ -3,17 +3,19 @@ import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import Link from 'next/link'
 import Direct_upload from '../../components/direct_uploade';
+import { useRouter } from 'next/router';
 
 
 
 export default function Videodelivery_addnewassets({ close_asset }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
     const onSubmit = video_url_data => {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
+
                 // console.log(res)
-                // window.location.reload()
+                window.location.reload()
+
             })
             .catch(error => {
                 console.log(error)
@@ -45,7 +47,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                         </div>
                         <div className={styles.code}>
                             <textarea
-                                value='[
+                                defaultValue='[
                                     {
                                     "title": "Video title",
                                     "description": "Video description",
