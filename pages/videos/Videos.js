@@ -14,7 +14,7 @@ export default function Videos() {
     const [env, setenv] = useState([]);
     const [envSelect, setEnvSelect] = useState([]);
     const [id, setId] = useState()
-
+    const [dirdata, set_directdata] = useState([]);
 
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
@@ -41,6 +41,11 @@ export default function Videos() {
                 if (res.data.status = "Success") {
                     setEnvSelect(res.data.data)
                 }
+            })
+        Api.Direct_upload_get_data()
+            .then(res => {
+                set_directdata(res.data.data)
+                // console.log(res.data.data)
             })
     }, [id])
 
@@ -70,6 +75,7 @@ export default function Videos() {
             }
         }
     }
+    
     return (
         <div className={styles.container}>
             <div className={styles.background_develepment}>
@@ -131,26 +137,31 @@ export default function Videos() {
                                     <VideoList create_On={create_On} i={i} />
                                 </tr>
                             </>)}
+                            {dirdata.map((items, key) =>
+                                <>
+                                    <tr key={key}>
+                                        <td><input type="checkbox"></input></td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td className={styles.asset_id}>{items.id}</td>
 
-                            {/* <tr>
-                                <td><input type="checkbox"></input></td>
-                                <td>02/12/21<br></br>6:03pm</td>
-                                <td>Asianet-Roku</td>
-                                <td className={styles.asset_id}>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
+                                        <td></td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>{items.status}</td>
+                                        {/* <img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img> */}
+                                        <td className={styles.actionicons}>
+                                            <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
+                                            <img src='/Images/film-editing.png' alt="image"></img>
+                                            <img src='/Images/insert-picture-icon.png' alt="image"></img>
+                                            <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
+                                            <img src='/Images/closed-caption.png' alt="image"></img>
+                                            <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
+                                        </td>
+                                    </tr>
+                                </>
+                            )}
 
-                                <td><img src='/Images/Image 3.png' /></td>
-                                <td>30m20s</td>
-                                <td>HD</td>
-                                <td>Ready<img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img></td>
-                                <td className={styles.actionicons}>
-                                    <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
-                                    <img src='/Images/film-editing.png' alt="image"></img>
-                                    <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                                    <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
-                                    <img src='/Images/closed-caption.png' alt="image"></img>
-                                    <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
-                                </td>
-                            </tr> */}
                             {/* <tr>
                                 <td><input type="checkbox"></input></td>
                                 <td>02/12/21<br></br>6:03pm</td>
