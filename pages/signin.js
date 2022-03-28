@@ -11,7 +11,6 @@ export default function Signin() {
   
   const onSubmit = login_details => {
     login_details.password=btoa(login_details.password)
-    console.log(login_details.password)
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {
@@ -22,6 +21,9 @@ export default function Signin() {
           localStorage.setItem('ownername', res.data.data.firstName)
           localStorage.setItem('userID', res.data.data.uuid)
           window.location.pathname = '/'
+          // router.push({
+          //   pathname:"/"
+          // })
         }
       })
       .catch(error => {

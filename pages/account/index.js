@@ -32,6 +32,11 @@ export default function Accounts() {
         document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
         window.location.pathname='/signin'
     }
+    let email;
+    if(process.browser){
+        email=localStorage.getItem("ownerEmail");
+    }
+    const ownerEmail = email;
     return (
         <div className={styles.container}>
 
@@ -82,7 +87,13 @@ export default function Accounts() {
                                     {errors.lasttName && <p className={'validations'}>This field is required</p>}
 
                                     <label className={styles.model_label}>Email</label>
-                                    <input type="text" className={`${styles.model_input} form_control`} placeholder="sunil@gmail.com" />
+                                    <input 
+                                    type="text" 
+                                    className={`${styles.model_input} form_control ${styles.bg_color}`} 
+                                    placeholder="sunil@gmail.com"
+                                    defaultValue={ownerEmail} 
+                                    readOnly    
+                                    />
 
                                     <div className={styles.model_btn}>
                                         <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Save Changes</button>

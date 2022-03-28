@@ -114,7 +114,10 @@ export const get_direct_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
 export const get_direct_video = (upload_data) => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${upload_data}`
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/cdcc86d9-ff1e-4905-8c52-433a63bef532`
+}
+export const direct_get_video_data = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/28f826aa-f45a-46ed-847e-3452c3c116d7`
 }
 //account
 export const create_new_organization = () => {
@@ -346,14 +349,12 @@ const Api = {
             }
 
         }),
-    Direct_upload_get_data: () =>
+    Direct_upload_get_data:(data)=>
         axios({
-            method: 'GET',
-            url: get_direct_video_data(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
+            method:'GET',
+            url:get_direct_video_data(),
+            headers:{'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${data}`}
         }),//called in videos
     Direct_upload_get: (upload_data) =>
         axios({
@@ -364,6 +365,15 @@ const Api = {
                 'EnvironmentId': `${envuuid}`
             }
         }),//called in direct_uplaod
+    Direct_get_video_data: ()=>
+        axios({
+            method:'GET',
+            url:direct_get_video_data(),
+            headers:{
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        }),
     //get api token
     Get_access_token: () =>
         axios({

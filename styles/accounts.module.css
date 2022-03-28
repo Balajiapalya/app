@@ -92,6 +92,9 @@
  .model_input::placeholder {
     color: #8798ac;
 }
+.bg_color{
+    background-color:#e2e2e2;
+}
  .model_input::-ms-input-placeholder{
     color: #8798ac;
 }

@@ -10,29 +10,29 @@ function Billing() {
     const [accDetails, set_accDetails] = useState([]);
     const [url, seturl] = useState("")
     useEffect(() => {
-        Api.List_billing_plans()
-            .then(res => {
-                console.log(res.data, "plans")
-            })
+        // Api.List_billing_plans()
+        //     .then(res => {
+        //         console.log(res.data, "plans")
+        //     })
 
-        Api.Org_list_billing_plans()
-            .then(res => {
-                console.log(res.data, "org")
-            })
-        Api.List_org_subscriptions()
-            .then(res => {
-                console.log(res.data, "org subscriptions")
+        // Api.Org_list_billing_plans()
+        //     .then(res => {
+        //         console.log(res.data, "org")
+        //     })
+        // Api.List_org_subscriptions()
+        //     .then(res => {
+        //         console.log(res.data, "org subscriptions")
 
-            })
-        Api.Get_account_info()
-            .then(res => {
-                if (res.data.status = "Success") {
-                    console.log(res.data.data.billingInfo, "account info")
-                    set_accDetails(res.data.data.billingInfo)
-                    seturl(res.data.data.changeBillingUrl)
+        //     })
+        // Api.Get_account_info()
+        //     .then(res => {
+        //         if (res.data.status = "Success") {
+        //             console.log(res.data.data.billingInfo, "account info")
+        //             set_accDetails(res.data.data.billingInfo)
+        //             seturl(res.data.data.changeBillingUrl)
                     
-                }
-            })
+        //         }
+        //     })
     }, [])
     let email;
     if(process.browser){
@@ -44,7 +44,7 @@ function Billing() {
             <div className={styles.container1}>
                 <div className={styles.query}>
                     <p>
-                        Manage Billing for both Video and Data plans here.Feel free to <a href="#">contact us</a> for any queries related billing.
+                        Manage Billing for both Video and Data plans here.Feel free   to <a href="#">contact us</a> for any queries related billing.
                     </p>
                     <a href={url}  ><button className="btn">Edit Payment details</button></a>
                 </div>

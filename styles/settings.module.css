@@ -379,7 +379,8 @@
     font-family: Inter-Italic;
 }
 .edit_img{
-    margin-left: 5px;
+    position: relative;
+    left: 5px;
 }
 .box_data{
     width: 100%;

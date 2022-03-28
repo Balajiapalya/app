@@ -6,7 +6,7 @@ import Api from '../../components/api/api'
 import { useState } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
-import VideoList from '../../components/video_list'
+import VideoList,{Video_file} from '../../components/video_list'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -42,11 +42,19 @@ export default function Videos() {
                     setEnvSelect(res.data.data)
                 }
             })
-        Api.Direct_upload_get_data()
+        Api.Direct_upload_get_data(data)
             .then(res => {
                 set_directdata(res.data.data)
                 // console.log(res.data.data)
             })
+        // Api.Direct_upload_get()
+        //     .then(res=>{
+        //         console.log(res.data)
+        //     })
+        // Api.Direct_get_video_data()
+        //     .then(res=>{
+        //         console.log(res.data)
+        //     })
     }, [id])
 
     const handleChange = (e) => {
@@ -140,24 +148,7 @@ export default function Videos() {
                             {dirdata.map((items, key) =>
                                 <>
                                     <tr key={key}>
-                                        <td><input type="checkbox"></input></td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td className={styles.asset_id}>{items.id}</td>
-
-                                        <td></td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>{items.status}</td>
-                                        {/* <img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img> */}
-                                        <td className={styles.actionicons}>
-                                            <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
-                                            <img src='/Images/film-editing.png' alt="image"></img>
-                                            <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                                            <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
-                                            <img src='/Images/closed-caption.png' alt="image"></img>
-                                            <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
-                                        </td>
+                                        <Video_file items={items}/>
                                     </tr>
                                 </>
                             )}
