@@ -4,7 +4,7 @@ import Layout from '../../components/common/layout';
 import { useEffect } from 'react'
 import Api from '../../components/api/api'
 import { useState } from 'react'
-import Videodelivery_addnewassets from '../../pages/videos/videodelivery_addnewassets';
+import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
 import VideoList from '../../components/video_list'
 

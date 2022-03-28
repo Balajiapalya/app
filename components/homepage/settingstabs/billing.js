@@ -1,11 +1,18 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Edit_payment_detials from "../../../pages/settings/Edit_payment_detials";
 import Payment_history from "../../dialog/payment_history";
 import styles from '../../../styles/billings.module.css';
+import Api from "../../api/api";
 
 function Billing() {
     const [openpaymentdetails, setopenpaymentdetails] = useState(false);
     const [openpaymenthistory, setopenpaymenthistory] = useState(false);
+    useEffect(() => {
+        Api.List_billing_plans()
+            .then(res => {
+                console.log(res.data)
+            })
+    },[])
     return (
         <Fragment>
             <div className={styles.container1}>

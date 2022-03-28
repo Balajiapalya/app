@@ -2,7 +2,7 @@ import styles from "../../styles/settings.module.css";
 import Layout from "../../components/common/layout";
 import Api from "../../components/api/api";
 import { useEffect, useState } from "react";
-import Add_new_environment from "../../pages/environments/add_new_environment";
+import Add_new_environment from "./add_new_environment";
 import { useForm } from "react-hook-form";
 import Router from 'next/router'
 
