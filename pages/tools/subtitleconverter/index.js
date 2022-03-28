@@ -41,7 +41,7 @@ export default function Subtitleconvertor() {
                             <option value="4">4</option>
                         </select>
                         <div className={styles.model_btn}>
-                          <Link href="subtitleconvertfile"><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Convert Subtitles</button></a></Link>
+                          <Link href="subtitleconverter/subtitleconvertfile"><a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Convert Subtitles</button></a></Link>
                             
                         </div>
                     </div>

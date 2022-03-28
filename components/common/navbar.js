@@ -46,6 +46,11 @@ function Navbar() {
             document.removeEventListener('mousedown',handler)
         }
     })
+    let name;
+    if(process.browser){
+        name=localStorage.getItem("ownername");
+    }
+    const ownerName = name;
 
     return (
         <div className={styles.container}>
@@ -65,9 +70,9 @@ function Navbar() {
                         <li style={opendropdown?{backgroundColor:"#262b36",color:'white'}:{backgroundColor:null}} className={styles.tools}>
                             <a className={`${styles.list_heading} ${toggleStyle(4)}`} onClick={() => `${setdropdown(!opendropdown)} ${handleActive(4)}`}><img src="/Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
                             {opendropdown ? <div><ul ref={toolRef} className={styles.list}>
-                                <li><Link href="/tools/streammonitor/stream_monitor"><a className={toggleStyle(5)} onClick={()=>handleActive(5)}>Stream Monitor</a></Link></li>
+                                <li><Link href="/tools/streammonitor"><a className={toggleStyle(5)} onClick={()=>handleActive(5)}>Stream Monitor</a></Link></li>
                                 <li><a className={toggleStyle(6)} onClick={()=>handleActive(6)}>Image Optimization</a></li>
-                                <li><Link href="/tools/subtitleconverter/subtitleconvertor"><a className={toggleStyle(7)} onClick={()=>handleActive(7)}>Subtitle Converter</a></Link></li>
+                                <li><Link href="/tools/subtitleconverter"><a className={toggleStyle(7)} onClick={()=>handleActive(7)}>Subtitle Converter</a></Link></li>
                                 <li><a className={toggleStyle(8)} onClick={()=>handleActive(8)}>Video player</a></li>
                                 <li><a className={toggleStyle(9)} onClick={()=>handleActive(9)}>Player Validator</a></li>
                             </ul></div> : null}

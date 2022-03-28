@@ -51,7 +51,7 @@ export default function Environment() {
       .then((res) => {
         if ((res.data.status = "Success")) {
           set_envdata(res.data.data);
-          console.log(res.data.data)
+          // console.log(res.data.data)
           var envcount = res.data.data.length;
           let openArr = [];
           let closeArr = [];
@@ -86,7 +86,7 @@ localStorage.setItem('envuuid', items.uuid)
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log([...closemodal]);
+    // console.log([...closemodal]);
   }
   return (
     <div className={styles.container}>
@@ -127,6 +127,7 @@ localStorage.setItem('envuuid', items.uuid)
                             {items.name}
                             <a>
                               <img
+                                className={styles.edit_img}
                                 onClick={() => {setPopups(i,items)}}
                                 src="/Images/Icon material-edit.png"
                               />
@@ -193,7 +194,7 @@ localStorage.setItem('envuuid', items.uuid)
                               </span>
                               <br />
                               <span className={styles.types_value}>
-                                40 mins
+                                {/* 40 mins */}
                               </span>
                             </div>
                             <div className={styles.box_data_types}>
@@ -202,7 +203,7 @@ localStorage.setItem('envuuid', items.uuid)
                               </span>
                               <br />
                               <span className={styles.types_value}>
-                                40 mins
+                                {/* 40 mins */}
                               </span>
                             </div>
                             <div className={styles.box_data_types}>
@@ -211,7 +212,7 @@ localStorage.setItem('envuuid', items.uuid)
                               </span>
                               <br />
                               <span className={styles.types_value}>
-                                20 mins
+                                {/* 20 mins */}
                               </span>
                             </div>
                           </div>
@@ -235,14 +236,18 @@ localStorage.setItem('envuuid', items.uuid)
                                 Views
                               </span>
                               <br />
-                              <span className={styles.types_value}>20</span>
+                              <span className={styles.types_value}>
+                                {/* 20 */}
+                                </span>
                             </div>
                             <div className={styles.box_data_types}>
                               <span className={styles.types_heading}>
                                 Unique views
                               </span>
                               <br />
-                              <span className={styles.types_value}>15</span>
+                              <span className={styles.types_value}>
+                                {/* 15 */}
+                              </span>
                             </div>
                             <div className={styles.box_data_types}>
                               <span className={styles.types_heading}>
@@ -250,7 +255,7 @@ localStorage.setItem('envuuid', items.uuid)
                               </span>
                               <br />
                               <span className={styles.types_value}>
-                                20 mins
+                                {/* 20 mins */}
                               </span>
                             </div>
                           </div>

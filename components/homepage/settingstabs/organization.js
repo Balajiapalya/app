@@ -35,20 +35,20 @@ function Organisation() {
                 if (res.data.status = "succes") {
                     setorgdata(res.data.data.users)
                     setOrg(localStorage.getItem('orgName'))
-                    localStorage.setItem("ownername", res.data.data.users[0].firstName)
+                    localStorage.setItem("ownerEmail", res.data.data.users[0].email)
                 }
 
             })
             .catch(error => {
                 if (error.response.data.code = 401) {
                     window.localStorage.clear();
-                    document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
                     window.location.href = '/signin'
                 }
             })
-            Api.Get_env_data()
+        Api.Get_env_data()
             .then(res => {
-                localStorage.setItem("envuuid",res.data.data[0].uuid)
+                localStorage.setItem("envuuid", res.data.data[0].uuid)
             })
     }, {})
 
@@ -89,7 +89,7 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td>
-                                    <Select item={item} data={data}/>
+                                    <Select item={item} data={data} />
                                 </td>
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}

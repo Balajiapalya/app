@@ -47,6 +47,14 @@ export default function Videos() {
                 set_directdata(res.data.data)
                 // console.log(res.data.data)
             })
+        // Api.Direct_upload_get()
+        //     .then(res=>{
+        //         console.log(res.data)
+        //     })
+        // Api.Direct_get_video_data()
+        //     .then(res=>{
+        //         console.log(res.data)
+        //     })
     }, [id])
 
     const handleChange = (e) => {
