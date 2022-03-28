@@ -331,12 +331,12 @@ const Api = {
             'EnvironmentId': `${envuuid}`}
 
         }),
-    Direct_upload_get_data:()=>
+    Direct_upload_get_data:(data)=>
         axios({
             method:'GET',
             url:get_direct_video_data(),
             headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
+            'EnvironmentId': `${data}`}
         }),//called in videos
     Direct_upload_get:(upload_data)=>
         axios({
