@@ -5,6 +5,9 @@ const PROFILE_BASE_URL = () => PROFILE_LINK;
 let VIDEO_LINK = process.env.VG_VEDIO_SERVICE_API;
 const VIDEO_BASE_URL = () => VIDEO_LINK;
 
+let BILLING_LINK = process.env.VG_BILLING_SERVICE_API;
+const BILLING_BASE_URL = () =>BILLING_LINK;
+
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
 }
@@ -33,6 +36,10 @@ export const get_organization = () => {
 export const editted_data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
 };
+//Billing
+export const list_billing_plans = () =>{
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans`
+}
 //wbhook
 export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
@@ -88,6 +95,9 @@ export const get_video_data=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
 }
 //direct upload
+export const get_video_details=()=>{
+    return ``
+}
 export const post_direct_video=()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
@@ -406,6 +416,13 @@ const Api = {
             url:meta_update(),
             headers:  {'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${envuuid}`}
+        }),
+        //billing
+        List_billing_plans:()=>
+        axios({
+            method:'GET',
+            url:list_billing_plans(),
+            headers:headers,
         })
 }
 export default Api

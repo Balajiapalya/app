@@ -29,10 +29,10 @@ function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                           <Link href="/environments/environment"><a><img src="/Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
+                           <Link href="/environments"><a><img src="/Images/Icon material-home.png" alt='icon'></img>Environments</a></Link>
                         </li>
                         <li>
-                            <Link href='/videos/Videos'><a ><img src="/Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
+                            <Link href='/videos'><a ><img src="/Images/Icon material-video-library.png" alt='icon'></img>Videos</a></Link>
                         </li>
                         <li>
                             <a href="#"><img src="/Images/Icon simple-googleanalytics.png" alt='icon'></img>Analytics</a>
@@ -52,13 +52,13 @@ function Navbar() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                          <Link href="/events_logs/events_logs"><a ><img src="/Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a></Link> 
+                          <Link href="/events_logs"><a ><img src="/Images/Icon awesome-file-alt.png" alt='icon'></img>Events  logs</a></Link> 
                         </li>
                         <li>
                             <Link href="/"><a><img src="/Images/Icon ionic-ios-settings.png" alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
-                            <Link href="/account/accounts"><a><img src="/Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a></Link>
+                            <Link href="/account"><a><img src="/Images/Icon awesome-user-alt.png" alt='icon'></img><p className={styles.user_detail}>{ownername} <br />{orgname}</p></a></Link>
 
                         </li>
                         <li>
