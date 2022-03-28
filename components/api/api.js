@@ -6,7 +6,7 @@ let VIDEO_LINK = process.env.VG_VEDIO_SERVICE_API;
 const VIDEO_BASE_URL = () => VIDEO_LINK;
 
 let BILLING_LINK = process.env.VG_BILLING_SERVICE_API;
-const BILLING_BASE_URL = () =>BILLING_LINK;
+const BILLING_BASE_URL = () => BILLING_LINK;
 
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
@@ -37,8 +37,17 @@ export const editted_data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
 };
 //Billing
-export const list_billing_plans = () =>{
+export const list_billing_plans = () => {
+    return `${BILLING_BASE_URL()}/services/api/v1/plans`
+}
+export const org_list_billing_plans = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans`
+}
+export const list_org_subscriptions = () =>{
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/subscriptions`
+}
+export const get_account_info = () => {
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account`
 }
 //wbhook
 export const Create_webhook = () => {
@@ -78,7 +87,7 @@ export const get_new_env = () => {
 export const post_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments`
 }
-export const update_env =(data) =>{
+export const update_env = (data) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environments/${data}`
 }
 //video 
@@ -88,51 +97,51 @@ export const video_url = () => {
 export const getList_videos = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
-export const post_selected=()=>{
+export const post_selected = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}users`
 }
-export const get_video_data=()=>{
+export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
 }
 //direct upload
-export const get_video_details=()=>{
+export const get_video_details = () => {
     return ``
 }
-export const post_direct_video=()=>{
+export const post_direct_video = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
-export const get_direct_video_data=()=>{
+export const get_direct_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
-export const get_direct_video=(upload_data)=>{
+export const get_direct_video = (upload_data) => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads/${upload_data}`
 }
 //account
-export const create_new_organization=()=>{
+export const create_new_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
 }
-export const update_user=()=>{
+export const update_user = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`
 }
-export const change_paswrd=()=>{
+export const change_paswrd = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password`
 }
 //others
-export const meta_update=()=>{
+export const meta_update = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
 }
 
 let user_id;
-if(process.browser){
+if (process.browser) {
     user_id = localStorage.getItem("userID")
-    
+
 }
-const orgid= user_id
+const orgid = user_id
 
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
-    
+
 }
 
 
@@ -147,7 +156,7 @@ let headers = {
 };
 
 let Env_uuid;
-if (process.browser){
+if (process.browser) {
     Env_uuid = localStorage.getItem("envuuid");
 }
 const envuuid = Env_uuid;
@@ -156,7 +165,7 @@ let asset_id;
 if (process.browser) {
     asset_id = localStorage.getItem("videoId");
 }
-const assetid =asset_id;
+const assetid = asset_id;
 
 let upload_id;
 if (process.browser) {
@@ -195,7 +204,7 @@ const Api = {
         axios({
             method: 'DELETE',
             url: Remove_user(),
-            data:data,
+            data: data,
             headers: headers,
         }),
     Get_environment_types_data: () =>
@@ -281,8 +290,10 @@ const Api = {
         axios({
             method: 'GET',
             url: getList_videos(),
-            headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${data}`},
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${data}`
+            },
         }),
 
     Get_env_data: () =>
@@ -304,46 +315,54 @@ const Api = {
             url: post_env(),
             headers: headers,
         }),
-    Update_env: (dev_data,data) =>
+    Update_env: (dev_data, data) =>
         axios({
-            method:'PUT',
-            data:dev_data,
-            url:update_env(data),
-            headers: {'Authorization': `Bearer ${token}`}
-           
+            method: 'PUT',
+            data: dev_data,
+            url: update_env(data),
+            headers: { 'Authorization': `Bearer ${token}` }
+
         }),
     post_video: (video_url_data) =>
         axios({
             method: 'POST',
             data: video_url_data,
             url: video_url(),
-            headers: {'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
         }),
 
     //direct upload
-    Direct_upload_post:(direct_video_upload)=>
+    Direct_upload_post: (direct_video_upload) =>
         axios({
-            method:'POST',
-            data:direct_video_upload,
-            url:post_direct_video(),
-            headers: {'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
+            method: 'POST',
+            data: direct_video_upload,
+            url: post_direct_video(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
 
         }),
-    Direct_upload_get_data:()=>
+    Direct_upload_get_data: () =>
         axios({
-            method:'GET',
-            url:get_direct_video_data(),
-            headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
+            method: 'GET',
+            url: get_direct_video_data(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
         }),//called in videos
-    Direct_upload_get:(upload_data)=>
+    Direct_upload_get: (upload_data) =>
         axios({
-            method:'GET',
-            url:get_direct_video(upload_data),
-            headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
+            method: 'GET',
+            url: get_direct_video(upload_data),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
         }),//called in direct_uplaod
     //get api token
     Get_access_token: () =>
@@ -366,62 +385,84 @@ const Api = {
             url: get_webhook(),
             headers: headers,
         }),
-        Selected_option:(data)=>
+    Selected_option: (data) =>
         axios({
-            method:'POST',
-            data:data,
-            url:post_selected(),
-            headers:headers
+            method: 'POST',
+            data: data,
+            url: post_selected(),
+            headers: headers
         }),
-        Get_Env_item:(ast_id)=>
+    Get_Env_item: (ast_id) =>
         axios({
-            method:'GET',
-            url:get_video_data(ast_id),
-            headers: {'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
+            method: 'GET',
+            url: get_video_data(ast_id),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
         }),
-        //account
-        Create_new_organization:(new_org_name)=>
+    //account
+    Create_new_organization: (new_org_name) =>
         axios({
-            method:'POST',
-            url:create_new_organization(),
-            data:new_org_name,
-            headers:headers
+            method: 'POST',
+            url: create_new_organization(),
+            data: new_org_name,
+            headers: headers
         }),
-        User_update:(update_user_data)=>
+    User_update: (update_user_data) =>
         axios({
-            method:"PUT",
-            url:update_user(),
-            data:update_user_data,
-            headers:headers
+            method: "PUT",
+            url: update_user(),
+            data: update_user_data,
+            headers: headers
         }),
-        Get_User_update:()=>
+    Get_User_update: () =>
+        axios({
+            method: "GET",
+            url: update_user(),
+            headers: headers
+        }),
+    Password_Change: (paswrd) =>
+        axios({
+            method: 'POST',
+            data: paswrd,
+            url: change_paswrd(),
+            headers: headers
+        }),
+    //others
+    Meta_tag: (data) =>
+        axios({
+            method: 'PUT',
+            data: data,
+            url: meta_update(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        }),
+    //billing
+    List_billing_plans: () =>
+        axios({
+            method: 'GET',
+            url: list_billing_plans(),
+            headers: headers,
+        }),
+    Org_list_billing_plans: ()=>
         axios({
             method:"GET",
-            url:update_user(),
-            headers:headers
+            url: org_list_billing_plans(),
+            headers:headers,
         }),
-        Password_Change:(paswrd)=>
-        axios({
-            method:'POST',
-            data:paswrd,
-            url:change_paswrd(),
-            headers:headers
-        }),
-        //others
-        Meta_tag:(data)=>
-        axios({
-            method:'PUT',
-            data:data,
-            url:meta_update(),
-            headers:  {'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`}
-        }),
-        //billing
-        List_billing_plans:()=>
+    List_org_subscriptions: () =>
         axios({
             method:'GET',
-            url:list_billing_plans(),
+            url:list_org_subscriptions(),
+            headers:headers,
+        }),
+    Get_account_info: () =>
+        axios({
+            method:'GET',
+            url:get_account_info(),
             headers:headers,
         })
 }

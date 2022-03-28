@@ -21,7 +21,11 @@ function Navbar() {
         )
         
     })
-    
+    let name;
+    if(process.browser){
+        name=localStorage.getItem("ownername");
+    }
+    const ownerName = name;
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
@@ -40,9 +44,9 @@ function Navbar() {
                         <li style={opendropdown?{backgroundColor:"#262b36"}:{backgroundColor:null}} className={styles.tools}>
                             <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)} ><img src="/Images/Icon awesome-tools.png" alt="icon"></img>Tools</a>
                             {opendropdown ? <ul className={styles.list}>
-                                <li><Link href="/tools/streammonitor/stream_monitor"><a>Stream Monitor</a></Link></li>
+                                <li><Link href="/tools/streammonitor"><a>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
-                                <li><Link href="/tools/subtitleconverter/subtitleconvertor"><a>Subtitle Converter</a></Link></li>
+                                <li><Link href="/tools/subtitleconverter"><a>Subtitle Converter</a></Link></li>
                                 <li><a>Video player</a></li>
                                 <li><a>Player Validator</a></li>
                             </ul> : null}

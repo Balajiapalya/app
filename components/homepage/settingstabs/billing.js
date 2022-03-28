@@ -7,12 +7,38 @@ import Api from "../../api/api";
 function Billing() {
     const [openpaymentdetails, setopenpaymentdetails] = useState(false);
     const [openpaymenthistory, setopenpaymenthistory] = useState(false);
+    const [accDetails, set_accDetails] = useState([]);
+    const [url, seturl] = useState("")
     useEffect(() => {
         Api.List_billing_plans()
             .then(res => {
-                console.log(res.data)
+                console.log(res.data, "plans")
             })
-    },[])
+
+        Api.Org_list_billing_plans()
+            .then(res => {
+                console.log(res.data, "org")
+            })
+        Api.List_org_subscriptions()
+            .then(res => {
+                console.log(res.data, "org subscriptions")
+
+            })
+        Api.Get_account_info()
+            .then(res => {
+                if (res.data.status = "Success") {
+                    console.log(res.data.data.billingInfo, "account info")
+                    set_accDetails(res.data.data.billingInfo)
+                    seturl(res.data.data.changeBillingUrl)
+                    
+                }
+            })
+    }, [])
+    let email;
+    if(process.browser){
+        email=localStorage.getItem("ownerEmail");
+    }
+    const ownerEmail = email;
     return (
         <Fragment>
             <div className={styles.container1}>
@@ -20,7 +46,7 @@ function Billing() {
                     <p>
                         Manage Billing for both Video and Data plans here.Feel free to <a href="#">contact us</a> for any queries related billing.
                     </p>
-                    <a onClick={() => setopenpaymentdetails(true)}><button className="btn">Edit Payment details</button></a>
+                    <a href={url}  ><button className="btn">Edit Payment details</button></a>
                 </div>
                 {openpaymentdetails && <Edit_payment_detials closepaymentdetails={setopenpaymentdetails} />}
                 <div className={styles.payment}>
@@ -81,19 +107,20 @@ function Billing() {
                         <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>Veiw Payment history</a></span>
 
                         <table>
+
                             <tbody>
 
                                 <tr>
                                     <td>Card</td>
-                                    <td className={styles.text_align}><img src="Images/Icon awesome-cc-visa.png" alt="icon"></img>4845</td>
+                                    <td className={styles.text_align}><img src="Images/Icon awesome-cc-visa.png" alt="icon"></img>{accDetails.lastFour}</td>
                                 </tr>
                                 <tr>
                                     <td>Expiration Date</td>
-                                    <td className={styles.text_align} >01/2027</td>
+                                    <td className={styles.text_align} >{accDetails.expMonth}/{accDetails.expYear}</td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td className={styles.text_align}>anil@yupptv.com</td>
+                                    <td className={styles.text_align}>{ownerEmail}</td>
                                 </tr>
                                 <tr>
                                     <td>Zip code</td>
@@ -120,7 +147,6 @@ function Billing() {
                                     <td className={styles.text_align}>United States</td>
                                 </tr>
                             </tbody>
-
                         </table>
                     </div>
                 </div>

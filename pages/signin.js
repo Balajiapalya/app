@@ -19,6 +19,7 @@ export default function Signin() {
           localStorage.setItem('uuid', (res.data.data.organizations[0].uuid))
           localStorage.setItem('Jwt-token', (res.data.data.token))
           localStorage.setItem('orgName', res.data.data.organizations[0].name)
+          localStorage.setItem('ownername', res.data.data.firstName)
           localStorage.setItem('userID', res.data.data.uuid)
           window.location.pathname = '/'
         }
