@@ -54,7 +54,9 @@
     padding-left: 30px!important;
     font-size: 12px;
 }
-
+.activate{
+    color:white !important;
+}
 /* .tools:hover{    
     background-color: #202227;
 } */
@@ -116,7 +118,7 @@
     margin-bottom: 30px;
 }
 .lowercomponents ul li .user_detail{
-    padding-left: 10px;
+   padding-left: 10px;
 }
 
 .settings {
@@ -379,7 +381,8 @@
     font-family: Inter-Italic;
 }
 .edit_img{
-    margin-left: 5px;
+    position: relative;
+    left: 5px;
 }
 .box_data{
     width: 100%;

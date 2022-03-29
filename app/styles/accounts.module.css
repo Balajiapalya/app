@@ -92,6 +92,9 @@
  .model_input::placeholder {
     color: #8798ac;
 }
+.bg_color{
+    background-color:#e2e2e2;
+}
  .model_input::-ms-input-placeholder{
     color: #8798ac;
 }
@@ -106,7 +109,13 @@
  .validations{
     margin-left: 20px;
 }
-
+.mismatch{
+    color:red;
+    margin:1rem 0rem 0.5rem 1.5rem;
+}
+.logout_btn{
+    cursor: pointer;
+}
  .personal_detials .model_save_btn, .organization .model_save_btn{
     margin: 15px 10px 15px 20px;
     background-color: #fff;

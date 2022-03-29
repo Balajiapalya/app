@@ -11,8 +11,10 @@ const Select = ({item,data}) => {
     let element=new Object()
         element.email=item.email
         element.roleId=parseInt(e.target.value)
+    let arr=[]
+    arr.push(element)
         // let a=JSON.stringify(element)
-        Api.Selected_option(element).then(res=>console.log(res))
+        Api.Selected_option(arr).then(res=>console.log(res))
     }
     return (
         <>

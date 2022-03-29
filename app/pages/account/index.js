@@ -27,6 +27,16 @@ export default function Accounts() {
                 setnewrog(res.data.data.organizations)
             })
     }, [])
+    const handlelogout=()=>{
+        window.localStorage.clear();
+        document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
+        window.location.pathname='/signin'
+    }
+    let email;
+    if(process.browser){
+        email=localStorage.getItem("ownerEmail");
+    }
+    const ownerEmail = email;
     return (
         <div className={styles.container}>
 
@@ -48,7 +58,7 @@ export default function Accounts() {
                         </div>
                         <div className={styles.logout}>
                             <img className={styles.logout_img} src="/Images/Icon feather-log-out(blue).png" alt="logout"></img>
-                            <button>Log out</button>
+                            <button className={styles.logout_btn} onClick={()=>handlelogout()}>Log out</button>
                         </div>
                     </div>
                     <div className={styles.Accounts_detials}>
@@ -77,7 +87,13 @@ export default function Accounts() {
                                     {errors.lasttName && <p className={'validations'}>This field is required</p>}
 
                                     <label className={styles.model_label}>Email</label>
-                                    <input type="text" className={`${styles.model_input} form_control`} placeholder="sunil@gmail.com" />
+                                    <input 
+                                    type="text" 
+                                    className={`${styles.model_input} form_control ${styles.bg_color}`} 
+                                    placeholder="sunil@gmail.com"
+                                    defaultValue={ownerEmail} 
+                                    readOnly    
+                                    />
 
                                     <div className={styles.model_btn}>
                                         <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Save Changes</button>
@@ -97,7 +113,6 @@ export default function Accounts() {
                                             </tr>
                                             )
                                         })}
-
 
                                     </tbody>
                                 </table>

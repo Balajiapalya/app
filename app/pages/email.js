@@ -8,6 +8,8 @@ export default function Signin() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
 const onSubmit=(data)=>{
+    Api.Reset_pswEmail(data).then(res=>console.log(res))
+    .catch(err=>console.log(err))
     router.push({pathname:'/forgot_password'})
     // console.log(data)
 }
@@ -24,11 +26,11 @@ const onSubmit=(data)=>{
                     <input
                         type="email"
                         placeholder="Enter your email address"
-                        name="login"
+                        name="email"
                         className={`${styles.signup_input} form_control`}
-                        {...register("login", { required: true })}
+                        {...register("email", { required: true })}
                     />
-                    {errors.login && <p className={'validations'}>This field is required</p>}
+                    {errors.email && <p className={'validations'}>This field is required</p>}
                      <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Next</button>
                     </form>
                 </div>

@@ -9,7 +9,7 @@ const VideoList = ({ i, create_On }) => {
         if (i.status == 'Ready') {
             window.location.pathname = './videos/video'
             setVideoId(i.videoId)
-        }   
+        }
     }
     localStorage.setItem('videoId', videoId)
     return (
@@ -36,3 +36,4 @@ const VideoList = ({ i, create_On }) => {
     )
 }
 export default VideoList
+
