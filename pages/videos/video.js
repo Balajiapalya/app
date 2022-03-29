@@ -10,8 +10,7 @@ export default function Video() {
                     <div className={styles.header}>
                         <div className={styles.assets}>
                             <a>Asset List</a>
-                            <p> &gt; Asianet-Roku  </p>
-
+                            <p> &gt; Asianet-Roku</p>
                         </div>
                         <div className={styles.header_asianet}>
                             <img className={styles.icon_stat} src="/Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
@@ -20,7 +19,6 @@ export default function Video() {
                                 <img className={styles.edit_img} src="/Images/Icon material-edit.png" alt="edit" /><span> Edit</span>
                             </h2>
                         </div>
-                        
                     </div>
                     <div className={styles.close}> <img src='/Images/close.png' /></div>
                     <Videodelivery_tabs />

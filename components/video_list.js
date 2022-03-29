@@ -37,13 +37,3 @@ const VideoList = ({ i, create_On }) => {
 }
 export default VideoList
 
-
-
-export const Video_file = ({ items }) => {
-
-    return (
-        <>
-            
-        </>
-    )
-}
