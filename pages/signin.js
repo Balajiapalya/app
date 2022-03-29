@@ -7,6 +7,7 @@ import { useState } from 'react';
 export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
+  const [validation,setValidation]=useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   
   const onSubmit = login_details => {
@@ -27,10 +28,14 @@ export default function Signin() {
         }
       })
       .catch(error => {
+          setValidation(true)
         if (error.response.data.code = 400) {
           seterror(error.response.data.message)
         }
       })
+  }
+  const handleChange=()=>{
+    setValidation(false)
   }
   return (
     <div className={styles.wrapper_signup}>
@@ -53,6 +58,7 @@ export default function Signin() {
                 name="login"
                 className={`${styles.signup_input} form_control`}
                 {...register("login", { required: true })}
+                onChange={()=>handleChange()}
               />
             </div>
             {errors.login && <p className={'validations'}>This field is required</p>}
@@ -65,8 +71,9 @@ export default function Signin() {
                 name="password"
                 className={`${styles.signup_input} form_control`}
                 {...register("password", { required: true })}
+                onChange={()=>handleChange()}
               />
-              <span className='error'>{error}</span>
+              {validation && <span className='error'>{error}</span>}
             </div>
             {errors.password && <p className={'validations'}>This field is required</p>}<br />
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign in </button>

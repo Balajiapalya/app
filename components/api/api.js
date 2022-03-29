@@ -101,7 +101,7 @@ export const getList_videos = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents`
 }
 export const post_selected = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
 }
 export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
@@ -135,6 +135,12 @@ export const change_paswrd = () => {
 //others
 export const meta_update = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
+}
+export const post_emailtoResetPswd = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password-request`
+}
+export const password_reset=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password`
 }
 
 let user_id;
@@ -478,6 +484,20 @@ const Api = {
             url:get_account_info(),
             headers:headers,
         }),
+    Reset_pswEmail:(email)=>
+    axios({
+        method:'POST',
+        data:email,
+        url:post_emailtoResetPswd(),
+        headers:headers
+    }),
+    Reset_password:(paswrd)=>
+    axios({
+        method:'POST',
+        data:paswrd,
+        url:password_reset(),
+        headers:headers
+    }),
     Payment_history: () =>
         axios({
             method:'GET',
