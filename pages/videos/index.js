@@ -51,6 +51,7 @@ export default function Videos() {
         //     .then(res=>{
         //         console.log(res.data)
         //     })
+        //     //content
         // Api.Direct_get_video_data()
         //     .then(res=>{
         //         console.log(res.data)
