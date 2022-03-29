@@ -265,13 +265,22 @@
     float: left;
     margin: 0px 0px 5px 20px;
 }
-
+.uploaded_check span{
+    color: #4a5057;
+    font-size: 12px;
+}
+.uploaded_check img{
+    margin-right: 5px;
+    width: 10px;
+}
 .direct_upload_title input{
     border: none;
     outline: none;
-    color: #2863eb;
-    padding: 5px 5px;
+    color: #212b36;
+    padding: 2px 5px;
     cursor: pointer;
+    font-family: Inter-Regular;
+    font-size: 14px;
 }
 .direct_upload_submit{
     width: 100%;

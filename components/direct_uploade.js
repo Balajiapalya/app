@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import Api from './api/api';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
+
 export default function Direct_upload() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [filename, set_filename] = useState();
     let [loading, setLoading] = useState(false);
     let [color, setColor] = useState("#999");
-
+    const [uploaded, setuploaded] = useState(false);
     let handleChange = e => {
         var files = e.target.files;
 
@@ -34,10 +35,14 @@ export default function Direct_upload() {
                         headers: {
                             "Content-Type": "multipart/form-data"
                         },
+                        // onUploadProgress:(data)=>{
+                        //     console.log(data.loaded,data.total);
+                        // }
                     })
                         .then(Headers => {
                             if (Headers.status = 200) {
                                 setLoading(false)
+                                setuploaded(true)
                             }
                         })
 
@@ -65,7 +70,9 @@ export default function Direct_upload() {
                     </div>
 
                     <div className={styles.direct_upload_title}>
+                        {uploaded && <div className={styles.uploaded_check}><img  src='/Images/Icon awesome-check.png' alt='uploaded' /><span>file uploaded</span></div>}
                         <ClipLoader className={styles.loader} color={color} loading={loading} size={12} />
+
                         <input
                             readOnly
                             name="file_name"
