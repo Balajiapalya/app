@@ -12,7 +12,6 @@ function Navbar() {
         initial:null,
         activeObject:[1,2,3,4,5,6,7,8,9,10,11,12,13]
     })
-
     const handleActive=(index)=>{
         setToggle({...toggle,initial:toggle.activeObject[index]})
     }
@@ -21,7 +20,6 @@ function Navbar() {
             return `${styles.activate}`
         }
     }
-
     const handlelogout = () => {
         window.localStorage.clear();
         document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
@@ -39,7 +37,6 @@ function Navbar() {
         name=localStorage.getItem("ownername");
     }
     const ownerName = name;
-
     const toggleImg=(ind)=>{
         if(toggle.initial===toggle.activeObject[ind]){
             return true
@@ -84,19 +81,12 @@ function Navbar() {
                             <Link href="/account"><a onClick={()=>handleActive(12)}><img src={toggleImg(12)?"/Images/Icon awesome-user-alt(white).png":"/Images/Icon awesome-user-alt.png"} alt='icon'></img><p className={`${styles.user_detail} ${toggleStyle(12)}`}>{ownername} <br/>{orgname}</p></a></Link>
                         </li>
                         <li>
-                            <Link href="/signin"><a className={toggleStyle(13)}  onClick={()=>`${handlelogout} ${handleActive(13)}`}><img src={toggleImg(13)?"/Images/Icon feather-log-out(white).png":"/Images/Icon feather-log-out.png"} alt='icon'></img>Logout</a></Link>
+                        <Link href="/signin"><a className={toggleStyle(13)}  onClick={()=>`${handlelogout()} ${handleActive(13)}`}><img src={toggleImg(13)?"/Images/Icon feather-log-out.png":"/Images/Icon feather-log-out.png"} alt='icon'></img>Logout</a></Link>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     )
-
 }
-
 export default memo(Navbar);
-
-
-{/* <li>
-                           <Link href="/environments"><a className={toggleStyle(1)} onClick={()=>handleActive(1)}><img src="/Images/Icon material-home.png" alt='icon'></img> Environments</a></Link>
-                        </li> */}
