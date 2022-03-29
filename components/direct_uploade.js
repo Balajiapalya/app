@@ -13,7 +13,6 @@ export default function Direct_upload() {
     const [uploaded, setuploaded] = useState(false);
     let handleChange = e => {
         var files = e.target.files;
-
         var filesArray = [].slice.call(files);
         filesArray.forEach(e => {
             set_filename(e.name)

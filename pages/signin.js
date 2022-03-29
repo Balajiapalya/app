@@ -7,24 +7,20 @@ import { useState } from 'react';
 export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
-  const [validation,setValidation]=useState(false)
+  const [validation,setValidation]=useState(false);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  
   const onSubmit = login_details => {
     login_details.password=btoa(login_details.password)
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {
           document.cookie = `Jwt-token=${res.data.data.token}`;
-          localStorage.setItem('uuid', (res.data.data.organizations[0].uuid))
-          localStorage.setItem('Jwt-token', (res.data.data.token))
-          localStorage.setItem('orgName', res.data.data.organizations[0].name)
-          localStorage.setItem('ownername', res.data.data.firstName)
-          localStorage.setItem('userID', res.data.data.uuid)
-          window.location.pathname = '/'
-          // router.push({
-          //   pathname:"/"
-          // })
+          localStorage.setItem('uuid', (res.data.data.organizations[0].uuid));
+          localStorage.setItem('Jwt-token', (res.data.data.token));
+          localStorage.setItem('orgName', res.data.data.organizations[0].name);
+          localStorage.setItem('ownername', res.data.data.firstName);
+          localStorage.setItem('userID', res.data.data.uuid);
+          window.location.pathname = '/';
         }
       })
       .catch(error => {
