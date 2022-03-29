@@ -3,45 +3,49 @@ import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import Api from './api/api';
 import axios from 'axios';
+import ClipLoader from "react-spinners/ClipLoader";
 export default function Direct_upload() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [filename, set_filename] = useState();
-    
+    let [loading, setLoading] = useState(false);
+    let [color, setColor] = useState("#999");
+
     let handleChange = e => {
         var files = e.target.files;
-        
+
         var filesArray = [].slice.call(files);
         filesArray.forEach(e => {
             set_filename(e.name)
         });
     };
-  
+
     const onSubmit = direct_video_upload => {
         const file = direct_video_upload.file[0];
-        
+
         Api.Direct_upload_post(direct_video_upload)
             .then(res => {
                 if (res.data.success = "Success") {
+                    setLoading(true)
                     const url = res.data.data.url;
-
                     axios({
-                        method:"PUT",
-                        url:url,
-                        data:file,
-                        headers:{
-                            "Content-Type":"multipart/form-data"
-                        }
+                        method: "PUT",
+                        url: url,
+                        data: file,
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        },
                     })
-                    const videourl = url.split('?')[0]
-                    console.log(videourl)
+                        .then(Headers => {
+                            if (Headers.status = 200) {
+                                setLoading(false)
+                            }
+                        })
+
                 }
-              
+
             })
     }
-    useEffect(() => {
 
-    }, [])
-    // console.log(ids)
     return (
 
         <div className={styles.Videodelivery_addnewassets}>
@@ -54,20 +58,20 @@ export default function Direct_upload() {
                         <input
                             type="file"
                             name='file'
-                            {...register("file",{required:true})}
+                            {...register("file", { required: true })}
                             onChange={e => handleChange(e)}
-                           
+
                         />
                     </div>
 
                     <div className={styles.direct_upload_title}>
+                        <ClipLoader className={styles.loader} color={color} loading={loading} size={12} />
                         <input
                             readOnly
                             name="file_name"
                             defaultValue={filename}
-                            {...register("file_name",{ required: true })}  
+                            {...register("file_name", { required: true })}
                         ></input>
-                        {/* {ids} */}
                     </div>
 
                     <div className={styles.direct_upload_submit}>
