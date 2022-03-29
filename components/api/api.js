@@ -49,6 +49,9 @@ export const list_org_subscriptions = () =>{
 export const get_account_info = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account`
 }
+export const payment_history = () =>{
+    return `https://v3.recurly.com/accounts/${uuid}/payment/history`
+}
 //wbhook
 export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
@@ -113,12 +116,12 @@ export const post_direct_video = () => {
 export const get_direct_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
-export const get_direct_video = (upload_data) => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/uploads/cdcc86d9-ff1e-4905-8c52-433a63bef532`
-}
-export const direct_get_video_data = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/28f826aa-f45a-46ed-847e-3452c3c116d7`
-}
+// export const get_direct_video = (upload_data) => {
+//     return `${VIDEO_BASE_URL()}/services/api/v1/uploads/1308f19b-0c26-4f21-87ef-28d821c1ceb3`
+// }
+// export const direct_get_video_data = () => {
+//     return `${VIDEO_BASE_URL()}/services/api/v1/contents/96e7607b-1f6e-445a-b4d2-3452ec989b57`
+// }
 //account
 export const create_new_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
@@ -362,24 +365,24 @@ const Api = {
             headers:{'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${data}`}
         }),//called in videos
-    Direct_upload_get: (upload_data) =>
-        axios({
-            method: 'GET',
-            url: get_direct_video(upload_data),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
-        }),//called in direct_uplaod
-    Direct_get_video_data: ()=>
-        axios({
-            method:'GET',
-            url:direct_get_video_data(),
-            headers:{
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
-        }),
+    // Direct_upload_get: (upload_data) =>
+    //     axios({
+    //         method: 'GET',
+    //         url: get_direct_video(upload_data),
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`,
+    //             'EnvironmentId': `${envuuid}`
+    //         }
+    //     }),//called in direct_uplaod
+    // Direct_get_video_data: ()=>
+    //     axios({
+    //         method:'GET',
+    //         url:direct_get_video_data(),
+    //         headers:{
+    //             'Authorization': `Bearer ${token}`,
+    //             'EnvironmentId': `${envuuid}`
+    //         }
+    //     }),
     //get api token
     Get_access_token: () =>
         axios({
@@ -494,7 +497,13 @@ const Api = {
         data:paswrd,
         url:password_reset(),
         headers:headers
-    })
+    }),
+    Payment_history: () =>
+        axios({
+            method:'GET',
+            url:payment_history(),
+            headers:headers,
+        })
 }
 export default Api
 

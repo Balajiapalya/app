@@ -260,19 +260,17 @@
     margin: 20px;  
     font-weight: 500;
 }
-.direct_upload_title h3{
-    color: #2863eb;
-    padding: 5px 20px;
-    font-size: 20px;
-    margin: 0px 0px 5px;
-    font-family: Inter-Medium;
+.direct_upload_title{
+    width: 100%;
+    float: left;
+    margin: 0px 0px 5px 20px;
 }
+
 .direct_upload_title input{
     border: none;
     outline: none;
     color: #2863eb;
-    padding: 5px 20px;
-    margin: 0px 0px 5px;
+    padding: 5px 5px;
     cursor: pointer;
 }
 .direct_upload_submit{

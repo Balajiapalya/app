@@ -43,24 +43,7 @@ export const Video_file = ({ items }) => {
 
     return (
         <>
-            <td><input type="checkbox"></input></td>
-            <td>-</td>
-            <td>-</td>
-            <td className={styles.asset_id}>{items.id}</td>
-
-            <td></td>
-            <td>-</td>
-            <td>-</td>
-            <td>{items.status}</td>
-            {/* <img className={styles.checkcircle} src="Images/check-circle.png" alt="check-circle"></img> */}
-            <td className={styles.actionicons}>
-                <img src='/Images/Icon ionic-ios-play-circle.png' alt="image"></img>
-                <img src='/Images/film-editing.png' alt="image"></img>
-                <img src='/Images/insert-picture-icon.png' alt="image"></img>
-                <img src='/Images/gif-file-format-symbol.png' alt="image"></img>
-                <img src='/Images/closed-caption.png' alt="image"></img>
-                <img src='/Images/Icon awesome-eye-slash.png' alt="image"></img>
-            </td>
+            
         </>
     )
 }
