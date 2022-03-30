@@ -12,7 +12,8 @@ export default function Accounts() {
     const [openneworg, set_openneworg] = useState(false);
     const [neworg, setnewrog] = useState([]);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [color, setcolor] = useState(false)
+    const [color, setcolor] = useState(false);
+    const [img,setimg] = useState(false);
 
 
     const onSubmit = update_user_data => {
@@ -37,6 +38,7 @@ export default function Accounts() {
             uuid = localStorage.setItem('uuid',e.target.value)
         }
         setcolor(true);
+        setimg(true)
     }
     const handlelogout = () => {
         window.localStorage.clear();
@@ -76,7 +78,7 @@ export default function Accounts() {
                         </div>
                         <div className={styles.logout}>
                             <img className={styles.logout_img} src="/Images/Icon feather-log-out(blue).png" alt="logout"></img>
-                            <button className={styles.logout_btn} onClick={() => handlelogout()}>Log out</button>
+                            <button className={styles.logout_btn} onClick={() => handlelogout()}>Log out </button>
                         </div>
                     </div>
                     <div className={styles.Accounts_detials}>
@@ -128,7 +130,7 @@ export default function Accounts() {
                                             return (
                                                 <tr key={items.id}>
                                                     <td className={styles.title}>
-                                                        <button style={color ? { backgroundColor: "#f5f7fd" } : { backgroundColor: null }} className={styles.org_btn} onClick={(e) => handleChange(e)} value={items.uuid}>{items.name}</button>
+                                                        <button style={color ? { backgroundColor: "#f5f7fd" } : { backgroundColor: null }} className={styles.org_btn} onClick={(e) => handleChange(e)} value={items.uuid}>{items.name} {img && <img src='/Images/Icon awesome-check-circle.png'></img>}</button>
 
                                                     </td>
                                                 </tr>

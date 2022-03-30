@@ -64,7 +64,6 @@ export default function Direct_upload() {
                             name='file'
                             {...register("file", { required: true })}
                             onChange={e => handleChange(e)}
-
                         />
                     </div>
 
