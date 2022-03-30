@@ -5,13 +5,22 @@ import { memo } from "react";
 
 
 function Navbar() {
+    let activeState
+    if(process.browser){
+        activeState=localStorage.getItem('toggle')
+    }
+
     const [opendropdown, setdropdown] = useState(false);
     const [orgname,setorgname]=useState([]);
     const [ownername,setownername]=useState([]);
+    // const [state,setState]=useState(activeState)
+    // const [toggleActive,setToggleActive]=useState()
+   const [local,setLocal]=useState()
     const [toggle,setToggle]=useState({
-        initial:null,
+        initial:activeState,
         activeObject:[1,2,3,4,5,6,7,8,9,10,11,12,13]
     })
+  
     const handleActive=(index)=>{
         setToggle({...toggle,initial:toggle.activeObject[index]})
     }
@@ -24,6 +33,7 @@ function Navbar() {
         window.localStorage.clear();
         document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
     }
+    
     useEffect(()=>{
         setorgname(
             localStorage.getItem("orgName")
@@ -31,7 +41,12 @@ function Navbar() {
         setownername(
             localStorage.getItem("ownername")
         )
-    })
+        localStorage.setItem('defaultState',activeState)
+        localStorage.setItem('toggle',toggle.initial)
+        // setToggleActive(localStorage.getItem('defaulState'))
+        setLocal(localStorage.getItem('toggle'))
+    },[toggle.initial])
+    
     let name;
     if(process.browser){
         name=localStorage.getItem("ownername");
@@ -49,13 +64,14 @@ function Navbar() {
                 <div className={styles.uppercomponents}>
                     <ul>
                         <li>
-                           <Link href="/environments"><a className={toggleStyle(1)} onClick={()=>handleActive(1)}><img src={toggleImg(1)?'/Images/Icon material-home(white).png':'/Images/Icon material-home.png'} alt='icon'></img> Environments</a></Link>
+                        
+                           <Link href="/environments"><a className={ local== 2 ? `${styles.activate}` : `${toggleStyle(1)}`} onClick={()=>handleActive(1)}><img src={toggleImg(1) || local==2?'/Images/Icon material-home(white).png':'/Images/Icon material-home.png'} alt='icon'></img> Environments</a></Link>
                         </li>
                         <li>
-                            <Link href='/videos'><a className={toggleStyle(2)} onClick={()=>handleActive(2)}>{styles.activate?<img src={toggleImg(2)?'/Images/Icon material-video-library(white).png':'/Images/Icon material-video-library.png'} alt='icon'></img>:<img src="/Images/Icon material-video-library.png" alt='icon'></img>}Videos</a></Link>
+                            <Link href='/videos'><a className={local== 3 ? `${styles.activate}` : `${toggleStyle(2)}`} onClick={()=>handleActive(2)}>{styles.activate?<img src={toggleImg(2) || local==3?'/Images/Icon material-video-library(white).png':'/Images/Icon material-video-library.png'} alt='icon'></img>:<img src="/Images/Icon material-video-library.png" alt='icon'></img>}Videos</a></Link>
                         </li>
                         <li>
-                            <a className={toggleStyle(3)} onClick={()=>handleActive(3)} href="#"><img src={toggleImg(3)?'/Images/Icon simple-googleanalytics.png':'/Images/Icon simple-googleanalytics.png'} alt='icon'></img>Analytics</a>
+                            <a className={local== 4 ? `${styles.activate}` : `${toggleStyle(3)}`} onClick={()=>handleActive(3)} href="#"><img src={toggleImg(3)|| local==4?'/Images/Icon simple-googleanalytics.png':'/Images/Icon simple-googleanalytics.png'} alt='icon'></img>Analytics</a>
                         </li>
                         <li style={opendropdown?{backgroundColor:"#262b36",color:'white'}:{backgroundColor:null}} className={styles.tools}>
                             <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)}><img src={ opendropdown?"/Images/Icon awesome-tools(white).png":"/Images/Icon awesome-tools.png"} alt="icon"></img>Tools</a>
@@ -72,13 +88,13 @@ function Navbar() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                          <Link href="/events_logs"><a className={toggleStyle(10)} onClick={()=>handleActive(10)}><img src={toggleImg(10)?"/Images/Icon awesome-file-alt(white).png":"/Images/Icon awesome-file-alt.png"} alt='icon'></img>Events  logs</a></Link> 
+                          <Link href="/events_logs"><a className={ local== 11 ? `${styles.activate}` : `${toggleStyle(10)}`} onClick={()=>handleActive(10)}><img src={toggleImg(10)|| local==11?"/Images/Icon awesome-file-alt(white).png":"/Images/Icon awesome-file-alt.png"} alt='icon'></img>Events  logs</a></Link> 
                         </li>
                         <li>
-                            <Link href="/"><a className={toggleStyle(11)} onClick={()=>handleActive(11)}><img src={toggleImg(11)?"/Images/Icon ionic-ios-settings.png":"/Images/Icon ionic-ios-settings.png"} alt='icon'></img>Settings</a></Link>
+                            <Link href="/"><a className={ local== 12 ? `${styles.activate}` : `${toggleStyle(11)}`} onClick={()=>handleActive(11)}><img src={toggleImg(11)|| local==12?"/Images/Icon ionic-ios-settings.png":"/Images/Icon ionic-ios-settings.png"} alt='icon'></img>Settings</a></Link>
                         </li>
                         <li>
-                            <Link href="/account"><a onClick={()=>handleActive(12)}><img src={toggleImg(12)?"/Images/Icon awesome-user-alt(white).png":"/Images/Icon awesome-user-alt.png"} alt='icon'></img><p className={`${styles.user_detail} ${toggleStyle(12)}`}>{ownername} <br/>{orgname}</p></a></Link>
+                            <Link href="/account"><a onClick={()=>handleActive(12)}><img src={toggleImg(12)|| local==13?"/Images/Icon awesome-user-alt(white).png":"/Images/Icon awesome-user-alt.png"} alt='icon'></img><p className={ local== 13 ? `${styles.user_detail} ${styles.activate}` :`${styles.user_detail} ${toggleStyle(12)}`}>{ownername} <br/>{orgname}</p></a></Link>
                         </li>
                         <li>
                         <Link href="/signin"><a className={toggleStyle(13)}  onClick={()=>`${handlelogout()} ${handleActive(13)}`}><img src={toggleImg(13)?"/Images/Icon feather-log-out.png":"/Images/Icon feather-log-out.png"} alt='icon'></img>Logout</a></Link>
