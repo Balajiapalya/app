@@ -9,13 +9,21 @@ export default function Overview() {
         Api.Get_Env_item()
             .then(res => {
                 setplayer([res.data.data])
+                localStorage.setItem("asset_title",res.data.data.title)
             })
     }, []);
 
     const created = (date) => {
         const d = new Date(date)
-        return d.toLocaleString('en-GB', { hour:'numeric', minute:'numeric', second:'numeric', hour12:false } );
+        return d.toLocaleString();
+    
     }
+    // const minute = (data) => {
+    //     let seconds = Math.floor(data / 1000);
+    //     let minutes = Math.floor(seconds / 60);
+    //     minutes = minutes % 60;
+    //     return minutes.toLocaleString();
+    // }
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -60,11 +68,11 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
-                                            <td className={styles.content}>{i.duration}</td>
+                                            <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Aspect Ratio</td>
-                                            <td className={styles.content}>{i.transcodingResponse.data.aspectRatio}</td>
+                                            <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td>
                                         </tr>
                                     </div>
                                 </tbody>
@@ -85,7 +93,7 @@ export default function Overview() {
                                     <h4>Link to video</h4>
                                     <div className={styles.copy_link}>
                                         <div className={styles.link}>
-                                            <p> &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34;</p>
+                                            <p> </p>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
@@ -96,7 +104,7 @@ export default function Overview() {
                                     <h4>Link to HLS</h4>
                                     <div className={styles.copy_link}>
                                         <div className={styles.link}>
-                                            <p> &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34;</p>
+                                            <p>{i.playback[0].url}</p>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
@@ -109,7 +117,7 @@ export default function Overview() {
                                     <h4>Embed code</h4>
                                     <div className={styles.copy_link}>
                                         <div className={styles.link}>
-                                            <p> iframe src= &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34; Width=</p>
+                                            <p> </p>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
@@ -120,7 +128,7 @@ export default function Overview() {
                                     <h4>Link to Thumbnail</h4>
                                     <div className={styles.copy_link}>
                                         <div className={styles.link}>
-                                            <p> iframe src= &#34;https://embed.api.videograph/vod/vi5Rb5zPd7Lw3IMe0XMOW4Q0&#34; Width=</p>
+                                            <p></p>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
@@ -137,7 +145,8 @@ export default function Overview() {
                             <div className={styles.video_url}>
                                 <div className={styles.copy_link}>
                                     <div className={styles.link}>
-                                        <p>{i.playback[0].url}</p>
+                                        <p> {i.transcodingInfo.mediaUrl}
+                                        </p>
                                     </div>
                                     <div className={styles.copy_img}>
                                         <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
@@ -162,7 +171,7 @@ export default function Overview() {
                                             <td>{i.transcodingInfo.videoInfo[0].height}</td>
                                             <td>{i.transcodingInfo.videoInfo[0].frameRate}</td>
                                             <td>{i.transcodingInfo.videoInfo[0].encoding}</td>
-                                            <td>{created(i.transcodingInfo.videoInfo[0].duration)}</td>
+                                            <td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -183,7 +192,7 @@ export default function Overview() {
                                             <td>{i.transcodingInfo.audioInfo[0].encoding}</td>
                                             <td>{i.transcodingInfo.audioInfo[0].channels}</td>
 
-                                            <td>{created(i.transcodingInfo.audioInfo[0].duration)}</td>
+                                            <td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>
                                         </tr>
                                     </tbody>
                                 </table>
