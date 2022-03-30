@@ -146,14 +146,6 @@ export default function Videos() {
                                     <VideoList create_On={create_On} i={i} />
                                 </tr>
                             </>)}
-                            {dirdata.map((items, key) =>
-                                <>
-                                    <tr key={key}>
-                                        <Video_file items={items}/>
-                                    </tr>
-                                </>
-                            )}
-
                             {/* <tr>
                                 <td><input type="checkbox"></input></td>
                                 <td>02/12/21<br></br>6:03pm</td>
