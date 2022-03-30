@@ -7,36 +7,56 @@ import { useForm } from 'react-hook-form';
 import ManageAccount from '../../components/ManageAccount'
 
 export default function Accounts() {
-    
- 
+
+
     const [openneworg, set_openneworg] = useState(false);
     const [neworg, setnewrog] = useState([]);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [color, setcolor] = useState(false);
+    const [img,setimg] = useState(false);
 
-    
 
     const onSubmit = update_user_data => {
         Api.User_update(update_user_data)
             .then(res => {
-                // console.log(res.data)
+                if (res.data.status = "Success") {
+                    localStorage.setItem("ownername", res.data.data.firstName)
+                    localStorage.setItem("ownerLastname", res.data.data.lastName)
+                }
             })
     }
+
     useEffect(() => {
         Api.Get_User_update()
             .then(res => {
                 setnewrog(res.data.data.organizations)
             })
     }, [])
-    const handlelogout=()=>{
+    const handleChange = (e) => {
+        let uuid;
+        if(process.browser){
+            uuid = localStorage.setItem('uuid',e.target.value)
+        }
+        setcolor(true);
+        setimg(true)
+    }
+    const handlelogout = () => {
         window.localStorage.clear();
-        document.cookie= 'Jwt-token=;expires=' + new Date().toUTCString()
-        window.location.pathname='/signin'
+        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+        window.location.pathname = '/signin'
     }
     let email;
-    if(process.browser){
-        email=localStorage.getItem("ownerEmail");
+    let firstname;
+    let lastname;
+    if (process.browser) {
+        email = localStorage.getItem("ownerEmail");
+        firstname = localStorage.getItem("ownername")
+        lastname = localStorage.getItem("ownerLastname")
+
     }
     const ownerEmail = email;
+    const ownerFirstname = firstname;
+    const ownerLastname = lastname;
     return (
         <div className={styles.container}>
 
@@ -58,7 +78,7 @@ export default function Accounts() {
                         </div>
                         <div className={styles.logout}>
                             <img className={styles.logout_img} src="/Images/Icon feather-log-out(blue).png" alt="logout"></img>
-                            <button className={styles.logout_btn} onClick={()=>handlelogout()}>Log out</button>
+                            <button className={styles.logout_btn} onClick={() => handlelogout()}>Log out </button>
                         </div>
                     </div>
                     <div className={styles.Accounts_detials}>
@@ -68,6 +88,7 @@ export default function Accounts() {
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <label className={styles.model_label}>First Name</label>
                                     <input
+                                        defaultValue={ownerFirstname}
                                         type="text"
                                         className={`${styles.model_input} form_control`}
                                         name="firstname"
@@ -78,6 +99,7 @@ export default function Accounts() {
 
                                     <label className={styles.model_label}>Last Name</label>
                                     <input
+                                        defaultValue={ownerLastname}
                                         type="text"
                                         className={`${styles.model_input} form_control`}
                                         name="lastName"
@@ -87,12 +109,12 @@ export default function Accounts() {
                                     {errors.lasttName && <p className={'validations'}>This field is required</p>}
 
                                     <label className={styles.model_label}>Email</label>
-                                    <input 
-                                    type="text" 
-                                    className={`${styles.model_input} form_control ${styles.bg_color}`} 
-                                    placeholder="sunil@gmail.com"
-                                    defaultValue={ownerEmail} 
-                                    readOnly    
+                                    <input
+                                        type="text"
+                                        className={`${styles.model_input} form_control ${styles.bg_color}`}
+                                        placeholder="sunil@gmail.com"
+                                        defaultValue={ownerEmail}
+                                        readOnly
                                     />
 
                                     <div className={styles.model_btn}>
@@ -104,13 +126,14 @@ export default function Accounts() {
                                 <h2>Organization</h2>
                                 <table>
                                     <tbody>
-                                        {neworg.map((items, key) => {
-                                            return(
-                                                <tr key={key}>
-                                                <td className={styles.title}>
-                                                    {items.name}
-                                                </td>
-                                            </tr>
+                                        {neworg.map(items => {
+                                            return (
+                                                <tr key={items.id}>
+                                                    <td className={styles.title}>
+                                                        <button style={color ? { backgroundColor: "#f5f7fd" } : { backgroundColor: null }} className={styles.org_btn} onClick={(e) => handleChange(e)} value={items.uuid}>{items.name} {img && <img src='/Images/Icon awesome-check-circle.png'></img>}</button>
+
+                                                    </td>
+                                                </tr>
                                             )
                                         })}
 
@@ -122,7 +145,7 @@ export default function Accounts() {
                             </div>
                         </div>
                         {openneworg && <Create_new_organization closeneworg={set_openneworg} />}
-                        <ManageAccount/>
+                        <ManageAccount />
                     </div>
                 </div>
             </div>
