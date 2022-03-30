@@ -31,27 +31,12 @@ export default function Accounts() {
 
   useEffect(() => {
     Api.Get_User_update().then((res) => {
-        console.log(res.data);
-      if(res && res.data && res.data.data && res.data.data.organizations){
-          
-        var horg = 0;
-        // console.log( res.data.data.organizations.length);
-       
-        for(let i = 0;i < res.data.data.organizations.length; i++){
-            // console.log(res.data.data.organizations);
-        
-            console.log(res.data.data.organizations[i].uuid);
-            // console.log(localStorage.getItem("uuid"));
-            if(res.data.data.organizations[i].uuid === localStorage.getItem("uuid")){
-                horg = i;
-            }
-        }
-        console.log(horg);
-        sethighlightedorg(horg);
-
-    }
-    //   localStorage.getItem("uuid")
-
+      var horg = 0;
+      if(res && res.data && res.data.data && res.data.data.organizations){       
+          let Index = res.data.data.organizations.findIndex(org => org.uuid === localStorage.getItem("uuid"));
+          horg = Index;
+      }       
+      sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
 
     });
