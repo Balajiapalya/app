@@ -10,13 +10,13 @@ export default function Others() {
     const [keys, setKey] = useState({ key: '', value: '' })
     const [meta, setMeta] = useState([])
     const [selected, setSelected] = useState([]);
-   
-    const onSubmit = (video_data) => {  
-        video_data['tags']=selected;
-        video_data['metadata']=meta;
+
+    const onSubmit = (video_data) => {
+        video_data['tags'] = selected;
+        video_data['metadata'] = meta;
         console.log(video_data)
-        Api.Meta_tag(video_data).then(res=>console.log(res));
-       
+        Api.Meta_tag(video_data).then(res => console.log(res));
+
     }
     // set in object
     const handleData = (e) => {
@@ -32,7 +32,7 @@ export default function Others() {
             key: keys.key,
             value: keys.value
         }
-        setMeta([...meta,newObj])
+        setMeta([...meta, newObj])
     }
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -70,10 +70,10 @@ export default function Others() {
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="key" placeholder="Enter a key"/>
+                                                <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" />
                                             </th>
                                             <th>
-                                        
+
                                                 <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
                                                 <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/Images/Icon feather-plus-grey.png' /> Add</button>
                                             </th>
@@ -81,8 +81,8 @@ export default function Others() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {meta.map((i,index) =>
-                                            <tr key={index}> 
+                                        {meta.map((i, index) =>
+                                            <tr key={index}>
                                                 <td>{i.key}</td>
                                                 <td>{i.value}</td>
                                             </tr>
@@ -98,9 +98,9 @@ export default function Others() {
                                         </tr> */}
                                     </tbody>
                                 </table>
-                                <button className={`${styles.others_submit_btn} btn`} type="submit">Submit</button>
+
                             </div>
-                            
+
                         </div>
                     </div>
                     <div className={styles.image_guickpreview_poster}>
@@ -142,17 +142,16 @@ export default function Others() {
                             <div className={styles.seek_bar}>
                                 <input type="checkbox" className={styles.input}></input>
                                 <h4>Offline Download</h4>
-
-
                                 <p>Enabling this feature will create a download a &#46; mp4 file of the video which can be used for watching the content offline &#46; </p>
                             </div>
 
                         </div>
                     </div>
+                    <div className={styles.submit}>
+                        <button className={`${styles.others_submit_btn} btn`} type="submit">Submit</button>
+                    </div>
                 </div>
             </form>
-
-
         </Fragment >
     )
 }

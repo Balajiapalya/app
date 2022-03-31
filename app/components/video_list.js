@@ -5,15 +5,20 @@ import { useRouter } from "next/router";
 const VideoList = ({ i, create_On }) => {
     const reg = useRouter();
     const [videoId, setVideoId] = useState([]);
+    const [videotitle, setvideotitle] = useState([]);
     const handleChange = () => {
         if (i.status == 'Ready') {
             window.location.pathname = './videos/video'
             setVideoId(i.videoId)
+            setvideotitle(i.title)
+    
         }
     }
+    localStorage.setItem('asset_title',videotitle)
     localStorage.setItem('videoId', videoId)
     return (
         <>
+            
             <td><input type="checkbox"></input></td>
             <td>{create_On(i.created_at)}</td>
             <td>{i.title}</td>

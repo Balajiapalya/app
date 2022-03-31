@@ -13,22 +13,19 @@ export default function Signup() {
   const invitecode = invite_code;
   const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [error,seterror] = useState([]);
+  const [error, seterror] = useState([]);
   const onSubmit = login_details => {
     Api.Sign_up_data(login_details)
       .then(res => {
-
         if (res.data.status = "Success") {
           router.push({
             pathname: `/invitationsent`
           })
-
         }
       })
-        .catch(error=>{
-          seterror(error.response.data.message)
+      .catch(error => {
+        seterror(error.response.data.message)
       })
-      
   };
   return (
     <div className={styles.wrapper_signup}>
