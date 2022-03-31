@@ -29,21 +29,12 @@ export default function Accounts() {
 
   useEffect(() => {
     Api.Get_User_update().then((res) => {
-      if (res && res.data && res.data.data && res.data.data.organizations) {
-
-        var horg = 0;
-        for (let i = 0; i < res.data.data.organizations.length; i++) {
-
-          if (res.data.data.organizations[i].uuid === localStorage.getItem("uuid")) {
-            horg = i;
-          }
-        }
-        // 
-        sethighlightedorg(horg);
-
-      }
-      //   localStorage.getItem("uuid")
-
+      var horg = 0;
+      if(res && res.data && res.data.data && res.data.data.organizations){       
+          let Index = res.data.data.organizations.findIndex(org => org.uuid === localStorage.getItem("uuid"));
+          horg = Index;
+      }       
+      sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
 
     });
