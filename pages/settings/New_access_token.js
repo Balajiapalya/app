@@ -13,12 +13,22 @@ export default function New_Access_token({ closetoken }) {
    }, [])
 
    const onSubmit = access_data => {
-      Api.Create_aaccess_token_data(access_data)
+      access_data.permissions=[]
+      let obj=new Object()
+      obj.productTypeId=1
+      obj.canRead=access_data.canRead
+      let objTwo=new Object()
+      objTwo.productTypeId=2
+      objTwo.canWrite=access_data.canWrite
+      access_data.permissions.push(obj)
+      access_data.permissions.push(objTwo)
+      let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
+      sliced.environmentUUID=localStorage.getItem('envuuid')      
+      Api.Create_aaccess_token_data(sliced)
    }
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
-
             <div className={styles.model_nav}>
                <a className={styles.model_close} role="button" onClick={() => closetoken(false)}><img src="Images/close.png" alt='icon' /> </a>
             </div>
@@ -28,9 +38,9 @@ export default function New_Access_token({ closetoken }) {
                   <label className={styles.model_label}>Environment</label>
                   <div className={styles.select}>
                      <select
-                        name="environmentId"
+                        name="environmentTypeId"
                         className={`${styles.development} ${styles.model_selection}`}
-                        {...register("environmentId", { required: true })}
+                        {...register("environmentTypeId", { required: true,valueAsNumber: true })}
                      >
                         {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
 
@@ -50,15 +60,15 @@ export default function New_Access_token({ closetoken }) {
                   <div className={styles.access_token_checkbox}>
                      <input
                         type="checkbox"
-                        name="video"
+                        name="permissions"
                         id="video"
                         value="video"
                         {...register("video", { required: true })}
                      />
                      <label htmlFor="video"> Video</label><br />
-                     <input type="checkbox" className={styles.read} name="read" id="read"  {...register("video", { required: false })} />
+                     <input type="checkbox" className={styles.read} name="canRead" id="read"  {...register("canRead", { required: false })} />
                      <label htmlFor="read" > Read</label><br />
-                     <input type="checkbox" className={styles.write} name="write" id="write"  {...register("write", { required: false })} />
+                     <input type="checkbox" className={styles.write} name="canWrite" id="write"  {...register("canWrite", { required: false })} />
                      <label htmlFor="write" >Write</label><br />
                      <input type="checkbox" className={styles.data} name="data" id="data" {...register("data", { required: false })} />
                      <label htmlFor="data">Data(read-only)</label>
