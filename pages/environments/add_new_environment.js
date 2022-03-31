@@ -24,7 +24,7 @@ export default function Add_new_environment({ closeenv }) {
     useEffect(() => {
         Api.Env_data()
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setenv(res.data.data)
             })
             .catch(error => {

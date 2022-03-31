@@ -9,41 +9,17 @@ function Billing() {
     const [openpaymenthistory, setopenpaymenthistory] = useState(false);
     const [accDetails, set_accDetails] = useState([]);
     const [url, seturl] = useState("")
-    useEffect(() => {
-        // Api.List_billing_plans()
-        //     .then(res => {
-        //         console.log(res.data, "plans")
-        //     })
-        //     .catch(error=>{
-        //         console.log(error)
-        //     })
-
-        // Api.Org_list_billing_plans()
-        //     .then(res => {
-        //         console.log(res.data, "org")
-        //     })
-        //     .catch(error=>{
-        //         console.log(error)
-        //     })
-            
-        // Api.List_org_subscriptions()
-        //     .then(res => {
-        //         console.log(res.data, "org subscriptions")
-        //     })
-        //     .catch(error=>{
-        //         console.log(error)
-        //     })
-        // Api.Get_account_info()
-        //     .then(res => {
-        //         if (res.data.status = "Success") {
-        //             console.log(res.data.data.billingInfo, "account info")
-        //             set_accDetails(res.data.data.billingInfo)
-        //             seturl(res.data.data.changeBillingUrl)  
-        //         }
-        //     })
-        //     .catch(error=>{
-        //         console.log(error)
-        //     })
+    useEffect(() => {    
+        Api.Get_account_info()
+            .then(res => {
+                if (res.data.status = "Success") {
+                    set_accDetails(res.data.data.billingInfo)
+                    seturl(res.data.data.changeBillingUrl)  
+                }
+            })
+            .catch(error=>{
+                console.log(error)
+            })
     }, [])
     let email;
     if(process.browser){
