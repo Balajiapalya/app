@@ -97,7 +97,7 @@ function Navbar() {
                             <Link href="/account"><a onClick={()=>handleActive(12)}><img src={toggleImg(12)|| local==13?"/Images/Icon awesome-user-alt(white).png":"/Images/Icon awesome-user-alt.png"} alt='icon'></img><p className={ local== 13 ? `${styles.user_detail} ${styles.activate}` :`${styles.user_detail} ${toggleStyle(12)}`}>{ownername} <br/>{orgname}</p></a></Link>
                         </li>
                         <li>
-                        <Link href="/signin"><a className={toggleStyle(13)}  onClick={()=>`${handlelogout()} ${handleActive(13)}`}><img src={toggleImg(13)?"/Images/Icon feather-log-out.png":"/Images/Icon feather-log-out.png"} alt='icon'></img>Logout</a></Link>
+                        <Link href="/signin"><a  onClick={()=>`${handlelogout()} ${handleActive(13)}`}><img src={toggleImg(13)?"/Images/Icon feather-log-out.png":"/Images/Icon feather-log-out.png"} alt='icon'></img>Logout</a></Link>
                         </li>
                     </ul>
                 </div>

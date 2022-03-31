@@ -16,13 +16,11 @@ export default function Accounts() {
     watch,
     formState: { errors },
   } = useForm();
-//   const [color, setcolor] = useState(false);
-//   const [img, setimg] = useState(false);
 
   const onSubmit = (update_user_data) => {
     Api.User_update(update_user_data).then((res) => {
       if ((res.data.status = "Success")) {
-        
+
         localStorage.setItem("ownername", res.data.data.firstName);
         localStorage.setItem("ownerLastname", res.data.data.lastName);
       }
@@ -31,47 +29,41 @@ export default function Accounts() {
 
   useEffect(() => {
     Api.Get_User_update().then((res) => {
-        console.log(res.data);
-      if(res && res.data && res.data.data && res.data.data.organizations){
-          
+      if (res && res.data && res.data.data && res.data.data.organizations) {
+
         var horg = 0;
-        // console.log( res.data.data.organizations.length);
-       
-        for(let i = 0;i < res.data.data.organizations.length; i++){
-            // console.log(res.data.data.organizations);
-        
-            console.log(res.data.data.organizations[i].uuid);
-            // console.log(localStorage.getItem("uuid"));
-            if(res.data.data.organizations[i].uuid === localStorage.getItem("uuid")){
-                horg = i;
-            }
+        for (let i = 0; i < res.data.data.organizations.length; i++) {
+
+          if (res.data.data.organizations[i].uuid === localStorage.getItem("uuid")) {
+            horg = i;
+          }
         }
-        console.log(horg);
+        // 
         sethighlightedorg(horg);
 
-    }
-    //   localStorage.getItem("uuid")
+      }
+      //   localStorage.getItem("uuid")
 
       setnewrog(res.data.data.organizations);
 
     });
   }, []);
-  const selectOrganization = (e,key) => {
+  const selectOrganization = (e, key) => {
 
-    // console.log(key);
-    let uuid;
     if (process.browser) {
-      uuid = localStorage.setItem("uuid", e.target.value);
+      localStorage.setItem("uuid", e.target.value);
+      localStorage.setItem("orgName",e.target.innerText)
     }
-
     sethighlightedorg(key);
-    // setimg(true);
+    window.location.reload()
+    
   };
   const handlelogout = () => {
     window.localStorage.clear();
     document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
     window.location.pathname = "/signin";
   };
+
   let email;
   let firstname;
   let lastname;
@@ -83,6 +75,7 @@ export default function Accounts() {
   const ownerEmail = email;
   const ownerFirstname = firstname;
   const ownerLastname = lastname;
+
   return (
     <div className={styles.container}>
       <div className={styles.settings}>
@@ -168,22 +161,22 @@ export default function Accounts() {
                 <h2>Organization</h2>
                 <table>
                   <tbody>
-                    {neworg.map((items,key) => {
+                    {neworg.map((items, key) => {
                       return (
                         <tr key={items.id}>
                           <td className={styles.title}>
                             <button
                               style={
-                                key==highlightedorg
+                                key == highlightedorg
                                   ? { backgroundColor: "#f5f7fd" }
                                   : { backgroundColor: null }
                               }
                               className={styles.org_btn}
-                              onClick={(e) => selectOrganization(e,key)}
+                              onClick={(e) => selectOrganization(e, key)}
                               value={items.uuid}
                             >
                               {items.name}{" "}
-                              {key==highlightedorg && (
+                              {key == highlightedorg && (
                                 <img src="/Images/Icon awesome-check-circle.png"></img>
                               )}
                             </button>
