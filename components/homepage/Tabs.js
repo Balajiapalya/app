@@ -1,17 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from '../../styles/tabs.module.css';
 import Organisation from "./settingstabs/organization";
 import Billing from "./settingstabs/billing";
+import Billing_plans from "./settingstabs/billing_plans";
 import Apiaccesstokes from "./settingstabs/Api_accesstokens";
 import Webhooks from "./settingstabs/webhooks";
 import Signingkeys from "./settingstabs/signingkeys";
+import Api from "../api/api";
 
 function Tabs() {
   const [toggleState, setToggleState] = useState(1);
+  const [page, setpage] = useState(false)
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  useEffect(() => {
+    Api.List_org_subscriptions()
+      .then(res => {
+        if (res.data.data[0].uuid = "active") {
+          setpage(true)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },[])
+
   return (
     <div className={styles.wrapper_tabs}>
       <div className={styles.bloc_tabs}>
@@ -52,12 +67,14 @@ function Tabs() {
           className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
           <Organisation />
-          </div>
+        </div>
 
         <div
           className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
-          <Billing />
+          {/* <Billing /> */}
+          {/* <Billing_plans/> */}
+          {page ? <Billing /> : <Billing_plans />}
         </div>
         <div
           className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}

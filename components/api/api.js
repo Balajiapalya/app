@@ -50,7 +50,7 @@ export const get_account_info = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account`
 }
 export const payment_history = () =>{
-    return `https://v3.recurly.com/accounts/${uuid}/payment/history`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/payment/history`
 }
 //wbhook
 export const Create_webhook = () => {
