@@ -9,21 +9,33 @@ function Billing() {
     const [openpaymenthistory, setopenpaymenthistory] = useState(false);
     const [accDetails, set_accDetails] = useState([]);
     const [url, seturl] = useState("")
-    useEffect(() => {    
+    const [date, set_date] = useState([]);
+    const createdDate = (date) => {
+        var d = new Date(date);
+        return d.toLocaleString();
+    }
+    useEffect(() => {
         Api.Get_account_info()
             .then(res => {
                 if (res.data.status = "Success") {
                     set_accDetails(res.data.data.billingInfo)
-                    seturl(res.data.data.changeBillingUrl)  
+                    seturl(res.data.data.changeBillingUrl)
                 }
             })
-            .catch(error=>{
+            .catch(error => {
+                console.log(error)
+            })
+        Api.List_org_subscriptions()
+            .then(res => {
+                set_date(res.data.data[0])
+            })
+            .catch(error => {
                 console.log(error)
             })
     }, [])
     let email;
-    if(process.browser){
-        email=localStorage.getItem("ownerEmail");
+    if (process.browser) {
+        email = localStorage.getItem("ownerEmail");
     }
     const ownerEmail = email;
     return (
@@ -33,11 +45,11 @@ function Billing() {
                     <p>
                         Manage Billing for both Video and Data plans here.Feel free   to <a href="#">contact us</a> for any queries related billing.
                     </p>
-                    <a href={url}  ><button className="btn">Edit Payment details</button></a>
+                    <a href={url}><button className="btn">Edit Payment details</button></a>
                 </div>
                 {openpaymentdetails && <Edit_payment_detials closepaymentdetails={setopenpaymentdetails} />}
                 <div className={styles.payment}>
-                    <h4>Next payment:Nov 08,2021</h4>
+                    <h4>Next payment: {createdDate(date.cycleEndDate)}</h4>
                 </div>
                 <div className={styles.tables_left}>
                     <div className={styles.Video_consumption}>
@@ -111,27 +123,27 @@ function Billing() {
                                 </tr>
                                 <tr>
                                     <td>Zip code</td>
-                                    <td className={styles.text_align}>30022</td>
+                                    <td className={styles.text_align}>-</td>
                                 </tr>
                                 <tr>
                                     <td>Billing Address</td>
-                                    <td className={styles.text_align}>11175 cecrioro drive in</td>
+                                    <td className={styles.text_align}>-</td>
                                 </tr>
                                 <tr>
                                     <td>Billing Address 2</td>
-                                    <td className={styles.text_align}>suit 100</td>
+                                    <td className={styles.text_align}>-</td>
                                 </tr>
                                 <tr>
                                     <td>City</td>
-                                    <td className={styles.text_align}>Alpharetta</td>
+                                    <td className={styles.text_align}>-</td>
                                 </tr>
                                 <tr>
                                     <td>State</td>
-                                    <td className={styles.text_align}>Georgia</td>
+                                    <td className={styles.text_align}>-</td>
                                 </tr>
                                 <tr>
                                     <td>Country</td>
-                                    <td className={styles.text_align}>United States</td>
+                                    <td className={styles.text_align}>-</td>
                                 </tr>
                             </tbody>
                         </table>
