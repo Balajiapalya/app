@@ -202,7 +202,45 @@
 .view_payment_history{
     margin-top: 1px;
 }
-
+/* ------BILIING PLANS----------- */
+.plans_container{
+    width: 100%;
+    float: left;
+}
+.plans_card{
+    width: 30%;
+    float: left;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0px 15px 15px 0px;
+    background-color: #ffff;
+    text-align: center;
+}
+.plan_heading{
+    font-family: Inter-Medium;
+    text-align: center;
+}
+.plans_card h3{
+    font-size:20px;
+    font-weight: 450;
+}
+.plans_card span{
+    font-weight: initial;
+    font-size: 18px;
+}
+.content_key{
+    display: initial;
+}
+.plan_subscribe{
+    width: 100%;
+    float: left;
+    margin: 20px 0px;
+}
+.plan_subscribe_btn{
+    background-color: #2863eb;
+    color: #ffff;
+}
 /*---------media quries of billing-------------*/
 @media screen and (max-width:1024px) {
     .query p{
