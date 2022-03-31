@@ -1,7 +1,20 @@
-import styles from '../../styles/model.module.css'
-import Link from 'next/link'
+import { useEffect, useState } from 'react';
+import styles from '../../styles/model.module.css';
+import Api from '../api/api';
 
 export default function Payment_history({ closepaymenthistory }) {
+  const [paymenthistory, setpaymenthistory] = useState([]);
+  const createdDate = (date) => {
+    var d = new Date(date);
+    return d.toLocaleString();
+}
+  useEffect(() => {
+    Api.Payment_history()
+      .then(res => {
+        console.log(res.data.data)
+        setpaymenthistory(res.data.data)
+      })
+  }, [])
   return (
     <div className={`${styles.model} ${styles.paymenthistory}`}>
       <div className={styles.model_main}>
@@ -18,23 +31,17 @@ export default function Payment_history({ closepaymenthistory }) {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr className={styles.tr}>
-              <td>12/23/24</td>
-              <td>$10.00</td>
-              <td><img src="Images/download.png" alt='icon'></img></td>
-            </tr>
-            <tr>
-              <td>12/23/2024</td>
-              <td>$10.00</td>
-              <td><img src="Images/download.png" alt='icon'></img></td>
-            </tr>
-            <tr>
-              <td>12/23/2024</td>
-              <td>$10.00</td>
-              <td><img src="Images/download.png" alt='icon'></img></td>
-            </tr>
-          </tbody>
+          {paymenthistory.map((items, id) =>
+
+            <tbody key={id}>
+              <tr className={styles.tr}>
+                <td>{createdDate(items.paymentDate)}</td>
+                <td>{items.amount} {items.currency}</td>
+                <td><a href={items.downloadableInvoiceUrl}><img src="Images/download.png" alt='icon'></img></a></td>
+              </tr>
+              
+            </tbody>
+          )}
         </table>
         <div className={styles.model_btn}>
           <a onClick={() => closepaymenthistory(false)}><button type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Done</button></a>

@@ -12,6 +12,9 @@ export default function Add_new_environment({ closeenv }) {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
+        let orgId=localStorage.getItem('uuid')
+        new_env_data.organizationId=orgId
+        console.log(new_env_data)
         Api.Post_env(new_env_data)
             .then(res => {
                 console.log(res)
@@ -31,7 +34,7 @@ export default function Add_new_environment({ closeenv }) {
                 console.log(error)
 
             })
-    }, {})
+    }, [])
     return (
         <div className={`${styles.container} ${styles.accesstoken_model}`}>
             <div className={styles.body}>
