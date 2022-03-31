@@ -21,12 +21,12 @@ const VideoList = ({ i, create_On }) => {
             
             <td><input type="checkbox"></input></td>
             <td>{create_On(i.created_at)}</td>
-            <td>{i.title}</td>
+            {i.status!=='Ready'?<td>-</td>:<td>{i.title}</td>}
             <td>{i.videoId}</td>
             <td></td>
             {/* <img src='/Images/Image 3.png' /> */}
-            {i.status!=='Ready'?<td>{i.duration}</td>:<td>{i.transcodingInfo.videoInfo[0].duration}</td>}
-            <td></td>
+            {i.status!=='Ready'?<td>-</td>:<td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>}
+            {i.status!=='Ready'?<td>-</td>:<td>{i.transcodingResponse.data.videoStreams[0].resolution}</td>}
             {/* HD */}
             <td>{i.status}</td>
             <td className={styles.actionicons}>
