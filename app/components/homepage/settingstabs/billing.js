@@ -18,11 +18,10 @@ function Billing() {
         Api.Get_account_info()
             .then(res => {
                 if (res.data.status = "Success") {
+                    seturl(res.data.data.changeBillingUrl)
                     if(res&&res.data&&res.data.data&&res.data.data.billingInfo){
-                        set_accDetails(res.data.data.billingInfo)
-                        seturl(res.data.data.changeBillingUrl)
-                    }
-                    
+                        set_accDetails(res.data.data.billingInfo)  
+                    }    
                 }
             })
             .catch(error => {
