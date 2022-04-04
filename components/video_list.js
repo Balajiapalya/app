@@ -25,7 +25,7 @@ const VideoList = ({ i, create_On }) => {
             <td>{i.videoId}</td>
             <td></td>
             {/* <img src='/Images/Image 3.png' /> */}
-            {i.status!=='Ready'?<td>-</td>:<td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>}
+            {i.status!=='Ready'?<td>-</td>:<td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins {i.transcodingResponse.data.videoStreams[0].duration.seconds} secs</td>}
             {i.status!=='Ready'?<td>-</td>:<td>{i.transcodingResponse.data.videoStreams[0].resolution}</td>}
             {/* HD */}
             <td>{i.status}</td>

@@ -68,7 +68,7 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
-                                            <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>
+                                            <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins {i.transcodingResponse.data.videoStreams[0].duration.seconds} secs</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Aspect Ratio</td>

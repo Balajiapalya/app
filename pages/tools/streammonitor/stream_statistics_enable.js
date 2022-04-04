@@ -1,6 +1,6 @@
 import styles from '../../../styles/stream_statistics.module.css'
-import Link from 'next/link'
-import { useState } from 'react'
+import Link from 'next/link';
+import { useState } from 'react';
 import Activities from '../../../components/dialog/activities';
 import Disablepremiumfeatures from '../../../components/dialog/Disable_premiumfeatures';
 import Deletestream from '../../../components/dialog/Delete_stream';
@@ -14,9 +14,6 @@ export default function Stream_statistics_enable() {
     const [open_delete_stream, set_delete_stream] = useState(false);
     return (
         <div className={styles.streamenable}>
-            {/* <div>
-                <Navbar />
-            </div> */}
             <div className={styles.stream_statistics}>
                 <div className={styles.padding}>
                     <div className={styles.stream_list}>
@@ -50,7 +47,6 @@ export default function Stream_statistics_enable() {
                                 <select>
                                     <option >Realtime</option>
                                 </select>
-
                             </div>
                         </div>
                         <div className={styles.functional_buttons}>
@@ -70,25 +66,20 @@ export default function Stream_statistics_enable() {
 
                     </div>
                     <div className={styles.content}>
-
                         <div className={styles.Utime_check}>
                             <div className={styles.uptime_header}>
                                 <h3>Uptime check <span>(Last Checked:Realtime)</span></h3>
-
                             </div>
                             <div className={styles.Preview}>
-
                                 <div className={styles.time_line}>
                                     <label>Time Line:</label>
                                     <select>
                                         <option >12 hours</option>
                                     </select>
                                 </div>
-
                             </div>
                             <div className={styles.scte_markers}></div>
                         </div>
-
                         {/* <div></div> for preview pi graph*/}
                         <div className={styles.scte}>
                             <div className={styles.scte_header}>
@@ -146,7 +137,6 @@ export default function Stream_statistics_enable() {
                                         <th>Check for Black Frame</th>
                                         <th>Check for Audio Loss</th>
                                         <th>Detailed Stream Info</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -212,11 +202,9 @@ export default function Stream_statistics_enable() {
                                                             <td><span>Duration:</span>  <span>00:05:33.48</span></td>
                                                             <td></td>
                                                         </tr>
-
                                                     </tbody>
                                                 </table>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <tr>
@@ -421,11 +409,9 @@ export default function Stream_statistics_enable() {
                                                             <td><span>Duration:</span>  <span>00:05:33.48</span></td>
                                                             <td></td>
                                                         </tr>
-
                                                     </tbody>
                                                 </table>
                                             </div>
-
                                         </td>
                                     </tr>
                                 </tbody>
@@ -446,14 +432,12 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <th>Stream</th>
                                         <th>United states</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
                                         <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-
                                     </tr>
                                 </tbody>
                             </table>

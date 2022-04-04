@@ -50,7 +50,7 @@ function Organisation() {
             .then(res => {
                 localStorage.setItem("envuuid", res.data.data[0].uuid)
             })
-    }, {})
+    }, [])
 
     return (
         <Fragment>
@@ -82,8 +82,7 @@ function Organisation() {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-
+                    <tbody> 
                         {orgdata.map((item, ind) =>
                             <tr key={ind}>
                                 <td>{item.firstName} {item.lastName}</td>
