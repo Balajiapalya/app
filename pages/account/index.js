@@ -5,11 +5,13 @@ import Create_new_organization from "./create_new_organization";
 import Api from "../../components/api/api";
 import { useForm } from "react-hook-form";
 import ManageAccount from "../../components/ManageAccount";
+import Navbar from "../../components/common/navbar";
 
 export default function Accounts() {
   const [openneworg, set_openneworg] = useState(false);
   const [neworg, setnewrog] = useState([]);
   const [highlightedorg, sethighlightedorg] = useState(0);
+  const [orgname,setorgname]=useState("")
   const {
     register,
     handleSubmit,
@@ -26,28 +28,27 @@ export default function Accounts() {
       }
     });
   };
-
+  
   useEffect(() => {
     Api.Get_User_update().then((res) => {
       var horg = 0;
-      if(res && res.data && res.data.data && res.data.data.organizations){       
-          let Index = res.data.data.organizations.findIndex(org => org.uuid === localStorage.getItem("uuid"));
-          horg = Index;
-      }       
+      if (res && res.data && res.data.data && res.data.data.organizations) {
+        let Index = res.data.data.organizations.findIndex(org => org.uuid === localStorage.getItem("uuid"));
+        horg = Index;
+      }
       sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
-
     });
   }, []);
   const selectOrganization = (e, key) => {
 
     if (process.browser) {
       localStorage.setItem("uuid", e.target.value);
-      localStorage.setItem("orgName",e.target.innerText)
+      localStorage.setItem("orgName", e.target.innerText)
+      setorgname(e.target.innerText)
+      // console.log(orgname)
     }
     sethighlightedorg(key);
-    window.location.reload()
-    
   };
   const handlelogout = () => {
     window.localStorage.clear();
@@ -58,14 +59,17 @@ export default function Accounts() {
   let email;
   let firstname;
   let lastname;
+  let Orgname;
   if (process.browser) {
     email = localStorage.getItem("ownerEmail");
     firstname = localStorage.getItem("ownername");
     lastname = localStorage.getItem("ownerLastname");
+    Orgname = localStorage.getItem("orgName");
   }
   const ownerEmail = email;
   const ownerFirstname = firstname;
   const ownerLastname = lastname;
+  const Org_name = Orgname;
 
   return (
     <div className={styles.container}>
@@ -195,6 +199,7 @@ export default function Accounts() {
           </div>
         </div>
       </div>
+      <div className='hidden'><Navbar Orgname={orgname} /></div>
     </div>
   );
 }

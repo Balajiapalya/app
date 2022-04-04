@@ -62,7 +62,7 @@ function Navbar() {
                     <ul>
                         <li>
                         
-                           <Link href="/environments"><a className={ local== 2 ? `${styles.activate}` : `${toggleStyle(1)}`} onClick={()=>handleActive(1)}><img src={toggleImg(1) || local==2?'/Images/Icon material-home(white).png':'/Images/Icon material-home.png'} alt='icon'></img> Environments</a></Link>
+                           <Link href="/environments"><a className={ local== 2 ? `${styles.activate}` : `${toggleStyle(1)}`} onClick={()=>handleActive(1)}><img src={toggleImg(1) || local==2?'/Images/Icon material-home(white).png':'/Images/Icon material-home.png'} alt='icon'></img> Environments   </a></Link>
                         </li>
                         <li>
                             <Link href='/videos'><a className={local== 3 ? `${styles.activate}` : `${toggleStyle(2)}`} onClick={()=>handleActive(2)}>{styles.activate?<img src={toggleImg(2) || local==3?'/Images/Icon material-video-library(white).png':'/Images/Icon material-video-library.png'} alt='icon'></img>:<img src="/Images/Icon material-video-library.png" alt='icon'></img>}Videos</a></Link>

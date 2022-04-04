@@ -32,12 +32,11 @@ export default function Payment_history({ closepaymenthistory }) {
             </tr>
           </thead>
           {paymenthistory.map((items, id) =>
-
             <tbody key={id}>
               <tr className={styles.tr}>
                 <td>{createdDate(items.paymentDate)}</td>
                 <td>{items.amount} {items.currency}</td>
-                <td><a href={items.downloadableInvoiceUrl}><img src="Images/download.png" alt='icon'></img></a></td>
+                <td><a href={items.downloadableInvoiceUrl} target='_blank' rel="noreferrer" download='invoice'><img src="Images/download.png" alt='icon'></img></a></td>
               </tr>
               
             </tbody>

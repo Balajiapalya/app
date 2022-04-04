@@ -835,15 +835,17 @@ margin: 10px;
 }
 .submit{
     width: 100%;
-    float: left;
+    margin-left: 20px;
 }
 .others_submit_btn{
-    float: right;
-    background-color: #2863eb;
-    color: #fff;
+    background-color:#fff;
+    color: #2863eb;
+    border: 1px solid #2863eb;
     margin-top: 10px;
     margin-bottom: 10px;
-    /* float: right; */
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Inter-Medium;
 }
 .tags_metadata_box table tbody{
     background-color: white;

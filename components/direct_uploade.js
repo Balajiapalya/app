@@ -76,6 +76,7 @@ export default function Direct_upload() {
                             name="file_name"
                             defaultValue={filename}
                             {...register("file_name", { required: true })}
+                            accept="video/*"
                         ></input>
                     </div>
 
