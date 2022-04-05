@@ -31,7 +31,7 @@ export default function Billing_plans() {
                             <h3 className={styles.content_key}>Price: <span>{items.pricing[0].unitAmount} {items.pricing[0].currency}</span></h3>
                         </div>
                         <div className={styles.plan_subscribe}>
-                            <a href={items.hostedPage}><button className={`${styles.plan_subscribe_btn} btn`}>Subscribe</button></a>
+                            <a href={items.hostedPage} target='_blank' rel="noreferrer" ><button className={`${styles.plan_subscribe_btn} btn`}>Subscribe</button></a>
                         </div>
                     </div>
                 </div>

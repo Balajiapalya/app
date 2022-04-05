@@ -13,19 +13,23 @@ function Billing() {
     const [videoInfo, set_videoInfo] = useState([]);
     const [videoAdded, set_videoAdded] = useState([]);
     const [videoStreamed, set_videoStreamed] = useState([]);
+    const [videostored, set_videostored] = useState([]);
     const createdDate = (date) => {
         var d = new Date(date);
-        return d.toLocaleString('en-IN', {day:"2-digit"});
+        return d.toLocaleString('en-IN', { day: "2-digit" });
     }
     const createdMonth = (date) => {
         var m = new Date(date);
-        return m.toLocaleString('en-IN', {month:"short"});
+        return m.toLocaleString('en-IN', { month: "short" });
     }
     const createdYear = (date) => {
         var y = new Date(date);
-        return y.toLocaleString('en-IN', {year:"numeric"});
+        return y.toLocaleString('en-IN', { year: "numeric" });
     }
     useEffect(() => {
+        account_info(1)
+    }, [])
+    const account_info=()=>{
         Api.Get_account_info()
             .then(res => {
                 if (res.data.status = "Success") {
@@ -33,6 +37,7 @@ function Billing() {
                     set_videoInfo(res.data.data)
                     set_videoAdded(res.data.data.breakup["Encoded Minutes"])
                     set_videoStreamed(res.data.data.breakup["Streamed Minutes"])
+                    set_videostored(res.data.data.breakup["Storage Minutes"])
                     if (res && res.data && res.data.data && res.data.data.billingInfo) {
                         set_accDetails(res.data.data.billingInfo)
                     }
@@ -41,7 +46,7 @@ function Billing() {
             .catch(error => {
                 console.log(error)
             })
-    }, [])
+    }
 
     let email;
     if (process.browser) {
@@ -66,11 +71,11 @@ function Billing() {
                         <div className={styles.tables_left}>
                             <div className={styles.Video_consumption}>
                                 <span className={styles.Video_consumption_heading}>Video Consumption</span>
-                                <span className={styles.Video_consumption_date}>({createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} - {createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} billing cycle)</span>
+                                <span className={styles.Video_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span>
                                 {/* <span> <a href="#">change Plan</a></span> */}
                                 <table>
                                     <tbody>
-                                        {[videoAdded].map((items,key) =>
+                                        {[videoAdded].map((items, key) =>
                                             <tr key={key}>
                                                 <td>Video added</td>
                                                 <td>{items.minutesUsed} min</td>
@@ -80,35 +85,37 @@ function Billing() {
                                         )}
                                         <tr>
                                             <td>Video added(Live)</td>
-                                            <td> min</td>
-                                            <td>at </td>
-                                            <td>$ </td>
+                                            <td>0 min</td>
+                                            <td>at 0.00 </td>
+                                            <td>$ 0.0 </td>
                                         </tr>
-                                        <tr>
-                                            <td>Video stored</td>
-                                            <td>min/month</td>
-                                            <td>at </td>
-                                            <td>$ </td>
-                                        </tr>
-                                        {[videoStreamed].map((item,key)=>
-                                        <tr key={key}>
-                                            <td>Video streamed</td>
-                                            <td>{item.minutesUsed} min</td>
-                                            <td>at {item.pricePerMinute}</td>
-                                            <td>$ {item.amountCharged}</td>
-                                        </tr>
+                                        {[videostored].map((i, key) =>
+                                            <tr key={key}>
+                                                <td>Video stored</td>
+                                                <td>{i.minutesUsed} min</td>
+                                                <td>at {i.pricePerMinute}</td>
+                                                <td>$ {i.amountCharged}</td>
+                                            </tr>
+                                        )}
+                                        {[videoStreamed].map((item, key) =>
+                                            <tr key={key}>
+                                                <td>Video streamed</td>
+                                                <td>{item.minutesUsed} min</td>
+                                                <td>at {item.pricePerMinute}</td>
+                                                <td>$ {item.amountCharged}</td>
+                                            </tr>
                                         )}
                                         <tr>
                                             <td>videograph credit</td>
                                             <td>{items.amountRemaining}$ remaining</td>
                                             <td></td>
-                                            <td>(${items.amountChargeable})</td>
+                                            <td>($ {items.amountChargeable})</td>
                                         </tr>
                                         <tr className={styles.current_video_cost}>
                                             <td >Current Video Cost</td>
                                             <td></td>
                                             <td></td>
-                                            <td>$</td>
+                                            <td>$ {items.amountChargeable}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -163,7 +170,7 @@ function Billing() {
                         </div>
                         <div className={styles.data_consumption}>
                             <span className={styles.data_consumption_heading}>Data Consumption</span>
-                            <span className={styles.data_consumption_date}>(Oct 08-Nov 08 billing cycle)</span>
+                            <span className={styles.data_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span>
                             {/* <span> <a href="#">change Plan</a></span> */}
                             <table>
                                 <tbody>

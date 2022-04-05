@@ -342,7 +342,7 @@ const Api = {
             url: video_url(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
 
