@@ -11,7 +11,7 @@ export default function Accounts() {
   const [openneworg, set_openneworg] = useState(false);
   const [neworg, setnewrog] = useState([]);
   const [highlightedorg, sethighlightedorg] = useState(0);
-  const [orgname,setorgname]=useState("")
+  const [orgname, setorgname] = useState("")
   const {
     register,
     handleSubmit,
@@ -22,7 +22,6 @@ export default function Accounts() {
   const onSubmit = (update_user_data) => {
     Api.User_update(update_user_data).then((res) => {
       if ((res.data.status = "Success")) {
-
         localStorage.setItem("ownername", res.data.data.firstName);
         localStorage.setItem("ownerLastname", res.data.data.lastName);
       }

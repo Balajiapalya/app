@@ -82,7 +82,7 @@ export const get_environment_types = () => {
 }
 //environment
 export const get_environment = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId=${uuid}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId=${localStorage.getItem("uuid")}`
 }
 export const get_new_env = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
