@@ -22,10 +22,10 @@ export default function Environment() {
 
 
   const onSubmit = (dev_data) => {
-   let data=localStorage.getItem('envuuid')
-    Api.Update_env(dev_data,data)
+    let data = localStorage.getItem('envuuid');
+    Api.Update_env(dev_data, data)
       .then((res) => {
-        if(res.data.status="Success"){
+        if (res.data.status = "Success") {
           // window.location.pathname="/environments/environment"
           Router.reload()
         }
@@ -33,7 +33,6 @@ export default function Environment() {
       .catch((error) => {
         console.log(error);
       });
- 
   };
   useEffect(() => {
     Api.Env_data()
@@ -58,12 +57,9 @@ export default function Environment() {
           for (var i = 0; i < envcount; i++) {
             openArr.push(false);
             closeArr.push(true);
-
           }
           setopeninvitemember(openArr);
-         
           setclosemodal(closeArr);
-
         }
       })
       .catch((error) => {
@@ -74,14 +70,11 @@ export default function Environment() {
         }
       });
   }, []);
-  
-  const setPopups = (index,items) => {
-   
-if(items){
-localStorage.setItem('envuuid', items.uuid)
 
-
-}
+  const setPopups = (index, items) => {
+    if (items) {
+      localStorage.setItem('envuuid', items.uuid)
+    }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
@@ -119,7 +112,7 @@ localStorage.setItem('envuuid', items.uuid)
 
               <tbody>
                 {envdata.map((items, i) => (
-                  <tr key={items.id}>
+                  <tr key={i}>
                     <td>
                       <form onSubmit={handleSubmit(onSubmit)}>
                         {closemodal[i] && (
@@ -128,13 +121,13 @@ localStorage.setItem('envuuid', items.uuid)
                             <a>
                               <img
                                 className={styles.edit_img}
-                                onClick={() => {setPopups(i,items)}}
+                                onClick={() => { setPopups(i, items) }}
                                 src="/Images/Icon material-edit.png"
                               />
                             </a>
                             <br />
-                            {env.map(item=><>
-                            {item.id===items.environmentTypeId && <span className={styles.side_head}>{item.name}</span>}
+                            {env.map((item,i) => <>
+                              {item.id === items.environmentTypeId && <span key={i} className={styles.side_head}>{item.name}</span>}
                             </>)}
                           </div>
                         )}
@@ -238,7 +231,7 @@ localStorage.setItem('envuuid', items.uuid)
                               <br />
                               <span className={styles.types_value}>
                                 {/* 20 */}
-                                </span>
+                              </span>
                             </div>
                             <div className={styles.box_data_types}>
                               <span className={styles.types_heading}>
