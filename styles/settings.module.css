@@ -67,9 +67,9 @@
     cursor: pointer;
 }
 
-.tools:hover .list_heading{
+/* .tools:hover .list_heading{
     color: white;
-}
+} */
 
 /* .tools:hover .list{
     display: block;
@@ -77,9 +77,9 @@
 .list{
     padding-top: 15px;
 }
-.list a:hover{
+/* .list a:hover{
     color: white;
-}
+} */
 .tools:hover .uppercomponents{
     margin-bottom: 0em;
 }
