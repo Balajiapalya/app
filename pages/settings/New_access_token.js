@@ -7,29 +7,38 @@ export default function New_Access_token({ closetoken }) {
    const [data, setData] = useState([])
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
    const [productType,setProductType]=useState([])
+   const [items,setItems]=useState([])
+   const [check,setChecked]=useState(false)
+
 
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
          setData(res.data.data))
-      Api.Get_product_data().then(res=>setProductType(res.data.data))
+      Api.Get_product_data().then(res=><>
+      {setItems(res.data.data[1])}
+      {setProductType(res.data.data[0])}
+      </>)
       
    }, [])
-
    const onSubmit = access_data => {
+
       access_data.permissions=[]
       let obj=new Object()
-      obj.productTypeId=parseInt(access_data.productTypeId[0])
+      obj.productTypeId=parseInt(productType.id)
       obj.canRead=access_data.canRead
       let objTwo=new Object()
-      objTwo.productTypeId=parseInt(access_data.productTypeId[1])
+      objTwo.productTypeId=parseInt(items.id)
       objTwo.canWrite=access_data.canWrite
       access_data.permissions.push(obj)
       access_data.permissions.push(objTwo)
-      let sliced=Object.fromEntries(Object.entries(access_data).slice(3,4).concat(Object.entries(access_data).slice(5,7)))
+      let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
       sliced.environmentUUID=localStorage.getItem('uuid')   
       Api.Create_aaccess_token_data(sliced)
-   }
 
+   }
+   
+   const videoAll=watch('video')
+   
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
@@ -78,22 +87,22 @@ export default function New_Access_token({ closetoken }) {
                      <label htmlFor="data">Data(read-only)</label>
                   </div> */}
                    <div className={styles.access_token_checkbox}>
-                   
-                     {productType.slice(0,2).map(i=><>
-                        <input
+                      
+                     <input
                         type="checkbox"
                         name="permissions"
-                        id={i.id}
-                        value={i.id}
-                        {...register("productTypeId", { required: true })}
+                        id={productType.id}
+                        value="all"
+                        {...register("video", { required: true })}
                      />
-                     <label> {i.name}</label><br />
-                     </>)}
-                     <input type="checkbox" className={styles.read} name="canRead" id="read"  {...register("canRead", { required: false })} />
+                     <label htmlFor="video"> {productType.name}</label><br />
+                     <input type="checkbox" value="true" checked={videoAll} className={styles.read} name="canRead"  {...register("canRead")} />
                      <label htmlFor="read" > Read</label><br />
-                     <input type="checkbox" className={styles.write} name="canWrite" id="write"  {...register("canWrite", { required: false })} />
+                     <input type="checkbox" value="true" checked={videoAll} className={styles.write}  name="canWrite" {...register("canWrite")} />
                      <label htmlFor="write" >Write</label><br />
-                  </div>
+                     <input type="checkbox" className={styles.data} name="data" id={items.id} {...register("data", { required: false })} />
+                     <label htmlFor="data">{items.name}(read-only)</label>
+                     </div>  
                   <label className={styles.model_label}>Access token name</label>
                   <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
                   {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
