@@ -14,7 +14,7 @@ function Signingkeys() {
         // Api.Get_sigin_keys()
         //     .then(res=>{
         //     })
-    },{})
+    },[])
     return (
         <Fragment>
             <section className={styles.wrapper_signing_keys}>

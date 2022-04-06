@@ -66,31 +66,36 @@ function Tabs() {
         <div
           className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
-          <Organisation />
+          {/* <Organisation /> */}
+          {toggleState=== 1 ? <Organisation/>:null}
         </div>
 
         <div
           className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
           {/* <Billing /> */}
+          {toggleState === 2 ? [page ? <Billing/>:<Billing_plans/>]:null}
           {/* <Billing_plans/> */}
-          {page ? <Billing /> : <Billing_plans />}
+          {/* {page ? <Billing /> : <Billing_plans />} */}
         </div>
         <div
           className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
-          <Apiaccesstokes />
+          {/* <Apiaccesstokes /> */}
+          {toggleState===3 ? <Apiaccesstokes/>:null}
         </div>
         <div
           className={toggleState === 4 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
-          <Webhooks />
+          {/* <Webhooks /> */}
+          {toggleState===4 ? <Webhooks/>:null}
         </div>
 
         <div
           className={toggleState === 5 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
-          <Signingkeys />
+          {/* <Signingkeys /> */}
+          {toggleState === 5? <Signingkeys/>:null}
         </div>
 
       </div>

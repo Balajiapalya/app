@@ -60,7 +60,8 @@
 
 .Video_consumption_date{
     font-family: Inter-Regular;
-    font-size: 14px;
+    font-size: 16px;
+    color: #4a5057;
 }
 .Video_consumption a{
     color: #2863eb;
@@ -74,12 +75,9 @@
     background-color: white;
     text-align: left;
     margin: 10px 0px 30px 0px;
-   
     border-collapse: collapse;
     font-family: Inter-Regular;
     font-size: 14px;
-
-
 }
 
 .Video_consumption table tbody tr td{
@@ -138,7 +136,7 @@
 }
 
 .payment_details table tbody tr td{
-    padding: 10px 93px 10px 20px;
+    padding: 10px 20px 10px 20px;
     color:#212b36;
 }
 .payment_details table tbody tr td img{
@@ -166,7 +164,8 @@
 
 .data_consumption_date{ 
     font-family: Inter-Regular;
-    font-size: 14px;
+    font-size: 16px;
+    color: #4a5057;
 }
 .data_consumption a{
     color: #2863eb;
@@ -259,9 +258,8 @@
         width:100%;
     }
     .Video_consumption table tbody tr td{
-        padding: 10px 80px 10px 20px;
+        padding: 10px 60px 10px 20px;
         color: #212b36;
-        
     }
 
     .tables_left .Video_consumption span a{
@@ -292,9 +290,7 @@
         width: 100%;
         float: left;
     }
-    .data_consumption_date{
-        margin-right: 18.5em;
-    }
+    
     .data_consumption table{
         box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
         background-color: white;
@@ -303,7 +299,7 @@
         width: 100%;
     }
     .data_consumption table tbody tr td{
-        padding: 10px 123px 10px 20px;
+        padding: 10px 60px 10px 20px;
         color: #212b36;   
     }
 }

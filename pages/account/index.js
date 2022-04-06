@@ -5,11 +5,13 @@ import Create_new_organization from "./create_new_organization";
 import Api from "../../components/api/api";
 import { useForm } from "react-hook-form";
 import ManageAccount from "../../components/ManageAccount";
+import Navbar from "../../components/common/navbar";
 
 export default function Accounts() {
   const [openneworg, set_openneworg] = useState(false);
   const [neworg, setnewrog] = useState([]);
   const [highlightedorg, sethighlightedorg] = useState(0);
+  const [orgname, setorgname] = useState("")
   const {
     register,
     handleSubmit,
@@ -20,7 +22,6 @@ export default function Accounts() {
   const onSubmit = (update_user_data) => {
     Api.User_update(update_user_data).then((res) => {
       if ((res.data.status = "Success")) {
-
         localStorage.setItem("ownername", res.data.data.firstName);
         localStorage.setItem("ownerLastname", res.data.data.lastName);
       }
@@ -30,24 +31,30 @@ export default function Accounts() {
   useEffect(() => {
     Api.Get_User_update().then((res) => {
       var horg = 0;
-      if(res && res.data && res.data.data && res.data.data.organizations){       
-          let Index = res.data.data.organizations.findIndex(org => org.uuid === localStorage.getItem("uuid"));
-          horg = Index;
-      }       
+      if (res && res.data && res.data.data && res.data.data.organizations) {
+        let Index = res.data.data.organizations.findIndex(org => org.uuid === localStorage.getItem("uuid"));
+        horg = Index;
+      }
       sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
-
-    });
+    })
+      .catch(error => {
+        if (error.response.data.code = 401) {
+          window.localStorage.clear();
+          document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+          window.location.href = '/signin'
+        }
+      })
   }, []);
   const selectOrganization = (e, key) => {
 
     if (process.browser) {
       localStorage.setItem("uuid", e.target.value);
-      localStorage.setItem("orgName",e.target.innerText)
+      localStorage.setItem("orgName", e.target.innerText)
+      setorgname(e.target.innerText)
+      // console.log(orgname)
     }
     sethighlightedorg(key);
-    window.location.reload()
-    
   };
   const handlelogout = () => {
     window.localStorage.clear();
@@ -58,14 +65,17 @@ export default function Accounts() {
   let email;
   let firstname;
   let lastname;
+  let Orgname;
   if (process.browser) {
     email = localStorage.getItem("ownerEmail");
     firstname = localStorage.getItem("ownername");
     lastname = localStorage.getItem("ownerLastname");
+    Orgname = localStorage.getItem("orgName");
   }
   const ownerEmail = email;
   const ownerFirstname = firstname;
   const ownerLastname = lastname;
+  const Org_name = Orgname;
 
   return (
     <div className={styles.container}>
@@ -195,6 +205,7 @@ export default function Accounts() {
           </div>
         </div>
       </div>
+      <div className='hidden'><Navbar Orgname={orgname} /></div>
     </div>
   );
 }

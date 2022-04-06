@@ -16,7 +16,7 @@ function Api_accesstokes() {
             .then(res => {
                 set_accessdata(res.data.data)
             })
-    }, {})
+    }, [])
 
     return (
         <Fragment>
@@ -57,13 +57,9 @@ function Api_accesstokes() {
                                     <td><a onClick={() => setrevoke(true)}>Revoke</a></td>
                                 </tr>
                                 {openrevoke && <Revoke closerevoke={setrevoke} />}
-
                             </tbody>
-
                         )}
-
                     </table>
-
                 </div>
             </section>
         </Fragment>

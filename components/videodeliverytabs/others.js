@@ -50,6 +50,9 @@ export default function Others() {
                                 <input type="text" className={styles.title_input} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" />
                                 <label className={styles.model_label}>Description</label>
                                 <input type="text" className={styles.description_input} name="Description" {...register("description", { required: true })} placeholder="Enter your description" />
+                                <div className={styles.submit}>
+                                    <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.tags_metadata}>
@@ -98,7 +101,9 @@ export default function Others() {
                                         </tr> */}
                                     </tbody>
                                 </table>
-
+                                <div className={styles.submit}>
+                                    <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
+                                </div>
                             </div>
 
                         </div>
