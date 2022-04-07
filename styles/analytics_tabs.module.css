@@ -14,12 +14,12 @@
      font-family: Inter-Medium;
      font-size: 28px;
 } 
-.settings .header  h3{
+/* .settings .header  h3{
      float: right;
      color: #212b36;
      font-family: Inter-Medium;
      font-size: 20px;
-}
+} */
 .events_data{
     width: 100%;
     float: left;
@@ -114,4 +114,17 @@
     width: 35%;
     margin-top: 4.8px;
     float: left;
+}
+
+/*----Metrics---------*/
+
+.Metrics_heading{
+    width: 100%;
+    float: left;
+}
+.Metrics_heading h3{
+    float: left;
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 20px;
 }
