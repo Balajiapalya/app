@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styles from '../styles/tabs.module.css';
+import Metrics from "./analytics_tabs/metrics";
 import Overview from "./analytics_tabs/overview";
 
 function Analytics_tabs() {
@@ -49,6 +50,7 @@ function Analytics_tabs() {
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
                     {/* <Billings /> */}
+                    <Metrics/>
                 </div>
 
                 <div

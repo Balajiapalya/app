@@ -42,11 +42,6 @@ export default function Videos() {
                     setEnvSelect(res.data.data)
                 }
             })
-        Api.Direct_upload_get_data(data)
-            .then(res => {
-                set_directdata(res.data.data)
-                // console.log(res.data.data)
-            })
         // Api.Direct_upload_get()
         //     .then(res=>{
         //         console.log(res.data)

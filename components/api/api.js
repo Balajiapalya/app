@@ -107,9 +107,7 @@ export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
 }
 //direct upload
-export const get_video_details = () => {
-    return ``
-}
+
 export const post_direct_video = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
@@ -131,6 +129,10 @@ export const update_user = () => {
 }
 export const change_paswrd = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password`
+}
+// videos -> overview
+export const delete_asset = () => {
+    return `${VIDEO_BASE_URL()}//services/api/v1/contents/${localStorage.getItem("videoId")}`
 }
 //others
 export const meta_update = () => {
@@ -503,6 +505,16 @@ const Api = {
             method:'GET',
             url:payment_history(),
             headers:headers,
+        }),
+    //videos->overview
+    Delete_asset: () => 
+        axios({
+            method:"DELETE",
+            url:delete_asset(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
         })
 }
 export default Api

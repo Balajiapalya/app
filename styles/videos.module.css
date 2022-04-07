@@ -235,6 +235,7 @@
     border: solid 1px #2863eb;
     margin: 20px 20px 15px;
     font-family: Inter-Medium;
+    cursor: pointer;
   }
   
 .upload_btn_wrapper input[type=file] {
@@ -295,6 +296,7 @@
     border: none;
     border-radius: 5px;
     float: left;
+    cursor: pointer;
 }
 .or{
     width: 100%;
