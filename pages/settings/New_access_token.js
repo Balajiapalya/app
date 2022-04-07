@@ -8,8 +8,6 @@ export default function New_Access_token({ closetoken }) {
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
    const [productType,setProductType]=useState([])
    const [items,setItems]=useState([])
-   const [check,setChecked]=useState(false)
-
 
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
@@ -21,13 +19,21 @@ export default function New_Access_token({ closetoken }) {
       
    }, [])
    const onSubmit = access_data => {
+      if(access_data.video){
+         access_data.canRead=true
+         access_data.canWrite=true
+      }
 
       access_data.permissions=[]
       let obj=new Object()
-      obj.productTypeId=parseInt(productType.id)
+      if(access_data.video){
+         obj.productTypeId=parseInt(productType.id)
+      }
       obj.canRead=access_data.canRead
       let objTwo=new Object()
-      objTwo.productTypeId=parseInt(items.id)
+      if(access_data.data){
+         objTwo.productTypeId=parseInt(items.id)
+      }
       objTwo.canWrite=access_data.canWrite
       access_data.permissions.push(obj)
       access_data.permissions.push(objTwo)
@@ -92,20 +98,20 @@ export default function New_Access_token({ closetoken }) {
                         type="checkbox"
                         name="permissions"
                         id={productType.id}
-                        value="all"
-                        {...register("video", { required: true })}
+                        value='true'
+                        {...register("video")}
                      />
                      <label htmlFor="video"> {productType.name}</label><br />
-                     <input type="checkbox" value="true" checked={videoAll} className={styles.read} name="canRead"  {...register("canRead")} />
+                     <input type="checkbox" checked={videoAll} className={styles.read} name="canRead"  {...register("canRead")} />
                      <label htmlFor="read" > Read</label><br />
-                     <input type="checkbox" value="true" checked={videoAll} className={styles.write}  name="canWrite" {...register("canWrite")} />
+                     <input type="checkbox" checked={videoAll} className={styles.write}  name="canWrite" {...register("canWrite")} />
                      <label htmlFor="write" >Write</label><br />
                      <input type="checkbox" className={styles.data} name="data" id={items.id} {...register("data", { required: false })} />
                      <label htmlFor="data">{items.name}(read-only)</label>
                      </div>  
                   <label className={styles.model_label}>Access token name</label>
                   <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
-                  {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
+                  {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                   <div className={styles.model_btn}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closetoken(false)}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
