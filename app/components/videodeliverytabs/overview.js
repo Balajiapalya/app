@@ -64,27 +64,29 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src='/Images/check-circle.png' /></td>
+                                            <td className={styles.content}>{i.status} <img src={`/Images/asset_status/${i.status}.png`} /></td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
-                                            <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins {i.transcodingResponse.data.videoStreams[0].duration.seconds} secs</td>
+                                            {i.duration? <td className={styles.content}>{Math.floor(i.duration/60000)} mins {Math.floor((i.duration%60000)/1000)} secs</td> : <td>-</td> }
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Aspect Ratio</td>
-                                            <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td>
+                                            {i.transcodingResponse && i.transcodingResponse.data && i.transcodingResponse.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td className={styles.content}>-</td>}
                                         </tr>
                                     </div>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    {i.transcodingInfo ?
                     <div className={styles.playback}>
                         <h2>Playback Sample</h2>
                         <div className={styles.playback_content} >
                             <video width="100%" height="295px" autoPlay controls  src={i.transcodingInfo.mediaUrl}></video>
                         </div>
-                    </div>
+                    </div> : <div className={styles.playback}>&nbsp;</div>}
+                    {i.transcodingInfo ?
                     <div className={styles.video_urls}>
                         <h2>Video URLs</h2>
                         <div className={styles.link_copy}>
@@ -137,7 +139,8 @@ export default function Overview() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> : <div/>}
+                    {i.transcodingInfo ?
                     <div className={styles.input_file}>
                         <h2>Input File Media Info</h2>
                         <div className={styles.media_info}>
@@ -199,7 +202,7 @@ export default function Overview() {
                             </div>
 
                         </div>
-                    </div>
+                    </div> : <div/>}
                 </div>)}
         </Fragment>
 
