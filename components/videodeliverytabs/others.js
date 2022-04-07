@@ -163,9 +163,6 @@ export default function Others() {
 
                         </div>
                     </div>
-                    <div className={styles.submit}>
-                        <button className={`${styles.others_submit_btn} btn`} type="submit">Submit</button>
-                    </div>
                 </div>
             </form>
         </Fragment >

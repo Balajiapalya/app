@@ -70,7 +70,7 @@ function Navbar() {
                             <Link href='/videos'><a className={local== 3 ? `${styles.activate}` : `${toggleStyle(2)}`} onClick={()=>handleActive(2)}>{styles.activate?<img src={toggleImg(2) || local==3?'/Images/Icon material-video-library(white).png':'/Images/Icon material-video-library.png'} alt='icon'></img>:<img src="/Images/Icon material-video-library.png" alt='icon'></img>}Videos</a></Link>
                         </li>
                         <li>
-                            <a className={local== 4 ? `${styles.activate}` : `${toggleStyle(3)}`} onClick={()=>handleActive(3)} href="#"><img src={toggleImg(3)|| local==4?'/Images/Icon simple-googleanalytics.png':'/Images/Icon simple-googleanalytics.png'} alt='icon'></img>Analytics</a>
+                           <Link href='/analytics'><a className={local== 4 ? `${styles.activate}` : `${toggleStyle(3)}`} onClick={()=>handleActive(3)}><img src={toggleImg(3)|| local==4?'/Images/Icon simple-googleanalytics.png':'/Images/Icon simple-googleanalytics.png'} alt='icon'></img>Analytics</a></Link>
                         </li>
                         <li style={opendropdown?{backgroundColor:"#262b36",color:'white'}:{backgroundColor:null}} className={styles.tools}>
                             <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)}><img src={ opendropdown?"/Images/Icon awesome-tools(white).png":"/Images/Icon awesome-tools.png"} alt="icon"></img>Tools</a>

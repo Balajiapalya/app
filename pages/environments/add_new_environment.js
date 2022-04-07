@@ -2,26 +2,25 @@ import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import { useEffect, useState } from 'react';
-
+import { useRouter } from 'next/router'
 
 
 export default function Add_new_environment({ closeenv }) {
 
     const [env, setenv] = useState([]);
-
-
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
-        new_env_data.organizationId=41
-        console.log(new_env_data)
+        const uuid = localStorage.getItem("uuid");
+        new_env_data.orgUUID = uuid;
         Api.Post_env(new_env_data)
             .then(res => {
-                console.log(res)
+                if (res.data.status = "Success") {
+                    window.location.reload();
+                }
             })
             .catch(error => {
                 console.log(error)
             })
-
     }
     useEffect(() => {
         Api.Env_data()
@@ -31,13 +30,11 @@ export default function Add_new_environment({ closeenv }) {
             })
             .catch(error => {
                 console.log(error)
-
             })
     }, [])
     return (
         <div className={`${styles.container} ${styles.accesstoken_model}`}>
             <div className={styles.body}>
-
                 <div className={styles.model_nav}>
                     <a className={styles.model_close} role="button" onClick={() => closeenv(false)}><img src="/Images/close.png" alt='icon' /> </a>
                 </div>
@@ -58,7 +55,7 @@ export default function Add_new_environment({ closeenv }) {
                         <select
                             name="environmentTypeId"
                             className={styles.model_selection}
-                            {...register("environmentTypeId", { required: true,valueAsNumber: true, })}
+                            {...register("environmentTypeId", { required: true, valueAsNumber: true, })}
                         >
                             {errors.environmentTypeId && <p className={`${styles.validations} validations`}>This field is required</p>}
                             {env.map((item, key) =>
@@ -70,13 +67,8 @@ export default function Add_new_environment({ closeenv }) {
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Add Environment</button>
                         </div>
                     </form>
-
                 </div>
-
             </div>
-
-
         </div>
-
     )
 }

@@ -10,12 +10,15 @@ import Api from "../api/api";
 
 function Tabs() {
   const [toggleState, setToggleState] = useState(1);
-  const [page, setpage] = useState(false)
+  const [page, setpage] = useState(false);
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
   useEffect(() => {
+    subscribed()
+  },[])
+  const subscribed=()=>{
     Api.List_org_subscriptions()
       .then(res => {
         if (res.data.data[0].uuid = "active") {
@@ -25,8 +28,7 @@ function Tabs() {
       .catch(error => {
         console.log(error)
       })
-  },[])
-
+  }
   return (
     <div className={styles.wrapper_tabs}>
       <div className={styles.bloc_tabs}>
