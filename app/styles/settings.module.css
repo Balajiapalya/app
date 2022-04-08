@@ -22,7 +22,9 @@
     color: #8798ac;  
 }
 
-
+.logout:hover{
+    color:white;
+}
 .containercomponents .uppercomponents ul li img{
     padding-right:10px;
     position: relative;

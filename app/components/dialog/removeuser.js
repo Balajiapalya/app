@@ -8,7 +8,7 @@ export default function Removeuser({ closeremoveuser ,item }) {
   
   const handleDelete=()=>{
     let del=[item.email]
-    Api.Remove_user_data(del).then(res=>console.log(res))
+    Api.Remove_user_data(del).then(res=>{})
     window.location.reload()
   }
   return (

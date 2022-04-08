@@ -1,0 +1,130 @@
+.settings {
+    padding:40px 5% ;
+    /* width: 87%;
+    float: right;  */
+ }
+ .settings .padding{
+     padding-left: 205px;
+    
+ }
+ 
+.settings .header  h2{
+     float: left;
+     color: #212b36;
+     font-family: Inter-Medium;
+     font-size: 28px;
+} 
+/* .settings .header  h3{
+     float: right;
+     color: #212b36;
+     font-family: Inter-Medium;
+     font-size: 20px;
+} */
+.events_data{
+    width: 100%;
+    float: left;
+
+}
+.background_develepment{
+    width: 100%;
+    float: left;
+    height: 60px;
+    background-color: #eaeaea;
+    padding-left: 205px;
+}
+.header_development{
+    padding-left: 6%;;
+}
+.content_development{
+    padding: 20px 5px 20px 0px ;
+}
+.content_development .store_icon_png{
+    padding-right: 10px;
+    position: relative;
+    top: 3.2px
+}
+.content_development p{
+    color: #196068;
+    position: relative;
+    bottom: 40px;
+    left:30px;
+    margin: 0;
+    width: 90%;
+}
+.content_development p .select{
+    background-color: #eaeaea;
+    border: none;
+    color: #196068;
+    outline: none;
+}
+/*-----overview-----*/
+.video_type_container{
+    width: 100%;
+    float: left;
+    display: flex;
+}
+.encoded_video,.stored_video,.streamed_video {
+    width: 33.3%;
+    height: 20vh;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    background-color: #ffff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+}
+.video_type_heading{
+    color: #212b36;
+    margin: 0.3rem 0rem;
+}
+.encoded_video,.stored_video{
+    margin-right: 10px;
+}
+.real_time_views_container{
+    width: 100%;
+    float: left;
+    background-color: #ffff;
+    margin: 10px 10px 20px 0px;
+    padding: 5px 15px;
+    height: 50vh;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+}
+.real_time_views_container,.countries_container,.devices_container .heading{
+    color: black;
+    margin: 0.3rem 0rem;
+}
+.countries_devices_container{
+    width: 100%;
+    float: left;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.countries_container,.devices_container{
+    height: 50vh;
+    padding: 5px 15px;
+    background-color: #ffff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+
+}
+.countries_container{
+    width: 65%;
+    float: left;
+    margin-right: 10px;
+}
+.devices_container{
+    width: 35%;
+    margin-top: 4.8px;
+    float: left;
+}
+
+/*----Metrics---------*/
+
+.Metrics_heading{
+    width: 100%;
+    float: left;
+}
+.Metrics_heading h3{
+    float: left;
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 20px;
+}

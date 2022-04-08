@@ -2,13 +2,21 @@ import styles from '../../styles/videos.module.css';
 import Layout from '../../components/common/layout';
 import Videodelivery_tabs from '../../components/homepage/videodelivery_tabs';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import Api from '../../components/api/api';
 
 export default function Video() {
-    let assettitle;
-    if(process.browser){
-        assettitle = localStorage.getItem("asset_title")
+    const [name,setname]=useState([])
+    useEffect(()=>{
+        titlea()
+    })
+    const titlea=()=>{
+        Api.Get_Env_item()
+        .then(res=>{
+            console.log(res.data.data.title)
+            setname(res.data.data.title)
+        })
     }
-    const title = assettitle
     return (
         <div className={styles.container}>
             <div className={styles.videosdelivery_assets}>
@@ -16,12 +24,12 @@ export default function Video() {
                     <div className={styles.header}>
                         <div className={styles.assets}>
                             <Link href="/videos"><a>Asset List</a></Link>
-                            <p> &gt; {title}</p>
+                            <p> &gt; {name}</p>
                         </div>
                         <div className={styles.header_asianet}>
                             <img className={styles.icon_stat} src="/Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
                             <h2>
-                                {title}
+                                {name}
                                 <img className={styles.edit_img} src="/Images/Icon material-edit.png" alt="edit" /><span> Edit</span>
                             </h2>
                         </div>

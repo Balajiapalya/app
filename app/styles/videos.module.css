@@ -149,6 +149,11 @@
     word-break: break-all;
     font-size: 14px;
 }
+.videos_table table thead tr th img{
+    vertical-align: initial;
+    width: 7px;
+    margin-left: 3px;
+}
 
 .videos_table table thead tr th input {
     background-color: inherit;
@@ -175,8 +180,10 @@
 }
 
 .actionicons img{
-    margin-right: 3%;
-    
+    margin-right: 3%;   
+}
+.active{
+    cursor: pointer;
 }
 .checkcircle{
     width: 10px;
@@ -228,14 +235,15 @@
 }
 .btn {
     color: #2863eb;
-    padding: 10px 49px;
+    padding: 6px 20px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 16px;
     background-color: #fff;
     border: solid 1px #2863eb;
     margin: 20px 20px 15px;
     font-family: Inter-Medium;
-  }
+    cursor: pointer;
+}
   
 .upload_btn_wrapper input[type=file] {
     font-size: 100px;
@@ -243,7 +251,6 @@
     left: 0;
     top: 0;
     opacity: 0;
-
 }
 .upload_file{
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
@@ -295,6 +302,7 @@
     border: none;
     border-radius: 5px;
     float: left;
+    cursor: pointer;
 }
 .or{
     width: 100%;

@@ -6,7 +6,6 @@ import Add_new_environment from "./add_new_environment";
 import { useForm } from "react-hook-form";
 import Router from 'next/router'
 
-
 export default function Environment() {
   const {
     register,
@@ -19,7 +18,8 @@ export default function Environment() {
   const [env, setenv] = useState([]);
   const [openModel, setopeninvitemember] = useState([]);
   const [closemodal, setclosemodal] = useState([]);
-
+  const [valueDefault,setValue]=useState('')
+  
 
   const onSubmit = (dev_data) => {
     let data = localStorage.getItem('envuuid');
@@ -50,7 +50,6 @@ export default function Environment() {
       .then((res) => {
         if ((res.data.status = "Success")) {
           set_envdata(res.data.data);
-          // console.log(res.data.data)
           var envcount = res.data.data.length;
           let openArr = [];
           let closeArr = [];
@@ -70,17 +69,19 @@ export default function Environment() {
         }
       });
   }, []);
-
+  
   const setPopups = (index, items) => {
-    if (items) {
+    if (items) {    
+     setValue(items.name)
       localStorage.setItem('envuuid', items.uuid)
     }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
-    setclosemodal([...closemodal]);
-    // console.log([...closemodal]);
+    setclosemodal([...closemodal]); 
+
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.settings}>
@@ -121,7 +122,7 @@ export default function Environment() {
                             <a>
                               <img
                                 className={styles.edit_img}
-                                onClick={() => { setPopups(i, items) }}
+                                onClick={() => { setPopups(i, items)}}
                                 src="/Images/Icon material-edit.png"
                               />
                             </a>
@@ -132,10 +133,11 @@ export default function Environment() {
                           </div>
                         )}
                         {openModel[i] && (
-                          <div>
-                            <input
+                          <div>      
+                          <input
                               className={styles.dev_head}
-                              name="name"
+                              name="name" 
+                              placeHolder ={valueDefault}
                               {...register("name", { required: true })}
                             />
                             {errors.name && (

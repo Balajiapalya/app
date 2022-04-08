@@ -9,13 +9,19 @@ import Api from '../api/api'
 export default function Others() {
     const [keys, setKey] = useState({ key: '', value: '' })
     const [meta, setMeta] = useState([])
+    const [tags, setTags] = useState([])
     const [selected, setSelected] = useState([]);
+    const [dataVideo, setDataVideo] = useState([])
+
 
     const onSubmit = (video_data) => {
         video_data['tags'] = selected;
         video_data['metadata'] = meta;
-        console.log(video_data)
-        Api.Meta_tag(video_data).then(res => console.log(res));
+        Api.Meta_tag(video_data).then(res => {
+        })
+        .catch(error=>{
+            console.log(error)
+        })
 
     }
     // set in object
@@ -26,6 +32,7 @@ export default function Others() {
         setKey(formValue)
 
     }
+
     // set in state to add
     const handleClick = () => {
         const newObj = {
@@ -33,7 +40,17 @@ export default function Others() {
             value: keys.value
         }
         setMeta([...meta, newObj])
+        setKey({ key: '', value: '' })
     }
+
+    useEffect(() => {
+        Api.Get_Env_item().then(res => {
+            setDataVideo(res.data.data)
+            setTags(res.data.data.tags)
+            setMeta(res.data.data.metadata)
+            setSelected(res.data.data.tags)
+        })
+    }, [])
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -47,9 +64,9 @@ export default function Others() {
                             <h2>Title &amp; Description</h2>
                             <div className={styles.title_description_box}>
                                 <label className={styles.model_label}>Title</label>
-                                <input type="text" className={styles.title_input} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" />
+                                <input type="text" className={styles.title_input} defaultValue={dataVideo.title} name="Title" {...register("title", { required: false })} placeholder="Enter title or video" />
                                 <label className={styles.model_label}>Description</label>
-                                <input type="text" className={styles.description_input} name="Description" {...register("description", { required: true })} placeholder="Enter your description" />
+                                <input type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description", { required: true })} placeholder="Enter your description" />
                                 <div className={styles.submit}>
                                     <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
                                 </div>
@@ -61,23 +78,28 @@ export default function Others() {
                                 <label className={styles.model_label}>Tags</label>
 
                                 <div className={styles.tags}>
+                                {tags.map(i=><>
+                                    <span  className="rti--tag go1186250972" name="tags"><span>{i}</span><button type="button" >✕</button></span>
+                                </>)}
+                                    
                                     <TagsInput
                                         value={selected}
                                         onChange={setSelected}
                                         name="tags"
                                         placeHolder="tags"
                                     ></TagsInput>
+                                    {/* {tags.map(i=>i)} */}
                                 </div>
                                 <label className={styles.model_label}>Metadata</label>
                                 <table>
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" />
+                                                <input className={styles.others_input} type="text" value={keys.key} onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" />
                                             </th>
                                             <th>
 
-                                                <input className={styles.others_input} type="text" onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
+                                                <input className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
                                                 <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/Images/Icon feather-plus-grey.png' /> Add</button>
                                             </th>
 
@@ -151,9 +173,6 @@ export default function Others() {
                             </div>
 
                         </div>
-                    </div>
-                    <div className={styles.submit}>
-                        <button className={`${styles.others_submit_btn} btn`} type="submit">Submit</button>
                     </div>
                 </div>
             </form>

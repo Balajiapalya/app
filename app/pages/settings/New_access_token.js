@@ -7,29 +7,44 @@ export default function New_Access_token({ closetoken }) {
    const [data, setData] = useState([])
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
    const [productType,setProductType]=useState([])
+   const [items,setItems]=useState([])
 
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
          setData(res.data.data))
-      Api.Get_product_data().then(res=>setProductType(res.data.data))
+      Api.Get_product_data().then(res=><>
+      {setItems(res.data.data[1])}
+      {setProductType(res.data.data[0])}
+      </>)
       
    }, [])
-
    const onSubmit = access_data => {
+      if(access_data.video){
+         access_data.canRead=true
+         access_data.canWrite=true
+      }
+
       access_data.permissions=[]
       let obj=new Object()
-      obj.productTypeId=parseInt(access_data.productTypeId[0])
+      if(access_data.video){
+         obj.productTypeId=parseInt(productType.id)
+      }
       obj.canRead=access_data.canRead
       let objTwo=new Object()
-      objTwo.productTypeId=parseInt(access_data.productTypeId[1])
+      if(access_data.data){
+         objTwo.productTypeId=parseInt(items.id)
+      }
       objTwo.canWrite=access_data.canWrite
       access_data.permissions.push(obj)
       access_data.permissions.push(objTwo)
-      let sliced=Object.fromEntries(Object.entries(access_data).slice(3,4).concat(Object.entries(access_data).slice(5,7)))
+      let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
       sliced.environmentUUID=localStorage.getItem('uuid')   
       Api.Create_aaccess_token_data(sliced)
-   }
 
+   }
+   
+   const videoAll=watch('video')
+   
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
@@ -78,25 +93,25 @@ export default function New_Access_token({ closetoken }) {
                      <label htmlFor="data">Data(read-only)</label>
                   </div> */}
                    <div className={styles.access_token_checkbox}>
-                   
-                     {productType.slice(0,2).map(i=><>
-                        <input
+                      
+                     <input
                         type="checkbox"
                         name="permissions"
-                        id={i.id}
-                        value={i.id}
-                        {...register("productTypeId", { required: true })}
+                        id={productType.id}
+                        value='true'
+                        {...register("video")}
                      />
-                     <label> {i.name}</label><br />
-                     </>)}
-                     <input type="checkbox" className={styles.read} name="canRead" id="read"  {...register("canRead", { required: false })} />
+                     <label htmlFor="video"> {productType.name}</label><br />
+                     <input type="checkbox" checked={videoAll} className={styles.read} name="canRead"  {...register("canRead")} />
                      <label htmlFor="read" > Read</label><br />
-                     <input type="checkbox" className={styles.write} name="canWrite" id="write"  {...register("canWrite", { required: false })} />
+                     <input type="checkbox" checked={videoAll} className={styles.write}  name="canWrite" {...register("canWrite")} />
                      <label htmlFor="write" >Write</label><br />
-                  </div>
+                     <input type="checkbox" className={styles.data} name="data" id={items.id} {...register("data", { required: false })} />
+                     <label htmlFor="data">{items.name}(read-only)</label>
+                     </div>  
                   <label className={styles.model_label}>Access token name</label>
                   <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
-                  {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
+                  {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                   <div className={styles.model_btn}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closetoken(false)}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>

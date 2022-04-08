@@ -1,29 +1,62 @@
-import { Fragment, useEffect, useState } from 'react'
-import styles from '../../styles/videodelivery_tabs.module.css'
-import Api from '../api/api'
+import { Fragment, useEffect, useState } from 'react';
+import styles from '../../styles/videodelivery_tabs.module.css';
+import Api from '../api/api';
+import { useRouter } from 'next/router';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function Overview() {
+    const router = useRouter();
     const [player, setplayer] = useState([]);
+    const [tooltip, settooltip] = useState(false);
+    const [tooltipURL, settooltipURL] = useState(false);
     useEffect(() => {
 
         Api.Get_Env_item()
             .then(res => {
-                setplayer([res.data.data])
-                localStorage.setItem("asset_title",res.data.data.title)
+                if(res&&res.data&&res.data.data){
+                    setplayer([res.data.data])
+                    localStorage.setItem("asset_title", res.data.data.title)
+                }
+                
+            }).catch(error=>{
+                console.log(error)
             })
     }, []);
+    const showtooltip = () => {
+        settooltip(true)
+        setTimeout(() => {
+            settooltip(false)
+        }, 200);
+    }
+    const showtooltipURL = () => {
+        settooltipURL(true)
+        setTimeout(() => {
+            settooltipURL(false)
+        }, 200);
 
+    }
     const created = (date) => {
         const d = new Date(date)
         return d.toLocaleString();
-    
     }
-    // const minute = (data) => {
-    //     let seconds = Math.floor(data / 1000);
-    //     let minutes = Math.floor(seconds / 60);
-    //     minutes = minutes % 60;
-    //     return minutes.toLocaleString();
-    // }
+
+    const delete_asset = () => {
+        Api.Delete_asset()
+            .then(res => {
+                if (res.data.status = "Success") {
+                    router.push({
+                        pathname: "/videos"
+                    })
+                }
+            })
+            .catch(error=>{
+                if (error.response.data.code = 401) {
+                    window.localStorage.clear();
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
+            })
+    }
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -38,25 +71,21 @@ export default function Overview() {
                                 <img src="/Images/Icon awesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
-                                <button className='btn'>Delete Asset</button>
+                                <button onClick={() => delete_asset()} className='btn'>Delete Asset</button>
                                 <img src="/Images/Icon material-delete.png" alt="delete"></img>
                             </div>
 
                         </div>
                     </div>
-
-
                     <div className={styles.asset_detials}>
-
                         <h2>Video Detials</h2>
-
                         <div className={styles.asset_detials_content}>
                             <table className={styles.content_table}>
                                 <tbody>
                                     <div>
                                         <tr>
                                             <td className={styles.title}>Video ID</td>
-                                            <td className={styles.content}>{i.videoId}</td>
+                                           {i.videoId?<td className={styles.content}>{i.videoId}</td>:<td>-</td>} 
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
@@ -64,29 +93,27 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/Images/asset_status/${i.status}.png`} /></td>
+                                            {i.status=="Ready"?<td className={styles.content}>{i.status} <img src='/Images/check-circle.png' /></td>:<td className={styles.content}>{i.status}</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
-                                            {i.duration? <td className={styles.content}>{Math.floor(i.duration/60000)} mins {Math.floor((i.duration%60000)/1000)} secs</td> : <td>-</td> }
+                                            {i.duration?<td className={styles.content}>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td>:<td>-</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Aspect Ratio</td>
-                                            {i.transcodingResponse && i.transcodingResponse.data && i.transcodingResponse.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td className={styles.content}>-</td>}
+                                            {i.transcodingResponse.data.videoStreams?<td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td>:<td>-</td>}
                                         </tr>
                                     </div>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {i.transcodingInfo ?
                     <div className={styles.playback}>
                         <h2>Playback Sample</h2>
                         <div className={styles.playback_content} >
-                            <video width="100%" height="295px" autoPlay controls  src={i.transcodingInfo.mediaUrl}></video>
+                            <video width="100%" height="295px" autoPlay controls src={i.transcodingInfo.mediaUrl}></video>
                         </div>
-                    </div> : <div className={styles.playback}>&nbsp;</div>}
-                    {i.transcodingInfo ?
+                    </div>
                     <div className={styles.video_urls}>
                         <h2>Video URLs</h2>
                         <div className={styles.link_copy}>
@@ -106,10 +133,13 @@ export default function Overview() {
                                     <h4>Link to HLS</h4>
                                     <div className={styles.copy_link}>
                                         <div className={styles.link}>
-                                            <p>{i.playback[0].url}</p>
+                                            <p>{i.transcodingResponse.playback_url}</p>
                                         </div>
                                         <div className={styles.copy_img}>
-                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            <CopyToClipboard text={i.transcodingResponse.playback_url}>
+                                                <img onClick={() => showtooltip()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            </CopyToClipboard>
+                                            {tooltip ? <span className={styles.tooltip}>copied</span> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -139,8 +169,7 @@ export default function Overview() {
                                 </div>
                             </div>
                         </div>
-                    </div> : <div/>}
-                    {i.transcodingInfo ?
+                    </div>
                     <div className={styles.input_file}>
                         <h2>Input File Media Info</h2>
                         <div className={styles.media_info}>
@@ -148,11 +177,13 @@ export default function Overview() {
                             <div className={styles.video_url}>
                                 <div className={styles.copy_link}>
                                     <div className={styles.link}>
-                                        <p> {i.transcodingInfo.mediaUrl}
-                                        </p>
+                                       {i.transcodingInfo?<p>{i.transcodingInfo.mediaUrl}</p>:<p></p>} 
                                     </div>
                                     <div className={styles.copy_img}>
-                                        <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                        <CopyToClipboard text={i.transcodingInfo?i.transcodingInfo.mediaUrl:null}>
+                                            <img onClick={() => showtooltipURL()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                        </CopyToClipboard>
+                                        {tooltipURL ? <span className={styles.tooltip}>copied</span> : null}
                                     </div>
                                 </div>
                             </div>
@@ -170,11 +201,11 @@ export default function Overview() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{i.transcodingInfo.videoInfo[0].width}</td>
-                                            <td>{i.transcodingInfo.videoInfo[0].height}</td>
-                                            <td>{i.transcodingInfo.videoInfo[0].frameRate}</td>
-                                            <td>{i.transcodingInfo.videoInfo[0].encoding}</td>
-                                            <td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].width}</td>:<td>-</td>}
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].height}</td>:<td>-</td>}
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].frameRate}</td>:<td>-</td>}
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].encoding}</td>:<td>-</td>}
+                                            {i.duration?<td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td>:<td>-</td>}
                                         </tr>
                                     </tbody>
                                 </table>
@@ -191,21 +222,18 @@ export default function Overview() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>
-                                            <td>{i.transcodingInfo.audioInfo[0].encoding}</td>
-                                            <td>{i.transcodingInfo.audioInfo[0].channels}</td>
-
-                                            <td>{i.transcodingResponse.data.videoStreams[0].duration.minutes} mins</td>
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>:<td>-</td>}
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.audioInfo[0].encoding}</td>:<td>-</td>}
+                                            {i.transcodingInfo?<td>{i.transcodingInfo.audioInfo[0].channels}</td>:<td>-</td>}
+                                            {i.duration?<td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td>:<td>-</td>}
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
                         </div>
-                    </div> : <div/>}
+                    </div>
                 </div>)}
         </Fragment>
-
-
     )
 }
