@@ -485,6 +485,18 @@ margin-top: 20px;
     width: 90%;
     float: left;
 }
+.tooltip{
+    position: relative;
+    top: 5px;
+    right: 5px;
+    margin: 5px;
+    padding: 2px;
+    border-radius: 5px;
+    /* background-color: #f4f6f8; */
+    background-color: #fff;
+    border: solid 1px rgba(99, 115, 129, 0.3);
+    color: #4a5057;
+}
 /* .copy_link .copy_img{
     width: 8%;
     float: right;
@@ -736,6 +748,7 @@ margin: 10px;
     color: #212b36;
     border: solid 1px rgba(99, 115, 129, 0.3);
 }
+
 .description_input{
     width:calc(100% - 40px);
     border-bottom: 2px solid #ddd;
@@ -776,6 +789,9 @@ margin: 10px;
     color: #212b36;
     border: solid 1px rgba(99, 115, 129, 0.3);
     float: left;
+}
+.tags div{
+    display: contents;
 }
 .tags span{
     background-color: #ededed;
