@@ -13,12 +13,12 @@ export default function Overview() {
 
         Api.Get_Env_item()
             .then(res => {
-                if(res&&res.data&&res.data.data){
+                if (res && res.data && res.data.data) {
                     setplayer([res.data.data])
                     localStorage.setItem("asset_title", res.data.data.title)
                 }
-                
-            }).catch(error=>{
+
+            }).catch(error => {
                 console.log(error)
             })
     }, []);
@@ -49,7 +49,7 @@ export default function Overview() {
                     })
                 }
             })
-            .catch(error=>{
+            .catch(error => {
                 if (error.response.data.code = 401) {
                     window.localStorage.clear();
                     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
@@ -85,7 +85,7 @@ export default function Overview() {
                                     <div>
                                         <tr>
                                             <td className={styles.title}>Video ID</td>
-                                           {i.videoId?<td className={styles.content}>{i.videoId}</td>:<td>-</td>} 
+                                            {i.videoId ? <td className={styles.content}>{i.videoId}</td> : <td>-</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
@@ -93,146 +93,149 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            {i.status=="Ready"?<td className={styles.content}>{i.status} <img src='/Images/check-circle.png' /></td>:<td className={styles.content}>{i.status}</td>}
+                                            <td className={styles.content}>{i.status} <img src={`/Images/asset_status/${i.status}.png`} /></td> 
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
-                                            {i.duration?<td className={styles.content}>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td>:<td>-</td>}
+                                            {i.duration ? <td className={styles.content}>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Aspect Ratio</td>
-                                            {i.transcodingResponse.data.videoStreams?<td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td>:<td>-</td>}
+                                            {i.transcodingResponse&&i.transcodingResponse.data&&i.transcodingResponse.data.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td>-</td>}
                                         </tr>
                                     </div>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div className={styles.playback}>
-                        <h2>Playback Sample</h2>
-                        <div className={styles.playback_content} >
-                            <video width="100%" height="295px" autoPlay controls src={i.transcodingInfo.mediaUrl}></video>
-                        </div>
-                    </div>
-                    <div className={styles.video_urls}>
-                        <h2>Video URLs</h2>
-                        <div className={styles.link_copy}>
-                            <div className={styles.video_hls}>
-                                <div className={styles.link_video}>
-                                    <h4>Link to video</h4>
-                                    <div className={styles.copy_link}>
-                                        <div className={styles.link}>
-                                            <p> </p>
+                    {i.transcodingInfo ?
+                        <div className={styles.playback}>
+                            <h2>Playback Sample</h2>
+                            <div className={styles.playback_content} >
+                                <video width="100%" height="295px" autoPlay controls src={i.transcodingInfo.mediaUrl}></video>
+                            </div>
+                        </div> : <div className={styles.playback}>&nbsp;</div>}
+                    {i.transcodingInfo ?
+                        <div className={styles.video_urls}>
+                            <h2>Video URLs</h2>
+                            <div className={styles.link_copy}>
+                                <div className={styles.video_hls}>
+                                    <div className={styles.link_video}>
+                                        <h4>Link to video</h4>
+                                        <div className={styles.copy_link}>
+                                            <div className={styles.link}>
+                                                <p> </p>
+                                            </div>
+                                            <div className={styles.copy_img}>
+                                                <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            </div>
                                         </div>
-                                        <div className={styles.copy_img}>
-                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                    </div>
+                                    <div className={styles.link_hls}>
+                                        <h4>Link to HLS</h4>
+                                        <div className={styles.copy_link}>
+                                            <div className={styles.link}>
+                                                <p>{i.transcodingResponse.playback_url}</p>
+                                            </div>
+                                            <div className={styles.copy_img}>
+                                                <CopyToClipboard text={i.transcodingResponse.playback_url}>
+                                                    <img onClick={() => showtooltip()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                                </CopyToClipboard>
+                                                {tooltip ? <span className={styles.tooltip}>copied</span> : null}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className={styles.link_hls}>
-                                    <h4>Link to HLS</h4>
+                                <div className={styles.embed_thubnail}>
+                                    <div className={styles.link_embedcode}>
+                                        <h4>Embed code</h4>
+                                        <div className={styles.copy_link}>
+                                            <div className={styles.link}>
+                                                <p> </p>
+                                            </div>
+                                            <div className={styles.copy_img}>
+                                                <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.link_thumbnail}>
+                                        <h4>Link to Thumbnail</h4>
+                                        <div className={styles.copy_link}>
+                                            <div className={styles.link}>
+                                                <p></p>
+                                            </div>
+                                            <div className={styles.copy_img}>
+                                                <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> : <div />}
+                    {i.transcodingInfo ?
+                        <div className={styles.input_file}>
+                            <h2>Input File Media Info</h2>
+                            <div className={styles.media_info}>
+                                <h4>Video URL</h4>
+                                <div className={styles.video_url}>
                                     <div className={styles.copy_link}>
                                         <div className={styles.link}>
-                                            <p>{i.transcodingResponse.playback_url}</p>
+                                             <p>{i.transcodingInfo.mediaUrl}</p>
                                         </div>
                                         <div className={styles.copy_img}>
-                                            <CopyToClipboard text={i.transcodingResponse.playback_url}>
-                                                <img onClick={() => showtooltip()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                            <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
+                                                <img onClick={() => showtooltipURL()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
                                             </CopyToClipboard>
-                                            {tooltip ? <span className={styles.tooltip}>copied</span> : null}
+                                            {tooltipURL ? <span className={styles.tooltip}>copied</span> : null}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles.embed_thubnail}>
-                                <div className={styles.link_embedcode}>
-                                    <h4>Embed code</h4>
-                                    <div className={styles.copy_link}>
-                                        <div className={styles.link}>
-                                            <p> </p>
-                                        </div>
-                                        <div className={styles.copy_img}>
-                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.link_thumbnail}>
-                                    <h4>Link to Thumbnail</h4>
-                                    <div className={styles.copy_link}>
-                                        <div className={styles.link}>
-                                            <p></p>
-                                        </div>
-                                        <div className={styles.copy_img}>
-                                            <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.input_file}>
-                        <h2>Input File Media Info</h2>
-                        <div className={styles.media_info}>
-                            <h4>Video URL</h4>
-                            <div className={styles.video_url}>
-                                <div className={styles.copy_link}>
-                                    <div className={styles.link}>
-                                       {i.transcodingInfo?<p>{i.transcodingInfo.mediaUrl}</p>:<p></p>} 
-                                    </div>
-                                    <div className={styles.copy_img}>
-                                        <CopyToClipboard text={i.transcodingInfo?i.transcodingInfo.mediaUrl:null}>
-                                            <img onClick={() => showtooltipURL()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
-                                        </CopyToClipboard>
-                                        {tooltipURL ? <span className={styles.tooltip}>copied</span> : null}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.Video_info}>
-                                <h4>Video Info</h4>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Width</th>
-                                            <th>Height</th>
-                                            <th>Frame Rate</th>
-                                            <th>Encoding</th>
-                                            <th>Duration</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].width}</td>:<td>-</td>}
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].height}</td>:<td>-</td>}
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].frameRate}</td>:<td>-</td>}
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.videoInfo[0].encoding}</td>:<td>-</td>}
-                                            {i.duration?<td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td>:<td>-</td>}
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div className={styles.Video_info}>
+                                    <h4>Video Info</h4>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Width</th>
+                                                <th>Height</th>
+                                                <th>Frame Rate</th>
+                                                <th>Encoding</th>
+                                                <th>Duration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                 <td>{i.transcodingInfo.videoInfo[0].width}</td> 
+                                                 <td>{i.transcodingInfo.videoInfo[0].height}</td> 
+                                                 <td>{i.transcodingInfo.videoInfo[0].frameRate}</td> 
+                                                 <td>{i.transcodingInfo.videoInfo[0].encoding}</td>
+                                                {i.duration ? <td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                <h4>Audio Info</h4>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Sample Rate</th>
-                                            <th>Encoding</th>
-                                            <th>Channels</th>
-                                            <th>Duration</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>:<td>-</td>}
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.audioInfo[0].encoding}</td>:<td>-</td>}
-                                            {i.transcodingInfo?<td>{i.transcodingInfo.audioInfo[0].channels}</td>:<td>-</td>}
-                                            {i.duration?<td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td>:<td>-</td>}
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <h4>Audio Info</h4>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Sample Rate</th>
+                                                <th>Encoding</th>
+                                                <th>Channels</th>
+                                                <th>Duration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                               <td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>
+                                               <td>{i.transcodingInfo.audioInfo[0].encoding}</td> 
+                                               <td>{i.transcodingInfo.audioInfo[0].channels}</td> 
+                                                {i.duration ? <td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                        </div>
-                    </div>
+                            </div>
+                        </div> : <div />}
                 </div>)}
         </Fragment>
     )
