@@ -316,7 +316,7 @@
     margin-top:40px;
 }
 .environments_button p{
-    width: 80%;
+    width: 70%;
     float: left;
 }
 .environments_button button{
@@ -334,7 +334,7 @@
 .environments_table{
     width: 100%;
     float: left;
-    margin-top: 40px;
+    margin: 40px 0px;
 }
 .environments_table table{
     width: 100%;
@@ -346,11 +346,16 @@
     background-color: #f4f5f7;
     border-collapse: collapse;
     font-family: Inter-Medium;
+    text-align: left;
     font-size: 14px;
-    padding: 10px 5px;
+    color: #212b36;
+    padding: 15px 18px;
 }
 .environments_table tbody{
     background-color: white;
+}
+.env_table{
+    border-bottom: 1px solid #ecedef;
 }
 /* .environments_table tbody tr{
     border-bottom: 1px solid black;
@@ -370,6 +375,7 @@
     border: 1px solid #e0e0e0;
     background-color: #f6f8fe;
     padding: 5%;
+    border-radius: 3px;
 }
 .box_content{
     width: 100%;
@@ -381,10 +387,11 @@
     margin-bottom: 10px;
     font-size: 12px;
     font-family: Inter-Italic;
+    color: #555555;
 }
 .edit_img{
     position: relative;
-    left: 5px;
+    left: 7px;
 }
 .box_data{
     width: 100%;
@@ -432,7 +439,7 @@
     color:  #212b36;
 }
 .dev_head{
-    padding: 5px 5px;
+    padding: 7px 5px;
     width: 70%;
     float: left;
     border: 1px solid rgba(198, 198, 198, 0.63);
@@ -447,7 +454,7 @@
     float: left;
 } */
 .dev_select select{
-    padding: 5px 0px;
+    padding: 7px 0px;
     width: 70%;
     border: solid 1px rgba(198, 198, 198, 0.63);
     color: #212b36;
@@ -458,7 +465,7 @@
 .dev_options{
     width:70%;
     float: left;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .dev_Cancel{
     cursor: pointer;
