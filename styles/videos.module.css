@@ -432,17 +432,19 @@
     text-decoration: underline;
     font-family: Inter-Medium;
     font-size: 14px;
+    color: #555f6a;
 }
 .videosdelivery_assets .assets p{
     display: inline;
     font-size: 14px;
     font-family: Inter-Medium;
+    color: #555f6a;
 }
 .videosdelivery_assets .header  h2{
     color: #212b36;
     font-family: Inter-Medium;
     font-size: 28px;
-    padding-left: 18px;
+    padding-left: 28px;
     margin-top: 5px;
 
 } 
@@ -459,5 +461,5 @@
    margin-left: -3px;
 }
 .edit_img{
-    margin-left: 3px;
+    margin-left: 9px;
 }
