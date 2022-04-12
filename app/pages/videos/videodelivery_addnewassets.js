@@ -13,7 +13,8 @@ export default function Videodelivery_addnewassets({ close_asset }) {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
                 if(res.data.status="Success"){
-                    window.location.reload() 
+                    // window.location.reload() 
+                    close_asset(false)
                 }
             })
             .catch(error => {

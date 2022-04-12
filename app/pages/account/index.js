@@ -45,7 +45,7 @@ export default function Accounts() {
           window.location.href = '/signin'
         }
       })
-  }, []);
+  }, [openneworg]);
   const selectOrganization = (e, key) => {
 
     if (process.browser) {
@@ -83,7 +83,7 @@ export default function Accounts() {
         <div className={styles.padding}>
           <div className={styles.header}>
             <h2>Accounts</h2>
-            <h3>Yupptv</h3>
+            <h3>{Org_name}</h3>
           </div>
 
           <div className={styles.border_bottom}>
@@ -169,7 +169,7 @@ export default function Accounts() {
                             <button
                               style={
                                 key == highlightedorg
-                                  ? { backgroundColor: "#f5f7fd" }
+                                  ? { backgroundColor: "#f5f7fd",color:"#212b36",fontFamily:"Inter-SemiBold"}
                                   : { backgroundColor: null }
                               }
                               className={styles.org_btn}

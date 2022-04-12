@@ -125,6 +125,8 @@
     font-size: 16px;
     text-align: left;
     color: #212b36;
+    background-color: inherit;
+    outline: none;
 }
 .detials .organization{
     width: 50%;
@@ -150,29 +152,32 @@
     height: 100%;
     border: none;
     text-align: left;
+    color: #3d4957;
 }
 .org_btn img{
     float: right;
 }
 .organization table tbody tr td{
-    /* padding: 5px 3px 5px 20px; */
+    padding: 0px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
     font-size: 14px;
     height: 3em;
     border-bottom: 1px solid #ecedef;
+    color: #3d4957;
 }
 .manage_account{
     width: 50%;
     float: left;
+    margin-top: 20px;
 }
 .manage_account .bgcolor_blue{
     background-color: #2863eb !important;
     color: #fff !important;
 }
 .manage_account .model_save_btn{
-    background-color: #fff;
+    background-color: inherit;
     margin: 15px 10px 15px 20px;
     border-radius: 4px;
     border: solid 1px #9b9b9b;

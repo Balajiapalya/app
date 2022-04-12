@@ -68,7 +68,7 @@ export default function Environment() {
           window.location.href = "/signin";
         }
       });
-  }, []);
+  }, [addnewenv]);
   
   const setPopups = (index, items) => {
     if (items) {    
@@ -78,9 +78,13 @@ export default function Environment() {
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
-    setclosemodal([...closemodal]); 
-
+    setclosemodal([...closemodal]);
   }
+  let orgname;
+  if(process.browser){
+    orgname=localStorage.getItem("orgName");
+  }
+const orgName= orgname;
 
   return (
     <div className={styles.container}>
@@ -88,7 +92,7 @@ export default function Environment() {
         <div className={styles.padding}>
           <div className={styles.header}>
             <h2>Environments</h2>
-            <h3>Yupptv</h3>
+            <h3>{orgName}</h3>
           </div>
           <div className={styles.environments_button}>
             <p>
@@ -113,7 +117,7 @@ export default function Environment() {
 
               <tbody>
                 {envdata.map((items, i) => (
-                  <tr key={i}>
+                  <tr className={styles.env_table} key={i}>
                     <td>
                       <form onSubmit={handleSubmit(onSubmit)}>
                         {closemodal[i] && (

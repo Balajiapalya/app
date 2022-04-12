@@ -37,7 +37,11 @@ export default function Overview() {
     }
     const created = (date) => {
         const d = new Date(date)
-        return d.toLocaleString();
+        return d.toLocaleString("en-AU",{day:"2-digit",month:"2-digit",year:"2-digit"});
+    }
+    const created_time = (date) => {
+        const t = new Date(date)
+        return t.toLocaleString("en-AU",{hour:"2-digit",minute:"2-digit"})
     }
 
     const delete_asset = () => {
@@ -89,7 +93,7 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
-                                            <td className={styles.content}>{created(i.created_at)}</td>
+                                            <td className={styles.content}>{created(i.created_at)} {created_time(i.created_at)}</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
@@ -178,7 +182,7 @@ export default function Overview() {
                             <div className={styles.media_info}>
                                 <h4>Video URL</h4>
                                 <div className={styles.video_url}>
-                                    <div className={styles.copy_link}>
+                                    <div className={`${styles.copy_link} ${styles.copy_link_videoUrl}`}>
                                         <div className={styles.link}>
                                              <p>{i.transcodingInfo.mediaUrl}</p>
                                         </div>

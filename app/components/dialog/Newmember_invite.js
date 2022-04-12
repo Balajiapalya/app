@@ -11,7 +11,8 @@ export default function Newmember_invite({ closeModel }) {
   const onSubmit = admin_invite_code => {
     Api.Newmember_invite_data(admin_invite_code)
       .then(res=>{
-        window.location.reload()
+        closeModel(false)
+        
       })
       .catch(error=>{
         console.log(error)
@@ -22,7 +23,7 @@ export default function Newmember_invite({ closeModel }) {
     .then(res => {
       setdata(res.data.data)
     })
-  }, {})
+  }, [])
   
   return (
     <div className={`${styles.model} ${styles.Newmember}`}>
