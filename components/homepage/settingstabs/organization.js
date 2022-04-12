@@ -50,7 +50,7 @@ function Organisation() {
             .then(res => {
                 localStorage.setItem("envuuid", res.data.data[0].uuid)
             })
-    }, [])
+    }, [openModel,openremove])
 
     return (
         <Fragment>
