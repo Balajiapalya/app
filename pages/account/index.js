@@ -169,7 +169,7 @@ export default function Accounts() {
                             <button
                               style={
                                 key == highlightedorg
-                                  ? { backgroundColor: "#f5f7fd" }
+                                  ? { backgroundColor: "#f5f7fd",color:"#212b36",fontFamily:"Inter-SemiBold"}
                                   : { backgroundColor: null }
                               }
                               className={styles.org_btn}

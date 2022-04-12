@@ -27,7 +27,7 @@ function Videodelivery_tabs() {
                     className={toggleState === 2 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
                     onClick={() => toggleTab(2)}
                 >
-                    <span>Viedo Clips</span>
+                    <span>Video Clips</span>
                 </button>
                 <button
                     className={toggleState === 3 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}

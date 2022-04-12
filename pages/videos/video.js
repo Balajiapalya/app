@@ -13,7 +13,7 @@ export default function Video() {
     const titlea=()=>{
         Api.Get_Env_item()
         .then(res=>{
-            console.log(res.data.data.title)
+            // console.log(res.data.data.title)
             setname(res.data.data.title)
         })
     }
