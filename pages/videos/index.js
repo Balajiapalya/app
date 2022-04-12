@@ -6,7 +6,7 @@ import Api from '../../components/api/api'
 import { useState } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
-import VideoList,{Video_file} from '../../components/video_list'
+import VideoList, { Video_file } from '../../components/video_list'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -15,35 +15,35 @@ export default function Videos() {
     const [envSelect, setEnvSelect] = useState([]);
     const [id, setId] = useState()
     const [dirdata, set_directdata] = useState([]);
-    const [order,setorder]=useState("ASC");
-    const [ordernum,set_ordernum]=useState("ASC")
-    const sorting = (col)=> {
-        if(order==="ASC") {
-            const sorted = [...videoData].sort((a,b) =>
-            a[col].toLowerCase() > b[col].toLowerCase() ? 1: -1    
+    const [order, setorder] = useState("ASC");
+    const [ordernum, set_ordernum] = useState("ASC")
+    const sorting = (col) => {
+        if (order === "ASC") {
+            const sorted = [...videoData].sort((a, b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
             );
             setVideoData(sorted);
-            setorder("DSC");       
+            setorder("DSC");
         }
-        if(order==="DSC"){
-            const sorted = [...videoData].sort((a,b)=>
-            a[col].toUpperCase() < b[col].toUpperCase() ? 1: -1     
+        if (order === "DSC") {
+            const sorted = [...videoData].sort((a, b) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
             );
             setVideoData(sorted);
-            setorder("ASC");     
+            setorder("ASC");
         }
     };
-    const sort_num = (col)=> {
-        if(ordernum==="ASC"){
-            var sorted_num = [...videoData].sort((a,b)=>
-            a[col]>b[col] ? 1:-1
+    const sort_num = (col) => {
+        if (ordernum === "ASC") {
+            var sorted_num = [...videoData].sort((a, b) =>
+                a[col] > b[col] ? 1 : -1
             );
             setVideoData(sorted_num);
             set_ordernum("DSC");
         }
-        if(ordernum==="DSC"){
-            var sorted_num = [...videoData].sort((a,b)=>
-            new Date(a[col]).getDate()<new Date(b[col]).getDate() ? 1:-1
+        if (ordernum === "DSC") {
+            var sorted_num = [...videoData].sort((a, b) =>
+                a[col] < b[col] ? 1 : -1
             );
             setVideoData(sorted_num);
             set_ordernum("ASC");
@@ -83,8 +83,12 @@ export default function Videos() {
     }
 
     const create_On = (date) => {
-        var d = new Date(date)
-        return d.toLocaleString()
+        var y = new Date(date)
+        return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" })
+    }
+    const created_time = (date) => {
+        var t = new Date(date)
+        return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
     }
 
     const handleSearch = (e) => {
@@ -103,7 +107,7 @@ export default function Videos() {
             }
         }
     }
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.background_develepment}>
@@ -111,7 +115,6 @@ export default function Videos() {
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
                         <p>Yupp tv <br />
-
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
                                     <option defaultValue={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
@@ -149,11 +152,11 @@ export default function Videos() {
                         <thead>
                             <tr>
                                 <th><input type="checkbox"></input></th>
-                                <th>Added on  <img onClick={()=>sort_num("created_at")} src='/Images/updown.png'/></th>
-                                <th>Name <img onClick={()=>sorting("title")} src='/Images/updown.png'/> </th>
+                                <th>Added on  <img onClick={() => sort_num("created_at")} src='/Images/updown.png' /></th>
+                                <th>Name <img onClick={() => sorting("title")} src='/Images/updown.png' /> </th>
                                 <th>Asset ID</th>
                                 <th>Image Preview</th>
-                                <th>Duration <img onClick={()=>sort_num("duration")} src='/Images/updown.png'/></th>
+                                <th>Duration <img onClick={() => sort_num("duration")} src='/Images/updown.png' /></th>
                                 <th>Resolution</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -162,7 +165,7 @@ export default function Videos() {
                         <tbody>
                             {videoData.map((i, key) => <>
                                 <tr key={key}>
-                                    <VideoList create_On={create_On} i={i} />
+                                    <VideoList create_On={create_On} i={i} created_time={created_time} />
                                 </tr>
                             </>)}
                         </tbody>

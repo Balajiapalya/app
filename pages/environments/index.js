@@ -113,7 +113,7 @@ export default function Environment() {
 
               <tbody>
                 {envdata.map((items, i) => (
-                  <tr key={i}>
+                  <tr className={styles.env_table} key={i}>
                     <td>
                       <form onSubmit={handleSubmit(onSubmit)}>
                         {closemodal[i] && (
