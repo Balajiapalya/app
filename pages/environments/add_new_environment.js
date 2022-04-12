@@ -15,7 +15,7 @@ export default function Add_new_environment({ closeenv }) {
         Api.Post_env(new_env_data)
             .then(res => {
                 if (res.data.status = "Success") {
-                    window.location.reload();
+                    closeenv(false)
                 }
             })
             .catch(error => {
@@ -25,7 +25,6 @@ export default function Add_new_environment({ closeenv }) {
     useEffect(() => {
         Api.Env_data()
             .then(res => {
-                // console.log(res.data)
                 setenv(res.data.data)
             })
             .catch(error => {

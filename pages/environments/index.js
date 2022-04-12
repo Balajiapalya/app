@@ -68,7 +68,7 @@ export default function Environment() {
           window.location.href = "/signin";
         }
       });
-  }, []);
+  }, [addnewenv]);
   
   const setPopups = (index, items) => {
     if (items) {    

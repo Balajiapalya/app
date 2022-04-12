@@ -10,6 +10,7 @@ export default function Create_new_organization({ closeneworg }) {
     const onSubmit = new_org_name => {
         Api.Create_new_organization(new_org_name)
         .then(res=>{
+            closeneworg(false)
             // console.log(res)
         })
         .catch(error=>{
