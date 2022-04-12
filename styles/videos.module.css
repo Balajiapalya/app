@@ -30,7 +30,7 @@
 .content_development p{
     color: #196068;
     position: relative;
-    bottom: 40px;
+    bottom: 42px;
     left:30px;
     margin: 0;
     width: 90%;
@@ -40,6 +40,8 @@
     border: none;
     color: #196068;
     outline: none;
+    position: relative;
+    right: 4px;
 }
 .videos_delivery{
     padding-left: 205px;

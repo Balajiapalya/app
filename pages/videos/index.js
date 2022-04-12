@@ -61,7 +61,6 @@ export default function Videos() {
                     window.location.href = '/signin'
                 }
             })
-
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
@@ -73,9 +72,13 @@ export default function Videos() {
             .then(res => {
                 if (res.data.status = "Success") {
                     setEnvSelect(res.data.data)
+
                 }
             })
-    }, [id])
+            .catch(error=>{
+                console.log(error)
+            })
+    }, [id, add_asset])
 
     const handleChange = (e) => {
         setId(e.target.value)
@@ -90,7 +93,11 @@ export default function Videos() {
         var t = new Date(date)
         return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
     }
-
+    let orgname;
+    if (process.browser) {
+        orgname = localStorage.getItem('orgName')
+    }
+    const orName = orgname;
     const handleSearch = (e) => {
         let input = e.target.value.toUpperCase()
         let table = document.querySelector('.table_input')
@@ -114,7 +121,7 @@ export default function Videos() {
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/Images/Store icon.png' />
-                        <p>Yupp tv <br />
+                        <p>{orName} <br />
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
                                     <option defaultValue={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>

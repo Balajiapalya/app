@@ -37,7 +37,7 @@ export default function Overview() {
     }
     const created = (date) => {
         const d = new Date(date)
-        return d.toLocaleString("en-AU",{day:"2-digit",month:"2-digit",year:"numeric"});
+        return d.toLocaleString("en-AU",{day:"2-digit",month:"2-digit",year:"2-digit"});
     }
     const created_time = (date) => {
         const t = new Date(date)

@@ -806,7 +806,7 @@ margin: 10px;
     background-color: #ededed;
     display: inline-block;
     padding:0.5em 0.75em;
-    border-radius:20px;
+    border-radius:2px;
 }
 .tagItem .close{
     height: 20px;
@@ -975,7 +975,7 @@ margin: 10px;
     color: #2863eb;
     border: 1px solid #2863eb;
     background-color:#fff; 
-    font-weight: 600;
+    font-weight: 500;
     padding: 10px 8px;
     border-radius: 4px;
     font-size: Inter-medium;
