@@ -107,7 +107,7 @@ export default function Others() {
                                     {/* {tags.map(i=>i)} */}
 
                                     {tags.map((tag,ind)=>(
-                                        <div className={styles.tagItem}>
+                                        <div key={ind} className={styles.tagItem}>
                                             <span className={styles.text}>{tag}</span>
                                             <span onClick={()=>handleRemoveTag(tag,ind)} className={styles.close}>&times;</span>
                                         </div>
