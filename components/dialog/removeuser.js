@@ -8,8 +8,10 @@ export default function Removeuser({ closeremoveuser ,item }) {
   
   const handleDelete=()=>{
     let del=[item.email]
-    Api.Remove_user_data(del).then(res=>{})
-    window.location.reload()
+    Api.Remove_user_data(del).then(res=>{
+      closeremoveuser(false)
+    })
+   
   }
   return (
     <div className={`${styles.model} ${styles.remove_user_modal}`} >
