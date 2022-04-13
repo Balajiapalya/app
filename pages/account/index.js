@@ -45,7 +45,7 @@ export default function Accounts() {
           window.location.href = '/signin'
         }
       })
-  }, []);
+  }, [openneworg]);
   const selectOrganization = (e, key) => {
 
     if (process.browser) {
