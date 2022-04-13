@@ -23,7 +23,24 @@ function Organisation() {
 
     const createdDate = (date) => {
         var d = new Date(date);
-        return d.toLocaleString();
+        const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        let year=d.getFullYear()
+        let mnth=month[d.getMonth()]
+        let newDate=d.getDate()
+       let retDate= dateNew(newDate)
+        return `Joined ${mnth} ${retDate}, ${year}`    
+    }
+    const dateNew=(newDate)=>{
+        if(newDate<=20 && newDate>=4 || newDate>23){
+            return newDate+'th'
+        }
+        if(newDate==1 || newDate==21 || newDate==31){
+            return newDate+'st'
+        }else if(newDate==2 || newDate==22){
+            return newDate+'nd'
+        }else if(newDate==3 || newDate==23){
+            return newDate+'rd'
+        }
     }
     useEffect(() => {
         Api.Get_roles_data()
@@ -90,10 +107,11 @@ function Organisation() {
                                 <td>
                                     <Select item={item} data={data} />
                                 </td>
+                                
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
-                                {!item.createdOn ? <td><a onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
+                                {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
                             </tr>
                         )}
                         {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}

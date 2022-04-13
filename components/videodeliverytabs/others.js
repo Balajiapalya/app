@@ -56,11 +56,13 @@ export default function Others() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const handleKeyDown=(e)=>{
+       
         let inputValue=e.target.value;
-        if(e.key==='Enter'){
+        if(e.keyCode==13){
             if(e.target.value.length>0){
                 setTags([...tags,inputValue])
-                e.target.value=""
+                e.target.value="" 
+                e.preventDefault();
             }
         }
     }
