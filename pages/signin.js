@@ -7,10 +7,10 @@ import { useState } from 'react';
 export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
-  const [validation,setValidation]=useState(false);
+  const [validation, setValidation] = useState(false);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = login_details => {
-    login_details.password=btoa(login_details.password)
+    login_details.password = btoa(login_details.password)
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {
@@ -19,19 +19,19 @@ export default function Signin() {
           localStorage.setItem('Jwt-token', (res.data.data.token));
           localStorage.setItem('orgName', res.data.data.organizations[0].name);
           localStorage.setItem('ownername', res.data.data.firstName);
-          localStorage.setItem('ownerLastname',res.data.data.lastName)
+          localStorage.setItem('ownerLastname', res.data.data.lastName)
           localStorage.setItem('userID', res.data.data.uuid);
           window.location.pathname = '/';
         }
       })
       .catch(error => {
-          setValidation(true)
+        setValidation(true)
         if (error.response.data.code = 400) {
           seterror(error.response.data.message)
         }
       })
   }
-  const handleChange=()=>{
+  const handleChange = () => {
     setValidation(false)
   }
   return (
@@ -55,7 +55,7 @@ export default function Signin() {
                 name="login"
                 className={`${styles.signup_input} form_control`}
                 {...register("login", { required: true })}
-                onChange={()=>handleChange()}
+                onChange={() => handleChange()}
               />
             </div>
             {errors.login && <p className={'validations'}>This field is required</p>}
@@ -68,7 +68,7 @@ export default function Signin() {
                 name="password"
                 className={`${styles.signup_input} form_control`}
                 {...register("password", { required: true })}
-                onChange={()=>handleChange()}
+                onChange={() => handleChange()}
               />
               {validation && <span className='error'>{error}</span>}
             </div>

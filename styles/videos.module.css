@@ -30,7 +30,7 @@
 .content_development p{
     color: #196068;
     position: relative;
-    bottom: 40px;
+    bottom: 42px;
     left:30px;
     margin: 0;
     width: 90%;
@@ -40,6 +40,8 @@
     border: none;
     color: #196068;
     outline: none;
+    position: relative;
+    right: 4px;
 }
 .videos_delivery{
     padding-left: 205px;
@@ -432,17 +434,19 @@
     text-decoration: underline;
     font-family: Inter-Medium;
     font-size: 14px;
+    color: #555f6a;
 }
 .videosdelivery_assets .assets p{
     display: inline;
     font-size: 14px;
     font-family: Inter-Medium;
+    color: #555f6a;
 }
 .videosdelivery_assets .header  h2{
     color: #212b36;
     font-family: Inter-Medium;
     font-size: 28px;
-    padding-left: 18px;
+    padding-left: 28px;
     margin-top: 5px;
 
 } 
@@ -459,5 +463,5 @@
    margin-left: -3px;
 }
 .edit_img{
-    margin-left: 3px;
+    margin-left: 9px;
 }

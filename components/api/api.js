@@ -70,9 +70,9 @@ export const get_access_token = () => {
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
-// export const get_signin_keys = () => {
-//     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`
-// };
+export const get_signin_keys = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}&environmentId=${envuuid}&productTypeId=1`
+};
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 };
