@@ -10,10 +10,10 @@ function Webhooks() {
     const[removewebhook,setremovewebhook]=useState(false);
 
     useEffect(()=>{
-        // Api.Get_webhook()
-        //     .then(res=>{
-        //         console.log(res.data)
-        //     })
+        Api.Get_webhook()
+            .then(res=>{
+                console.log(res.data)
+            })
     },[])
     return (
         <Fragment>
