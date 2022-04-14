@@ -144,6 +144,9 @@ export const post_emailtoResetPswd = () => {
 export const password_reset=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password`
 }
+export const delSigningKey=(id)=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
+}
 
 let user_id;
 if (process.browser) {
@@ -515,7 +518,13 @@ const Api = {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
             }
-        })
+        }),
+    Delete_key_signing:(id)=>
+    axios({
+        method:'DELETE',
+        url:delSigningKey(id),
+        headers:headers
+    })
 }
 export default Api
 

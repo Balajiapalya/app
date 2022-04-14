@@ -9,6 +9,7 @@ function Signingkeys() {
     const[opensigninkeys,setopensigninkeys]=useState(false);
     const[removekeys,setremovekeys]=useState(false);
     const[keys,setkeys]=useState([]);
+    const [obj,setObj]=useState([])
     const create_On = (date) => {
         var y = new Date(date)
         return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" })
@@ -17,10 +18,10 @@ function Signingkeys() {
        
         Api.Get_sigin_keys()
             .then(res=>{
-                console.log(res.data.data)
                 setkeys(res.data.data)
+               
             })
-    },[])
+    },[opensigninkeys,removekeys])
     return (
         <Fragment>
             <section className={styles.wrapper_signing_keys}>
@@ -50,15 +51,16 @@ function Signingkeys() {
                                 <td>{create_On(item.createdOn)}</td>
                                 <td>{item.createdBy}</td>
                                 <td>
-                                    <a onClick={()=>setremovekeys(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
+                                    <a onClick={()=>`${setremovekeys(true)} ${setObj(item)}`}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
                                 </td>
-                                
                             </tr>
+                            
                             )}
+                            {removekeys && <Delete_signing_key item={obj} closereovekeys={setremovekeys}/>}
                         </tbody>
                     </table>
                 </div>
-                {removekeys && <Delete_signing_key closereovekeys={setremovekeys}/>}
+                
             </section>
         </Fragment>
     )
