@@ -28,24 +28,23 @@ export default function New_Access_token({ closetoken }) {
       let obj=new Object()
       if(access_data.video){
          obj.productTypeId=parseInt(productType.id)
+         obj.canRead=access_data.canRead
+         obj.canWrite=access_data.canWrite
+         access_data.permissions.push(obj)
       }
-      
-      obj.canRead=access_data.canRead
-      obj.canWrite=access_data.canWrite
-      
+    
       if(access_data.data){
          let objTwo=new Object()
          objTwo.productTypeId=parseInt(items.id)
-         objTwo.canRead=access_data.canRead
+         objTwo.canRead=true
          access_data.permissions.push(objTwo)
       }
-      
-      access_data.permissions.push(obj)
-      
+    
       let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
       sliced.envuuid=localStorage.getItem('envuuid') 
-      Api.Create_aaccess_token_data(sliced)
-
+      if(access_data.video || access_data.data){
+         Api.Create_aaccess_token_data(sliced)
+      }
    }
    
    const videoAll=watch('video')
