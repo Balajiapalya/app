@@ -14,7 +14,9 @@ export default function Create_new_webhook({ closewebhook }) {
     }, [])
 
     const onSubmit = webhook_data => {
-        Api.Create_webhook_data(webhook_data)
+        let newObj=Object.fromEntries(Object.entries(webhook_data).slice(1,2))
+        newObj.environmentUUID=localStorage.getItem('envuuid')
+        Api.Create_webhook_data(newObj)
     }
     return (
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
