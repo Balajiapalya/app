@@ -29,16 +29,21 @@ export default function New_Access_token({ closetoken }) {
       if(access_data.video){
          obj.productTypeId=parseInt(productType.id)
       }
+      
       obj.canRead=access_data.canRead
-      let objTwo=new Object()
+      obj.canWrite=access_data.canWrite
+      
       if(access_data.data){
+         let objTwo=new Object()
          objTwo.productTypeId=parseInt(items.id)
+         objTwo.canRead=access_data.canRead
+         access_data.permissions.push(objTwo)
       }
-      objTwo.canWrite=access_data.canWrite
+      
       access_data.permissions.push(obj)
-      access_data.permissions.push(objTwo)
+      
       let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
-      sliced.environmentUUID=localStorage.getItem('uuid')   
+      sliced.envuuid=localStorage.getItem('envuuid') 
       Api.Create_aaccess_token_data(sliced)
 
    }
