@@ -57,7 +57,7 @@ export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
 export const get_webhook = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?environmentId=1`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?environmentId=2`;
 };
 //access token
 export const Create_aaccess_token = () => {
@@ -71,7 +71,7 @@ export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
 export const get_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}&environmentId=${envuuid}&productTypeId=1`
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}&environmentId=${envuuid}&productTypeId=2`
 };
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
