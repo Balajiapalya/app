@@ -8,12 +8,18 @@ import Api from "../../api/api";
 function Signingkeys() {
     const[opensigninkeys,setopensigninkeys]=useState(false);
     const[removekeys,setremovekeys]=useState(false);
-
+    const[keys,setkeys]=useState([]);
+    const create_On = (date) => {
+        var y = new Date(date)
+        return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" })
+    }
     useEffect(()=>{
        
-        // Api.Get_sigin_keys()
-        //     .then(res=>{
-        //     })
+        Api.Get_sigin_keys()
+            .then(res=>{
+                console.log(res.data.data)
+                setkeys(res.data.data)
+            })
     },[])
     return (
         <Fragment>
@@ -36,62 +42,19 @@ function Signingkeys() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
-                                <td>Development</td>
-                                <td>Video</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
+                            {keys.map((item,key)=>
+                            <tr key={key}>
+                                <td>{item.signingKeyId}</td>
+                                <td>{item.environmentId}</td>
+                                {item.productTypeId="1"?<td>Video</td>:null}
+                                <td>{create_On(item.createdOn)}</td>
+                                <td>{item.createdBy}</td>
                                 <td>
                                     <a onClick={()=>setremovekeys(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
                                 </td>
                                 
                             </tr>
-                            <tr>
-                                <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
-                                <td>Production</td>
-                                <td>Data</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>
-
-                                <a onClick={()=>setremovekeys(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
-                                <td>UAT</td>
-                                <td>Video</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>
-
-                                <a onClick={()=>setremovekeys(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
-                                <td>UAT</td>
-                                <td>Data</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>
-
-                                <a onClick={()=>setremovekeys(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>z1Muinv5aRYjoEZESjgfaqa00pyaybPKRGFyHzP00</td>
-                                <td>Development</td>
-                                <td>Data</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>
-
-                                <a onClick={()=>setremovekeys(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
-                                </td>
-                            </tr>
-
+                            )}
                         </tbody>
                     </table>
                 </div>

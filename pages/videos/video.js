@@ -23,7 +23,7 @@ export default function Video() {
                 <div className={styles.padding}>
                     <div className={styles.header}>
                         <div className={styles.assets}>
-                            <Link href="/videos"><a>Asset List</a></Link>
+                            <Link href="/videos"><a>Video List</a></Link>
                             <p> &gt; {name}</p>
                         </div>
                         <div className={styles.header_asianet}>

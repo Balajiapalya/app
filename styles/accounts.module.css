@@ -126,6 +126,7 @@
     text-align: left;
     color: #212b36;
     background-color: inherit;
+    outline: none;
 }
 .detials .organization{
     width: 50%;
