@@ -7,17 +7,44 @@ function Api_accesstokes() {
     const [opentoken, settoken] = useState(false);
     const [openrevoke, setrevoke] = useState(false);
     const [get_accessdata, set_accessdata] = useState([]);
+    const [openModel, setopeninvitemember] = useState([]);
+    const [closemodal, setclosemodal] = useState([]);
+    
     const createdDate = (date) => {
         var d = new Date(date);
-        return d.toLocaleString();
+        return d.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
     }
     useEffect(() => {
         Api.Get_access_token()
-            .then(res => {
-                set_accessdata(res.data.data)
+            .then((res) => {
+                if ((res.data.status = "Success")) {
+                    set_accessdata(res.data.data)
+                    var envcount = res.data.data.length;
+                    let openArr = [];
+                    let closeArr = [];
+                    for (var i = 0; i < envcount; i++) {
+                        openArr.push(false);
+                        closeArr.push(true);
+                    }
+                    setopeninvitemember(openArr);
+                    setclosemodal(closeArr);
+                }
             })
-    }, [])
+    }, [opentoken, openrevoke])
+    const handlerevoke = () => {
+        console.log(document.getElementById('accessID'))
+    }
+    const setPopups = (index, item) => {
+        if (item) {
+            // setValue(item.name)
 
+        }
+        openModel[index] = !openModel[index];
+        closemodal[index] = !closemodal[index]
+        setopeninvitemember(openModel);
+        setclosemodal([...closemodal]);
+    }
+ 
     return (
         <Fragment>
             <section className={styles.wrapper_access_tokes}>
@@ -39,14 +66,31 @@ function Api_accesstokes() {
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {get_accessdata.map((item, key) =>
-                            <tbody key={key}>
+                        {get_accessdata.map((item, i) =>
+                            <tbody key={i}>
                                 <tr>
-                                    <td><span className={styles.border}>Development</span><a className={styles.save}>Save</a><img src="Images/Icon material-edit.png" alt="icon"></img><br></br>
-                                        <span className={styles.tokens}>{item.accessTokenId}</span>
-                                    </td>
-                                    <td>{item.name}</td>
                                     <td>
+                                        {closemodal[i] && (
+                                            <div>
+                                                <span >{item.name}</span>
+                                                <img onClick={() => { setPopups(i, item) }} src="Images/Icon material-edit.png" alt="icon"></img>
+                                            </div>
+                                        )}
+                                        {openModel[i] && (
+                                            <form>
+                                                <div className={styles.save}>
+                                                    <input defaultValue={item.name} type="text" name="name" />
+                                                    <a onClick={() => [setPopups(i, item)]} className={styles.save}>Save</a>
+                                                </div>
+                                            </form>
+
+                                        )}
+
+                                        <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                    </td>
+                                    <td>{item.id}</td>
+                                    <td>
+                                        {/* <tr>{item.isInUse}</tr> */}
                                         <tr>Video<span>(read-only)</span></tr>
                                         <tr>Data<span>(read-only)</span></tr>
                                         <tr>System<span>(read-only)</span></tr>
@@ -54,9 +98,9 @@ function Api_accesstokes() {
                                     <td>{createdDate(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>
                                     <td>{item.isInUse}</td>
-                                    <td><a onClick={() => setrevoke(true)}>Revoke</a></td>
+                                    <td><a onClick={() => [setrevoke(true)][handlerevoke()]}>Revoke</a></td>
                                 </tr>
-                                {openrevoke && <Revoke closerevoke={setrevoke} />}
+                                {openrevoke && <Revoke item={item} closerevoke={setrevoke} />}
                             </tbody>
                         )}
                     </table>

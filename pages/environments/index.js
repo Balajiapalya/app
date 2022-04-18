@@ -77,10 +77,10 @@ export default function Environment() {
     console.log(openModel[index],closemodal[index])
   }
   let orgname;
-  if(process.browser){
-    orgname=localStorage.getItem("orgName");
+  if (process.browser) {
+    orgname = localStorage.getItem("orgName");
   }
-const orgName= orgname;
+  const orgName = orgname;
 
 const handleChange=(e)=>{
   setNewInput(e.target.value)
@@ -125,19 +125,19 @@ const handleChange=(e)=>{
                             <a>
                               <img
                                 className={styles.edit_img}
-                                onClick={() => { setPopups(i, items)}}
+                                onClick={() => { setPopups(i, items) }}
                                 src="/Images/Icon material-edit.png"
                               />
                             </a>
                             <br />
-                            {env.map((item,i) => <>
+                            {env.map((item, i) => <>
                               {item.id === items.environmentTypeId && <span key={i} className={styles.side_head}>{item.name}</span>}
                             </>)}
                           </div>
                         )}
                         {openModel[i] && (
-                          <div>      
-                          <input
+                          <div>
+                            <input
                               className={styles.dev_head}
                               name="name" 
                               defaultValue ={valueDefault}
