@@ -43,13 +43,13 @@ export const list_billing_plans = () => {
 export const org_list_billing_plans = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans`
 }
-export const list_org_subscriptions = () =>{
+export const list_org_subscriptions = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/subscriptions`
 }
 export const get_account_info = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account`
 }
-export const payment_history = () =>{
+export const payment_history = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/payment/history`
 }
 //wbhook
@@ -59,6 +59,9 @@ export const Create_webhook = () => {
 export const get_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}`;
 };
+export const delete_webhook = (del_webhook) =>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}`
+}
 //access token
 export const Create_aaccess_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
@@ -66,6 +69,10 @@ export const Create_aaccess_token = () => {
 export const get_access_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?organizationId=${uuid}&includeRevoked=true`;
 }
+export const revoke_acceesstoken = (del) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${del}`
+}
+
 //signin keys
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
@@ -114,12 +121,6 @@ export const post_direct_video = () => {
 export const get_direct_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
-// export const get_direct_video = (upload_data) => {
-//     return `${VIDEO_BASE_URL()}/services/api/v1/uploads/1308f19b-0c26-4f21-87ef-28d821c1ceb3`
-// }
-// export const direct_get_video_data = () => {
-//     return `${VIDEO_BASE_URL()}/services/api/v1/contents/96e7607b-1f6e-445a-b4d2-3452ec989b57`
-// }
 //account
 export const create_new_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
@@ -141,10 +142,10 @@ export const meta_update = () => {
 export const post_emailtoResetPswd = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password-request`
 }
-export const password_reset=()=>{
+export const password_reset = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password`
 }
-export const delSigningKey=(id)=>{
+export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
 }
 
@@ -270,6 +271,13 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }), //this is called in new_access_token
+    Revoke_acceesstoken: (del) =>
+        axios({
+            method: 'DELETE',
+            url: revoke_acceesstoken(del),
+            data: del,
+            headers: headers,
+        }),//revoke accesstoken
     Create_webhook_data: (webhook_data) =>
         axios({
             method: 'POST',
@@ -283,6 +291,13 @@ const Api = {
             .catch(error => {
                 console.log(error)
             }), //this is called in Create_new_webhook
+    Delete_webhook: (del_webhook)=>
+        axios({
+            method:'DELETE',
+            url:delete_webhook(del_webhook),
+            data:del_webhook,
+            headers:headers,
+        }),//delete webhook
     Create_signin_keys_data: (signin_key) =>
         axios({
             method: 'POST',
@@ -363,32 +378,15 @@ const Api = {
             }
 
         }),
-    Direct_upload_get_data:(data)=>
+    Direct_upload_get_data: (data) =>
         axios({
-            method:'GET',
-            url:get_direct_video_data(),
-            headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${data}`}
+            method: 'GET',
+            url: get_direct_video_data(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${data}`
+            }
         }),//called in videos
-    // Direct_upload_get: (upload_data) =>
-    //     axios({
-    //         method: 'GET',
-    //         url: get_direct_video(upload_data),
-    //         headers: {
-    //             'Authorization': `Bearer ${token}`,
-    //             'EnvironmentId': `${envuuid}`
-    //         }
-    //     }),//called in direct_uplaod
-    // Direct_get_video_data: ()=>
-    //     axios({
-    //         method:'GET',
-    //         url:direct_get_video_data(),
-    //         headers:{
-    //             'Authorization': `Bearer ${token}`,
-    //             'EnvironmentId': `${envuuid}`
-    //         }
-    //     }),
-    //get api token
     Get_access_token: () =>
         axios({
             method: 'GET',
@@ -471,60 +469,60 @@ const Api = {
             url: list_billing_plans(),
             headers: headers,
         }),
-    Org_list_billing_plans: ()=>
+    Org_list_billing_plans: () =>
         axios({
-            method:"GET",
+            method: "GET",
             url: org_list_billing_plans(),
-            headers:headers,
+            headers: headers,
         }),
     List_org_subscriptions: () =>
         axios({
-            method:'GET',
-            url:list_org_subscriptions(),
-            headers:headers,
+            method: 'GET',
+            url: list_org_subscriptions(),
+            headers: headers,
         }),
     Get_account_info: () =>
         axios({
-            method:'GET',
-            url:get_account_info(),
-            headers:headers,
+            method: 'GET',
+            url: get_account_info(),
+            headers: headers,
         }),
-    Reset_pswEmail:(email)=>
-    axios({
-        method:'POST',
-        data:email,
-        url:post_emailtoResetPswd(),
-        headers:headers
-    }),
-    Reset_password:(paswrd)=>
-    axios({
-        method:'POST',
-        data:paswrd,
-        url:password_reset(),
-        headers:headers
-    }),
+    Reset_pswEmail: (email) =>
+        axios({
+            method: 'POST',
+            data: email,
+            url: post_emailtoResetPswd(),
+            headers: headers
+        }),
+    Reset_password: (paswrd) =>
+        axios({
+            method: 'POST',
+            data: paswrd,
+            url: password_reset(),
+            headers: headers
+        }),
     Payment_history: () =>
         axios({
-            method:'GET',
-            url:payment_history(),
-            headers:headers,
+            method: 'GET',
+            url: payment_history(),
+            headers: headers,
         }),
     //videos->overview
-    Delete_asset: () => 
+    Delete_asset: () =>
         axios({
-            method:"DELETE",
-            url:delete_asset(),
+            method: "DELETE",
+            url: delete_asset(),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
             }
         }),
-    Delete_key_signing:(id)=>
-    axios({
-        method:'DELETE',
-        url:delSigningKey(id),
-        headers:headers
-    })
+    Delete_key_signing: (id) =>
+        axios({
+            method: 'DELETE',
+            url: delSigningKey(id),
+            headers: headers
+        })
 }
 export default Api
 

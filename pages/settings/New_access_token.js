@@ -43,7 +43,7 @@ export default function New_Access_token({ closetoken }) {
       let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
       sliced.envUUID=localStorage.getItem('envuuid') 
       if(access_data.video || access_data.data){
-         Api.Create_aaccess_token_data(sliced)
+         Api.Create_aaccess_token_data(sliced).then(res=>closetoken(false))
       }
    }
    

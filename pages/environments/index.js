@@ -18,8 +18,8 @@ export default function Environment() {
   const [env, setenv] = useState([]);
   const [openModel, setopeninvitemember] = useState([]);
   const [closemodal, setclosemodal] = useState([]);
-  const [valueDefault,setValue]=useState('')
-  
+  const [valueDefault, setValue] = useState('')
+
 
   const onSubmit = (dev_data) => {
     let data = localStorage.getItem('envuuid');
@@ -69,10 +69,10 @@ export default function Environment() {
         }
       });
   }, [addnewenv]);
-  
+
   const setPopups = (index, items) => {
-    if (items) {    
-     setValue(items.name)
+    if (items) {
+      setValue(items.name)
       localStorage.setItem('envuuid', items.uuid)
     }
     openModel[index] = !openModel[index];
@@ -81,10 +81,10 @@ export default function Environment() {
     setclosemodal([...closemodal]);
   }
   let orgname;
-  if(process.browser){
-    orgname=localStorage.getItem("orgName");
+  if (process.browser) {
+    orgname = localStorage.getItem("orgName");
   }
-const orgName= orgname;
+  const orgName = orgname;
 
   return (
     <div className={styles.container}>
@@ -126,22 +126,22 @@ const orgName= orgname;
                             <a>
                               <img
                                 className={styles.edit_img}
-                                onClick={() => { setPopups(i, items)}}
+                                onClick={() => { setPopups(i, items) }}
                                 src="/Images/Icon material-edit.png"
                               />
                             </a>
                             <br />
-                            {env.map((item,i) => <>
+                            {env.map((item, i) => <>
                               {item.id === items.environmentTypeId && <span key={i} className={styles.side_head}>{item.name}</span>}
                             </>)}
                           </div>
                         )}
                         {openModel[i] && (
-                          <div>      
-                          <input
+                          <div>
+                            <input
                               className={styles.dev_head}
-                              name="name" 
-                              placeHolder ={valueDefault}
+                              name="name"
+                              placeHolder={valueDefault}
                               {...register("name", { required: true })}
                             />
                             {errors.name && (
