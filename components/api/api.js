@@ -158,6 +158,10 @@ export const usage_statistics = () => {
 export const views_statistics = () => {
     return `${DATA_BASE_URL}/services/api/v1/views?environmentId=${envuuid}&from=1648751400000&to=1649835236192`
 }
+export const editAccessToken=(accessId)=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
+}
+
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -525,6 +529,13 @@ const Api = {
                 'EnvironmentId': `${envuuid}`
             }
         }),
+        EditApiAccessToken:(value,accessId)=>
+        axios({
+            method: 'PUT',
+            data: value,
+            url: editAccessToken(accessId),
+            headers: headers
+        })
 }
 export default Api
 
