@@ -148,6 +148,9 @@ export const password_reset = () => {
 export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
 }
+export const editAccessToken=(accessId)=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
+}
 
 let user_id;
 if (process.browser) {
@@ -521,6 +524,13 @@ const Api = {
         axios({
             method: 'DELETE',
             url: delSigningKey(id),
+            headers: headers
+        }),
+        EditApiAccessToken:(value,accessId)=>
+        axios({
+            method: 'PUT',
+            data: value,
+            url: editAccessToken(accessId),
             headers: headers
         })
 }

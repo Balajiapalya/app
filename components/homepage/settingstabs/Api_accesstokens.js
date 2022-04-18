@@ -9,15 +9,19 @@ function Api_accesstokes() {
     const [get_accessdata, set_accessdata] = useState([]);
     const [openModel, setopeninvitemember] = useState([]);
     const [closemodal, setclosemodal] = useState([]);
+    const [value,setValue]=useState()
+    const [render,setRender]=useState(false)
     
     const createdDate = (date) => {
         var d = new Date(date);
         return d.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
     }
     useEffect(() => {
+        setRender(false)
         Api.Get_access_token()
             .then((res) => {
                 if ((res.data.status = "Success")) {
+                    console.log(res)
                     set_accessdata(res.data.data)
                     var envcount = res.data.data.length;
                     let openArr = [];
@@ -30,7 +34,7 @@ function Api_accesstokes() {
                     setclosemodal(closeArr);
                 }
             })
-    }, [opentoken, openrevoke])
+    }, [opentoken, openrevoke,render])
     const handlerevoke = () => {
         console.log(document.getElementById('accessID'))
     }
@@ -43,6 +47,16 @@ function Api_accesstokes() {
         closemodal[index] = !closemodal[index]
         setopeninvitemember(openModel);
         setclosemodal([...closemodal]);
+    }
+    const submitEdit=()=>{
+       
+        let accessId=get_accessdata[0].environmentName
+        let newObj=new Object()
+        newObj.name=value
+        if(value){
+            Api.EditApiAccessToken(newObj,accessId).then(res=>setRender(true))
+        }
+        
     }
  
     return (
@@ -79,16 +93,14 @@ function Api_accesstokes() {
                                         {openModel[i] && (
                                             <form>
                                                 <div className={styles.save}>
-                                                    <input defaultValue={item.name} type="text" name="name" />
-                                                    <a onClick={() => [setPopups(i, item)]} className={styles.save}>Save</a>
+                                                    <input defaultValue={item.name} type="text" name="name" onChange={(e)=>setValue(e.target.value)}/>
+                                                    <a onClick={() => `${submitEdit()}`} className={styles.save}>Save</a>
                                                 </div>
                                             </form>
-
                                         )}
-
                                         <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
                                     </td>
-                                    <td>{item.id}</td>
+                                    <td>{item.environmentName}</td>
                                     <td>
                                         {/* <tr>{item.isInUse}</tr> */}
                                         <tr>Video<span>(read-only)</span></tr>
