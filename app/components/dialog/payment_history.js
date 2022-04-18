@@ -11,7 +11,7 @@ export default function Payment_history({ closepaymenthistory }) {
   useEffect(() => {
     Api.Payment_history()
       .then(res => {
-        console.log(res.data.data)
+        // console.log(res.data.data)
         setpaymenthistory(res.data.data)
       })
   }, [])

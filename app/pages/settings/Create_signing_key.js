@@ -18,7 +18,8 @@ export default function Create_signing_key({ closesigninkeys }) {
     }, [])
     const onSubmit = signin_key => {
         signin_key.environmentUUID=localStorage.getItem('envuuid')
-        Api.Create_signin_keys_data(signin_key)
+        Api.Create_signin_keys_data(signin_key).then(res=>closesigninkeys(false))
+        
     }
     return (
         <div className={`${styles.container} ${styles.newkey}`} >

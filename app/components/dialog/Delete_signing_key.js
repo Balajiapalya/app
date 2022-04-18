@@ -1,8 +1,12 @@
 import styles from '../../styles/model.module.css'
+import Api from '../api/api'
 
-export default function Delete_signing_key({ closereovekeys }) {
+export default function Delete_signing_key({ closereovekeys,item }) {
+    const handleDelete=()=>{
+        Api.Delete_key_signing(item.signingKeyId).then(res=>closereovekeys(false))
+    }
     return (
-        <div className={`${styles.model} ${styles.remove_user_modal}`} >
+        <div className={`${styles.model} ${styles.remove_user_modal} ${styles.opc}`} >
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Delete Singing Key</h3>
@@ -15,7 +19,7 @@ export default function Delete_signing_key({ closereovekeys }) {
                 </div>
                 <div className={styles.model_btn}>
                     <button type="button" onClick={() => closereovekeys(false)} className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
-                    <button type="button" onClick={() => closereovekeys(false)} className={`${styles.model_save_btn} btn btn-primary`}>Yes,delete</button>
+                    <button type="button" onClick={() => handleDelete()} className={`${styles.model_save_btn} btn btn-primary`}>Yes,delete</button>
                 </div>
             </div>
         </div>

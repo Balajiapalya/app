@@ -8,6 +8,9 @@ const VIDEO_BASE_URL = () => VIDEO_LINK;
 let BILLING_LINK = process.env.VG_BILLING_SERVICE_API;
 const BILLING_BASE_URL = () => BILLING_LINK;
 
+let DATA_LINK = process.env.VG_DATA_SERVICE_API;
+const DATA_BASE_URL = () => DATA_LINK;
+
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
 }
@@ -43,13 +46,13 @@ export const list_billing_plans = () => {
 export const org_list_billing_plans = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans`
 }
-export const list_org_subscriptions = () =>{
+export const list_org_subscriptions = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/subscriptions`
 }
 export const get_account_info = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account`
 }
-export const payment_history = () =>{
+export const payment_history = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/payment/history`
 }
 //wbhook
@@ -57,8 +60,11 @@ export const Create_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
 };
 export const get_webhook = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?environmentId=1`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}`;
 };
+export const delete_webhook = (del_webhook) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}`
+}
 //access token
 export const Create_aaccess_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
@@ -66,13 +72,17 @@ export const Create_aaccess_token = () => {
 export const get_access_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?organizationId=${uuid}&includeRevoked=true`;
 }
+export const revoke_acceesstoken = (del) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${del}`
+}
+
 //signin keys
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
-// export const get_signin_keys = () => {
-//     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?environmentId=1&productTypeId=${envid}`
-// };
+export const get_signin_keys = () => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}&environmentId=${envuuid}&productTypeId=2`
+};
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
 };
@@ -114,12 +124,6 @@ export const post_direct_video = () => {
 export const get_direct_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
 }
-// export const get_direct_video = (upload_data) => {
-//     return `${VIDEO_BASE_URL()}/services/api/v1/uploads/1308f19b-0c26-4f21-87ef-28d821c1ceb3`
-// }
-// export const direct_get_video_data = () => {
-//     return `${VIDEO_BASE_URL()}/services/api/v1/contents/96e7607b-1f6e-445a-b4d2-3452ec989b57`
-// }
 //account
 export const create_new_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
@@ -141,8 +145,21 @@ export const meta_update = () => {
 export const post_emailtoResetPswd = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password-request`
 }
-export const password_reset=()=>{
+export const password_reset = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password`
+}
+export const delSigningKey = (id) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
+}
+//statistics
+export const usage_statistics = () => {
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=1648751400000&to=1649835236192&interval=1h`
+}
+export const views_statistics = () => {
+    return `${DATA_BASE_URL}/services/api/v1/views?environmentId=${envuuid}&from=1648751400000&to=1649835236192`
+}
+export const editAccessToken=(accessId)=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
 }
 
 let user_id;
@@ -201,6 +218,26 @@ const Api = {
             url: SignIn_Data(),
             data: signin_details,
         }),//this is called in signin
+    Reset_pswEmail: (email) =>
+        axios({
+            method: 'POST',
+            data: email,
+            url: post_emailtoResetPswd(),
+            headers: headers
+        }),
+    Reset_password: (paswrd) =>
+        axios({
+            method: 'POST',
+            data: paswrd,
+            url: password_reset(),
+            headers: headers
+        }),
+    Create_account_data: (createaccount_data, id) =>
+        axios({
+            method: 'POST',
+            url: Create_user_account(),
+            data: createaccount_data,
+        }),
     Get_roles_data: () =>
         axios({
             method: 'GET',
@@ -227,19 +264,6 @@ const Api = {
             url: get_environment_types(),
             headers: headers,
         }),// this is called where ever environments are there
-    Get_product_data: () =>
-        axios({
-            method: 'GET',
-            url: get_product(),
-            headers: headers,
-        }),//create_signing_key
-
-    Create_account_data: (createaccount_data, id) =>
-        axios({
-            method: 'POST',
-            url: Create_user_account(),
-            data: createaccount_data,
-        }),//this is called in Create account
     Edit_organisation_name_data: (organization_data) =>
         axios({
             method: 'POST',
@@ -254,52 +278,82 @@ const Api = {
             data: admin_invite_code,
             headers: headers,
         }),
-    Create_aaccess_token_data: (access_data) =>
-        axios({
-            method: 'POST',
-            url: Create_aaccess_token(),
-            data: access_data,
-            headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }), //this is called in new_access_token
-    Create_webhook_data: (webhook_data) =>
-        axios({
-            method: 'POST',
-            url: Create_webhook(),
-            data: webhook_data,
-            headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }), //this is called in Create_new_webhook
-    Create_signin_keys_data: (signin_key) =>
-        axios({
-            method: 'POST',
-            url: Create_signin_keys(),
-            data: signin_key,
-            headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }),//this is called in Create_signin_keys
     Editted_data: (data) =>
         axios({
             method: 'PUT',
             url: editted_data(),
             data: data,
             headers: headers,
-        }),//called in edit_organisation_name
+        }),
+    //access token
+    Get_access_token: () =>
+        axios({
+            method: 'GET',
+            url: get_access_token(),
+            headers: headers,
+        }),
+    Create_aaccess_token_data: (access_data) =>
+        axios({
+            method: 'POST',
+            url: Create_aaccess_token(),
+            data: access_data,
+            headers: headers,
+        }),
+    Revoke_acceesstoken: (del) =>
+        axios({
+            method: 'DELETE',
+            url: revoke_acceesstoken(del),
+            data: del,
+            headers: headers,
+        }),//revoke accesstoken
+    //webhook
+    Get_webhook: () =>
+        axios({
+            method: 'GET',
+            url: get_webhook(),
+            headers: headers,
+        }),
+    Create_webhook_data: (webhook_data) =>
+        axios({
+            method: 'POST',
+            url: Create_webhook(),
+            data: webhook_data,
+            headers: headers,
+        }),
+    Delete_webhook: (del_webhook) =>
+        axios({
+            method: 'DELETE',
+            url: delete_webhook(del_webhook),
+            data: del_webhook,
+            headers: headers,
+        }),//delete webhook
+    //signin key
+    Get_sigin_keys: () =>
+        axios({
+            method: 'GET',
+            url: get_signin_keys(),
+            headers: headers,
+        }),
+    Create_signin_keys_data: (signin_key) =>
+        axios({
+            method: 'POST',
+            url: Create_signin_keys(),
+            data: signin_key,
+            headers: headers,
+        }),
+    Delete_key_signing: (id) =>
+        axios({
+            method: 'DELETE',
+            url: delSigningKey(id),
+            headers: headers
+        }),
+    Get_product_data: () =>
+        axios({
+            method: 'GET',
+            url: get_product(),
+            headers: headers,
+        }),//create_signing_key
+    //videos
     Video_list: (data) =>
         axios({
             method: 'GET',
@@ -309,7 +363,17 @@ const Api = {
                 'EnvironmentId': `${data}`
             },
         }),
-
+    post_video: (video_url_data) =>
+        axios({
+            method: 'POST',
+            data: video_url_data,
+            url: video_url(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
+    //environments
     Get_env_data: () =>
         axios({
             method: 'GET',
@@ -335,19 +399,7 @@ const Api = {
             data: dev_data,
             url: update_env(data),
             headers: { 'Authorization': `Bearer ${token}` }
-
         }),
-    post_video: (video_url_data) =>
-        axios({
-            method: 'POST',
-            data: video_url_data,
-            url: video_url(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${localStorage.getItem("envuuid")}`
-            }
-        }),
-
     //direct upload
     Direct_upload_post: (direct_video_upload) =>
         axios({
@@ -360,52 +412,16 @@ const Api = {
             }
 
         }),
-    Direct_upload_get_data:(data)=>
+    Direct_upload_get_data: (data) =>
         axios({
-            method:'GET',
-            url:get_direct_video_data(),
-            headers:{'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${data}`}
+            method: 'GET',
+            url: get_direct_video_data(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${data}`
+            }
         }),//called in videos
-    // Direct_upload_get: (upload_data) =>
-    //     axios({
-    //         method: 'GET',
-    //         url: get_direct_video(upload_data),
-    //         headers: {
-    //             'Authorization': `Bearer ${token}`,
-    //             'EnvironmentId': `${envuuid}`
-    //         }
-    //     }),//called in direct_uplaod
-    // Direct_get_video_data: ()=>
-    //     axios({
-    //         method:'GET',
-    //         url:direct_get_video_data(),
-    //         headers:{
-    //             'Authorization': `Bearer ${token}`,
-    //             'EnvironmentId': `${envuuid}`
-    //         }
-    //     }),
-    //get api token
-    Get_access_token: () =>
-        axios({
-            method: 'GET',
-            url: get_access_token(),
-            headers: headers,
-        }),
-    //get signin keys
-    Get_sigin_keys: () =>
-        axios({
-            method: 'GET',
-            url: get_signin_keys(),
-            headers: headers,
-        }),
-    //get webhook
-    Get_webhook: () =>
-        axios({
-            method: 'GET',
-            url: get_webhook(),
-            headers: headers,
-        }),
+    //selected
     Selected_option: (data) =>
         axios({
             method: 'POST',
@@ -468,53 +484,57 @@ const Api = {
             url: list_billing_plans(),
             headers: headers,
         }),
-    Org_list_billing_plans: ()=>
+    Org_list_billing_plans: () =>
         axios({
-            method:"GET",
+            method: "GET",
             url: org_list_billing_plans(),
-            headers:headers,
+            headers: headers,
         }),
     List_org_subscriptions: () =>
         axios({
-            method:'GET',
-            url:list_org_subscriptions(),
-            headers:headers,
+            method: 'GET',
+            url: list_org_subscriptions(),
+            headers: headers,
         }),
     Get_account_info: () =>
         axios({
-            method:'GET',
-            url:get_account_info(),
-            headers:headers,
+            method: 'GET',
+            url: get_account_info(),
+            headers: headers,
         }),
-    Reset_pswEmail:(email)=>
-    axios({
-        method:'POST',
-        data:email,
-        url:post_emailtoResetPswd(),
-        headers:headers
-    }),
-    Reset_password:(paswrd)=>
-    axios({
-        method:'POST',
-        data:paswrd,
-        url:password_reset(),
-        headers:headers
-    }),
+
     Payment_history: () =>
         axios({
-            method:'GET',
-            url:payment_history(),
-            headers:headers,
+            method: 'GET',
+            url: payment_history(),
+            headers: headers,
         }),
-    //videos->overview
-    Delete_asset: () => 
+
+    //Statistics
+    Usage_statistics: () =>
         axios({
-            method:"DELETE",
-            url:delete_asset(),
+            method: 'GET',
+            url: usage_statistics(),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
             }
+        }),
+    Views_statistics: () =>
+        axios({
+            method: 'GET',
+            url: views_statistics(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        }),
+        EditApiAccessToken:(value,accessId)=>
+        axios({
+            method: 'PUT',
+            data: value,
+            url: editAccessToken(accessId),
+            headers: headers
         })
 }
 export default Api

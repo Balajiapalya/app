@@ -1,7 +1,15 @@
 import styles from '../../styles/model.module.css'
 import Link from 'next/link'
+import Api from '../api/api'
 
-export default function Revoke_access({closerevoke}) {
+export default function Revoke_access({closerevoke,item}) {
+    const handlerevoke=()=>{
+        let del = [item.accessTokenId]
+        // console.log(del)
+        Api.Revoke_acceesstoken(del).then(
+        closerevoke(false),
+    )}
+    
     return (
         <div className={`${styles.model} ${styles.remove_user_modal}`} >
             <div className={styles.model_main}>
@@ -16,7 +24,7 @@ export default function Revoke_access({closerevoke}) {
                 </div>
                 <div className={styles.model_btn}>
                     <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={()=>closerevoke(false)}>Cancel</button></a>
-                    <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={()=>closerevoke(false)} >Yes,Revoke</button></a>
+                    <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={()=>handlerevoke()} >Yes,Revoke</button></a>
                 </div>
             </div>
         </div>

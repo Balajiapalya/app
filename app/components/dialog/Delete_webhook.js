@@ -1,8 +1,12 @@
 import styles from '../../styles/model.module.css'
+import Api from '../api/api'
 
-export default function Delete_webhook({ closedeletewebhook }) {
+export default function Delete_webhook({ closedeletewebhook,item }) {
+    const handleDelete=()=>{
+        Api.Delete_webhook(item.id).then(res=>closedeletewebhook(false))
+    }
     return (
-        <div className={`${styles.model} ${styles.remove_user_modal}`} >
+        <div className={`${styles.model} ${styles.remove_user_modal} ${styles.opc}`} >
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Delete Webhook</h3>
@@ -15,7 +19,7 @@ export default function Delete_webhook({ closedeletewebhook }) {
                 </div>
                 <div className={styles.model_btn}>
                     <button onClick={() => closedeletewebhook(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
-                    <button onClick={() => closedeletewebhook(false)} type="button" className={`${styles.model_save_btn} btn btn-primary`}>Yes, delete</button>
+                    <button onClick={() => handleDelete()} type="button" className={`${styles.model_save_btn} btn btn-primary`}>Yes, delete</button>
                 </div>
             </div>
         </div>

@@ -19,9 +19,9 @@ export default function Others() {
         video_data['metadata'] = meta;
         Api.Meta_tag(video_data).then(res => {
         })
-        .catch(error=>{
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
     // set in object
@@ -45,7 +45,7 @@ export default function Others() {
 
     useEffect(() => {
         Api.Get_Env_item().then(res => {
-         
+
             setDataVideo(res.data.data)
             setTags(res.data.data.tags)
             setMeta(res.data.data.metadata)
@@ -56,17 +56,19 @@ export default function Others() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const handleKeyDown=(e)=>{
+       
         let inputValue=e.target.value;
-        if(e.key==='Enter'){
+        if(e.keyCode==13){
             if(e.target.value.length>0){
                 setTags([...tags,inputValue])
-                e.target.value=""
+                e.target.value="" 
+                e.preventDefault();
             }
         }
     }
 
-    const handleRemoveTag=(i,index)=>{
-        tags.splice(index,1)
+    const handleRemoveTag = (i, index) => {
+        tags.splice(index, 1)
         setTags([...tags])
         return tags
     }
@@ -94,10 +96,10 @@ export default function Others() {
                                 <label className={styles.model_label}>Tags</label>
 
                                 <div className={styles.tags}>
-                                {/* {tags.map(i=><>
+                                    {/* {tags.map(i=><>
                                     <span  className="rti--tag go1186250972" name="tags"><span>{i}</span><button type="button" >✕</button></span>
                                 </>)} */}
-                                    
+
                                     {/* <TagsInput
                                         value={selected}
                                         onChange={setSelected}
@@ -106,13 +108,15 @@ export default function Others() {
                                     ></TagsInput> */}
                                     {/* {tags.map(i=>i)} */}
 
-                                    {tags.map((tag,ind)=>(
-                                        <div key={ind} className={styles.tagItem}>
-                                            <span className={styles.text}>{tag}</span>
-                                            <span onClick={()=>handleRemoveTag(tag,ind)} className={styles.close}>&times;</span>
+                                    {tags.map((tag, ind) => (
+                                        <div key={ind}>
+                                            <div className={styles.tagItem}>
+                                                <span className={styles.text}>{tag}</span>
+                                                <span onClick={() => handleRemoveTag(tag, ind)} className={styles.close}>&times;</span>
+                                            </div>
                                         </div>
                                     ))}
-                                    <input {...register("tags",{required:false})} onKeyDown={(e)=>handleKeyDown(e)} className={styles.tags_input} type="text"/>
+                                    <input {...register("tags", { required: false })} onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text" />
                                 </div>
                                 <label className={styles.model_label}>Metadata</label>
                                 <table>

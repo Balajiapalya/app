@@ -8,13 +8,23 @@ import Api from "../../api/api";
 function Webhooks() {
     const[openwebhook,setopenwebhook]=useState(false);
     const[removewebhook,setremovewebhook]=useState(false);
-
+    const [webhook,setwebnook]=useState([]);
+    const [error,seterror]=useState();
+    const [obj, setObj] = useState([])
     useEffect(()=>{
-        // Api.Get_webhook()
-        //     .then(res=>{
-        //         console.log(res.data)
-        //     })
-    },[])
+        
+        Api.Get_webhook()
+            .then(res=>{
+                setwebnook(res.data.data)
+            })
+            .catch(error=>{
+                if (error.response.data.code = 400) {
+                    seterror(error.response.data.message)
+                    console.log(error.response.data.message)
+                  }
+            })
+        
+    },[openwebhook,removewebhook])
     return (
         <Fragment>
             <section className={styles.wrapper_webhooks}>
@@ -39,67 +49,22 @@ function Webhooks() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>https://example.com/videograp-endpoint</td>
-                                <td>f54fvca1kr8ama7bfjueamrbo45v4gm</td>
-                                <td>Development</td>
+                            {webhook.map((item,key)=>
+                            <tr key={key}>
+                                <td>{item.url}</td>
+                                <td>{item.signingSecret}</td>
+                                <td>{item.environmentName}</td>
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
+                                    <a onClick={()=>[`${setremovewebhook(true)}`][`${setObj(item)}`]}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
-                                {removewebhook && <Delete_webhook closedeletewebhook={setremovewebhook}/>}
+                                {removewebhook && <Delete_webhook item={obj} closedeletewebhook={setremovewebhook} />}
                             </tr>
-                            <tr>
-                                <td>https://example.com/videograp-endpoint</td>
-                                <td>f54fvca1kr8ama7bfjueamrbo45v4gm</td>
-                                <td>Production</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Disabled</td>
-                                <td>
-                                    <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>https://example.com/videograp-endpoint</td>
-                                <td>f54fvca1kr8ama7bfjueamrbo45v4gm</td>
-                                <td>UAT</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Disabled</td>
-                                <td>
-                                    <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>https://example.com/videograp-endpoint</td>
-                                <td>f54fvca1kr8ama7bfjueamrbo45v4gm</td>
-                                <td>UAT</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Active</td>
-                                <td>
-                                    <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon"></img></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>https://example.com/videograp-endpoint</td>
-                                <td>f54fvca1kr8ama7bfjueamrbo45v4gm</td>
-                                <td>Development</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
-                                <td>Active</td>
-                                <td>
-                                    <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>setremovewebhook(true)}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
-                                </td>
-                            </tr>
+                            )}
+                           
                         </tbody>
                     </table>
                 </div>
