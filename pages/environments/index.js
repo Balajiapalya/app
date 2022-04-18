@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Add_new_environment from "./add_new_environment";
 import { useForm } from "react-hook-form";
 import Router from 'next/router'
+import SelectEnv from '../../components/SelectEnv'
 
 export default function Environment() {
   const {
@@ -18,23 +19,13 @@ export default function Environment() {
   const [env, setenv] = useState([]);
   const [openModel, setopeninvitemember] = useState([]);
   const [closemodal, setclosemodal] = useState([]);
-  const [valueDefault, setValue] = useState('')
+  const [valueDefault,setValue]=useState('')
+  const [id,setId]=useState()
+  const [newInput,setNewInput]=useState(valueDefault)
+  const [load,setLoad]=useState(true)
 
-
-  const onSubmit = (dev_data) => {
-    let data = localStorage.getItem('envuuid');
-    Api.Update_env(dev_data, data)
-      .then((res) => {
-        if (res.data.status = "Success") {
-          // window.location.pathname="/environments/environment"
-          Router.reload()
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   useEffect(() => {
+    setLoad(true)
     Api.Env_data()
       .then((res) => {
         setenv(res.data.data);
@@ -68,17 +59,22 @@ export default function Environment() {
           window.location.href = "/signin";
         }
       });
-  }, [addnewenv]);
-
+  }, [addnewenv,load]);
+  
   const setPopups = (index, items) => {
+    
     if (items) {
-      setValue(items.name)
+      
+      setId(items.environmentTypeId)    
+     setValue(items.name)
+   
       localStorage.setItem('envuuid', items.uuid)
     }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
+    console.log(openModel[index],closemodal[index])
   }
   let orgname;
   if (process.browser) {
@@ -86,6 +82,9 @@ export default function Environment() {
   }
   const orgName = orgname;
 
+const handleChange=(e)=>{
+  setNewInput(e.target.value)
+}
   return (
     <div className={styles.container}>
       <div className={styles.settings}>
@@ -119,7 +118,7 @@ export default function Environment() {
                 {envdata.map((items, i) => (
                   <tr className={styles.env_table} key={i}>
                     <td>
-                      <form onSubmit={handleSubmit(onSubmit)}>
+                      <form>
                         {closemodal[i] && (
                           <div>
                             {items.name}
@@ -140,9 +139,9 @@ export default function Environment() {
                           <div>
                             <input
                               className={styles.dev_head}
-                              name="name"
-                              placeHolder={valueDefault}
-                              {...register("name", { required: true })}
+                              name="name" 
+                              defaultValue ={valueDefault}
+                              onChange={(e)=>handleChange(e)}
                             />
                             {errors.name && (
                               <p className={"validations"}>
@@ -150,31 +149,7 @@ export default function Environment() {
                               </p>
                             )}
                             <div className={styles.dev_select}>
-                              <select
-                                name="environmentTypeId"
-                                {...register("environmentTypeId", {
-                                  required: true,
-                                  valueAsNumber: true,
-                                })}
-                              >
-                                {env.map((item, key) => (
-                                  <option key={key} value={parseInt(item.id)}>
-                                    {item.name}
-                                  </option>
-                                ))}
-                              </select>
-                            </div>
-
-                            <div className={styles.dev_options}>
-                              <a
-                                onClick={() => setPopups(i)}
-                                className={styles.dev_Cancel}
-                              >
-                                Cancel
-                              </a>
-                              <button type="submit" className={styles.dev_save}>
-                                Save
-                              </button>
+                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id}/>
                             </div>
                           </div>
                         )}

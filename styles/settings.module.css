@@ -414,6 +414,7 @@
 .edit_img{
     position: relative;
     left: 7px;
+    cursor: pointer;
 }
 .box_data{
     width: 100%;
