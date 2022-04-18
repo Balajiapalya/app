@@ -12,6 +12,7 @@ function Webhooks() {
     const [error,seterror]=useState();
     const [obj, setObj] = useState([])
     useEffect(()=>{
+        
         Api.Get_webhook()
             .then(res=>{
                 setwebnook(res.data.data)
@@ -22,6 +23,7 @@ function Webhooks() {
                     console.log(error.response.data.message)
                   }
             })
+        
     },[openwebhook,removewebhook])
     return (
         <Fragment>

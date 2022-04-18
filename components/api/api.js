@@ -8,6 +8,9 @@ const VIDEO_BASE_URL = () => VIDEO_LINK;
 let BILLING_LINK = process.env.VG_BILLING_SERVICE_API;
 const BILLING_BASE_URL = () => BILLING_LINK;
 
+let DATA_LINK = process.env.VG_DATA_SERVICE_API;
+const DATA_BASE_URL = () => DATA_LINK;
+
 export const SignIn_Data = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/authenticate`
 }
@@ -59,7 +62,7 @@ export const Create_webhook = () => {
 export const get_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}`;
 };
-export const delete_webhook = (del_webhook) =>{
+export const delete_webhook = (del_webhook) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}`
 }
 //access token
@@ -148,7 +151,13 @@ export const password_reset = () => {
 export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
 }
-
+//statistics
+export const usage_statistics = () => {
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=1648751400000&to=1649835236192&interval=1h`
+}
+export const views_statistics = () => {
+    return `${DATA_BASE_URL}/services/api/v1/views?environmentId=${envuuid}&from=1648751400000&to=1649835236192`
+}
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -205,6 +214,26 @@ const Api = {
             url: SignIn_Data(),
             data: signin_details,
         }),//this is called in signin
+    Reset_pswEmail: (email) =>
+        axios({
+            method: 'POST',
+            data: email,
+            url: post_emailtoResetPswd(),
+            headers: headers
+        }),
+    Reset_password: (paswrd) =>
+        axios({
+            method: 'POST',
+            data: paswrd,
+            url: password_reset(),
+            headers: headers
+        }),
+    Create_account_data: (createaccount_data, id) =>
+        axios({
+            method: 'POST',
+            url: Create_user_account(),
+            data: createaccount_data,
+        }),
     Get_roles_data: () =>
         axios({
             method: 'GET',
@@ -237,13 +266,6 @@ const Api = {
             url: get_product(),
             headers: headers,
         }),//create_signing_key
-
-    Create_account_data: (createaccount_data, id) =>
-        axios({
-            method: 'POST',
-            url: Create_user_account(),
-            data: createaccount_data,
-        }),//this is called in Create account
     Edit_organisation_name_data: (organization_data) =>
         axios({
             method: 'POST',
@@ -258,19 +280,21 @@ const Api = {
             data: admin_invite_code,
             headers: headers,
         }),
+    Editted_data: (data) =>
+        axios({
+            method: 'PUT',
+            url: editted_data(),
+            data: data,
+            headers: headers,
+        }),
+    //access token
     Create_aaccess_token_data: (access_data) =>
         axios({
             method: 'POST',
             url: Create_aaccess_token(),
             data: access_data,
             headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }), //this is called in new_access_token
+        }),
     Revoke_acceesstoken: (del) =>
         axios({
             method: 'DELETE',
@@ -278,46 +302,36 @@ const Api = {
             data: del,
             headers: headers,
         }),//revoke accesstoken
+    //webhook
     Create_webhook_data: (webhook_data) =>
         axios({
             method: 'POST',
             url: Create_webhook(),
             data: webhook_data,
             headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }), //this is called in Create_new_webhook
-    Delete_webhook: (del_webhook)=>
+        }),
+    Delete_webhook: (del_webhook) =>
         axios({
-            method:'DELETE',
-            url:delete_webhook(del_webhook),
-            data:del_webhook,
-            headers:headers,
+            method: 'DELETE',
+            url: delete_webhook(del_webhook),
+            data: del_webhook,
+            headers: headers,
         }),//delete webhook
+    //signin key
     Create_signin_keys_data: (signin_key) =>
         axios({
             method: 'POST',
             url: Create_signin_keys(),
             data: signin_key,
             headers: headers,
-        })
-            .then(res => {
-                // console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            }),//this is called in Create_signin_keys
-    Editted_data: (data) =>
+        }),
+    Delete_key_signing: (id) =>
         axios({
-            method: 'PUT',
-            url: editted_data(),
-            data: data,
-            headers: headers,
-        }),//called in edit_organisation_name
+            method: 'DELETE',
+            url: delSigningKey(id),
+            headers: headers
+        }),
+    //videos
     Video_list: (data) =>
         axios({
             method: 'GET',
@@ -487,20 +501,7 @@ const Api = {
             url: get_account_info(),
             headers: headers,
         }),
-    Reset_pswEmail: (email) =>
-        axios({
-            method: 'POST',
-            data: email,
-            url: post_emailtoResetPswd(),
-            headers: headers
-        }),
-    Reset_password: (paswrd) =>
-        axios({
-            method: 'POST',
-            data: paswrd,
-            url: password_reset(),
-            headers: headers
-        }),
+
     Payment_history: () =>
         axios({
             method: 'GET',
@@ -517,12 +518,26 @@ const Api = {
                 'EnvironmentId': `${envuuid}`
             }
         }),
-    Delete_key_signing: (id) =>
+
+    //Statistics
+    Usage_statistics: () =>
         axios({
-            method: 'DELETE',
-            url: delSigningKey(id),
-            headers: headers
-        })
+            method: 'GET',
+            url: usage_statistics(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        }),
+    Views_statistics: () =>
+        axios({
+            method: 'GET',
+            url: views_statistics(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        }),
 }
 export default Api
 
