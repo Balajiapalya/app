@@ -21,7 +21,7 @@ function Api_accesstokes() {
         Api.Get_access_token()
             .then((res) => {
                 if ((res.data.status = "Success")) {
-                    console.log(res)
+                    // console.log(res)
                     set_accessdata(res.data.data)
                     var envcount = res.data.data.length;
                     let openArr = [];
@@ -36,7 +36,7 @@ function Api_accesstokes() {
             })
     }, [opentoken, openrevoke,render])
     const handlerevoke = () => {
-        console.log(document.getElementById('accessID'))
+        // console.log(document.getElementById('accessID'))
     }
     const setPopups = (index, item) => {
         if (item) {
@@ -50,7 +50,7 @@ function Api_accesstokes() {
     }
     const submitEdit=()=>{
        
-        let accessId=get_accessdata[0].environmentName
+        let accessId=get_accessdata[0].accessTokenId
         let newObj=new Object()
         newObj.name=value
         if(value){
