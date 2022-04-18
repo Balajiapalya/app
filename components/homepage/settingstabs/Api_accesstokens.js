@@ -21,7 +21,7 @@ function Api_accesstokes() {
         Api.Get_access_token()
             .then((res) => {
                 if ((res.data.status = "Success")) {
-                    console.log(res)
+                    // console.log(res)
                     set_accessdata(res.data.data)
                     var envcount = res.data.data.length;
                     let openArr = [];
@@ -36,7 +36,7 @@ function Api_accesstokes() {
             })
     }, [opentoken, openrevoke,render])
     const handlerevoke = () => {
-        console.log(document.getElementById('accessID'))
+        // console.log(document.getElementById('accessID'))
     }
     const setPopups = (index, item) => {
         if (item) {
@@ -50,7 +50,7 @@ function Api_accesstokes() {
     }
     const submitEdit=()=>{
        
-        let accessId=get_accessdata[0].environmentName
+        let accessId=get_accessdata[0].accessTokenId
         let newObj=new Object()
         newObj.name=value
         if(value){
@@ -102,15 +102,12 @@ function Api_accesstokes() {
                                     </td>
                                     <td>{item.environmentName}</td>
                                     <td>
-                                        {/* <tr>{item.isInUse}</tr> */}
-                                        <tr>Video<span>(read-only)</span></tr>
-                                        <tr>Data<span>(read-only)</span></tr>
-                                        <tr>System<span>(read-only)</span></tr>
+                                        {item&&item.permissions[0]&&item&&item.permissions[0].productTypeId==1&&item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td>System</td>:[item&&item.permissions[0]&&item.permissions[0].productTypeId==1?<td>video</td>:[item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td></td>:<td>Data(read only)</td>]]}
                                     </td>
                                     <td>{createdDate(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>
-                                    <td>{item.isInUse}</td>
-                                    <td><a onClick={() => [setrevoke(true)][handlerevoke()]}>Revoke</a></td>
+                                    {item.isInUse==true?<td>Active</td>:[item.isInUse==false?<td>Access Revoked</td>:null]}
+                                    {item.isInUse==true?<td><a onClick={() => [setrevoke(true)][handlerevoke()]}>Revoke</a></td>:<td></td>}
                                 </tr>
                                 {openrevoke && <Revoke item={item} closerevoke={setrevoke} />}
                             </tbody>

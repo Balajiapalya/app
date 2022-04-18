@@ -6,7 +6,7 @@ export default function Delete_webhook({ closedeletewebhook,item }) {
         Api.Delete_webhook(item.id).then(res=>closedeletewebhook(false))
     }
     return (
-        <div className={`${styles.model} ${styles.remove_user_modal}`} >
+        <div className={`${styles.model} ${styles.remove_user_modal} ${styles.opc}`} >
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Delete Webhook</h3>
