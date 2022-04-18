@@ -260,12 +260,6 @@ const Api = {
             url: get_environment_types(),
             headers: headers,
         }),// this is called where ever environments are there
-    Get_product_data: () =>
-        axios({
-            method: 'GET',
-            url: get_product(),
-            headers: headers,
-        }),//create_signing_key
     Edit_organisation_name_data: (organization_data) =>
         axios({
             method: 'POST',
@@ -288,6 +282,12 @@ const Api = {
             headers: headers,
         }),
     //access token
+    Get_access_token: () =>
+        axios({
+            method: 'GET',
+            url: get_access_token(),
+            headers: headers,
+        }),
     Create_aaccess_token_data: (access_data) =>
         axios({
             method: 'POST',
@@ -303,6 +303,12 @@ const Api = {
             headers: headers,
         }),//revoke accesstoken
     //webhook
+    Get_webhook: () =>
+        axios({
+            method: 'GET',
+            url: get_webhook(),
+            headers: headers,
+        }),
     Create_webhook_data: (webhook_data) =>
         axios({
             method: 'POST',
@@ -318,6 +324,12 @@ const Api = {
             headers: headers,
         }),//delete webhook
     //signin key
+    Get_sigin_keys: () =>
+        axios({
+            method: 'GET',
+            url: get_signin_keys(),
+            headers: headers,
+        }),
     Create_signin_keys_data: (signin_key) =>
         axios({
             method: 'POST',
@@ -331,6 +343,12 @@ const Api = {
             url: delSigningKey(id),
             headers: headers
         }),
+    Get_product_data: () =>
+        axios({
+            method: 'GET',
+            url: get_product(),
+            headers: headers,
+        }),//create_signing_key
     //videos
     Video_list: (data) =>
         axios({
@@ -341,7 +359,17 @@ const Api = {
                 'EnvironmentId': `${data}`
             },
         }),
-
+    post_video: (video_url_data) =>
+        axios({
+            method: 'POST',
+            data: video_url_data,
+            url: video_url(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
+    //environments
     Get_env_data: () =>
         axios({
             method: 'GET',
@@ -367,19 +395,7 @@ const Api = {
             data: dev_data,
             url: update_env(data),
             headers: { 'Authorization': `Bearer ${token}` }
-
         }),
-    post_video: (video_url_data) =>
-        axios({
-            method: 'POST',
-            data: video_url_data,
-            url: video_url(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${localStorage.getItem("envuuid")}`
-            }
-        }),
-
     //direct upload
     Direct_upload_post: (direct_video_upload) =>
         axios({
@@ -401,26 +417,7 @@ const Api = {
                 'EnvironmentId': `${data}`
             }
         }),//called in videos
-    Get_access_token: () =>
-        axios({
-            method: 'GET',
-            url: get_access_token(),
-            headers: headers,
-        }),
-    //get signin keys
-    Get_sigin_keys: () =>
-        axios({
-            method: 'GET',
-            url: get_signin_keys(),
-            headers: headers,
-        }),
-    //get webhook
-    Get_webhook: () =>
-        axios({
-            method: 'GET',
-            url: get_webhook(),
-            headers: headers,
-        }),
+    //selected
     Selected_option: (data) =>
         axios({
             method: 'POST',
@@ -507,16 +504,6 @@ const Api = {
             method: 'GET',
             url: payment_history(),
             headers: headers,
-        }),
-    //videos->overview
-    Delete_asset: () =>
-        axios({
-            method: "DELETE",
-            url: delete_asset(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
         }),
 
     //Statistics

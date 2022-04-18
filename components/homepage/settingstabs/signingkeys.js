@@ -45,7 +45,7 @@ function Signingkeys() {
                             {keys.map((item, key) =>
                                 <tr key={key}>
                                     <td>{item.signingKeyId}</td>
-                                    <td>{item.environmentId}</td>
+                                    <td>{item.environmentName}</td>
                                     {item.productTypeId=="1"?<td>Video</td>:[item.productTypeId=="2"?<td>Data</td>:[item.productTypeId=="3"?<td>System</td>:<td></td>]]}
                                     <td>{create_On(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>

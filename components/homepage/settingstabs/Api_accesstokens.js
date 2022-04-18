@@ -85,20 +85,16 @@ function Api_accesstokes() {
                                             </form>
 
                                         )}
-
                                         <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
                                     </td>
-                                    <td>{item.id}</td>
+                                    <td>{item.environmentName}</td>
                                     <td>
-                                        {/* <tr>{item.isInUse}</tr> */}
-                                        <tr>Video<span>(read-only)</span></tr>
-                                        <tr>Data<span>(read-only)</span></tr>
-                                        <tr>System<span>(read-only)</span></tr>
+                                        {item&&item.permissions[0]&&item&&item.permissions[0].productTypeId==1&&item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td>System</td>:[item&&item.permissions[0]&&item.permissions[0].productTypeId==1?<td>video</td>:[item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td></td>:<td>Data(read only)</td>]]}
                                     </td>
                                     <td>{createdDate(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>
-                                    <td>{item.isInUse}</td>
-                                    <td><a onClick={() => [setrevoke(true)][handlerevoke()]}>Revoke</a></td>
+                                    {item.isInUse==true?<td>Active</td>:[item.isInUse==false?<td>Access Revoked</td>:null]}
+                                    {item.isInUse==true?<td><a onClick={() => [setrevoke(true)][handlerevoke()]}>Revoke</a></td>:<td></td>}
                                 </tr>
                                 {openrevoke && <Revoke item={item} closerevoke={setrevoke} />}
                             </tbody>

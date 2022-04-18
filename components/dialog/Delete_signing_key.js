@@ -6,7 +6,7 @@ export default function Delete_signing_key({ closereovekeys,item }) {
         Api.Delete_key_signing(item.signingKeyId).then(res=>closereovekeys(false))
     }
     return (
-        <div className={`${styles.model} ${styles.remove_user_modal}`} >
+        <div className={`${styles.model} ${styles.remove_user_modal} ${styles.opc}`} >
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Delete Singing Key</h3>

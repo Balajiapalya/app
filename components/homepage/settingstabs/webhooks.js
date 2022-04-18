@@ -53,7 +53,7 @@ function Webhooks() {
                             <tr key={key}>
                                 <td>{item.url}</td>
                                 <td>{item.signingSecret}</td>
-                                <td>{item.environmentId}</td>
+                                <td>{item.environmentName}</td>
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
                                 <td>Active</td>
