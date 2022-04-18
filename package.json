@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
-    "hls.js": "^1.1.5-0.canary.8319",
+    "hls.js": "^1.1.5-0.canary.8326",
     "next": "^12.1.0",
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
