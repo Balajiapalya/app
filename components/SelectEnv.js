@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-import styles from "../../styles/settings.module.css";
-import Api from '../../components/api/api'
+import styles from "../styles/settings.module.css";
+import Api from './api/api'
 
 const SelectEnv = ({ id, env, newInput, valueDefault,setPopup,i,setLoad }) => {
     const [defaultOpt, setDefaultOpt] = useState(id)

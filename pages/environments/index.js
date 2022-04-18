@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Add_new_environment from "./add_new_environment";
 import { useForm } from "react-hook-form";
 import Router from 'next/router'
-import SelectEnv from './SelectEnv'
+import SelectEnv from '../../components/SelectEnv'
 
 export default function Environment() {
   const {
