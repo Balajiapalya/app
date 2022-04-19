@@ -8,7 +8,7 @@ export default function Activities({closeactivities}) {
             <div className={styles.main}>
                 <div className={styles.nav}>
                     <h3 className={styles.title}>Activities</h3>
-                    <a  onClick={()=>closeactivities(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close"/></a>
+                    <a  onClick={()=>closeactivities(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt="close"/></a>
                 
                   
                 </div>

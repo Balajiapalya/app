@@ -59,7 +59,7 @@ function Webhooks() {
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>
-                                    <a onClick={()=>[`${setremovewebhook(true)}`][`${setObj(item)}`]}><img src="Images/Icon material-delete.png" alt="icon" ></img></a>
+                                    <a onClick={()=>[`${setremovewebhook(true)}`][`${setObj(item)}`]}><img src="images/Icon material-delete.png" alt="icon" ></img></a>
                                 </td>
                                 {removewebhook && <Delete_webhook item={obj} closedeletewebhook={setremovewebhook} />}
                             </tr>

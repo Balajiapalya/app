@@ -22,7 +22,7 @@ export default function Create_new_organization({ closeneworg }) {
             <div className={styles.body}>
 
                 <div className={styles.model_nav}>
-                    <a onClick={() => closeneworg(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt='icon' /> </a>
+                    <a onClick={() => closeneworg(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Create new organization</h3>
