@@ -13,7 +13,7 @@ export default function Thumbnails() {
                 <div className={styles.thumbnail_image}>
                     <h2>Create Thumbnail using tool</h2>
                     <div className={styles.create_image}>
-                        {/* <img className={styles.editor_img} src="/Images/Image 11.png" alt="image" /> */}
+                        {/* <img className={styles.editor_img} src="/images/Image 11.png" alt="image" /> */}
                         <Player />
 
                         <label className={styles.model_label}>Time</label>

@@ -9,7 +9,7 @@ export default function Newstream_monitor() {
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
+                    <a className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add new stream to monitor</h3>
@@ -25,7 +25,7 @@ export default function Newstream_monitor() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="/Images/updown.png" alt="updown"></img></button>
+                        <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>Time interval</label>
                     <div className={styles.select}>
@@ -35,11 +35,11 @@ export default function Newstream_monitor() {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="/Images/updown.png" alt="updown"></img></button>
+                        <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
                     </div>
                     <label className={styles.model_label}>premiumfeatures</label>
                     <div className={styles.premiumfeatures}>
-                    <img src="/Images/Icon awesome-check.png" alt="check"></img>
+                    <img src="/images/Iconawesome-check-circle.png" alt="check"></img>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
 
@@ -51,7 +51,7 @@ export default function Newstream_monitor() {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
-                            <button type="text" className={styles.up}><img src="/Images/updown.png" alt="updown"></img></button>
+                            <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
                         </div>
                         <label className={styles.model_label}>Detailed Stream info</label>
                         <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>

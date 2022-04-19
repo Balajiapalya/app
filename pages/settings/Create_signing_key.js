@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import Image from 'next/image'
 import {useEffect,useState} from 'react'
+import CreateSignKey from '../../components/dialog/CreateSignKey'
 
 export default function Create_signing_key({ closesigninkeys }) {
     const [data, setData] = useState([])
@@ -16,16 +17,19 @@ export default function Create_signing_key({ closesigninkeys }) {
         .then(res=>
             setProd(res.data.data))
     }, [])
+    const [openCreate,setOpenCreate]=useState(false)
+    const [signRes,setSignRes]=useState()
+
     const onSubmit = signin_key => {
         signin_key.environmentUUID=localStorage.getItem('envuuid')
-        Api.Create_signin_keys_data(signin_key).then(res=>closesigninkeys(false))
-        
+        Api.Create_signin_keys_data(signin_key).then(res=>setSignRes(res.data.data))
+        setOpenCreate(true)
     }
     return (
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closesigninkeys(false)} className={styles.model_close} role="button"><Image src="/Images/close.png" alt='icon' width='20' height='20' /> </a>
+                    <a onClick={() => closesigninkeys(false)} className={styles.model_close} role="button"><Image src="/images/close.png" alt='icon' width='20' height='20' /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -43,8 +47,8 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 </>)}
                             </select>
 
-                            <img className={styles.file} src="/Images/Icon awesome-folder.png" alt='icon' />
-                            <button type="text" className={styles.up}><img src="/Images/updown.png" alt='icon'></img></button>
+                            <img className={styles.file} src="/images/Icon awesome-folder.png" alt='icon' />
+                            <button type="text" className={styles.up}><img src="/images/updown.png" alt='icon'></img></button>
                         </div>
                         <div>
                             <label className={styles.model_label}>Product</label>
@@ -63,7 +67,8 @@ export default function Create_signing_key({ closesigninkeys }) {
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Signing Key</button>
                         </div>
                     </form>
-
+                    
+                    {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes}/>}              
                 </div>
             </div>
         </div>

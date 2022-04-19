@@ -74,11 +74,11 @@ export default function Overview() {
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
                                 <button className='btn'>Activities</button>
-                                <img src="/Images/Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="/images/Icon awesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                 <button onClick={() => delete_asset()} className='btn'>Delete Asset</button>
-                                <img src="/Images/Icon material-delete.png" alt="delete"></img>
+                                <img src="/images/Icon material-delete.png" alt="delete"></img>
                             </div>
 
                         </div>
@@ -99,7 +99,7 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/Images/asset_status/${i.status}.png`} /></td>
+                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
@@ -133,7 +133,7 @@ export default function Overview() {
                                                 <p> </p>
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                                <img src='/images/Icon ionic-ios-copy.png' alt='copy' />
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +145,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
-                                                    <img onClick={() => showtooltip()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                                    <img onClick={() => showtooltip()} src='/images/Icon ionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                                 {tooltip ? <span className={styles.tooltip}>copied</span> : null}
                                             </div>
@@ -160,7 +160,7 @@ export default function Overview() {
                                                 <p> </p>
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                                <img src='/images/Icon ionic-ios-copy.png' alt='copy' />
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@ export default function Overview() {
                                                 <p></p>
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <img src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                                <img src='/images/Icon ionic-ios-copy.png' alt='copy' />
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@ export default function Overview() {
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
-                                                <img onClick={() => showtooltipURL()} src='/Images/Icon ionic-ios-copy.png' alt='copy' />
+                                                <img onClick={() => showtooltipURL()} src='/images/Icon ionic-ios-copy.png' alt='copy' />
                                             </CopyToClipboard>
                                             {tooltipURL ? <span className={styles.tooltip}>copied</span> : null}
                                         </div>

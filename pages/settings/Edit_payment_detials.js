@@ -12,7 +12,7 @@ export default function Edit_payment_detials({ closepaymentdetails }) {
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>
       <div className={styles.body}>
         <div className={styles.model_nav}>
-          <a className={styles.model_close} role="button" onClick={() => closepaymentdetails(false)}><img src="Images/close.png" alt='icon' /> </a>
+          <a className={styles.model_close} role="button" onClick={() => closepaymentdetails(false)}><img src="images/close.png" alt='icon' /> </a>
         </div>
         <div className={styles.main}>
           <h3 className={styles.model_title}>Edit Payment Details</h3>
@@ -21,7 +21,7 @@ export default function Edit_payment_detials({ closepaymentdetails }) {
             <div className={styles.cerditcard_number}>
               <input type="text" className={`${styles.model_input} form_control`} name="cardnumber" placeholder="Cardnumber" {...register("cardnumber", { required: true })} />
               {errors.cardnumber && <p className={'validations'}>This field is required</p>}
-              <img className={styles.file} src="Images/credit-card.png" alt='icon' ></img>
+              <img className={styles.file} src="images/credit-card.png" alt='icon' ></img>
             </div>
             <div className={styles.card}>
               <div className={styles.expiration_date}>

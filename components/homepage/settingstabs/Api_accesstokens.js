@@ -87,7 +87,7 @@ function Api_accesstokes() {
                                         {closemodal[i] && (
                                             <div>
                                                 <span >{item.name}</span>
-                                                <img onClick={() => { setPopups(i, item) }} src="Images/Icon material-edit.png" alt="icon"></img>
+                                                <img onClick={() => { setPopups(i, item) }} src="images/Icon material-edit.png" alt="icon"></img>
                                             </div>
                                         )}
                                         {openModel[i] && (

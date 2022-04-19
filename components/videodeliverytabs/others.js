@@ -128,7 +128,7 @@ export default function Others() {
                                             <th>
 
                                                 <input className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
-                                                <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/Images/Icon feather-plus-grey.png' /> Add</button>
+                                                <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/Icon feather-plus-grey.png' /> Add</button>
                                             </th>
 
                                         </tr>
@@ -162,9 +162,9 @@ export default function Others() {
                         <div className={styles.image_poster}>
                             <h2>image poster</h2>
                             <div className={styles.image_poster_box}>
-                                <img src="/Images/Image 19.png" className={styles.image_layer} alt="image" />
-                                <img src="/Images/Image 18.png" className={styles.image_layer1} alt="image" />
-                                <img src="/Images/Image 18.png" className={styles.image_layer2} alt="image" />
+                                <img src="/images/Image 19.png" className={styles.image_layer} alt="image" />
+                                <img src="/images/Image 18.png" className={styles.image_layer1} alt="image" />
+                                <img src="/images/Image 18.png" className={styles.image_layer2} alt="image" />
                                 <div className={styles.upload_image_btn}>
                                     <button className={styles.upload_btn}>Upload Image</button>
                                 </div>
@@ -174,9 +174,9 @@ export default function Others() {
                         <div className={styles.quickpreview_poster}>
                             <h2>Quick preview poster</h2>
                             <div className={styles.quickpreview_poster_box}>
-                                <img src="/Images/Image 19.png" className={styles.image_layer} alt="image" />
-                                <img src="/Images/Image 18.png" className={styles.image_layer1} alt="image" />
-                                <img src="/Images/Image 18.png" className={styles.image_layer2} alt="image" />
+                                <img src="/images/Image 19.png" className={styles.image_layer} alt="image" />
+                                <img src="/images/Image 18.png" className={styles.image_layer1} alt="image" />
+                                <img src="/images/Image 18.png" className={styles.image_layer2} alt="image" />
                                 <div className={styles.upload_image_btn}>
                                     <button className={styles.upload_btn}>Create Gif</button>
                                 </div>

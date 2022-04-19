@@ -6,7 +6,7 @@ function Videoditor() {
 
         <div className={styles.video_editor_content}>
             <div className={styles.video_editor_player}>
-            <img src="/Images/Image 11.png" alt="image"/>
+            <img src="/images/Image 11.png" alt="image"/>
             </div>
             
             <div className={styles.start_end_time}>

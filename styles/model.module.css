@@ -164,12 +164,38 @@
     top: 0;
     left: 0;
 }
-
+.secret{
+    text-align: center;
+}
+.secret h2{
+    margin-top:5rem;
+    margin-bottom: 4rem;
+}
+.secret input{
+    width: 60%;
+    height: 50px;
+    margin-bottom: 30px;
+    border: solid 1px rgba(99, 115, 129, 0.3);
+    border-radius: 2px;
+}
+.secret .btn{
+    margin-top:20px;
+    height: 50px;
+    width: 30%;
+    background-color: #fff;
+    border: solid 1px rgba(99, 115, 129, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+}
+.imgCopy{
+   height: 20px;
+   margin-left:30px;
+   cursor: pointer;
+}
 .editpaymentdetials .main{
     width: 400px;
     border: none;
-    margin: auto;
-    
+    margin: auto; 
 }
 .editpaymentdetials .cerditcard_number{
     position: relative;
