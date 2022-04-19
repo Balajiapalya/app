@@ -19,7 +19,7 @@ export default function Subtitle_convertfile() {
                         <p>Easliy Convert your subtitle files from one format to another with our tool.</p>
                     </div>
                     <div className={styles.convertfile}>
-                   <img src= "/Images/Icon awesome-check-circle@2x.png" alt="check"/>
+                   <img src= "/images/Icon awesome-check-circle@2x.png" alt="check"/>
                         <h3>Your file is ready for download!</h3>
                         <p>if the download doesnt start automatically<a>click here</a></p>
                         <div className={styles.model_btn}>

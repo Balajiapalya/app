@@ -6,7 +6,7 @@ export default function Premiumfeatures_Enable() {
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}> premium Features</h3>
-                    <a href="" className={styles.model_close} role="button"><img src="Images/close.png" alt="close"/> </a>
+                    <a href="" className={styles.model_close} role="button"><img src="images/close.png" alt="close"/> </a>
                 </div>
 
                 <div className={styles.model_removeuser}>

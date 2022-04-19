@@ -77,7 +77,7 @@ function Organisation() {
 
                 <div className={styles.edit}>{editData ? editData.name : org}
                     <span>
-                        <a onClick={() => setopeneditorganization(true)}><img src="Images/Icon material-edit.png" alt="icon"></img>Edit</a>
+                        <a onClick={() => setopeneditorganization(true)}><img src="images/Icon material-edit.png" alt="icon"></img>Edit</a>
                     </span>
                 </div>
 
@@ -111,7 +111,7 @@ function Organisation() {
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
-                                {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="Images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
+                                {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="images/Icon material-delete.png" alt="icon"></img></a></td> : <td></td>}
                             </tr>
                         )}
                         {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}
