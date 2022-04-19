@@ -12,6 +12,7 @@ function Webhooks() {
     const [error,seterror]=useState();
     const [obj, setObj] = useState([])
     useEffect(()=>{
+        
         Api.Get_webhook()
             .then(res=>{
                 setwebnook(res.data.data)
@@ -22,6 +23,7 @@ function Webhooks() {
                     console.log(error.response.data.message)
                   }
             })
+        
     },[openwebhook,removewebhook])
     return (
         <Fragment>
@@ -51,7 +53,7 @@ function Webhooks() {
                             <tr key={key}>
                                 <td>{item.url}</td>
                                 <td>{item.signingSecret}</td>
-                                <td>{item.environmentId}</td>
+                                <td>{item.environmentName}</td>
                                 <td>10/21/2021</td>
                                 <td>anil@yupptv.com</td>
                                 <td>Active</td>
