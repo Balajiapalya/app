@@ -78,6 +78,17 @@
 .encoded_video,.stored_video{
     margin-right: 10px;
 }
+.timeperiod{
+    color: grey;
+    font-size: 10px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 0px;
+
+}
+.video_type_content{
+    width: 100%;
+}
 .real_time_views_container{
     width: 100%;
     float: left;
@@ -116,6 +127,48 @@
     float: left;
 }
 
+.doughnut_graph{
+    width: 100%;
+    /* float: left; */
+}
+.doughnut_graph canvas{
+    height: 42vh !important;
+    width: 80% !important;
+    margin-left: 10%;
+}
+.countries_map{
+    width: 60%;
+    height: 50vh;
+    float: left;
+}
+.countries_table{
+    width: 40%;
+    height: 50vh;
+    float: right;
+}
+.countries_table table{
+    /* width: 100%; */
+    float: left;
+}
+.countries_table table thead{
+    border: 1px solid #999;
+    border-collapse: collapse;
+}
+/* .countries_table table thead tr{
+    border: 1px solid #999;
+    border-collapse: collapse;
+} */
+.countries_table table thead tr th{
+    color: #999;
+    font-weight: 400;
+    border-bottom: 1px solid #999;
+    border-collapse: collapse;
+}
+.countries_table table tbody{
+    width: 100%;
+    text-align: center;
+}
+
 /*----Metrics---------*/
 
 .Metrics_heading{
@@ -127,4 +180,38 @@
     color: #212b36;
     font-family: Inter-Medium;
     font-size: 20px;
+    margin-bottom: 20px;
+}
+.views_cards{
+    width: 100%;
+    float: left;
+    display: flex;
+}
+.cards_container{
+    width: 25%;
+    margin-right: 10px;
+    /* float: left; */
+    height:8em;
+    background-color: #ffff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+}
+.Countries_videos{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+.countries,.videos{
+    height: 18em;
+    background-color: #ffff;
+}
+.Countries_videos .countries{
+    width: 60%;
+    float: left;
+    margin-right: 5px;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+}
+.Countries_videos .videos{
+    width: 39%;
+    float: right;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }

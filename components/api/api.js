@@ -81,7 +81,7 @@ export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
 };
 export const get_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}&environmentId=${envuuid}&productTypeId=2`
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}`
 };
 export const get_product = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
@@ -153,10 +153,10 @@ export const delSigningKey = (id) => {
 }
 //statistics
 export const usage_statistics = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=1648751400000&to=1649835236192&interval=1h`
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=${sevenDaysBeforeDate}&to=${currentDate}&interval=7d`
 }
 export const views_statistics = () => {
-    return `${DATA_BASE_URL}/services/api/v1/views?environmentId=${envuuid}&from=1648751400000&to=1649835236192`
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${envuuid}&from=${sevenDaysBeforeDate}&to=${currentDate}`
 }
 export const editAccessToken=(accessId)=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
@@ -204,6 +204,8 @@ if (process.browser) {
 }
 const uploadid = upload_id;
 
+const currentDate = Date.now();
+const sevenDaysBeforeDate = new Date().setDate(new Date().getDate() - 7);
 
 const Api = {
     Sign_up_data: (login_details) =>
@@ -515,27 +517,29 @@ const Api = {
         axios({
             method: 'GET',
             url: usage_statistics(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
+            // headers: {
+            //     'Authorization': `Bearer ${token}`,
+            //     'EnvironmentId': `${envuuid}`
+            // }
+            headers:headers,
         }),
     Views_statistics: () =>
         axios({
             method: 'GET',
             url: views_statistics(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
+            // headers: {
+            //     'Authorization': `Bearer ${token}`,
+            //     'EnvironmentId': `${envuuid}`
+            // }
+            headers:headers,
         }),
-        EditApiAccessToken:(value,accessId)=>
+    EditApiAccessToken:(value,accessId)=>
         axios({
             method: 'PUT',
             data: value,
             url: editAccessToken(accessId),
             headers: headers
-        })
+        }),
 }
 export default Api
 
