@@ -23,11 +23,11 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
             </div>
                 <h2>Here&apos;s your new Access Token:</h2>
                 <h3>Access Token ID:</h3>
-                <input ref={refOne} defaultValue={res.accessTokenId} readonly/>
+                <input ref={refOne} defaultValue={res.accessTokenId} readOnly/>
                 <img onClick={()=>copyText()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <h3>Secret Key:</h3>
                 <h4>We don&apos;t store this so please memorize it...</h4>
-                <input ref={refTwo} defaultValue={res.secretKey} readonly/>
+                <input ref={refTwo} defaultValue={res.secretKey} readOnly/>
                 <img onClick={()=>copyTwo()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <br/>
                 <button onClick={() => `${setNewToken(false)} ${closetoken(false)}`} className={styles.btn}>Continue</button>

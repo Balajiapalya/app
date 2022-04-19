@@ -22,11 +22,11 @@ const copySignKey=()=>{
             </div>
                 <h2>Here&apos;s your new Access Token:</h2>
                 <h3>Access Token ID:</h3>
-                <input ref={refKey} defaultValue={signRes.privateKey} readonly/>
+                <input ref={refKey} defaultValue={signRes.privateKey} readOnly/>
                 <img onClick={()=>privateKey()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <h3>Secret Key:</h3>
                 <h4>We don&apos;t store this so please memorize it...</h4>
-                <input ref={refSign} defaultValue={signRes.signingKeyId} readonly/>
+                <input ref={refSign} defaultValue={signRes.signingKeyId} readOnly/>
                 <img onClick={()=>copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <br/>
                 <button className={styles.btn}>Continue</button>
