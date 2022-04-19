@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { memo, useContext } from "react";
 import Api from '../api/api'
+import NextNProgress from "nextjs-progressbar";
 
 function Navbar() {
 
@@ -57,6 +58,13 @@ function Navbar() {
     return (
         <div className={styles.container}>
             <div className={styles.containercomponents}>
+                <NextNProgress
+                    color="#2863eb"
+                    startPosition={0.3}
+                    stopDelayMs={200}
+                    height={2}
+                    showOnShallow={true}
+                />
                 <Link href='/'><a className={local == 12 || local == 'null' ? `${styles.activate}` : `${toggleStyle(11)}`} onClick={() => handleActive(11)}><h2>Videograph</h2></a></Link>
                 <div className={styles.uppercomponents}>
                     <ul>

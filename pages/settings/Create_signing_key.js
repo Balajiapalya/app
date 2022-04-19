@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import Image from 'next/image'
 import {useEffect,useState} from 'react'
+import CreateSignKey from '../../components/dialog/CreateSignKey'
 
 export default function Create_signing_key({ closesigninkeys }) {
     const [data, setData] = useState([])
@@ -16,9 +17,11 @@ export default function Create_signing_key({ closesigninkeys }) {
         .then(res=>
             setProd(res.data.data))
     }, [])
+    const [openCreate,setOpenCreate]=useState(false)
+
     const onSubmit = signin_key => {
         signin_key.environmentUUID=localStorage.getItem('envuuid')
-        Api.Create_signin_keys_data(signin_key).then(res=>closesigninkeys(false))
+        Api.Create_signin_keys_data(signin_key).then(res=>console.log(res))
         
     }
     return (
@@ -60,10 +63,10 @@ export default function Create_signing_key({ closesigninkeys }) {
                         </div>
                         <div className={styles.model_btn}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closesigninkeys(false)}>Cancel</button>
-                            <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Signing Key</button>
+                            <button onClick={()=>setOpenCreate(true)} type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Signing Key</button>
                         </div>
                     </form>
-
+                    {openCreate && <CreateSignKey setOpenCreate={setOpenCreate}/>}              
                 </div>
             </div>
         </div>
