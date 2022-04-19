@@ -2,12 +2,14 @@ import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import { useEffect, useState } from 'react'
+import SecretKey from '../../components/dialog/SecretKey'
 
 export default function New_Access_token({ closetoken }) {
    const [data, setData] = useState([])
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
    const [productType,setProductType]=useState([])
    const [items,setItems]=useState([])
+   const [newToken,setNewToken]=useState(false)
 
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
@@ -16,7 +18,6 @@ export default function New_Access_token({ closetoken }) {
       {setItems(res.data.data[1])}
       {setProductType(res.data.data[0])}
       </>)
-      
    }, [])
    const onSubmit = access_data => {
       if(access_data.video){
@@ -43,8 +44,15 @@ export default function New_Access_token({ closetoken }) {
       let sliced=Object.fromEntries(Object.entries(access_data).slice(5,7))
       sliced.envUUID=localStorage.getItem('envuuid') 
       if(access_data.video || access_data.data){
-         Api.Create_aaccess_token_data(sliced).then(res=>closetoken(false))
+         Api.Create_aaccess_token_data(sliced).then(res=>
+           console.log(res,'res')
+          )
+          .catch(error=>{
+            console.log(error)
+          })
+      
       }
+      // setNewToken(true)
    }
    
    const videoAll=watch('video')
@@ -119,10 +127,13 @@ export default function New_Access_token({ closetoken }) {
                   <div className={styles.model_btn}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closetoken(false)}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
+                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken}/>}
                   </div>
                </form>
             </div>
          </div>
+        
       </div>
+
    )
 }
