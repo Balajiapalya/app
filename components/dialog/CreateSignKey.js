@@ -32,11 +32,11 @@ const downloadFile=()=>{
                 <h2>Here&apos;s your new Access Token:</h2>
                 <h3>Signing Key Id:</h3>
                 <input ref={refSign} defaultValue={signRes.signingKeyId} readOnly/>
-                <img onClick={()=>privateKey()} className={styles.imgCopy} src="images/favicon/copy.png"/>
+                <img onClick={()=>copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <h3>Private Key:</h3>
                 <h4>We don&apos;t store this so please memorize it...</h4>
                 <input ref={refKey} defaultValue={signRes.privateKey} readOnly/>
-                <img onClick={()=>copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png"/>
+                <img onClick={()=>privateKey()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <button onClick={()=>downloadFile()} className={styles.butn}>Download as .env file</button>
                 <br/>
                 <button onClick={()=>`${closesigninkeys(false)} ${setOpenCreate(false)}`} className={styles.btn}>Continue</button>
