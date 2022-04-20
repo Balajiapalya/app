@@ -178,7 +178,7 @@ export default function Accounts() {
                             >
                               {items.name}{" "}
                               {key == highlightedorg && (
-                                <img src="/images/Icon awesome-check-circle.png"></img>
+                                <img src="/images/Iconawesome-check-circle.png"></img>
                               )}
                             </button>
                           </td>

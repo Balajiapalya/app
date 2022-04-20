@@ -18,7 +18,7 @@ export default function Create_signing_key({ closesigninkeys }) {
             setProd(res.data.data))
     }, [])
     const [openCreate,setOpenCreate]=useState(false)
-    const [signRes,setSignRes]=useState()
+    const [signRes,setSignRes]=useState([])
 
     const onSubmit = signin_key => {
         signin_key.environmentUUID=localStorage.getItem('envuuid')
@@ -67,8 +67,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Signing Key</button>
                         </div>
                     </form>
-                    
-                    {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes}/>}              
+                    {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes} closesigninkeys={closesigninkeys}/>}              
                 </div>
             </div>
         </div>
