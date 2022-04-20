@@ -50,7 +50,7 @@ function Signingkeys() {
                                     <td>{create_On(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>
                                     <td>
-                                        <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="images/Icon material-delete.png" alt="icon"></img></a>
+                                        <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="images/iconmaterial-delete.png" alt="icon"></img></a>
                                     </td>
                                 </tr>
 

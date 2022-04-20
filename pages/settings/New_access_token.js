@@ -81,7 +81,7 @@ export default function New_Access_token({ closetoken }) {
                               <option key={option.id} value={option.id}>{option.name}</option>
                            </>)}
                      </select>
-                     <img className={styles.file} src="images/Icon awesome-folder.png" alt='icon'></img>
+                     <img className={styles.file} src="images/iconawesome-folder.png" alt='icon'></img>
                      <button type="text" className={styles.up}><img src="images/updown.png" alt='icon'></img></button>
                   </div>
 

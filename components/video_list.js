@@ -27,12 +27,12 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.resolution ? <td>{i.resolution}</td> : <td>-</td>}
             {i.status=="Failed"?<td>{i.status}</td>:<td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td className={styles.actionicons}>
-                <a onClick={() => handleChange()}><img className={styles.active} src='/images/Icon ionic-ios-play-circle.png' alt="image"></img></a>
+                <a onClick={() => handleChange()}><img className={styles.active} src='/images/iconionic-ios-play-circle.png' alt="image"></img></a>
                 <img src='/images/film-editing.png' alt="image"></img>
                 <img src='/images/insert-picture-icon.png' alt="image"></img>
                 <img src='/images/gif-file-format-symbol.png' alt="image"></img>
                 <img src='/images/closed-caption.png' alt="image"></img>
-                <img src='/images/Icon awesome-eye-slash.png' alt="image"></img>
+                <img src='/images/iconawesome-eye-slash.png' alt="image"></img>
             </td>
         </>
     )

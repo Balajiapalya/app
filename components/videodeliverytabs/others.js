@@ -128,7 +128,7 @@ export default function Others() {
                                             <th>
 
                                                 <input className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
-                                                <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/Icon feather-plus-grey.png' /> Add</button>
+                                                <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/iconfeather-plus-grey.png' /> Add</button>
                                             </th>
 
                                         </tr>

@@ -4,7 +4,7 @@ export default function Signup_invitation() {
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
         <div className={styles.logo_title}>
-          <img className={styles.file} src="images/Logo.png" alt='logo'></img>
+          <img className={styles.file} src="images/logo.png" alt='logo'></img>
         </div>
         <div className={styles.signup_area}>
           <h3 className={styles.signup_title}>

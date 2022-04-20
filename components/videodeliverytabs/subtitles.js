@@ -33,7 +33,7 @@ export default function Subtitles() {
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
                                         <img src="/images/download.png" alt="download" />
-                                        <img src="/images/Icon material-delete.png" alt="delete" />
+                                        <img src="/images/iconmaterial-delete.png" alt="delete" />
 
                                     </td>
                                 </tr>
@@ -44,7 +44,7 @@ export default function Subtitles() {
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
                                         <img src="/images/download.png" alt="download" />
-                                        <img src="/images/Icon material-delete.png" alt="delete" />
+                                        <img src="/images/iconmaterial-delete.png" alt="delete" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -54,7 +54,7 @@ export default function Subtitles() {
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
                                         <img src="/images/download.png" alt="download" />
-                                        <img src="/images/Icon material-delete.png" alt="delete" />
+                                        <img src="/images/iconmaterial-delete.png" alt="delete" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -64,7 +64,7 @@ export default function Subtitles() {
                                     <td>VTT</td>
                                     <td className={styles.actionicons}>
                                         <img src="/images/download.png" alt="download" />
-                                        <img src="/images/Icon material-delete.png" alt="delete" />
+                                        <img src="/images/iconmaterial-delete.png" alt="delete" />
                                     </td>
                                 </tr>
                             </tbody>

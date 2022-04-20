@@ -47,7 +47,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 </>)}
                             </select>
 
-                            <img className={styles.file} src="/images/Icon awesome-folder.png" alt='icon' />
+                            <img className={styles.file} src="/images/iconawesome-folder.png" alt='icon' />
                             <button type="text" className={styles.up}><img src="/images/updown.png" alt='icon'></img></button>
                         </div>
                         <div>
