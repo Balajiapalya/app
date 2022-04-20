@@ -10,7 +10,7 @@ export default function Stream_preview({closepreview}){
                     <a onClick={()=> closepreview(false)}  className={styles.model_close} role="button"><img src="/images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.previewimage}>
-                    {/* <img src="Image 2.png"></img> */}
+                    {/* <img src="image2.png"></img> */}
 
                 </div>
                 </div>

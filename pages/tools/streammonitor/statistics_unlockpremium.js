@@ -22,7 +22,7 @@ export default function Statistics_unlockpremium() {
                     </div>
                     <div className={styles.header}>
                         {/* <img/> */}
-                        <img src="/images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                        <img src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
                         <h2>
                             Asianet-Roku Statistics
                         </h2>
@@ -55,11 +55,11 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.actions}>
                                 <a onClick={()=>setactivities(true)}><button className='btn'>Activities</button></a>
-                                <img src="/images/Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                <a onClick={()=>set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
-                                <img src="/images/Icon material-delete.png" alt="delete"></img>
+                                <img src="/images/iconmaterial-delete.png" alt="delete"></img>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.scte_markers}>
                                 <div className={styles.text_align}>
-                                    <img src="/images/Icon material-lock.png" alt="lock"></img>
+                                    <img src="/images/iconmaterial-lock.png" alt="lock"></img>
                                     <h4>SCTE-35/104 Markers</h4>
                                     <p>Detects the markers in the strem.Get details info such as duration and the time line at which the marker occur in the stream.</p>
                                     <a onClick={()=>set_premium(true)}>Unlock Premium</a>
@@ -187,7 +187,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.timestamp}>
                                 <div className={styles.timestamp_details}>
-                                    <img src="/images/Icon material-lock.png" alt="lock"></img>
+                                    <img src="/images/iconmaterial-lock.png" alt="lock"></img>
                                     <h4>Track Presentation Timestamp(PTS)</h4>
                                     <span>Early track PTS of streamS for any location.</span>
                                     <p>For optional monitoring choose a location that is close to stream origin.</p>
@@ -221,7 +221,7 @@ export default function Statistics_unlockpremium() {
                                 
                                         <td className={styles.check}>
                                     <div className={styles.background}>
-                                        <img src="/images/Icon material-error.png" alt="error"></img>
+                                        <img src="/images/iconmaterial-error.png" alt="error"></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>

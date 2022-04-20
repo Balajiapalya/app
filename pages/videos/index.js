@@ -120,7 +120,7 @@ export default function Videos() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
-                        <img className={styles.store_icon_png} src='/images/Store icon.png' />
+                        <img className={styles.store_icon_png} src='/images/storeicon.png' />
                         <p>{orName} <br />
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
@@ -145,7 +145,7 @@ export default function Videos() {
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
                         <a >
                             <button onClick={() => set_asset(true)} className='btn'>Add New assets</button>
-                            <img src="/images/Icon feather-plus.png" alt='icon' ></img>
+                            <img src="/images/iconfeather-plus.png" alt='icon' ></img>
                         </a>
                     </div>
                     <hr></hr>

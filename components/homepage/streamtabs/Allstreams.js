@@ -48,9 +48,9 @@ export default function Allstreams() {
                                 <td><label htmlFor="roku">Realtime</label></td>
                                 <td><label htmlFor="roku">Active</label></td>
                                 <td className={styles.actionicons}> <label htmlFor="roku"></label>
-                                    <a onClick={()=>setpreview(true)}><img src="/images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                    <Link href='statistics_unlockpremium'><a><img src="/images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <a><img src="/images/Icon awesome-eye-slash.png" alt="eye-slash"></img></a>
+                                    <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                    <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <a><img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img></a>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -59,7 +59,7 @@ export default function Allstreams() {
                                 <td>http://akamaiaus1.akamaized.net</td>
                                 <td className={styles.check}>
                                     <div className={styles.background}>
-                                        <img src="/images/Icon material-error.png" alt="error"></img>
+                                        <img src="/images/iconmaterial-error.png" alt="error"></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -69,7 +69,7 @@ export default function Allstreams() {
                                 </td>
                                 <td className={styles.mins}>-15 mins
                                 <div className={styles.pts_background}>
-                                        <img src='/images/Icon material-info-outline.png' alt='error'></img>
+                                        <img src='/images/iconmaterial-info-outline.png' alt='error'></img>
                                         <div className={styles.error_alert}>
                                             <span>Down time ~ 15mins</span>
                                             <br></br>
@@ -83,9 +83,9 @@ export default function Allstreams() {
                                 <td>6 mins ago</td>
                                 <td>Active</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="/images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                <Link href='statistics_unlockpremium'><a><img src="/images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -94,7 +94,7 @@ export default function Allstreams() {
                                 <td>http://akamaiaus1.akamaized.net</td>
                                 <td className={styles.check}>
                                     <div className={styles.background}>
-                                        <img src="/images/Icon material-error.png" alt="error"></img>
+                                        <img src="/images/iconmaterial-error.png" alt="error"></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -104,7 +104,7 @@ export default function Allstreams() {
                                 </td>
                                 <td className={styles.mins}>-6 mins
                                 <div className={styles.pts_background}>
-                                        <img src='/images/Icon material-info-outline.png' alt='error'></img>
+                                        <img src='/images/iconmaterial-info-outline.png' alt='error'></img>
                                         <div className={styles.error_alert}>
                                             <span>Down time ~ 15mins</span>
                                             <br></br>
@@ -116,7 +116,7 @@ export default function Allstreams() {
                                 <td>50 kbps</td>
                                 <td className={styles.pts}>Error
                                     <div className={styles.pts_background}>
-                                        <img src='/images/Icon material-info-outline.png' alt='error'></img>
+                                        <img src='/images/iconmaterial-info-outline.png' alt='error'></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -127,9 +127,9 @@ export default function Allstreams() {
                                 <td>6 mins ago</td>
                                 <td>Active</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="/images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                   <Link href='statistics_unlockpremium'><a><img src="/images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                   <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.opacity}>
@@ -143,9 +143,9 @@ export default function Allstreams() {
                                 <td>--</td>
                                 <td>In active</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="/images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                <Link href='statistics_unlockpremium'><a><img src="/images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/Icon awesome-eye-slash.png" alt="images/eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="/images/iconawesome-eye-slash.png" alt="images/eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.color_yellow}>
@@ -159,9 +159,9 @@ export default function Allstreams() {
                                 <td>NA</td>
                                 <td>30 mins ago</td>
                                 <td className={styles.actionicons}>
-                                <a onClick={()=>setpreview(true)}><img src="/images/Icon ionic-ios-play-circle.png" alt="play-circle"></img></a>
-                                <Link href='statistics_unlockpremium'><a><img src="/images/Icon ionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/Icon awesome-eye-slash.png" alt="eye-slash"></img>
+                                <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
+                                <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
+                                    <img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img>
                                 </td>
                             </tr>
                         </tbody>
