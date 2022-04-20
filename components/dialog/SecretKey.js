@@ -15,6 +15,18 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
         document.execCommand('copy');
         
     }
+    const downloadFile=()=>{
+        const access_id=refOne.current.value;
+        const secret_key=refTwo.current.value;
+        const element=document.createElement('a');
+        const file=new Blob(['ACCESS_TOKEN_ID=',access_id,'\n', 'SECRET_KEY=',secret_key],{
+            type:"text/plain;charset-utf-8"
+        });
+        element.href=URL.createObjectURL(file)
+        element.setAttribute('download','env.env')
+        document.body.appendChild(element)
+        element.click()
+    }
     return (
         <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
             <div className={styles.body}>
@@ -29,6 +41,7 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
                 <h4>We don&apos;t store this so please memorize it...</h4>
                 <input ref={refTwo} defaultValue={res.secretKey} readOnly/>
                 <img onClick={()=>copyTwo()} className={styles.imgCopy} src="images/favicon/copy.png"/>
+                <button onClick={()=>downloadFile()} className={styles.butn}>Download as .env file</button>
                 <br/>
                 <button onClick={() => `${setNewToken(false)} ${closetoken(false)}`} className={styles.btn}>Continue</button>
             </div>

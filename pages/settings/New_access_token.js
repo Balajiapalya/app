@@ -10,7 +10,7 @@ export default function New_Access_token({ closetoken }) {
    const [productType, setProductType] = useState([])
    const [items, setItems] = useState([])
    const [newToken, setNewToken] = useState(false)
-   const [res,setRes]=useState([])
+   const [resp,setRes]=useState([])
 
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
@@ -112,7 +112,7 @@ export default function New_Access_token({ closetoken }) {
                   <div className={styles.model_btn}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closetoken(false)}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
-                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={res}/>}
+                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={resp}/>}
                   </div>
                </form>
             </div>
