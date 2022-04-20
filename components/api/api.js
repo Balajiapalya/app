@@ -153,10 +153,10 @@ export const delSigningKey = (id) => {
 }
 //statistics
 export const usage_statistics = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=1648751400000&to=1649835236192&interval=1h`
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=${pastdate}&to=${CurrentDate}&interval=7d`
 }
 export const views_statistics = () => {
-    return `${DATA_BASE_URL}/services/api/v1/views?environmentId=${envuuid}&from=1648751400000&to=1649835236192`
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${envuuid}&from=${pastdate}&to=${CurrentDate}`
 }
 export const editAccessToken=(accessId)=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
@@ -172,7 +172,6 @@ const orgid = user_id
 let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
-
 }
 
 
@@ -204,7 +203,16 @@ if (process.browser) {
 }
 const uploadid = upload_id;
 
-
+let current_date;
+if(process.browser){
+    current_date = Date.now();
+}
+const CurrentDate = current_date;
+let sevendaybeforedate;
+if(process.browser){
+    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+}
+const pastdate = sevendaybeforedate;
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -515,27 +523,29 @@ const Api = {
         axios({
             method: 'GET',
             url: usage_statistics(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
+            // headers: {
+            //     'Authorization': `Bearer ${token}`,
+            //     'EnvironmentId': `${envuuid}`
+            // }
+            headers:headers,
         }),
     Views_statistics: () =>
         axios({
             method: 'GET',
             url: views_statistics(),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
-            }
+            // headers: {
+            //     'Authorization': `Bearer ${token}`,
+            //     'EnvironmentId': `${envuuid}`
+            // }
+            headers:headers,
         }),
-        EditApiAccessToken:(value,accessId)=>
+    EditApiAccessToken:(value,accessId)=>
         axios({
             method: 'PUT',
             data: value,
             url: editAccessToken(accessId),
             headers: headers
-        })
+        }),
 }
 export default Api
 
