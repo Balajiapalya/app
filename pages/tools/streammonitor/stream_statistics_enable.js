@@ -22,7 +22,7 @@ export default function Stream_statistics_enable() {
                     </div>
                     <div className={styles.header}>
                         {/* <img/> */}
-                        <img src="/images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                        <img src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
                         <h2>
                             Asianet-Roku Statistics
                         </h2>
@@ -52,15 +52,15 @@ export default function Stream_statistics_enable() {
                         <div className={styles.functional_buttons}>
                             <div className={styles.premium_features}>
                                 <a onClick={() => set_disablestream(true)}><button className='btn'>Disable Premium Features</button></a>
-                                <img src="/images/Union.png" alt="union"></img>
+                                <img src="/images/union.png" alt="union"></img>
                             </div>
                             <div className={styles.actions}>
                                 <a onClick={() => setactivities(true)}><button className='btn'>Activities</button></a>
-                                <img src="/images/Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                 <button onClick={() => set_delete_stream(true)} className='btn'>Delete Stream</button>
-                                <img src="/images/Icon material-delete.png" alt="delete"></img>
+                                <img src="/images/iconmaterial-delete.png" alt="delete"></img>
                             </div>
                         </div>
 
@@ -153,7 +153,7 @@ export default function Stream_statistics_enable() {
                                         <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -220,7 +220,7 @@ export default function Stream_statistics_enable() {
                                         <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -290,7 +290,7 @@ export default function Stream_statistics_enable() {
                                         <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -360,7 +360,7 @@ export default function Stream_statistics_enable() {
                                         <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -467,7 +467,7 @@ export default function Stream_statistics_enable() {
                                         <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.error}>
                                             <div className={styles.alert}>
-                                                <img src="/images/Icon material-error.png" alt="error"></img>
+                                                <img src="/images/iconmaterial-error.png" alt="error"></img>
                                                 <div className={styles.alert_box}>
                                                     <span>All checks failed</span><br></br>
                                                     <span>Connection Error - Host Unreachable</span>

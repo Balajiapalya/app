@@ -9,7 +9,7 @@ export default function Analytics_index() {
             <div className={styles.background_develepment}>
                         <div className={styles.header_development}>
                             <div className={styles.content_development}>
-                                <img className={styles.store_icon_png} src='/images/Store icon.png' />
+                                <img className={styles.store_icon_png} src='/images/storeicon.png' />
                                 <p>Yupp tv <br />
                                 <select className={styles.select}>
                                     <option>dev</option>
