@@ -169,15 +169,28 @@
 }
 .secret h2{
     margin-top:5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 50px;
 }
 .secret input{
+    width: 60%;
+    height: 60px;
+    border: solid 1px rgba(99, 115, 129, 0.3);
+    border-radius: 2px;
+}
+.secret h4{
+   padding-bottom:0.5rem;
+}
+.secret .butn{
     width: 60%;
     height: 50px;
     margin-bottom: 30px;
     border: solid 1px rgba(99, 115, 129, 0.3);
     border-radius: 2px;
+    margin-right: 45px;
+    cursor:pointer;
+    background-color: #2863eb;
 }
+
 .secret .btn{
     margin-top:20px;
     height: 50px;
@@ -186,6 +199,11 @@
     border: solid 1px rgba(99, 115, 129, 0.3);
     border-radius: 2px;
     cursor: pointer;
+    
+}
+.secret .body h3{
+    margin-top:50px;
+    padding-bottom:10px;
 }
 .imgCopy{
    height: 20px;
