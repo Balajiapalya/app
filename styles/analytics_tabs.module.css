@@ -308,15 +308,15 @@
     padding: 5px 15px;
    
 }
-.metric_cards h4,.devices_card h4,.player_card h4,.applications_card h4{
+.metric_cards h4,.devices_card h4,.player_card h4,.applications_card h4,.Os_views h4{
     color: #212b36;
     margin-bottom: 0px;
 }
-.metric_cards span,.devices_card span,.player_card span,.applications_card span{
+.metric_cards span,.devices_card span,.player_card span,.applications_card span,.Os_views span{
     color: #999;
     font-size: 12px;
 }
-.metric_cards canvas,.devices_card canvas,.player_card canvas,.applications_card canvas{
+.metric_cards canvas,.devices_card canvas,.player_card canvas,.applications_card canvas,.Os_views canvas{
     margin-top: 20px;
     height: 35vh !important;
 }
@@ -327,4 +327,17 @@
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
     margin-left: 10px;
+}
+.Os_views_card{
+    width: 100%;
+    float: left;
+    display: flex;
+    margin-bottom: 20px;
+}
+.Os_views{
+    width: 33%;
+    background-color: #fff;
+    height: 50vh;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    padding: 5px 15px;
 }

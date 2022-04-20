@@ -66,6 +66,7 @@ export default function Overview() {
                     'rgba(255, 159, 64, 1)',
                 ],
                 borderWidth: 1,
+                barThickness: 5,
             },
         ],
     };

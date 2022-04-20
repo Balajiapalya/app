@@ -24,7 +24,11 @@ function Webhooks() {
                   }
             })
         
-    },[openwebhook,removewebhook])
+    },[openwebhook,removewebhook]);
+    const create_On = (date) => {
+        var y = new Date(date);
+        return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
+    };
     return (
         <Fragment>
             <section className={styles.wrapper_webhooks}>
@@ -54,8 +58,8 @@ function Webhooks() {
                                 <td>{item.url}</td>
                                 <td>{item.signingSecret}</td>
                                 <td>{item.environmentName}</td>
-                                <td>10/21/2021</td>
-                                <td>anil@yupptv.com</td>
+                                <td>{create_On(item.createdOn)}</td>
+                                <td>{item.createdBy}</td>
                                 <td>Active</td>
                                 <td>
                                     <input type="checkbox" className={styles.input}></input>

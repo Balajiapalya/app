@@ -26,10 +26,11 @@ export default function Metrics() {
     const [videoviews, setvideoviews] = useState([]);
     const [countryviews, setcountryviews] = useState([]);
     const [divicesviews, setdeviceviews] = useState([]);
-    const [playerviews, setplayerviews] = useState([]);
+    const [Osviews, setOsviews] = useState([]);
     const [applicationsviews, setapplicationsviews] = useState([]);
+    const [playerviews,setplayerviews] = useState([]);
     useEffect(() => {
-        Views_statistics_data()
+        Views_statistics_data();
     }, [])
     const Views_statistics_data = () => {
         Api.Views_statistics()
@@ -38,8 +39,9 @@ export default function Metrics() {
                 setvideoviews(res.data.data.videoViews);
                 setcountryviews(res.data.data.countryViews);
                 setdeviceviews(res.data.data.deviceViews);
-                setplayerviews(res.data.data.playerViews);
-                setapplicationsviews(res.data.data.applicationViews)
+                setOsviews(res.data.data.osViews);
+                setapplicationsviews(res.data.data.applicationViews);
+                setplayerviews(res.data.data.playerViews)
             })
     }
     const options = {
@@ -49,21 +51,29 @@ export default function Metrics() {
                 display: false,
                 position: 'bottom',
             },
-            title: {
-                position: 'bottom',
-                display: false,
-                text: 'Chart.js Bar Chart',
-            },
         },
+        scales: {
+            x: {
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              grid: {
+                display: false
+              }
+            }
+          }
     };
     // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     const videos_data = {
         labels: videoviews.map((videos, key) => videos?.key),
         datasets: [
             {
-
                 data: videoviews.map((item, key) => item?.percentage),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
+                barThickness: 20,
+                borderRadius:2,
             },
         ],
     };
@@ -73,6 +83,8 @@ export default function Metrics() {
             {
                 data: divicesviews.map((item, key) => item?.percentage),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
+                barThickness: 20,
+                borderRadius:2,
             },
         ],
     }
@@ -82,6 +94,19 @@ export default function Metrics() {
             {
                 data: playerviews.map((item, key) => item?.percentage),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
+                barThickness: 20,
+                borderRadius:2,
+            },
+        ],
+    }
+    const Os_data = {
+        labels: Osviews.map((player, key) => player?.key),
+        datasets: [
+            {
+                data: Osviews.map((item, key) => item?.percentage),
+                backgroundColor: 'rgba(53, 162, 235, 1)',
+                barThickness: 20,
+                borderRadius:2,
             },
         ],
     }
@@ -91,6 +116,8 @@ export default function Metrics() {
             {
                 data: applicationsviews.map((item, key) => item?.percentage),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
+                barThickness: 20,
+                borderRadius:2,
             },
         ],
     }
@@ -187,6 +214,15 @@ export default function Metrics() {
                         <span>Viewership in the last 7 days.</span>
                         <div>
                             <Bar options={options} data={application_data} />
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.Os_views_card}>
+                    <div className={styles.Os_views}>
+                    <h4>Operating System</h4>
+                        <span>Viewership in the last 7 days.</span>
+                        <div>
+                            <Bar options={options} data={Os_data} />
                         </div>
                     </div>
                 </div>
