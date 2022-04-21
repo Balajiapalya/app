@@ -7,10 +7,10 @@ export default function Stream_preview({closepreview}){
             <div className={styles.main}>
                 <div className={styles.nav}>
                     <h3 className={styles.model_title}>Stream Preview - Asianet Roku</h3>
-                    <a onClick={()=> closepreview(false)}  className={styles.model_close} role="button"><img src="/Images/close.png" alt='icon' /> </a>
+                    <a onClick={()=> closepreview(false)}  className={styles.model_close} role="button"><img src="/images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.previewimage}>
-                    {/* <img src="Image 2.png"></img> */}
+                    {/* <img src="image2.png"></img> */}
 
                 </div>
                 </div>

@@ -22,7 +22,7 @@ export default function Statistics_unlockpremium() {
                     </div>
                     <div className={styles.header}>
                         {/* <img/> */}
-                        <img src="/Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                        <img src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
                         <h2>
                             Asianet-Roku Statistics
                         </h2>
@@ -35,7 +35,7 @@ export default function Statistics_unlockpremium() {
                                 </h4>
                                 <div className={styles.copyurl}>
                                     <h4>http://akamaiaus1.akamaized.net</h4>
-                                    <img src="/Images/copy.png" alt="copy"></img>
+                                    <img src="/images/copy.png" alt="copy"></img>
                                 </div>
                             </div>
                             <div className={styles.stream_check}>
@@ -50,16 +50,16 @@ export default function Statistics_unlockpremium() {
                         <div className={styles.functional_buttons}>
                             <div className={styles.premium_features}>
                                 <Link href='unlock_premiumpayment'><a><button className='btn'>Unlock Premium Features</button></a></Link>
-                                <img src="/Images/lock.png" alt="lock"></img>
+                                <img src="/images/lock.png" alt="lock"></img>
 
                             </div>
                             <div className={styles.actions}>
                                 <a onClick={()=>setactivities(true)}><button className='btn'>Activities</button></a>
-                                <img src="/Images/Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                <a onClick={()=>set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
-                                <img src="/Images/Icon material-delete.png" alt="delete"></img>
+                                <img src="/images/iconmaterial-delete.png" alt="delete"></img>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.scte_markers}>
                                 <div className={styles.text_align}>
-                                    <img src="/Images/Icon material-lock.png" alt="lock"></img>
+                                    <img src="/images/iconmaterial-lock.png" alt="lock"></img>
                                     <h4>SCTE-35/104 Markers</h4>
                                     <p>Detects the markers in the strem.Get details info such as duration and the time line at which the marker occur in the stream.</p>
                                     <a onClick={()=>set_premium(true)}>Unlock Premium</a>
@@ -112,10 +112,10 @@ export default function Statistics_unlockpremium() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -144,39 +144,39 @@ export default function Statistics_unlockpremium() {
                                     <tr>
                                         <td>Stream1</td>
                                         <td>360p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td>30 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br> <a onClick={()=>set_premium(true)}>Unlock Premium</a></td>
                                     </tr>
                                     <tr>
                                         <td>Stream2</td>
                                         <td>480p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td>60 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                     <tr>
                                         <td>Stream3</td>
                                         <td>720p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td>90 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                     <tr>
                                         <td>Stream4</td>
                                         <td>1080p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td>120 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -187,7 +187,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.timestamp}>
                                 <div className={styles.timestamp_details}>
-                                    <img src="/Images/Icon material-lock.png" alt="lock"></img>
+                                    <img src="/images/iconmaterial-lock.png" alt="lock"></img>
                                     <h4>Track Presentation Timestamp(PTS)</h4>
                                     <span>Early track PTS of streamS for any location.</span>
                                     <p>For optional monitoring choose a location that is close to stream origin.</p>
@@ -217,11 +217,11 @@ export default function Statistics_unlockpremium() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                 
                                         <td className={styles.check}>
                                     <div className={styles.background}>
-                                        <img src="/Images/Icon material-error.png" alt="error"></img>
+                                        <img src="/images/iconmaterial-error.png" alt="error"></img>
                                         <div className={styles.error_alert}>
                                             <span>All checks failed.</span>
                                             <br></br>
@@ -229,7 +229,7 @@ export default function Statistics_unlockpremium() {
                                         </div>
                                     </div>
                                 </td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>

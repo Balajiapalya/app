@@ -13,7 +13,7 @@ export default function Videos() {
     const [add_asset, set_asset] = useState(false);
     const [env, setenv] = useState([]);
     const [envSelect, setEnvSelect] = useState([]);
-    const [id, setId] = useState()
+    const [id, setId] = useState();
     const [dirdata, set_directdata] = useState([]);
     const [order, setorder] = useState("ASC");
     const [ordernum, set_ordernum] = useState("ASC")
@@ -120,11 +120,11 @@ export default function Videos() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
-                        <img className={styles.store_icon_png} src='/Images/Store icon.png' />
+                        <img className={styles.store_icon_png} src='/images/storeicon.png' />
                         <p>{orName} <br />
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option defaultValue={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
+                                    <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
                                 </>)}
                             </select>
                         </p>
@@ -145,25 +145,25 @@ export default function Videos() {
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
                         <a >
                             <button onClick={() => set_asset(true)} className='btn'>Add New assets</button>
-                            <img src="/Images/Icon feather-plus.png" alt='icon' ></img>
+                            <img src="/images/iconfeather-plus.png" alt='icon' ></img>
                         </a>
                     </div>
                     <hr></hr>
                 </div>
                 <div className={styles.search}>
                     <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search'></input>
-                    <img src='/Images/search_icon.png' alt='icon'></img>
+                    <img src='/images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>
                     <table className="table_input">
                         <thead>
                             <tr>
                                 <th><input type="checkbox"></input></th>
-                                <th>Added on  <img onClick={() => sort_num("created_at")} src='/Images/updown.png' /></th>
-                                <th>Name <img onClick={() => sorting("title")} src='/Images/updown.png' /> </th>
+                                <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.png' /></th>
+                                <th>Name <img onClick={() => sorting("title")} src='/images/updown.png' /> </th>
                                 <th>Asset ID</th>
                                 <th>Image Preview</th>
-                                <th>Duration <img onClick={() => sort_num("duration")} src='/Images/updown.png' /></th>
+                                <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.png' /></th>
                                 <th>Resolution</th>
                                 <th>Status</th>
                                 <th>Actions</th>

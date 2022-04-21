@@ -101,7 +101,7 @@ const handleChange=(e)=>{
             </p>
             <button onClick={() => set_addnewenv(true)} className="btn">
               {" "}
-              <img src="/Images/Icon feather-plus.png" /> Add Environment
+              <img src="/images/iconfeather-plus.png" /> Add Environment
             </button>
           </div>
           <div className={styles.environments_table}>
@@ -126,7 +126,7 @@ const handleChange=(e)=>{
                               <img
                                 className={styles.edit_img}
                                 onClick={() => { setPopups(i, items) }}
-                                src="/Images/Icon material-edit.png"
+                                src="/images/iconmaterial-edit.png"
                               />
                             </a>
                             <br />

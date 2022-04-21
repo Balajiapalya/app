@@ -68,7 +68,7 @@ export default function Direct_upload() {
                     </div>
 
                     <div className={styles.direct_upload_title}>
-                        {uploaded && <div className={styles.uploaded_check}><img  src='/Images/Icon awesome-check.png' alt='uploaded' /><span>file uploaded</span></div>}
+                        {uploaded && <div className={styles.uploaded_check}><img  src='/images/iconawesome-check-circle.png' alt='uploaded' /><span>file uploaded</span></div>}
                         <ClipLoader className={styles.loader} color={color} loading={loading} size={12} />
 
                         <input

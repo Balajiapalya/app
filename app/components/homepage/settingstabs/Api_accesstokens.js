@@ -11,6 +11,7 @@ function Api_accesstokes() {
     const [closemodal, setclosemodal] = useState([]);
     const [value,setValue]=useState()
     const [render,setRender]=useState(false)
+    const [id,setid]=useState();
     
     const createdDate = (date) => {
         var d = new Date(date);
@@ -32,12 +33,20 @@ function Api_accesstokes() {
                     }
                     setopeninvitemember(openArr);
                     setclosemodal(closeArr);
+
                 }
             })
-    }, [opentoken, openrevoke,render])
-    const handlerevoke = () => {
-        // console.log(document.getElementById('accessID'))
-    }
+            const close = (e) => {
+                if(e.keyCode === 27){
+                  setRender(true)
+                }
+              }
+              window.addEventListener('keydown', close)
+            return () => window.removeEventListener('keydown', close);
+            
+    }, [opentoken, openrevoke,render]);
+    
+   
     const setPopups = (index, item) => {
         if (item) {
             // setValue(item.name)
@@ -48,15 +57,16 @@ function Api_accesstokes() {
         setopeninvitemember(openModel);
         setclosemodal([...closemodal]);
     }
-    const submitEdit=()=>{
-       
-        let accessId=get_accessdata[0].accessTokenId
+    const submitEdit=(e)=>{  
+        e.preventDefault()
+        // console.log(e.target.value)
+        localStorage.setItem('accessId',e.target.value)
+        let accessId=localStorage.getItem('accessId')
         let newObj=new Object()
         newObj.name=value
         if(value){
             Api.EditApiAccessToken(newObj,accessId).then(res=>setRender(true))
         }
-        
     }
  
     return (
@@ -87,14 +97,14 @@ function Api_accesstokes() {
                                         {closemodal[i] && (
                                             <div>
                                                 <span >{item.name}</span>
-                                                <img onClick={() => { setPopups(i, item) }} src="Images/Icon material-edit.png" alt="icon"></img>
+                                                <img onClick={() => { setPopups(i, item) }} src="images/iconmaterial-edit.png" alt="icon"></img>
                                             </div>
                                         )}
                                         {openModel[i] && (
                                             <form>
                                                 <div className={styles.save}>
                                                     <input defaultValue={item.name} type="text" name="name" onChange={(e)=>setValue(e.target.value)}/>
-                                                    <a onClick={() => `${submitEdit()}`} className={styles.save}>Save</a>
+                                                    <button value={item.accessTokenId} onClick={(e) => `${submitEdit(e)}`} className={styles.save}>Save</button>
                                                 </div>
                                             </form>
                                         )}

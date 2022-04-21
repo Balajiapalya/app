@@ -97,7 +97,7 @@ export default function Accounts() {
             <div className={styles.logout}>
               <img
                 className={styles.logout_img}
-                src="/Images/Icon feather-log-out(blue).png"
+                src="/images/iconfeather-log-out(blue).png"
                 alt="logout"
               ></img>
               <button
@@ -178,7 +178,7 @@ export default function Accounts() {
                             >
                               {items.name}{" "}
                               {key == highlightedorg && (
-                                <img src="/Images/Icon awesome-check-circle.png"></img>
+                                <img src="/images/iconawesome-check-circle.png"></img>
                               )}
                             </button>
                           </td>

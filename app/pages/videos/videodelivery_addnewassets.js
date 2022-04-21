@@ -31,7 +31,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/Images/close.png" alt="close" /> </a>
+                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
                 <Direct_upload />
@@ -47,10 +47,10 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                         />
                         <span>Post body editor:</span>
                         <div className={styles.language_select}>
-                            <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/Images/python.png' alt='python' />Python</button>
-                            <button className={styles.model_btn}><img className={styles.languge_img} src='/Images/node-js.png' alt='node' />Node</button>
-                            <button className={styles.model_btn}><img className={styles.languge_img} src='/Images/php.png' alt='php' />Php</button>
-                            <button className={styles.model_btn}><img className={styles.languge_img} src='/Images/go.png' alt='go' />Go</button>
+                            <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
+                            <button className={styles.model_btn}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
+                            <button className={styles.model_btn}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
+                            <button className={styles.model_btn}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
                         </div>
                         <div className={styles.code}>
                             <textarea

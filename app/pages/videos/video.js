@@ -27,14 +27,14 @@ export default function Video() {
                             <p> &gt; {name}</p>
                         </div>
                         <div className={styles.header_asianet}>
-                            <img className={styles.icon_stat} src="/Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                            <img className={styles.icon_stat} src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
                             <h2>
                                 {name}
-                                <img className={styles.edit_img} src="/Images/Icon material-edit.png" alt="edit" /><span> Edit</span>
+                                <img className={styles.edit_img} src="/images/iconmaterial-edit.png" alt="edit" /><span> Edit</span>
                             </h2>
                         </div>
                     </div>
-                    <div className={styles.close}> <Link href="/videos"><a><img src='/Images/close.png' /></a></Link></div>
+                    <div className={styles.close}> <Link href="/videos"><a><img src='/images/close.png' /></a></Link></div>
                     <Videodelivery_tabs />
                 </div>
             </div>

@@ -22,7 +22,7 @@ export default function Stream_statistics_enable() {
                     </div>
                     <div className={styles.header}>
                         {/* <img/> */}
-                        <img src="/Images/Icon ionic-ios-stats@2x.png" alt="ios-stats"></img>
+                        <img src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
                         <h2>
                             Asianet-Roku Statistics
                         </h2>
@@ -36,7 +36,7 @@ export default function Stream_statistics_enable() {
                                 </h4>
                                 <div className={styles.copyurl}>
                                     <h4>http://akamaiaus1.akamaized.net</h4>
-                                    <img src="/Images/copy.png" alt="copy"></img>
+                                    <img src="/images/copy.png" alt="copy"></img>
                                 </div>
 
                             </div>
@@ -52,15 +52,15 @@ export default function Stream_statistics_enable() {
                         <div className={styles.functional_buttons}>
                             <div className={styles.premium_features}>
                                 <a onClick={() => set_disablestream(true)}><button className='btn'>Disable Premium Features</button></a>
-                                <img src="/Images/Union.png" alt="union"></img>
+                                <img src="/images/union.png" alt="union"></img>
                             </div>
                             <div className={styles.actions}>
                                 <a onClick={() => setactivities(true)}><button className='btn'>Activities</button></a>
-                                <img src="/Images/Icon awesome-file-alt.png" alt="file"></img>
+                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                 <button onClick={() => set_delete_stream(true)} className='btn'>Delete Stream</button>
-                                <img src="/Images/Icon material-delete.png" alt="delete"></img>
+                                <img src="/images/iconmaterial-delete.png" alt="delete"></img>
                             </div>
                         </div>
 
@@ -111,10 +111,10 @@ export default function Stream_statistics_enable() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -143,17 +143,17 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream1</td>
                                         <td>360p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td>30 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/Images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -210,17 +210,17 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream2</td>
                                         <td>480p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check"></img></td>
                                         <td>60 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/Images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -280,17 +280,17 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream3</td>
                                         <td>720p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check"></img></td>
                                         <td>90 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/Images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -350,17 +350,17 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream4</td>
                                         <td>1080p</td>
-                                        <td><img src="/Images/check-circle.png" alt="check"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check"></img></td>
                                         <td>120 kbps</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
-                                                <img src="/Images/Icon material-info-outline(blue).png" alt="outline"></img>
+                                                <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
                                                 <table className={styles.stream_info_table}>
                                                     <thead>
                                                         <tr>
@@ -437,7 +437,7 @@ export default function Stream_statistics_enable() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -464,10 +464,10 @@ export default function Stream_statistics_enable() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                         <td className={styles.error}>
                                             <div className={styles.alert}>
-                                                <img src="/Images/Icon material-error.png" alt="error"></img>
+                                                <img src="/images/iconmaterial-error.png" alt="error"></img>
                                                 <div className={styles.alert_box}>
                                                     <span>All checks failed</span><br></br>
                                                     <span>Connection Error - Host Unreachable</span>
@@ -475,7 +475,7 @@ export default function Stream_statistics_enable() {
 
                                             </div>
                                         </td>
-                                        <td><img src="/Images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
