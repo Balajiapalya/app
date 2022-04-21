@@ -6,15 +6,18 @@ const VideoList = ({ i, create_On, created_time }) => {
     const reg = useRouter();
     const [videoId, setVideoId] = useState([]);
     const [videotitle, setvideotitle] = useState([]);
+    const [thumbnail,setthumbnail] = useState([]);
     const handleChange = () => {
         //        if (i.status == 'Ready') {
         window.location.pathname = './videos/video'
         setVideoId(i.videoId)
         setvideotitle(i.title)
+        setthumbnail(i.thumbnailUrl)
         //        }
     }
     localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('videoId', videoId)
+    localStorage.setItem('thumbnail',thumbnail)
     return (
         <>
 

@@ -23,7 +23,7 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
             type:"text/plain;charset-utf-8"
         });
         element.href=URL.createObjectURL(file)
-        element.setAttribute('download','accesstoken.env')
+        element.setAttribute('download',`${res.name}.env`)
         document.body.appendChild(element)
         element.click()
     }
