@@ -13,7 +13,7 @@ export default function Videos() {
     const [add_asset, set_asset] = useState(false);
     const [env, setenv] = useState([]);
     const [envSelect, setEnvSelect] = useState([]);
-    const [id, setId] = useState()
+    const [id, setId] = useState();
     const [dirdata, set_directdata] = useState([]);
     const [order, setorder] = useState("ASC");
     const [ordernum, set_ordernum] = useState("ASC")

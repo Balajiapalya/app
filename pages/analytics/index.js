@@ -8,15 +8,15 @@ import Overview from '../../components/analytics_tabs/overview';
 
 export default function Analytics_index() {
     const [envSelect, setEnvSelect] = useState([]);
+    const [id, setId] = useState()
     useEffect(() => {
-        seleEnv();
-    }, []);
-    const seleEnv = () => {
+        selectEnv();
+    }, [id]);
+    const selectEnv = () => {
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
                     setEnvSelect(res.data.data);
-
                 }
             })
             .catch(error => {
@@ -24,6 +24,7 @@ export default function Analytics_index() {
             })
     }
     const handleChange = (e) => {
+        setId(e.target.value)
         localStorage.setItem("envuuid", e.target.value)
     }
     let orgname;
@@ -36,11 +37,11 @@ export default function Analytics_index() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className={styles.content_development}>
-                        <img className={styles.store_icon_png} src='/images/Store icon.png' />
+                        <img className={styles.store_icon_png} src='/images/storeicon.png' />
                         <p>{orName} <br />
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option defaultValue={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
+                                    <option defaultValue={localStorage.getItem('envuuid')==i.uuid} value={i.uuid}>{i.name}</option>
                                     <div className='hidden'><Overview/></div>
                                 </>)}
                             </select>

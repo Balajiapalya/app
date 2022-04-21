@@ -107,15 +107,15 @@ export default function Others() {
                                         placeHolder="tags"
                                     ></TagsInput> */}
                                     {/* {tags.map(i=>i)} */}
-
-                                    {tags.map((tag, ind) => (
+                                    {tags?tags.map((tag, ind) => (
                                         <div key={ind}>
                                             <div className={styles.tagItem}>
                                                 <span className={styles.text}>{tag}</span>
                                                 <span onClick={() => handleRemoveTag(tag, ind)} className={styles.close}>&times;</span>
                                             </div>
                                         </div>
-                                    ))}
+                                    )):null}
+                                    
                                     <input {...register("tags", { required: false })} onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text" />
                                 </div>
                                 <label className={styles.model_label}>Metadata</label>
