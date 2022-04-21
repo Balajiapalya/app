@@ -152,11 +152,11 @@ export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
 }
 //statistics
-export const usage_statistics = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=${pastdate}&to=${CurrentDate}&interval=7d`
+export const usage_statistics = (val) => {
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d`
 }
-export const views_statistics = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${envuuid}&from=${pastdate}&to=${CurrentDate}`
+export const views_statistics = (env) => {
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}`
 }
 export const editAccessToken=(accessId)=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
@@ -519,20 +519,20 @@ const Api = {
         }),
 
     //Statistics
-    Usage_statistics: () =>
+    Usage_statistics: (val) =>
         axios({
             method: 'GET',
-            url: usage_statistics(),
+            url: usage_statistics(val),
             // headers: {
             //     'Authorization': `Bearer ${token}`,
             //     'EnvironmentId': `${envuuid}`
             // }
             headers:headers,
         }),
-    Views_statistics: () =>
+    Views_statistics: (env) =>
         axios({
             method: 'GET',
-            url: views_statistics(),
+            url: views_statistics(env),
             // headers: {
             //     'Authorization': `Bearer ${token}`,
             //     'EnvironmentId': `${envuuid}`

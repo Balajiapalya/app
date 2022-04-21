@@ -1,38 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styles from '../../styles/analytics_tabs.module.css';
 import Api from '../api/api';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { EnvValue } from '../../pages/analytics/index'
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Overview() {
+    const valueEnv = useContext(EnvValue)
     const [usagestatistics, set_usagestatistics] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
     const [deviceviews, setdeviceviews] = useState([]);
     const [countryviews, setcountryviews] = useState([]);
+
     useEffect(() => {
         Usage_statistics_data();
         Views_statistics_data();
-    }, []);
+    }, [valueEnv]);
+
     const Usage_statistics_data = () => {
-        Api.Usage_statistics()
-            .then(res => {
-                // console.log(res.data.data)
-                set_usagestatistics(res.data.data.totalUsageRecords)
-
-
-            })
+        if (valueEnv) {
+            Api.Usage_statistics(valueEnv)
+                .then(res => {
+                    set_usagestatistics(res.data.data.totalUsageRecords)
+                })
+        }
     };
     const Views_statistics_data = () => {
-        Api.Views_statistics()
-            .then(res => {
-                // console.log(res.data.data.deviceViews)
-                set_viewsStatistics(res.data.data)
-                setdeviceviews(res.data.data.deviceViews)
-                setcountryviews(res.data.data.countryViews)
-                // console.log(res.data.data.countryViews)
-            })
+        if (valueEnv) {
+            Api.Views_statistics(valueEnv)
+                .then(res => {
+                    // console.log(res.data.data.deviceViews)
+                    set_viewsStatistics(res.data.data)
+                    setdeviceviews(res.data.data.deviceViews)
+                    setcountryviews(res.data.data.countryViews)
+                    // console.log(res.data.data.countryViews)
+                })
+        }
     };
     const options = {
         responsive: true,
@@ -70,6 +76,7 @@ export default function Overview() {
             },
         ],
     };
+
     return (
         <div className={styles.container}>
             <div className={styles.video_type_container}>
@@ -91,8 +98,6 @@ export default function Overview() {
                         <h5 className={styles.totalViews}>{items.totalViews}</h5>
                         <span className={styles.watching_viewers}>users are watching content right now.</span>
                     </div>
-
-
                 </div>
                 <div className={styles.countries_devices_container}>
                     <div className={styles.countries_container}>
@@ -100,7 +105,6 @@ export default function Overview() {
                             <h4 className={styles.heading}>Countries</h4>
                             <span>Viewership in the last 7 days.</span>
                         </div>
-
                         <div className={styles.countries_map} ></div>
                         <div className={styles.countries_table} >
                             <table>
@@ -110,9 +114,7 @@ export default function Overview() {
                                         <th>Percentage</th>
                                         <th>Views</th>
                                     </tr>
-
                                 </thead>
-
                                 <tbody>
                                     {countryviews.map((country, key) =>
                                         <tr key={key}>
@@ -122,11 +124,10 @@ export default function Overview() {
                                         </tr>
                                     )}
                                 </tbody>
-
                             </table>
                         </div>
                         <div className={styles.more_insights}>
-                             <a>More Insights&gt;</a>
+                            <a>More Insights&gt;</a>
                         </div>
                     </div>
                     <div className={styles.devices_container}>
@@ -135,7 +136,7 @@ export default function Overview() {
                             <Doughnut options={options} data={doughnutdata} />
                         </div>
                         <div className={styles.more_insights}>
-                             {/* <a>More Insights&gt;</a> */}
+                            {/* <a>More Insights&gt;</a> */}
                         </div>
                     </div>
                 </div>
