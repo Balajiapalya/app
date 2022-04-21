@@ -74,7 +74,7 @@ export default function Metrics() {
         labels: videoviews.map((videos, key) => videos?.key),
         datasets: [
             {
-                data: videoviews.map((item, key) => item?.percentage),
+                data: videoviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
                 barThickness: 20,
                 borderRadius:2,
@@ -85,7 +85,7 @@ export default function Metrics() {
         labels: divicesviews.map((videos, key) => videos?.key),
         datasets: [
             {
-                data: divicesviews.map((item, key) => item?.percentage),
+                data: divicesviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
                 barThickness: 20,
                 borderRadius:2,
@@ -96,18 +96,19 @@ export default function Metrics() {
         labels: playerviews.map((player, key) => player?.count),
         datasets: [
             {
-                data: playerviews.map((item, key) => item?.percentage),
+                data: playerviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
                 barThickness: 20,
                 borderRadius:2,
             },
+            
         ],
     }
     const Os_data = {
         labels: Osviews.map((player, key) => player?.key),
         datasets: [
             {
-                data: Osviews.map((item, key) => item?.percentage),
+                data: Osviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
                 barThickness: 20,
                 borderRadius:2,
@@ -118,7 +119,7 @@ export default function Metrics() {
         labels: applicationsviews.map((application, key) => application?.key),
         datasets: [
             {
-                data: applicationsviews.map((item, key) => item?.percentage),
+                data: applicationsviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
                 barThickness: 20,
                 borderRadius:2,

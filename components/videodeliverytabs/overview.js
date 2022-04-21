@@ -11,6 +11,7 @@ export default function Overview() {
     const [player, setplayer] = useState([]);
     const [tooltip, settooltip] = useState(false);
     const [tooltipURL, settooltipURL] = useState(false);
+    const [thumbnailurl,setthumbnail] = useState(false);
     const Vdplayer = useRef();
     useEffect(() => {
 
@@ -34,6 +35,13 @@ export default function Overview() {
         settooltipURL(true)
         setTimeout(() => {
             settooltipURL(false)
+        }, 200);
+
+    }
+    const showthubmailtooltipURL = () => {
+        setthumbnail(true)
+        setTimeout(() => {
+            setthumbnail(false)
         }, 200);
 
     }
@@ -168,11 +176,14 @@ export default function Overview() {
                                         <h4>Link to Thumbnail</h4>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p></p>
+                                                <p>{localStorage.getItem('thumbnail')}</p>
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <img src='/images/iconionic-ios-copy.png' alt='copy' />
-                                            </div>
+                                            <CopyToClipboard text={localStorage.getItem('thumbnail')}>
+                                                <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.png' alt='copy' />
+                                            </CopyToClipboard>
+                                            {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null}
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

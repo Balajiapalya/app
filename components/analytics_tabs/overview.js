@@ -54,7 +54,7 @@ export default function Overview() {
         datasets: [
             {
                 label: '# of Votes',
-                data: deviceviews.map((device, key) => device?.percentage),
+                data: deviceviews.map((device, key) => device?.count),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
@@ -84,7 +84,7 @@ export default function Overview() {
                     <div key={key} className={styles.encoded_video}>
                         <h5 className={styles.video_type_heading}>{item.usage}</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{item.amountInSecs} Secs</h5>
+                            <h5>{(item.amountInSecs/60).toFixed(2)} mins</h5>
                             <div className={styles.timeperiod}>
                                 <span >Total minutes of videos <br></br>encoded in last 7 days.</span>
                             </div>
