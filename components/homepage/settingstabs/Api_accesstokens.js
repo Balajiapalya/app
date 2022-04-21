@@ -11,6 +11,7 @@ function Api_accesstokes() {
     const [closemodal, setclosemodal] = useState([]);
     const [value,setValue]=useState()
     const [render,setRender]=useState(false)
+    const [id,setid]=useState();
     
     const createdDate = (date) => {
         var d = new Date(date);
@@ -48,9 +49,11 @@ function Api_accesstokes() {
         setopeninvitemember(openModel);
         setclosemodal([...closemodal]);
     }
-    const submitEdit=()=>{
-       
-        let accessId=get_accessdata[0].accessTokenId
+    const submitEdit=(e)=>{  
+        e.preventDefault()
+        // console.log(e.target.value)
+        localStorage.setItem('accessId',e.target.value)
+        let accessId=localStorage.getItem('accessId')
         let newObj=new Object()
         newObj.name=value
         if(value){
@@ -94,7 +97,7 @@ function Api_accesstokes() {
                                             <form>
                                                 <div className={styles.save}>
                                                     <input defaultValue={item.name} type="text" name="name" onChange={(e)=>setValue(e.target.value)}/>
-                                                    <a onClick={() => `${submitEdit()}`} className={styles.save}>Save</a>
+                                                    <button value={item.accessTokenId} onClick={(e) => `${submitEdit(e)}`} className={styles.save}>Save</button>
                                                 </div>
                                             </form>
                                         )}

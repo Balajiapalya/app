@@ -22,144 +22,145 @@ export const Create_user_account = () => {
 };
 //organization
 export const Edit_organisation_name = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations?time=${CurrentDate}`;
 };
 export const Newmember_invite = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/invite`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/invite?time=${CurrentDate}`;
 };
 export const get_roles = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/roles`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/roles?time=${CurrentDate}`
 }
 export const Remove_user = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 };
 export const get_organization = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 };
 export const editted_data = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}&?time=${CurrentDate}`
 };
 //Billing
 export const list_billing_plans = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/plans`
+    return `${BILLING_BASE_URL()}/services/api/v1/plans?time=${CurrentDate}`
 }
 export const org_list_billing_plans = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans?time=${CurrentDate}`
 }
 export const list_org_subscriptions = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/subscriptions`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/subscriptions?time=${CurrentDate}`
 }
 export const get_account_info = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account?time=${CurrentDate}`
 }
 export const payment_history = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/payment/history`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/payment/history?time=${CurrentDate}`
 }
 //wbhook
 export const Create_webhook = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?time=${CurrentDate}`;
 };
 export const get_webhook = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}&time=${CurrentDate}`;
 };
 export const delete_webhook = (del_webhook) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`
 }
 //access token
 export const Create_aaccess_token = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?time=${CurrentDate}`;
 };
 export const get_access_token = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?organizationId=${uuid}&includeRevoked=true`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?organizationId=${uuid}&includeRevoked=true&time=${CurrentDate}`;
 }
 export const revoke_acceesstoken = (del) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${del}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${del}?time=${CurrentDate}`
 }
 
 //signin keys
 export const Create_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?time=${CurrentDate}`;
 };
 export const get_signin_keys = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?organizationId=${uuid}&time=${CurrentDate}`
 };
 export const get_product = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/product-types`
+    return `${PROFILE_BASE_URL()}/services/api/v1/product-types?time=${CurrentDate}`
 };
 //used in wbhook,access token,,signin keys
 export const get_environment_types = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types?time=${CurrentDate}`
 }
 //environment
 export const get_environment = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId=${localStorage.getItem("uuid")}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments?organizationId=${localStorage.getItem("uuid")}&time=${CurrentDate}`
 }
 export const get_new_env = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environment-types?time=${CurrentDate}`
 }
 export const post_env = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments?time=${CurrentDate}`
 }
 export const update_env = (data) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${data}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/environments/${data}?time=${CurrentDate}`
 }
 //video 
 export const video_url = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents?time=${CurrentDate}`
 }
 export const getList_videos = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents?time=${CurrentDate}`
 }
 export const post_selected = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 }
 export const get_video_data = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}?time=${CurrentDate}`
 }
 //direct upload
 
 export const post_direct_video = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads?time=${CurrentDate}`
 }
 export const get_direct_video_data = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/uploads`
+    return `${VIDEO_BASE_URL()}/services/api/v1/uploads?time=${CurrentDate}`
 }
 //account
 export const create_new_organization = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations?time=${CurrentDate}`
 }
 export const update_user = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}?time=${CurrentDate}`
 }
 export const change_paswrd = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password`
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password?time=${CurrentDate}`
 }
 // videos -> overview
 export const delete_asset = () => {
-    return `${VIDEO_BASE_URL()}//services/api/v1/contents/${localStorage.getItem("videoId")}`
+    return `${VIDEO_BASE_URL()}//services/api/v1/contents/${localStorage.getItem("videoId")}?time=${CurrentDate}`
 }
 //others
 export const meta_update = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}?time=${CurrentDate}`
 }
 export const post_emailtoResetPswd = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password-request`
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password-request?time=${CurrentDate}`
 }
 export const password_reset = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password`
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password?time=${CurrentDate}`
 }
 export const delSigningKey = (id) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`
 }
 //statistics
 export const usage_statistics = (val) => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d`
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d&time=${CurrentDate}`
 }
 export const views_statistics = (env) => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}`
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}&time=${CurrentDate}`
 }
+
 export const editAccessToken=(accessId)=>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}?time=${CurrentDate}`
 }
 
 let user_id;
