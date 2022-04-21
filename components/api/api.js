@@ -152,12 +152,13 @@ export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`
 }
 //statistics
-export const usage_statistics = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${envuuid}&from=${pastdate}&to=${CurrentDate}&interval=7d&time=${CurrentDate}`
+export const usage_statistics = (val) => {
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d&time=${CurrentDate}`
 }
-export const views_statistics = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${envuuid}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}&time=${CurrentDate}`
+export const views_statistics = (env) => {
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}&time=${CurrentDate}`
 }
+
 export const editAccessToken=(accessId)=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}?time=${CurrentDate}`
 }
