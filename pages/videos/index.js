@@ -124,7 +124,7 @@ export default function Videos() {
                         <p>{orName} <br />
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option defaultValue={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
+                                    <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
                                 </>)}
                             </select>
                         </p>

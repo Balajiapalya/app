@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
 import styles from '../../styles/analytics_tabs.module.css';
 import Api from '../api/api';
+import { EnvValue } from '../../pages/analytics/index'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -22,6 +23,7 @@ ChartJS.register(
 );
 
 export default function Metrics() {
+    const valueEnv=useContext(EnvValue)
     const [viewsStatistics, set_viewsStatistics] = useState([]);
     const [videoviews, setvideoviews] = useState([]);
     const [countryviews, setcountryviews] = useState([]);
@@ -31,9 +33,10 @@ export default function Metrics() {
     const [playerviews,setplayerviews] = useState([]);
     useEffect(() => {
         Views_statistics_data();
-    }, [])
+    }, [valueEnv])
     const Views_statistics_data = () => {
-        Api.Views_statistics()
+
+        Api.Views_statistics(valueEnv)
             .then(res => {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
@@ -44,6 +47,7 @@ export default function Metrics() {
                 setplayerviews(res.data.data.playerViews)
             })
     }
+   
     const options = {
         responsive: true,
         plugins: {

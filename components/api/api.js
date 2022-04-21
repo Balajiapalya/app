@@ -519,20 +519,20 @@ const Api = {
         }),
 
     //Statistics
-    Usage_statistics: () =>
+    Usage_statistics: (val) =>
         axios({
             method: 'GET',
-            url: usage_statistics(),
+            url: usage_statistics(val),
             // headers: {
             //     'Authorization': `Bearer ${token}`,
             //     'EnvironmentId': `${envuuid}`
             // }
             headers:headers,
         }),
-    Views_statistics: () =>
+    Views_statistics: (env) =>
         axios({
             method: 'GET',
-            url: views_statistics(),
+            url: views_statistics(env),
             // headers: {
             //     'Authorization': `Bearer ${token}`,
             //     'EnvironmentId': `${envuuid}`

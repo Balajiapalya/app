@@ -1,18 +1,19 @@
 import styles from '../../styles/analytics_tabs.module.css'
 import Layout from '../../components/common/layout'
 import Analytics_tabs from '../../components/analyticstabs'
-import { useEffect,useState } from 'react';
+import { useEffect,useState,createContext } from 'react';
 import Api from '../../components/api/api';
 import Overview from '../../components/analytics_tabs/overview';
 
-
-export default function Analytics_index() {
+const EnvValue=createContext()
+export default function Analytics_index() {   
     const [envSelect, setEnvSelect] = useState([]);
-    const [id, setId] = useState()
+    const [uuid,setuuid]=useState()
     useEffect(() => {
-        selectEnv();
-    }, [id]);
-    const selectEnv = () => {
+        seleEnv();
+    }, [uuid]);
+    
+    const seleEnv = () => {
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
@@ -24,7 +25,7 @@ export default function Analytics_index() {
             })
     }
     const handleChange = (e) => {
-        setId(e.target.value)
+        setuuid(e.target.value)
         localStorage.setItem("envuuid", e.target.value)
     }
     let orgname;
@@ -41,7 +42,7 @@ export default function Analytics_index() {
                         <p>{orName} <br />
                             <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                 {envSelect.map(i => <>
-                                    <option defaultValue={localStorage.getItem('envuuid')==i.uuid} value={i.uuid}>{i.name}</option>
+                                    <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
                                     <div className='hidden'><Overview/></div>
                                 </>)}
                             </select>
@@ -58,7 +59,9 @@ export default function Analytics_index() {
                         <h2>
                             Analytics
                         </h2>
-                        <Analytics_tabs />
+                        <EnvValue.Provider value={process.browser && localStorage.getItem('envuuid')}>
+                         <Analytics_tabs />
+                        </EnvValue.Provider>
                     </div>
                 </div>
             </div>
@@ -69,3 +72,4 @@ export default function Analytics_index() {
 Analytics_index.getLayout = function getLayout(page) {
     return <Layout>{page}</Layout>;
 };
+export {EnvValue}
