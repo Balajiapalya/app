@@ -38,6 +38,7 @@ export default function Metrics() {
 
         Api.Views_statistics(valueEnv)
             .then(res => {
+                console.log(res.data.data)
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
                 setcountryviews(res.data.data.countryViews);
@@ -69,9 +70,8 @@ export default function Metrics() {
             }
           }
     };
-    // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     const videos_data = {
-        labels: videoviews.map((videos, key) => videos?.key),
+        labels: videoviews.slice(0,5).map((videos, key) => videos?.key.substring(0, 20)),
         datasets: [
             {
                 data: videoviews.map((item, key) => item?.count),
@@ -82,7 +82,7 @@ export default function Metrics() {
         ],
     };
     const device_data = {
-        labels: divicesviews.map((videos, key) => videos?.key),
+        labels: divicesviews.slice(0,5).map((videos, key) => videos?.key),
         datasets: [
             {
                 data: divicesviews.map((item, key) => item?.count),
@@ -93,7 +93,7 @@ export default function Metrics() {
         ],
     }
     const player_data = {
-        labels: playerviews.map((player, key) => player?.count),
+        labels: playerviews.slice(0,5).map((player, key) => player?.key.substring(0, 20)),
         datasets: [
             {
                 data: playerviews.map((item, key) => item?.count),
@@ -105,7 +105,7 @@ export default function Metrics() {
         ],
     }
     const Os_data = {
-        labels: Osviews.map((player, key) => player?.key),
+        labels: Osviews.slice(0,5).map((player, key) => player?.key),
         datasets: [
             {
                 data: Osviews.map((item, key) => item?.count),
@@ -116,7 +116,7 @@ export default function Metrics() {
         ],
     }
     const application_data = {
-        labels: applicationsviews.map((application, key) => application?.key),
+        labels: applicationsviews.slice(0,5).map((application, key) => application?.key),
         datasets: [
             {
                 data: applicationsviews.map((item, key) => item?.count),
@@ -140,17 +140,17 @@ export default function Metrics() {
                 <div className={styles.views_cards}>
 
                     <div className={styles.cards_container}>
-                        <h4>No. of Views</h4>
+                        <h4>No.of Views</h4>
                         <div className={styles.totalViews}>
                             <h5>{item.totalViews}</h5>
-                            <span>Number of views that <br></br> started playback</span>
+                            <span>Number of views that started playback</span>
                         </div>
                     </div>
                     <div className={styles.cards_container}>
-                        <h4>No. of Unique Views</h4>
+                        <h4>No.of Unique Views</h4>
                         <div className={styles.UniqueViews}>
                             <h5>{item.uniqueViews}</h5>
-                            <span>Unique viewers that started<br /> playback,based on User ID.</span>
+                            <span>Unique viewers that started playback,based on User ID.</span>
                         </div>
                     </div>
                     <div className={styles.cards_container}>
@@ -158,6 +158,10 @@ export default function Metrics() {
                     </div>
                     <div className={styles.cards_container}>
                         <h4>Errors</h4>
+                        <div className={styles.UniqueViews}>
+                            <h5>{item.errors}</h5>
+                            <span>Number of playback errors detected by Videograph.</span>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.Countries_videos}>
@@ -194,7 +198,7 @@ export default function Metrics() {
                         </h4>
                         <span>Viewership in the last 7 days.</span>
                         <div>
-                            <Bar options={options} data={videos_data} />
+                            <Bar options={options} data={videos_data}/>
                         </div>
 
                     </div>
