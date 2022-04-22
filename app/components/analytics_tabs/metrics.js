@@ -24,6 +24,7 @@ ChartJS.register(
 
 export default function Metrics() {
     const valueEnv=useContext(EnvValue)
+    const [amountstreamed, set_amountstreamed] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
     const [videoviews, setvideoviews] = useState([]);
     const [countryviews, setcountryviews] = useState([]);
@@ -32,13 +33,20 @@ export default function Metrics() {
     const [applicationsviews, setapplicationsviews] = useState([]);
     const [playerviews,setplayerviews] = useState([]);
     useEffect(() => {
+        Usage_statistics_data();
         Views_statistics_data();
     }, [valueEnv])
+    const Usage_statistics_data = () => {
+        if (valueEnv) {
+            Api.Usage_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+                .then(res => {
+                    set_amountstreamed(res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs)
+                })
+        }
+    };
     const Views_statistics_data = () => {
-
-        Api.Views_statistics(valueEnv)
+        Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
             .then(res => {
-                console.log(res.data.data)
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
                 setcountryviews(res.data.data.countryViews);
@@ -155,6 +163,10 @@ export default function Metrics() {
                     </div>
                     <div className={styles.cards_container}>
                         <h4>Watched Time</h4>
+                        <div className={styles.UniqueViews}>
+                            <h5>{(amountstreamed/3600).toFixed(0)}hrs</h5>
+                            <span>Time (in hours) that viewers watched videos.</span>
+                        </div>
                     </div>
                     <div className={styles.cards_container}>
                         <h4>Errors</h4>
@@ -193,9 +205,7 @@ export default function Metrics() {
                         </div>
                     </div>
                     <div className={styles.metric_cards}>
-                        <h4>
-                            Videos
-                        </h4>
+                        <h4>Popular Videos</h4>
                         <span>Viewership in the last 7 days.</span>
                         <div>
                             <Bar options={options} data={videos_data}/>

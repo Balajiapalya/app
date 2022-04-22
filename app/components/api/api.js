@@ -152,11 +152,11 @@ export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`
 }
 //statistics
-export const usage_statistics = (val) => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d&time=${CurrentDate}`
+export const usage_statistics = (env, fromDate) => {
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`
 }
-export const views_statistics = (env) => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}`
+export const views_statistics = (env, fromDate) => {
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&time=${CurrentDate}`
 }
 
 export const editAccessToken=(accessId)=>{
@@ -209,11 +209,11 @@ if(process.browser){
     current_date = Date.now();
 }
 const CurrentDate = current_date;
-let sevendaybeforedate;
-if(process.browser){
-    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
-}
-const pastdate = sevendaybeforedate;
+//let sevendaybeforedate;
+//if(process.browser){
+//    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+//}
+//const pastdate = sevendaybeforedate;
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -520,24 +520,16 @@ const Api = {
         }),
 
     //Statistics
-    Usage_statistics: (val) =>
+    Usage_statistics: (env, fromDate) =>
         axios({
             method: 'GET',
-            url: usage_statistics(val),
-            // headers: {
-            //     'Authorization': `Bearer ${token}`,
-            //     'EnvironmentId': `${envuuid}`
-            // }
+            url: usage_statistics(env, fromDate),
             headers:headers,
         }),
-    Views_statistics: (env) =>
+    Views_statistics: (env, fromDate) =>
         axios({
             method: 'GET',
-            url: views_statistics(env),
-            // headers: {
-            //     'Authorization': `Bearer ${token}`,
-            //     'EnvironmentId': `${envuuid}`
-            // }
+            url: views_statistics(env, fromDate),
             headers:headers,
         }),
     EditApiAccessToken:(value,accessId)=>

@@ -22,7 +22,7 @@ export default function Overview() {
 
     const Usage_statistics_data = () => {
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv)
+            Api.Usage_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                 })
@@ -30,7 +30,7 @@ export default function Overview() {
     };
     const Views_statistics_data = () => {
         if (valueEnv) {
-            Api.Views_statistics(valueEnv)
+            Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
                 .then(res => {
                     // console.log(res.data.data.deviceViews)
                     set_viewsStatistics(res.data.data)
@@ -80,13 +80,33 @@ export default function Overview() {
     return (
         <div className={styles.container}>
             <div className={styles.video_type_container}>
-                {usagestatistics.map((item, key) =>
+                {usagestatistics.filter(record => record.usage == 'RecordEncodingUsage').map((item, key) =>
                     <div key={key} className={styles.encoded_video}>
-                        <h5 className={styles.video_type_heading}>{item.usage}</h5>
+                        <h5 className={styles.video_type_heading}>Encoded</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{(item.amountInSecs/60).toFixed(2)} mins</h5>
+                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
                             <div className={styles.timeperiod}>
-                                <span >Total minutes of videos <br></br>encoded in last 7 days.</span>
+                                <span >Total minutes of videos encoded in last 7 days.</span>
+                            </div>
+                        </div>
+                    </div>)}
+                {usagestatistics.filter(record => record.usage == 'RecordStorageUsage').map((item, key) =>
+                    <div key={key} className={styles.encoded_video}>
+                        <h5 className={styles.video_type_heading}>Stored</h5>
+                        <div className={styles.video_type_content}>
+                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
+                            <div className={styles.timeperiod}>
+                                <span >Total minutes of videos stored in last 7 days.</span>
+                            </div>
+                        </div>
+                    </div>)}
+                {usagestatistics.filter(record => record.usage == 'RecordStreamingUsage').map((item, key) =>
+                    <div key={key} className={styles.encoded_video}>
+                        <h5 className={styles.video_type_heading}>Streamed</h5>
+                        <div className={styles.video_type_content}>
+                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
+                            <div className={styles.timeperiod}>
+                                <span >Total minutes of videos streamed in last 7 days.</span>
                             </div>
                         </div>
                     </div>)}
