@@ -33,12 +33,20 @@ function Api_accesstokes() {
                     }
                     setopeninvitemember(openArr);
                     setclosemodal(closeArr);
+
                 }
             })
-    }, [opentoken, openrevoke,render])
-    const handlerevoke = () => {
-        // console.log(document.getElementById('accessID'))
-    }
+            const close = (e) => {
+                if(e.keyCode === 27){
+                  setRender(true)
+                }
+              }
+              window.addEventListener('keydown', close)
+            return () => window.removeEventListener('keydown', close);
+            
+    }, [opentoken, openrevoke,render]);
+    
+   
     const setPopups = (index, item) => {
         if (item) {
             // setValue(item.name)
@@ -59,7 +67,6 @@ function Api_accesstokes() {
         if(value){
             Api.EditApiAccessToken(newObj,accessId).then(res=>setRender(true))
         }
-        
     }
  
     return (

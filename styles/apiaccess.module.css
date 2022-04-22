@@ -96,6 +96,9 @@
     text-decoration: underline;
     margin-left: 10px;
     font-family: Inter-Regular;
+    background-color: #fff;
+    border: none;
+    color: #2863eb;
 }
 .wrapper_access_tokes .table table tbody tr td a{
     color:  #2863eb;

@@ -14,12 +14,11 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
         document.execCommand('copy')
     }
     const downloadFile = () => {
-        let signingKeyId = refSign.current.value;
-        let privateKey = atob(refKey.current.value);
+        let privateKey = (refKey.current.value);
         const signElement = document.createElement('a')
-        const file = new Blob(['VIDEOGRAPH_SIGNING_KEY_ID=', signingKeyId, '\n', 'PRIVATE_KEY=', privateKey], { type: "text/plain;charset-utf-8" });
+        const file = new Blob([privateKey], { type: "text/plain;charset-utf-8" });
         signElement.href = URL.createObjectURL(file);
-        signElement.setAttribute('download', 'Signinkey.pem');
+        signElement.setAttribute('download', `${signRes.signingKeyId}.pem`);
         document.body.appendChild(signElement);
         signElement.click()
     }
@@ -35,8 +34,8 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
                 <img onClick={() =>  copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
                 <h3>Private Key:</h3>
                 <h4>We don&apos;t store this so please memorize it...</h4>
-                <input ref={refKey} defaultValue={signRes.privateKey} readOnly />
-                <img onClick={() => privateKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
+                <textarea ref={refKey} defaultValue={atob(signRes.privateKey)} readOnly />
+                <img  onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="images/favicon/copy.png" />
                 <button onClick={() => downloadFile()} className={styles.butn}>Download as .pem file</button>
                 <br />
                 <button onClick={() => `${closesigninkeys(false)} ${setOpenCreate(false)}`} className={styles.btn}>Continue</button>

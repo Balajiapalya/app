@@ -72,8 +72,10 @@
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
 .video_type_heading{
-    color: #141414cb;
+    color: #131523;
     margin: 0.3rem 0rem;
+    font-family: Inter-Medium;
+    font-size: 14px;
 }
 .viewers_details{
     width: 100%;
@@ -96,7 +98,6 @@
 .timeperiod{
     width: 100%;
     float: left;
-    color: grey;
     font-size: 10px;
     position: relative;
     margin-bottom: 0px;
@@ -104,12 +105,16 @@
 }
 .timeperiod span{
     width: 50%;
+    font-family: Inter-Regular;
+    font-size: 12px;
+    color: #7e84a3;
 }
 .video_type_content{
     width: 100%;
 }
 .video_type_content h5{
-    font-size: 18px;
+    font-size: 20px;
+    font-family: Inter-SemiBold;
 }
 .real_time_views_container{
     width: 100%;

@@ -156,7 +156,7 @@ export const usage_statistics = (val) => {
     return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d&time=${CurrentDate}`
 }
 export const views_statistics = (env) => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}&time=${CurrentDate}`
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}`
 }
 
 export const editAccessToken=(accessId)=>{
