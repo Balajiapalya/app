@@ -465,3 +465,12 @@
 .edit_img{
     margin-left: 9px;
 }
+
+
+@media only screen and (min-width: 200px)   {
+    .videos_videos_table__kZ6Rl table thead tr th {
+        text-align: left;
+        padding: 5px;
+        font-size: 10px;
+    }
+}
