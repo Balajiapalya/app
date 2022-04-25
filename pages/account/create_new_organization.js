@@ -8,6 +8,7 @@ export default function Create_new_organization({ closeneworg }) {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_org_name => {
+        document.body.style.overflow='scroll'
         Api.Create_new_organization(new_org_name)
         .then(res=>{
             closeneworg(false)
@@ -17,12 +18,17 @@ export default function Create_new_organization({ closeneworg }) {
             console.log(error)
         })
     }
+
+    const handleClose=()=>{
+        document.body.style.overflow='scroll'
+        closeneworg(false)
+    }
     return (
         <div className={`${styles.container} ${styles.accesstoken_model}`}>
             <div className={styles.body}>
 
                 <div className={styles.model_nav}>
-                    <a onClick={() => closeneworg(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt='icon' /> </a>
+                    <a onClick={() => handleClose()} className={styles.model_close} role="button"><img src="/images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Create new organization</h3>
@@ -38,7 +44,7 @@ export default function Create_new_organization({ closeneworg }) {
                         />
                         {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                         <div className={styles.model_btn}>
-                            <button onClick={() => closeneworg(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
+                            <button onClick={() =>  handleClose()} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Create Organization</button>
                         </div>
                     </form>

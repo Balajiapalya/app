@@ -77,6 +77,10 @@ export default function Accounts() {
   const ownerLastname = lastname;
   const Org_name = Orgname;
 
+  const handleNext=()=>{
+    document.body.style.overflow='hidden'
+    set_openneworg(true)
+  }
   return (
     <div className={styles.container}>
       <div className={styles.settings}>
@@ -189,7 +193,7 @@ export default function Accounts() {
                 </table>
                 <div className={styles.model_btn}>
                   <button
-                    onClick={() => set_openneworg(true)}
+                    onClick={() => handleNext()}
                     type="submit"
                     className={`${styles.model_save_btn} btn btn-primary`}
                   >

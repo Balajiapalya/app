@@ -21,12 +21,16 @@ function Signingkeys() {
 
             })
     }, [opensigninkeys, removekeys])
+    const handlePopUp=()=>{
+        document.body.style.overflow='hidden'
+        setopensigninkeys(true)
+    }
     return (
         <Fragment>
             <section className={styles.wrapper_signing_keys}>
                 <div className={styles.head}>
                     <p>Signin keys are used to sign JSON Web Tokens (JWTs) for securing certain requests. Video keys can be used to secure playback URLs,and Data keys can be used to secure access to real-time viewer counts.</p>
-                    <button className="btn" onClick={() => setopensigninkeys(true)}>Create new Key</button>
+                    <button className="btn" onClick={() => handlePopUp()}>Create new Key</button>
                 </div>
                 {opensigninkeys && <Create_signing_key closesigninkeys={setopensigninkeys} />}
                 <div className={styles.table}>
