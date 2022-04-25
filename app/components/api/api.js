@@ -75,7 +75,9 @@ export const get_access_token = () => {
 export const revoke_acceesstoken = (del) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${del}?time=${CurrentDate}`
 }
-
+export const editAccessToken = (accessId) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}?time=${CurrentDate}`
+}
 //signin keys
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?time=${CurrentDate}`;
@@ -159,8 +161,9 @@ export const views_statistics = (env, fromDate) => {
     return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&time=${CurrentDate}`
 }
 
-export const editAccessToken=(accessId)=>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}?time=${CurrentDate}`
+
+export const realtime_views = () => {
+    return `${DATA_BASE_URL()}//services/api/v1/realtime_views?environmentId=${envuuid}&from=${ThirtyMinsBefore}&to=${CurrentDate}&interval=1d`
 }
 
 let user_id;
@@ -205,7 +208,7 @@ if (process.browser) {
 const uploadid = upload_id;
 
 let current_date;
-if(process.browser){
+if (process.browser) {
     current_date = Date.now();
 }
 const CurrentDate = current_date;
@@ -532,7 +535,7 @@ const Api = {
             url: views_statistics(env, fromDate),
             headers:headers,
         }),
-    EditApiAccessToken:(value,accessId)=>
+    EditApiAccessToken: (value, accessId) =>
         axios({
             method: 'PUT',
             data: value,

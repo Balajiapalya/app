@@ -65,7 +65,7 @@
 }
 .encoded_video,.stored_video,.streamed_video {
     width: 33.3%;
-    height: 20vh;
+    /* height: 20vh; */
     margin-bottom: 20px;
     padding: 5px 15px;
     background-color: #ffff;
@@ -91,6 +91,9 @@
     vertical-align: bottom;
     color: #999;
 }
+/* .realtime_chart canvas{
+    height: 200px !important;
+} */
 .encoded_video,.stored_video{
     margin-right: 10px;
     border-radius: 4px;
@@ -110,7 +113,8 @@
     color: #7e84a3;
 }
 .video_type_content{
-    width: 100%;
+    width: 50%;
+    float: left;
 }
 .video_type_content h5{
     font-size: 20px;
@@ -122,7 +126,7 @@
     background-color: #ffff;
     margin: 10px 10px 20px 0px;
     padding: 5px 15px;
-    height: 50vh;
+    /* height: 50vh; */
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
 .real_time_views_container,.countries_container,.devices_container .heading{
@@ -138,7 +142,7 @@
     margin-bottom: 20px;
 }
 .countries_container,.devices_container{
-    height: 50vh;
+    /* height: 50vh; */
     padding: 5px 15px;
     background-color: #ffff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -227,7 +231,10 @@
 .countries_name{
     font-weight: 600;
 }
-
+.line_chart{
+    width: 50%;
+    float: right;
+}
 /*----Metrics---------*/
 
 .Metrics_heading{
@@ -252,7 +259,7 @@
     margin-right: 10px;
     padding: 10px;
     border-radius: 4px;
-    height:8em;
+    /* height:8em; */
     background-color: #ffff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
@@ -317,7 +324,7 @@
     color: #212b36;
     margin-bottom: 0px;
 }
-.metric_cards span,.devices_card span,.player_card span,.applications_card span,.Os_views span{
+.metric_cards span,.devices_card span,.player_card span,.applications_card span,.Os_views span,.devices_container span{
     color: #999;
     font-size: 12px;
 }

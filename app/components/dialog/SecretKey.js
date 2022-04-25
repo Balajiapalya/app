@@ -27,6 +27,11 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
         document.body.appendChild(element)
         element.click()
     }
+    const handleClose=()=>{
+        document.body.style.overflow='scroll'
+        setNewToken(false);
+        closetoken(false);
+    }
     return (
         <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
             <div className={styles.body}>
@@ -43,7 +48,7 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
                 <img onClick={()=>copyTwo()} className={styles.imgCopy} src="images/favicon/copy.png"/>
                 <button onClick={()=>downloadFile()} className={styles.butn}>Download as .env file</button>
                 <br/>
-                <button onClick={() => `${setNewToken(false)} ${closetoken(false)}`} className={styles.btn}>Continue</button>
+                <button onClick={() => handleClose()} className={styles.btn}>Continue</button>
             </div>
         </div>
     )

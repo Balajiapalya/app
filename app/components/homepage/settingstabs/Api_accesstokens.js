@@ -68,13 +68,19 @@ function Api_accesstokes() {
             Api.EditApiAccessToken(newObj,accessId).then(res=>setRender(true))
         }
     }
+
+    const handlePopup=()=>{
+        settoken(true);
+        document.body.style.overflow='hidden'
+    }
  
     return (
         <Fragment>
             <section className={styles.wrapper_access_tokes}>
                 <div className={styles.head}>
                     <p>You can create or  revoke API access tokens. Tokens are used to authenticate API request and are environment specific. To know more visit our <a href="#">guide</a>.</p>
-                    <a><button className="btn" onClick={() => settoken(true)}>Create new Token</button></a>
+                    {/* <a><button className="btn" onClick={() => settoken(true)}>Create new Token</button></a> */}
+                    <a><button className="btn" onClick={() => handlePopup()}>Create new Token</button></a>
                 </div>
                 {opentoken && <Accesstoken closetoken={settoken} />}
                 <div className={styles.table}>

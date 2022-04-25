@@ -32,6 +32,10 @@ function Webhooks() {
         var y = new Date(date);
         return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
     };
+    const popup=()=>{
+        document.body.style.overflow='hidden'
+        setopenwebhook(true)
+    }
     return (
         <Fragment>
             <section className={styles.wrapper_webhooks}>
@@ -39,7 +43,7 @@ function Webhooks() {
                     <p>Use Webhooks to get real time updates on any events that happens outside of an API request cycle.
                         Webhooks can be configured for any environment and notifications will be sent for all events for the environment.
                     </p>
-                    <button className="btn" onClick={() => setopenwebhook(true)}>Create new Webhook</button>
+                    <button className="btn" onClick={() =>popup()}>Create new Webhook</button>
                 </div>
                 {openwebhook && <Create_new_webhook closewebhook={setopenwebhook} />}
                <div className={styles.table}>
