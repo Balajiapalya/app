@@ -57,12 +57,16 @@ export default function New_Access_token({ closetoken }) {
    }
 
    const videoAll = watch('video')
+const handleClose=()=>{
+   document.body.style.overflow='scroll'
+   closetoken(false)
+}
 
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
             <div className={styles.model_nav}>
-               <a className={styles.model_close} role="button" onClick={() => closetoken(false)}><img src="images/close.png" alt='icon' /> </a>
+               <a className={styles.model_close} role="button" onClick={() => handleClose()}><img src="images/close.png" alt='icon' /> </a>
             </div>
             <div className={styles.main}>
                <h3 className={styles.model_title}>New Access Token</h3>
@@ -110,7 +114,7 @@ export default function New_Access_token({ closetoken }) {
                   <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
                   {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                   <div className={styles.model_btn}>
-                     <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closetoken(false)}>Cancel</button>
+                     <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
                      {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={resp}/>}
                   </div>

@@ -3,6 +3,10 @@ import { useEffect, useState, useRef } from 'react'
 
 
 const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
+    let res;
+    if(signRes.privateKey!==undefined){
+        res=atob(signRes.privateKey)
+    }
     const refKey = useRef()
     const refSign = useRef()
     const privateKey = () => {
@@ -22,6 +26,11 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
         document.body.appendChild(signElement);
         signElement.click()
     }
+const handleClose=()=>{
+    document.body.style.overflow='scroll';
+    closesigninkeys(false);
+    setOpenCreate(false)
+}
     return (
         <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
             <div className={styles.body}>
@@ -34,11 +43,11 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
                 <img onClick={() =>  copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
                 <h3>Private Key:</h3>
                 <h4>We don&apos;t store this so please memorize it...</h4>
-                <textarea ref={refKey} defaultValue={atob(signRes.privateKey)} readOnly />
+                <textarea ref={refKey} defaultValue={res} readOnly />
                 <img  onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="images/favicon/copy.png" />
                 <button onClick={() => downloadFile()} className={styles.butn}>Download as .pem file</button>
                 <br />
-                <button onClick={() => `${closesigninkeys(false)} ${setOpenCreate(false)}`} className={styles.btn}>Continue</button>
+                <button onClick={() => handleClose()} className={styles.btn}>Continue</button>
             </div>
         </div>
     )
