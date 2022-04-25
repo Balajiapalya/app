@@ -77,6 +77,7 @@ export default function Overview() {
             legend: {
                 display: true,
                 position: 'bottom',
+                align: 'start',
             },
         },
         scales: {
@@ -84,6 +85,11 @@ export default function Overview() {
                 display: false,
                 grid: {
                     display: false
+                },
+                ticks: {
+                    autoSkip: false,
+                    maxRotation: 0,
+                    minRotation: 0
                 }
             },
             y: {
@@ -112,7 +118,12 @@ export default function Overview() {
                 display: true,
                 grid: {
                     display: false,
-                }
+                },
+                // ticks: {
+                //     autoSkip: false,
+                //     maxRotation: 0,
+                //     minRotation: 0
+                // }
             },
             y: {
                 display: true,
@@ -214,12 +225,14 @@ export default function Overview() {
             },
         ]
     }
+    const data = deviceviews.map((device, key) => device?.count);
     const doughnutdata = {
-        labels: deviceviews.map((device, key) => device?.key),
+        labels:deviceviews.map((device, key) => device?.key),
+       
         datasets: [
             {
-                label: '# of Votes',
-                data: deviceviews.map((device, key) => device?.count),
+                label: '',
+                data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
@@ -333,7 +346,7 @@ export default function Overview() {
                                         }
                                     </Geographies>
                                     {countryviews.map((country, key) => {
-                                        
+
                                         <Marker name={country.key}  >
                                             <circle radius={10} fill="#F53" stroke='#fff' strokeWidth={2}></circle>
                                         </Marker>
@@ -368,6 +381,7 @@ export default function Overview() {
                             <a>More Insights&gt;</a>
                         </div>
                     </div>
+                    
                     <div className={styles.devices_container}>
                         <h4 className={styles.heading}>Devices</h4>
                         <span>Viewership in the last 7 days.</span>
