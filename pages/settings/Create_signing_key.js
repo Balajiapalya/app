@@ -23,13 +23,18 @@ export default function Create_signing_key({ closesigninkeys }) {
     const onSubmit = signin_key => {
         signin_key.environmentUUID=localStorage.getItem('envuuid')
         Api.Create_signin_keys_data(signin_key).then(res=>setSignRes(res.data.data))
+        document.body.style.overflow='hidden'
         setOpenCreate(true)
+    }
+    const closePopUp=()=>{
+        document.body.style.overflow='scroll'
+        closesigninkeys(false)
     }
     return (
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closesigninkeys(false)} className={styles.model_close} role="button"><Image src="/images/close.png" alt='icon' width='20' height='20' /> </a>
+                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/close.png" alt='icon' width='20' height='20' /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -63,7 +68,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                             </select>
                         </div>
                         <div className={styles.model_btn}>
-                            <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closesigninkeys(false)}>Cancel</button>
+                            <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Signing Key</button>
                         </div>
                     </form>

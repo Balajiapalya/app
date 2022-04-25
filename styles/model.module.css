@@ -151,7 +151,6 @@
     border: none;
 }
 
-
 .editpaymentdetials .body,.accesstoken_model .body, .newtoken .body,
 .signingkey .body,.newwebhook_model .body,.newkey .body,.unlockpremiumfeatures .body,.newstream .body{
     background-color:#f4f6f8;
@@ -159,11 +158,12 @@
     border: 1px solid whitesmoke;
    width:100%;
    display: table;
-   position: absolute;
+   position: fixed;
     z-index: 99;
     top: 0;
     left: 0;
 }
+
 .secret{
     text-align: center;
 }
@@ -185,15 +185,16 @@
 .secret textarea{
     padding:2em;
     width: 60%;
-    height: 381px;
+    height: 100px;
     resize: none;
     border: solid 1px rgba(99, 115, 129, 0.3);
     border-radius: 2px;
     outline: none;
 }
 .copy{
-    position: relative;
-    bottom: 30vh;
+    /* position: relative; */
+    /* bottom: 30vh; */
+  margin-bottom: 20px;
 }
 .secret .butn{
     width: 60%;

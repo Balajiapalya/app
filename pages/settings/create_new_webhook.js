@@ -14,15 +14,20 @@ export default function Create_new_webhook({ closewebhook }) {
     }, [])
 
     const onSubmit = webhook_data => {
+        document.body.style.overflow='scroll'
         let newObj=Object.fromEntries(Object.entries(webhook_data).slice(1,2))
         newObj.environmentUUID=localStorage.getItem('envuuid')
         Api.Create_webhook_data(newObj).then(res=>closewebhook(false))
+    }
+    const closePopup=()=>{
+        document.body.style.overflow='scroll';
+        closewebhook(false)
     }
     return (
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closewebhook(false)}><img src="/images/close.png" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closePopup()}><img src="/images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>New Webhook</h3>
@@ -54,7 +59,7 @@ export default function Create_new_webhook({ closewebhook }) {
                         {errors.URL && <p className={`${styles.validations} validations`}>This field is required</p>}
                         <p className={styles.access_token_link}>All events will be sent to this URL.To learn more about the types of events see our <a href="" className={styles.access_token_data}>docs</a></p>
                         <div className={styles.model_btn}>
-                            <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closewebhook(false)}>Cancel</button>
+                            <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopup()}>Cancel</button>
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Webhook</button>
                         </div>
                     </form>
