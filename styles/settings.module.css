@@ -1,5 +1,4 @@
 
-
 .containercomponents{
     background-color:  #333740;
     width: 205px;
@@ -125,7 +124,7 @@
 }
 
 .settings {
-  padding: 30px 80px 25px 130px;
+   padding:40px 5% ;
    /* width: 87%;
    float: right;  */
 }
@@ -145,7 +144,7 @@
     color: #212b36;
     font-family: Inter-Medium;
     font-size: 20px;
-    /* width: 76px; */
+    width: 76px;
     
 }
 .settings .topnav ul li a{
@@ -163,7 +162,7 @@
     margin-bottom:1em ;
     color: #212b36;
     font-family: Inter-Medium;
-    font-size: 17px;
+    font-size: 22px;
 } 
 .general label{
     display: block;
@@ -227,13 +226,12 @@
 .settings .members{
     width: 100%;
     float: left;
-    margin-top: 30px;
 }
 .settings .members h3{
     float:left;
     color:#212b36;
     margin-bottom: 15px;
-    font-size: 17px;
+    font-size: 22px;
     font-family: Inter-Medium;
 }
 .settings .members button{
@@ -385,7 +383,7 @@
     border-bottom: 1px solid black;
 } */
 .environments_table tbody tr td{
-    padding: 24px;
+    padding: 15px;
     width: 30%;
 }
 .side_head{
@@ -423,7 +421,7 @@
     float: left;
 }
 .box_data_types{
-    width: 32%;
+    width: 33%;
     float: left;
 }
 .types_heading{
@@ -432,8 +430,7 @@
     color: #808080;
 }
 .types_value{
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
     font-family: Inter-Regular;
     color: #212b36;
 }
@@ -582,25 +579,5 @@
         /* width: 87%;
         float: right;  */
      }
-
-     /* .settings_environments_table{
-        padding: 5px;
-        width: 30%;
-    }
-    .settings_environments_table tbody tr td {
-        padding: 10px;
-        width: 30%;
-    }
-    .settings_types_heading {
-        font-size: 8px;
-        font-family: Inter-Regular;
-        color: #808080;
-    } */
 }
-
-
-
-
-
-
 

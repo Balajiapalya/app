@@ -1,11 +1,8 @@
 
 .settings {
-    /* padding:40px 5% ; */
+    padding:40px 5% ;
     /* width: 87%;
     float: right;  */
-    
-    padding: 30px 90px 25px 145px;
-
  }
  .settings .padding{
      padding-left: 205px;
@@ -27,7 +24,6 @@
  .events_data{
     width: 100%;
     float: left;
-    margin-top: 20px;
 
 }
 
@@ -38,7 +34,7 @@
 }
 .events_data table thead tr th{
     text-align: left;
-    padding: 17px 25px;
+    padding: 5px 3px;
     color:  #212b36;
     font-family: Inter-Medium;
     font-size: 14px;
@@ -56,7 +52,7 @@
     background-color: white;
 }
 .events_data table tbody tr td{
-    padding: 17px 25px;
+    padding: 5px 3px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
