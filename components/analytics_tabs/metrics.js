@@ -24,6 +24,7 @@ ChartJS.register(
 
 export default function Metrics() {
     const valueEnv=useContext(EnvValue)
+    const [amountstreamed, set_amountstreamed] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
     const [videoviews, setvideoviews] = useState([]);
     const [countryviews, setcountryviews] = useState([]);
@@ -32,11 +33,19 @@ export default function Metrics() {
     const [applicationsviews, setapplicationsviews] = useState([]);
     const [playerviews,setplayerviews] = useState([]);
     useEffect(() => {
+        Usage_statistics_data();
         Views_statistics_data();
     }, [valueEnv])
+    const Usage_statistics_data = () => {
+        if (valueEnv) {
+            Api.Usage_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+                .then(res => {
+                    set_amountstreamed(res&&res.data&&res.data.data&&res.data.data.totalUsageRecords&&res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0]&&res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs)
+                })
+        }
+    };
     const Views_statistics_data = () => {
-
-        Api.Views_statistics(valueEnv)
+        Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
             .then(res => {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
@@ -69,9 +78,8 @@ export default function Metrics() {
             }
           }
     };
-    // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     const videos_data = {
-        labels: videoviews.map((videos, key) => videos?.key),
+        labels: videoviews.slice(0,5).map((videos, key) => videos?.key.substring(0, 20)),
         datasets: [
             {
                 data: videoviews.map((item, key) => item?.count),
@@ -82,7 +90,7 @@ export default function Metrics() {
         ],
     };
     const device_data = {
-        labels: divicesviews.map((videos, key) => videos?.key),
+        labels: divicesviews.slice(0,5).map((videos, key) => videos?.key),
         datasets: [
             {
                 data: divicesviews.map((item, key) => item?.count),
@@ -93,7 +101,7 @@ export default function Metrics() {
         ],
     }
     const player_data = {
-        labels: playerviews.map((player, key) => player?.count),
+        labels: playerviews.slice(0,5).map((player, key) => player?.key.substring(0, 20)),
         datasets: [
             {
                 data: playerviews.map((item, key) => item?.count),
@@ -105,7 +113,7 @@ export default function Metrics() {
         ],
     }
     const Os_data = {
-        labels: Osviews.map((player, key) => player?.key),
+        labels: Osviews.slice(0,5).map((player, key) => player?.key),
         datasets: [
             {
                 data: Osviews.map((item, key) => item?.count),
@@ -116,7 +124,7 @@ export default function Metrics() {
         ],
     }
     const application_data = {
-        labels: applicationsviews.map((application, key) => application?.key),
+        labels: applicationsviews.slice(0,5).map((application, key) => application?.key),
         datasets: [
             {
                 data: applicationsviews.map((item, key) => item?.count),
@@ -140,24 +148,32 @@ export default function Metrics() {
                 <div className={styles.views_cards}>
 
                     <div className={styles.cards_container}>
-                        <h4>No. of Views</h4>
+                        <h4>No.of Views</h4>
                         <div className={styles.totalViews}>
                             <h5>{item.totalViews}</h5>
-                            <span>Number of views that <br></br> started playback</span>
+                            <span>Number of views that started playback</span>
                         </div>
                     </div>
                     <div className={styles.cards_container}>
-                        <h4>No. of Unique Views</h4>
+                        <h4>No.of Unique Views</h4>
                         <div className={styles.UniqueViews}>
                             <h5>{item.uniqueViews}</h5>
-                            <span>Unique viewers that started<br /> playback,based on User ID.</span>
+                            <span>Unique viewers that started playback,based on User ID.</span>
                         </div>
                     </div>
                     <div className={styles.cards_container}>
                         <h4>Watched Time</h4>
+                        <div className={styles.UniqueViews}>
+                            <h5>{(amountstreamed/3600).toFixed(0)}hrs</h5>
+                            <span>Time (in hours) that viewers watched videos.</span>
+                        </div>
                     </div>
                     <div className={styles.cards_container}>
                         <h4>Errors</h4>
+                        <div className={styles.UniqueViews}>
+                            <h5>{item.errors}</h5>
+                            <span>Number of playback errors detected by Videograph.</span>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.Countries_videos}>
@@ -189,12 +205,10 @@ export default function Metrics() {
                         </div>
                     </div>
                     <div className={styles.metric_cards}>
-                        <h4>
-                            Videos
-                        </h4>
+                        <h4>Popular Videos</h4>
                         <span>Viewership in the last 7 days.</span>
                         <div>
-                            <Bar options={options} data={videos_data} />
+                            <Bar options={options} data={videos_data}/>
                         </div>
 
                     </div>

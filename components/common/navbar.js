@@ -93,7 +93,7 @@ function Navbar() {
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <Link href="/events_logs"><a className={local == 11 ? `${styles.activate}` : `${toggleStyle(10)}`} onClick={() => handleActive(10)}><img src={toggleImg(10) || local == 11 ? "/images/iconawesome-file-alt(white).png" : "/images/iconawesome-file-alt.png"} alt='icon'></img>Events & Logs</a></Link>
+                            <Link href="/events_logs"><a className={local == 11 ? `${styles.activate}` : `${toggleStyle(10)}`} onClick={() => handleActive(10)}><img src={toggleImg(10) || local == 11 ? "/images/iconawesome-file-alt(white).png" : "/images/iconawesome-file-alt.png"} alt='icon'></img>Events  logs</a></Link>
                         </li>
                         <li>
                             <Link href="/"><a className={local == 12 || local == 'null' ? `${styles.activate}` : `${toggleStyle(11)}`} onClick={() => handleActive(11)}><img src={toggleImg(11) || local == 12 ? "/images/iconionic-ios-settings.png" : "/images/iconionic-ios-settings.png"} alt='icon'></img>Settings</a></Link>

@@ -21,6 +21,7 @@
     "react-hook-form": "^7.27.0",
     "react-hook-form-resolvers": "^0.0.1",
     "react-select": "^5.2.2",
+    "react-simple-maps": "^2.3.0",
     "react-spinners": "^0.11.0",
     "react-tag-input-component": "^1.0.7",
     "react-video-js-player": "^1.1.1",
