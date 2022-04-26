@@ -50,25 +50,18 @@ export default function Overview() {
         if (valueEnv) {
             Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
                 .then(res => {
-                    // console.log(res.data.data.deviceViews)
                     set_viewsStatistics(res.data.data)
                     setdeviceviews(res.data.data.deviceViews)
                     setcountryviews(res.data.data.countryViews)
-                    // console.log(res.data.data.countryViews)
                 })
         }
     };
     const markers = countryviews
     const Realtime_views = () => {
         if (valueEnv) {
-            Api.Realtime_views()
-                .then(res => {
-                    // console.log(res.data.data.views)
-                    set_realtime(res.data.data.views)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1800000).getTime(), "1m")
+                .then(res =>set_realtime(res.data.data.views))
+                .catch(error => console.log(error))
         }
     }
     const options = {
@@ -160,15 +153,7 @@ export default function Overview() {
         labels: encoded_line.map((line, key) => line?.timestampStr),
         datasets: [
             {
-                // label: "First dataset",
-                data: encoded_line.map((usagerec, key) => {
-                    if (usagerec && usagerec.usageRecords[0] && usagerec.usageRecords[0].amountInSecs) {
-                        return usagerec?.usageRecords[0].amountInSecs;
-                    }
-                    else {
-                        return 0;
-                    }
-                }),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordEncodingUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
                 fill: true,
                 backgroundColor: "rgba(0,128,0,0.2)",
                 borderColor: "rgba(0,128,0,0.5)"
@@ -179,15 +164,7 @@ export default function Overview() {
         labels: encoded_line.map((line, key) => line?.timestampStr),
         datasets: [
             {
-                // label: "First dataset",
-                data: encoded_line.map((usagerec, key) => {
-                    if (usagerec && usagerec.usageRecords[1] && usagerec.usageRecords[1].amountInSecs) {
-                        return usagerec && usagerec.usageRecords[1] && usagerec.usageRecords[1].amountInSecs
-                    }
-                    else {
-                        return 0;
-                    }
-                }),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStorageUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
                 fill: true,
                 backgroundColor: "rgb(255,174,66,0.2)",
                 borderColor: "rgb(255,174,66,1)"
@@ -198,15 +175,7 @@ export default function Overview() {
         labels: encoded_line.map((line, key) => line?.timestampStr),
         datasets: [
             {
-                // label: "First dataset",
-                data: encoded_line.map((usagerec, key) => {
-                    if (usagerec && usagerec.usageRecords[2] && usagerec.usageRecords[2].amountInSecs) {
-                        return usagerec && usagerec.usageRecords[2] && usagerec.usageRecords[2].amountInSecs
-                    }
-                    else {
-                        return 0;
-                    }
-                }),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStreamingUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)"
@@ -267,37 +236,15 @@ export default function Overview() {
                                 <span >Total minutes of videos encoded in last 7 days.</span>
                             </div>
                         </div>
-                    </div>)}
-                {usagestatistics.filter(record => record.usage == 'RecordStorageUsage').map((item, key) =>
-                    <div key={key} className={styles.encoded_video}>
-                        <h5 className={styles.video_type_heading}>Stored</h5>
-                        <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
-                            <div className={styles.timeperiod}>
-                                <span >Total minutes of videos stored in last 7 days.</span>
-                            </div>
-                        </div>
-                    </div>)}
-                {usagestatistics.filter(record => record.usage == 'RecordStreamingUsage').map((item, key) =>
-                    <div key={key} className={styles.encoded_video}>
-                        <h5 className={styles.video_type_heading}>Streamed</h5>
-                        <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
-                            <div className={styles.timeperiod}>
-                                <span >Total minutes of videos streamed in last 7 days.</span>
-                            </div>
-
-                        </div>
                         <div className={styles.line_chart}>
                             <Line options={Lineoptions} data={encoded_linedata} />
                         </div>
-
                     </div>)}
                 {usagestatistics.filter(record => record.usage == 'RecordStorageUsage').map((item, key) =>
                     <div key={key} className={styles.encoded_video}>
                         <h5 className={styles.video_type_heading}>Stored</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
                             <div className={styles.timeperiod}>
                                 <span >Total minutes of videos stored in last 7 days.</span>
                             </div>
@@ -310,14 +257,16 @@ export default function Overview() {
                     <div key={key} className={styles.encoded_video}>
                         <h5 className={styles.video_type_heading}>Streamed</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
                             <div className={styles.timeperiod}>
                                 <span >Total minutes of videos streamed in last 7 days.</span>
                             </div>
+
                         </div>
                         <div className={styles.line_chart}>
                             <Line options={Lineoptions} data={streamed_line} />
                         </div>
+
                     </div>)}
             </div>
             {[viewsStatistics].map((items, keys) => <>

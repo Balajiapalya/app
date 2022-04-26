@@ -162,8 +162,8 @@ export const views_statistics = (env, fromDate) => {
 }
 
 
-export const realtime_views = () => {
-    return `${DATA_BASE_URL()}//services/api/v1/realtime_views?environmentId=${envuuid}&from=${ThirtyMinsBefore}&to=${CurrentDate}&interval=1d`
+export const realtime_views = (env, fromDate, interval) => {
+    return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
 }
 
 let user_id;
@@ -541,6 +541,12 @@ const Api = {
             data: value,
             url: editAccessToken(accessId),
             headers: headers
+        }),
+    Realtime_views: (env, fromDate, interval) =>
+        axios({
+            method: 'GET',
+            url: realtime_views(env, fromDate, interval),
+            headers:headers,
         }),
 }
 export default Api
