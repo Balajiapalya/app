@@ -150,7 +150,7 @@ export default function Overview() {
         }
     };
     const encoded_linedata = {
-        labels: encoded_line.map((line, key) => line?.timestampStr),
+        labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
                 data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordEncodingUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
@@ -161,7 +161,7 @@ export default function Overview() {
         ]
     };
     const stored_linedata = {
-        labels: encoded_line.map((line, key) => line?.timestampStr),
+        labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
                 data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStorageUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
@@ -172,7 +172,7 @@ export default function Overview() {
         ]
     };
     const streamed_line = {
-        labels: encoded_line.map((line, key) => line?.timestampStr),
+        labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
                 data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStreamingUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
@@ -189,7 +189,6 @@ export default function Overview() {
         }),
         datasets: [
             {
-                // label: "First dataset",
                 data: realtime.map((realTime, key) => realTime.count),
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
