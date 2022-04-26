@@ -87,7 +87,7 @@ function Api_accesstokes() {
                     <table>
                         <thead>
                             <tr>
-                                <th className={styles.table_head}>Token ID</th>
+                                <th>Token ID</th>
                                 <th>Environment</th>
                                 <th>Permission</th>
                                 <th>Created</th>

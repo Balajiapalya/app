@@ -75,7 +75,9 @@ export const get_access_token = () => {
 export const revoke_acceesstoken = (del) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${del}?time=${CurrentDate}`
 }
-
+export const editAccessToken = (accessId) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}?time=${CurrentDate}`
+}
 //signin keys
 export const Create_signin_keys = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys?time=${CurrentDate}`;
@@ -152,15 +154,17 @@ export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`
 }
 //statistics
-export const usage_statistics = (val) => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${val}&from=${pastdate}&to=${CurrentDate}&interval=7d&time=${CurrentDate}`
+
+export const usage_statistics = (env, fromDate) => {
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`
 }
-export const views_statistics = (env) => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}`
+export const views_statistics = (env, fromDate) => {
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&time=${CurrentDate}`
 }
 
-export const editAccessToken=(accessId)=>{
-    return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens/${accessId}?time=${CurrentDate}`
+
+export const realtime_views = () => {
+    return `${DATA_BASE_URL()}//services/api/v1/realtime_views?environmentId=${envuuid}&from=${ThirtyMinsBefore}&to=${CurrentDate}&interval=1d`
 }
 
 let user_id;
@@ -205,15 +209,22 @@ if (process.browser) {
 const uploadid = upload_id;
 
 let current_date;
-if(process.browser){
+if (process.browser) {
     current_date = Date.now();
 }
 const CurrentDate = current_date;
 let sevendaybeforedate;
-if(process.browser){
+if (process.browser) {
     sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
 }
 const pastdate = sevendaybeforedate;
+
+let pasttime;
+if (process.browser) {
+    pasttime = new Date() - 1800000000;
+    // console.log(pasttime)
+}
+const ThirtyMinsBefore = pasttime;
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -520,27 +531,25 @@ const Api = {
         }),
 
     //Statistics
-    Usage_statistics: (val) =>
+    Usage_statistics: (env, fromDate) =>
         axios({
             method: 'GET',
-            url: usage_statistics(val),
-            // headers: {
-            //     'Authorization': `Bearer ${token}`,
-            //     'EnvironmentId': `${envuuid}`
-            // }
-            headers:headers,
+            url: usage_statistics(env, fromDate),
+            headers: headers,
         }),
-    Views_statistics: (env) =>
+    Views_statistics: (env, fromDate) =>
         axios({
             method: 'GET',
-            url: views_statistics(env),
-            // headers: {
-            //     'Authorization': `Bearer ${token}`,
-            //     'EnvironmentId': `${envuuid}`
-            // }
+            url: views_statistics(env, fromDate),
+            headers: headers,
+        }),
+    Realtime_views:() =>
+        axios({
+            method:'GET',
+            url: realtime_views(),
             headers:headers,
         }),
-    EditApiAccessToken:(value,accessId)=>
+    EditApiAccessToken: (value, accessId) =>
         axios({
             method: 'PUT',
             data: value,

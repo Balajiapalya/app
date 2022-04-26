@@ -80,6 +80,7 @@ function Organisation() {
                         <a onClick={() => setopeneditorganization(true)}><img src="images/iconmaterial-edit.png" alt="icon"></img>Edit</a>
                     </span>
                 </div>
+
             </div>
             {openorganization && <Edit_organization_name closeorganization={setopeneditorganization} setEditData={setEditData} />}
             <div className={styles.members}>
@@ -94,8 +95,8 @@ function Organisation() {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody> 
