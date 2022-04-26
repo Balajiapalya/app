@@ -10,6 +10,7 @@ export default function Add_new_environment({ closeenv }) {
     const [env, setenv] = useState([]);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
+        document.body.style.overflow='scroll';
         const uuid = localStorage.getItem("uuid");
         new_env_data.orgUUID = uuid;
         Api.Post_env(new_env_data)
@@ -31,11 +32,15 @@ export default function Add_new_environment({ closeenv }) {
                 console.log(error)
             })
     }, [])
+    const closePopUp=()=>{
+        document.body.style.overflow='scroll';
+        closeenv(false)
+    }
     return (
         <div className={`${styles.container} ${styles.accesstoken_model}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closeenv(false)}><img src="/images/close.png" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() =>closePopUp()}><img src="/images/close.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add New Environment</h3>
@@ -62,7 +67,7 @@ export default function Add_new_environment({ closeenv }) {
                             )}
                         </select>
                         <div className={styles.model_btn}>
-                            <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeenv(false)}>Cancel</button>
+                            <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Add Environment</button>
                         </div>
                     </form>
