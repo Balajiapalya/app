@@ -85,6 +85,10 @@ export default function Environment() {
 const handleChange=(e)=>{
   setNewInput(e.target.value)
 }
+const handlePopUp=()=>{
+  document.body.style.overflow='hidden'
+  set_addnewenv(true)
+}
   return (
     <div className={styles.container}>
       <div className={styles.settings}>
@@ -99,7 +103,7 @@ const handleChange=(e)=>{
               of environments Development, QA, Staging, and Production. You can
               change the names or create additional environments as needed.
             </p>
-            <button onClick={() => set_addnewenv(true)} className="btn">
+            <button onClick={() => handlePopUp()} className="btn">
               {" "}
               <img src="/images/iconfeather-plus.png" /> Add Environment
             </button>
@@ -117,7 +121,7 @@ const handleChange=(e)=>{
               <tbody>
                 {envdata.map((items, i) => (
                   <tr className={styles.env_table} key={i}>
-                    <td>
+                    <td className={styles.table_wr}>
                       <form>
                         {closemodal[i] && (
                           <div>

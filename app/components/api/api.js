@@ -527,13 +527,13 @@ const Api = {
         axios({
             method: 'GET',
             url: usage_statistics(env, fromDate),
-            headers:headers,
+            headers: headers,
         }),
     Views_statistics: (env, fromDate) =>
         axios({
             method: 'GET',
             url: views_statistics(env, fromDate),
-            headers:headers,
+            headers: headers,
         }),
     EditApiAccessToken: (value, accessId) =>
         axios({
@@ -546,7 +546,7 @@ const Api = {
         axios({
             method: 'GET',
             url: realtime_views(env, fromDate, interval),
-            headers:headers,
+            headers: headers,
         }),
 }
 export default Api

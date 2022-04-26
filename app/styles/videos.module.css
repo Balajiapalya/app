@@ -17,7 +17,7 @@
     margin-bottom: 25px;
 }
 .header_development{
-    padding-left: 6%;;
+    padding-left: 125px;
 }
 .content_development{
     padding: 20px 5px 20px 0px ;
@@ -44,7 +44,7 @@
     right: 4px;
 }
 .videos_delivery{
-    padding-left: 205px;
+    padding-left: 250px;
 }
 .videos .header{
     float: left;
@@ -78,7 +78,7 @@
     width: 50%;
     color: #4a5057;
     font-size: 14px;
-    margin-bottom: 4px;
+    margin-bottom: 3.5px;
 }
 .videos .videos_delivery button{
     width: 157px;
@@ -99,6 +99,7 @@
     width: 100%;
     float: left;
     margin-bottom: 1em;
+    margin-top:2rem;
 }
 .search img{
     width:21px;
@@ -133,7 +134,7 @@
 .videos_table{
     width: 100%;
     float: left;
-    padding-left: 205px;
+    padding-left: 250px;
 }
 .videos_table table{
     width: 100%;
@@ -143,21 +144,22 @@
 .checkbox{
     border: 1px solid #9b9b9b;
 }
-.addedon{
+
+/* .addedon{
     width: 8em;
-}
-.title{
+} */
+/* .title{
     width: 7em;
-}
+} */
 .assetID{
     width: 13em;
 }
 .videos_table table thead{
     border: solid 1px #e3e3e3;
 }
-.thumbnail{
+/* .thumbnail{
     width: 8em;
-}
+} */
 .videos_table table thead tr th{
     text-align: left;
     padding: 15px 10px;
@@ -182,9 +184,9 @@
 .videos_table table tbody{
     background-color: white;
 }
-.videos_table table tbody tr .check {
+/* .videos_table table tbody tr .check {
     text-align: center;
-}
+} */
 .videos_table table tbody tr td{
     padding: 15px 10px;
     word-break: break-all;
@@ -465,3 +467,12 @@
 .edit_img{
     margin-left: 9px;
 }
+
+
+/* @media only screen and (min-width: 200px)   {
+    .videos_table table thead tr th {
+        text-align: left;
+        padding: 5px;
+        font-size: 10px;
+    }
+} */

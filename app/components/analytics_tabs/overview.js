@@ -14,7 +14,7 @@ import {
     Marker,
     circle
 } from "react-simple-maps";
-import { getRedirectStatus } from 'next/dist/lib/load-custom-routes';
+
 
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -56,11 +56,10 @@ export default function Overview() {
                 })
         }
     };
-    const markers = countryviews
     const Realtime_views = () => {
         if (valueEnv) {
             Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1800000).getTime(), "1m")
-                .then(res =>set_realtime(res.data.data.views))
+                .then(res => set_realtime(res.data.data.views))
                 .catch(error => console.log(error))
         }
     }
@@ -68,7 +67,7 @@ export default function Overview() {
         responsive: true,
         plugins: {
             legend: {
-                display: true,
+                display: false,
                 position: 'bottom',
                 align: 'start',
             },
@@ -112,11 +111,11 @@ export default function Overview() {
                 grid: {
                     display: false,
                 },
-                // ticks: {
-                //     autoSkip: false,
-                //     maxRotation: 0,
-                //     minRotation: 0
-                // }
+                ticks: {
+                    autoSkip: false,
+                    maxRotation: 0,
+                    minRotation: 0
+                }
             },
             y: {
                 display: true,
@@ -153,7 +152,7 @@ export default function Overview() {
         labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
-                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordEncodingUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordEncodingUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
                 fill: true,
                 backgroundColor: "rgba(0,128,0,0.2)",
                 borderColor: "rgba(0,128,0,0.5)"
@@ -164,7 +163,7 @@ export default function Overview() {
         labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
-                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStorageUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStorageUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
                 fill: true,
                 backgroundColor: "rgb(255,174,66,0.2)",
                 borderColor: "rgb(255,174,66,1)"
@@ -175,7 +174,7 @@ export default function Overview() {
         labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
-                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStreamingUsage").map(r => r.amountInSecs).reduce((s, a) => s+a, 0)),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStreamingUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)"
@@ -197,20 +196,20 @@ export default function Overview() {
         ]
     }
     const data = deviceviews.map((device, key) => device?.count);
+
     const doughnutdata = {
-        labels:deviceviews.map((device, key) => device?.key),
-       
+        labels: deviceviews.map((device, key) => device?.key),
         datasets: [
             {
-                label: '',
+                label: deviceviews.map((device, key) => device?.percentage),
                 data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
+                    // 'rgba(54, 162, 235, 1)',
+                    // 'rgba(255, 206, 86, 0.2)',
+                    // 'rgba(75, 192, 192, 0.2)',
+                    // 'rgba(153, 102, 255, 0.2)',
+                    // 'rgba(255, 159, 64, 0.2)',
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -225,7 +224,6 @@ export default function Overview() {
             },
         ],
     };
-
     return (
         <div className={styles.container}>
             <div className={styles.video_type_container}>
@@ -233,7 +231,7 @@ export default function Overview() {
                     <div key={key} className={styles.encoded_video}>
                         <h5 className={styles.video_type_heading}>Encoded</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
+                            <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
                             <div className={styles.timeperiod}>
                                 <span >Total minutes of videos encoded in last 7 days.</span>
                             </div>
@@ -246,7 +244,7 @@ export default function Overview() {
                     <div key={key} className={styles.encoded_video}>
                         <h5 className={styles.video_type_heading}>Stored</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
+                            <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
                             <div className={styles.timeperiod}>
                                 <span >Total minutes of videos stored in last 7 days.</span>
                             </div>
@@ -259,7 +257,7 @@ export default function Overview() {
                     <div key={key} className={styles.encoded_video}>
                         <h5 className={styles.video_type_heading}>Streamed</h5>
                         <div className={styles.video_type_content}>
-                            <h5>{parseInt(item.amountInSecs/3600)} hrs {parseInt(parseInt(item.amountInSecs%3600)/60)} mins {parseInt(item.amountInSecs%60)} secs</h5>
+                            <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
                             <div className={styles.timeperiod}>
                                 <span >Total minutes of videos streamed in last 7 days.</span>
                             </div>
@@ -284,58 +282,51 @@ export default function Overview() {
                 </div>
                 <div className={styles.countries_devices_container}>
                     <div className={styles.countries_container}>
-                        <div className={styles.countries_heading}>
-                            <h4 className={styles.heading}>Countries</h4>
-                            <span>Viewership in the last 7 days.</span>
-                        </div>
+
                         <div className={styles.countries_map} >
-                            <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
-                                <ZoomableGroup>
-                                    <Geographies geography={geoUrl}>
-                                        {({ geographies }) =>
-                                            geographies.map(geo => (
-                                                <Geography
-                                                    key={geo.rsmKey}
-                                                    geography={geo}
+                            <div className={styles.countries_heading}>
+                                <h4 className={styles.heading}>Countries</h4>
+                                <span>Viewership in the last 7 days.</span>
+                            </div>
+                            <div>
+                                <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
+                                    <ZoomableGroup>
+                                        <Geographies geography={geoUrl}>
+                                            {({ geographies }) =>
+                                                geographies.map(geo => (
+                                                    <Geography
+                                                        key={geo.rsmKey}
+                                                        geography={geo}
 
-                                                    style={{
-                                                        default: {
-                                                            fill: "#D6D6DA",
-                                                            outline: "none"
-                                                        },
-                                                        hover: {
-                                                            fill: "#F53",
-                                                            outline: "none"
-                                                        },
-                                                        pressed: {
-                                                            fill: "#E42",
-                                                            outline: "none"
-                                                        }
-                                                    }}
-                                                />
-                                            ))
-                                        }
-                                    </Geographies>
-                                    {countryviews.map((country, key) => {
-
-                                        <Marker name={country.key}  >
-                                            <circle radius={10} fill="#F53" stroke='#fff' strokeWidth={2}></circle>
-                                        </Marker>
-
-                                    })}
-                                </ZoomableGroup>
-                            </ComposableMap>
-
-
+                                                        style={{
+                                                            default: {
+                                                                fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
+                                                                outline: "none"
+                                                            },
+                                                            hover: {
+                                                                fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
+                                                                outline: "none"
+                                                            },
+                                                        }}
+                                                    />
+                                                ))
+                                            }
+                                        </Geographies>
+                                    </ZoomableGroup>
+                                </ComposableMap>
+                            </div>
                         </div>
                         <div className={styles.countries_table} >
                             <table>
                                 <thead>
+
                                     <tr>
                                         <th >Country</th>
                                         <th>Percentage</th>
                                         <th>Views</th>
                                     </tr>
+
+
                                 </thead>
                                 <tbody>
                                     {countryviews.map((country, key) =>
@@ -347,22 +338,31 @@ export default function Overview() {
                                     )}
                                 </tbody>
                             </table>
+                            <div className={styles.more_insights}>
+                                <a>More Insights &gt;</a>
+                            </div>
                         </div>
-                        <div className={styles.more_insights}>
-                            <a>More Insights&gt;</a>
-                        </div>
+
                     </div>
-                    
+
                     <div className={styles.devices_container}>
                         <h4 className={styles.heading}>Devices</h4>
                         <span>Viewership in the last 7 days.</span>
                         <div className={styles.doughnut_graph}>
                             <Doughnut options={options} data={doughnutdata} />
+                            <div className={styles.legend_label}>
+                                <div>{doughnutdata.datasets[0].backgroundColor.map((i, key) => <p key={key} style={{ backgroundColor: `${i}`, width: 15, height: 15, borderRadius: 4, marginTop: 1 }}></p>)}</div>
+                                <div className={styles.label}>{doughnutdata.labels.map((i, key) => <p key={key} >{i}</p>)}</div>
+                                <div className={styles.percentage}>{doughnutdata.datasets[0].label.map((i, key) => <p key={key} >{i}%</p>)}</div>
+                            </div>
+
+
                         </div>
-                        <div className={styles.more_insights}>
-                            {/* <a>More Insights&gt;</a> */}
+                        <div className={styles.doughnut_insight}>
+                            <a>More Insights &gt;</a>
                         </div>
                     </div>
+
                 </div>
             </>)}
 
