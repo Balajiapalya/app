@@ -183,7 +183,10 @@ export default function Overview() {
         ]
     }
     const realtime_views = {
-        labels: realtime.map((realTime, key) => realTime?.timestampStr),
+        labels: realtime.map((realTime, key) => {
+            var dt = new Date(realTime?.timestamp)
+            return dt.getHours() + ':' + dt.getMinutes();
+        }),
         datasets: [
             {
                 // label: "First dataset",
