@@ -154,7 +154,6 @@ export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`
 }
 //statistics
-
 export const usage_statistics = (env, fromDate) => {
     return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`
 }
@@ -163,8 +162,8 @@ export const views_statistics = (env, fromDate) => {
 }
 
 
-export const realtime_views = () => {
-    return `${DATA_BASE_URL()}//services/api/v1/realtime_views?environmentId=${envuuid}&from=${ThirtyMinsBefore}&to=${CurrentDate}&interval=1d`
+export const realtime_views = (env, fromDate, interval) => {
+    return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
 }
 
 let user_id;
@@ -213,18 +212,11 @@ if (process.browser) {
     current_date = Date.now();
 }
 const CurrentDate = current_date;
-let sevendaybeforedate;
-if (process.browser) {
-    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
-}
-const pastdate = sevendaybeforedate;
-
-let pasttime;
-if (process.browser) {
-    pasttime = new Date() - 1800000000;
-    // console.log(pasttime)
-}
-const ThirtyMinsBefore = pasttime;
+//let sevendaybeforedate;
+//if(process.browser){
+//    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+//}
+//const pastdate = sevendaybeforedate;
 const Api = {
     Sign_up_data: (login_details) =>
         axios({
@@ -543,18 +535,18 @@ const Api = {
             url: views_statistics(env, fromDate),
             headers: headers,
         }),
-    Realtime_views:() =>
-        axios({
-            method:'GET',
-            url: realtime_views(),
-            headers:headers,
-        }),
     EditApiAccessToken: (value, accessId) =>
         axios({
             method: 'PUT',
             data: value,
             url: editAccessToken(accessId),
             headers: headers
+        }),
+    Realtime_views: (env, fromDate, interval) =>
+        axios({
+            method: 'GET',
+            url: realtime_views(env, fromDate, interval),
+            headers: headers,
         }),
 }
 export default Api

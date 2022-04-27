@@ -2,6 +2,7 @@ import { useEffect, useState,useContext } from 'react';
 import styles from '../../styles/analytics_tabs.module.css';
 import Api from '../api/api';
 import { EnvValue } from '../../pages/analytics/index'
+import { useRouter } from 'next/router';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -32,6 +33,8 @@ export default function Metrics() {
     const [Osviews, setOsviews] = useState([]);
     const [applicationsviews, setapplicationsviews] = useState([]);
     const [playerviews,setplayerviews] = useState([]);
+    const router = useRouter();
+    // console.log(router)
     useEffect(() => {
         Usage_statistics_data();
         Views_statistics_data();
@@ -69,7 +72,12 @@ export default function Metrics() {
             x: {
               grid: {
                 display: false
-              }
+              },
+              ticks: {
+                autoSkip: false,
+                maxRotation: 0,
+                minRotation: 0
+            }
             },
             y: {
               grid: {
@@ -101,7 +109,7 @@ export default function Metrics() {
         ],
     }
     const player_data = {
-        labels: playerviews.slice(0,5).map((player, key) => player?.key.substring(0, 20)),
+        labels: playerviews.slice(0,5).map((player, key) => player?.key.substring(0, 7)),
         datasets: [
             {
                 data: playerviews.map((item, key) => item?.count),

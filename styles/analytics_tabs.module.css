@@ -76,6 +76,7 @@
     margin: 0.3rem 0rem;
     font-family: Inter-Medium;
     font-size: 14px;
+    letter-spacing: 0.09px;
 }
 .viewers_details{
     width: 100%;
@@ -119,6 +120,14 @@
 .video_type_content h5{
     font-size: 20px;
     font-family: Inter-SemiBold;
+    filter: blur(0.3px);
+    color: #131523;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+
 }
 .real_time_views_container{
     width: 100%;
@@ -126,12 +135,14 @@
     background-color: #ffff;
     margin: 10px 10px 20px 0px;
     padding: 5px 15px;
+    border-radius: 4px;
     /* height: 50vh; */
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
 .real_time_views_container,.countries_container,.devices_container .heading{
     color: black;
-    /* margin: 0.3rem 0rem; */
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 .countries_devices_container{
@@ -143,6 +154,7 @@
 }
 .countries_container,.devices_container{
     /* height: 50vh; */
+    border-radius: 4px;
     padding: 5px 15px;
     background-color: #ffff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -152,6 +164,8 @@
     width: 65%;
     float: left;
     margin-right: 10px;
+    position: relative;
+    border-radius: 4px;
 }
 .countries_heading{
     width: 100%;
@@ -159,10 +173,23 @@
 }
 .countries_heading h4{
     margin-bottom: 0px;
+    color: #131523;
+    filter: blur(0.3px);
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
 }
 .countries_heading span{
-    color: #999;
+    color: #5a607f;
     font-size: 12px;
+  filter: blur(0.3px);
+  font-size: 13px;
+  line-height: 1.23;
+  line-height: 1.23;
+  font-family: Inter-Regular  ;
+
 }
 .devices_container{
     width: 35%;
@@ -172,9 +199,45 @@
     width: 100%;
     float: left;
     text-align: end;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 10px;
+    color: #2863eb;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    line-height: 1.08;
+    
+}
+.doughnut_more_insights{
+    width: 100%;
+    float: left;
+    text-align: end;
+    color: #2863eb;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    line-height: 1.08;
+    position: relative;
+}
+.doughnut_insight{
+    width: 100%;
+    float: left;
+    text-align: end;
+    color: #2863eb;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    line-height: 1.08;
+    position: relative;
+    right: 5px;
+}
+.doughnut_more_insights a{
+    position: relative;
+    bottom: 13px;
+    right: 5px;
 }
 .more_insights a{
-    color: #2863eb;
+    position: relative;
+    right: 20px;
 }
 .doughnut_graph{
     width: 100%;
@@ -183,16 +246,19 @@
     height: 42vh !important;
     width: 80% !important;
     margin-left: 10%;
+    margin-top: 10px;
 }
 .countries_map{
     width: 60%;
-    height: 33vh;
+    /* height: 33vh; */
     float: left;
+    border-right: 1px solid #f1f1f5;
 }
 .countries_table{
     width: 40%;
     height: 33vh;
     float: right;
+    padding: 10px
 }
 .countries_table table{
     width: 100%;
@@ -203,9 +269,17 @@
 }
 
 .countries_table table thead{
-    color: #999;
+    color: #7e84a3;
     font-weight: 400;
-    border-bottom: 1px solid #99999930;
+    border-bottom: 1px solid #e6e9f4;
+    filter: blur(0.3px);
+    border-bottom: 1px solid #e6e9f4;
+    font-weight: normal !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.08;
+    letter-spacing: normal;
+    text-align: left;
 }
 .countries_table table thead tr th{
     padding: 5px;
@@ -220,13 +294,23 @@
 .countries_table table tbody{
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid #99999930;
+    border-bottom: 1px solid #e6e9f4;
     border-collapse: collapse;
+    filter: blur(0.3px);
 }
 .countries_table table tbody tr td{
     padding: 5px;
     height: 45px;
     color: #212b36;
+    filter: blur(0.3px);
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.08;
+    letter-spacing: normal;
+    /* text-align: left; */
 }
 .countries_name{
     font-weight: 600;
@@ -234,6 +318,21 @@
 .line_chart{
     width: 50%;
     float: right;
+}
+.doughnut_graph table{
+    width: 100%;
+}
+.doughnut_graph table tr td{
+    text-align: center;
+}
+.legend_label{
+    display: flex;
+}
+.label{
+    margin-left: 5%;
+}
+.percentage{
+    margin-left: 60%;
 }
 /*----Metrics---------*/
 
@@ -327,6 +426,13 @@
 .metric_cards span,.devices_card span,.player_card span,.applications_card span,.Os_views span,.devices_container span{
     color: #999;
     font-size: 12px;
+    color: #5a607f;
+    font-size: 12px;
+    filter: blur(0.3px);
+    font-size: 13px;
+    line-height: 1.23;
+    line-height: 1.23;
+    font-family: Inter-Regular  ;
 }
 .metric_cards canvas,.devices_card canvas,.player_card canvas,.applications_card canvas,.Os_views canvas{
     margin-top: 20px;
