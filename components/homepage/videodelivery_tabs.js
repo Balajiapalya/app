@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styles from '../../styles/tabs.module.css';
 import Subtitles from "../videodeliverytabs/subtitles";
 import Overview from "../videodeliverytabs/overview";
@@ -7,13 +7,18 @@ import Thumbnails from "../videodeliverytabs/thumbnails";
 import Others from "../videodeliverytabs/others";
 import Videoclips from "../videodeliverytabs/videoclips";
 
-
 function Videodelivery_tabs() {
-    const [toggleState, setToggleState] = useState(1);
-
+    let path;
+    if(process.browser){
+         path=+localStorage.getItem('path')
+    }
+    
+    const [toggleState, setToggleState] = path?useState(path):useState(1);
     const toggleTab = (index) => {
         setToggleState(index);
     };
+    
+    
     return (
         <div className={styles.wrapper_tabs}>
             <div className={styles.bloc_tabs}>
@@ -65,7 +70,7 @@ function Videodelivery_tabs() {
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    <Videoclips />
+                    <Videoclips/>
 
                 </div>
 
