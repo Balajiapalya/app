@@ -155,10 +155,16 @@ export const delSigningKey = (id) => {
 }
 //statistics
 export const usage_statistics = (env, fromDate) => {
-    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`
+    if(fromDate==undefined)
+    {return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${new Date().setDate(new Date().getDate() - 7)}&to=${CurrentDate}&time=${CurrentDate}`}
+    else{return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`}
 }
-export const views_statistics = (env, fromDate) => {
-    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&time=${CurrentDate}`
+export const views_statistics = (env, date) => {
+    if(date==undefined){
+        return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${new Date().setDate(new Date().getDate() - 7)}&to=${CurrentDate}&time=${CurrentDate}`
+    }else{
+        return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${date}&to=${CurrentDate}&time=${CurrentDate}`
+    }  
 }
 
 
@@ -529,10 +535,10 @@ const Api = {
             url: usage_statistics(env, fromDate),
             headers: headers,
         }),
-    Views_statistics: (env, fromDate) =>
+    Views_statistics: (env, date) =>
         axios({
             method: 'GET',
-            url: views_statistics(env, fromDate),
+            url: views_statistics(env, date),
             headers: headers,
         }),
     EditApiAccessToken: (value, accessId) =>

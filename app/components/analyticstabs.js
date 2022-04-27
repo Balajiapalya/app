@@ -22,20 +22,9 @@ function Analytics_tabs() {
                     className={toggleState === 2 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
                     onClick={() => toggleTab(2)}
                 >
-                    <span>Metrics</span>
+                    <span>Video Metrics</span>
                 </button>
-                <button
-                    className={toggleState === 3 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
-                    onClick={() => toggleTab(3)}
-                >
-                    <span>Videos</span>
-                </button>
-                <button
-                    className={toggleState === 4 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
-                    onClick={() => toggleTab(4)}
-                >
-                    <span>Errors</span>
-                </button>
+               
 
             </div>
 
@@ -49,28 +38,9 @@ function Analytics_tabs() {
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    {/* <Billings /> */}
+                    
                     <Metrics/>
                 </div>
-
-                <div
-                    className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
-                >
-                    {/* <Apiaccesstokes /> */}
-                </div>
-
-                <div
-                    className={toggleState === 4 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
-                >
-                    {/* <Webhooks /> */}
-                </div>
-
-                <div
-                    className={toggleState === 5 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
-                >
-                    {/* <Signingkeys /> */}
-                </div>
-
             </div>
         </div>
     )
