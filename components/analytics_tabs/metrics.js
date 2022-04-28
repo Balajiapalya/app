@@ -48,12 +48,7 @@ export default function Metrics() {
     const [Osviews, setOsviews] = useState([]);
     const [applicationsviews, setapplicationsviews] = useState([]);
     const [playerviews, setplayerviews] = useState([]);
-    const [toggleposition,settoggleposition]=useState(2)
-    const [date,setdate]=useState();
-    useEffect(() => {
-        Usage_statistics_data();
-        Views_statistics_data();
-    },[valueEnv])
+    const [toggleposition,settoggleposition]=useState(2);
 
 
     const options = {
@@ -142,38 +137,40 @@ export default function Metrics() {
         settoggleposition(index);
     }
     const setday = () =>{
+       let toDate = Date.now();
        let yesterday= new Date().setDate(new Date().getDate() - 1)
-        setdate(yesterday)
-        if(setdate(yesterday)!=""){
-            Views_statistics_data()
-        }
+        Views_statistics_data(toDate,yesterday);
+        Usage_statistics_data(toDate,yesterday);
+      
 
     }
     const setweek = ()=>{
+        let toDate = Date.now();
         let sevendaybeforedate= new Date().setDate(new Date().getDate() - 7);
-        setdate(sevendaybeforedate);
-        if(setdate(sevendaybeforedate)!=""){
-            Views_statistics_data();
-        }
+        Views_statistics_data(toDate,sevendaybeforedate);
+        Usage_statistics_data(toDate,sevendaybeforedate);
+        
     }
     const setmonth = ()=>{
+        let toDate = Date.now();
         let monthbeforedate = new Date().setDate(new Date().getDate() - 28);
-        setdate(monthbeforedate)
-        if(setdate(monthbeforedate)!=""){
-            Views_statistics_data();
-        }
+        Views_statistics_data(toDate,monthbeforedate);
+        Usage_statistics_data(toDate,monthbeforedate);
+        
     }
-    const Usage_statistics_data = () => {
+    const Usage_statistics_data = (toDate,fromDate) => {
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv,date)
+            Api.Usage_statistics(valueEnv,toDate,fromDate)
                 .then(res => {
-                    set_amountstreamed(res && res.data && res.data.data && res.data.data.totalUsageRecords && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0] && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs)
+                    set_amountstreamed(res && res.data && res.data.data && res.data.data.totalUsageRecords && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0] && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs);
+                })
+                .catch(errror=>{
+                    console.log(errror);
                 })
         }
     };
-    const Views_statistics_data = () => {
-        
-        Api.Views_statistics(valueEnv,date)
+    const Views_statistics_data = (toDate,fromDate) => {
+        Api.Views_statistics(valueEnv,toDate,fromDate)
             .then(res => {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
@@ -184,6 +181,10 @@ export default function Metrics() {
                 setplayerviews(res.data.data.playerViews)
             })
     }
+    useEffect(() => {
+        Usage_statistics_data();
+        Views_statistics_data();
+    },[valueEnv])
     return (
         <div className={styles.container}>
             <div className={styles.Metrics_heading}>
@@ -209,7 +210,7 @@ export default function Metrics() {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/Images/metrics-views.png' alt='img' />
+                            <img src='/images/metrics-views.png' alt='img' />
                         </div>
                     </div>
                     <div className={styles.cards_container}>
@@ -221,7 +222,7 @@ export default function Metrics() {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/Images/metrics-unique-views.png' alt='img' />
+                            <img src='/images/metrics-unique-views.png' alt='img' />
                         </div>
                     </div>
                     <div className={styles.cards_container}>
@@ -233,7 +234,7 @@ export default function Metrics() {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/Images/metrics-watched-time.png' alt='img' />
+                            <img src='/images/metrics-watched-time.png' alt='img' />
                         </div>
                     </div>
                     <div className={styles.cards_container}>
@@ -245,7 +246,7 @@ export default function Metrics() {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/Images/metrics-views.png' alt='img' />
+                            <img src='/images/metrics-views.png' alt='img' />
                         </div>
                     </div>
                 </div>
@@ -256,7 +257,7 @@ export default function Metrics() {
                                 <div className={styles.countries_heading_content}>
                                     <h4 className={styles.heading}>Countries</h4>
                                     <div className={styles.export_img}>
-                                        <img src='/Images/export.png' />
+                                        <img src='/images/export.png' />
                                     </div>
                                 </div>
                                 <span>Viewership in the last 7 days.</span>

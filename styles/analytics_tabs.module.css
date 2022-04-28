@@ -333,6 +333,9 @@
 .label{
     margin-left: 5%;
 }
+.label p{
+    margin-bottom: 10px;
+}
 .percentage{
     margin-left: 40%;
 }
