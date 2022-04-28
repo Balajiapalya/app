@@ -37,10 +37,11 @@ export default function Overview() {
         Views_statistics_data();
         Realtime_views();
     }, [valueEnv]);
-
+    
     const Usage_statistics_data = () => {
+        const fromDate =  new Date().setDate(new Date().getDate() - 7);
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+            Api.Usage_statistics(valueEnv,fromDate)
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
