@@ -3,6 +3,8 @@ import Hls from 'hls.js';
 import Api from './api/api';
 
 
+
+
 class Player extends Component {
   componentDidMount() {
     this._getVideoURL();
@@ -23,9 +25,13 @@ class Player extends Component {
           }
         }
       });
+    
   };
-
+  
   render() {
+    const pausedvideo =(e)=>{
+      this.props.handlethumnail(e.target.currentTime)
+    }
     return (
       <div>
         <video
@@ -33,7 +39,8 @@ class Player extends Component {
           height="295px"
           ref={(player) => (this.player = player)}
           controls
-        />
+          onPause={(e)=>pausedvideo(e)}
+        />  
       </div>
     );
   }

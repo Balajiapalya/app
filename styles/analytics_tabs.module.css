@@ -63,6 +63,7 @@
     float: left;
     display: flex;
 }
+
 .encoded_video,.stored_video,.streamed_video {
     width: 33.3%;
     /* height: 20vh; */
@@ -99,6 +100,7 @@
     margin-right: 10px;
     border-radius: 4px;
 }
+
 .timeperiod{
     width: 100%;
     float: left;
@@ -154,10 +156,10 @@
 }
 .countries_container,.devices_container{
     /* height: 50vh; */
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 5px 15px;
     background-color: #ffff;
-    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 
 }
 .countries_container{
@@ -331,8 +333,11 @@
 .label{
     margin-left: 5%;
 }
+.label p{
+    margin-bottom: 10px;
+}
 .percentage{
-    margin-left: 60%;
+    margin-left: 40%;
 }
 /*----Metrics---------*/
 
@@ -341,43 +346,100 @@
     float: left;
 }
 .Metrics_heading h3{
-    float: left;
-    color: #212b36;
-    font-family: Inter-Medium;
-    font-size: 20px;
+    width: 65%;
+    margin-bottom: 21px;
     margin-top: 0px;
-    margin-bottom: 20px;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #848484;
+    font-family: Inter-Regular;
 }
+.date_toggle{
+    width: 35%;
+    float: right;
+}
+.active_btn{
+    background-color: #7d90ba !important;
+    color: #fff !important;
+}
+.date_toggle .date_toggle_btn{
+    background-color: #fff;
+    height: 30px;
+    border: 1px solid #d7dbec;
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: #131523;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+
 .views_cards{
     width: 100%;
     float: left;
     display: flex;
 }
+.views_cards :nth-child(4){
+    margin-right: 0px;
+}
 .cards_container{
     width: 25%;
     margin-right: 10px;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 6px;
     /* height:8em; */
     background-color: #ffff;
-    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    box-shadow: 0 1px 4px 0 rgba(21, 34, 50, 0.08);
+    position: relative;
 }
 .cards_container h4{
     margin-top: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: 0.09px;
+    text-align: left;
+    color: #5a607f;
+    font-family: Inter-Medium;
 }
 .totalViews,.UniqueViews{
     width: 100%;
     float: left;
 }
-.totalViews h5{
-    font-size: 16px;
-}
-.UniqueViews h5{
-    font-size: 16px;
+.totalViews h5,.UniqueViews h5{
+    font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.08px;
+    text-align: left;
+    color: #131523;
+    filter: blur(0.5px);
 }
 .totalViews span{
-    color: #999;
     font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #656a80;
+    font-family: Inter-Regular;
 }
 .UniqueViews span{
     color: #999;
@@ -391,6 +453,7 @@
 .countries,.metric_cards{
     height: 18em;
     background-color: #ffff;
+    border-radius: 6px;
 }
 .Countries_videos .countries{
     width: 60%;
@@ -411,20 +474,60 @@
     display: flex;
     margin: 20px 0px;
 }
+.countries_heading_content{
+    width: 100%;
+    float: left;
+}
+.countries_heading_content h4{
+    width: 70%;
+    float: left;
+}
+.export_img{
+    width: 30%;
+    float: right;
+}
+.export_img img{
+    margin-top: 1rem;
+    float: right;
+    margin-right: 10px;
+}
 .devices_card{
     width: 33%;
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
-   
+    border-radius: 6px;
+}
+.metric_card_heading{
+    width: 100%;
+    float: left;
+}
+.metric_card_heading h4{
+    width: 70%;
+    float: left;
+}
+.export_img{
+    width: 30%;
+    float: right;
 }
 .metric_cards h4,.devices_card h4,.player_card h4,.applications_card h4,.Os_views h4{
-    color: #212b36;
-    margin-bottom: 0px;
+    filter: blur(0.3px);
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: 0.09px;
+    text-align: left;
+    color: #131523;
+    margin-bottom: 6px;
 }
 .metric_cards span,.devices_card span,.player_card span,.applications_card span,.Os_views span,.devices_container span{
     color: #999;
+    width: 100%;    
+    float: left;
     font-size: 12px;
     color: #5a607f;
     font-size: 12px;
@@ -432,7 +535,8 @@
     font-size: 13px;
     line-height: 1.23;
     line-height: 1.23;
-    font-family: Inter-Regular  ;
+    font-family: Inter-Regular ;
+    margin-bottom: 20px;
 }
 .metric_cards canvas,.devices_card canvas,.player_card canvas,.applications_card canvas,.Os_views canvas{
     margin-top: 20px;
@@ -445,6 +549,20 @@
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
     margin-left: 10px;
+    border-radius: 6px;
+}
+.cards_details{
+    width: 65%;
+    float: left;
+}
+.card_logo{
+    width: 35%;
+    float: right;
+}
+.card_logo img{
+    position: absolute;
+    top: 30%;
+    right: 10%;
 }
 .Os_views_card{
     width: 100%;
@@ -458,4 +576,5 @@
     height: 50vh;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
+    border-radius: 6px;
 }
