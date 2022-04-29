@@ -48,9 +48,9 @@ export default function Metrics() {
     const [Osviews, setOsviews] = useState([]);
     const [applicationsviews, setapplicationsviews] = useState([]);
     const [playerviews, setplayerviews] = useState([]);
-    const [toggleposition,settoggleposition]=useState(2);
-
-
+    const [toggleposition, settoggleposition] = useState(2);
+    const [Today, setToday] = useState();
+    const [fromdate, set_fromDate] = useState();
     const options = {
         responsive: true,
         plugins: {
@@ -133,44 +133,50 @@ export default function Metrics() {
             },
         ],
     }
-    const togglebtn = (index)=>{
+    const togglebtn = (index) => {
         settoggleposition(index);
     }
-    const setday = () =>{
-       let toDate = Date.now();
-       let yesterday= new Date().setDate(new Date().getDate() - 1)
-        Views_statistics_data(toDate,yesterday);
-        Usage_statistics_data(toDate,yesterday);
-      
-
-    }
-    const setweek = ()=>{
+    const setday = () => {
         let toDate = Date.now();
-        let sevendaybeforedate= new Date().setDate(new Date().getDate() - 7);
-        Views_statistics_data(toDate,sevendaybeforedate);
-        Usage_statistics_data(toDate,sevendaybeforedate);
-        
+        let yesterday = new Date().setDate(new Date().getDate() - 1)
+        Views_statistics_data(toDate, yesterday);
+        Usage_statistics_data(toDate, yesterday);
+        setToday(toDate);
+        set_fromDate(yesterday);
     }
-    const setmonth = ()=>{
+    const setweek = () => {
+        let toDate = Date.now();
+        let sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+        Views_statistics_data(toDate, sevendaybeforedate);
+        Usage_statistics_data(toDate, sevendaybeforedate);
+        setToday(toDate)
+        set_fromDate(sevendaybeforedate)
+    }
+    const setmonth = () => {
         let toDate = Date.now();
         let monthbeforedate = new Date().setDate(new Date().getDate() - 28);
-        Views_statistics_data(toDate,monthbeforedate);
-        Usage_statistics_data(toDate,monthbeforedate);
-        
+        Views_statistics_data(toDate, monthbeforedate);
+        Usage_statistics_data(toDate, monthbeforedate);
+        setToday(toDate)
+        set_fromDate(monthbeforedate)
     }
-    const Usage_statistics_data = (toDate,fromDate) => {
+    const Usage_statistics_data = (toDate, fromDate) => {
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv,toDate,fromDate)
+            Api.Usage_statistics(valueEnv, toDate, fromDate)
                 .then(res => {
                     set_amountstreamed(res && res.data && res.data.data && res.data.data.totalUsageRecords && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0] && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs);
                 })
-                .catch(errror=>{
-                    console.log(errror);
+                .catch(error => {
+                    if (error.response.data.code = 401) {
+                        window.localStorage.clear();
+                        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                        window.location.href = '/signin'
+                    }
                 })
         }
     };
-    const Views_statistics_data = (toDate,fromDate) => {
-        Api.Views_statistics(valueEnv,toDate,fromDate)
+    const Views_statistics_data = (toDate, fromDate) => {
+        Api.Views_statistics(valueEnv, toDate, fromDate)
             .then(res => {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
@@ -180,20 +186,50 @@ export default function Metrics() {
                 setapplicationsviews(res.data.data.applicationViews);
                 setplayerviews(res.data.data.playerViews)
             })
+            .catch(error => {
+                if (error.response.data.code = 401) {
+                    window.localStorage.clear();
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
+            })
     }
     useEffect(() => {
         Usage_statistics_data();
         Views_statistics_data();
-    },[valueEnv])
+    }, [valueEnv])
+    let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+   
+    const from_Date = (date) => {
+        if(date==undefined){
+            var fd = new Date(new Date().setDate(new Date().getDate() - 7));
+            return fd.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
+            
+        }else{
+            var t = new Date(date)
+            return t.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
+        }
+        
+    }
+    const to_day = (data)=>{
+        if(data==undefined){
+            var td = new Date(new Date().setDate(new Date().getDate()));
+            return td.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
+        }else{
+            var td = new Date(data)
+            return td.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
+        }
+        
+    }
     return (
         <div className={styles.container}>
             <div className={styles.Metrics_heading}>
                 <h3>Viewership Insights</h3>
                 <div>
                     <div className={styles.date_toggle}>
-                        <button className={toggleposition==1?`${styles.date_toggle_btn} ${styles.active_btn}`:`${styles.date_toggle_btn}`} onClick={()=>[togglebtn(1),setday()]}>Day</button>
-                        <button className={toggleposition==2?`${styles.date_toggle_btn} ${styles.active_btn}`:`${styles.date_toggle_btn}`} onClick={()=>[togglebtn(2),setweek()]}>Week</button>
-                        <button className={toggleposition==3?`${styles.date_toggle_btn} ${styles.active_btn}`:`${styles.date_toggle_btn}`} onClick={()=>[togglebtn(3),setmonth()]}>Month</button>
+                        <button className={toggleposition == 1 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(1), setday()]}>Day</button>
+                        <button className={toggleposition == 2 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(2), setweek()]}>Week</button>
+                        <button className={toggleposition == 3 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(3), setmonth()]}>Month</button>
                     </div>
                     <div></div>
                 </div>
@@ -229,7 +265,7 @@ export default function Metrics() {
                         <div className={styles.cards_details}>
                             <h4>Watched Time</h4>
                             <div className={styles.UniqueViews}>
-                                <h5>{(amountstreamed / 3600).toFixed(0)}hrs</h5>
+                               {amountstreamed==null?<h5>0 hrs</h5>:<h5>{(amountstreamed / 3600).toFixed(0)} hrs</h5>} 
                                 <span>Time (in hours) that viewers watched videos.</span>
                             </div>
                         </div>
@@ -260,7 +296,7 @@ export default function Metrics() {
                                         <img src='/images/export.png' />
                                     </div>
                                 </div>
-                                <span>Viewership in the last 7 days.</span>
+                                <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                             </div>
                             <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
                                 <ZoomableGroup>
@@ -300,7 +336,7 @@ export default function Metrics() {
                                 <tbody>
                                     {countryviews.map((country, key) =>
                                         <tr key={key}>
-                                            <td className={styles.countries_name}>{country.key}</td>
+                                            <td className={styles.countries_name}> {regionNames.of(country.key)}</td>
                                             <td>{country.percentage}%</td>
                                             <td>{country.count}</td>
                                         </tr>
@@ -317,7 +353,7 @@ export default function Metrics() {
                             </div>
                         </div>
 
-                        <span>Viewership in the last 7 days.</span>
+                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                         <div>
                             <Bar options={options} data={videos_data} />
                         </div>
@@ -332,31 +368,31 @@ export default function Metrics() {
                                 <img src='/Images/export.png' />
                             </div>
                         </div>
-                        <span>Viewership in the last 7 days.</span>
+                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                         <div>
                             <Bar options={options} data={device_data} />
                         </div>
                     </div>
                     <div className={styles.player_card}>
-                    <div className={styles.metric_card_heading}>
+                        <div className={styles.metric_card_heading}>
                             <h4>Players</h4>
                             <div className={styles.export_img}>
                                 <img src='/Images/export.png' />
                             </div>
                         </div>
-                        <span>Viewership in the last 7 days.</span>
+                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                         <div>
                             <Bar options={options} data={player_data} />
                         </div>
                     </div>
                     <div className={styles.applications_card}>
-                    <div className={styles.metric_card_heading}>
+                        <div className={styles.metric_card_heading}>
                             <h4>Applications</h4>
                             <div className={styles.export_img}>
                                 <img src='/Images/export.png' />
                             </div>
                         </div>
-                        <span>Viewership in the last 7 days.</span>
+                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                         <div>
                             <Bar options={options} data={application_data} />
                         </div>
@@ -364,13 +400,13 @@ export default function Metrics() {
                 </div>
                 <div className={styles.Os_views_card}>
                     <div className={styles.Os_views}>
-                    <div className={styles.metric_card_heading}>
+                        <div className={styles.metric_card_heading}>
                             <h4>Operating System</h4>
                             <div className={styles.export_img}>
                                 <img src='/Images/export.png' />
                             </div>
                         </div>
-                        <span>Viewership in the last 7 days.</span>
+                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                         <div>
                             <Bar options={options} data={Os_data} />
                         </div>

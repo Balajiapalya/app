@@ -144,8 +144,8 @@ export default function Videos() {
                         <p>Upload,Transcode,Store and Deliver your asset using our service</p>
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
                         <a >
-                            <button onClick={() => set_asset(true)} className='btn'>Add New assets</button>
-                            <img src="/images/iconfeather-plus.png" alt='icon' ></img>
+                            <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.png" alt='icon' ></img> Add New assets</button>
+                            
                         </a>
                     </div>
                     <hr></hr>

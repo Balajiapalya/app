@@ -68,13 +68,13 @@
     float: right;
     margin-top: -3em;
 }
-.videos_delivery a img{
+/* .videos_delivery a img{
     width: 2.5%;
     float: right;
     position: relative;
     top: 10px;
     left: 2em;    
-}
+} */
 .videos .videos_delivery p{
     width: 50%;
     color: #4a5057;
@@ -82,7 +82,7 @@
     margin-bottom: 3.5px;
 }
 .videos .videos_delivery button{
-    width: 27%;
+    /* width: 27%; */
     float: right;
     color:  #2863eb;
     border-color:  #2863eb;
