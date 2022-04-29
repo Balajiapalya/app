@@ -349,7 +349,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Popular Videos</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' />
                             </div>
                         </div>
 
@@ -365,7 +365,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Devices</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
@@ -377,7 +377,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Players</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
@@ -389,7 +389,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Applications</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
@@ -403,7 +403,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Operating System</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
