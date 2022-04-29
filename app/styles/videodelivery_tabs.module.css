@@ -127,7 +127,7 @@
     font-family:Inter-Medium;
     
     }
-.post p , .create_image p{
+ .thumbnail_copy{
     font-size:12px;
     border: solid 1px rgba(99, 115, 129, 0.3);
     font-family: Inter-Regular;
@@ -136,16 +136,20 @@
     padding: 10px;
     margin-right: 20px;
     word-break: break-all;
-    }
-.post p{
-    font-size:12px;
-    font-family: Inter-Regular;
-    margin-left: 20px;
-    background-color:#f4f6f8;
-    padding: 10px;
-    margin-right: 20px;
-    word-break: break-all;
+    width: 90%;
+    float: left;
+    margin-bottom: 10px;
 }
+.thumbnail_copy_link{
+    width: 80%;
+    float: left;
+    margin-bottom: 0px;
+}
+.copy_img{
+    width: 10%;
+    float: right;
+}
+
 .code{
     width: 90%;
     float: left;
@@ -294,11 +298,11 @@
     width: 95%;
 }
 .imageheight .model_input{
-    width: 90%;
+    width: 85%;
 }
 .imageheight{
     width: 50%;
-    float: right;
+    float: right;   
 }
 .frame_per_second{
     width:100%

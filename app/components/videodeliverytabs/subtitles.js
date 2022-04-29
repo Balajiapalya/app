@@ -4,6 +4,10 @@ import { useState } from 'react'
 import Link from 'next/link';
 
 export default function Subtitles() {
+    const [toggleposition, settoggleposition] = useState(2);
+    const togglebtn = (index) => {
+        settoggleposition(index);
+    }
 
     return (
         <Fragment>
@@ -90,10 +94,10 @@ export default function Subtitles() {
                             {/* <p>Post https://api.videograph.com/vodeos/v1/assets</p> */}
                             {/* <span>Post body editor:</span> */}
                             <div className={styles.language_select}>
-                                <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
-                                <button className={styles.model_btn}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
-                                <button className={styles.model_btn}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
-                                <button className={styles.model_btn}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
+                                <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
+                                <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
+                                <button className={toggleposition == 3 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(3)}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
+                                <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
                             </div>
                             <div className={styles.code}>
                                 <textarea

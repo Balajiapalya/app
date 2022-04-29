@@ -134,12 +134,12 @@ export default function Others() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {meta.map((i, index) =>
+                                        {meta?meta.map((i, index) =>
                                             <tr key={index}>
                                                 <td>{i.key}</td>
                                                 <td>{i.value}</td>
                                             </tr>
-                                        )}
+                                        ):''}
                                         {/* <tr>
                                             <td>Frame Rate</td>
                                             <td className={styles.table_body}>25 fps</td>
