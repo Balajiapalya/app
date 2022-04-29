@@ -6,19 +6,25 @@ import Gifs from "../videodeliverytabs/gifs";
 import Thumbnails from "../videodeliverytabs/thumbnails";
 import Others from "../videodeliverytabs/others";
 import Videoclips from "../videodeliverytabs/videoclips";
+import Router,{useRouter} from 'next/router'
 
 function Videodelivery_tabs() {
-    let path;
-    if(process.browser){
-         path=+localStorage.getItem('path')
-    }
+    const router=useRouter();
+    const [toggleState, setToggleState] = useState(1)
     
-    const [toggleState, setToggleState] = path?useState(path):useState(1);
+    useEffect(()=>{
+        if(Number(router.query.path==undefined)){
+            setToggleState(1);
+            router.push({pathname:'./video',query:{'path':1}})    
+        }else{
+            setToggleState(Number(router.query.path));
+        }
+    },[router.query.path])
+
     const toggleTab = (index) => {
+        router.push({pathname:'./video',query:{'path':`${index}`}})
         setToggleState(index);
     };
-    
-    
     return (
         <div className={styles.wrapper_tabs}>
             <div className={styles.bloc_tabs}>

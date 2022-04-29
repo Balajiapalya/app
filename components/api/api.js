@@ -116,7 +116,7 @@ export const post_selected = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 }
 export const get_video_data = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${assetid}?time=${CurrentDate}`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
 //direct upload
 

@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../styles/videos.module.css'
-import Router from "next/router";
+import {useRouter} from "next/router";
 
 const VideoList = ({ i, create_On, created_time }) => {
+    const router=useRouter()
     const [videoId, setVideoId] = useState([]);
     const [videotitle, setvideotitle] = useState([]);
     const [thumbnail,setthumbnail] = useState([]);
     const handleChange = () => {
-        localStorage.setItem('path',1)
-        Router.push({pathname:'./videos/video'})
         setVideoId(i.videoId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
+        router.push({pathname:'./videos/video',query:{'path':1}});
+    }
+    
+
+    const handleVideoClips=()=>{
+        setVideoId(i.videoId)
+        setvideotitle(i.title)
+        setthumbnail(i.thumbnailUrl)
+        router.push({pathname:'./videos/video',query:{'path':2}});
+        
     }
     localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('videoId', videoId)
     localStorage.setItem('thumbnail',thumbnail)
-
-    const handleVideoClips=()=>{
-        Router.push({pathname:'./videos/video'})
-        localStorage.setItem('path',2)
-    }
     return (
         <>
 
@@ -34,7 +38,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.status=="Failed"?<td>{i.status}</td>:<td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td className={styles.actionicons}>
                 <a onClick={() => handleChange()}><img className={styles.active} src='/images/iconionic-ios-play-circle.png' alt="image"></img></a>
-                <img onClick={()=>handleVideoClips()} className={styles.active} src='/images/film-editing.png' alt="image"></img>
+                <a onClick={()=>handleVideoClips()}><img className={styles.active} src='/images/film-editing.png' alt="image"></img></a>
                 <img src='/images/insert-picture-icon.png' alt="image"></img>
                 <img src='/images/gif-file-format-symbol.png' alt="image"></img>
                 <img src='/images/closed-caption.png' alt="image"></img>
