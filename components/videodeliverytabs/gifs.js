@@ -45,7 +45,12 @@ export default function Gifs() {
                             <button className={styles.btn}>create GIF</button>
                         </div>
                         <h4>Download image from below URL</h4>
-                        <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.GIF_copy_img} src='/images/iconionic-ios-copy.png' /></span></p>
+                        <div className={styles.thumbnail_copy}>
+                            <p className={styles.thumbnail_copy_link}>  </p>
+                            <div className={styles.copy_img}>
+                                <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                            </div>
+                        </div>
 
 
                     </div>
@@ -72,7 +77,12 @@ export default function Gifs() {
                             </div>
                             <button className={styles.btn}>Run Request</button>
                             <h4>Download image from below URL</h4>
-                            <p>https://image.videograph.com/FV6sRk7mbi3E3GM1BfNMV2DT7 <span><img className={styles.GIF_copy_img} src='/images/iconionic-ios-copy.png' /></span></p>
+                            <div className={styles.thumbnail_copy}>
+                                <p className={styles.thumbnail_copy_link}>  </p>
+                                <div className={styles.copy_img}>
+                                    <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                </div>
+                            </div>
 
                         </div>
                     </div>
