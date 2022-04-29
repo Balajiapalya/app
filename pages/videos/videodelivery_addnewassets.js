@@ -12,7 +12,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
     const onSubmit = video_url_data => {
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
-                if(res.data.status="Success"){
+                if (res.data.status = "Success") {
                     // window.location.reload() 
                     close_asset(false)
                 }
@@ -21,13 +21,13 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                 console.log(error)
             })
     }
-    const printTheJSONInPrettyFormat =() => {
+    const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
         var parseJSON = JSON.parse(badJSON);
         var JSONInPrettyFormat = JSON.stringify(parseJSON, undefined, 4);
         document.getElementById('prettyJSONFormat').value =
-        JSONInPrettyFormat;
-     }
+            JSONInPrettyFormat;
+    }
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
@@ -37,50 +37,51 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                 <Direct_upload />
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span>[or]</span></div>
-                <div  >
-                    <form className={styles.post} onSubmit={handleSubmit(onSubmit)} >
-                        <label >Post using Video URL:</label>
-                        <input
-                            type='text'
-                            readOnly
-                            value={`http://13.235.3.29/video/services/api/v1/contents`}
-                        />
-                        <span>Post body editor:</span>
-                        <div className={styles.language_select}>
-                            <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
-                            <button className={styles.model_btn}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
-                            <button className={styles.model_btn}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
-                            <button className={styles.model_btn}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
-                        </div>
-                        <div className={styles.code}>
+                <div className={styles.post} >
+
+                    <label >Post using Video URL:</label>
+                    <input
+                        type='text'
+                        readOnly
+                        value={`http://13.235.3.29/video/services/api/v1/contents`}
+                    />
+                    <span>Post body editor:</span>
+                    <div className={styles.language_select}>
+                        <button className={`${styles.model_btn} ${styles.active}`}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
+                        <button className={styles.model_btn}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
+                        <button className={styles.model_btn}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
+                        <button className={styles.model_btn}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
+                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)} >
+                        <div className={styles.code}> 
                             <textarea
                                 defaultValue={`${JSON.stringify([
                                     {
-                                    "title": "Video title",
-                                    "description": "Video description",
-                                    "video": [
-                                    {
-                                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
-                                    "start_offset":0
+                                        "title": "Video title",
+                                        "description": "Video description",
+                                        "video": [
+                                            {
+                                                "url": "http://techslides.com/demos/sample-videos/small.mp4",
+                                                "start_offset": 0
+                                            }
+                                        ],
+                                        "tags": [
+                                            "tag1",
+                                            "tag2"
+                                        ],
+                                        "metadata": [
+                                            {
+                                                "key": "abc",
+                                                "value": "pqr"
+                                            }
+                                        ],
+                                        "playback_policy": ["public"],
+                                        "mp4_support": false,
+                                        "save_original_copy": false,
+                                        "test_video": true
                                     }
-                                    ],
-                                    "tags": [
-                                    "tag1",
-                                    "tag2"
-                                    ],
-                                    "metadata": [
-                                    {
-                                    "key": "abc",
-                                    "value": "pqr"
-                                    }
-                                    ],
-                                    "playback_policy": ["public"],
-                                    "mp4_support": false,
-                                    "save_original_copy": false,
-                                    "test_video": true
-                                    }
-                                    ], undefined, 2)}`}
-                                id="prettyJSONFormat"    
+                                ], undefined, 2)}`}
+                                id="prettyJSONFormat"
                                 className={`${styles.code_input} form_control`}
                                 type='text'
                                 name='code'

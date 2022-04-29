@@ -71,6 +71,9 @@ export default function Overview() {
                 }
             })
     }
+    const handlethumnail_callback =()=>{
+
+    }
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -126,7 +129,7 @@ export default function Overview() {
                         <div className={styles.playback}>
                             <h2>Playback Sample</h2>
                             <div className={styles.playback_content} >
-                                <Player/>
+                                <Player handlethumnail={handlethumnail_callback}/>
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.transcodingInfo ?

@@ -28,7 +28,8 @@ export default function Overview() {
     const [countryviews, setcountryviews] = useState([]);
     const [encoded_line, set_encoded_line] = useState([]);
     const [realtime, set_realtime] = useState([]);
-    const [content, setContent] = useState("");
+    const [viewers,totalviewers]=useState([]);
+    const [devicelength,set_devicelength]=useState([])
 
 
     useEffect(() => {
@@ -36,10 +37,11 @@ export default function Overview() {
         Views_statistics_data();
         Realtime_views();
     }, [valueEnv]);
-
+    
     const Usage_statistics_data = () => {
+        const fromDate =  new Date().setDate(new Date().getDate() - 7);
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+            Api.Usage_statistics(valueEnv,fromDate)
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
@@ -48,10 +50,11 @@ export default function Overview() {
     };
     const Views_statistics_data = () => {
         if (valueEnv) {
-            Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+            Api.Views_statistics(valueEnv,new Date().setDate(new Date().getDate() - 7))
                 .then(res => {
                     set_viewsStatistics(res.data.data)
                     setdeviceviews(res.data.data.deviceViews)
+                    set_devicelength((res.data.data.deviceViews))
                     setcountryviews(res.data.data.countryViews)
                 })
         }
@@ -59,7 +62,10 @@ export default function Overview() {
     const Realtime_views = () => {
         if (valueEnv) {
             Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1800000).getTime(), "1m")
-                .then(res => set_realtime(res.data.data.views))
+                .then(res => {
+                    totalviewers((res.data.data.views).reverse()[0])
+                    set_realtime(res.data.data.views)
+                })
                 .catch(error => console.log(error))
         }
     }
@@ -194,7 +200,8 @@ export default function Overview() {
                 borderColor: "rgba(75,192,192,1)"
             },
         ]
-    }
+    }   
+    
     const data = deviceviews.map((device, key) => device?.count);
 
     const doughnutdata = {
@@ -205,10 +212,10 @@ export default function Overview() {
                 data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
-                    // 'rgba(54, 162, 235, 1)',
-                    // 'rgba(255, 206, 86, 0.2)',
-                    // 'rgba(75, 192, 192, 0.2)',
-                    // 'rgba(153, 102, 255, 0.2)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)', 
                     // 'rgba(255, 159, 64, 0.2)',
                 ],
                 borderColor: [
@@ -273,7 +280,7 @@ export default function Overview() {
                 <div className={styles.real_time_views_container}>
                     <h4 className={styles.heading}>Real-Time Views</h4>
                     <div className={styles.viewers_details}>
-                        <h5 className={styles.totalViews}>{items.totalViews}</h5>
+                    {viewers==null? <h5 className={styles.totalViews}>0</h5>:<h5 className={styles.totalViews}>{viewers.count}</h5>}
                         <span className={styles.watching_viewers}>users are watching content right now.</span>
                     </div>
                     <div className={styles.realtime_chart}>
@@ -351,9 +358,9 @@ export default function Overview() {
                         <div className={styles.doughnut_graph}>
                             <Doughnut options={options} data={doughnutdata} />
                             <div className={styles.legend_label}>
-                                <div>{doughnutdata.datasets[0].backgroundColor.map((i, key) => <p key={key} style={{ backgroundColor: `${i}`, width: 15, height: 15, borderRadius: 4, marginTop: 1 }}></p>)}</div>
+                                <div>{doughnutdata.datasets[0].backgroundColor.slice(0,devicelength.length).map((i, key) => <p key={key} style={{ backgroundColor: `${i}`, width: 15, height: 15, borderRadius: 4, marginTop: 1 }}></p>)}</div>
                                 <div className={styles.label}>{doughnutdata.labels.map((i, key) => <p key={key} >{i}</p>)}</div>
-                                <div className={styles.percentage}>{doughnutdata.datasets[0].label.map((i, key) => <p key={key} >{i}%</p>)}</div>
+                                <div className={styles.percentage}>{doughnutdata.datasets[0].label.map((i, key) => <p key={key} >{(i).toFixed(2)}%</p>)}</div>
                             </div>
 
 
