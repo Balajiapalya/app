@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styles from '../../styles/tabs.module.css';
 import Subtitles from "../videodeliverytabs/subtitles";
 import Overview from "../videodeliverytabs/overview";
@@ -6,14 +6,26 @@ import Gifs from "../videodeliverytabs/gifs";
 import Thumbnails from "../videodeliverytabs/thumbnails";
 import Others from "../videodeliverytabs/others";
 import Videoclips from "../videodeliverytabs/videoclips";
-
+import Router,{useRouter} from 'next/router'
 
 function Videodelivery_tabs() {
-    const [toggleState, setToggleState] = useState(1);
+    const router=useRouter();
+    const [toggleState, setToggleState] = useState(1)
 
+    useEffect(()=>{
+        if(Number(router.query.path==undefined)){
+            setToggleState(1);
+            router.push({pathname:'./video',query:{'path':1}})    
+        }else{
+            setToggleState(Number(router.query.path));
+        }
+    },[router.query.path])
+    
     const toggleTab = (index) => {
+        router.push({pathname:'./video',query:{'path':`${index}`}})
         setToggleState(index);
     };
+    
     return (
         <div className={styles.wrapper_tabs}>
             <div className={styles.bloc_tabs}>
@@ -59,13 +71,13 @@ function Videodelivery_tabs() {
                 <div
                     className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    <Overview />
+                   {toggleState===1 && <Overview />}
                 </div>
 
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    <Videoclips />
+                    {toggleState===2 && <Videoclips/>}
 
                 </div>
 
@@ -73,28 +85,28 @@ function Videodelivery_tabs() {
                     className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
-                    <Thumbnails />
+                    {toggleState===3 && <Thumbnails />}
                 </div>
 
                 <div
                     className={toggleState === 4 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
-                    <Subtitles />
+                    {toggleState===4 &&<Subtitles />}
                 </div>
 
                 <div
                     className={toggleState === 5 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
-                    <Gifs />
+                    {toggleState===5 && <Gifs />}
 
                 </div>
                 <div
                     className={toggleState === 6 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
-                    <Others />
+                    {toggleState===6 && <Others />}
                 </div>
 
             </div>

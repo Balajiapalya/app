@@ -10,11 +10,11 @@ import Api from '../api/api';
 export default function Thumbnails() {
 
     const [thumbnailurl,set_thumbnailurl]=useState();
-    const[gettime,settime]=useState();
-    
+    const[gettime,settime]=useState();   
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const onSubmit = thumbnail => {
-        thumbnail.videoPositionInSec=gettime
+        thumbnail.videoPositionInSec=Number(gettime)
         Api.Create_thumbnail(thumbnail)
         .then(res=>{
             if(res.data.code=200){
@@ -23,9 +23,12 @@ export default function Thumbnails() {
         })
     }
     const handlethumnail_callback =(data)=>{
-            console.log(data)
-            settime(data)
+        settime(Math.floor(data))
     }
+    const handleChange=(e)=>{
+        settime(e.target.value)
+    }
+  
     return (
         <Fragment>
             <div className={styles.thumbnails}>
@@ -36,7 +39,8 @@ export default function Thumbnails() {
                         <Player handlethumnail={handlethumnail_callback}/>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <label className={styles.model_label}>Time</label>
-                            <input type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} readOnly placeholder="00:22:33"  {...register("videoPositionInSec", { required: false,valueAsNumber: true})} />
+                            <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" value={gettime} placeholder="00:22:33"/>
+                            {/* <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} placeholder="00:22:33" {...register("videoPositionInSec", { required: false,valueAsNumber: true})} /> */}
                             {errors.videoPositionInSec && <p className={'validations'}>This field is required</p>}
                             <div className={styles.imagewidth}>
                                 <label className={styles.model_label}>Image Width</label>

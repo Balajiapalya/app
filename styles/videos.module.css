@@ -6,7 +6,8 @@
     float: right;
 }
 .videos{
-    padding: 0px 5%;
+    /* padding: 0px 5%; */
+    padding:35px 95px 35px 95px;
 }
 .background_develepment{
     width: 100%;
@@ -17,7 +18,7 @@
     margin-bottom: 25px;
 }
 .header_development{
-    padding-left: 125px;
+    padding-left: 95px;
 }
 .content_development{
     padding: 20px 5px 20px 0px ;
@@ -44,7 +45,7 @@
     right: 4px;
 }
 .videos_delivery{
-    padding-left: 250px;
+    padding-left: 205px;
 }
 .videos .header{
     float: left;
@@ -68,7 +69,7 @@
     margin-top: -3em;
 }
 .videos_delivery a img{
-    width: 15px;
+    width: 2.5%;
     float: right;
     position: relative;
     top: 10px;
@@ -81,7 +82,7 @@
     margin-bottom: 3.5px;
 }
 .videos .videos_delivery button{
-    width: 157px;
+    width: 27%;
     float: right;
     color:  #2863eb;
     border-color:  #2863eb;
@@ -102,15 +103,15 @@
     margin-top:2rem;
 }
 .search img{
-    width:21px;
+    width:18px;
     float: right;
     position: relative;
     top:1em;
-    left: 11.8em;
+    left: 14em;
 }
 .search input{
     float: right;
-    width: 200px;
+    width: 235px;
     height: 40px;
     padding: 10px 65px 10px 10px;
     margin: 5px 0px;
@@ -134,7 +135,7 @@
 .videos_table{
     width: 100%;
     float: left;
-    padding-left: 250px;
+    padding-left: 205px;
 }
 .videos_table table{
     width: 100%;
@@ -205,7 +206,7 @@
 }
 
 .actionicons img{
-    margin-right: 3%;   
+    margin-right: 4%;   
 }
 .active{
     cursor: pointer;
