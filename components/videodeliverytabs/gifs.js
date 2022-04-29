@@ -1,10 +1,13 @@
 import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
-
+import { useState } from 'react';
 
 
 export default function Gifs() {
-
+    const [toggleposition, settoggleposition] = useState(2);
+    const togglebtn = (index) => {
+        settoggleposition(index);
+    }
     return (
         <Fragment>
 
@@ -60,10 +63,10 @@ export default function Gifs() {
                         <div className={styles.post}>
 
                             <div className={styles.language_select}>
-                                <button className={`${styles.model_btn} ${styles.active}`}>Python</button>
-                                <button className={styles.model_btn}>Node</button>
-                                <button className={styles.model_btn}>Php</button>
-                                <button className={styles.model_btn}>Go</button>
+                                <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
+                                <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
+                                <button className={toggleposition == 3 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(3)}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
+                                <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
                             </div>
                             <div className={styles.code}>
                             </div>
