@@ -333,6 +333,9 @@
 .label{
     margin-left: 5%;
 }
+.label p{
+    margin-bottom: 10px;
+}
 .percentage{
     margin-left: 40%;
 }
@@ -486,7 +489,7 @@
 .export_img img{
     margin-top: 1rem;
     float: right;
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 .devices_card{
     width: 33%;

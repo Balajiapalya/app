@@ -37,14 +37,23 @@ export default function Overview() {
         Views_statistics_data();
         Realtime_views();
     }, [valueEnv]);
-
+    
     const Usage_statistics_data = () => {
+        const fromDate =  new Date().setDate(new Date().getDate() - 7);
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+            Api.Usage_statistics(valueEnv,fromDate)
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
                 })
+                .catch(error => {
+                    if (error.response.data.code = 401) {
+                        window.localStorage.clear();
+                        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                        window.location.href = '/signin'
+                    }
+                })
+                
         }
     };
     const Views_statistics_data = () => {
@@ -55,6 +64,13 @@ export default function Overview() {
                     setdeviceviews(res.data.data.deviceViews)
                     set_devicelength((res.data.data.deviceViews))
                     setcountryviews(res.data.data.countryViews)
+                })
+                .catch(error => {
+                    if (error.response.data.code = 401) {
+                        window.localStorage.clear();
+                        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                        window.location.href = '/signin'
+                    }
                 })
         }
     };
@@ -230,6 +246,7 @@ export default function Overview() {
             },
         ],
     };
+    let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
     return (
         <div className={styles.container}>
             <div className={styles.video_type_container}>
@@ -337,7 +354,7 @@ export default function Overview() {
                                 <tbody>
                                     {countryviews.map((country, key) =>
                                         <tr key={key}>
-                                            <td className={styles.countries_name}>{country.key}</td>
+                                            <td className={styles.countries_name}>{regionNames.of(country.key)}</td>
                                             <td>{country.percentage}%</td>
                                             <td>{country.count}</td>
                                         </tr>

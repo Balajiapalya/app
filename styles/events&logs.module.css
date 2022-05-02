@@ -1,6 +1,6 @@
 
 .settings {
-    padding:40px 5% ;
+    padding:40px 105px 30px 105px;
     /* width: 87%;
     float: right;  */
  }
@@ -34,7 +34,7 @@
 }
 .events_data table thead tr th{
     text-align: left;
-    padding: 5px 3px;
+    padding: 13px 10px 13px 10px;
     color:  #212b36;
     font-family: Inter-Medium;
     font-size: 14px;
@@ -52,7 +52,7 @@
     background-color: white;
 }
 .events_data table tbody tr td{
-    padding: 5px 3px;
+    padding:13px 10px 13px 10px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
