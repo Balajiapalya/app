@@ -6,7 +6,7 @@ export default function Player_fullscreen(){
     }
     return(
         <div>
-            <Player handlethumnail={handlethumnail_callback}/>
+            <Player  handlethumnail={handlethumnail_callback}/>
         </div>
     )
     }

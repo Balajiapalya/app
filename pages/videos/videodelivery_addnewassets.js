@@ -87,7 +87,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                                             "playback_policy": ["public"],
                                             "mp4_support": false,
                                             "save_original_copy": false,
-                                            "test_video": true
+                                            // "test_video": true
                                         }
                                     ], undefined, 2)}`}
                                     id="prettyJSONFormat"

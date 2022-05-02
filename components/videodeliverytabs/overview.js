@@ -11,7 +11,7 @@ export default function Overview() {
     const [player, setplayer] = useState([]);
     const [tooltip, settooltip] = useState(false);
     const [tooltipURL, settooltipURL] = useState(false);
-    const [thumbnailurl,setthumbnail] = useState(false);
+    const [thumbnailurl, setthumbnail] = useState(false);
     const Vdplayer = useRef();
     useEffect(() => {
 
@@ -64,10 +64,10 @@ export default function Overview() {
                 }
             })
             .catch(error => {
-                
+
             })
     }
-    const handlethumnail_callback =()=>{
+    const handlethumnail_callback = () => {
 
     }
     return (
@@ -125,7 +125,7 @@ export default function Overview() {
                         <div className={styles.playback}>
                             <h2>Playback Sample</h2>
                             <div className={styles.playback_content} >
-                                <Player handlethumnail={handlethumnail_callback}/>
+                                <Player handlethumnail={handlethumnail_callback} className={styles.player} />
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.transcodingInfo ?
@@ -137,10 +137,14 @@ export default function Overview() {
                                         <h4>Link to video</h4>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p>{"<iframe src='http://localhost:3000/videos/player_fullscreen'></iframe>"}</p>
+
+                                                <p>http://13.235.3.29/videos/player_fullscreen</p>
+
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                <CopyToClipboard text={'http://13.235.3.29/videos/player_fullscreen'}>
+                                                    <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                </CopyToClipboard>
                                             </div>
                                         </div>
                                     </div>
@@ -164,10 +168,14 @@ export default function Overview() {
                                         <h4>Embed code</h4>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p> </p>
+
+                                                <p>{'<iframe width="560" height="315" src="http://http://13.235.3.29/videos/player_fullscreen" allowfullscreen ></iframe>'} </p>
+
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                <CopyToClipboard text='<iframe width="560" height="315" src="http://http://13.235.3.29/videos/player_fullscreen" allowfullscreen ></iframe>'>
+                                                    <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                </CopyToClipboard>
                                             </div>
                                         </div>
                                     </div>
@@ -178,11 +186,11 @@ export default function Overview() {
                                                 <p>{localStorage.getItem('thumbnail')}</p>
                                             </div>
                                             <div className={styles.copy_img}>
-                                            <CopyToClipboard text={localStorage.getItem('thumbnail')}>
-                                                <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.png' alt='copy' />
-                                            </CopyToClipboard>
-                                            {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null}
-                                        </div>
+                                                <CopyToClipboard text={localStorage.getItem('thumbnail')}>
+                                                    <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                </CopyToClipboard>
+                                                {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
