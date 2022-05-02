@@ -36,7 +36,6 @@ class Player extends Component {
       <div>
         <video
           width="100%"
-          height="295px"
           ref={(player) => (this.player = player)}
           controls
           onPause={(e)=>pausedvideo(e)}

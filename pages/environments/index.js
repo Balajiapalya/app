@@ -19,10 +19,10 @@ export default function Environment() {
   const [env, setenv] = useState([]);
   const [openModel, setopeninvitemember] = useState([]);
   const [closemodal, setclosemodal] = useState([]);
-  const [valueDefault,setValue]=useState('')
-  const [id,setId]=useState()
-  const [newInput,setNewInput]=useState(valueDefault)
-  const [load,setLoad]=useState(true)
+  const [valueDefault, setValue] = useState('')
+  const [id, setId] = useState()
+  const [newInput, setNewInput] = useState(valueDefault)
+  const [load, setLoad] = useState(true)
 
   useEffect(() => {
     setLoad(true)
@@ -59,22 +59,31 @@ export default function Environment() {
           window.location.href = "/signin";
         }
       });
-  }, [addnewenv,load]);
-  
+    Add_org_stats();
+  }, [addnewenv, load]);
+  const Add_org_stats = () => {
+    Api.Org_stats()
+      .then(res =>
+        console.log(res.data)
+      )
+      .catch(error=>
+        console.log(error)
+      )
+  }
   const setPopups = (index, items) => {
-    
+
     if (items) {
-      
-      setId(items.environmentTypeId)    
-     setValue(items.name)
-   
+
+      setId(items.environmentTypeId)
+      setValue(items.name)
+
       localStorage.setItem('envuuid', items.uuid)
     }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log(openModel[index],closemodal[index])
+    console.log(openModel[index], closemodal[index])
   }
   let orgname;
   if (process.browser) {
@@ -82,13 +91,13 @@ export default function Environment() {
   }
   const orgName = orgname;
 
-const handleChange=(e)=>{
-  setNewInput(e.target.value)
-}
-const handlePopUp=()=>{
-  document.body.style.overflow='hidden'
-  set_addnewenv(true)
-}
+  const handleChange = (e) => {
+    setNewInput(e.target.value)
+  }
+  const handlePopUp = () => {
+    document.body.style.overflow = 'hidden'
+    set_addnewenv(true)
+  }
   return (
     <div className={styles.container}>
       <div className={styles.settings}>
@@ -143,9 +152,9 @@ const handlePopUp=()=>{
                           <div>
                             <input
                               className={styles.dev_head}
-                              name="name" 
-                              defaultValue ={valueDefault}
-                              onChange={(e)=>handleChange(e)}
+                              name="name"
+                              defaultValue={valueDefault}
+                              onChange={(e) => handleChange(e)}
                             />
                             {errors.name && (
                               <p className={"validations"}>
@@ -153,7 +162,7 @@ const handlePopUp=()=>{
                               </p>
                             )}
                             <div className={styles.dev_select}>
-                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id}/>
+                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} />
                             </div>
                           </div>
                         )}
