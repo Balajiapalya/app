@@ -64,11 +64,7 @@ export default function Overview() {
                 }
             })
             .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
+                
             })
     }
     const handlethumnail_callback =()=>{
@@ -141,7 +137,7 @@ export default function Overview() {
                                         <h4>Link to video</h4>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p> </p>
+                                                <p>{"<iframe src='http://localhost:3000/videos/player_fullscreen'></iframe>"}</p>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <img src='/images/iconionic-ios-copy.png' alt='copy' />

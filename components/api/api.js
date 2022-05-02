@@ -493,6 +493,16 @@ const Api = {
             url: change_paswrd(),
             headers: headers
         }),
+    //overview
+    Delete_asset: ()=>
+     axios({
+         method:'DELETE',
+         url: delete_asset(),
+         headers: {
+            'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${envuuid}`
+        }
+     }),
     //thumbnails
     Create_thumbnail: (thumbnail)=> 
         axios({
