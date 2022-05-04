@@ -164,3 +164,8 @@ button, input, optgroup, select, textarea {
     width: 1320px;
   }
 }
+.wrapper_body{
+  width: 100%;
+  float: left;
+  padding-left: 100px;
+}

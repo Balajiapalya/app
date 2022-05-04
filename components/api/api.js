@@ -118,6 +118,10 @@ export const post_selected = () => {
 export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
+//embed
+export const get_vdo_player = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
+}
 //direct upload
 
 export const post_direct_video = () => {
@@ -467,6 +471,17 @@ const Api = {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
             }
+        }),
+    //embed
+    Get_vdo_player: ()=>
+        axios({
+            method: 'GET',
+            url:get_vdo_player(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+            
         }),
     //account
     Create_new_organization: (new_org_name) =>

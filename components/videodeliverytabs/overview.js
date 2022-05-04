@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Hls from 'hls.js';
 import Player from '../player';
+import Embed from '../../pages/videos/embed';
 
 export default function Overview() {
     const router = useRouter();
@@ -166,6 +167,7 @@ export default function Overview() {
                                 <div className={styles.embed_thubnail}>
                                     <div className={styles.link_embedcode}>
                                         <h4>Embed code</h4>
+                
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
@@ -205,6 +207,9 @@ export default function Overview() {
                                     <div className={`${styles.copy_link} ${styles.copy_link_videoUrl}`}>
                                         <div className={styles.link}>
                                             <p>{i.transcodingInfo.mediaUrl}</p>
+                                        </div>
+                                        <div className='hidden'>
+                                            <Embed item={i.transcodingInfo.mediaUrl}/>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>

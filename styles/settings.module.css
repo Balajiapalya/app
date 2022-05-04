@@ -27,6 +27,10 @@
 
 
 
+.container{
+    width: 100%;
+    float: left;
+}
 .containercomponents{
     background-color:  #333740;
     width: 100px;
@@ -36,6 +40,7 @@
     float: left;
     position: fixed;
     height: 100%;
+    z-index: 99;
 }
 .containercomponents:hover{
     width: 220px;
@@ -183,14 +188,16 @@
 } */
 
 .settings {
-   padding:40px 5%;
+   padding: 50px 0;
+   width: 100%;
+   float: left;
    /* width: 87%;
    float: right;  */
 }
-.settings .padding{
+/* .settings .padding{
     padding-left: 205px;
    
-}
+} */
 
 .settings .header  h2{
     float: left;
@@ -505,6 +512,7 @@
     font-size: 14px;
     font-family: Inter-Regular;
     color: #212b36;
+    font-weight: 500;
 }
 .token_key_value{
     width: 100%;
@@ -612,7 +620,7 @@
         width: 80%;
     } */
     .settings {
-        padding:40px 3% ;
+       /*  padding:40px 3% ; */
         /* width: 87%;
         float: right;  */
      }
@@ -650,6 +658,9 @@
         padding: 10px 6px 10px 5px;
     }
     .settings .member_table tbody tr td{
+        padding: 20px 5px 20px 5px;
+    }
+    .settings .member_table tbody tr td{
         font-size: 14px;
     }
     .settings {
@@ -660,6 +671,12 @@
 
 
     
+}
+
+@media screen and (max-width:991px){
+    .settings .member_table tbody tr td{
+        padding: 20px 5px 20px 5px;
+    }
 }
 
 
