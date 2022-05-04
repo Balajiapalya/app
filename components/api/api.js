@@ -181,7 +181,7 @@ export const realtime_views = (env, fromDate, interval) => {
     return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
 }
 export const org_stats = () =>{
-    return `${DATA_BASE_URL()}/services/api/v1/org_stats?environmentId=${orgid}&from=${new Date().setDate(new Date().getDate() - 7)}&to=${CurrentDate}`
+    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${uuid}&from=${new Date().setDate(new Date().getDate() - 7)}&to=${CurrentDate}`
 }
 
 let user_id;
