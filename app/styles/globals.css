@@ -26,7 +26,13 @@
   url(../public/font/OpenSans-SemiBold.woff) format('woff'),
   url(../public/font/OpenSans-SemiBold.woff2) format('woff2');
 }
-
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../public/font/Poppins-Bold.ttf) format('ttf'),
+  url(../public/font/Poppins-Bold.eot) format('eot'),
+  url(../public/font/Poppins-Bold.woff) format('woff'),
+  url(../public/font/Poppins-Bold.woff2) format('woff2');
+}
 
 
 html,
@@ -127,3 +133,34 @@ button, input, optgroup, select, textarea {
 }
 .hidden{display: none;}
 
+
+.container{
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container{
+    width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container{
+    width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container{
+    width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) { 
+  .container{
+    width: 1320px;
+  }
+}

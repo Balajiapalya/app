@@ -164,6 +164,7 @@
     background-color: #f7f7f7;
     outline: none;
     border: 1px solid rgba(99, 115, 129, 0.15); 
+    resize: none;
 }
 
 .copy_url p{
