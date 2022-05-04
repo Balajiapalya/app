@@ -104,9 +104,9 @@ export default function Environment() {
     set_addnewenv(true)
   }
   return (
+    <div className="container">
     <div className={styles.container}>
       <div className={styles.settings}>
-        <div className={styles.padding}>
           <div className={styles.header}>
             <h2>Environments</h2>
             <h3>{orgName}</h3>
@@ -179,8 +179,8 @@ export default function Environment() {
                           <span className={styles.box_content_history}>
                             in last 7 days
                           </span>
-                          {[OrgStats[items.uuid]].map(orgStat =>
-                            <div  className={styles.box_data}>
+                          {[OrgStats[items.uuid]].map((orgStat,key) =>
+                            <div key={key}  className={styles.box_data}>
                               <div className={styles.box_data_types}>
                                 <span className={styles.types_heading}>
                                   Encoded
@@ -210,6 +210,7 @@ export default function Environment() {
                               </div>
                             </div>
                           )}
+
                           <div>
                             <span className={styles.token_key_value}>
                               API tokens: {items.accessTokensCount}
@@ -225,8 +226,8 @@ export default function Environment() {
                           <span className={styles.box_content_history}>
                             in last 7 days
                           </span>
-                          {[OrgStats[items.uuid]].map(orgStat =>
-                          <div className={styles.box_data}>
+                          {[OrgStats[items.uuid]].map((orgStat,key) =>
+                          <div key={key} className={styles.box_data}>
                             <div className={styles.box_data_types}>
                               <span className={styles.types_heading}>
                                 Views
@@ -269,9 +270,9 @@ export default function Environment() {
               </tbody>
             </table>
           </div>
-        </div>
       </div>
       {addnewenv && <Add_new_environment closeenv={set_addnewenv} />}
+    </div>
     </div>
   );
 }

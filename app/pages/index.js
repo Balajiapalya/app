@@ -19,7 +19,11 @@ export default function Home() {
 Home.getLayout = function getLayout(page) {
   return (
     <Layout>
+      <div className="wrapper_body">
+        <div className="container">
       {page}
+      </div>
+      </div>
     </Layout>
   )
 }
