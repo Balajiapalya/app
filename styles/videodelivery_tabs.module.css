@@ -384,7 +384,6 @@ margin-top: 20px;
 .asset_detials h2{
     font-family: Inter-SemiBold;
     font-size: 18px;
-    color: #6f7c8b;
 }
 .asset_detials_content{
     width: 100%;
@@ -424,7 +423,6 @@ margin-top: 20px;
 .playback h2{
     font-family: Inter-SemiBold;
     font-size: 18px;
-    color: #6f7c8b;
 }
 .playback_content{
     width: 100%;
@@ -448,7 +446,6 @@ margin-top: 20px;
 .video_urls h2{
     font-family: Inter-SemiBold;
     font-size: 18px;
-    color: #6f7c8b;
 }
 .link_copy{
     width: 100%;
@@ -548,7 +545,7 @@ margin-top: 20px;
 .input_file h2{
     font-family: Inter-SemiBold;
     font-size: 18px;
-    color: #6f7c8b;
+
 }
 .media_info{
     border: 1px solid #fff;
