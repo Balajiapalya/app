@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Player from '../player';
 import { useForm } from "react-hook-form";
 import Api from '../api/api';
+import Thumbnails_api from './thumnails_api';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
 export default function Thumbnails() {
@@ -34,6 +36,7 @@ export default function Thumbnails() {
     function copy(text) {
         navigator.clipboard.writeText(text)
     }
+    
     return (
         <Fragment>
             <div className={styles.thumbnails}>
@@ -67,7 +70,9 @@ export default function Thumbnails() {
                         <div className={styles.thumbnail_copy}>
                             <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
                             <div className={styles.copy_img}>
+                                <CopyToClipboard text={thumbnailurl}>
                                 <img src='/images/iconionic-ios-copy.png' alt='copy' onClick={() => copy(thumbnailurl)} />
+                                </CopyToClipboard>
                             </div>
 
                         </div>
@@ -76,33 +81,9 @@ export default function Thumbnails() {
                     </div>
                 </div>
 
+                <Thumbnails_api/>
 
-
-                <div className={styles.thumbnail_api}>
-                    <div className={styles.Videodelivery_addnewassets}>
-                        <h2>Create Thumbnail using image Api</h2>
-
-
-                        <div className={styles.post}>
-
-                            <div className={styles.language_select}>
-                                <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
-                                <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
-                                <button className={toggleposition == 3 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(3)}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
-                                <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
-                            </div>
-                            <div className={styles.code}>
-                            </div>
-                            <button className={styles.btn}>Run Request</button>
-                            <div className={styles.thumbnail_copy}>
-                                <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
-                                <div className={styles.copy_img}>
-                                    <img src='/images/iconionic-ios-copy.png' alt='copy' onClick={() => copy(thumbnailurl)} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
             </div>
 

@@ -19,10 +19,11 @@ export default function Environment() {
   const [env, setenv] = useState([]);
   const [openModel, setopeninvitemember] = useState([]);
   const [closemodal, setclosemodal] = useState([]);
-  const [valueDefault,setValue]=useState('')
-  const [id,setId]=useState()
-  const [newInput,setNewInput]=useState(valueDefault)
-  const [load,setLoad]=useState(true)
+  const [valueDefault, setValue] = useState('')
+  const [id, setId] = useState()
+  const [newInput, setNewInput] = useState(valueDefault)
+  const [load, setLoad] = useState(true)
+  const [OrgStats, setOrgStats] = useState([])
 
   useEffect(() => {
     setLoad(true)
@@ -59,22 +60,35 @@ export default function Environment() {
           window.location.href = "/signin";
         }
       });
-  }, [addnewenv,load]);
-  
+    Add_org_stats();
+  }, [addnewenv, load]);
+  const Add_org_stats = () => {
+    Api.Org_stats()
+      .then(res => {
+        console.log(res.data.data)
+        setOrgStats(res.data.data)
+      })
+  }
+
+
+
+
+
+
   const setPopups = (index, items) => {
-    
+
     if (items) {
-      
-      setId(items.environmentTypeId)    
-     setValue(items.name)
-   
+
+      setId(items.environmentTypeId)
+      setValue(items.name)
+
       localStorage.setItem('envuuid', items.uuid)
     }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log(openModel[index],closemodal[index])
+    console.log(openModel[index], closemodal[index])
   }
   let orgname;
   if (process.browser) {
@@ -82,13 +96,13 @@ export default function Environment() {
   }
   const orgName = orgname;
 
-const handleChange=(e)=>{
-  setNewInput(e.target.value)
-}
-const handlePopUp=()=>{
-  document.body.style.overflow='hidden'
-  set_addnewenv(true)
-}
+  const handleChange = (e) => {
+    setNewInput(e.target.value)
+  }
+  const handlePopUp = () => {
+    document.body.style.overflow = 'hidden'
+    set_addnewenv(true)
+  }
   return (
     <div className="container">
     <div className={styles.container}>
@@ -143,9 +157,9 @@ const handlePopUp=()=>{
                           <div>
                             <input
                               className={styles.dev_head}
-                              name="name" 
-                              defaultValue ={valueDefault}
-                              onChange={(e)=>handleChange(e)}
+                              name="name"
+                              defaultValue={valueDefault}
+                              onChange={(e) => handleChange(e)}
                             />
                             {errors.name && (
                               <p className={"validations"}>
@@ -153,7 +167,7 @@ const handlePopUp=()=>{
                               </p>
                             )}
                             <div className={styles.dev_select}>
-                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id}/>
+                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} />
                             </div>
                           </div>
                         )}
@@ -165,41 +179,46 @@ const handlePopUp=()=>{
                           <span className={styles.box_content_history}>
                             in last 7 days
                           </span>
-                          <div className={styles.box_data}>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Encoded
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {/* 40 mins */}
-                              </span>
+                          {[OrgStats].map((item, key) =>
+                            <div key={key} className={styles.box_data}>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Encoded
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                  {item.RecordEncodingUsage}
+                                </span>
+                              </div>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Stored
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                {item.RecordStorageUsage}
+                                </span>
+                              </div>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Streamed
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                {item.RecordStreamingUsage}
+                                {item.environmentKey}
+                                </span>
+                              </div>
                             </div>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Stored
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {/* 40 mins */}
-                              </span>
-                            </div>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Streamed
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {/* 20 mins */}
-                              </span>
-                            </div>
-                          </div>
+                          )}
+
                           <div>
                             <span className={styles.token_key_value}>
                               API tokens: {items.accessTokensCount}
                             </span>
                           </div>
                         </div>
+
                       </div>
                     </td>
                     <td>
