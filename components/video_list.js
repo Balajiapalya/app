@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../styles/videos.module.css'
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const VideoList = ({ i, create_On, created_time }) => {
-    const router=useRouter()
+    const router = useRouter()
     const [videoId, setVideoId] = useState([]);
     const [videotitle, setvideotitle] = useState([]);
-    const [thumbnail,setthumbnail] = useState([]);
+    const [thumbnail, setthumbnail] = useState([]);
+    const [dropdown, setdropdown] = useState(false);
     const handleChange = () => {
         setVideoId(i.videoId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({pathname:'./videos/video',query:{'path':1}});
+        router.push({ pathname: './videos/video', query: { 'path': 1 } });
     }
-    
 
-    const handleVideoClips=()=>{
+
+    const handleVideoClips = () => {
         setVideoId(i.videoId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({pathname:'./videos/video',query:{'path':2}});
-        
+        router.push({ pathname: './videos/video', query: { 'path': 2 } });
+
     }
     localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('videoId', videoId)
-    localStorage.setItem('thumbnail',thumbnail)
+    localStorage.setItem('thumbnail', thumbnail)
     return (
         <>
 
@@ -35,14 +36,23 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.thumbnailUrl ? <td className={styles.thumbnail}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
             {i.duration ? <td>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td>-</td>}
             {i.resolution ? <td>{i.resolution}</td> : <td>-</td>}
-            {i.status=="Failed"?<td>{i.status}</td>:<td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
-            <td className={styles.actionicons}>
-                <a onClick={() => handleChange()}><img className={styles.active} src='/images/iconionic-ios-play-circle.png' alt="image"></img></a>
-                <a onClick={()=>handleVideoClips()}><img className={styles.active} src='/images/film-editing.png' alt="image"></img></a>
-                <img src='/images/insert-picture-icon.png' alt="image"></img>
-                <img src='/images/gif-file-format-symbol.png' alt="image"></img>
-                <img src='/images/closed-caption.png' alt="image"></img>
-                <img src='/images/iconawesome-eye-slash.png' alt="image"></img>
+            {i.status == "Failed" ? <td>{i.status}</td> : <td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+            <td>
+                <div className={styles.dropdown}>
+                    <div className={styles.contextual_menu_container}>
+                        <div className={styles.contextual_menu} onClick={() => setdropdown(dropdown => !dropdown)}></div>
+                        {dropdown ?
+                            <div className={styles.dropdown_list}>
+                                <button onClick={() => handleChange()}><img src='/images/videoDetails.png' alt='video-details'/><a >Video Details</a></button>
+                                <button onClick={()=>handleVideoClips()}><img src='/images/film-editing.png' alt='video clips'/><a>Video Clips</a></button>
+                                <button><img src='/images/thumbnails.png' alt='thumbnails'/><a>Thumbnails</a></button>
+                                <button><img src='/images/closed-caption.png' alt='subtitles' /><a>Subtitles</a></button>
+                                <button><img src='/images/gif-file-format-symbol.png'  alt='gifs'/><a>Gifs</a></button>
+                                <button><img src='/images/iconawesome-eye-slash.png' alt='disable'/><a>Disable Video</a></button>
+                            </div> : null}
+                    </div>
+
+                </div>
             </td>
         </>
     )
