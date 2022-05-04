@@ -138,11 +138,11 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>http://13.235.3.29/videos/player_fullscreen</p>
+                                                <p>http://13.235.3.29/videos/embed</p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={'http://13.235.3.29/videos/player_fullscreen'}>
+                                                <CopyToClipboard text={'http://13.235.3.29/videos/embed'}>
                                                     <img src='/images/iconionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
@@ -169,11 +169,11 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{'<iframe width="560" height="315" src="http://http://13.235.3.29/videos/player_fullscreen" allowfullscreen ></iframe>'} </p>
+                                                <p>{'<iframe width="560" height="315" src="http://13.235.3.29/videos/embed" allowfullscreen ></iframe>'} </p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text='<iframe width="560" height="315" src="http://http://13.235.3.29/videos/player_fullscreen" allowfullscreen ></iframe>'>
+                                                <CopyToClipboard text='<iframe width="560" height="315" src="http://13.235.3.29/videos/embed" allowfullscreen ></iframe>'>
                                                     <img src='/images/iconionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>

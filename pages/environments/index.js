@@ -23,6 +23,7 @@ export default function Environment() {
   const [id, setId] = useState()
   const [newInput, setNewInput] = useState(valueDefault)
   const [load, setLoad] = useState(true)
+  const [OrgStats, setOrgStats] = useState([])
 
   useEffect(() => {
     setLoad(true)
@@ -63,13 +64,17 @@ export default function Environment() {
   }, [addnewenv, load]);
   const Add_org_stats = () => {
     Api.Org_stats()
-      .then(res =>
-        console.log(res.data)
-      )
-      .catch(error=>
-        console.log(error)
-      )
+      .then(res => {
+        console.log(res.data.data)
+        setOrgStats(res.data.data)
+      })
   }
+
+
+
+
+
+
   const setPopups = (index, items) => {
 
     if (items) {
@@ -174,41 +179,46 @@ export default function Environment() {
                           <span className={styles.box_content_history}>
                             in last 7 days
                           </span>
-                          <div className={styles.box_data}>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Encoded
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {/* 40 mins */}
-                              </span>
+                          {[OrgStats].map((item, key) =>
+                            <div key={key} className={styles.box_data}>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Encoded
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                  {item.RecordEncodingUsage}
+                                </span>
+                              </div>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Stored
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                {item.RecordStorageUsage}
+                                </span>
+                              </div>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Streamed
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                {item.RecordStreamingUsage}
+                                {item.environmentKey}
+                                </span>
+                              </div>
                             </div>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Stored
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {/* 40 mins */}
-                              </span>
-                            </div>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Streamed
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {/* 20 mins */}
-                              </span>
-                            </div>
-                          </div>
+                          )}
+
                           <div>
                             <span className={styles.token_key_value}>
                               API tokens: {items.accessTokensCount}
                             </span>
                           </div>
                         </div>
+
                       </div>
                     </td>
                     <td>
