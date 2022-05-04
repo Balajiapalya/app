@@ -482,6 +482,7 @@
     font-size: 14px;
     font-family: Inter-Regular;
     color: #212b36;
+    font-weight: 500;
 }
 .token_key_value{
     width: 100%;
