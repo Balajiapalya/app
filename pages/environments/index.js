@@ -90,9 +90,9 @@ const handlePopUp=()=>{
   set_addnewenv(true)
 }
   return (
+    <div className="container">
     <div className={styles.container}>
       <div className={styles.settings}>
-        <div className={styles.padding}>
           <div className={styles.header}>
             <h2>Environments</h2>
             <h3>{orgName}</h3>
@@ -250,9 +250,9 @@ const handlePopUp=()=>{
               </tbody>
             </table>
           </div>
-        </div>
       </div>
       {addnewenv && <Add_new_environment closeenv={set_addnewenv} />}
+    </div>
     </div>
   );
 }

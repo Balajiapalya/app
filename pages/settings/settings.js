@@ -9,9 +9,9 @@ export default function Settings() {
     }
     const org_name = orgname
     return (
+        
         <div className={styles.container}>
             <div className={styles.settings}>
-                <div className={styles.padding}>
                     <div className={styles.header}>
                         <h2>
                             Settings
@@ -22,8 +22,8 @@ export default function Settings() {
                     </div>
                     <Tabs />
                 </div>
-            </div>
         </div>
+       
     )
 
 }
