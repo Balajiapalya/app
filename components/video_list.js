@@ -23,6 +23,12 @@ const VideoList = ({ i, create_On, created_time }) => {
         router.push({ pathname: './videos/video', query: { 'path': 2 } });
 
     }
+    const togglethumbnail = () => {
+        setVideoId(i.videoId)
+        setvideotitle(i.title)
+        setthumbnail(i.thumbnailUrl)
+        router.push({ pathname: './videos/video', query: { 'path': 3 } });
+    }
     localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('videoId', videoId)
     localStorage.setItem('thumbnail', thumbnail)
@@ -40,16 +46,18 @@ const VideoList = ({ i, create_On, created_time }) => {
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>
-                        <div className={styles.contextual_menu} onClick={() => setdropdown(dropdown => !dropdown)}></div>
-                        {dropdown ?
-                            <div className={styles.dropdown_list}>
-                                <button onClick={() => handleChange()}><img src='/images/videoDetails.png' alt='video-details'/><a >Video Details</a></button>
-                                <button onClick={()=>handleVideoClips()}><img src='/images/film-editing.png' alt='video clips'/><a>Video Clips</a></button>
-                                <button><img src='/images/thumbnails.png' alt='thumbnails'/><a>Thumbnails</a></button>
-                                <button><img src='/images/closed-caption.png' alt='subtitles' /><a>Subtitles</a></button>
-                                <button><img src='/images/gif-file-format-symbol.png'  alt='gifs'/><a>Gifs</a></button>
-                                <button><img src='/images/iconawesome-eye-slash.png' alt='disable'/><a>Disable Video</a></button>
-                            </div> : null}
+                        <div className={styles.contextual_menu_hover}>
+                            <div className={styles.contextual_menu} onClick={() => setdropdown(dropdown => !dropdown)}></div>
+                            {dropdown ?
+                                <div className={styles.dropdown_list}>
+                                    <button onClick={() => handleChange()}><img src='/images/videoDetails.png' alt='video-details' /><a >Video Details</a></button>
+                                    <button onClick={() => handleVideoClips()}><img src='/images/film-editing.png' alt='video clips' /><a>Video Clips</a></button>
+                                    <button onClick={() => togglethumbnail()}><img src='/images/thumbnails.png' alt='thumbnails' /><a>Thumbnails</a></button>
+                                    <button><img src='/images/closed-caption.png' alt='subtitles' /><a>Subtitles</a></button>
+                                    <button><img src='/images/gif-file-format-symbol.png' alt='gifs' /><a>Gifs</a></button>
+                                    <button><img src='/images/iconawesome-eye-slash.png' alt='disable' /><a>Disable Video</a></button>
+                                </div> : null}
+                        </div>
                     </div>
 
                 </div>
