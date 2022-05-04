@@ -43,9 +43,9 @@ const Select = ({ item, data }) => {
         <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>Owner</div>
         
         {isActive && <div className={styles.dropdownContent}>
-            {data.map(i => <div>
-                <div onClick={()=>handleChange(i)} className={styles.dropdownItem}>{i.name}</div>
-            </div>)}
+            {data.map((i,ind) => 
+                <div key={ind} onClick={()=>handleChange(i)} className={styles.dropdownItem}>{i.name}</div>
+            )}
         </div>}
     </div>
 
