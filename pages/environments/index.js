@@ -180,7 +180,7 @@ export default function Environment() {
                             in last 7 days
                           </span>
                           {[OrgStats].map((item, key) =>
-                            <div className={styles.box_data}>
+                            <div key={key} className={styles.box_data}>
                               <div className={styles.box_data_types}>
                                 <span className={styles.types_heading}>
                                   Encoded
