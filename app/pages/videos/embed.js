@@ -9,10 +9,10 @@ class embed extends Component {
         this._getVideoURL();
     }
     _getVideoURL = () => {
-        Api.Get_Env_item()
+        Api.Get_Playback_URL(window.location.search.split("videoId=")[1].split("&")[0])
             .then((response) => {
-                if (response && response.data && response.data.data && response.data.data.playbackUrl) {
-                    var url = response.data.data.playbackUrl;
+                if (response && response.data && response.data.data) {
+                    var url = response.data.data;
                     if (Hls.isSupported() && this.player) {
                         const video = this.player;
                         const hls = new Hls({ enableWorker: false });
@@ -24,7 +24,6 @@ class embed extends Component {
                     }
                 }
             });
-
     };
 
     render() {
