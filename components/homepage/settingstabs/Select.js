@@ -40,11 +40,11 @@ const Select = ({ item, data }) => {
         // </div>
 
         <div className={styles.dropdown}>
-        <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>Owner</div>
+        <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>Owner<img src="/images/iconawesome-chevrondown.png"/></div>
         
         {isActive && <div className={styles.dropdownContent}>
             {data.map((i,ind) => 
-                <div key={ind} onClick={()=>handleChange(i)} className={styles.dropdownItem}>{i.name}</div>
+                <div key={ind} onClick={()=>handleChange(i)} className={styles.dropdownItem}>{i.name}{item.roleId===i.id &&<img src="/images/check-circle.png"/>}</div>
             )}
         </div>}
     </div>
