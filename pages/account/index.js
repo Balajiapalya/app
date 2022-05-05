@@ -82,6 +82,7 @@ export default function Accounts() {
     set_openneworg(true)
   }
   return (
+    <div className="container">
     <div className={styles.container}>
       <div className={styles.settings}>
         <div className={styles.padding}>
@@ -210,6 +211,7 @@ export default function Accounts() {
         </div>
       </div>
       <div className='hidden'><Navbar Orgname={orgname} /></div>
+    </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .settings {
-    padding:40px 5% ;
+    padding:40px 0%;
     /* width: 87%;
     float: right;  */
  }
@@ -36,7 +36,7 @@
     padding-left: 6%;;
 }
 .content_development{
-    padding: 20px 5px 20px 0px ;
+    padding: 20px 5px 20px 56px ;
 }
 .content_development .store_icon_png{
     padding-right: 10px;
