@@ -7,10 +7,12 @@ export default function Signup_invitation() {
           <img className={styles.file} src="images/logo.png" alt='logo'></img>
         </div>
         <div className={styles.signup_area}>
+          <img src='/images/invitation_sent.png' alt='invitation_sent' />
           <h3 className={styles.signup_title}>
-            Email invitation sent!
+            Invitation link it&apos;s on the way!
           </h3>
-          <p>Check your email for invitation link from Videograph, follow the link to complete Signup.</p>
+          <p>Check your inbox for invitation email from Videograph,
+            and click the link to complete Signup.</p>
         </div>
       </main>
     </div>
