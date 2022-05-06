@@ -4,12 +4,13 @@
 .dropdown .dropdownBtn{
     cursor:pointer;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.0);
+  
 }
 .dropdown .dropdownContent{
     position:absolute;
     background-color: #f4f5f7;
     top:40%;
-    right: 62%;
+    right: 64%;
     padding:4px;
     width: 70%;
     box-shadow:-1px 5px 11px -11px rgb(0,0,0,0.71);
@@ -23,8 +24,13 @@
 .dropdown .dropdownContent .dropdownItem:hover{
     background-color: #fcfcfc;
 }
-
-
+.dropdown .dropdownContent .dropdownItem img{
+    height: 14px;
+    margin-left:15px;
+}
+.dropdown .dropdownBtn img{
+    height: 7px;
+}
 
 
 .container{
@@ -188,9 +194,10 @@
 } */
 
 .settings {
-   padding: 50px 0;
+    padding: 50px 0px 50px 95px;
    width: 100%;
    float: left;
+   /* margin-left: 40px; */
    /* width: 87%;
    float: right;  */
 }
@@ -214,6 +221,9 @@
     /* width: 76px; */
     margin: 0;
 }
+/* .settings .header{
+    padding-left: 35px;
+} */
 .settings .topnav ul li a{
     color: #56606e;
 }
@@ -386,7 +396,7 @@
   
 }
 .settings .member_table tbody tr td img{
-    margin-left: 7px;
+    margin-left: 10px;
     cursor: pointer;
 }
 .settings .member_table tbody tr td select {
@@ -415,10 +425,12 @@
     width: 100%;
     float: left;
     margin-top:40px;
+    
 }
 .environments_button p{
     width: 70%;
     float: left;
+    font-size: 14px;
 }
 .environments_button button{
     float: right;
@@ -436,11 +448,13 @@
     width: 100%;
     float: left;
     margin: 40px 0px;
+    
 }
 .environments_table table{
     width: 100%;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);  
     border-collapse: collapse;
+    padding-left: 20px;
 }
 .environments_table table thead th {
     border-bottom: 1px solid #e3e3e3;

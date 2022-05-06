@@ -34,9 +34,11 @@ export default function Analytics_index() {
     }
     const orName = orgname;
     return (
+        
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
+                <div className="container">
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/images/storeicon.png' />
                         <p>{orName} <br />
@@ -47,11 +49,11 @@ export default function Analytics_index() {
                                 </>)}
                             </select>
                         </p>
-
                     </div>
                 </div>
+                </div>
             </div>
-
+            <div className="container">
             <div className={styles.settings}>
                 <div className={styles.padding}>
 
@@ -66,6 +68,7 @@ export default function Analytics_index() {
                 </div>
             </div>
             
+        </div>
         </div>
     )
 }
