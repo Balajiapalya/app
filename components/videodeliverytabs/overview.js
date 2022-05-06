@@ -14,6 +14,7 @@ export default function Overview() {
     const [tooltipURL, settooltipURL] = useState(false);
     const [thumbnailurl, setthumbnail] = useState(false);
     const Vdplayer = useRef();
+    // console.log(window.location.origin)
     useEffect(() => {
 
         Api.Get_Env_item()
@@ -139,14 +140,15 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>http://13.235.3.29/videos/embed</p>
+                                                <p>{`${window.location.origin}/videos/embed?videoId=`}{i.videoId}</p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={'http://13.235.3.29/videos/embed'}>
+                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.videoId}`}>
                                                     <img src='/images/iconionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <div className={styles.link_hls}>
@@ -171,11 +173,11 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{'<iframe width="560" height="315" src="http://13.235.3.29/videos/embed" allowfullscreen ></iframe>'} </p>
+                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`} </p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text='<iframe width="560" height="315" src="http://13.235.3.29/videos/embed" allowfullscreen ></iframe>'>
+                                                <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`}>
                                                     <img src='/images/iconionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
@@ -207,9 +209,6 @@ export default function Overview() {
                                     <div className={`${styles.copy_link} ${styles.copy_link_videoUrl}`}>
                                         <div className={styles.link}>
                                             <p>{i.transcodingInfo.mediaUrl}</p>
-                                        </div>
-                                        <div className='hidden'>
-                                            <Embed item={i.transcodingInfo.mediaUrl}/>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>

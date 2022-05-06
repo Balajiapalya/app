@@ -50,9 +50,9 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                     <input
                         type='text'
                         readOnly
-                        value={`http://13.235.3.29/video/services/api/v1/contents`}
+                        value={`POST  http://13.235.3.29/video/services/api/v1/contents`}
                     />
-                    <span>Post body editor:</span>
+                    <span>POST body editor:</span>
                     <div className={styles.language_select}>
                         <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
                         <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
@@ -99,7 +99,7 @@ export default function Videodelivery_addnewassets({ close_asset }) {
 
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>
-                        <button type='submit' className={styles.btn}>Run Request</button>
+                        <button type='submit' className={`${styles.btn} ${styles.api_submit_btn}`}>Run Request</button>
                     </form>
                 </div>
             </div>

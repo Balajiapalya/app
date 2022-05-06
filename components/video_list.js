@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useRef } from 'react'
 import styles from '../styles/videos.module.css'
 import { useRouter } from "next/router";
 
 const VideoList = ({ i, create_On, created_time }) => {
-    const router = useRouter()
+    const router = useRouter();
+    const ref = useRef();
     const [videoId, setVideoId] = useState([]);
     const [videotitle, setvideotitle] = useState([]);
     const [thumbnail, setthumbnail] = useState([]);
@@ -32,6 +33,7 @@ const VideoList = ({ i, create_On, created_time }) => {
     localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('videoId', videoId)
     localStorage.setItem('thumbnail', thumbnail)
+  
     return (
         <>
 
@@ -49,7 +51,7 @@ const VideoList = ({ i, create_On, created_time }) => {
                         <div className={styles.contextual_menu_hover}>
                             <div className={styles.contextual_menu} onClick={() => setdropdown(dropdown => !dropdown)}></div>
                             {dropdown ?
-                                <div className={styles.dropdown_list}>
+                                <div ref={ref} className={styles.dropdown_list}>
                                     <button onClick={() => handleChange()}><img src='/images/videoDetails.png' alt='video-details' /><a >Video Details</a></button>
                                     <button onClick={() => handleVideoClips()}><img src='/images/film-editing.png' alt='video clips' /><a>Video Clips</a></button>
                                     <button onClick={() => togglethumbnail()}><img src='/images/thumbnails.png' alt='thumbnails' /><a>Thumbnails</a></button>

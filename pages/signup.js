@@ -49,6 +49,7 @@ export default function Signup() {
             />
             {errors.email && <p className={'validations'}>This field is required</p>}
             <span className='error'>{error}</span>
+            <span className={styles.invitation_info}>We will send an invitation link to your email.</span>
             <button type='submit' className={`${styles.btn} btn btn-primary`}>Sign Up</button>
           </form>
           <h4 className={styles.already_account}>Already have an account?</h4>

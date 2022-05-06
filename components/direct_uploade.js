@@ -53,9 +53,9 @@ export default function Direct_upload() {
     return (
 
         <div className={styles.Videodelivery_addnewassets}>
-            <h2>Create new asset</h2>
+            <h2>Add new video</h2>
             <div className={styles.upload_file}>
-                <h2>upload your video file</h2>
+                <h2>Upload your video file</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.upload_btn_wrapper}>
                         <button className={styles.btn}>Select file</button>

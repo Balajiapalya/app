@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import styles from '../../styles/analytics_tabs.module.css';
+import "react-datepicker/dist/react-datepicker.css";
 import Api from '../api/api';
 import { EnvValue } from '../../pages/analytics/index'
 import { useRouter } from 'next/router';
@@ -37,6 +38,7 @@ ChartJS.register(
     Filler,
     ArcElement,
 );
+import DatePicker from "react-datepicker";
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 export default function Metrics() {
     const valueEnv = useContext(EnvValue)
@@ -51,6 +53,8 @@ export default function Metrics() {
     const [toggleposition, settoggleposition] = useState(2);
     const [Today, setToday] = useState();
     const [fromdate, set_fromDate] = useState();
+    const [startDate, setStartDate] = useState(new Date("2014/02/08"));
+    const [endDate, setEndDate] = useState(new Date("2014/04/08"));
     const options = {
         responsive: true,
         plugins: {
@@ -111,6 +115,7 @@ export default function Metrics() {
 
         ],
     }
+
     const Os_data = {
         labels: Osviews.slice(0, 5).map((player, key) => player?.key),
         datasets: [
@@ -138,7 +143,8 @@ export default function Metrics() {
     }
     const setday = () => {
         let toDate = Date.now();
-        let yesterday = new Date().setDate(new Date().getDate() - 1)
+        // let yesterday = new Date().setDate(new Date().getDate() - 1)
+        let yesterday = new Date().setHours(0, 0, 0, 0)
         Views_statistics_data(toDate, yesterday);
         Usage_statistics_data(toDate, yesterday);
         setToday(toDate);
@@ -146,7 +152,8 @@ export default function Metrics() {
     }
     const setweek = () => {
         let toDate = Date.now();
-        let sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+        // let sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+        let sevendaybeforedate = new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0);
         Views_statistics_data(toDate, sevendaybeforedate);
         Usage_statistics_data(toDate, sevendaybeforedate);
         setToday(toDate)
@@ -154,12 +161,23 @@ export default function Metrics() {
     }
     const setmonth = () => {
         let toDate = Date.now();
-        let monthbeforedate = new Date().setDate(new Date().getDate() - 28);
+        // let monthbeforedate = new Date().setDate(new Date().getDate() - 28);
+        let monthbeforedate = new Date(new Date().setHours(0, 0, 0, 0)).setDate(1);
         Views_statistics_data(toDate, monthbeforedate);
         Usage_statistics_data(toDate, monthbeforedate);
         setToday(toDate)
         set_fromDate(monthbeforedate)
     }
+    const datepicker = (date) => {
+        // console.log(date)
+        let toDate = new Date(date).getTime();
+        let fromDate = new Date(startDate).getTime();
+        Views_statistics_data(toDate, fromDate);
+        Usage_statistics_data(toDate, fromDate);
+        setToday(toDate)
+        set_fromDate(fromDate)
+    }
+
     const Usage_statistics_data = (toDate, fromDate) => {
         if (valueEnv) {
             Api.Usage_statistics(valueEnv, toDate, fromDate)
@@ -181,7 +199,7 @@ export default function Metrics() {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);
                 setcountryviews(res.data.data.countryViews);
-                setdeviceviews(res.data.data.deviceViews);
+                setdeviceviews(res.data.data.deviceViews)
                 setOsviews(res.data.data.osViews);
                 setapplicationsviews(res.data.data.applicationViews);
                 setplayerviews(res.data.data.playerViews)
@@ -199,39 +217,66 @@ export default function Metrics() {
         Views_statistics_data();
     }, [valueEnv])
     let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-   
+
     const from_Date = (date) => {
-        if(date==undefined){
-            var fd = new Date(new Date().setDate(new Date().getDate() - 7));
-            return fd.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
-            
-        }else{
+        
+        if (date == undefined) {
+            var fd = new Date(new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0));
+            return fd.toLocaleString("en-AU", { month: "short", day: "2-digit", year: "numeric" });
+
+        } else {
             var t = new Date(date)
-            return t.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
+            // console.log(t.toLocaleString("en-AU", { month: "short", day: "2-digit", year: "numeric" }));
+            return t.toLocaleString("en-AU", { month: "short", day: "2-digit", year: "numeric" });
         }
-        
+
     }
-    const to_day = (data)=>{
-        if(data==undefined){
+    const to_day = (data) => {
+        if (data == undefined) {
             var td = new Date(new Date().setDate(new Date().getDate()));
-            return td.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
-        }else{
+            return td.toLocaleString("en-AU", { month: "short", day: "2-digit", year: "numeric" });
+        } else {
             var td = new Date(data)
-            return td.toLocaleString("en-AU", { month:"short", day:"2-digit", year:"numeric" });
+            return td.toLocaleString("en-AU", { month: "short", day: "2-digit", year: "numeric" });
         }
-        
+
     }
+    
     return (
         <div className={styles.container}>
             <div className={styles.Metrics_heading}>
                 <h3>Viewership Insights</h3>
-                <div>
-                    <div className={styles.date_toggle}>
-                        <button className={toggleposition == 1 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(1), setday()]}>Day</button>
-                        <button className={toggleposition == 2 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(2), setweek()]}>Week</button>
-                        <button className={toggleposition == 3 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(3), setmonth()]}>Month</button>
+                <div className={styles.date_toggle}>
+                    <div className={styles.date_toggle_container}>
+                        <div className={styles.toggle_date_week_month}>
+                            <button className={toggleposition == 1 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(1), setday()]}>Day</button>
+                            <button className={toggleposition == 2 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(2), setweek()]}>Week</button>
+                            <button className={toggleposition == 3 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(3), setmonth()]}>Month</button>
+                        </div>
+                        <div className={styles.date_picker}>
+                            <img onClick={() => datepicker()} src='/images/calender.png' />
+                            <DatePicker
+                                selected={startDate}
+                                onChange={(date) => [setStartDate(date)]}
+                                selectsStart
+                                startDate={startDate}
+                                endDate={endDate}
+                                dateFormat="MM/yyyy"
+                                showMonthYearPicker
+                            />
+                            <DatePicker
+                                selected={endDate}
+                                onChange={(date) => [setEndDate(date)]}
+                                selectsEnd
+                                startDate={startDate}
+                                endDate={endDate}
+                                dateFormat="MM/yyyy"
+                                showMonthYearPicker
+                                onSelect={(date)=>datepicker(date)}
+                            />
+                        </div>
                     </div>
-                    <div></div>
+
                 </div>
             </div>
             {[viewsStatistics].map((item, key) => <>
@@ -265,7 +310,7 @@ export default function Metrics() {
                         <div className={styles.cards_details}>
                             <h4>Watched Time</h4>
                             <div className={styles.UniqueViews}>
-                               {amountstreamed==null?<h5>0 hrs</h5>:<h5>{(amountstreamed / 3600).toFixed(0)} hrs</h5>} 
+                                {amountstreamed == null ? <h5>0 hrs</h5> : <h5>{(amountstreamed / 3600).toFixed(0)} hrs</h5>}
                                 <span>Time (in hours) that viewers watched videos.</span>
                             </div>
                         </div>
@@ -349,7 +394,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Popular Videos</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' alt='export' />
                             </div>
                         </div>
 
@@ -365,7 +410,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Devices</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' alt='export' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
@@ -377,7 +422,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Players</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' alt='export' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
@@ -389,7 +434,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Applications</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' alt='export' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
@@ -403,7 +448,7 @@ export default function Metrics() {
                         <div className={styles.metric_card_heading}>
                             <h4>Operating System</h4>
                             <div className={styles.export_img}>
-                                <img src='/Images/export.png' />
+                                <img src='/images/export.png' alt='export' />
                             </div>
                         </div>
                         <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
