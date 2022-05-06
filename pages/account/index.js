@@ -82,6 +82,7 @@ export default function Accounts() {
     set_openneworg(true)
   }
   return (
+    <div className="container">
     <div className={styles.container}>
       <div className={styles.settings}>
         <div className={styles.padding}>
@@ -182,7 +183,7 @@ export default function Accounts() {
                             >
                               {items.name}{" "}
                               {key == highlightedorg && (
-                                <img src="/images/iconawesome-check-circle.png"></img>
+                                <img src="/images/check-circle.png"></img>
                               )}
                             </button>
                           </td>
@@ -210,6 +211,7 @@ export default function Accounts() {
         </div>
       </div>
       <div className='hidden'><Navbar Orgname={orgname} /></div>
+    </div>
     </div>
   );
 }

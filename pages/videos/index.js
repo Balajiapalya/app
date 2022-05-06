@@ -116,9 +116,11 @@ export default function Videos() {
     }
 
     return (
+        
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
+                <div className="container">
                     <div className={styles.content_development}>
                         <img className={styles.store_icon_png} src='/images/storeicon.png' />
                         <p>{orName} <br />
@@ -130,8 +132,10 @@ export default function Videos() {
                         </p>
 
                     </div>
+                    </div>
                 </div>
             </div>
+            <div className="container">
             <div className={styles.videos}>
 
                 <div className={styles.videos_delivery}>
@@ -181,6 +185,7 @@ export default function Videos() {
                 </div>
                 {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />}
             </div>
+        </div>
         </div>
 
     )
