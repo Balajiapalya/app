@@ -14,18 +14,21 @@
      color: #212b36;
      font-family: Inter-Medium;
      font-size: 28px;
+     margin-left: 75px;
  } 
  .settings .header  h3{
      float: right;
      color: #212b36;
      font-family: Inter-Medium;
      font-size: 20px;
+     margin-right: -75px;
  }
  .border_bottom{
     width: 100%;
     float: left;
     margin-bottom: 20px;
     border-bottom:1px solid #d5dbe2;
+    margin-left: 75px
 }
 .data{
     width: 50%;
@@ -62,6 +65,7 @@
     width: 100%;
     float: left;
     display: flex;
+    margin-left: 75px
 }
 .personal_detials{
     width: 50%;
@@ -173,6 +177,7 @@
     width: 50%;
     float: left;
     margin-top: 20px;
+    margin-left: 75px
 }
 .manage_account .bgcolor_blue{
     background-color: #2863eb !important;

@@ -4,12 +4,13 @@
 .dropdown .dropdownBtn{
     cursor:pointer;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.0);
+  
 }
 .dropdown .dropdownContent{
     position:absolute;
     background-color: #f4f5f7;
     top:40%;
-    right: 52%;
+    right: 64%;
     padding:4px;
     width: 70%;
     box-shadow:-1px 5px 11px -11px rgb(0,0,0,0.71);
@@ -193,10 +194,10 @@
 } */
 
 .settings {
-    padding: 50px 0px 50px 55px;
+    padding: 50px 0px 50px 95px;
    width: 100%;
    float: left;
-   margin-left: 40px;
+   /* margin-left: 40px; */
    /* width: 87%;
    float: right;  */
 }

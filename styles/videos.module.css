@@ -21,12 +21,12 @@
     margin-bottom: 25px;
 }
 
-.header_development {
+/* .header_development {
     padding-left: 192px;
-}
+} */
 
 .content_development {
-    padding: 20px 5px 20px 12px;
+    padding: 20px 5px 20px 170px;
 }
 
 .content_development .store_icon_png {
@@ -73,7 +73,7 @@
 .videos .videos_delivery {
     width: 108%;
     float: left;
-    padding-left: 12px;
+    padding-left: 75px;
 }
 
 .videos_delivery a {
@@ -155,7 +155,7 @@
 .videos_table {
     width: 108%;
     float: left;
-    padding-left: 12px;
+    padding-left: 75px;
 }
 
 .videos_table table {

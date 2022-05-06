@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Api from '../../api/api'
 import styles from '../../../styles/settings.module.css';
 
 const Select = ({ item, data }) => {
     const [isActive,setIsActive]=useState(false)
-    const [selected,setSelected]=useState([])
     const [opt, setOpt] = useState(item.roleId)
     
     // const handleChange = (e) => {
@@ -17,19 +16,16 @@ const Select = ({ item, data }) => {
     //     Api.Selected_option(arr).then(res => console.log(res))
     // }
 
-
-
-    const handleChange = (i) => {
-        setOpt(i.name)
+    const handleChange = (i,ind) => {
+        
         let element = new Object()
         element.email = item.email
         element.roleId = parseInt(i.id)
         let arr = []
         arr.push(element)
-        Api.Selected_option(arr).then(res => console.log(res))
+        Api.Selected_option(arr).then(res => setOpt(ind+1))
         setIsActive(false)
     }
-
     return (
         // <div>
         //     <select onChange={(e) => handleChange(e)}>
@@ -40,11 +36,13 @@ const Select = ({ item, data }) => {
         // </div>
 
         <div className={styles.dropdown}>
-        <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>Owner<img src="/images/iconawesome-chevrondown.png"/></div>
-        
+        <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>
+            {opt==1?'Owner':opt==2?'Admin':'Member'}
+            <img src="/images/iconawesome-chevrondown.png"/>
+        </div>
         {isActive && <div className={styles.dropdownContent}>
             {data.map((i,ind) => 
-                <div key={ind} onClick={()=>handleChange(i)} className={styles.dropdownItem}>{i.name}{item.roleId===i.id &&<img src="/images/check-circle.png"/>}</div>
+                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/images/check-circle.png"/>}</div>
             )}
         </div>}
     </div>

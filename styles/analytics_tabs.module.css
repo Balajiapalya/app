@@ -30,13 +30,13 @@
     float: left;
     height: 60px;
     background-color: #eaeaea;
-    padding-left: 205px;
+    /* padding-left: 205px; */
 }
-.header_development{
+/* .header_development{
     padding-left: 6%;;
-}
+} */
 .content_development{
-    padding: 20px 5px 20px 56px ;
+    padding: 20px 5px 20px 212px ;
 }
 .content_development .store_icon_png{
     padding-right: 10px;
