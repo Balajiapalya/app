@@ -41,13 +41,13 @@ export default function Thumbnails() {
         <Fragment>
             <div className={styles.thumbnails}>
                 <div className={styles.thumbnail_image}>
-                    <h2>Create Thumbnail using tool</h2>
+                    <h2>Create thumbnail using image tool</h2>
                     <div className={styles.create_image}>
                         {/* <img className={styles.editor_img} src="/images/image11.png" alt="image" /> */}
                         <Player handlethumnail={handlethumnail_callback} />
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div>
-                                <label className={styles.model_label}>Time</label>
+                                <label className={styles.model_label}>Time*</label>
                                 <input onChange={(e) => handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" value={gettime} placeholder="00:22:33" />
                                 {/* <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} placeholder="00:22:33" {...register("videoPositionInSec", { required: false,valueAsNumber: true})} /> */}
                                 {errors.videoPositionInSec && <p className={'validations'}>This field is required</p>}
@@ -63,10 +63,10 @@ export default function Thumbnails() {
                                 {errors.height && <p className={'validations'}>This field is required</p>}
                             </div>
                             <div className={styles.create_btn}>
-                                <button type="submit" className={styles.btn}>Create Image</button>
+                                <button type="submit" className={styles.btn}>Create video Clip</button>
                             </div>
                         </form>
-                        <h4>Download image from below URL</h4>
+                        <h4>Download image from below URL:</h4>
                         <div className={styles.thumbnail_copy}>
                             <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
                             <div className={styles.copy_img}>

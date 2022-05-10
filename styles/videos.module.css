@@ -109,8 +109,9 @@
 }
 
 .videos hr {
-    background-color: #d5dbe2;
+    /* background-color: #d5dbe2; */
     margin-top: 20px;
+    border-top: solid 1px #d5dbe2;
 }
 
 .search {
@@ -513,7 +514,7 @@
 
 .active {
     background-color: #f0f6ff;
-    /* border: solid 1px #c2d1db; */
+    border: solid 1px #c2d1db;
 }
 
 .languge_img {

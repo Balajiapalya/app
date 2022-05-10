@@ -145,17 +145,17 @@ export default function Videos() {
                         </h2>
                     </div>
                     <div className={styles.videos_deliverydata}>
-                        <p>Upload,Transcode,Store and Deliver your asset using our service</p>
+                        <p>Upload,Transcode,Store and Deliver your asset using our service.</p>
                         <p>You can Upload a video using API or directly from here to share it with your users</p>
                         <a >
-                            <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.png" alt='icon' ></img> Add New assets</button>
+                            <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.png" alt='icon' ></img> Add new video</button>
                             
                         </a>
                     </div>
                     <hr></hr>
                 </div>
                 <div className={styles.search}>
-                    <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search'></input>
+                    <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
                     <img src='/images/search_icon.png' alt='icon'></img>
                 </div>
                 <div className={styles.videos_table}>

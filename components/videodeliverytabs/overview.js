@@ -82,12 +82,12 @@ export default function Overview() {
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
-                                <button className='btn'>Activities</button>
-                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
+                                <button className='btn'> <img src="/images/iconawesome-file-alt.png" alt="file"></img> Activities</button>
+                                
                             </div>
                             <div className={styles.delete_stream}>
-                                <button onClick={() => delete_asset()} className='btn'>Delete Asset</button>
-                                <img src="/images/iconmaterial-delete.png" alt="delete"></img>
+                                <button onClick={() => delete_asset()} className='btn'>  <img src="/images/iconmaterial-delete.png" alt="delete"></img> Delete Asset</button>
+                               
                             </div>
 
                         </div>
