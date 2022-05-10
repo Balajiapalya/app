@@ -118,8 +118,9 @@ export const post_selected = () => {
 export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
-export const get_video_playback_url = (asset_id) => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/`+asset_id+`/playback_url?time=${CurrentDate}`
+//embed
+export const get_vdo_player = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
 //direct upload
 
@@ -158,22 +159,21 @@ export const password_reset = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password?time=${CurrentDate}`
 }
 export const delSigningKey = (id) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`;
 }
 //statistics
 export const usage_statistics = (env, toDate, fromDate) => {
     if(fromDate==undefined) {
-        return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`
+        return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`;
     }
     else{
         return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=1d&time=${CurrentDate}`;
-        
     }
     
 }
 export const views_statistics = (env, toDate, fromDate) => {
     if (fromDate == undefined) {
-        return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${new Date().setDate(new Date().getDate() - 7)}&to=${CurrentDate}&time=${CurrentDate}`
+        return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}`
     } else {
         return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${toDate}&time=${CurrentDate}`
     }
@@ -184,9 +184,12 @@ export const realtime_views = (env, fromDate, interval) => {
     return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
 }
 export const org_stats = () =>{
-    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${uuid}&from=${new Date().setDate(new Date().getDate() - 7)}&to=${CurrentDate}`
+    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${uuid}&from=${pastdate}&to=${CurrentDate}`
 }
-
+//embed
+export const get_video_playback_url = (asset_id) => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/`+asset_id+`/playback_url?time=${CurrentDate}`
+}
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -235,7 +238,8 @@ if (process.browser) {
 const CurrentDate = current_date;
 let sevendaybeforedate;
 if(process.browser){
-   sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+//    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+        sevendaybeforedate = new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0,0,0,0);
 }
 const pastdate = sevendaybeforedate;
 const Api = {
@@ -471,10 +475,16 @@ const Api = {
                 'EnvironmentId': `${envuuid}`
             }
         }),
-    Get_Playback_URL: (ast_id) =>
+    //embed
+    Get_vdo_player: ()=>
         axios({
             method: 'GET',
-            url: get_video_playback_url(ast_id)
+            url:get_vdo_player(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+            
         }),
     //account
     Create_new_organization: (new_org_name) =>
@@ -600,7 +610,12 @@ const Api = {
         method:'GET',
         url:org_stats(),
         headers:headers,
-    })
+    }),
+    Get_Playback_URL: (ast_id) =>
+        axios({
+            method: 'GET',
+            url: get_video_playback_url(ast_id)
+        }),
 }
 export default Api
 

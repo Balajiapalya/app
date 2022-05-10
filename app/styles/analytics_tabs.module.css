@@ -1,5 +1,5 @@
 .settings {
-    padding:40px 5% ;
+    padding:40px 0%;
     /* width: 87%;
     float: right;  */
  }
@@ -30,13 +30,13 @@
     float: left;
     height: 60px;
     background-color: #eaeaea;
-    padding-left: 205px;
+    /* padding-left: 205px; */
 }
-.header_development{
+/* .header_development{
     padding-left: 6%;;
-}
+} */
 .content_development{
-    padding: 20px 5px 20px 0px ;
+    padding: 20px 5px 20px 212px ;
 }
 .content_development .store_icon_png{
     padding-right: 10px;
@@ -346,7 +346,7 @@
     float: left;
 }
 .Metrics_heading h3{
-    width: 65%;
+    width: 30%;
     margin-bottom: 21px;
     margin-top: 0px;
     float: left;
@@ -361,7 +361,7 @@
     font-family: Inter-Regular;
 }
 .date_toggle{
-    width: 35%;
+    width: 65%;
     float: right;
 }
 .active_btn{
@@ -383,8 +383,38 @@
     letter-spacing: normal;
     text-align: left;
 }
+.date_toggle_container{
+    width: 100%;
+    float: left;
+}
+.toggle_date_week_month{
+    width: 63%;
+    float: left;
+    text-align: end;
+    margin-right: 10px;
+}
+.date_picker{
+    width: 33%;
+    float: right;
+    display: inline-flex;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #d7dbec;
+    border-radius: 4px;
+}
 
-
+ .date_picker div input{
+    width: 100% !important;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+    color: #5a607f;
+    font-size: 12px;
+    font-family: Inter-Regular;
+}
+.date_picker img{
+    margin: 1.5px 5px;
+}
 .views_cards{
     width: 100%;
     float: left;

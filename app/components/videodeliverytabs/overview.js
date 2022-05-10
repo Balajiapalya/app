@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Hls from 'hls.js';
 import Player from '../player';
+import Embed from '../../pages/videos/embed';
 
 export default function Overview() {
     const router = useRouter();
@@ -13,6 +14,7 @@ export default function Overview() {
     const [tooltipURL, settooltipURL] = useState(false);
     const [thumbnailurl, setthumbnail] = useState(false);
     const Vdplayer = useRef();
+    // console.log(window.location.origin)
     useEffect(() => {
 
         Api.Get_Env_item()
@@ -138,14 +140,15 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{'http://13.235.3.29/videos/embed?videoId='}{i.videoId}</p>
+                                                <p>{`${window.location.origin}/videos/embed?videoId=`}{i.videoId}</p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`http://13.235.3.29/videos/embed?videoId=${i.videoId}`}>
+                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.videoId}`}>
                                                     <img src='/images/iconionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <div className={styles.link_hls}>
@@ -166,14 +169,15 @@ export default function Overview() {
                                 <div className={styles.embed_thubnail}>
                                     <div className={styles.link_embedcode}>
                                         <h4>Embed code</h4>
+                
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`<iframe width="560" height="315" src="http://13.235.3.29/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`} </p>
+                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`} </p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`<iframe width="560" height="315" src="http://13.235.3.29/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`}>
+                                                <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`}>
                                                     <img src='/images/iconionic-ios-copy.png' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>

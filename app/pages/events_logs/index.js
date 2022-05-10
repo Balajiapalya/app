@@ -7,6 +7,7 @@ import Layout from '../../components/common/layout'
 
 export default function Events_logs() {
     return (
+        <div className="container">
         <div className={styles.container}>
             {/* <div>
                 <Navbar/>
@@ -24,6 +25,7 @@ export default function Events_logs() {
                     <Events_logs_tabs/>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
