@@ -70,8 +70,11 @@ function Billing() {
                         </div>
                         <div className={styles.tables_left}>
                             <div className={styles.Video_consumption}>
-                                <span className={styles.Video_consumption_heading}>Video Consumption</span>
-                                <span className={styles.Video_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span>
+                                <div className={styles.consumption}>
+                                    <span className={styles.Video_consumption_heading}>Video Consumption</span>
+                                    <span className={styles.Video_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span> 
+                                </div>
+                                
                                 {/* <span> <a href="#">change Plan</a></span> */}
                                 <table>
                                     <tbody>
@@ -124,8 +127,11 @@ function Billing() {
                         {openpaymenthistory && <Payment_history closepaymenthistory={setopenpaymenthistory} />}
                         <div className={styles.tables_right}>
                             <div className={styles.payment_details}>
-                                <span className={styles.payment_details_heading}>Account Payment Details</span>
-                                <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+                                <div className={styles.paymentDet}>
+                                    <span className={styles.payment_details_heading}>Account Payment Details</span>
+                                    <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+                                </div>
+                                
                                 <table>
                                     <tbody>
                                         <tr>
@@ -168,10 +174,10 @@ function Billing() {
                                 </table>
                             </div>
                         </div>
-                        <div className={styles.data_consumption}>
+                        {/* <div className={styles.data_consumption}>
                             <span className={styles.data_consumption_heading}>Data Consumption</span>
                             <span className={styles.data_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span>
-                            {/* <span> <a href="#">change Plan</a></span> */}
+                            <span> <a href="#">change Plan</a></span>
                             <table>
                                 <tbody>
 
@@ -202,7 +208,7 @@ function Billing() {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> */}
                     </div>
                 )}
             </div>
