@@ -6,7 +6,7 @@
 }
 
 .wrapper_webhooks .head p{
-    width:77%; 
+    width:63%; 
     float:left;
     color: #4a5057;
     font-size: 14px;
@@ -22,10 +22,10 @@
     color:  #2863eb;
     border-color:  #2863eb;
     border-radius: 3px;
-    padding:5px;
+    padding:8px;
     background-color: #f4f6f8;
     font-family: Inter-Medium;
-    font-size: 14px;   
+    font-size: 13px;   
 }
 
 .wrapper_webhooks .table table{
@@ -39,9 +39,9 @@
 }
 .wrapper_webhooks .table table thead tr th{
     text-align: left;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     color:  #212b36;
-    font-family: Inter-Medium;
+    font-family: Inter;
     font-size: 14px;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .wrapper_webhooks .table table tbody tr td{
-    padding-left: 5px;
+    padding-left: 10px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
