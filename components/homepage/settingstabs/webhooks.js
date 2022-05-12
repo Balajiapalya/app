@@ -40,7 +40,7 @@ function Webhooks() {
         <Fragment>
             <section className={styles.wrapper_webhooks}>
                 <div className={styles.head}>
-                    <p>Use Webhooks to get real time updates on any events that happens outside of an API request cycle.
+                    <p>Use Webhooks to get real time updates on any events that happens outside of an API request cycle.<br/>
                         Webhooks can be configured for any environment and notifications will be sent for all events for the environment.
                     </p>
                     <button className="btn" onClick={() =>popup()}>Create new Webhook</button>
@@ -54,7 +54,7 @@ function Webhooks() {
                                 <th>Signing Secret</th>
                                 <th>Environment</th>
                                 <th>Created</th>
-                                <th>Created by</th>
+                                {/* <th>Created by</th> */}
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -66,7 +66,7 @@ function Webhooks() {
                                     <td>{item.signingSecret}</td>
                                     <td>{item.environmentName}</td>
                                     <td>{create_On(item.createdOn)}</td>
-                                    <td>{item.createdBy}</td>
+                                    {/* <td>{item.createdBy}</td> */}
                                     <td>Active</td>
                                     <td>
                                         <input type="checkbox" className={styles.input}></input>

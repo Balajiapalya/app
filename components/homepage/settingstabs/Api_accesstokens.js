@@ -101,7 +101,7 @@ function Api_accesstokes() {
                                 <tr>
                                     <td>
                                         {closemodal[i] && (
-                                            <div>
+                                            <div className={styles.name}>
                                                 <span >{item.name}</span>
                                                 <img onClick={() => { setPopups(i, item) }} src="images/iconmaterial-edit.png" alt="icon"></img>
                                             </div>
@@ -114,11 +114,14 @@ function Api_accesstokes() {
                                                 </div>
                                             </form>
                                         )}
-                                        <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                        <div className={styles.accesstoken}>
+                                            <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                        </div>
+                                        
                                     </td>
                                     <td>{item.environmentName}</td>
                                     <td>
-                                        {item&&item.permissions[0]&&item&&item.permissions[0].productTypeId==1&&item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td>System</td>:[item&&item.permissions[0]&&item.permissions[0].productTypeId==1?<td>video</td>:[item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td></td>:<td>Data(read only)</td>]]}
+                                        {item&&item.permissions[0]&&item&&item.permissions[0].productTypeId==1&&item&&item.permissions[1]&&item.permissions[1].productTypeId==2?'System':[item&&item.permissions[0]&&item.permissions[0].productTypeId==1?'video':[item&&item.permissions[1]&&item.permissions[1].productTypeId==2?'':'Data(read only)']]}
                                     </td>
                                     <td>{createdDate(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>

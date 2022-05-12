@@ -10,10 +10,10 @@
     text-decoration: underline;
 }
 .wrapper_access_tokes .head button{
-    /* width: 15%; */
+    width: 15%;
     float:right;
     color:  #2863eb;
-    border-color:  #2863eb;
+    border:  2px solid #2863eb;
     border-radius: 3px;
     background-color: #f4f6f8;
     font-size: 14px;
@@ -32,11 +32,11 @@
 }
 
 .wrapper_access_tokes .table table thead tr{
-    height: 4em; 
+    height: 3em; 
 }
 .wrapper_access_tokes .table table thead tr th{
     text-align: left;
-    padding:0px  5px;
+    padding:0px  10px;
     color:#212b36;
     font-family: Inter-Medium;
 }
@@ -53,6 +53,17 @@
     font-size: 14px;
     /* width: 10%; */
 }
+.accesstoken{
+    margin-left:10px;
+}
+.name{
+    padding-bottom: 10px;
+    margin-left:10px;
+}
+.wrapper_access_tokes .table table thead tr th:nth-child(1){
+    padding-left: 22px;
+}
+
 .wrapper_access_tokes .table table tbody tr td .development{
     font-size: 16px;
     font-family: Inter-Regular;
@@ -62,7 +73,7 @@
     font-size: 14px;
     font-family: Inter-Regular;
     color: #6e6e6e;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 .wrapper_access_tokes .table table tbody tr td img{
     padding-left: 7px;
@@ -81,7 +92,7 @@
     color:#212b36;
     font-size: 16px;
     font-family:Inter-Regular;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 .wrapper_access_tokes .table table tbody tr td .border{
     border: 1px solid rgba(99, 115, 129, 0.63);
@@ -111,7 +122,7 @@
 }
 .wrapper_access_tokes .table table tbody tr{
     border-bottom:1px solid #ecedef;
-    height: 5em;  
+    height: 6em;  
 }
 
 /*--------------media quries of access tokenks-------------*/
