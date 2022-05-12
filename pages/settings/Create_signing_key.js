@@ -34,7 +34,7 @@ export default function Create_signing_key({ closesigninkeys }) {
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/close.png" alt='icon' width='20' height='20' /> </a>
+                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.png" alt='icon' width='20' height='20' /> </a>
 
                 </div>
                 <div className={styles.main}>
