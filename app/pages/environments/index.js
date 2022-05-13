@@ -105,8 +105,8 @@ export default function Environment() {
   }
   return (
     <div className="container">
-    <div className={styles.container}>
-      <div className={styles.settings}>
+      <div className={styles.container}>
+        <div className={styles.settings}>
           <div className={styles.header}>
             <h2>Environments</h2>
             <h3>{orgName}</h3>
@@ -179,15 +179,15 @@ export default function Environment() {
                           <span className={styles.box_content_history}>
                             in last 7 days
                           </span>
-                          {[OrgStats[items.uuid]].map((orgStat,key) =>
-                            <div key={key}  className={styles.box_data}>
+                          {[OrgStats[items.uuid]].map((orgStat, key) =>
+                            <div key={key} className={styles.box_data}>
                               <div className={styles.box_data_types}>
                                 <span className={styles.types_heading}>
                                   Encoded
                                 </span>
                                 <br />
                                 <span className={styles.types_value}>
-                                  {(orgStat && Math.round((orgStat.RecordEncodingUsage || 0)/(60*60))) || 0} hours
+                                  {(orgStat && Math.round((orgStat.RecordEncodingUsage || 0) / (60 * 60))) || 0} hours
                                 </span>
                               </div>
                               <div className={styles.box_data_types}>
@@ -196,7 +196,7 @@ export default function Environment() {
                                 </span>
                                 <br />
                                 <span className={styles.types_value}>
-                                  {(orgStat && Math.round((orgStat.RecordStorageUsage || 0)/(60*60))) || 0} hours
+                                  {(orgStat && Math.round((orgStat.RecordStorageUsage || 0) / (60 * 60))) || 0} hours
                                 </span>
                               </div>
                               <div className={styles.box_data_types}>
@@ -205,7 +205,7 @@ export default function Environment() {
                                 </span>
                                 <br />
                                 <span className={styles.types_value}>
-                                  {(orgStat && Math.round((orgStat.RecordStreamingUsage || 0)/(60*60))) || 0} hours
+                                  {(orgStat && Math.round((orgStat.RecordStreamingUsage || 0) / (60 * 60))) || 0} hours
                                 </span>
                               </div>
                             </div>
@@ -226,36 +226,36 @@ export default function Environment() {
                           <span className={styles.box_content_history}>
                             in last 7 days
                           </span>
-                          {[OrgStats[items.uuid]].map((orgStat,key) =>
-                          <div key={key} className={styles.box_data}>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Views
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {(orgStat && (orgStat.TotalViews || 0)) || 0}
-                              </span>
+                          {[OrgStats[items.uuid]].map((orgStat, key) =>
+                            <div key={key} className={styles.box_data}>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Views
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                  {(orgStat && (orgStat.TotalViews || 0)) || 0}
+                                </span>
+                              </div>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Unique views
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                  {(orgStat && (orgStat.UniqueViews || 0)) || 0}
+                                </span>
+                              </div>
+                              <div className={styles.box_data_types}>
+                                <span className={styles.types_heading}>
+                                  Playing time
+                                </span>
+                                <br />
+                                <span className={styles.types_value}>
+                                  {(orgStat && Math.round((orgStat.RecordStreamingUsage || 0) / (60 * 60))) || 0} hours
+                                </span>
+                              </div>
                             </div>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Unique views
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {(orgStat && (orgStat.UniqueViews || 0)) || 0}
-                              </span>
-                            </div>
-                            <div className={styles.box_data_types}>
-                              <span className={styles.types_heading}>
-                                Playing time
-                              </span>
-                              <br />
-                              <span className={styles.types_value}>
-                                {(orgStat && Math.round((orgStat.RecordStreamingUsage || 0)/(60*60))) || 0} hours
-                              </span>
-                            </div>
-                          </div>
                           )}
                           <div>
                             <span className={styles.token_key_value}>
@@ -270,12 +270,20 @@ export default function Environment() {
               </tbody>
             </table>
           </div>
+        </div>
+        {addnewenv && <Add_new_environment closeenv={set_addnewenv} />}
       </div>
-      {addnewenv && <Add_new_environment closeenv={set_addnewenv} />}
-    </div>
     </div>
   );
 }
 Environment.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return (
+    <Layout>
+      <div className="wrapper_body">
+        <div className="container">
+          {page}
+        </div>
+      </div>
+    </Layout>
+  )
 };

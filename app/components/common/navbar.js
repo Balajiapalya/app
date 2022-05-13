@@ -62,21 +62,27 @@ const router=useRouter()
                             <Link href='/analytics'><a className={router.pathname=='/analytics' ? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/iconsimple-googleanalytics.png' : '/images/iconsimple-googleanalytics.png'} alt='icon'></img><span>Analytics</span></a></Link>
                         </li>
                         <li style={opendropdown|| router.pathname=='/tools/streammonitor'|| router.pathname=='/tools/subtitleconverter'? { backgroundColor: "#262b36", color: 'white' } : { backgroundColor: null }} className={styles.tools}>
-                            <a className={styles.list_heading} onClick={() => setdropdown(!opendropdown)}><img src={opendropdown ? "/images/iconawesome-tools(white).png" : "/images/iconawesome-tools.png"} alt="icon"></img><span>Tools</span></a>
-                            {opendropdown ? <div><ul className={styles.list}>
+                            <a className={styles.list_heading} 
+                            // onClick={() => setdropdown(!opendropdown)}
+                            >
+                                <img src={opendropdown ? "/images/iconawesome-tools(white).png" : "/images/iconawesome-tools.png"} alt="icon"></img><span>Tools</span></a>
+                            {/* {opendropdown ? <div><ul className={styles.list}>
                                 <li><Link href="/tools/streammonitor"><a className={router.pathname=='/tools/streammonitor'? `${styles.activate}`:''}>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
                                 <li><Link href="/tools/subtitleconverter"><a className={router.pathname=='/tools/subtitleconverter'? `${styles.activate}`:''}>Subtitle Converter</a></Link></li>
                                 <li><a>Video player</a></li>
                                 <li><a>Player Validator</a></li>
-                            </ul></div> : null}
+                            </ul></div> : null} */}
                         </li>
                     </ul>
                 </div>
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            <Link href="/events_logs"><a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/iconawesome-file-alt(white).png" : "/images/iconawesome-file-alt.png"} alt='icon'></img><span>Events & Logs</span></a></Link>
+                            {/* <Link href="/events_logs"> */}
+                                <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/iconawesome-file-alt(white).png" : "/images/iconawesome-file-alt.png"} alt='icon'></img><span>Events & Logs</span>
+                                </a>
+                            {/* </Link> */}
                         </li>
                         <li>
                             <Link href="/"><a className={router.pathname=='/' ? `${styles.activate}` : ''}><img src={router.pathname=='/'? "/images/iconionic-ios-settings.png" : "/images/iconionic-ios-settings.png"} alt='icon'></img><span>Settings</span></a></Link>

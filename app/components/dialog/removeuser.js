@@ -21,7 +21,7 @@ export default function Removeuser({ closeremoveuser ,item }) {
         </div>
 
         <div className={styles.model_removeuser}>
-          <h4 className={styles.model_removeusername}>Are you sure you want to remove user venkantesh ?</h4>
+          <h4 className={styles.model_removeusername}>Are you sure you want to remove user?</h4>
           <p className={styles.model_data}>Once removed,this user will no longer be able to access this organisation on Videograph.</p>
         </div>
         <div className={styles.model_btn}>

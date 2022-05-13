@@ -1,70 +1,84 @@
 .settings {
-    padding:40px 0%;
+    padding: 40px 0%;
     /* width: 87%;
     float: right;  */
- }
- .settings .padding{
-     padding-left: 205px;
-    
- }
- 
-.settings .header  h2{
-     float: left;
-     color: #212b36;
-     font-family: Inter-Medium;
-     font-size: 28px;
-} 
+}
+
+.settings .padding {
+    width: 100%;
+    float: left;
+    /* padding-left: 205px; */
+
+}
+
+.settings .header h2 {
+    float: left;
+    color: #212b36;
+    font-family: Inter-Medium;
+    font-size: 28px;
+}
+
 /* .settings .header  h3{
      float: right;
      color: #212b36;
      font-family: Inter-Medium;
      font-size: 20px;
 } */
-.events_data{
+.events_data {
     width: 100%;
     float: left;
 
 }
-.background_develepment{
+
+.background_develepment {
     width: 100%;
     float: left;
     height: 60px;
     background-color: #eaeaea;
     /* padding-left: 205px; */
 }
+
 /* .header_development{
     padding-left: 6%;;
 } */
-.content_development{
-    padding: 20px 5px 20px 212px ;
+.content_development {
+    width: 100%;
+    float: left;
+    padding: 20px 5px 20px 0px;
 }
-.content_development .store_icon_png{
+
+.content_development .store_icon_png {
     padding-right: 10px;
     position: relative;
     top: 3.2px
 }
-.content_development p{
+
+.content_development p {
     color: #196068;
     position: relative;
     bottom: 40px;
-    left:30px;
+    left: 30px;
     margin: 0;
     width: 90%;
 }
-.content_development p .select{
+
+.content_development p .select {
     background-color: #eaeaea;
     border: none;
     color: #196068;
     outline: none;
 }
+
 /*-----overview-----*/
-.video_type_container{
+.video_type_container {
     width: 100%;
     float: left;
     display: flex;
 }
 
-.encoded_video,.stored_video,.streamed_video {
+.encoded_video,
+.stored_video,
+.streamed_video {
     width: 33.3%;
     /* height: 20vh; */
     margin-bottom: 20px;
@@ -72,36 +86,42 @@
     background-color: #ffff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
-.video_type_heading{
+
+.video_type_heading {
     color: #131523;
     margin: 0.3rem 0rem;
     font-family: Inter-Medium;
     font-size: 14px;
     letter-spacing: 0.09px;
 }
-.viewers_details{
+
+.viewers_details {
     width: 100%;
     float: left;
     margin: 15px 0px;
 }
-.totalViews{
+
+.totalViews {
     font-size: 20px;
     display: contents;
 }
-.watching_viewers{
+
+.watching_viewers {
     margin-left: 5px;
     vertical-align: bottom;
     color: #999;
 }
+
 /* .realtime_chart canvas{
     height: 200px !important;
 } */
-.encoded_video,.stored_video{
+.encoded_video,
+.stored_video {
     margin-right: 10px;
     border-radius: 4px;
 }
 
-.timeperiod{
+.timeperiod {
     width: 100%;
     float: left;
     font-size: 10px;
@@ -109,17 +129,20 @@
     margin-bottom: 0px;
     display: contents;
 }
-.timeperiod span{
+
+.timeperiod span {
     width: 50%;
     font-family: Inter-Regular;
     font-size: 12px;
     color: #7e84a3;
 }
-.video_type_content{
+
+.video_type_content {
     width: 50%;
     float: left;
 }
-.video_type_content h5{
+
+.video_type_content h5 {
     font-size: 20px;
     font-family: Inter-SemiBold;
     filter: blur(0.3px);
@@ -131,7 +154,8 @@
     letter-spacing: normal;
 
 }
-.real_time_views_container{
+
+.real_time_views_container {
     width: 100%;
     float: left;
     background-color: #ffff;
@@ -141,20 +165,25 @@
     /* height: 50vh; */
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
-.real_time_views_container,.countries_container,.devices_container .heading{
+
+.real_time_views_container,
+.countries_container,
+.devices_container .heading {
     color: black;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
 
-.countries_devices_container{
+.countries_devices_container {
     width: 100%;
     float: left;
     display: flex;
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.countries_container,.devices_container{
+
+.countries_container,
+.devices_container {
     /* height: 50vh; */
     border-radius: 6px;
     padding: 5px 15px;
@@ -162,18 +191,21 @@
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 
 }
-.countries_container{
+
+.countries_container {
     width: 65%;
     float: left;
     margin-right: 10px;
     position: relative;
     border-radius: 4px;
 }
-.countries_heading{
+
+.countries_heading {
     width: 100%;
     float: left;
 }
-.countries_heading h4{
+
+.countries_heading h4 {
     margin-bottom: 0px;
     color: #131523;
     filter: blur(0.3px);
@@ -183,21 +215,24 @@
     font-style: normal;
     line-height: 1.21;
 }
-.countries_heading span{
+
+.countries_heading span {
     color: #5a607f;
     font-size: 12px;
-  filter: blur(0.3px);
-  font-size: 13px;
-  line-height: 1.23;
-  line-height: 1.23;
-  font-family: Inter-Regular  ;
+    filter: blur(0.3px);
+    font-size: 13px;
+    line-height: 1.23;
+    line-height: 1.23;
+    font-family: Inter-Regular;
 
 }
-.devices_container{
+
+.devices_container {
     width: 35%;
     float: left;
 }
-.more_insights{
+
+.more_insights {
     width: 100%;
     float: left;
     text-align: end;
@@ -209,9 +244,10 @@
     font-family: Inter-Regular;
     font-size: 13px;
     line-height: 1.08;
-    
+
 }
-.doughnut_more_insights{
+
+.doughnut_more_insights {
     width: 100%;
     float: left;
     text-align: end;
@@ -221,7 +257,8 @@
     line-height: 1.08;
     position: relative;
 }
-.doughnut_insight{
+
+.doughnut_insight {
     width: 100%;
     float: left;
     text-align: end;
@@ -232,45 +269,53 @@
     position: relative;
     right: 5px;
 }
-.doughnut_more_insights a{
+
+.doughnut_more_insights a {
     position: relative;
     bottom: 13px;
     right: 5px;
 }
-.more_insights a{
+
+.more_insights a {
     position: relative;
     right: 20px;
 }
-.doughnut_graph{
+
+.doughnut_graph {
     width: 100%;
 }
-.doughnut_graph canvas{
+
+.doughnut_graph canvas {
     height: 42vh !important;
     width: 80% !important;
     margin-left: 10%;
     margin-top: 10px;
 }
-.countries_map{
+
+.countries_map {
     width: 60%;
     /* height: 33vh; */
     float: left;
     border-right: 1px solid #f1f1f5;
 }
-.countries_table{
+
+.countries_table {
     width: 40%;
     height: 33vh;
     float: right;
     padding: 10px
 }
-.countries_table table{
+
+.countries_table table {
     width: 100%;
     float: left;
 }
-.countries_table table{
+
+.countries_table table {
     border-collapse: collapse;
 }
 
-.countries_table table thead{
+.countries_table table thead {
     color: #7e84a3;
     font-weight: 400;
     border-bottom: 1px solid #e6e9f4;
@@ -283,24 +328,28 @@
     letter-spacing: normal;
     text-align: left;
 }
-.countries_table table thead tr th{
+
+.countries_table table thead tr th {
     padding: 5px;
     height: 48px;
     font-weight: 400;
     font-size: 16px;
 
 }
-.countries_table table{
+
+.countries_table table {
     border-spacing: 0px;
 }
-.countries_table table tbody{
+
+.countries_table table tbody {
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #e6e9f4;
     border-collapse: collapse;
     filter: blur(0.3px);
 }
-.countries_table table tbody tr td{
+
+.countries_table table tbody tr td {
     padding: 5px;
     height: 45px;
     color: #212b36;
@@ -314,38 +363,48 @@
     letter-spacing: normal;
     /* text-align: left; */
 }
-.countries_name{
+
+.countries_name {
     font-weight: 600;
 }
-.line_chart{
+
+.line_chart {
     width: 50%;
     float: right;
 }
-.doughnut_graph table{
+
+.doughnut_graph table {
     width: 100%;
 }
-.doughnut_graph table tr td{
+
+.doughnut_graph table tr td {
     text-align: center;
 }
-.legend_label{
+
+.legend_label {
     display: flex;
 }
-.label{
+
+.label {
     margin-left: 5%;
 }
-.label p{
+
+.label p {
     margin-bottom: 10px;
 }
-.percentage{
+
+.percentage {
     margin-left: 40%;
 }
+
 /*----Metrics---------*/
 
-.Metrics_heading{
+.Metrics_heading {
     width: 100%;
     float: left;
 }
-.Metrics_heading h3{
+
+.Metrics_heading h3 {
     width: 30%;
     margin-bottom: 21px;
     margin-top: 0px;
@@ -360,15 +419,18 @@
     color: #848484;
     font-family: Inter-Regular;
 }
-.date_toggle{
+
+.date_toggle {
     width: 65%;
     float: right;
 }
-.active_btn{
+
+.active_btn {
     background-color: #7d90ba !important;
     color: #fff !important;
 }
-.date_toggle .date_toggle_btn{
+
+.date_toggle .date_toggle_btn {
     background-color: #fff;
     height: 30px;
     border: 1px solid #d7dbec;
@@ -383,17 +445,20 @@
     letter-spacing: normal;
     text-align: left;
 }
-.date_toggle_container{
+
+.date_toggle_container {
     width: 100%;
     float: left;
 }
-.toggle_date_week_month{
+
+.toggle_date_week_month {
     width: 63%;
     float: left;
     text-align: end;
     margin-right: 10px;
 }
-.date_picker{
+
+.date_picker {
     width: 33%;
     float: right;
     display: inline-flex;
@@ -403,7 +468,7 @@
     border-radius: 4px;
 }
 
- .date_picker div input{
+.date_picker div input {
     width: 100% !important;
     border: none;
     outline: none;
@@ -412,18 +477,22 @@
     font-size: 12px;
     font-family: Inter-Regular;
 }
-.date_picker img{
+
+.date_picker img {
     margin: 1.5px 5px;
 }
-.views_cards{
+
+.views_cards {
     width: 100%;
     float: left;
     display: flex;
 }
-.views_cards :nth-child(4){
+
+.views_cards :nth-child(4) {
     margin-right: 0px;
 }
-.cards_container{
+
+.cards_container {
     width: 25%;
     margin-right: 10px;
     padding: 10px;
@@ -433,7 +502,8 @@
     box-shadow: 0 1px 4px 0 rgba(21, 34, 50, 0.08);
     position: relative;
 }
-.cards_container h4{
+
+.cards_container h4 {
     margin-top: 0px;
     font-size: 14px;
     font-weight: 500;
@@ -445,11 +515,15 @@
     color: #5a607f;
     font-family: Inter-Medium;
 }
-.totalViews,.UniqueViews{
+
+.totalViews,
+.UniqueViews {
     width: 100%;
     float: left;
 }
-.totalViews h5,.UniqueViews h5{
+
+.totalViews h5,
+.UniqueViews h5 {
     font-size: 20px;
     font-weight: 600;
     font-stretch: normal;
@@ -460,7 +534,8 @@
     color: #131523;
     filter: blur(0.5px);
 }
-.totalViews span{
+
+.totalViews span {
     font-size: 12px;
     font-weight: normal;
     font-stretch: normal;
@@ -471,57 +546,69 @@
     color: #656a80;
     font-family: Inter-Regular;
 }
-.UniqueViews span{
+
+.UniqueViews span {
     color: #999;
     font-size: 12px;
 }
-.Countries_videos{
+
+.Countries_videos {
     width: 100%;
     float: left;
     margin-top: 20px;
 }
-.countries,.metric_cards{
+
+.countries,
+.metric_cards {
     height: 18em;
     background-color: #ffff;
     border-radius: 6px;
 }
-.Countries_videos .countries{
+
+.Countries_videos .countries {
     width: 60%;
     float: left;
     margin-right: 5px;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
-.Countries_videos .metric_cards{
+
+.Countries_videos .metric_cards {
     width: 33%;
     height: 50vh;
     padding: 5px 15px;
     float: right;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
 }
-.graphs_container{
+
+.graphs_container {
     width: 100%;
     float: left;
     display: flex;
     margin: 20px 0px;
 }
-.countries_heading_content{
+
+.countries_heading_content {
     width: 100%;
     float: left;
 }
-.countries_heading_content h4{
+
+.countries_heading_content h4 {
     width: 70%;
     float: left;
 }
-.export_img{
+
+.export_img {
     width: 30%;
     float: right;
 }
-.export_img img{
+
+.export_img img {
     margin-top: 1rem;
     float: right;
-    margin-right: 10px; 
+    margin-right: 10px;
 }
-.devices_card{
+
+.devices_card {
     width: 33%;
     height: 50vh;
     background-color: #fff;
@@ -529,19 +616,27 @@
     padding: 5px 15px;
     border-radius: 6px;
 }
-.metric_card_heading{
+
+.metric_card_heading {
     width: 100%;
     float: left;
 }
-.metric_card_heading h4{
+
+.metric_card_heading h4 {
     width: 70%;
     float: left;
 }
-.export_img{
+
+.export_img {
     width: 30%;
     float: right;
 }
-.metric_cards h4,.devices_card h4,.player_card h4,.applications_card h4,.Os_views h4{
+
+.metric_cards h4,
+.devices_card h4,
+.player_card h4,
+.applications_card h4,
+.Os_views h4 {
     filter: blur(0.3px);
     font-family: Inter-Medium;
     font-size: 14px;
@@ -554,9 +649,15 @@
     color: #131523;
     margin-bottom: 6px;
 }
-.metric_cards span,.devices_card span,.player_card span,.applications_card span,.Os_views span,.devices_container span{
+
+.metric_cards span,
+.devices_card span,
+.player_card span,
+.applications_card span,
+.Os_views span,
+.devices_container span {
     color: #999;
-    width: 100%;    
+    width: 100%;
     float: left;
     font-size: 12px;
     color: #5a607f;
@@ -565,14 +666,21 @@
     font-size: 13px;
     line-height: 1.23;
     line-height: 1.23;
-    font-family: Inter-Regular ;
+    font-family: Inter-Regular;
     margin-bottom: 20px;
 }
-.metric_cards canvas,.devices_card canvas,.player_card canvas,.applications_card canvas,.Os_views canvas{
+
+.metric_cards canvas,
+.devices_card canvas,
+.player_card canvas,
+.applications_card canvas,
+.Os_views canvas {
     margin-top: 20px;
     height: 35vh !important;
 }
-.player_card,.applications_card{
+
+.player_card,
+.applications_card {
     width: 33%;
     height: 50vh;
     background-color: #fff;
@@ -581,26 +689,31 @@
     margin-left: 10px;
     border-radius: 6px;
 }
-.cards_details{
+
+.cards_details {
     width: 65%;
     float: left;
 }
-.card_logo{
+
+.card_logo {
     width: 35%;
     float: right;
 }
-.card_logo img{
+
+.card_logo img {
     position: absolute;
     top: 30%;
     right: 10%;
 }
-.Os_views_card{
+
+.Os_views_card {
     width: 100%;
     float: left;
     display: flex;
     margin-bottom: 20px;
 }
-.Os_views{
+
+.Os_views {
     width: 33%;
     background-color: #fff;
     height: 50vh;

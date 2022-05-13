@@ -37,17 +37,20 @@ const handleClose=()=>{
                 <div className={styles.model_nav}>
                     <a className={styles.model_close} onClick={() => setOpenCreate(false)}><img src="images/close.png" alt='icon' /> </a>
                 </div>
-                <h2>Here&apos;s your new Signinkey Token:</h2>
-                <h3>Signin Key Id:</h3>
+                <h2 className={styles.keys}>Below is your new Signinkey Key:</h2>
+                <h3 className={styles.keys}>Signin Key ID:</h3>
                 <input ref={refSign} defaultValue={signRes.signingKeyId} readOnly />
                 <img onClick={() =>  copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
-                <h3>Private Key:</h3>
-                <h4>We don&apos;t store this so please memorize it...</h4>
+                <h3 className={styles.keys}>Base64-encoded Private Key:</h3>
+                <h4 className={styles.keys}>We don&apos;t store this so please memorize it...</h4>
                 <textarea ref={refKey} defaultValue={res} readOnly />
                 <img  onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="images/favicon/copy.png" />
-                <button onClick={() => downloadFile()} className={styles.butn}>Download as .pem file</button>
+                <br/>
+                <div className={`${styles.butn} ${styles.keys}`}>
+                <a onClick={() => downloadFile()}>Download as .pem file</a>
+                </div>
                 <br />
-                <button onClick={() => handleClose()} className={styles.btn}>Continue</button>
+                <button onClick={() => handleClose()} className={styles.btn}>Done</button>
             </div>
         </div>
     )

@@ -12,6 +12,7 @@ function Api_accesstokes() {
     const [value,setValue]=useState()
     const [render,setRender]=useState(false)
     const [id,setid]=useState();
+    const [click,setClicked]=useState()
     
     const createdDate = (date) => {
         var d = new Date(date);
@@ -101,7 +102,7 @@ function Api_accesstokes() {
                                 <tr>
                                     <td>
                                         {closemodal[i] && (
-                                            <div>
+                                            <div className={styles.name}>
                                                 <span >{item.name}</span>
                                                 <img onClick={() => { setPopups(i, item) }} src="images/iconmaterial-edit.png" alt="icon"></img>
                                             </div>
@@ -114,18 +115,23 @@ function Api_accesstokes() {
                                                 </div>
                                             </form>
                                         )}
-                                        <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                        <div className={styles.accesstoken}>
+                                            <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                        </div>
+                                        
                                     </td>
                                     <td>{item.environmentName}</td>
                                     <td>
-                                        {item&&item.permissions[0]&&item&&item.permissions[0].productTypeId==1&&item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td>System</td>:[item&&item.permissions[0]&&item.permissions[0].productTypeId==1?<td>video</td>:[item&&item.permissions[1]&&item.permissions[1].productTypeId==2?<td></td>:<td>Data(read only)</td>]]}
+                                        {item&&item.permissions[0]&&item&&item.permissions[0].productTypeId==1&&item&&item.permissions[1]&&item.permissions[1].productTypeId==2?'System':[item&&item.permissions[0]&&item.permissions[0].productTypeId==1?'video':[item&&item.permissions[1]&&item.permissions[1].productTypeId==2?'':'Data(read only)']]}
                                     </td>
                                     <td>{createdDate(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>
                                     {item.isInUse==true?<td>Active</td>:[item.isInUse==false?<td>Access Revoked</td>:null]}
-                                    {item.isInUse==true?<td><a onClick={() => [setrevoke(true)][handlerevoke()]}>Revoke</a></td>:<td></td>}
+                                    {/* {item.isInUse==true?<td><a onClick={() => [setrevoke(true)]}>Revoke</a></td>:<td></td>} */
+                                    }
+                                    {item.isInUse==true?<td><a onClick={() => `${setrevoke(true)} ${setClicked(item)}`}>Revoke</a></td>:<td></td>}
                                 </tr>
-                                {openrevoke && <Revoke item={item} closerevoke={setrevoke} />}
+                                {openrevoke && <Revoke item={click} closerevoke={setrevoke} />}
                             </tbody>
                         )}
                     </table>

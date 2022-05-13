@@ -38,7 +38,7 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
             <div className={styles.model_nav}>
                <a className={styles.model_close} role="button" onClick={() => setNewToken(false)}><img src="images/close.png" alt='icon' /> </a>
             </div>
-                <h2>Here&apos;s your new Access Token:</h2>
+                <h2>Below is the new Access Token:</h2>
                 <h3>Access Token ID:</h3>
                 <input ref={refOne} defaultValue={res.accessTokenId} readOnly/>
                 <img onClick={()=>copyText()} className={styles.imgCopy} src="images/favicon/copy.png"/>
@@ -46,9 +46,12 @@ const SecretKey = ({setNewToken,closetoken,res}) => {
                 <h4>We don&apos;t store this so please memorize it...</h4>
                 <input ref={refTwo} defaultValue={res.secretKey} readOnly/>
                 <img onClick={()=>copyTwo()} className={styles.imgCopy} src="images/favicon/copy.png"/>
-                <button onClick={()=>downloadFile()} className={styles.butn}>Download as .env file</button>
                 <br/>
-                <button onClick={() => handleClose()} className={styles.btn}>Continue</button>
+                <div className={styles.butn}>
+                    <a onClick={()=>downloadFile()}>Download as .env file</a>
+                </div>
+                <br/>
+                <button onClick={() => handleClose()} className={styles.btn}>Done</button>
             </div>
         </div>
     )

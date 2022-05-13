@@ -115,9 +115,7 @@ export const getList_videos = () => {
 export const post_selected = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 }
-export const get_video_data = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
-}
+
 //embed
 export const get_vdo_player = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
@@ -143,6 +141,9 @@ export const change_paswrd = () => {
 // videos -> overview
 export const delete_asset = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}?time=${CurrentDate}`
+}
+export const get_video_data = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
 // videos -> thumbnails
 export const create_thumbnail = () => {
@@ -466,13 +467,13 @@ const Api = {
             url: post_selected(),
             headers: headers
         }),
-    Get_Env_item: (ast_id) =>
+    Get_Env_item: () =>
         axios({
             method: 'GET',
-            url: get_video_data(ast_id),
+            url: get_video_data(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
     //embed

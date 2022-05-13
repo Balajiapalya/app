@@ -5,9 +5,11 @@
     float: left;
 }
 .query p{
-    width:51%;
+    width:38%;
     float:left;
     margin-right: 150px;  
+    color:#4a5057;
+    font-size: 14px;
 }
 .query p a{
     color: #4a5057;
@@ -20,7 +22,7 @@
     border-radius: 5px;
     color: #2863eb;
     padding: 5px;
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
     background-color: #f4f6f8;
     font-family: Inter-Medium;
     font-size: 14px;
@@ -36,31 +38,34 @@
     color: #4a5057;
     font-weight: 600;  
 }
+.consumption{
+    margin-bottom: 12px;
+}
 
 .tables_left{
-    float:left;
-    width:47%;
+    /* float:left; */
+    width:100%;
     margin-right: 20px;
 }
 
 /*Video consumption*/
 
 .Video_consumption{
-    width: 100;
+    width: 50%;
     float: left;
 }
 .Video_consumption_heading{
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 600;
-    font-family: Inter-Semibold;
-    margin-right: 3px;
-    color: #212b36;
+    font-family: Inter-Regular;
+    margin-right: 5px;
+    color: #6f7c8b;
 }
 
 
 .Video_consumption_date{
     font-family: Inter-Regular;
-    font-size: 16px;
+    font-size: 14px;
     color: #4a5057;
 }
 .Video_consumption a{
@@ -81,7 +86,7 @@
 }
 
 .Video_consumption table tbody tr td{
-    padding: 10px 17px;
+    padding: 10px 30px 10px 22px;
     color: #212b36;
     
 }
@@ -95,12 +100,20 @@
 /*Right table*/
 
 .tables_right{
-    width:42%;
+    width:43%;
     float: right;
 }
 .tables_right .payment_details span{
     float: left;
-    margin-bottom: 10px; 
+    /* margin-bottom: 10px;  */
+    font-family: Inter-Regular;
+    color:#6f7c8b;
+    font-size: 15px;
+}
+.paymentDet{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .tables_right .payment_details span a{   
     font-size: 14px;
@@ -125,8 +138,8 @@
     background-color: white;
     text-align: left;
     margin: 10px 0px 30px 0px;
-    width:80%;
-    margin-top: 20px;
+    width:100%;
+    margin-top: 13px;
     border-collapse: collapse;
     font-family: Inter-Regular;
     font-size: 14px;

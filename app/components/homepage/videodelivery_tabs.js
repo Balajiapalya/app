@@ -15,14 +15,14 @@ function Videodelivery_tabs() {
     useEffect(()=>{
         if(Number(router.query.path==undefined)){
             setToggleState(1);
-            router.push({pathname:'./video',query:{'path':1}})    
+            router.push({pathname:'./video',query:{'videoId':localStorage.getItem('videoId'),'path':1}})    
         }else{
             setToggleState(Number(router.query.path));
         }
     },[router.query.path])
     
     const toggleTab = (index) => {
-        router.push({pathname:'./video',query:{'path':`${index}`}})
+        router.push({pathname:'./video',query:{'videoId':localStorage.getItem('videoId'),'path':`${index}`}})
         setToggleState(index);
     };
     
