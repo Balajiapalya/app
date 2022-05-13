@@ -1,11 +1,10 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useRef } from 'react'
 import Api from '../../api/api'
 import styles from '../../../styles/settings.module.css';
 
 const Select = ({ item, data }) => {
     const [isActive,setIsActive]=useState(false)
     const [opt, setOpt] = useState(item.roleId)
-    
     // const handleChange = (e) => {
     //     setOpt(e.target.value)
     //     let element = new Object()
@@ -16,6 +15,27 @@ const Select = ({ item, data }) => {
     //     Api.Selected_option(arr).then(res => console.log(res))
     // }
 
+    let useClickOutside = () => {
+        let node = useRef();
+        useEffect(() => {
+           
+            let maybehandler = (e) => {
+                if (!node.current.contains(e.target)) {
+                    setIsActive(false);
+                };
+            };
+            document.addEventListener('mousedown', maybehandler);
+            return () => {
+                document.removeEventListener('mousedown', maybehandler);
+            };
+    
+        }, []);
+        return node
+    }
+
+    let domnode = useClickOutside(() => {
+        setIsActive(false);
+    })
     const handleChange = (i,ind) => {
         
         let element = new Object()
@@ -36,7 +56,7 @@ const Select = ({ item, data }) => {
         // </div>
 
         <div className={styles.dropdown}>
-        <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>
+        <div ref={domnode} className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>
             {opt==1?'Owner':opt==2?'Admin':'Member'}
             <img src="/images/iconawesome-chevrondown.png"/>
         </div>

@@ -19,7 +19,7 @@ export default function Videoclips_tabs(){
                                     className={toggleState === 1 ? `${styles1.tabs_item} ${styles1.active_tabs}` : `${styles1.tabs_item}`}
                                     onClick={() => toggleTab(1)}
                                 >
-                                    <span>Video Editor</span>
+                                    <span>Use Video Editor</span>
                                 </button>
                                 <button
                                     className={toggleState === 2 ? `${styles1.tabs_item} ${styles1.active_tabs}` : `${styles1.tabs_item}`}
