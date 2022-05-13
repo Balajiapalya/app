@@ -60,7 +60,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             
                 <td><input className={styles.checkbox} type="checkbox"></input></td>
                 <td className={styles.addedon}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
-                <td className={styles.title}>{i.title}</td>
+                {/* <td className={styles.title}>{i.title}</td> */}
                 <td className={styles.assetID}>{i.videoId}</td>
                 {i.thumbnailUrl ? <td className={styles.thumbnail}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
                 {i.duration ? <td>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td>-</td>}

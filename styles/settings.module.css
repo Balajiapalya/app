@@ -9,10 +9,10 @@
 .dropdown .dropdownContent{
     position:absolute;
     background-color: #f4f5f7;
-    top:40%;
-    right: 64%;
+    top:32%;
+    right: 45%;
     padding:4px;
-    width: 70%;
+    width: 50%;
     box-shadow:-1px 5px 11px -11px rgb(0,0,0,0.71);
     z-index: 1;
     border-radius:2px;
