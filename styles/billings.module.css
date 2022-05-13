@@ -51,7 +51,7 @@
 /*Video consumption*/
 
 .Video_consumption{
-    width: 100;
+    width: 50%;
     float: left;
 }
 .Video_consumption_heading{
@@ -86,7 +86,7 @@
 }
 
 .Video_consumption table tbody tr td{
-    padding: 10px 64px 10px 22px;
+    padding: 10px 30px 10px 22px;
     color: #212b36;
     
 }

@@ -9,21 +9,21 @@ export default function Settings() {
     }
     const org_name = orgname
     return (
-        
         <div className={styles.container}>
             <div className={styles.settings}>
-                    <div className={styles.header}>
-                        <h2>
-                            Settings
-                        </h2>
-                        <h3>
-                            {org_name}
-                        </h3>
-                    </div>
-                    <Tabs />
+                <div className={styles.header}>
+                    <h2>
+                        Settings
+                    </h2>
+                    <h3>
+                        {org_name}
+                    </h3>
                 </div>
+                <Tabs />
+            </div>
         </div>
-       
+
+
     )
 
 }

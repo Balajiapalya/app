@@ -75,7 +75,7 @@ export default function Videos() {
 
                 }
             })
-            .catch(error=>{
+            .catch(error => {
                 console.log(error)
             })
     }, [id, add_asset])
@@ -116,76 +116,76 @@ export default function Videos() {
     }
 
     return (
-        
+
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
-                <div className="container">
-                    <div className={styles.content_development}>
-                        <img className={styles.store_icon_png} src='/images/storeicon.png' />
-                        <p>{orName} <br />
-                            <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
-                                {envSelect.map(i => <>
-                                    <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
-                                </>)}
-                            </select>
-                        </p>
+                    <div className="container">
+                        <div className={styles.content_development}>
+                            <img className={styles.store_icon_png} src='/images/storeicon.png' />
+                            <p>{orName} <br />
+                                <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
+                                    {envSelect.map(i => <>
+                                        <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
+                                    </>)}
+                                </select>
+                            </p>
 
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="container">
-            <div className={styles.videos}>
+                <div className={styles.videos}>
 
-                <div className={styles.videos_delivery}>
-                    <div className={styles.header}>
-                        <h2>
-                            Videos
-                        </h2>
+                    <div className={styles.videos_delivery}>
+                        <div className={styles.header}>
+                            <h2>
+                                Videos
+                            </h2>
+                        </div>
+                        <div className={styles.videos_deliverydata}>
+                            <p>Upload,Transcode,Store and Deliver your asset using our service.<br/>
+                            You can Upload a video using API or directly from here to share it with your users</p>
+                            <a >
+                                <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.png" alt='icon' ></img> Add new video</button>
+
+                            </a>
+                        </div>
+                        <hr></hr>
                     </div>
-                    <div className={styles.videos_deliverydata}>
-                        <p>Upload,Transcode,Store and Deliver your asset using our service.</p>
-                        <p>You can Upload a video using API or directly from here to share it with your users</p>
-                        <a >
-                            <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.png" alt='icon' ></img> Add new video</button>
-                            
-                        </a>
+                    <div className={styles.search}>
+                        <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
+                        <img src='/images/search_icon.png' alt='icon'></img>
                     </div>
-                    <hr></hr>
-                </div>
-                <div className={styles.search}>
-                    <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
-                    <img src='/images/search_icon.png' alt='icon'></img>
-                </div>
-                <div className={styles.videos_table}>
-                    <table className="table_input">
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox"></input></th>
-                                <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.png' /></th>
-                                <th>Name <img onClick={() => sorting("title")} src='/images/updown.png' /> </th>
-                                <th>Asset ID</th>
-                                <th>Image Preview</th>
-                                <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.png' /></th>
-                                <th>Resolution</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {videoData.map((i, key) => <>
-                                <tr key={key}>
-                                    <VideoList create_On={create_On} i={i} created_time={created_time} />
+                    <div className={styles.videos_table}>
+                        <table className="table_input">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></input></th>
+                                    <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.png' /></th>
+                                    <th>Name <img onClick={() => sorting("title")} src='/images/updown.png' /> </th>
+                                    <th>Video ID</th>
+                                    <th>Image Preview</th>
+                                    <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.png' /></th>
+                                    <th>Resolution</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
-                            </>)}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {videoData.map((i, key) => <>
+                                    <tr key={key}>
+                                        <VideoList create_On={create_On} i={i} created_time={created_time} />
+                                    </tr>
+                                </>)}
+                            </tbody>
+                        </table>
 
+                    </div>
+                    {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />}
                 </div>
-                {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />}
             </div>
-        </div>
         </div>
 
     )
@@ -194,7 +194,11 @@ export default function Videos() {
 Videos.getLayout = function getLayout(page) {
     return (
         <Layout>
-            {page}
+            <div className="wrapper_body">
+               
+                    {page}
+                
+            </div>
         </Layout>
     )
 }

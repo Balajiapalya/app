@@ -82,133 +82,143 @@ export default function Accounts() {
     set_openneworg(true)
   }
   return (
-    <div className="container">
-      <div className={styles.container}>
-        <div className={styles.settings}>
-          <div className={styles.padding}>
-            <div className={styles.header}>
-              <h2>Accounts</h2>
-              <div className={styles.logout}>
-                <img
-                  className={styles.logout_img}
-                  src="/images/iconfeather-log-out(blue).png"
-                  alt="logout"
-                ></img>
-                <button
-                  className={styles.logout_btn}
-                  onClick={() => handlelogout()}
-                >
-                  Log out{" "}
-                </button>
-              </div>
-            </div>
 
-            <div className={styles.border_bottom}>
-            </div>
-            <div className={styles.Accounts_detials}>
-              <div className={styles.detials}>
-                <div className={styles.personal_detials}>
-                  <h2>Personal Detials</h2>
-                  <form className={styles.personal_detials_form} onSubmit={handleSubmit(onSubmit)}>
-                    <label className={styles.model_label}>First Name</label>
-                    <input
-                      defaultValue={ownerFirstname}
-                      type="text"
-                      className={`${styles.model_input} form_control`}
-                      name="firstname"
-                      placeholder="sunil"
-                      {...register("firstName", { required: true })}
-                    />
-                    {errors.firstName && (
-                      <p className={"validations"}>This field is required</p>
-                    )}
-
-                    <label className={styles.model_label}>Last Name</label>
-                    <input
-                      defaultValue={ownerLastname}
-                      type="text"
-                      className={`${styles.model_input} form_control`}
-                      name="lastName"
-                      placeholder="Gavaskar"
-                      {...register("lastName", { required: true })}
-                    />
-                    {errors.lasttName && (
-                      <p className={"validations"}>This field is required</p>
-                    )}
-
-                    <label className={styles.model_label}>Email</label>
-                    <input
-                      type="text"
-                      className={`${styles.model_input} form_control ${styles.bg_color}`}
-                      placeholder="sunil@gmail.com"
-                      defaultValue={ownerEmail}
-                      readOnly
-                    />
-
-                    <div className={styles.model_btn}>
-                      <button
-                        type="submit"
-                        className={`${styles.model_save_btn} btn btn-primary`}
-                      >
-                        Save changes
-                      </button>
-                    </div>
-                  </form>
+    <div className="wrapper_body">
+      <div className="container">
+        {/* <div className={styles.container}> */}
+          <div className={styles.settings}>
+            <div className={styles.padding}>
+              <div className={styles.header}>
+                <h2>Accounts</h2>
+                <div className={styles.logout}>
+                  <img
+                    className={styles.logout_img}
+                    src="/images/iconfeather-log-out(blue).png"
+                    alt="logout"
+                  ></img>
+                  <button
+                    className={styles.logout_btn}
+                    onClick={() => handlelogout()}
+                  >
+                    Log out{" "}
+                  </button>
                 </div>
-                <div className={styles.organization}>
-                  <h2>Organization</h2>
-                  <div className={styles.organization_details}>
-                    <table>
-                      <tbody>
-                        {neworg.map((items, key) => {
-                          return (
-                            <tr key={items.id}>
-                              <td className={styles.title}>
-                                <button
-                                  style={
-                                    key == highlightedorg
-                                      ? { backgroundColor: "#f5f7fd", color: "#212b36", fontFamily: "Inter-SemiBold" }
-                                      : { backgroundColor: null }
-                                  }
-                                  className={styles.org_btn}
-                                  onClick={(e) => selectOrganization(e, key)}
-                                  value={items.uuid}
-                                >
-                                  {items.name}{" "}
-                                  {key == highlightedorg && (
-                                    <img src="/images/check-circle.png"></img>
-                                  )}
-                                </button>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                    <div className={styles.model_btn}>
-                      <button
-                        onClick={() => handleNext()}
-                        type="submit"
-                        className={`${styles.model_save_btn} btn btn-primary`}
-                      >
-                        Create Organization
-                      </button>
+              </div>
+
+              <div className={styles.border_bottom}>
+              </div>
+              <div className={styles.Accounts_detials}>
+                <div className={styles.detials}>
+                  <div className={styles.personal_detials}>
+                    <h2>Personal Detials</h2>
+                    <form className={styles.personal_detials_form} onSubmit={handleSubmit(onSubmit)}>
+                      <label className={styles.model_label}>First Name</label>
+                      <input
+                        defaultValue={ownerFirstname}
+                        type="text"
+                        className={`${styles.model_input} form_control`}
+                        name="firstname"
+                        placeholder="sunil"
+                        {...register("firstName", { required: true })}
+                      />
+                      {errors.firstName && (
+                        <p className={"validations"}>This field is required</p>
+                      )}
+
+                      <label className={styles.model_label}>Last Name</label>
+                      <input
+                        defaultValue={ownerLastname}
+                        type="text"
+                        className={`${styles.model_input} form_control`}
+                        name="lastName"
+                        placeholder="Gavaskar"
+                        {...register("lastName", { required: true })}
+                      />
+                      {errors.lasttName && (
+                        <p className={"validations"}>This field is required</p>
+                      )}
+
+                      <label className={styles.model_label}>Email</label>
+                      <input
+                        type="text"
+                        className={`${styles.model_input} form_control ${styles.bg_color}`}
+                        placeholder="sunil@gmail.com"
+                        defaultValue={ownerEmail}
+                        readOnly
+                      />
+
+                      <div className={styles.model_btn}>
+                        <button
+                          type="submit"
+                          className={`${styles.model_save_btn} btn btn-primary`}
+                        >
+                          Save changes
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div className={styles.organization}>
+                    <h2>Organization</h2>
+                    <div className={styles.organization_details}>
+                      <table>
+                        <tbody>
+                          {neworg.map((items, key) => {
+                            return (
+                              <tr key={items.id}>
+                                <td className={styles.title}>
+                                  <button
+                                    style={
+                                      key == highlightedorg
+                                        ? { backgroundColor: "#f5f7fd", color: "#212b36", fontFamily: "Inter-SemiBold" }
+                                        : { backgroundColor: null }
+                                    }
+                                    className={styles.org_btn}
+                                    onClick={(e) => selectOrganization(e, key)}
+                                    value={items.uuid}
+                                  >
+                                    {items.name}{" "}
+                                    {key == highlightedorg && (
+                                      <img src="/images/check-circle.png"></img>
+                                    )}
+                                  </button>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                      <div className={styles.model_btn}>
+                        <button
+                          onClick={() => handleNext()}
+                          type="submit"
+                          className={`${styles.model_save_btn} btn btn-primary`}
+                        >
+                          Create Organization
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
+                {openneworg && (
+                  <Create_new_organization closeneworg={set_openneworg} />
+                )}
+                <ManageAccount />
               </div>
-              {openneworg && (
-                <Create_new_organization closeneworg={set_openneworg} />
-              )}
-              <ManageAccount />
             </div>
           </div>
+          <div className='hidden'><Navbar Orgname={orgname} /></div>
         </div>
-        <div className='hidden'><Navbar Orgname={orgname} /></div>
-      </div>
-    </div>
+       </div>
+    // </div>
   );
 }
 Accounts.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return (
+    <Layout>
+      {/* <div className="wrapper_body"> */}
+
+        {page}
+
+      {/* </div> */}
+    </Layout>)
 };

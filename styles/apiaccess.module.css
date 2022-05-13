@@ -10,10 +10,10 @@
     text-decoration: underline;
 }
 .wrapper_access_tokes .head button{
-    width: 15%;
+    /* width: 15%; */
     float:right;
     color:  #2863eb;
-    border:  2px solid #2863eb;
+    border:  1px solid #2863eb;
     border-radius: 3px;
     background-color: #f4f6f8;
     font-size: 14px;

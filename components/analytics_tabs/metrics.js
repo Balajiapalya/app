@@ -55,7 +55,6 @@ export default function Metrics() {
     const [fromdate, set_fromDate] = useState();
     const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0));
     const [endDate, setEndDate] = useState(Date.now());
-    console.log(countryviews.map(i=>i.key))
     const options = {
         responsive: true,
         plugins: {
@@ -361,6 +360,7 @@ export default function Metrics() {
 
                                                     style={{
                                                         default: {
+                                                            // fill:`${countryviews.map((i,key)=>geo.properties.ISO_A2==i.key)}`?"#89abff":"#e6e9f4",
                                                             fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
                                                             outline: "none"
                                                         },
@@ -389,7 +389,7 @@ export default function Metrics() {
                                     {countryviews.map((country, key) =>
                                         <tr key={key}>
                                             <td className={styles.countries_name}> {regionNames.of(country.key)}</td>
-                                            <td>{country.percentage}%</td>
+                                            <td>{(country.percentage).toFixed()}%</td>
                                             <td>{country.count}</td>
                                         </tr>
                                     )}

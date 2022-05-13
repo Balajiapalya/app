@@ -1,11 +1,11 @@
 .settings {
     padding: 40px 5% 40px 0px;
-    /* width: 87%;
-    float: right;  */
+    width: 100%;
+    float: left;
 }
 
 .settings .padding {
-    padding-left: 130px;
+    /* padding-left: 130px; */
 
 }
 
@@ -292,6 +292,7 @@
     .detials .organization {
         width: 100%;
         float: left;
+        padding-left: 0px
     }
 
     .manage_account {
