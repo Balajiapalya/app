@@ -12,6 +12,7 @@ function Api_accesstokes() {
     const [value,setValue]=useState()
     const [render,setRender]=useState(false)
     const [id,setid]=useState();
+    const [click,setClicked]=useState()
     
     const createdDate = (date) => {
         var d = new Date(date);
@@ -126,9 +127,11 @@ function Api_accesstokes() {
                                     <td>{createdDate(item.createdOn)}</td>
                                     <td>{item.createdBy}</td>
                                     {item.isInUse==true?<td>Active</td>:[item.isInUse==false?<td>Access Revoked</td>:null]}
-                                    {item.isInUse==true?<td><a onClick={() => [setrevoke(true)]}>Revoke</a></td>:<td></td>}
+                                    {/* {item.isInUse==true?<td><a onClick={() => [setrevoke(true)]}>Revoke</a></td>:<td></td>} */
+                                    }
+                                    {item.isInUse==true?<td><a onClick={() => `${setrevoke(true)} ${setClicked(item)}`}>Revoke</a></td>:<td></td>}
                                 </tr>
-                                {openrevoke && <Revoke item={item} closerevoke={setrevoke} />}
+                                {openrevoke && <Revoke item={click} closerevoke={setrevoke} />}
                             </tbody>
                         )}
                     </table>

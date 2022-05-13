@@ -28,15 +28,15 @@
 
 .model_title{
     margin: 15px;
-    font-size: 22px;
+    font-size: 20px;
     float: left;
     color: #212b36;
     font-family:Inter-Medium;
 
 }
-.opc{
+/* .opc{
     opacity: 0.98;
-}
+} */
 .model_close{
    color: #d1d1d1; 
 
@@ -59,7 +59,7 @@
     width:calc(100% - 40px);
     border-bottom: 2px solid #ddd;
     border-radius: 2px;
-    padding: 10px 8px;
+    /* padding: 10px 8px; */
     outline: none;
     margin-left: 20px;
      font-family:Inter-Regular;
@@ -111,7 +111,8 @@
  
  margin: 8px 10px 15px 10px;
  color:#fff;
- font-weight: 600;
+ font-weight: 500;
+ font-size: 14px;
  font-family: OpenSans-SemiBold;
 }
 
@@ -361,12 +362,15 @@ float: left;
     color: #444; 
 }
 .access_token_checkbox{
-
+    margin-bottom: 4px;
+     background-color: #fff;
     float: left;
     font-family:Inter-Medium;
     margin-left: 20px;
     color: #444;
     font-size: 14px;
+    border: 1px solid #ddd;
+    padding: 12px 310px 10px 22px;
 }
 .access_token_checkbox input{
     margin-bottom: 10px;
@@ -502,10 +506,10 @@ float: left;
     margin-top: 9px;
         position: absolute;
         left: 0;
-        padding-left: 27px;
+        padding-left: 31px;
 }
 .newkey .development , .newwebhook_model .development ,.accesstoken_model .development{
-    padding-left: 30px;
+    padding-left: 45px;
 }
 
 
@@ -761,8 +765,8 @@ padding-top: 10px;
 .accesstoken_model p{
     width: 100%;
     float: left;
-    padding-left: 18px;
-    margin-bottom: 2px;
+    /* padding-left: 18px;
+    margin-bottom: 2px; */
     font-size: 12px;
 }
 @media (min-width: 280px)  and (max-width:510px){
@@ -824,9 +828,9 @@ padding-top: 10px;
 .newwebhook_model .body,.accesstoken_model .body{
     padding: 5vh;
 } 
-.accesstoken_model .main{
+/* .accesstoken_model .main{
     margin-top: 13rem;
-}
+} */
 .unlockpremiumfeatures .main{
     padding-top: 14em;
 }
@@ -841,9 +845,9 @@ padding-top: 10px;
      .paymenthistory .model{
          padding: 300px;
      }
-    .newkey .main{
+    /* .newkey .main{
         margin-top: 37vh;
-    }   
+    }    */
   
     
      .newtoken .body,.signingkey .body{

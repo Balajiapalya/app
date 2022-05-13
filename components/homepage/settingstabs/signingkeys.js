@@ -37,11 +37,12 @@ function Signingkeys() {
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Key ID</th>
                                 <th>Environment</th>
                                 <th>Product</th>
                                 <th>Created</th>
-                                <th>Created by</th>
+                                <th>Status</th>
+                                {/* <th>Created by</th> */}
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -52,7 +53,8 @@ function Signingkeys() {
                                     <td>{item.environmentName}</td>
                                     {item.productTypeId=="1"?<td>Video</td>:[item.productTypeId=="2"?<td>Data</td>:[item.productTypeId=="3"?<td>System</td>:<td></td>]]}
                                     <td>{create_On(item.createdOn)}</td>
-                                    <td>{item.createdBy}</td>
+                                    {/* <td>{item.createdBy}</td> */}
+                                    <td>Active</td>
                                     <td>
                                         <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="images/iconmaterial-delete.png" alt="icon"></img></a>
                                     </td>
