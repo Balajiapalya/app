@@ -17,6 +17,7 @@
     background-color: #f4f6f8;
     font-size: 14px;
     font-family: Inter-Medium;
+    padding:5px 44px;
 }
 .wrapper_access_tokes .table{
     width: 100%;
@@ -35,7 +36,7 @@
 }
 .wrapper_access_tokes .table table thead tr th{
     text-align: left;
-    padding:0px  10px;
+    padding:0px  18px;
     color:#212b36;
     font-family: Inter-Regular;
     font-size: 14px;
@@ -46,23 +47,18 @@
 }
 
 .wrapper_access_tokes .table table tbody tr td{
-    padding-left: 10px;
+    padding-left: 18px;
     color:#212b36;
     word-break: break-all;
     font-family: Inter-Regular;
     font-size: 14px;
-    /* width: 10%; */
 }
-.accesstoken{
-    margin-left:10px;
-}
+
 .name{
     padding-bottom: 10px;
-    margin-left:10px;
+    /* margin-left:10px; */
 }
-.wrapper_access_tokes .table table thead tr th:nth-child(1){
-    padding-left: 22px;
-}
+
 
 .wrapper_access_tokes .table table tbody tr td .development{
     font-size: 16px;
@@ -126,7 +122,7 @@
 }
 
 /*--------------media quries of access tokenks-------------*/
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 992px) {
     
     .wrapper_access_tokes .head p{
         width: 65%;
