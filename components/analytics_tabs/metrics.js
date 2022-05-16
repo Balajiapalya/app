@@ -268,7 +268,7 @@ export default function Metrics() {
                                 startDate={startDate}
                                 endDate={endDate}
                                 dateFormat="dd/MM/yyyy"
-                                showMonthYearPicker
+                                // showMonthYearPicker
                             />
                             <DatePicker
                                 selected={endDate}
@@ -277,7 +277,7 @@ export default function Metrics() {
                                 startDate={startDate}
                                 endDate={endDate}
                                 dateFormat="dd/MM/yyyy"
-                                showMonthYearPicker
+                                // showMonthYearPicker
                                 onSelect={(date)=>datepicker(date)}
                             />
                         </div>
@@ -293,48 +293,50 @@ export default function Metrics() {
                             <h4>No.of Views</h4>
                             <div className={styles.totalViews}>
                                 <h5>{item.totalViews}</h5>
-                                <span>Number of views that started playback</span>
+                                
                             </div>
                         </div>
                         <div className={styles.card_logo}>
                             <img src='/images/metrics-views.png' alt='img' />
                         </div>
+                        <span className={styles.card_info}>Number of views that started playback</span>
                     </div>
                     <div className={styles.cards_container}>
                         <div className={styles.cards_details}>
                             <h4>No.of Unique Views</h4>
                             <div className={styles.UniqueViews}>
-                                <h5>{item.uniqueViews}</h5>
-                                <span>Unique viewers that started playback,based on User ID.</span>
+                                <h5>{item.uniqueViews}</h5>  
                             </div>
                         </div>
                         <div className={styles.card_logo}>
                             <img src='/images/metrics-unique-views.png' alt='img' />
                         </div>
+                        <span className={styles.card_info}>Unique viewers that started playback,based on User ID.</span>
                     </div>
                     <div className={styles.cards_container}>
                         <div className={styles.cards_details}>
                             <h4>Watched Time</h4>
                             <div className={styles.UniqueViews}>
                                 {amountstreamed == null ? <h5>0 hrs</h5> : <h5>{(amountstreamed / 3600).toFixed(0)} hrs</h5>}
-                                <span>Time (in hours) that viewers watched videos.</span>
+                               
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/images/metrics-watched-time.png' alt='img' />
+                            <img  src='/images/metrics-watched-time.png' alt='img' />
                         </div>
+                        <span className={styles.card_info}>Time (in hours) that viewers watched videos.</span>
                     </div>
                     <div className={styles.cards_container}>
                         <div className={styles.cards_details}>
                             <h4>Errors</h4>
                             <div className={styles.UniqueViews}>
-                                <h5>{item.errors}</h5>
-                                <span>Number of playback errors detected by Videograph.</span>
+                                <h5>{item.errors}</h5> 
                             </div>
                         </div>
                         <div className={styles.card_logo}>
                             <img src='/images/metrics-views.png' alt='img' />
                         </div>
+                        <span className={styles.card_info}>Number of playback errors detected by Videograph.</span>
                     </div>
                 </div>
                 <div className={styles.Countries_videos}>
@@ -347,7 +349,7 @@ export default function Metrics() {
                                         <img src='/images/export.png' />
                                     </div>
                                 </div>
-                                <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                                <span className={styles.card_info}>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                             </div>
                             <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
                                 <ZoomableGroup>

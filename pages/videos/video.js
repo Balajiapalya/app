@@ -7,7 +7,7 @@ import Api from '../../components/api/api';
 
 
 export default function Video() {
-    const [name,setname]=useState([])
+    const [name, setname] = useState([])
     // useEffect(()=>{
     //     titlea()
     // },[])
@@ -18,12 +18,11 @@ export default function Video() {
     //         setname(res.data.data.title)
     //     })
     // }
- let title;
- if(process.browser){
-     title=localStorage.getItem('asset_title')
- }
+    let title;
+    if (process.browser) {
+        title = localStorage.getItem('asset_title')
+    }
     return (
-        <div className="container">
         <div className={styles.container}>
             <div className={styles.videosdelivery_assets}>
                 <div className={styles.padding}>
@@ -40,10 +39,8 @@ export default function Video() {
                             </h2>
                         </div>
                     </div>
-                    <div className={styles.close}> <Link href="/videos"><a><img src='/images/asset_status/iconClose.png' /></a></Link></div>
-                    
+                    <div className={styles.close}> <Link href="/videos"><a><img src='/images/close.png' /></a></Link></div>
                     <Videodelivery_tabs />
-                    </div>
                 </div>
             </div>
         </div>
