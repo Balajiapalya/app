@@ -14,7 +14,7 @@ const VideoList = ({ i, create_On, created_time }) => {
         setVideoId(i.videoId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({ pathname: './videos/video', query: { 'path': 1 } });
+        router.push({ pathname: `./videos/video`, query:{'videoId':i.videoId,'path': 1}  });
     }
 
 
@@ -22,14 +22,14 @@ const VideoList = ({ i, create_On, created_time }) => {
         setVideoId(i.videoId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({ pathname: './videos/video', query: { 'path': 2 } });
+        router.push({ pathname: './videos/video', query: { 'videoId':i.videoId,'path': 2 } });
 
     }
     const togglethumbnail = () => {
         setVideoId(i.videoId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({ pathname: './videos/video', query: { 'path': 3 } });
+        router.push({ pathname: './videos/video', query: {'videoId':i.videoId, 'path': 3 } });
     }
     localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('videoId', videoId)
@@ -60,7 +60,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             
                 <td><input className={styles.checkbox} type="checkbox"></input></td>
                 <td className={styles.addedon}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
-                {/* <td className={styles.title}>{i.title}</td> */}
+                <td className={styles.title}>{i.title}</td>
                 <td className={styles.assetID}>{i.videoId}</td>
                 {i.thumbnailUrl ? <td className={styles.thumbnail}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
                 {i.duration ? <td>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td>-</td>}
