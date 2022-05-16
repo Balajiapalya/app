@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from 'react'
 
 const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
     let res;
-    if(signRes.privateKey!==undefined){
-        res=atob(signRes.privateKey)
+    if (signRes.privateKey !== undefined) {
+        res = atob(signRes.privateKey)
     }
     const refKey = useRef()
     const refSign = useRef()
@@ -26,28 +26,29 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
         document.body.appendChild(signElement);
         signElement.click()
     }
-const handleClose=()=>{
-    document.body.style.overflow='scroll';
-    closesigninkeys(false);
-    setOpenCreate(false)
-}
+    const handleClose = () => {
+        document.body.style.overflow = 'scroll';
+        closesigninkeys(false);
+        setOpenCreate(false)
+    }
     return (
-        <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
-            <div className={styles.body}>
-                <div className={styles.model_nav}>
-                    <a className={styles.model_close} onClick={() => setOpenCreate(false)}><img src="images/close.png" alt='icon' /> </a>
-                </div>
+
+        <div className={styles.body}>
+            <div className={styles.model_nav}>
+                <a className={styles.model_close} onClick={() => setOpenCreate(false)}><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
+            </div>
+            <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2 className={styles.keys}>Below is your new Signinkey Key:</h2>
                 <h3 className={styles.keys}>Signin Key ID:</h3>
                 <input ref={refSign} defaultValue={signRes.signingKeyId} readOnly />
-                <img onClick={() =>  copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
-                <h3 className={styles.keys}>Base64-encoded Private Key:</h3>
-                <h4 className={styles.keys}>We don&apos;t store this so please memorize it...</h4>
+                <img onClick={() => copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
+                <h3>Base64-encoded Private Key:</h3>
+                <h4>We don&apos;t store the secret key. Please copy or download it into your system</h4>
                 <textarea ref={refKey} defaultValue={res} readOnly />
-                <img  onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="images/favicon/copy.png" />
-                <br/>
-                <div className={`${styles.butn} ${styles.keys}`}>
-                <a onClick={() => downloadFile()}>Download as .pem file</a>
+                <img onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="images/favicon/copy.png" />
+                <br />
+                <div className={`${styles.butn}`}>
+                    <a onClick={() => downloadFile()}>Download as .pem file</a>
                 </div>
                 <br />
                 <button onClick={() => handleClose()} className={styles.btn}>Done</button>
