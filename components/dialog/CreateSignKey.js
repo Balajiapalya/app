@@ -38,8 +38,8 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
                 <a className={styles.model_close} onClick={() => setOpenCreate(false)}><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
-                <h2 className={styles.keys}>Below is your new Signinkey Key:</h2>
-                <h3 className={styles.keys}>Signin Key ID:</h3>
+                <h2>Below is your new Signinkey Key:</h2>
+                <h3>Signin Key ID:</h3>
                 <input ref={refSign} defaultValue={signRes.signingKeyId} readOnly />
                 <img onClick={() => copySignKey()} className={styles.imgCopy} src="images/favicon/copy.png" />
                 <h3>Base64-encoded Private Key:</h3>

@@ -792,15 +792,21 @@
 
 .subtitles_list_table table thead tr th {
     text-align: left;
-    padding: 13px 10px;
+    /* padding: 13px 10px; */
+    padding-left: 12px;
     color: #212b36;
-    font-family: Inter-Regular;
+    font-family: Inter-Medium;
     font-size: 14px;
     font-weight: 600;
     word-break: break-all;
     font-size: 14px;
 }
-
+.subtitles_list_table table thead tr{
+    height: 48px;
+}
+.subtitles_list_table table tbody tr{
+    height: 78px;
+}
 .subtitles_list_table table thead tr th input {
     background-color: inherit;
 
@@ -815,12 +821,13 @@
 }
 
 .subtitles_list_table table tbody tr td {
-    padding: 14px 8px;
+    /* padding: 14px 8px; */
+    padding: 23px 0px 23px 12px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
     font-size: 14px;
-    height: 3em;
+    /* height: 3em; */
     border-bottom: 1px solid #ecedef;
     /* width:0%; */
    
@@ -835,10 +842,16 @@
 
 .videoclips h2 {
     padding-bottom: 8px;
-    /* padding-top: 10px; */
-    font-size: 16px;
-    color: #6f7c8b;
     font-family: Inter-Medium;
+
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6f7c8b;
 }
 
 .create_videoclips {

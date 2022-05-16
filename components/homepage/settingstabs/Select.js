@@ -61,7 +61,7 @@ const Select = ({ item, data }) => {
         </div>
         {isActive && <div className={styles.dropdownContent}>
             {data.map((i,ind) => 
-                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/images/check-circle.png"/>}</div>
+                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/imagesvg/check.svg"/>}</div>
             )}
         </div>}
     </div>
