@@ -10,7 +10,8 @@
     text-decoration: underline;
 }
 .wrapper_access_tokes .head button{
-    /* width: 15%; */
+    height: 40px;
+    width: 178px;
     float:right;
     color:  #2863eb;
     border:  1px solid #2863eb;
@@ -18,11 +19,12 @@
     background-color: #f4f6f8;
     font-size: 14px;
     font-family: Inter-Medium;
+    /* padding:9px 14px; */
 }
 .wrapper_access_tokes .table{
     width: 100%;
     float:left;
-    margin-top: 30px;
+    margin-top: 8px;
 }
 .wrapper_access_tokes .table table{
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -32,13 +34,16 @@
 }
 
 .wrapper_access_tokes .table table thead tr{
-    height: 3em; 
+    /* height: 3em;  */
+    height: 48px;
+
 }
 .wrapper_access_tokes .table table thead tr th{
     text-align: left;
-    padding:0px  10px;
+    /* padding:0px  18px; */
+    padding-left: 12px;
     color:#212b36;
-    font-family: Inter-Regular;
+    font-family: Inter-Medium;
     font-size: 14px;
 }
 
@@ -47,22 +52,19 @@
 }
 
 .wrapper_access_tokes .table table tbody tr td{
-    padding-left: 10px;
+    padding-left: 12px;
     color:#212b36;
     word-break: break-all;
     font-family: Inter-Regular;
     font-size: 14px;
-    /* width: 10%; */
+}
+
+.name{
+    padding-bottom: 7px;
+    /* margin-left:10px; */
 }
 .accesstoken{
-    margin-left:10px;
-}
-.name{
-    padding-bottom: 10px;
-    margin-left:10px;
-}
-.wrapper_access_tokes .table table thead tr th:nth-child(1){
-    padding-left: 22px;
+    width: 177px;
 }
 
 .wrapper_access_tokes .table table tbody tr td .development{
@@ -106,7 +108,7 @@
 }
 .wrapper_access_tokes .table table tbody tr td .save{
     text-decoration: underline;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     font-family: Inter-Regular;
     background-color: #fff;
     border: none;
@@ -123,11 +125,18 @@
 }
 .wrapper_access_tokes .table table tbody tr{
     border-bottom:1px solid #ecedef;
-    height: 6em;  
+    /* height: 6em;   */
+    height: 139px;
 }
 
 /*--------------media quries of access tokenks-------------*/
-@media screen and (max-width: 1024px) {
+@media  screen and (max-width:1199px) {
+    .wrapper_access_tokes .head button{
+        padding: 4px;
+    } 
+}
+
+@media screen and (max-width: 992px) {
     
     .wrapper_access_tokes .head p{
         width: 65%;
@@ -135,7 +144,6 @@
         color: #4a5057;
     }
     .wrapper_access_tokes .head button{
-        /* width: 19%; */
         padding:2px;
     }
 }
@@ -147,7 +155,6 @@
         color: #4a5057;
     }
     .wrapper_access_tokes .head button{
-        /* width: 26%; */
         padding: 2px;
     }   
 }

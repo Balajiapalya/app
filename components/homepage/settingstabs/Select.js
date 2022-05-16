@@ -15,27 +15,26 @@ const Select = ({ item, data }) => {
     //     Api.Selected_option(arr).then(res => console.log(res))
     // }
 
-    let useClickOutside = () => {
-        let node = useRef();
+    let node = useRef();
+   
         useEffect(() => {
            
             let maybehandler = (e) => {
+               
                 if (!node.current.contains(e.target)) {
                     setIsActive(false);
                 };
             };
-            document.addEventListener('mousedown', maybehandler);
+            document.addEventListener('mouseup', maybehandler);
             return () => {
-                document.removeEventListener('mousedown', maybehandler);
+                document.removeEventListener('mouseup', maybehandler);
             };
     
         }, []);
-        return node
-    }
+        
 
-    let domnode = useClickOutside(() => {
-        setIsActive(false);
-    })
+
+  
     const handleChange = (i,ind) => {
         
         let element = new Object()
@@ -55,14 +54,14 @@ const Select = ({ item, data }) => {
         //     </select>
         // </div>
 
-        <div className={styles.dropdown}>
-        <div ref={domnode} className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>
+        <div ref={node} className={styles.dropdown}>
+        <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>
             {opt==1?'Owner':opt==2?'Admin':'Member'}
             <img src="/images/iconawesome-chevrondown.png"/>
         </div>
         {isActive && <div className={styles.dropdownContent}>
             {data.map((i,ind) => 
-                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/images/check-circle.png"/>}</div>
+                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/imagesvg/check.svg"/>}</div>
             )}
         </div>}
     </div>

@@ -9,24 +9,24 @@
 .dropdown .dropdownContent{
     position:absolute;
     background-color: #f4f5f7;
-    top:32%;
-    right: 45%;
-    padding:4px;
-    width: 50%;
-    box-shadow:-1px 5px 11px -11px rgb(0,0,0,0.71);
+    top:26%;
+    right: 64%;
+    /*padding:4px;
+    */width: 100px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     z-index: 1;
-    border-radius:2px;
+    border-radius:4px;
 }
 .dropdown .dropdownContent .dropdownItem{
-    padding:4px;
+    padding:8px;
     cursor: pointer;
 }
 .dropdown .dropdownContent .dropdownItem:hover{
     background-color: #fcfcfc;
 }
 .dropdown .dropdownContent .dropdownItem img{
-    height: 14px;
-    margin-left:15px;
+    height: 8px;
+    /* margin-left:15px; */
 }
 .dropdown .dropdownBtn img{
     height: 7px;
@@ -194,7 +194,7 @@
 } */
 
 .settings {
-    padding: 50px 0px 50px 0px;
+    padding: 50px 0px 50px 50px;
    width: 100%;
    float: left;
    /* margin-left: 40px; */
@@ -396,7 +396,7 @@
   
 }
 .settings .member_table tbody tr td img{
-    margin-left: 10px;
+    margin-left: 8px;
     cursor: pointer;
 }
 .settings .member_table tbody tr td select {
@@ -607,7 +607,11 @@
 
 /*-------------Media queries of organisation----------*/
 
-@media screen and (max-width:1024px){
+@media screen and (max-width:1200px){
+    .dropdown .dropdownContent{
+        right: 50%;
+    }
+
     /* .containercomponents{
         width:20%;
     } */
@@ -641,7 +645,7 @@
 
      
     .settings_table_box {
-        width: 50%;
+        /* width: 50%; */
     
     }
 }
@@ -687,9 +691,12 @@
     
 }
 
-@media screen and (max-width:991px){
+@media screen and (max-width:992px){
     .settings .member_table tbody tr td{
         padding: 20px 5px 20px 5px;
+    }
+    .dropdown .dropdownContent{
+        right: 30%;
     }
 }
 

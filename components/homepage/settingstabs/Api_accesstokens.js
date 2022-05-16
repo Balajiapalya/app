@@ -116,7 +116,7 @@ function Api_accesstokes() {
                                             </form>
                                         )}
                                         <div className={styles.accesstoken}>
-                                            <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                            <span className={styles.tokens}>{item.accessTokenId}</span>
                                         </div>
                                         
                                     </td>

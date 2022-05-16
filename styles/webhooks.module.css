@@ -1,6 +1,6 @@
 /*WEBHOOKS*/
 .wrapper_webhooks .head{
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     width: 100%;
     float:left;
 }
@@ -17,15 +17,16 @@
 }
 
 .wrapper_webhooks .head button{
-   
+    height: 40px;
+    width: 178px;
     float:right;
     color:  #2863eb;
     border-color:  #2863eb;
     border-radius: 3px;
-    padding:8px;
+    /* padding:5px 30px; */
     background-color: #f4f6f8;
     font-family: Inter-Medium;
-    font-size: 13px;   
+    font-size: 14px;   
 }
 
 .wrapper_webhooks .table table{
@@ -35,13 +36,14 @@
 }
 
 .wrapper_webhooks .table table thead tr{
-    height: 3em;  
+    /* height: 3em;   */
+    height: 48px;
 }
 .wrapper_webhooks .table table thead tr th{
     text-align: left;
-    padding: 5px 5px 5px 35px;
+    padding-left:12px;
     color:  #212b36;
-    font-family: Inter-Regular;
+    font-family: Inter-Medium;
     font-size: 14px;
 }
 
@@ -50,7 +52,7 @@
 }
 
 .wrapper_webhooks .table table tbody tr td{
-    padding-left: 35px;
+    padding-left: 12px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
@@ -58,10 +60,11 @@
 }
 .wrapper_webhooks .table table tbody tr{
     border-bottom:1px solid #ecedef;
-    height: 3em; 
+    /* height: 3em;  */
+    height: 80px;
 }
 .wrapper_webhooks .table table tbody tr td img{
-    padding-left: 25px;
+    padding-left: 17px;
     cursor: pointer;
 }
 
@@ -105,14 +108,27 @@
 
 /*--------------media quries of webhooks---------------*/
 
-@media screen and (max-width: 1024px)  {
+@media  screen and (max-width:1199px) {
+    .wrapper_webhooks .head button{
+        padding: 4px;
+    }
+}
+
+@media screen and (max-width: 992px)  {
+    
     .wrapper_webhooks .head p {
         width: 70%;
+    }
+    .wrapper_webhooks .head button{
+        padding: 2px;
     }
 }
 
 @media screen and (max-width: 768px)  {
     .wrapper_webhooks .head p {
         width: 65%;
+    }
+    .wrapper_webhooks .head button{
+        padding: 2px;
     }
 }
