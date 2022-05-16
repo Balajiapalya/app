@@ -53,8 +53,8 @@ export default function Metrics() {
     const [toggleposition, settoggleposition] = useState(2);
     const [Today, setToday] = useState();
     const [fromdate, set_fromDate] = useState();
-    const [startDate, setStartDate] = useState(new Date("2014/02/08"));
-    const [endDate, setEndDate] = useState(new Date("2014/04/08"));
+    const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0));
+    const [endDate, setEndDate] = useState(Date.now());
     const options = {
         responsive: true,
         plugins: {
@@ -149,6 +149,8 @@ export default function Metrics() {
         Usage_statistics_data(toDate, yesterday);
         setToday(toDate);
         set_fromDate(yesterday);
+        setStartDate(yesterday);
+        setEndDate(toDate);
     }
     const setweek = () => {
         let toDate = Date.now();
@@ -156,8 +158,10 @@ export default function Metrics() {
         let sevendaybeforedate = new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0);
         Views_statistics_data(toDate, sevendaybeforedate);
         Usage_statistics_data(toDate, sevendaybeforedate);
-        setToday(toDate)
-        set_fromDate(sevendaybeforedate)
+        setToday(toDate);
+        set_fromDate(sevendaybeforedate);
+        setStartDate(sevendaybeforedate);
+        setEndDate(toDate);
     }
     const setmonth = () => {
         let toDate = Date.now();
@@ -165,8 +169,10 @@ export default function Metrics() {
         let monthbeforedate = new Date(new Date().setHours(0, 0, 0, 0)).setDate(1);
         Views_statistics_data(toDate, monthbeforedate);
         Usage_statistics_data(toDate, monthbeforedate);
-        setToday(toDate)
-        set_fromDate(monthbeforedate)
+        setToday(toDate);
+        set_fromDate(monthbeforedate);
+        setStartDate(monthbeforedate);
+        setEndDate(toDate);
     }
     const datepicker = (date) => {
         // console.log(date)
@@ -261,7 +267,7 @@ export default function Metrics() {
                                 selectsStart
                                 startDate={startDate}
                                 endDate={endDate}
-                                dateFormat="MM/yyyy"
+                                dateFormat="dd/MM/yyyy"
                                 showMonthYearPicker
                             />
                             <DatePicker
@@ -270,7 +276,7 @@ export default function Metrics() {
                                 selectsEnd
                                 startDate={startDate}
                                 endDate={endDate}
-                                dateFormat="MM/yyyy"
+                                dateFormat="dd/MM/yyyy"
                                 showMonthYearPicker
                                 onSelect={(date)=>datepicker(date)}
                             />
@@ -354,6 +360,7 @@ export default function Metrics() {
 
                                                     style={{
                                                         default: {
+                                                            // fill:`${countryviews.map((i,key)=>geo.properties.ISO_A2==i.key)}`?"#89abff":"#e6e9f4",
                                                             fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
                                                             outline: "none"
                                                         },
@@ -382,7 +389,7 @@ export default function Metrics() {
                                     {countryviews.map((country, key) =>
                                         <tr key={key}>
                                             <td className={styles.countries_name}> {regionNames.of(country.key)}</td>
-                                            <td>{country.percentage}%</td>
+                                            <td>{(country.percentage).toFixed()}%</td>
                                             <td>{country.count}</td>
                                         </tr>
                                     )}
