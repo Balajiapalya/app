@@ -39,9 +39,9 @@
 }
 .wrapper_webhooks .table table thead tr th{
     text-align: left;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 5px 5px 35px;
     color:  #212b36;
-    font-family: Inter;
+    font-family: Inter-Regular;
     font-size: 14px;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .wrapper_webhooks .table table tbody tr td{
-    padding-left: 10px;
+    padding-left: 35px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
@@ -61,7 +61,7 @@
     height: 3em; 
 }
 .wrapper_webhooks .table table tbody tr td img{
-    padding:0px 5px;
+    padding-left: 25px;
     cursor: pointer;
 }
 

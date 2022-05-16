@@ -38,7 +38,8 @@
     text-align: left;
     padding:0px  10px;
     color:#212b36;
-    font-family: Inter-Medium;
+    font-family: Inter-Regular;
+    font-size: 14px;
 }
 
 .wrapper_access_tokes .table table tbody{
