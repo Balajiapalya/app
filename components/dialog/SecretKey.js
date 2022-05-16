@@ -36,7 +36,7 @@ const SecretKey = ({ setNewToken, closetoken, res }) => {
 
         <div className={styles.body}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} role="button" onClick={() => setNewToken(false)}><img src="images/close.png" alt='icon' /> </a>
+                <a className={styles.model_close} role="button" onClick={() => setNewToken(false)}><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2>Below is the new Access Token:</h2>

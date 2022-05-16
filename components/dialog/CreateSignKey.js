@@ -35,7 +35,7 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
 
         <div className={styles.body}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} onClick={() => setOpenCreate(false)}><img src="images/close.png" alt='icon' /> </a>
+                <a className={styles.model_close} onClick={() => setOpenCreate(false)}><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2 className={styles.keys}>Below is your new Signinkey Key:</h2>

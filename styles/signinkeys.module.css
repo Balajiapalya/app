@@ -88,6 +88,12 @@
 }
 
 /*---------------------Media quries of signing keys-------------------*/
+@media  screen and (max-width:1399px) {
+    .wrapper_signing_keys .head button{
+        padding:4px 35px;
+    }
+}
+
 @media screen and (max-width: 992px)  {
    .wrapper_signing_keys .head button{
        padding:2px;
