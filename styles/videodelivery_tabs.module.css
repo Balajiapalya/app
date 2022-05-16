@@ -59,12 +59,17 @@
 .btn {
     color: #2863eb;
     padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 4px;
     background-color: #fff;
     border: solid 1px #2863eb;
-    margin: 0px 20px 20px;
+    margin: 20px 20px 20px;
     font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
 }
 
 .upload_btn_wrapper input[type=file] {
@@ -111,6 +116,7 @@
     width: 100%;
     float: left;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+    padding-top: 15px;
 }
 
 .languge_img {
@@ -125,7 +131,7 @@
     font-size: 20px;
     background-color: #fff;
     border: solid 1px #9a9a9a;
-    margin: 10px 0px 10px 20px;
+    margin: 10px 0px 10px 15px;
     font-family: Inter-Regular;
     font-size: 14px;
 
@@ -138,7 +144,7 @@
 
 .post h4,
 .create_image h4 {
-    margin: 5px 20px;
+    margin: 15px 0px 8px 20px;
     font-family: Inter-Regular;
     font-size: 13px;
     font-weight: normal;
@@ -155,14 +161,12 @@
     font-size: 12px;
     border: solid 1px rgba(99, 115, 129, 0.3);
     font-family: Inter-Regular;
-    margin-left: 20px;
-    background-color: #f4f6f8;
+    margin: 0px 0px 28px 20px;
+    background-color: #f7f7f7;
     padding: 10px;
-    margin-right: 20px;
     word-break: break-all;
-    width: 90%;
+    width: 94%;
     float: left;
-    margin-bottom: 10px;
 }
 
 .thumbnail_copy_link {
@@ -177,22 +181,33 @@
 }
 
 .code {
-    width: 90%;
+    width: 100%;
     float: left;
     height: 200px;
-    margin: 10px 20px;
+    margin: 10px 15px;
 
 }
 
 .code_input {
     padding: 10px;
-    width: 100%;
+    width: 95%;
     height: 200px;
     background-color: #f7f7f7;
     outline: none;
     border: 1px solid rgba(99, 115, 129, 0.15);
     resize: none;
+    font-family: Inter;
+    font-size: 12px;
+    border-radius: 2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.89;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
 }
+
 
 .copy_url p {
     font-size: 12px;
@@ -238,7 +253,7 @@
 .model_label {
     width: calc(100% - 41px);
     float: left;
-    margin: 10px 0px 4px 20px;
+    /* margin: 10px 0px 4px 20px; */
     font-family: Inter-Regular;
     font-size: 13px;
     font-weight: normal;
@@ -268,10 +283,19 @@
     border-radius: 2px;
     padding: 10px 10px;
     outline: none;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     font-family: Inter-Regular;
+    ;
+    border: solid 1px #91a1af;
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     color: #212b36;
-    border: solid 1px rgba(99, 115, 129, 0.3);
 }
 
 /* .model_input::placeholder {
@@ -361,9 +385,44 @@
     font-size: 18px;
 }
 
+.image_form {
+    width: 100%;
+    float: left;
+    padding: 20px;
+
+}
+
+.image_form_border {
+    border-bottom: 0.8px solid #e3e2e2;
+    float: left;
+    width: 95%;
+    margin: 0px auto;
+    margin-left: 20px;
+}
+
+.image_form .create_btn button {
+    margin-left: 0px !important;
+    margin-bottom: 2px !important;
+}
+
+.time {
+    width: 100%;
+    float: left;
+}
+
 .imagewidth {
     width: 50%;
     float: left;
+}
+
+.time .model_label {
+    margin-bottom: 9px;
+}
+
+.imagewidth .model_label,
+.imageheight .model_label {
+    margin-top: 23px;
+    margin-bottom: 9px;
 }
 
 .imagewidth .model_input {
@@ -371,7 +430,7 @@
 }
 
 .imageheight .model_input {
-    width: 85%;
+    width: 100%;
 }
 
 .imageheight {
@@ -379,6 +438,15 @@
     float: right;
 }
 
+.thumbnail_copy_container {
+    width: 100%;
+    float: left;
+}
+
+/* .thumbnail_copy_container h4{
+    margin-top: 15px;
+    margin-bottom: 8px;
+} */
 .frame_per_second {
     width: 100%
 }
@@ -386,7 +454,7 @@
 .create_btn {
     width: 100%;
     float: left;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .create_btn .btn {
@@ -407,13 +475,20 @@
 }
 
 .geturl p {
-    font-size: 14px;
     font-family: Inter-Regular;
-    background-color: lightgray;
-    padding: 10px;
+    background-color: #e2e2e2;
     word-break: break-all;
     border: solid 1px rgba(99, 115, 129, 0.3);
     border-radius: 2px;
+    padding: 12.8px 10px 11.2px ;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #373f46;
 }
 
 .functional_buttons {
@@ -447,6 +522,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #7e7e7e;
+    padding: 11.8px 17px 11.2px;
 }
 
 .actions,
@@ -506,18 +582,29 @@
 }
 
 .asset_detials_content .content_table tbody tr .title {
-    color: #999;
-    font-family: Inter-Medium;
-    font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #697077;
+    font-family: Inter-Regular;
 
 }
 
 .asset_detials_content .content_table tbody tr .content {
     word-break: break-all;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     color: #445465;
-    font-family: Inter-Medium;
-    font-size: 14px;
 }
 
 .asset_detials_content .content_table tbody tr td img {
@@ -604,12 +691,16 @@
 .link_hls p,
 .link_embedcode p,
 .link_thumbnail p {
-    padding-left: 10px;
+    padding: 10px 0px 0px 10px;
     word-break: break-all;
+    font-size: 13px;
+    font-weight: normal;
     font-family: Inter-Regular;
-    font-size: 14px;
-    margin-bottom: 0px;
-    border-radius: 2px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     color: #212b36;
 }
 
@@ -704,9 +795,16 @@
 
 .media_info p {
     font-size: 14px;
-    font-family: Inter-Regular;
     padding: 5px;
     word-break: break-all;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: Inter-Regular;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     color: #212b36;
 }
 
@@ -743,10 +841,15 @@
 }
 
 .media_info table thead tr th {
-    text-align: left;
     padding: 0px 5px;
-    color: #212b36;
     font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
 }
 
 .media_info table tbody {
@@ -758,10 +861,15 @@
 }
 
 .media_info table tbody tr td {
-    text-align: left;
     padding: 0px 5px;
-    font-family: Inter-Regular;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
 }
 
 /* videoclips*/
@@ -830,10 +938,11 @@
     /* height: 3em; */
     border-bottom: 1px solid #ecedef;
     /* width:0%; */
-   
+
 }
-.subtitles_list_table table tbody tr td:nth-child(3){
-    width:36%;
+
+.subtitles_list_table table tbody tr td:nth-child(3) {
+    width: 36%;
 }
 
 .videoclips table tbody tr td a {

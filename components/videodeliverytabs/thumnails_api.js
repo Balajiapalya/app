@@ -63,6 +63,7 @@ export default function Thumbnails_api() {
                                     /> : null}
                             </div>
                             <button type="submit" className={styles.btn}>Run Request</button>
+                            <span className={styles.image_form_border}/>
                             <h4>Download image from below URL:</h4>
                             <div className={styles.thumbnail_copy}>
                                 <p className={styles.thumbnail_copy_link}>{thumbnailurl}</p>
