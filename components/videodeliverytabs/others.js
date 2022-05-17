@@ -91,7 +91,7 @@ export default function Others() {
                             </div>
                         </div>
                         <div className={styles.tags_metadata}>
-                            <h2>Tags &amp; metadata</h2>
+                            <h2>Tags &amp; Metadata</h2>
                             <div className={styles.tags_metadata_box}>
                                 <label className={styles.model_label}>Tags</label>
 
@@ -136,8 +136,8 @@ export default function Others() {
                                     <tbody>
                                         {meta?meta.map((i, index) =>
                                             <tr key={index}>
-                                                <td>{i.key}</td>
-                                                <td>{i.value}</td>
+                                                <td className={styles.metadata_key}>{i.key}</td>
+                                                <td className={styles.metadata_value}>{i.value}</td>
                                             </tr>
                                         ):''}
                                         {/* <tr>
@@ -160,7 +160,7 @@ export default function Others() {
                     </div>
                     <div className={styles.image_guickpreview_poster}>
                         <div className={styles.image_poster}>
-                            <h2>image poster</h2>
+                            <h2>Image Poster</h2>
                             <div className={styles.image_poster_box}>
                                 <img src="/images/Image 19.png" className={styles.image_layer} alt="image" />
                                 <img src="/images/Image 18.png" className={styles.image_layer1} alt="image" />
@@ -172,7 +172,7 @@ export default function Others() {
                         </div>
 
                         <div className={styles.quickpreview_poster}>
-                            <h2>Quick preview poster</h2>
+                            <h2>Quick Preview Poster</h2>
                             <div className={styles.quickpreview_poster_box}>
                                 <img src="/images/Image 19.png" className={styles.image_layer} alt="image" />
                                 <img src="/images/Image 18.png" className={styles.image_layer1} alt="image" />
@@ -194,7 +194,7 @@ export default function Others() {
                                 <p>Enable seek bar preview to generate quick thumbail previews for the entire video duration &#44; which will be shown while using the seek bar on player</p>
 
                             </div>
-                            <div className={styles.seek_bar}>
+                            <div className={styles.offline_download}>
                                 <input type="checkbox" className={styles.input}></input>
                                 <h4>Offline Download</h4>
                                 <p>Enabling this feature will create a download a &#46; mp4 file of the video which can be used for watching the content offline &#46; </p>
