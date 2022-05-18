@@ -71,12 +71,12 @@ const VideoList = ({ i, create_On, created_time }) => {
                     <div className={styles.contextual_menu_container}>
                         <div ref={domnode} className={styles.contextual_menu}>
                             <div onClick={() => setdropdown(dropdown => !dropdown)}>
-                                <img className={styles.content_menu_basic} src='/Images/content-menu-basic.svg' alt='menu' />
-                                <img className={styles.content_menu_hover} src='/Images/content-menu-hover.svg' alt='menu' />
+                                <img className={styles.content_menu_basic} src='/images/content-menu-basic.svg' alt='menu' />
+                                <img className={styles.content_menu_hover} src='/images/content-menu-hover.svg' alt='menu' />
                             </div>
                             {dropdown ?
                                 <div className={styles.dropdown_list}>
-                                    <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/Images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button>
+                                    <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => togglethumbnail()}><img src='/images/insert-picture-icon.svg' alt='thumbnails' /><a>Thumbnails</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `}><img src='/images/closed-caption.svg' alt='subtitles' /><a>Subtitles</a></button>
