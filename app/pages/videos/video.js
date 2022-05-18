@@ -39,7 +39,7 @@ export default function Video() {
                                         {headtitle ?
                                             <h2>
                                                 {title}
-                                                <button onClick={() => editName()}><img className={styles.edit_img} src="/images/iconmaterial-edit.png" alt="edit" /><span> Edit</span></button>
+                                                <button onClick={() => editName()}><img className={styles.edit_img} src="/images/iconmaterial-edit.svg" alt="edit" /><span> Edit</span></button>
 
                                             </h2> : null
                                         }
@@ -48,12 +48,13 @@ export default function Video() {
                                         <div className={styles.input_title}>
                                             <input />
                                             <button onClick={() => saveName()}>Save</button>
+                                            <button onClick={() => saveName()}>cancel</button>
                                         </div> : null}
 
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.close}> <Link href="/videos"><a><img src='/images/close.png' /></a></Link></div>
+                        <div className={styles.close}> <Link href="/videos"><a><img src='/images/close.svg' /></a></Link></div>
                         <Videodelivery_tabs />
                     </div>
                 </div>

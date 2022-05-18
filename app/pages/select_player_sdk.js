@@ -4,7 +4,7 @@ import styles from '../styles/select_player_sdk.module.css';
 export default function Select_player_sdk() {
     return (
         <div className={styles.container}>
-            <div className={styles.close_png}> <img src='/images/close.png' /></div>
+            <div className={styles.close_png}> <img src='/images/close.svg' /></div>
             <div className={styles.content}>
                 <div className={styles.sdk_heading}>Select a Player SDK</div>
                 <div className={styles.sdk_content}>

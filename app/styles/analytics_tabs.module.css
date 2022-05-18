@@ -460,6 +460,8 @@
 
 .label {
     margin-left: 5%;
+    width: 100%;
+    float: left;
 }
 
 .label p {
@@ -476,7 +478,9 @@
 }
 
 .percentage {
-    margin-left: 35%;
+    width: 100%;
+    float:right;
+    margin-right: 30px;
 }
 
 .percentage p {
