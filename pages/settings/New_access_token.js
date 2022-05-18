@@ -1,7 +1,7 @@
 import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
-import { useEffect, useState, useRef} from 'react'
+import { useEffect, useState, useRef } from 'react'
 import SecretKey from '../../components/dialog/SecretKey'
 
 export default function New_Access_token({ closetoken }) {
@@ -10,10 +10,10 @@ export default function New_Access_token({ closetoken }) {
    const [productType, setProductType] = useState([])
    const [items, setItems] = useState([])
    const [newToken, setNewToken] = useState(false)
-   const [resp,setRes]=useState([])
-   const [select,setSelect]=useState(false)
-   const [option,setOption]=useState()
-   // const [id,setId]=useState()
+   const [resp, setRes] = useState([])
+   const [select, setSelect] = useState(false)
+   const [option, setOption] = useState()
+  
 
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
@@ -44,7 +44,7 @@ export default function New_Access_token({ closetoken }) {
          objTwo.canRead = true
          access_data.permissions.push(objTwo)
       }
-    
+
       let sliced = Object.fromEntries(Object.entries(access_data).slice(4, 7))
       sliced.envUUID = localStorage.getItem('envuuid')
       if (access_data.video || access_data.data) {
@@ -60,45 +60,44 @@ export default function New_Access_token({ closetoken }) {
    }
 
    const videoAll = watch('video')
-const handleClose=()=>{
-   document.body.style.overflow='scroll'
-   closetoken(false)
-}
+   const handleClose = () => {
+      document.body.style.overflow = 'scroll'
+      closetoken(false)
+   }
 
-const handleSelect=()=>{
-   setSelect(!select)
-}
-const handleOption=(option)=>{
-   // setId(option.id)
-   setOption(option.name)
-   setSelect(false)
-}
-const searchHandle=(e)=>{
-  let options=document.querySelectorAll('#opt')
-   for(let i=0;i<options.length;i++){
-      let name=options[i].innerHTML.toLowerCase()
-      let searchValue=e.target.value.toLowerCase()
-      if(name.indexOf(searchValue)>-1){
-         options[i].style.display='block'
-      }else{
-         options[i].style.display='none'
-         
+   const handleSelect = () => {
+      setSelect(!select)
+   }
+   const handleOption = (option) => {
+      setOption(option.name)
+      setSelect(false)
+   }
+   const searchHandle = (e) => {
+      let options = document.querySelectorAll('#opt')
+      for (let i = 0; i < options.length; i++) {
+         let name = options[i].innerHTML.toLowerCase()
+         let searchValue = e.target.value.toLowerCase()
+         if (name.indexOf(searchValue) > -1) {
+            options[i].style.display = 'block'
+         } else {
+            options[i].style.display = 'none'
+
+         }
       }
    }
-}
 
-let selectDropdown=useRef()
-useEffect(()=>{
-   const handleDropdown=(e)=>{
-      if(!selectDropdown.current.contains(e.target)){
-         setSelect(false)
+   let selectDropdown = useRef()
+   useEffect(() => {
+      const handleDropdown = (e) => {
+         if (!selectDropdown.current.contains(e.target)) {
+            setSelect(false)
+         }
       }
-   }
-   document.addEventListener('mouseup',handleDropdown)
-   return()=>{
-      document.removeEventListener('mouseup',handleDropdown)
-   }
-},[])
+      document.addEventListener('mouseup', handleDropdown)
+      return () => {
+         document.removeEventListener('mouseup', handleDropdown)
+      }
+   }, [])
    return (
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
@@ -127,23 +126,22 @@ useEffect(()=>{
                   </div> */}
 
                   <div ref={selectDropdown} className={styles.select}>
-                     <div className={`${styles.development} ${styles.model_selection}`} onClick={()=>handleSelect()}>
-                        {option?option:'Development'}
+                     <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
+                        {option ? option : 'Development'}
                         <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
-                     
+
                      </div>
-                     <button className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
-                     {select && 
-                     <div className={styles.dropdown}>
-                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e)=>searchHandle(e)}/>
-                     <div className={styles.allOptions}>
-                     {data.map(option =>
-                              <div key={option.id} value={option.id} onClick={()=>handleOption(option)} id="opt">{option.name}</div>
-                           )}
-                     </div>
-                     </div>
+                     <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
+                     {select &&
+                        <div className={styles.dropdown}>
+                           <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
+                           <div className={styles.allOptions}>
+                              {data.map(option =>
+                                 <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div>
+                              )}
+                           </div>
+                        </div>
                      }
-                           
                   </div>
 
                   <div className={styles.access_token}>
@@ -173,7 +171,7 @@ useEffect(()=>{
                   <div className={styles.model_btn}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
                      <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
-                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={resp}/>}
+                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={resp} />}
                   </div>
                </form>
             </div>
