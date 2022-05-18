@@ -53,19 +53,19 @@ const router=useRouter()
                             <Link href='/'><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/environments'? '/images/vg_logo.svg' : '/images/vg_logo.svg'} alt='icon'></img><span className={styles.title}>Videograph</span></a></Link>
                         </li>
                         <li>
-                            <Link href="/environments"><a className={router.pathname=='/environments'  ? `${styles.activate}` : ''}><img src={router.pathname=='/environments'? '/images/iconmaterial-home(white).png' : '/images/iconmaterial-home.png'} alt='icon'></img><span>Environments</span></a></Link>
+                            <Link href="/environments"><a className={router.pathname=='/environments'  ? `${styles.activate}` : ''}><img src={router.pathname=='/environments'? '/images/iconmaterial-home(white).svg' : '/images/iconmaterial-home.svg'} alt='icon'></img><span>Environments</span></a></Link>
                         </li>
                         <li>
-                            <Link href='/videos'><a className={router.pathname=='/videos' || router.pathname=='/videos/video'  ? `${styles.activate}` : ''}><img src={router.pathname=='/videos' || router.pathname=='/videos/video' ? '/images/iconmaterial-video-library(white).png' : '/images/iconmaterial-video-library.png'} alt='icon'></img><span>Videos</span></a></Link>
+                            <Link href='/videos'><a className={router.pathname=='/videos' || router.pathname=='/videos/video'  ? `${styles.activate}` : ''}><img src={router.pathname=='/videos' || router.pathname=='/videos/video' ? '/images/iconmaterial-video-library(white).svg' : '/images/iconmaterial-video-library.svg'} alt='icon'></img><span>Videos</span></a></Link>
                         </li>
                         <li>
-                            <Link href='/analytics'><a className={router.pathname=='/analytics' ? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/iconsimple-googleanalytics.png' : '/images/iconsimple-googleanalytics.png'} alt='icon'></img><span>Analytics</span></a></Link>
+                            <Link href='/analytics'><a className={router.pathname=='/analytics' ? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/iconsimple-googleanalytics(white).svg' : '/images/iconsimple-googleanalytics.svg'} alt='icon'></img><span>Analytics</span></a></Link>
                         </li>
                         <li style={opendropdown|| router.pathname=='/tools/streammonitor'|| router.pathname=='/tools/subtitleconverter'? { backgroundColor: "#262b36", color: 'white' } : { backgroundColor: null }} className={styles.tools}>
                             <a className={styles.list_heading} 
                             // onClick={() => setdropdown(!opendropdown)}
                             >
-                                <img src={opendropdown ? "/images/iconawesome-tools(white).png" : "/images/iconawesome-tools.png"} alt="icon"></img><span>Tools</span></a>
+                                <img src={opendropdown ? "/images/iconawesome-tools(white).png" : "/images/iconawesome-tools.svg"} alt="icon"></img><span>Tools</span></a>
                             {/* {opendropdown ? <div><ul className={styles.list}>
                                 <li><Link href="/tools/streammonitor"><a className={router.pathname=='/tools/streammonitor'? `${styles.activate}`:''}>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
@@ -80,15 +80,15 @@ const router=useRouter()
                     <ul>
                         <li>
                             {/* <Link href="/events_logs"> */}
-                                <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/iconawesome-file-alt(white).png" : "/images/iconawesome-file-alt.png"} alt='icon'></img><span>Events & Logs</span>
+                                <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/Iconawesome-file-alt(white).svg" : "/images/iconawesome-file-alt.svg"} alt='icon'></img><span>Events & Logs</span>
                                 </a>
                             {/* </Link> */}
                         </li>
                         <li>
-                            <Link href="/"><a className={router.pathname=='/' ? `${styles.activate}` : ''}><img src={router.pathname=='/'? "/images/iconionic-ios-settings.png" : "/images/iconionic-ios-settings.png"} alt='icon'></img><span>Settings</span></a></Link>
+                            <Link href="/"><a className={router.pathname=='/' ? `${styles.activate}` : ''}><img src={router.pathname=='/'? "/images/iconionic-ios-settings(white).svg" : "/images/iconionic-ios-settings.svg"} alt='icon'></img><span>Settings</span></a></Link>
                         </li>
                         <li>
-                            <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).png" : "/images/iconawesome-user-alt.png"} alt='icon'></img><span><p className={router.pathname=='/account' ? `${styles.user_detail} ${styles.activate}` : `${styles.user_detail}`}>{ownername} <br />{OrgName}</p></span></a></Link>
+                            <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).svg" : "/images/iconawesome-user-alt.svg"} alt='icon'></img><span><p className={router.pathname=='/account' ? `${styles.user_detail} ${styles.activate}` : `${styles.user_detail}`}>{ownername} <br />{OrgName}</p></span></a></Link>
                         </li>
                         <li>
                             <Link href="/signin"><a className={styles.logout} onClick={() => handlelogout()}><img src={ router.pathname=='/signin' ? "/images/iconfeather-log-out.png" : "/images/iconfeather-log-out.png"} alt='icon'></img><span>Logout</span></a></Link>

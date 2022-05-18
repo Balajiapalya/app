@@ -140,11 +140,6 @@
 
 /*--------------media quries of webhooks---------------*/
 
-@media screen and (max-width:1199px) {
-    .wrapper_webhooks .head button {
-        padding: 4px;
-    }
-}
 
 @media screen and (max-width: 992px) {
 
@@ -152,9 +147,7 @@
         width: 70%;
     }
 
-    .wrapper_webhooks .head button {
-        padding: 2px;
-    }
+    
 }
 
 @media screen and (max-width: 768px) {
@@ -162,7 +155,5 @@
         width: 65%;
     }
 
-    .wrapper_webhooks .head button {
-        padding: 2px;
-    }
+    
 }

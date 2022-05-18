@@ -5,7 +5,7 @@ export default function Newstreampremiumenable() {
         <div className={`${styles.container} ${styles.newstream}`} >
         <div className={styles.body}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} role="button"><img src="/images/close.png" alt="close"/> </a>
+                <a className={styles.model_close} role="button"><img src="/images/close.svg" alt="close"/> </a>
 
             </div>
             <div className={styles.main}>
@@ -22,7 +22,7 @@ export default function Newstreampremiumenable() {
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
-                    <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
+                    <button type="text" className={styles.up}><img src="/images/updown.svg" alt="updown"></img></button>
                 </div>
                 <label className={styles.model_label}>Check Streams</label>
                 <div className={styles.select}>
@@ -32,7 +32,7 @@ export default function Newstreampremiumenable() {
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
-                    <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
+                    <button type="text" className={styles.up}><img src="/images/updown.svg" alt="updown"></img></button>
                 </div>
                 <div className={styles.check_unlockfeatures}>
                     <label className={styles.model_label}>premiumfeatures</label>
@@ -57,7 +57,7 @@ export default function Newstreampremiumenable() {
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
+                                <button type="text" className={styles.up}><img src="/images/updown.svg" alt="updown"></img></button>
                             </div>
                         </div>
                     <div className={styles.premiumfeatures_check}>

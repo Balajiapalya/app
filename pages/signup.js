@@ -30,9 +30,7 @@ export default function Signup() {
   return (
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
-        <h1 className={styles.logo_title}>
-          Videograph
-        </h1>
+        <img src='/images/logo.svg' alt='logo' />
         <div className={styles.signup_area}>
           <h2 className={styles.signup_title}>
             Create your account
