@@ -40,7 +40,7 @@ export default function Add_new_environment({ closeenv }) {
         <div className={`${styles.container} ${styles.accesstoken_model}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() =>closePopUp()}><img src="/images/close.png" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() =>closePopUp()}><img src="/images/close.svg" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add New Environment</h3>

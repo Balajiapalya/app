@@ -7,7 +7,7 @@ export default function Premium_payment_details_edit() {
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>
       <div className={styles.body}>
         <div className={styles.model_nav}>
-          <Link href="/"><a className={styles.model_close} role="button"><img src="images/close.png" alt="close" /> </a></Link>
+          <Link href="/"><a className={styles.model_close} role="button"><img src="images/close.svg" alt="close" /> </a></Link>
 
         </div>
         <div className={styles.main}>

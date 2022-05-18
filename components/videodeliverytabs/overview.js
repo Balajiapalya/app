@@ -86,7 +86,7 @@ export default function Overview() {
                                 
                             </div>
                             <div className={styles.delete_stream}>
-                                <button onClick={() => delete_asset()} className='btn'>  <img src="/images/iconmaterial-delete.png" alt="delete"></img> Delete Asset</button>
+                                <button onClick={() => delete_asset()} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
                                
                             </div>
 

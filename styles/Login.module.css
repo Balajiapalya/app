@@ -36,8 +36,8 @@
 }
 
 .signup_input {
-    border-radius: 0;
-    border-color: rgba(99, 115, 129, 0.3);
+    border-radius: 4px !important;
+    border-color: rgba(99, 115, 129, 0.3) !important;
     padding: 0.8rem;
     outline: none;
     color: #000;

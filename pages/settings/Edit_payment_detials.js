@@ -12,7 +12,7 @@ export default function Edit_payment_detials({ closepaymentdetails }) {
     <div className={`${styles.container} ${styles.editpaymentdetials}`}>
       <div className={styles.body}>
         <div className={styles.model_nav}>
-          <a className={styles.model_close} role="button" onClick={() => closepaymentdetails(false)}><img src="images/close.png" alt='icon' /> </a>
+          <a className={styles.model_close} role="button" onClick={() => closepaymentdetails(false)}><img src="images/close.svg" alt='icon' /> </a>
         </div>
         <div className={styles.main}>
           <h3 className={styles.model_title}>Edit Payment Details</h3>

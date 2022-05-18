@@ -554,13 +554,14 @@
     float: left;
     border: 1px solid #e0e0e0;
     background-color: #f6f8fe;
-    padding: 5%;
+    /* padding: 5%; */
     border-radius: 3px;
 }
 
 .box_content {
     width: 100%;
     float: left;
+    padding: 5%;
 }
 
 .box_content_history {
@@ -785,6 +786,10 @@
     .dropdown .dropdownContent {
         right: 30%;
     }
+    .environments_table tbody tr td {
+        padding: 2px;
+        width: 30%;
+    }
 }
 
 
@@ -793,10 +798,7 @@
         width: 100%;
     }
 
-    .environments_table tbody tr td {
-        padding: 2px;
-        width: 30%;
-    }
+   
 
     .environments_table tbody tr .table_wr {
         width: 15% !important;

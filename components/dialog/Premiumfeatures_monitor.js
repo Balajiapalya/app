@@ -8,7 +8,7 @@ export default function Premiumfeatures_monitor({ closepremium }) {
                 <div className={styles.model_main}>
                     <div className={styles.model_nav}>
                         <h3 className={styles.model_title}>Premium Features</h3>
-                        <a onClick={() => closepremium(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
+                        <a onClick={() => closepremium(false)} className={styles.model_close} role="button"><img src="/images/close.svg" alt="close" /> </a>
                         <p>The stream will be continuosly monitored.You will be charged $0.03/minute for the entire duration of stream monitoring. you can disable this feature anytime.</p>
                     </div>
 
@@ -32,7 +32,7 @@ export default function Premiumfeatures_monitor({ closepremium }) {
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                     </select>
-                                    <button type="text" className={styles.up}><img src="/images/updown.png" alt="updown"></img></button>
+                                    <button type="text" className={styles.up}><img src="/images/updown.svg" alt="updown"></img></button>
                                 </div>
                             </div>
                             <div className={styles.premiumfeatures_check}>

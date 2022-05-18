@@ -9,7 +9,7 @@ export default function Stream_unlockfeatures({ closestream }) {
         <div className={`${styles.container} ${styles.newstream}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closestream(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
+                    <a onClick={() => closestream(false)} className={styles.model_close} role="button"><img src="/images/close.svg" alt="close" /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -26,7 +26,7 @@ export default function Stream_unlockfeatures({ closestream }) {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="/images/updown.png" alt="close"></img></button>
+                        <button type="text" className={styles.up}><img src="/images/updown.svg" alt="close"></img></button>
                     </div>
                     <label className={styles.model_label}>Check Streams</label>
                     <div className={styles.select}>
@@ -36,7 +36,7 @@ export default function Stream_unlockfeatures({ closestream }) {
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <button type="text" className={styles.up}><img src="/images/updown.png" alt="close"></img></button>
+                        <button type="text" className={styles.up}><img src="/images/updown.svg" alt="close"></img></button>
                     </div>
                     <div className={styles.unlock_features}>
                         <label className={styles.model_label}>premiumfeatures</label>

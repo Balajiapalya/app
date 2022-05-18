@@ -43,8 +43,8 @@ export default function Create_new_webhook({ closewebhook }) {
                                     </>)}
                             </select>
                             {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
-                            <img className={styles.file} src="/images/iconawesome-folder.png" alt='icon'></img>
-                            <button type="text" className={styles.up}><img src="/images/updown.png" alt='icon'></img></button>
+                            <img className={styles.file} src="/images/iconawesome-folder.svg" alt='icon'></img>
+                            <button type="text" className={styles.up}><img src="/images/updown.svg" alt='icon'></img></button>
                         </div>
 
 
