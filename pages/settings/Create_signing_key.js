@@ -64,7 +64,10 @@ export default function Create_signing_key({ closesigninkeys }) {
         const handleDropdown = (e) => {
             if (!selectDropdown.current.contains(e.target)) {
                 setSelect(false)
-                // setProductSelect(false)
+               
+            }
+            if(!dropdownprod.current.contains(e.target)){
+                 setProductSelect(false)
             }
         }
         document.addEventListener('mouseup', handleDropdown)
@@ -72,6 +75,9 @@ export default function Create_signing_key({ closesigninkeys }) {
             document.removeEventListener('mouseup', handleDropdown)
         }
     }, [])
+    const handleSelected=(prod)=>{
+        setSelected(prod.name)
+    }
     return (
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
@@ -137,7 +143,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                                         <div className={styles.allOptions}>
                                             {prod.map(product =>
-                                                <div key={product.id} value={product.id} id="opt">{product.name} onClick={}</div>)}
+                                                <div key={product.id} value={product.id} id="opt">{product.name} onClick={()=>handleSelected(product)}</div>)}
                                         </div>
                                     </div>
                                 }
