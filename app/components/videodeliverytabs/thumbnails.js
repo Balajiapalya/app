@@ -36,7 +36,7 @@ export default function Thumbnails() {
     function copy(text) {
         navigator.clipboard.writeText(text)
     }
-    
+
     return (
         <Fragment>
             <div className={styles.thumbnails}>
@@ -46,44 +46,50 @@ export default function Thumbnails() {
                         {/* <img className={styles.editor_img} src="/images/image11.png" alt="image" /> */}
                         <Player handlethumnail={handlethumnail_callback} />
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div>
-                                <label className={styles.model_label}>Time*</label>
-                                <input onChange={(e) => handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" value={gettime} placeholder="00:22:33" />
-                                {/* <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} placeholder="00:22:33" {...register("videoPositionInSec", { required: false,valueAsNumber: true})} /> */}
-                                {errors.videoPositionInSec && <p className={'validations'}>This field is required</p>}
+                            <div className={styles.image_form}>
+                                <div className={styles.time}>
+                                    <label className={styles.model_label}>Time*</label>
+                                    <input onChange={(e) => handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" value={gettime} placeholder="00:22:33" />
+                                    {/* <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} placeholder="00:22:33" {...register("videoPositionInSec", { required: false,valueAsNumber: true})} /> */}
+                                    {errors.videoPositionInSec && <p className={'validations'}>This field is required</p>}
+                                </div>
+                                <div className={styles.imagewidth}>
+                                    <label className={styles.model_label}>Image Width</label>
+                                    <input type="text" className={styles.model_input} name="width" placeholder="Enter width in px" defaultValue={320} {...register("width", { required: true, valueAsNumber: true })} />
+                                    {errors.width && <p className={'validations'}>This field is required</p>}
+                                </div>
+                                <div className={styles.imageheight}>
+                                    <label className={styles.model_label}>Image Height</label>
+                                    <input type="text" className={styles.model_input} name="height" placeholder="Enter height in px" defaultValue={320}{...register("height", { required: true, valueAsNumber: true })} />
+                                    {errors.height && <p className={'validations'}>This field is required</p>}
+                                </div>
+                                <div className={styles.create_btn}>
+                                    <button type="submit" className={styles.btn}>Create thumbnail</button>
+                                </div>
                             </div>
-                            <div className={styles.imagewidth}>
-                                <label className={styles.model_label}>Image Width</label>
-                                <input type="text" className={styles.model_input} name="width" placeholder="Enter width in px Default is 320px" {...register("width", { required: true, valueAsNumber: true })} />
-                                {errors.width && <p className={'validations'}>This field is required</p>}
-                            </div>
-                            <div className={styles.imageheight}>
-                                <label className={styles.model_label}>Image height</label>
-                                <input type="text" className={styles.model_input} name="height" placeholder="Enter height in px" {...register("height", { required: true, valueAsNumber: true })} />
-                                {errors.height && <p className={'validations'}>This field is required</p>}
-                            </div>
-                            <div className={styles.create_btn}>
-                                <button type="submit" className={styles.btn}>Create video Clip</button>
-                            </div>
+                            <span className={styles.image_form_border} />
                         </form>
-                        <h4>Download image from below URL:</h4>
-                        <div className={styles.thumbnail_copy}>
-                            <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
-                            <div className={styles.copy_img}>
-                                <CopyToClipboard text={thumbnailurl}>
-                                <img src='/images/iconionic-ios-copy.png' alt='copy' onClick={() => copy(thumbnailurl)} />
-                                </CopyToClipboard>
-                            </div>
+                        <div className={styles.thumbnail_copy_container}>
+                            <h4>Download image from below URL:</h4>
+                            <div className={styles.thumbnail_copy}>
+                                <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
+                                <div className={styles.copy_img}>
+                                    <CopyToClipboard text={thumbnailurl}>
+                                        <img src='/images/iconionic-ios-copy.png' alt='copy' onClick={() => copy(thumbnailurl)} />
+                                    </CopyToClipboard>
+                                </div>
 
+                            </div>
                         </div>
+
 
 
                     </div>
                 </div>
 
-                <Thumbnails_api/>
+                <Thumbnails_api />
 
-                
+
 
             </div>
 

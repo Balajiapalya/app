@@ -104,9 +104,13 @@ export default function Videos() {
         let tRow = table.getElementsByTagName('tr')
         for (let i = 0; i < tRow.length; i++) {
             let td = tRow[i].getElementsByTagName('td')[2]
-            if (td) {
+            let tdId=tRow[i].getElementsByTagName('td')[3]
+            let status=tRow[i].getElementsByTagName('td')[7]
+            if (td || tdId || status) {
                 let data = td.innerText.toUpperCase()
-                if (data.indexOf(input) > -1) {
+                let id=tdId.innerText.toUpperCase();
+                let stat=status.innerText.toUpperCase()
+                if (data.indexOf(input) > -1 || id.indexOf(input)>-1 || stat.indexOf(input)>-1) {
                     tRow[i].style.display = ''
                 } else {
                     tRow[i].style.display = 'none'
@@ -152,7 +156,7 @@ export default function Videos() {
 
                             </a>
                         </div>
-                        <hr></hr>
+                        <span/>
                     </div>
                     <div className={styles.search}>
                         <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
@@ -164,7 +168,7 @@ export default function Videos() {
                                 <tr>
                                     <th><input type="checkbox"></input></th>
                                     <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.png' /></th>
-                                    <th>Name <img onClick={() => sorting("title")} src='/images/updown.png' /> </th>
+                                    {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.png' /> </th> */}
                                     <th>Video ID</th>
                                     <th>Image Preview</th>
                                     <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.png' /></th>

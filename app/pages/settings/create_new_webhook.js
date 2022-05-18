@@ -27,7 +27,7 @@ export default function Create_new_webhook({ closewebhook }) {
         <div className={`${styles.container} ${styles.newwebhook_model}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closePopup()}><img src="/images/close.png" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closePopup()}><img src="/images/asset_status/iconClose.png" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>New Webhook</h3>
