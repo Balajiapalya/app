@@ -68,7 +68,7 @@
     border-bottom: 2px solid #ddd;
     border-radius: 2px;
     outline: none;
-    margin-left: 20px;
+    margin-left: 19.5px;
      font-family:Inter-Regular;
   
     border: solid 1px rgba(99, 115, 129, 0.3);
@@ -114,6 +114,12 @@
     text-align: left;
     color: #212b36;
 }
+.prodropdown{
+    width:calc(100% - 40px);
+    border-bottom: 2px solid #ddd;
+    border-radius: 2px;
+    height: 40px;
+}
 .model_btn{
     float: right;
     margin: 10px;
@@ -144,7 +150,7 @@
 
 .model_save_btn{
  
- margin: 8px 10px 15px 10px;
+ margin: 8px 11px 15px 10px;
  color:#fff;
  font-family:Inter-Medium;
 
@@ -494,7 +500,7 @@ float: left;
      background-color: #fff;
     float: left;
     font-family:Inter-Medium;
-    margin-left: 20px;
+    margin-left: 19.5px;
     color: #444;
     font-size: 14px;
     border: 1px solid #ddd;
@@ -662,6 +668,16 @@ float: left;
     position:absolute;
     top:10px;
     margin-left: 455px;
+    cursor: pointer;
+}
+.select .icon{
+    /* background: none;
+    border: none;
+    outline:none;
+    position:absolute;
+    top:10px;
+    margin-left: 455px;
+    cursor: pointer; */
 }
 .selectFile{
     position: absolute;
@@ -670,7 +686,8 @@ float: left;
     width: 22px;
 }
 .select .dropdown{
-    height: 186px;
+    z-index:1;
+    /* height: 186px; */
     width: 91.8%;
     background-color: #fff;
     margin-left:20px;
