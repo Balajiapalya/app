@@ -13,6 +13,7 @@ export default function Create_signing_key({ closesigninkeys }) {
     const [select, setSelect] = useState(false)
     const [productSelect, setProductSelect] = useState(false)
     const [selected,setSelected]=useState()
+    const [idSubmit,setIdSubmit]=useState()
 
     useEffect(() => {
         Api.Get_environment_types_data()
@@ -26,6 +27,7 @@ export default function Create_signing_key({ closesigninkeys }) {
     const [signRes, setSignRes] = useState([])
 
     const onSubmit = signin_key => {
+        signin_key.productTypeId=idSubmit
         signin_key.environmentUUID = localStorage.getItem('envuuid')
         Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
         document.body.style.overflow = 'hidden'
@@ -77,6 +79,8 @@ export default function Create_signing_key({ closesigninkeys }) {
     }, [])
     const handleSelected=(prod)=>{
         setSelected(prod.name)
+        setIdSubmit(prod.id)
+        setProductSelect(false)
     }
     return (
         <div className={`${styles.container} ${styles.newkey}`} >
@@ -109,13 +113,13 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 {option ? option : 'Development'}
                                 <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
                             </div>
-                            <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
+                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="images/updown.png" alt='icon'></img>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                                     <div className={styles.allOptions}>
                                         {data.map(option =>
-                                            <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div>
+                                            <div key={option.id} value={option.id} id="opt" onClick={()=>handleOption(option)}>{option.name}</div>
                                         )}
                                     </div>
                                 </div>
@@ -137,13 +141,13 @@ export default function Create_signing_key({ closesigninkeys }) {
                                     {selected ? selected : 'Product'}
                                     
                                 </div>
-                                <button className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
+                                <img className={styles.drpdwn} onClick={() => setProductSelect(!productSelect)} src="images/updown.png" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                                         <div className={styles.allOptions}>
                                             {prod.map(product =>
-                                                <div key={product.id} value={product.id} id="opt">{product.name} onClick={()=>handleSelected(product)}</div>)}
+                                                <div key={product.id} value={product.id} id="opt" onClick={()=>handleSelected(product)}>{product.name}</div>)}
                                         </div>
                                     </div>
                                 }
