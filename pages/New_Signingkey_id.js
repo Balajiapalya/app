@@ -5,7 +5,7 @@ export default function New_Signingkey_id() {
         <div className={`${styles.container} ${styles.signingkey}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a href="#" className={styles.model_close} role="button"><img src="images/close.png" alt='close'/> </a>
+                    <a href="#" className={styles.model_close} role="button"><img src="images/close.svg" alt='close'/> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Below is your new Signing Key:</h3>

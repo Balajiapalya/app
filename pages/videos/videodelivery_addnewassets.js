@@ -38,12 +38,12 @@ export default function Videodelivery_addnewassets({ close_asset }) {
     return (
         <div className={styles.videodelivery}>
             <div className={styles.model_nav}>
-                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
+                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/images/close.svg" alt="close" /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
                 <Direct_upload />
                 <div className={styles.or}></div>
-                <div className={styles.or_text}><span>[or]</span></div>
+                <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >
 
                     <label >Post using Video URL:</label>

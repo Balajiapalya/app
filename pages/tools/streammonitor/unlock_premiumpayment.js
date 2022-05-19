@@ -8,7 +8,7 @@ export default function Unlock_Premiumpayment() {
         <div className={`${styles.container} ${styles.editpaymentdetials}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
+                    <a className={styles.model_close} role="button"><img src="/images/close.svg" alt="close" /> </a>
 
                 </div>
                 <div className={styles.main}>

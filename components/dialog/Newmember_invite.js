@@ -31,7 +31,7 @@ export default function Newmember_invite({ closeModel }) {
         <div className={styles.model_main}>
           <div className={styles.model_nav}>
             <h3 className={styles.model_title}>Invite New Member</h3>
-            <a className={styles.model_close} role="button" onClick={() => closeModel(false)} ><img src="images/close.png" alt='icon' /> </a>
+            <a className={styles.model_close} role="button" onClick={() => closeModel(false)} ><img src="images/close.svg" alt='icon' /> </a>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} >
             <label className={styles.model_label}>Email Address</label>

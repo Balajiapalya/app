@@ -196,11 +196,6 @@
 }
 
 /*--------------media quries of access tokenks-------------*/
-@media screen and (max-width:1199px) {
-    .wrapper_access_tokes .head button {
-        padding: 4px;
-    }
-}
 
 @media screen and (max-width: 992px) {
 
@@ -210,9 +205,7 @@
         color: #4a5057;
     }
 
-    .wrapper_access_tokes .head button {
-        padding: 2px;
-    }
+   
 }
 
 @media screen and (max-width: 768px) {
@@ -222,7 +215,5 @@
         color: #4a5057;
     }
 
-    .wrapper_access_tokes .head button {
-        padding: 2px;
-    }
+   
 }

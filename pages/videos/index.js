@@ -249,11 +249,11 @@ export default function Videos() {
                             <thead>
                                 <tr>
                                     <th><input type="checkbox"></input></th>
-                                    <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.png' /></th>
+                                    <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
                                     {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.png' /> </th> */}
                                     <th>Video ID</th>
                                     <th>Image Preview</th>
-                                    <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.png' /></th>
+                                    <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.svg' /></th>
                                     <th>Resolution</th>
                                     <th>Status</th>
                                     <th>Actions</th>

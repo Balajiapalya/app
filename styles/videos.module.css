@@ -135,7 +135,7 @@
     margin: 0px 5px 1.5px 0px;
 }
 
-.videos span {
+.videos .videos_delivery span {
     /* background-color: #d5dbe2; */
     margin-top: 17px;
     border-top: solid 1px #d5dbe2;
@@ -545,7 +545,7 @@
     border-bottom: 1px solid #cecece;
 }
 
-.or_text span {
+.or_text .divider {
     color: #a7acb2;
     background-color: #f4f6f8;
     position: relative;
@@ -676,13 +676,15 @@
 
 /*  */
 .videosdelivery_assets {
-    padding: 40px 5%;
+    width: 100%;
+    float: left;
+    padding: 40px 0%;
 }
 
-.videosdelivery_assets .padding {
+/* .videosdelivery_assets .padding {
     padding-left: 80px;
 
-}
+} */
 
 .assets a {
     text-decoration: underline;

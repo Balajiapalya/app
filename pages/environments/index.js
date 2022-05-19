@@ -144,7 +144,7 @@ export default function Environment() {
                               <img
                                 className={styles.edit_img}
                                 onClick={() => { setPopups(i, items) }}
-                                src="/images/iconmaterial-edit.png"
+                                src="/images/iconmaterial-edit.svg"
                               />
                             </a>
                             <br />
