@@ -113,7 +113,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 {option ? option : 'Development'}
                                 <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
                             </div>
-                            <img onClick={() => handleSelect()} className={styles.dropdownOne} src="imagesvg/dropdown.svg" alt='icon'></img>
+                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="imagesvg/dropdown.svg" alt='icon'></img>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -141,7 +141,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                     {selected ? selected : 'Product'}
                                     
                                 </div>
-                                <img className={styles.drpdwn} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
+                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -153,9 +153,9 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 }
                             </div>
                         </div>
-                        <div className={styles.model_btn}>
+                        <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
-                            <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >create Signing Key</button>
+                            <button type="submit" className={`${styles.save_btn} btn btn-primary`} >create Signing Key</button>
                         </div>
                     </form>
                     {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes} closesigninkeys={closesigninkeys} />}
