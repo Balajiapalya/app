@@ -670,6 +670,16 @@ float: left;
     margin-left: 455px;
     cursor: pointer;
 }
+.select .dropdownOne{
+    background: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 12px;
+    height: 12px;
+    margin-left: 455px;
+    cursor: pointer;
+}
 .select .icon{
     /* background: none;
     border: none;

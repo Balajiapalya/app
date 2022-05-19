@@ -113,7 +113,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 {option ? option : 'Development'}
                                 <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
                             </div>
-                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="images/updown.png" alt='icon'></img>
+                            <img onClick={() => handleSelect()} className={styles.dropdownOne} src="imagesvg/dropdown.svg" alt='icon'></img>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -141,7 +141,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                     {selected ? selected : 'Product'}
                                     
                                 </div>
-                                <img className={styles.drpdwn} onClick={() => setProductSelect(!productSelect)} src="images/updown.png" alt='icon'></img>
+                                <img className={styles.drpdwn} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
