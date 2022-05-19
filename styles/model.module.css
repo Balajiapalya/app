@@ -568,7 +568,6 @@
     background-color: #fff;
     float: left;
     font-family: Inter-Medium;
-    /* margin-left: 20px; */
     color: #444;
     font-size: 14px;
     border: 1px solid #ddd;
@@ -778,6 +777,22 @@
     background: none;
     border: none;
     outline: none;
+    outline:none;
+    position:absolute;
+    top:10px;
+    cursor: pointer;
+    right: 7px;
+}
+.select .icon{
+    /* background: none;
+    border: none;
+    outline:none;
+    position:absolute;
+    top:10px;
+    margin-left: 455px;
+    cursor: pointer; */
+}
+.selectFile{
     position: absolute;
     top: 10px;
     /* left: 20px; */
@@ -795,6 +810,10 @@
 .select .dropdown {
     height: 186px;
     width: 100%;
+
+    z-index:1;
+    /* height: 186px; */
+    width: 91.8%;
     background-color: #fff;
    
     position: absolute;
