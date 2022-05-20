@@ -6,7 +6,7 @@ export default function Unlockpremiumfeatures({ close_unlockpremium }) {
         <div className={`${styles.container} ${styles.unlockpremiumfeatures}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => close_unlockpremium(false)} className={styles.model_close} role="button"><img src="/images/close.png" alt="close" /> </a>
+                    <a onClick={() => close_unlockpremium(false)} className={styles.model_close} role="button"><img src="/images/close.svg" alt="close" /> </a>
                 </div>
                 <div className={styles.content}>
                     <img src="/images/Exclusion.png" alt="Exclusion"></img>

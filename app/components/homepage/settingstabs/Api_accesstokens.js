@@ -104,7 +104,7 @@ function Api_accesstokes() {
                                         {closemodal[i] && (
                                             <div className={styles.name}>
                                                 <span >{item.name}</span>
-                                                <img onClick={() => { setPopups(i, item) }} src="images/iconmaterial-edit.png" alt="icon"></img>
+                                                <img onClick={() => { setPopups(i, item) }} src="/images/iconmaterial-edit.svg" alt="icon"></img>
                                             </div>
                                         )}
                                         {openModel[i] && (
@@ -116,7 +116,7 @@ function Api_accesstokes() {
                                             </form>
                                         )}
                                         <div className={styles.accesstoken}>
-                                            <span id="accessID" className={styles.tokens}>{item.accessTokenId}</span>
+                                            <span className={styles.tokens}>{item.accessTokenId}</span>
                                         </div>
                                         
                                     </td>

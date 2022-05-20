@@ -7,40 +7,56 @@ import Api from '../../components/api/api';
 
 
 export default function Video() {
-    const [name,setname]=useState([])
-    // useEffect(()=>{
-    //     titlea()
-    // },[])
-    // const titlea=()=>{
-    //     Api.Get_Env_item()
-    //     .then(res=>{
-    //         console.log(res.data.data)
-    //         setname(res.data.data.title)
-    //     })
-    // }
- let title;
- if(process.browser){
-     title=localStorage.getItem('asset_title')
- }
+    const [headtitle, setheadttitle] = useState(true);
+    const [save, setsave] = useState(false);
+
+    const editName = () => {
+        setheadttitle(false)
+        setsave(true)
+    }
+    const saveName = () => {
+        setsave(false);
+        setheadttitle(true);
+    }
+    let title;
+    if (process.browser) {
+        title = localStorage.getItem('asset_title')
+    }
     return (
         <div className={styles.container}>
             <div className={styles.videosdelivery_assets}>
-                <div className={styles.padding}>
-                    <div className={styles.header}>
-                        <div className={styles.assets}>
-                            <Link href="/videos"><a>Video List</a></Link>
-                            <p> &gt; {title}</p>
+                <div className='container'>
+                    <div className={styles.padding}>
+                        <div className={styles.header}>
+                            <div className={styles.assets}>
+                                <Link href="/videos"><a>Video List</a></Link>
+                                <p> &gt; {title}</p>
+                            </div>
+                            <div className={styles.header_asianet}>
+                                <img className={styles.icon_stat} src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
+                                <div className={styles.header_title_container}>
+                                    <div className={styles.header_title}>
+                                        {headtitle ?
+                                            <h2>
+                                                {title}
+                                                <button onClick={() => editName()}><img className={styles.edit_img} src="/images/iconmaterial-edit.svg" alt="edit" /><span> Edit</span></button>
+
+                                            </h2> : null
+                                        }
+                                    </div>
+                                    {save ?
+                                        <div className={styles.input_title}>
+                                            <input />
+                                            <button onClick={() => saveName()}>Save</button>
+                                            <button onClick={() => saveName()}>cancel</button>
+                                        </div> : null}
+
+                                </div>
+                            </div>
                         </div>
-                        <div className={styles.header_asianet}>
-                            <img className={styles.icon_stat} src="/images/iconionic-ios-stats@2x.png" alt="ios-stats"></img>
-                            <h2>
-                                {title}
-                                <img className={styles.edit_img} src="/images/iconmaterial-edit.png" alt="edit" /><span> Edit</span>
-                            </h2>
-                        </div>
+                        <div className={styles.close}> <Link href="/videos"><a><img src='/images/close.svg' /></a></Link></div>
+                        <Videodelivery_tabs />
                     </div>
-                    <div className={styles.close}> <Link href="/videos"><a><img src='/images/close.png' /></a></Link></div>
-                    <Videodelivery_tabs />
                 </div>
             </div>
         </div>
@@ -50,7 +66,11 @@ export default function Video() {
 Video.getLayout = function getLayout(page) {
     return (
         <Layout>
-            {page}
+            <div className="wrapper_body">
+
+                {page}
+
+            </div>
         </Layout>
     )
 }

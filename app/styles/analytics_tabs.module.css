@@ -13,9 +13,15 @@
 
 .settings .header h2 {
     float: left;
-    color: #212b36;
     font-family: Inter-Medium;
-    font-size: 28px;
+    font-size: 22px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.18;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
 }
 
 /* .settings .header  h3{
@@ -92,7 +98,13 @@
     margin: 0.3rem 0rem;
     font-family: Inter-Medium;
     font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
     letter-spacing: 0.09px;
+    text-align: left;
+    color: #131523;
 }
 
 .viewers_details {
@@ -102,14 +114,42 @@
 }
 
 .totalViews {
+    font-family: Inter-SemiBold;
     font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.08px;
+    text-align: left;
+    color: #212b36;
     display: contents;
 }
 
 .watching_viewers {
     margin-left: 5px;
     vertical-align: bottom;
-    color: #999;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: normal;
+    text-align: left;
+    color: #7e84a3;
+}
+
+.views_period {
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: 0.08px;
+    text-align: left;
+    color: #212b36;
 }
 
 /* .realtime_chart canvas{
@@ -122,19 +162,25 @@
 }
 
 .timeperiod {
-    width: 100%;
+    width: 55%;
     float: left;
     font-size: 10px;
     position: relative;
     margin-bottom: 0px;
-    display: contents;
+
 }
 
 .timeperiod span {
-    width: 50%;
+    width: 100%;
     font-family: Inter-Regular;
     font-size: 12px;
-    color: #7e84a3;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #656a80;
 }
 
 .video_type_content {
@@ -145,7 +191,6 @@
 .video_type_content h5 {
     font-size: 20px;
     font-family: Inter-SemiBold;
-    filter: blur(0.3px);
     color: #131523;
     font-weight: normal;
     font-stretch: normal;
@@ -160,7 +205,7 @@
     float: left;
     background-color: #ffff;
     margin: 10px 10px 20px 0px;
-    padding: 5px 15px;
+    padding: 15px 15px;
     border-radius: 4px;
     /* height: 50vh; */
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -169,9 +214,18 @@
 .real_time_views_container,
 .countries_container,
 .devices_container .heading {
-    color: black;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: 0.09px;
+    text-align: left;
+    color: #131523;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    margin-top: 0px;
 }
 
 .countries_devices_container {
@@ -186,10 +240,10 @@
 .devices_container {
     /* height: 50vh; */
     border-radius: 6px;
-    padding: 5px 15px;
+    padding: 15px 15px;
     background-color: #ffff;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
-
+    position: relative;
 }
 
 .countries_container {
@@ -208,20 +262,17 @@
 .countries_heading h4 {
     margin-bottom: 0px;
     color: #131523;
-    filter: blur(0.3px);
     font-size: 14px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.21;
+    margin-top: 0px;
 }
 
 .countries_heading span {
     color: #5a607f;
     font-size: 12px;
-    filter: blur(0.3px);
-    font-size: 13px;
-    line-height: 1.23;
     line-height: 1.23;
     font-family: Inter-Regular;
 
@@ -266,8 +317,26 @@
     font-family: Inter-Regular;
     font-size: 13px;
     line-height: 1.08;
-    position: relative;
-    right: 5px;
+    position: absolute;
+    right: 25px;
+    bottom: 15px;
+}
+
+.country_table_top_border {
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #e6e9f4;
+    /* position: absolute; */
+
+}
+
+.top_border {
+    position: absolute;
+    bottom: 30px;
+    width: 90% !important;
+    float: left;
+    margin: 0px auto;
+    border-bottom: 1px solid #e6e9f4;
 }
 
 .doughnut_more_insights a {
@@ -286,10 +355,10 @@
 }
 
 .doughnut_graph canvas {
-    height: 42vh !important;
-    width: 80% !important;
-    margin-left: 10%;
-    margin-top: 10px;
+
+    height: 153.1px !important;
+    width: 306.2px !important;
+    margin: 10px auto;
 }
 
 .countries_map {
@@ -303,7 +372,7 @@
     width: 40%;
     height: 33vh;
     float: right;
-    padding: 10px
+    padding: 10px;
 }
 
 .countries_table table {
@@ -333,10 +402,16 @@
     padding: 5px;
     height: 48px;
     font-weight: 400;
-    font-size: 16px;
-
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.08;
+    letter-spacing: normal;
+    text-align: left;
+    color: #7e84a3;
 }
-
 .countries_table table {
     border-spacing: 0px;
 }
@@ -353,7 +428,6 @@
     padding: 5px;
     height: 45px;
     color: #212b36;
-    filter: blur(0.3px);
     font-family: Inter;
     font-size: 13px;
     font-weight: normal;
@@ -361,7 +435,6 @@
     font-style: normal;
     line-height: 1.08;
     letter-spacing: normal;
-    /* text-align: left; */
 }
 
 .countries_name {
@@ -387,14 +460,40 @@
 
 .label {
     margin-left: 5%;
+    width: 100%;
+    float: left;
 }
 
 .label p {
     margin-bottom: 10px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
 }
 
 .percentage {
-    margin-left: 40%;
+    width: 100%;
+    float:right;
+    margin-right: 30px;
+}
+
+.percentage p {
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.54;
+    letter-spacing: normal;
+    text-align: right;
+    color: #212b36;
+    margin-bottom: 0px;
 }
 
 /*----Metrics---------*/
@@ -532,7 +631,6 @@
     letter-spacing: 0.08px;
     text-align: left;
     color: #131523;
-    filter: blur(0.5px);
 }
 
 .totalViews span {
@@ -591,7 +689,9 @@
     width: 100%;
     float: left;
 }
-
+.countries_heading_content .export_img img{
+    margin-top: 0px;
+}
 .countries_heading_content h4 {
     width: 70%;
     float: left;
@@ -656,15 +756,10 @@
 .applications_card span,
 .Os_views span,
 .devices_container span {
-    color: #999;
     width: 100%;
     float: left;
-    font-size: 12px;
     color: #5a607f;
-    font-size: 12px;
-    filter: blur(0.3px);
-    font-size: 13px;
-    line-height: 1.23;
+    font-size: 12px;   
     line-height: 1.23;
     font-family: Inter-Regular;
     margin-bottom: 20px;
@@ -706,6 +801,21 @@
     right: 10%;
 }
 
+.card_info {
+    margin-top: 15px;
+    width: 80%;
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #656a80;
+    font-family: Inter-Regular;
+}
+
 .Os_views_card {
     width: 100%;
     float: left;
@@ -720,4 +830,99 @@
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
     border-radius: 6px;
+}
+@media screen and (max-width:991px){
+    .countries_devices_container{
+        display: block;
+    }
+    .countries_container{
+        width: 100%;
+        float: left;
+        margin-bottom: 20px;
+    }
+    /* .graphs_container{
+        display: block;
+    } */
+    .devices_container{
+        width: 50%;
+        float: left;
+    }
+    .Countries_videos .metric_cards {
+        width: 66%;
+        float: left;
+    }
+
+}
+/* dropdown */
+.inputSearch{
+    border:none;
+    outline:none;
+    width:100%;
+    border-bottom:solid 1px #d5dbe2;
+    font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  padding:8px
+}
+.all{
+    background-color: #fff;
+    position: absolute;
+    top:48px;
+    border:solid 1px #a8c3db;
+    border-radius: 2px;
+    cursor: pointer;
+    width:214px;
+    
+}
+.options{
+    cursor:pointer;
+}
+.content{
+    padding-left: 2px;
+}
+.org_name{
+    padding-left: 37px;
+    padding-top:7px;
+    color:#196068;
+    font-size:12px;
+}
+.displayName{
+    padding-left: 37px;
+    font-size:14px;
+    font-family: Inter-Medium;
+    color:#196068;
+}
+.names{
+    position: absolute;
+    top:5px;
+    padding-left: 3px;
+}
+.store{
+    position: absolute;
+    top: 23px;
+    padding-left: 8px;
+    height: 24px;
+}
+.clickable{
+    position: absolute;
+    top:32px;
+    height: 12px;
+   padding-left: 198px;
+    cursor: pointer;
+}
+.singleOption{
+    padding:8px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
+    font-family: Inter-Regular;
 }

@@ -6,7 +6,7 @@ export default function New_Access_token_id() {
         <div className={`${styles.container} ${styles.newtoken}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <Link href="/"><a className={styles.model_close} role="button"><img src="images/close.png" alt='icon'/> </a></Link>
+                    <Link href="/"><a className={styles.model_close} role="button"><img src="images/close.svg" alt='icon'/> </a></Link>
 
                 </div>
                 <div className={styles.main}>

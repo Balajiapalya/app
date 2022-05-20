@@ -20,14 +20,21 @@
     border-bottom: 1px solid #d5dbe2;   
     background-color: #fff;
 }
-.bloc_tabs span{
-    font-family:Inter-Regular;
+.bloc_tabs .tab{
+    font-family:Inter-Medium;
     font-size: 14px;
+
+    font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: #212b36
 }
 .tabs_item{
-  padding: 10px 15px 10px 0px;
+  padding: 10px 17px 10px 17px;
   text-align: center;
-  /* width: 15%; */
   background: transparent;
   color: #56606e;
   cursor: pointer;
@@ -49,10 +56,23 @@
     display: block;
     position: absolute;
     bottom: -11px;
-    left: 0;
-    width: 100%;
+    left: -17px;
+    width: 147.8px;
     height: 2px;
     background: #2863eb;
+}
+.api_center{
+    padding-left:27px;
+
+    font-family: Inter-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: center;
+  color: #56606e;
 }
 .content_tabs_area{
     flex-grow : 1;

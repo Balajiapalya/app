@@ -50,7 +50,7 @@ export default function Allstreams() {
                                 <td className={styles.actionicons}> <label htmlFor="roku"></label>
                                     <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
                                     <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <a><img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img></a>
+                                    <a><img src="/images/iconawesome-eye-slash.svg" alt="eye-slash"></img></a>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -85,7 +85,7 @@ export default function Allstreams() {
                                 <td className={styles.actionicons}>
                                 <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
                                 <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img>
+                                    <img src="/images/iconawesome-eye-slash.svg" alt="eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.color_red}>
@@ -129,7 +129,7 @@ export default function Allstreams() {
                                 <td className={styles.actionicons}>
                                 <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
                                    <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img>
+                                    <img src="/images/iconawesome-eye-slash.svg" alt="eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.opacity}>
@@ -145,7 +145,7 @@ export default function Allstreams() {
                                 <td className={styles.actionicons}>
                                 <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
                                 <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/iconawesome-eye-slash.png" alt="images/eye-slash"></img>
+                                    <img src="/images/iconawesome-eye-slash.svg" alt="images/eye-slash"></img>
                                 </td>
                             </tr>
                             <tr className={styles.color_yellow}>
@@ -161,7 +161,7 @@ export default function Allstreams() {
                                 <td className={styles.actionicons}>
                                 <a onClick={()=>setpreview(true)}><img src="/images/iconionic-ios-play-circle.png" alt="play-circle"></img></a>
                                 <Link href='statistics_unlockpremium'><a><img src="/images/iconionic-ios-stats.png" alt="ios-stats"></img></a></Link>
-                                    <img src="/images/iconawesome-eye-slash.png" alt="eye-slash"></img>
+                                    <img src="/images/iconawesome-eye-slash.svg" alt="eye-slash"></img>
                                 </td>
                             </tr>
                         </tbody>

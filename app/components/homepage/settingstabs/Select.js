@@ -1,11 +1,10 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useRef } from 'react'
 import Api from '../../api/api'
 import styles from '../../../styles/settings.module.css';
 
 const Select = ({ item, data }) => {
     const [isActive,setIsActive]=useState(false)
     const [opt, setOpt] = useState(item.roleId)
-    
     // const handleChange = (e) => {
     //     setOpt(e.target.value)
     //     let element = new Object()
@@ -16,6 +15,26 @@ const Select = ({ item, data }) => {
     //     Api.Selected_option(arr).then(res => console.log(res))
     // }
 
+    let node = useRef();
+   
+        useEffect(() => {
+           
+            let maybehandler = (e) => {
+               
+                if (!node.current.contains(e.target)) {
+                    setIsActive(false);
+                };
+            };
+            document.addEventListener('mouseup', maybehandler);
+            return () => {
+                document.removeEventListener('mouseup', maybehandler);
+            };
+    
+        }, []);
+        
+
+
+  
     const handleChange = (i,ind) => {
         
         let element = new Object()
@@ -35,14 +54,14 @@ const Select = ({ item, data }) => {
         //     </select>
         // </div>
 
-        <div className={styles.dropdown}>
+        <div ref={node} className={styles.dropdown}>
         <div className={styles.dropdownBtn} onClick={()=>setIsActive(!isActive)}>
             {opt==1?'Owner':opt==2?'Admin':'Member'}
             <img src="/images/iconawesome-chevrondown.png"/>
         </div>
         {isActive && <div className={styles.dropdownContent}>
             {data.map((i,ind) => 
-                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/images/check-circle.png"/>}</div>
+                <div key={ind} onClick={()=>handleChange(i,ind)} className={styles.dropdownItem}>{i.name}{i.id===opt && <img src="/imagesvg/check.svg"/>}</div>
             )}
         </div>}
     </div>

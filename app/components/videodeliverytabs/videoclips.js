@@ -7,10 +7,9 @@ export default function Videoclips() {
     
     return (
         <Fragment>
-
             <div className={styles.videoclips}>
                 <div className={styles.subtitles_list}>
-                    <h2>Video Clips</h2>
+                    <h2>List of Video Clips</h2>
                     <div className={styles.subtitles_list_table}>
                         <table>
                             <thead>
@@ -18,7 +17,7 @@ export default function Videoclips() {
 
                                     <th>Added on</th>
                                     <th>Name</th>
-                                    <th>Assets Id</th>
+                                    <th>Video ID</th>
 
                                     <th>Actions</th>
 
@@ -30,28 +29,28 @@ export default function Videoclips() {
                                     <td>02/12/21<br></br>6:03pm</td>
                                     <td>Clip1</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td className={styles.actionicons}><a>View Assets</a>
+                                    <td className={styles.actionicons}><a>View Video</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>02/12/21<br></br>6:03pm</td>
                                     <td>Clip1</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td className={styles.actionicons}><a>View Assets</a>
+                                    <td className={styles.actionicons}><a>View Video</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>02/12/21<br></br>6:03pm</td>
                                     <td>Clip1</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td className={styles.actionicons}><a>View Assets</a>
+                                    <td className={styles.actionicons}><a>View Video</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>02/12/21<br></br>6:03pm</td>
                                     <td>Clip1</td>
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td className={styles.actionicons}><a>View Assets</a>
+                                    <td className={styles.actionicons}><a>View Video</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -61,13 +60,11 @@ export default function Videoclips() {
                 </div>
                 <div className={styles.create_videoclips}>
                     <div className={styles.create_videoclips_header}>
-                        <h2>Creat Video Clips</h2>
+                        <h2>Create Video Clips</h2>
                     </div>
                     <Videoclips_tabs/>
                 </div>
             </div>
-
-
         </Fragment>
     )
 }

@@ -39,7 +39,9 @@ class Player extends Component {
           height="295px"
           ref={(player) => (this.player = player)}
           controls
+          onSeekedCapture={(e)=>pausedvideo(e)}
           onPause={(e)=>pausedvideo(e)}
+          
         />  
       </div>
     );

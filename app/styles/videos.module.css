@@ -129,12 +129,13 @@
     border-radius: 3px;
     padding: 7px 18px;
 }
-.videos .videos_delivery button img{
+
+.videos .videos_delivery button img {
     vertical-align: middle;
     margin: 0px 5px 1.5px 0px;
 }
 
-.videos hr {
+.videos .videos_delivery span {
     /* background-color: #d5dbe2; */
     margin-top: 17px;
     border-top: solid 1px #d5dbe2;
@@ -235,7 +236,7 @@
 }
 
 .checkbox {
-    border: 1px solid #9b9b9b;
+    border: 1px solid #c3c3c3 !important;
 }
 
 /* .addedon{
@@ -250,6 +251,7 @@
 
 .videos_table table thead {
     border: solid 1px #e3e3e3;
+    border-bottom: none;
 }
 
 /* .thumbnail{
@@ -328,44 +330,56 @@
     /* float: left; */
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-
 }
 
-.contextual_menu_hover {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
 
-.contextual_menu_container:hover {
-    background-color: #f5f5f5;
+.contextual_menu .content_menu_hover{
+    display: none;
+    
 }
-
-/* .contextual_menu_hover:hover{
-    background-color: #7c90a8;
-} */
+.contextual_menu:hover .content_menu_basic{
+    display: block;
+   
+}
+.contextual_menu:hover .content_menu_basic{
+    display: none;
+}
+.contextual_menu:hover .content_menu_hover{
+    display: block;
+}
 
 .contextual_menu_container .dropdown_list {
-    display: block;
     width: 155px;
     background-color: #797979;
     position: relative;
-    right: 11.5em;
-    bottom: 25px;
+    right: 11.7em;
+    bottom: 20px;
     z-index: 99;
     display: inline-grid;
-    border: solid 1px #d5dbe2;
-    border-radius: 2px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.08);
+    border: solid 0.5px #d6d6d6;
 }
-
+.dropdown_btn_top{
+    border-radius:4px 4px 0px 0px !important;
+    border-bottom:  1px solid #d5dbe2 !important;
+    border-top:  1px solid transparent !important;
+    border-left:  1px solid transparent !important;
+    border-right: 1px solid transparent !important;     
+}
+.dropdown_btn_bottom{
+    border-radius: 0px 0px 4px 4px !important;
+    border: 1px solid transparent !important;
+    border-bottom:  1px solid #d5dbe2 !important;
+}
+.dropdown_btn_middle{
+    border: 1px solid transparent !important;
+    border-bottom:  1px solid #d5dbe2 !important;
+}
 .contextual_menu_container .dropdown_list button {
     padding: 10px;
-    border-radius: 1px;
     background-color: #fdfdfd;
     padding: 14px 30px 14px 12px;
-    border: solid 1px #d5dbe2;
-    border-radius: 1px;
     text-align: start;
 }
 
@@ -387,27 +401,11 @@
 }
 
 .contextual_menu_container .dropdown_list button:hover {
-    background-color: #f4f6f8;
+    background-color: #f0f8fd;
     cursor: pointer;
 }
 
-.contextual_menu {
-    position: relative;
-    left: 1px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-}
 
-
-.contextual_menu::after {
-    position: relative;
-    left: 3px;
-    text-align: center;
-    content: '\2807';
-    font-size: 30px;
-    color: #7c90a8;
-}
 
 
 /* videosdelivery_addnewassets */
@@ -547,7 +545,7 @@
     border-bottom: 1px solid #cecece;
 }
 
-.or_text span {
+.or_text .divider {
     color: #a7acb2;
     background-color: #f4f6f8;
     position: relative;
@@ -578,6 +576,13 @@
     font-size: 14px;
     font-family: Inter-Regular;
     border: 1px solid #fafafa;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    
 }
 
 .model_btn {
@@ -654,6 +659,15 @@
     background-color: #f7f7f7;
     outline: none;
     border: 1px solid rgba(99, 115, 129, 0.15);
+    font-family: Inter-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
 }
 
 .code textarea {
@@ -662,13 +676,15 @@
 
 /*  */
 .videosdelivery_assets {
-    padding: 40px 5%;
+    width: 100%;
+    float: left;
+    padding: 40px 0%;
 }
 
-.videosdelivery_assets .padding {
-    padding-left: 205px;
+/* .videosdelivery_assets .padding {
+    padding-left: 80px;
 
-}
+} */
 
 .assets a {
     text-decoration: underline;
@@ -690,9 +706,37 @@
     font-size: 28px;
     padding-left: 28px;
     margin-top: 5px;
-
+}.videosdelivery_assets .header h2 button{
+    color: #2863eb;
+    margin-left: 5px;
+    background-color: inherit;
+    border: none;
+    padding: 0px;
 }
 
+.input_title {
+    padding-left: 25px;
+    padding-top: 2px;
+    margin-top: 5px;
+    margin-bottom: 1em;
+}
+.input_title input{
+    background-color: inherit;
+    border: none;
+    border-bottom:1px solid #555f6a;
+    width: 90px;
+    outline: none;
+    color: #555f6a;
+}
+.input_title button{
+    margin-left: 8px;
+    color: #2863eb;
+    background-color: inherit;
+    border: 1px solid #2863eb;
+    border-radius: 3px; 
+    font-size: 12px; 
+    padding: 3px 10px; 
+}
 .videosdelivery_assets .header h2 span {
     color: #2863eb;
     font-size: 12px;
@@ -710,8 +754,80 @@
 .edit_img {
     margin-left: 9px;
 }
-
-
+/* dropdown */
+.inputSearch{
+    border:none;
+    outline:none;
+    width:100%;
+    border-bottom:solid 1px #d5dbe2;
+    font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  padding:8px;
+  color: #196068;
+}
+.all{
+    background-color: #fff;
+    position: absolute;
+    top:48px;
+    border:solid 1px #a8c3db;
+    border-radius: 2px;
+    cursor: pointer;
+    width:214px;
+    
+}
+.options{
+    cursor:pointer;
+}
+.content{
+    padding-left: 2px;
+}
+.org_name{
+    padding-left: 37px;
+    padding-top:7px;
+    color:#196068;
+    font-size:12px;
+}
+.displayName{
+    padding-left: 37px;
+    font-size:14px;
+    font-family: Inter-Medium;
+    color:#196068;
+}
+.names{
+    position: absolute;
+    top:5px;
+    padding-left: 3px;
+}
+.store{
+    position: absolute;
+    top: 23px;
+    padding-left: 8px;
+    height: 24px;
+}
+.clickable{
+    position: absolute;
+    top:32px;
+    height: 12px;
+   padding-left: 198px;
+    cursor: pointer;
+}
+.singleOption{
+    padding:8px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
+    font-family: Inter-Regular;
+}
 /* @media only screen and (min-width: 200px)   {
     .videos_table table thead tr th {
         text-align: left;
