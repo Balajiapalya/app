@@ -80,7 +80,7 @@ const router=useRouter()
                     <ul>
                         <li>
                             {/* <Link href="/events_logs"> */}
-                                <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/Iconawesome-file-alt(white).svg" : "/images/iconawesome-file-alt.svg"} alt='icon'></img><span>Events & Logs</span>
+                                <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/iconawesome-file-alt(white).svg" : "/images/iconawesome-file-alt.svg"} alt='icon'></img><span>Events & Logs</span>
                                 </a>
                             {/* </Link> */}
                         </li>
