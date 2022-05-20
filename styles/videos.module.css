@@ -767,7 +767,8 @@
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  padding:8px
+  padding:8px;
+  color: #196068;
 }
 .all{
     background-color: #fff;

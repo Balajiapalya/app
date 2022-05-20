@@ -70,6 +70,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #212b36;
+    border-bottom: 1px solid #e3e3e3;
 }
 
 .wrapper_access_tokes .table table tbody {

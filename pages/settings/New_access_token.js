@@ -131,7 +131,7 @@ export default function New_Access_token({ closetoken }) {
                         <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
 
                      </div>
-                     <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
+                     <button type="button" onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
                      {select &&
                         <div className={styles.dropdown}>
                            <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
