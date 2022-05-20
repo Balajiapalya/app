@@ -851,4 +851,78 @@
         width: 66%;
         float: left;
     }
+
+}
+/* dropdown */
+.inputSearch{
+    border:none;
+    outline:none;
+    width:100%;
+    border-bottom:solid 1px #d5dbe2;
+    font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  padding:8px
+}
+.all{
+    background-color: #fff;
+    position: absolute;
+    top:48px;
+    border:solid 1px #a8c3db;
+    border-radius: 2px;
+    cursor: pointer;
+    width:214px;
+    
+}
+.options{
+    cursor:pointer;
+}
+.content{
+    padding-left: 2px;
+}
+.org_name{
+    padding-left: 37px;
+    padding-top:7px;
+    color:#196068;
+    font-size:12px;
+}
+.displayName{
+    padding-left: 37px;
+    font-size:14px;
+    font-family: Inter-Medium;
+    color:#196068;
+}
+.names{
+    position: absolute;
+    top:5px;
+    padding-left: 3px;
+}
+.store{
+    position: absolute;
+    top: 23px;
+    padding-left: 8px;
+    height: 24px;
+}
+.clickable{
+    position: absolute;
+    top:32px;
+    height: 12px;
+   padding-left: 198px;
+    cursor: pointer;
+}
+.singleOption{
+    padding:8px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
+    font-family: Inter-Regular;
 }

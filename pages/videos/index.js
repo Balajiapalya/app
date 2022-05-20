@@ -109,7 +109,7 @@ export default function Videos() {
         for (let i = 0; i < tRow.length; i++) {
             let td = tRow[i].getElementsByTagName('td')[2]
             let tdId = tRow[i].getElementsByTagName('td')[3]
-            let status = tRow[i].getElementsByTagName('td')[7]
+            let status = tRow[i].getElementsByTagName('td')[6]
             if (td || tdId || status) {
                 let data = td.innerText.toUpperCase()
                 let id = tdId.innerText.toUpperCase();
@@ -159,7 +159,7 @@ export default function Videos() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className="container">
-                        <div className={styles.content} ref={dropdownprod}>
+                        
 
                              {/* <p>{orName}
                                 <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
@@ -186,7 +186,7 @@ export default function Videos() {
                                         </div>
                                     </div>}
                              */}
-                        
+                        <div className={styles.content} ref={dropdownprod}>
                                 <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
                                     <div className={styles.names}>
                                         <div className={styles.org_name}>{orName}</div>

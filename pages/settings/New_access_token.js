@@ -168,9 +168,9 @@ export default function New_Access_token({ closetoken }) {
                   <label className={styles.model_label}>Access token name</label>
                   <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
                   {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
-                  <div className={styles.model_btn}>
+                  <div className={styles.model_btn_token}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
-                     <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>create Token</button>
+                     <button type="submit" className={`${styles.save_btn} btn btn-primary`}>create Token</button>
                      {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={resp} />}
                   </div>
                </form>
