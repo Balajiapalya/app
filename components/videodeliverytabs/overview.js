@@ -82,7 +82,7 @@ export default function Overview() {
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
-                                <button className='btn'> <img src="/images/iconawesome-file-alt.png" alt="file"></img> Activities</button>
+                                <button className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
                                 
                             </div>
                             <div className={styles.delete_stream}>
@@ -108,7 +108,7 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.svg`} /></td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
@@ -145,7 +145,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.videoId}`}>
-                                                    <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
                                             
@@ -159,7 +159,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
-                                                    <img onClick={() => showtooltip()} src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                    <img onClick={() => showtooltip()} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                                 {tooltip ? <span className={styles.tooltip}>copied</span> : null}
                                             </div>
@@ -178,7 +178,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`}>
-                                                    <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
                                         </div>
@@ -191,7 +191,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={localStorage.getItem('thumbnail')}>
-                                                    <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                    <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                                 {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null}
                                             </div>
@@ -212,7 +212,7 @@ export default function Overview() {
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
-                                                <img onClick={() => showtooltipURL()} src='/images/iconionic-ios-copy.png' alt='copy' />
+                                                <img onClick={() => showtooltipURL()} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                             </CopyToClipboard>
                                             {tooltipURL ? <span className={styles.tooltip}>copied</span> : null}
                                         </div>

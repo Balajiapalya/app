@@ -86,7 +86,7 @@ export default function Create_signing_key({ closesigninkeys }) {
         <div className={`${styles.container} ${styles.newkey}`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.png" alt='icon' width='20' height='20' /> </a>
+                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -104,16 +104,16 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 </>)}
                             </select>
 
-                            <img className={styles.file} src="/images/iconawesome-folder.png" alt='icon' />
-                            <button type="text" className={styles.up}><img src="/images/updown.png" alt='icon'></img></button>
+                            <img className={styles.file} src="/images/iconawesome-folder.svg" alt='icon' />
+                            <button type="text" className={styles.up}><img src="/images/updown.svg" alt='icon'></img></button>
                         </div> */}
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                                 {option ? option : 'Development'}
-                                <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
+                                <img className={styles.selectFile} src="images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
-                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="imagesvg/dropdown.svg" alt='icon'></img>
+                            <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.svg" alt='icon'></img></button>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -141,7 +141,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                     {selected ? selected : 'Product'}
                                     
                                 </div>
-                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
+                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="images/iconawesome-chevrondown.svg" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

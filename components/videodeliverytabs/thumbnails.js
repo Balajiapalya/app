@@ -75,7 +75,7 @@ export default function Thumbnails() {
                                 <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
                                 <div className={styles.copy_img}>
                                     <CopyToClipboard text={thumbnailurl}>
-                                        <img src='/images/iconionic-ios-copy.png' alt='copy' onClick={() => copy(thumbnailurl)} />
+                                        <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={() => copy(thumbnailurl)} />
                                     </CopyToClipboard>
                                 </div>
 

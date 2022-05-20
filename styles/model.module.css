@@ -50,7 +50,6 @@
 } */
 .model_close {
     color: #d1d1d1;
-
     cursor: pointer;
     float: right;
     /* padding: 15px 10px; */
@@ -128,14 +127,14 @@
     background-color: white;
     border: solid 1px rgba(99, 115, 129, 0.3);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
+    cursor: pointer;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.23;
     letter-spacing: normal;
-    text-align: left;
+    /* text-align: left; */
     color: #212b36;
 }
 
@@ -830,7 +829,7 @@
 
 .selectFile {
     position: absolute;
-    left: 20px;
+    left: 13px;
     height: 16.5px;
     width: 22px;
 }
@@ -1174,6 +1173,52 @@
     /* padding-left: 18px;
     margin-bottom: 2px; */
     font-size: 12px;
+}
+/* dropdown newmemberinvite */
+.inviteOptions{
+    width:455px;
+    background-color: #fff;
+    position:absolute;
+    border:solid 1px #a8c3db;
+    margin-top:2px;
+    border-radius: 2px;
+    top:466px;
+    cursor: pointer;
+}
+.dropdownOneInvite{
+    background: none;
+    border:none;
+    outline: none;
+    position: relative;
+    bottom:36px;
+    height: 8px;
+    left:432px;
+    cursor: pointer;
+}
+.searchSelectInvite{
+    border: none;
+    outline:none;
+    width:100%;
+    padding:9px;
+    border-bottom:solid 1px #d5dbe2;
+    padding-left: 12px;
+    font-size:13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+}
+.allOptionsInvite{
+    padding:5px 0px 5px 12px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing:normal;
+    color:#196068;
 }
 
 @media (min-width: 280px) and (max-width:510px) {

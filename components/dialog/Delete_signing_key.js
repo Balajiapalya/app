@@ -11,7 +11,7 @@ export default function Delete_signing_key({ closereovekeys, item }) {
                 <div className={styles.model_main}>
                     <div className={styles.model_nav}>
                         <h3 className={styles.model_title}>Delete Singing Key</h3>
-                        <a onClick={() => closereovekeys(false)} className={styles.model_close} role="button"><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
+                        <a onClick={() => closereovekeys(false)} className={styles.model_close} role="button"><img src="images/asset_status/iconClose.svg" alt='icon' /> </a>
                     </div>
 
                     <div className={styles.model_removeuser}>
