@@ -63,7 +63,7 @@ export default function Stream_statistics({setmonitoring}) {
                         </div>
                         <div className={styles.delete_stream}>
                             <button onClick={()=>set_delete_stream(true)} className='btn'>Delete Stream</button>
-                            <img src="/images/iconmaterial-delete.png" alt="delete"></img>
+                            <img src="/images/iconmaterial-delete.svg" alt="delete"></img>
                         </div>
                     </div>
 

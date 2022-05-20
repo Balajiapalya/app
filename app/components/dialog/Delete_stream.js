@@ -4,10 +4,11 @@ import Link from 'next/link'
 export default function Delete__stream({close_delete_stream}) {
     return (
         <div className={`${styles.model} ${styles.remove_user_modal}`} >
+            <div className={styles.model_container}>
             <div className={styles.model_main}>
                 <div className={styles.model_nav}>
                     <h3 className={styles.model_title}>Delete Stream</h3>
-                    <a onClick={()=>close_delete_stream(false)} className={styles.model_close} role="button"><img src="/images/close.png"  alt="close"/> </a>
+                    <a onClick={()=>close_delete_stream(false)} className={styles.model_close} role="button"><img src="/images/close.svg"  alt="close"/> </a>
                 </div>
 
                 <div className={styles.model_removeuser}>
@@ -18,6 +19,7 @@ export default function Delete__stream({close_delete_stream}) {
                     <button onClick={()=>close_delete_stream(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
                     <Link href='stream_monitor'><a><button type="button" className={`${styles.model_save_btn} btn btn-primary`}>Yes,delete</button></a></Link>
                 </div>
+            </div>
             </div>
         </div>
     )

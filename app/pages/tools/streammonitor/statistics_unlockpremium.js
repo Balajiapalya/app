@@ -59,7 +59,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.delete_stream}>
                                <a onClick={()=>set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
-                                <img src="/images/iconmaterial-delete.png" alt="delete"></img>
+                                <img src="/images/iconmaterial-delete.svg" alt="delete"></img>
                             </div>
                         </div>
                     </div>

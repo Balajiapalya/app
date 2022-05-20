@@ -11,7 +11,8 @@
     /* opacity: 0.91; */
 }
 .model_main{
-    width: 517px;
+    width: 100%;
+    float: left;
     margin:  auto ;
     background-color: #f4f6f8;
     border:1px solid #ddd;
@@ -118,7 +119,10 @@
     margin: 10px;
     font-family: OpenSans-SemiBold;
 }
-
+.model_container{
+    width: 496px;
+    margin: auto;
+}
 .model_canel_btn{
     
     border: 1px solid #9b9b9b;
