@@ -153,6 +153,15 @@ export default function Videos() {
             document.removeEventListener('mouseup', handleDropdown)
         }
     }, [])
+
+    const handlePopup=()=>{
+        // set_asset(true)
+        let table=document.querySelector('.table');
+        let popup=document.querySelector('.popup');
+        table.classList.add(`${styles.no_display}`)
+        table.classList.remove(`${styles.display}`)
+        popup.classList.remove(`${styles.no_display}`)
+    }
     return (
 
         <div className={styles.container}>
@@ -234,7 +243,7 @@ export default function Videos() {
                             <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
                                 You can Upload a video using API or directly from here to share it with your users</p>
                             <a >
-                                <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
+                                <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
 
                             </a>
                         </div>
@@ -244,7 +253,7 @@ export default function Videos() {
                         <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
                         <img src='/images/search_icon.png' alt='icon'></img>
                     </div>
-                    <div className={styles.videos_table}>
+                    <div className={`${styles.videos_table} table`}>
                         <table className="table_input">
                             <thead>
                                 <tr>
@@ -269,7 +278,10 @@ export default function Videos() {
                         </table>
 
                     </div>
-                    {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />}
+                    {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
+                    <div className={`${styles.no_display} popup`}>
+                    <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')}/>
+                    </div>
                 </div>
             </div>
         </div>
