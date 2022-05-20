@@ -5,10 +5,10 @@ import Link from 'next/link'
 import Direct_upload from '../../components/direct_uploade';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Image from 'next/image'
 
 
-
-export default function Videodelivery_addnewassets({ close_asset }) {
+export default function Videodelivery_addnewassets({ table }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const togglebtn = (index) => {
@@ -35,10 +35,18 @@ export default function Videodelivery_addnewassets({ close_asset }) {
         document.getElementById('prettyJSONFormat').value =
             JSONInPrettyFormat;
     }
+
+    // popup
+    const handlePopUp=()=>{
+        // close_asset(false)
+        let inpopUp=document.querySelector('.inpopup');
+        inpopUp.parentElement.classList.add(`${styles.no_display}`);
+        table.classList.remove(`${styles.no_display}`);
+    }
     return (
-        <div className={styles.videodelivery}>
+        <div className={`${styles.videodelivery} inpopup`}>
             <div className={styles.model_nav}>
-                <a onClick={() => close_asset(false)} className={styles.model_close} role="button"><img src="/images/close.svg" alt="close" /> </a>
+                <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
                 <Direct_upload />
@@ -102,7 +110,9 @@ export default function Videodelivery_addnewassets({ close_asset }) {
                         <button type='submit' className={`${styles.btn} ${styles.api_submit_btn}`}>Run Request</button>
                     </form>
                 </div>
-            </div>
+                </div>
+           
         </div>
+  
     )
 }
