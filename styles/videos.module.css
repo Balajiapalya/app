@@ -418,15 +418,17 @@
 
 .videodelivery {
     background-color: #f4f6f8;
-    height: 280vh;
+    /* height: 280vh; */
     border: 1px solid whitesmoke;
     width: 100%;
     display: table;
     position: absolute;
     z-index: 99;
     top: 0;
-    left: 0
+    left: 0;
+    padding:5vh;
 }
+
 
 .Videodelivery_addnewassets {
     width: 667px;
@@ -827,6 +829,14 @@
     color: #196068;
     font-family: Inter-Regular;
 }
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
+}
+
 /* @media only screen and (min-width: 200px)   {
     .videos_table table thead tr th {
         text-align: left;
