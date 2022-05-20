@@ -88,7 +88,8 @@ export default function Create_new_webhook({ closewebhook }) {
                                 {option ? option : 'Development'}
                                 <img className={styles.selectFile} src="images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
-                            <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.svg" alt='icon'></img></button>
+
+                            <button type="button" onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
