@@ -119,7 +119,7 @@ export default function Environment() {
             </p>
             <button onClick={() => handlePopUp()} className="btn">
               {" "}
-              <img src="/images/iconfeather-plus.png" /> Add Environment
+              <img src="/images/iconfeather-plus.svg" /> Add Environment
             </button>
           </div>
           <div className={styles.environments_table}>

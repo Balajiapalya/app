@@ -55,7 +55,7 @@ export default function Statistics_unlockpremium() {
                             </div>
                             <div className={styles.actions}>
                                 <a onClick={()=>setactivities(true)}><button className='btn'>Activities</button></a>
-                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
+                                <img src="/images/iconawesome-file-alt.svg" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                <a onClick={()=>set_delete_stream(true)}><button className='btn'>Delete Stream</button></a>
@@ -112,10 +112,10 @@ export default function Statistics_unlockpremium() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -144,39 +144,39 @@ export default function Statistics_unlockpremium() {
                                     <tr>
                                         <td>Stream1</td>
                                         <td>360p</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td>30 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br> <a onClick={()=>set_premium(true)}>Unlock Premium</a></td>
                                     </tr>
                                     <tr>
                                         <td>Stream2</td>
                                         <td>480p</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td>60 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                     <tr>
                                         <td>Stream3</td>
                                         <td>720p</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td>90 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                     <tr>
                                         <td>Stream4</td>
                                         <td>1080p</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td>120 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -217,7 +217,7 @@ export default function Statistics_unlockpremium() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                 
                                         <td className={styles.check}>
                                     <div className={styles.background}>
@@ -229,7 +229,7 @@ export default function Statistics_unlockpremium() {
                                         </div>
                                     </div>
                                 </td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>

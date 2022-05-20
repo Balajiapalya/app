@@ -1,6 +1,7 @@
 import styles from '../../styles/model.module.css'
 import { useEffect, useState, useRef } from 'react'
 import Api from '../api/api'
+import Image from 'next/image'
 
 const SecretKey = ({ setNewToken, closetoken, res }) => {
     const refOne = useRef()
@@ -36,17 +37,17 @@ const SecretKey = ({ setNewToken, closetoken, res }) => {
 
         <div className={styles.body}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} role="button" onClick={() => setNewToken(false)}><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
+                <a className={styles.model_close} role="button" onClick={() => setNewToken(false)}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2>Below is the new Access Token:</h2>
                 <h3>Access Token ID:</h3>
                 <input ref={refOne} defaultValue={res.accessTokenId} readOnly />
-                <img onClick={() => copyText()} className={styles.imgCopy} src="images/favicon/copy.png" />
+                <img onClick={() => copyText()} className={styles.imgCopy} src="images/iconionic-ios-copy.svg" />
                 <h3>Secret Key:</h3>
                 <h4>We don&apos;t store the secret key. Please copy or download it into your system</h4>
                 <input ref={refTwo} defaultValue={res.secretKey} readOnly />
-                <img onClick={() => copyTwo()} className={styles.imgCopy} src="images/favicon/copy.png" />
+                <img onClick={() => copyTwo()} className={styles.imgCopy} src="images/iconionic-ios-copy.svg" />
                 <br />
                 <div className={styles.butn}>
                     <a onClick={() => downloadFile()}>Download as .env file</a>

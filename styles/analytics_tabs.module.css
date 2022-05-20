@@ -876,7 +876,7 @@
     border-radius: 2px;
     cursor: pointer;
     width:214px;
-    
+    z-index: 1;
 }
 .options{
     cursor:pointer;
@@ -903,9 +903,9 @@
 }
 .store{
     position: absolute;
-    top: 23px;
+    top: 26px;
     padding-left: 8px;
-    height: 24px;
+    /* height: 24px; */
 }
 .clickable{
     position: absolute;

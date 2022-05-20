@@ -93,7 +93,7 @@ export default function Accounts() {
                 <div className={styles.logout}>
                   <img
                     className={styles.logout_img}
-                    src="/images/iconfeather-log-out(blue).png"
+                    src="/images/iconfeather-log-out(blue).svg"
                     alt="logout"
                   ></img>
                   <button
@@ -178,7 +178,7 @@ export default function Accounts() {
                                   >
                                     {items.name}{" "}
                                     {key == highlightedorg && (
-                                      <img src="/images/check-circle.png"></img>
+                                      <img src="/images/asset_status/ready.svg"></img>
                                     )}
                                   </button>
                                 </td>
