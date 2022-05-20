@@ -24,7 +24,7 @@ export default function Subtitleconvertor() {
                             <input type="file" name="myfile" />
 
                             <div className={styles.files_uploded}>
-                            <p><img src='/images/iconawesome-check-circle.png' />File uploded.</p>
+                            <p><img src='images/asset_status/ready.svg' />File uploded.</p>
                             <h5>movie_subtitles.srt</h5>
                             </div>
                             

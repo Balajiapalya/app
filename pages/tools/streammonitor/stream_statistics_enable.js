@@ -56,7 +56,7 @@ export default function Stream_statistics_enable() {
                             </div>
                             <div className={styles.actions}>
                                 <a onClick={() => setactivities(true)}><button className='btn'>Activities</button></a>
-                                <img src="/images/iconawesome-file-alt.png" alt="file"></img>
+                                <img src="/images/iconawesome-file-alt.svg" alt="file"></img>
                             </div>
                             <div className={styles.delete_stream}>
                                 <button onClick={() => set_delete_stream(true)} className='btn'>Delete Stream</button>
@@ -111,10 +111,10 @@ export default function Stream_statistics_enable() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -143,14 +143,14 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream1</td>
                                         <td>360p</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td>30 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
                                                 <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
@@ -210,14 +210,14 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream2</td>
                                         <td>480p</td>
-                                        <td><img src="/images/check-circle.png" alt="check"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check"></img></td>
                                         <td>60 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
                                                 <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
@@ -280,14 +280,14 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream3</td>
                                         <td>720p</td>
-                                        <td><img src="/images/check-circle.png" alt="check"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check"></img></td>
                                         <td>90 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
                                                 <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
@@ -350,14 +350,14 @@ export default function Stream_statistics_enable() {
                                     <tr>
                                         <td>Stream4</td>
                                         <td>1080p</td>
-                                        <td><img src="/images/check-circle.png" alt="check"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check"></img></td>
                                         <td>120 kbps</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td className={styles.details}>
                                             <div className={styles.stream_info}>
                                                 <img src="/images/iconmaterial-info-outline(blue).png" alt="outline"></img>
@@ -437,7 +437,7 @@ export default function Stream_statistics_enable() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -464,7 +464,7 @@ export default function Stream_statistics_enable() {
                                 <tbody>
                                     <tr>
                                         <td>Asianet-Roku</td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                         <td className={styles.error}>
                                             <div className={styles.alert}>
                                                 <img src="/images/iconmaterial-error.png" alt="error"></img>
@@ -475,7 +475,7 @@ export default function Stream_statistics_enable() {
 
                                             </div>
                                         </td>
-                                        <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                        <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -41,7 +41,7 @@ export default function Allstreams() {
                                 <td><input type="checkbox" id="roku"></input></td>
                                 <td><label htmlFor="roku"><a>Asianet-Roku</a></label></td>
                                 <td><label htmlFor="roku">http://akamaiaus1.akamaized.net</label></td>
-                                <td className={styles.check}><label htmlFor="roku"></label><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                <td className={styles.check}><label htmlFor="roku"></label><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                 <td><label htmlFor="roku">60 mins</label></td>
                                 <td><label htmlFor="roku">50 kbps</label></td>
                                 <td><label htmlFor="roku">Healthy</label></td>

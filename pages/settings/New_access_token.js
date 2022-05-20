@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import { useEffect, useState, useRef } from 'react'
 import SecretKey from '../../components/dialog/SecretKey'
+import Image from 'next/image'
 
 export default function New_Access_token({ closetoken }) {
    const [data, setData] = useState([])
@@ -14,7 +15,6 @@ export default function New_Access_token({ closetoken }) {
    const [select, setSelect] = useState(false)
    const [option, setOption] = useState()
   
-
    useEffect(() => {
       Api.Get_environment_types_data().then(res =>
          setData(res.data.data))
@@ -102,7 +102,7 @@ export default function New_Access_token({ closetoken }) {
       <div className={`${styles.container} ${styles.accesstoken_model}`}>
          <div className={styles.body}>
             <div className={styles.model_nav}>
-               <a className={styles.model_close} role="button" onClick={() => handleClose()}><img src="images/asset_status/iconClose.png" alt='icon' /> </a>
+               <a className={styles.model_close} role="button" onClick={() => handleClose()}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
             </div>
             <div className={styles.main}>
                <h3 className={styles.model_title}>New Access Token</h3>
@@ -121,17 +121,17 @@ export default function New_Access_token({ closetoken }) {
                               <option key={option.id} value={option.id}>{option.name}</option>
                            </>)}
                      </select>
-                     <img className={styles.file} src="images/iconawesome-folder.png" alt='icon'></img>
-                     <button type="text" className={styles.up}><img src="images/updown.png" alt='icon'></img></button>
+                     <img className={styles.file} src="images/iconawesome-folder.svg" alt='icon'></img>
+                     <button type="text" className={styles.up}><img src="images/updown.svg" alt='icon'></img></button>
                   </div> */}
 
                   <div ref={selectDropdown} className={styles.select}>
                      <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                         {option ? option : 'Development'}
-                        <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
+                        <img className={styles.selectFile} src="images/iconawesome-folder.svg" alt='icon'></img>
 
                      </div>
-                     <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
+                     <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.svg" alt='icon'></img></button>
                      {select &&
                         <div className={styles.dropdown}>
                            <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

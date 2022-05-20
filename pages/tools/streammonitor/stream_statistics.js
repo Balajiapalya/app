@@ -59,7 +59,7 @@ export default function Stream_statistics({setmonitoring}) {
                         </div>
                         <div className={styles.actions}>
                             <button onClick={()=>set_activities(true)} className='btn'>Activities</button>
-                            <img src="/images/iconawesome-file-alt.png" alt="file"></img>
+                            <img src="/images/iconawesome-file-alt.svg" alt="file"></img>
                         </div>
                         <div className={styles.delete_stream}>
                             <button onClick={()=>set_delete_stream(true)} className='btn'>Delete Stream</button>
@@ -118,10 +118,10 @@ export default function Stream_statistics({setmonitoring}) {
                             <tbody>
                                 <tr>
                                     <td>Asianet-Roku</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -151,41 +151,41 @@ export default function Stream_statistics({setmonitoring}) {
                                 <tr>
                                     <td>Stream1</td>
                                     <td>360p</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     <td>30 kbps</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     <td colSpan="4" rowSpan="4">Advanced stream monitoring.<br></br>Enable Frame Freeze detection,Black frame detection,<br></br>Audio loss detection and detialed stream info.<br></br><a onClick={()=>setpremium(true)}>Enable Premium Features</a></td>
                                 </tr>
                                 <tr>
                                     <td>Stream2</td>
                                     <td>480p</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     <td>60 kbps</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>Stream3</td>
                                     <td>720p</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     <td>90 kbps</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                    
                                 </tr>
                                 <tr>
                                     <td>Stream4</td>
                                     <td>1080p</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     <td>120 kbps</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     
                                 </tr>
                             </tbody>
@@ -226,9 +226,9 @@ export default function Stream_statistics({setmonitoring}) {
                             <tbody>
                                 <tr>
                                     <td>Asianet-Roku</td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                     <td><img src="/images/iconmaterial-error.png" alt="error"></img></td>
-                                    <td><img src="/images/check-circle.png" alt="check-circle"></img></td>
+                                    <td><img src="/images/asset_status/ready.svg" alt="check-circle"></img></td>
                                 </tr>
                             </tbody>
                         </table>
