@@ -101,8 +101,12 @@ export default function Environment() {
     setNewInput(e.target.value)
   }
   const handlePopUp = () => {
-    document.body.style.overflow = 'hidden'
     set_addnewenv(true)
+    let table=document.querySelector('.table');
+    let popup=document.querySelector('.popup');
+    table.classList.add(`${styles.no_display}`)
+    table.classList.remove(`${styles.display}`)
+    popup.classList.remove(`${styles.no_display}`)
   }
   return (
     <div className="container">
@@ -122,7 +126,7 @@ export default function Environment() {
               <img src="/images/iconfeather-plus.svg" /> Add environment
             </button>
           </div>
-          <div className={styles.environments_table}>
+          <div className={`${styles.environments_table} table`}>
             <table>
               <thead>
                 <tr>
@@ -274,7 +278,9 @@ export default function Environment() {
             </table>
           </div>
         </div>
-        {addnewenv && <Add_new_environment closeenv={set_addnewenv} />}
+        <div  className={`${styles.no_display} popup`}>
+        <Add_new_environment table={process.browser && document.querySelector('.table')} closeenv={set_addnewenv} />
+        </div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Videograph</title>
         <meta name="description" content="powered by yupp" />
-        <link rel="icon" href="images/favicon/favicon-16x16.png" />
+        <link rel="icon" href="/images/favicon/favicon-16x16.png" />
       </Head>
       {/* <Settings /> */}
       <Environment/>

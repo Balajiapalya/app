@@ -33,8 +33,13 @@ function Webhooks() {
         return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
     };
     const popup=()=>{
-        document.body.style.overflow='hidden'
-        setopenwebhook(true)
+        // document.body.style.overflow='hidden'
+        setopenwebhook(true);
+        let table=document.querySelector('.tablemain');
+        let popup=document.querySelector('.popup');
+        table.classList.add(`${styles.no_display}`)
+        table.classList.remove(`${styles.display}`)
+        popup.classList.remove(`${styles.no_display}`)
     }
     return (
         <Fragment>
@@ -45,8 +50,10 @@ function Webhooks() {
                     </p>
                     <button className="btn" onClick={() =>popup()}>Create new Webhook</button>
                 </div>
-                {openwebhook && <Create_new_webhook closewebhook={setopenwebhook} />}
-               <div className={styles.table}>
+                <div  className={`${styles.no_display} popup`}>
+                <Create_new_webhook table={process.browser && document.querySelector('.tablemain')} closewebhook={setopenwebhook}/>
+                </div>
+               <div className={`${styles.table} tablemain`}>
                     <table>
                         <thead>
                             <tr>

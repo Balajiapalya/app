@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import Api from '../api/api'
 import Image from 'next/image'
 
-const SecretKey = ({ setNewToken, closetoken, res }) => {
+const SecretKey = ({ setNewToken, closetoken,close, res }) => {
     const refOne = useRef()
     const refTwo = useRef()
     const copyText = () => {
@@ -29,15 +29,15 @@ const SecretKey = ({ setNewToken, closetoken, res }) => {
         element.click()
     }
     const handleClose = () => {
-        document.body.style.overflow = 'scroll'
         setNewToken(false);
         closetoken(false);
+        close()
     }
     return (
 
         <div className={styles.body}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} role="button" onClick={() => setNewToken(false)}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
+                <a className={styles.model_close} role="button" onClick={() => `${setNewToken(false)} ${ closetoken(false)}`}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2>Below is the new Access Token:</h2>

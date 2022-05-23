@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 
 
-const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
+const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys,close }) => {
     let res;
     if (signRes.privateKey !== undefined) {
         res = atob(signRes.privateKey)
@@ -28,15 +28,15 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
         signElement.click()
     }
     const handleClose = () => {
-        document.body.style.overflow = 'scroll';
         closesigninkeys(false);
         setOpenCreate(false)
+        close()
     }
     return (
 
         <div className={styles.body}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} onClick={() => setOpenCreate(false)}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
+                <a className={styles.model_close} onClick={() => {`${setOpenCreate(false)} ${closesigninkeys(false)}`}}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2>Below is your new Signinkey Key:</h2>

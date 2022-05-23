@@ -59,7 +59,7 @@ export default function Stream_premiumenable() {
                             <p>Get detailed stream info such as Video codec,Audio codec,Aspect Ratio,Profile,Color,Space,etc.</p>
                         </div>
                         <div className={styles.premiumfeatures_check}>
-                            <img className={styles.check} src="images/asset_status/ready.svg" alt="check"></img>
+                            <img className={styles.check} src="/images/asset_status/ready.svg" alt="check"></img>
                             <label className={styles.model_label}>Frame freeze detection</label>
                             <p>Detects frame freeze events in a stream.</p>
                         </div>

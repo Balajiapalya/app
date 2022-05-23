@@ -1,11 +1,12 @@
 import styles from '../../styles/model.module.css';
+import styleDis from '../../styles/apiaccess.module.css'
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import { useEffect, useState, useRef } from 'react'
 import SecretKey from '../../components/dialog/SecretKey'
 import Image from 'next/image'
 
-export default function New_Access_token({ closetoken }) {
+export default function New_Access_token({ table ,closetoken}) {
    const [data, setData] = useState([])
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
    const [productType, setProductType] = useState([])
@@ -61,8 +62,9 @@ export default function New_Access_token({ closetoken }) {
 
    const videoAll = watch('video')
    const handleClose = () => {
-      document.body.style.overflow = 'scroll'
-      closetoken(false)
+      let inpopUp=document.querySelector('.inpopup');
+      inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
+      table.classList.remove(`${styleDis.no_display}`);
    }
 
    const handleSelect = () => {
@@ -99,7 +101,7 @@ export default function New_Access_token({ closetoken }) {
       }
    }, [])
    return (
-      <div className={`${styles.container} ${styles.accesstoken_model}`}>
+      <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
          <div className={styles.body}>
             <div className={styles.model_nav}>
                <a className={styles.model_close} role="button" onClick={() => handleClose()}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
@@ -129,11 +131,7 @@ export default function New_Access_token({ closetoken }) {
                      <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                         {option ? option : 'Development'}
                         <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
-
                      </div>
-
-                    
-
                      <button type="button" onClick={() => handleSelect()} className={styles.drpdwn}><img src="/images/updown.png" alt='icon'></img></button>
 
                      {select &&
@@ -175,7 +173,7 @@ export default function New_Access_token({ closetoken }) {
                   <div className={styles.model_btn_token}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
                      <button type="submit" className={`${styles.save_btn} btn btn-primary`}>create Token</button>
-                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} res={resp} />}
+                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} close={handleClose} res={resp} />}
                   </div>
                </form>
             </div>
