@@ -1,11 +1,12 @@
 import styles from '../../styles/model.module.css';
+import styleDis from '../../styles/webhooks.module.css';
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Api from '../../components/api/api';
 import { useState, useEffect,useRef } from 'react'
 import Image from 'next/image'
 
-export default function Create_new_webhook({ closewebhook }) {
+export default function Create_new_webhook({ closewebhook,table }) {
     const [data, setData] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [option, setOption] = useState();
@@ -16,14 +17,20 @@ export default function Create_new_webhook({ closewebhook }) {
     }, [])
 
     const onSubmit = webhook_data => {
-        document.body.style.overflow = 'scroll'
+        // document.body.style.overflow = 'scroll'
         let newObj = Object.fromEntries(Object.entries(webhook_data).slice(0, 2))
         newObj.environmentUUID = localStorage.getItem('envuuid')
-        Api.Create_webhook_data(newObj).then(res => closewebhook(false))
+        Api.Create_webhook_data(newObj).then(res =><>
+        {closePopup()}
+        {closewebhook(false)}
+        </>)
     }
     const closePopup = () => {
-        document.body.style.overflow = 'scroll';
-        closewebhook(false)
+        // document.body.style.overflow = 'scroll';
+        // closewebhook(false)
+        let inpopUp=document.querySelector('.inpopup');
+        inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
+        table.classList.remove(`${styleDis.no_display}`);
     }
 
     const handleSelect = () => {
@@ -60,7 +67,7 @@ export default function Create_new_webhook({ closewebhook }) {
         }
      }, [])
     return (
-        <div className={`${styles.container} ${styles.newwebhook_model}`} >
+        <div className={`${styles.container} ${styles.newwebhook_model} inpopup`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
                     <a className={styles.model_close} role="button" onClick={() => closePopup()}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
