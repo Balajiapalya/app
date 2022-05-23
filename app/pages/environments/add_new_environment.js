@@ -1,16 +1,22 @@
 import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import { useRouter } from 'next/router'
 
 
 export default function Add_new_environment({ closeenv }) {
 
     const [env, setenv] = useState([]);
+    const [selected,setSelected]=useState();
+  const [productSelect, setProductSelect] = useState(false)
+  const [idSubmit,setIdSubmit]=useState()
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
-        document.body.style.overflow='scroll';
+
+        document.body.style.overflow = 'scroll';
+        new_env_data.environmentTypeId=idSubmit
         const uuid = localStorage.getItem("uuid");
         new_env_data.orgUUID = uuid;
         Api.Post_env(new_env_data)
@@ -32,15 +38,48 @@ export default function Add_new_environment({ closeenv }) {
                 console.log(error)
             })
     }, [])
-    const closePopUp=()=>{
-        document.body.style.overflow='scroll';
+    const closePopUp = () => {
+        document.body.style.overflow = 'scroll';
         closeenv(false)
+    }
+// dropdown
+    const searchHandle = (e) => {
+        let options = document.querySelectorAll('#opt')
+        for (let i = 0; i < options.length; i++) {
+            let name = options[i].innerHTML.toLowerCase()
+            let searchValue = e.target.value.toLowerCase()
+            if (name.indexOf(searchValue) > -1) {
+                options[i].style.display = 'block'
+            } else {
+                options[i].style.display = 'none'
+
+            }
+        }
+    }
+
+    let dropdownprod = useRef()
+    useEffect(() => {
+        const handleDropdown = (e) => {
+           
+            if(!dropdownprod.current.contains(e.target)){
+                 setProductSelect(false)
+            }
+        }
+        document.addEventListener('mouseup', handleDropdown)
+        return () => {
+            document.removeEventListener('mouseup', handleDropdown)
+        }
+    }, [])
+    const handleSelected=(prod)=>{
+        setSelected(prod.name)
+        setIdSubmit(prod.id)
+        setProductSelect(false)
     }
     return (
         <div className={`${styles.container} ${styles.accesstoken_model}`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() =>closePopUp()}><img src="/images/close.svg" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closePopUp()}><img src="/images/close.svg" alt='icon' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>Add New Environment</h3>
@@ -56,7 +95,7 @@ export default function Add_new_environment({ closeenv }) {
                         {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
                         <label className={styles.model_label}>Type</label>
 
-                        <select
+                        {/* <select
                             name="environmentTypeId"
                             className={styles.model_selection}
                             {...register("environmentTypeId", { required: true, valueAsNumber: true, })}
@@ -65,10 +104,27 @@ export default function Add_new_environment({ closeenv }) {
                             {env.map((item, key) =>
                                 <option key={key} value={parseInt(item.id)}>{item.name}</option>
                             )}
-                        </select>
-                        <div className={styles.model_btn}>
+                        </select> */}
+
+                        <div ref={dropdownprod} className={styles.select}>
+                            <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
+                                {selected ? selected : 'Product'}
+
+                            </div>
+                            <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
+                            {
+                                productSelect && <div className={styles.dropdown}>
+                                    <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
+                                    <div className={styles.allOptions}>
+                                        {env.map(product =>
+                                            <div key={product.id} value={product.id} id="opt" onClick={() => handleSelected(product)}>{product.name}</div>)}
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
-                            <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Add Environment</button>
+                            <button type="submit" className={`${styles.save_btn} btn btn-primary`}>Add Environment</button>
                         </div>
                     </form>
                 </div>

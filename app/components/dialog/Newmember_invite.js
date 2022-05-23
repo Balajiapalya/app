@@ -34,28 +34,31 @@ export default function Newmember_invite({ closeModel }) {
             <a className={styles.model_close} role="button" onClick={() => closeModel(false)} ><img src="images/close.svg" alt='icon' /> </a>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} >
-            <label className={styles.model_label}>Email Address</label>
-            <input
-              type="email"
-              className={`${styles.model_input} form_control`}
-              name="email"
-              {...register("email", { required: true })}
-            />
-            {errors.email && <p className={`${styles.validations} validations`}>This field is required</p>}
 
-            <div>
-              <label className={styles.model_label}>Role</label>
+            <div className={styles.model_form}>
+              <label className={styles.model_label}>Email Address</label>
+              <input
+                type="email"
+                className={`${styles.model_input} form_control`}
+                name="email"
+                {...register("email", { required: true })}
+              />
+              {errors.email && <p className={`${styles.validations} validations`}>This field is required</p>}
 
-              <select
-                className={styles.model_selection} name="roleId"
-                {...register("roleId", {
-                  required: true, valueAsNumber: true,
-                })}>
-                {data.map((item, key) =>
-                  <>
-                    <option key={key} value={parseInt(item.id)}>{item.name}</option>
-                  </>)}
-              </select>
+              <div>
+                <label className={styles.model_label}>Role</label>
+
+                <select
+                  className={styles.model_selection} name="roleId"
+                  {...register("roleId", {
+                    required: true, valueAsNumber: true,
+                  })}>
+                  {data.map((item, key) =>
+                    <>
+                      <option key={key} value={parseInt(item.id)}>{item.name}</option>
+                    </>)}
+                </select>
+              </div>
             </div>
             <div className={styles.model_btn}>
               <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >Send Invitation</button>

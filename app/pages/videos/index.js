@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Layout from '../../components/common/layout';
 import { useEffect } from 'react'
 import Api from '../../components/api/api'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
 import VideoList, { Video_file } from '../../components/video_list'
@@ -17,6 +17,10 @@ export default function Videos() {
     const [dirdata, set_directdata] = useState([]);
     const [order, setorder] = useState("ASC");
     const [ordernum, set_ordernum] = useState("ASC")
+    const [vidDropdown, setVidDropdown] = useState()
+    const [selected, setSelected] = useState(false)
+    const [defaultenv,setDefaultenv]=useState()
+
     const sorting = (col) => {
         if (order === "ASC") {
             const sorted = [...videoData].sort((a, b) =>
@@ -64,6 +68,7 @@ export default function Videos() {
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
+                
             })
             .catch(error => {
                 console.log(error)
@@ -72,7 +77,6 @@ export default function Videos() {
             .then(res => {
                 if (res.data.status = "Success") {
                     setEnvSelect(res.data.data)
-
                 }
             })
             .catch(error => {
@@ -80,9 +84,9 @@ export default function Videos() {
             })
     }, [id, add_asset])
 
-    const handleChange = (e) => {
-        setId(e.target.value)
-        localStorage.setItem("envuuid", e.target.value)
+    const handleChange = (i) => {
+        setId(i.uuid)
+        localStorage.setItem("envuuid", i.uuid)
     }
 
     const create_On = (date) => {
@@ -104,13 +108,13 @@ export default function Videos() {
         let tRow = table.getElementsByTagName('tr')
         for (let i = 0; i < tRow.length; i++) {
             let td = tRow[i].getElementsByTagName('td')[2]
-            let tdId=tRow[i].getElementsByTagName('td')[3]
-            let status=tRow[i].getElementsByTagName('td')[7]
+            let tdId = tRow[i].getElementsByTagName('td')[3]
+            let status = tRow[i].getElementsByTagName('td')[6]
             if (td || tdId || status) {
                 let data = td.innerText.toUpperCase()
-                let id=tdId.innerText.toUpperCase();
-                let stat=status.innerText.toUpperCase()
-                if (data.indexOf(input) > -1 || id.indexOf(input)>-1 || stat.indexOf(input)>-1) {
+                let id = tdId.innerText.toUpperCase();
+                let stat = status.innerText.toUpperCase()
+                if (data.indexOf(input) > -1 || id.indexOf(input) > -1 || stat.indexOf(input) > -1) {
                     tRow[i].style.display = ''
                 } else {
                     tRow[i].style.display = 'none'
@@ -119,22 +123,100 @@ export default function Videos() {
         }
     }
 
+    
+    const searchHandle = (e) => {
+        let options = document.querySelectorAll('#opt')
+        for (let i = 0; i < options.length; i++) {
+            let name = options[i].innerHTML.toLowerCase()
+            let searchValue = e.target.value.toLowerCase()
+            if (name.indexOf(searchValue) > -1) {
+                options[i].style.display = 'block'
+            } else {
+                options[i].style.display = 'none'
+
+            }
+        }
+    }
+    const handleSelected = (item) => {
+        setSelected(item.name)
+        setVidDropdown(false)
+    }
+    let dropdownprod = useRef()
+    useEffect(() => {
+        const handleDropdown = (e) => {
+            if (!dropdownprod.current.contains(e.target)) {
+                setVidDropdown(false)
+            }
+        }
+        document.addEventListener('mouseup', handleDropdown)
+        return () => {
+            document.removeEventListener('mouseup', handleDropdown)
+        }
+    }, [])
     return (
 
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className="container">
-                        <div className={styles.content_development}>
-                            <img className={styles.store_icon_png} src='/images/storeicon.png' />
-                            <p>{orName} <br />
+                        
+
+                             {/* <p>{orName}
                                 <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                     {envSelect.map(i => <>
                                         <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
                                     </>)}
                                 </select>
-                            </p>
+                                        </p> */}
+                               {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
 
+                                    {selected ? selected : 'Product'}
+
+                                </div>
+                                
+                                <img className={styles.storefolder} src='/images/storeicon.png' />
+                                <img className={styles.drpdwn} src="images/updown.png" alt='icon' onClick={() => setVideoDrop(!videoDrop)}></img>
+                                {videoDrop &&
+                                    <div className={styles.videoOptions}>
+                                        <input className={styles.searchSelect} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
+                                        <div className={styles.all_options}>
+                                            {envSelect.map(i =>
+                                                <div selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid} id="opt" onClick={() => handleSelected(i)}>{i.name}</div>
+                                            )}
+                                        </div>
+                                    </div>}
+                             */}
+                        <div className={styles.content} ref={dropdownprod}>
+                                <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
+                                    <div className={styles.names}>
+                                        <div className={styles.org_name}>{orName}</div>
+                                        <div className={styles.displayName}>
+                                            {envSelect.map(i=>{
+                                                if(i.uuid===localStorage.getItem('envuuid')){
+                                                    return selected?selected:i.name
+                                                }
+                                                
+                                            })}
+                                        </div>
+                                    </div>
+                                    
+                                    <img className={styles.clickable} src="images/updown.png" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
+                                    <img className={styles.store} src='/images/storeicon.png' />
+                                </div>
+
+                            {vidDropdown &&
+                                <div className={styles.all}>
+                                    <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
+                                    <div>
+                                        {envSelect.map(i =>
+                                            <>
+                                            <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
+                                            </div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -149,8 +231,8 @@ export default function Videos() {
                             </h2>
                         </div>
                         <div className={styles.videos_deliverydata}>
-                            <p>Upload,Transcode,Store and Deliver your asset using our service.<br/>
-                            You can Upload a video using API or directly from here to share it with your users</p>
+                            <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
+                                You can Upload a video using API or directly from here to share it with your users</p>
                             <a >
                                 <button onClick={() => set_asset(true)} className='btn'> <img src="/images/iconfeather-plus.png" alt='icon' ></img> Add new video</button>
 
@@ -199,9 +281,9 @@ Videos.getLayout = function getLayout(page) {
     return (
         <Layout>
             <div className="wrapper_body">
-               
-                    {page}
-                
+
+                {page}
+
             </div>
         </Layout>
     )

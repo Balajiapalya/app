@@ -29,15 +29,18 @@ export default function Edit_organization_name({ closeorganization, setEditData 
                         <a className={styles.model_close} onClick={() => closeorganization(false)} ><img src="images/close.svg" alt='icon' /> </a>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <label className={styles.model_label}>Organisation Name</label>
-                        <input
-                            defaultValue={data}
-                            type="text"
-                            className={`${styles.model_input} form_control`}
-                            name="name"
-                            {...register("name", { required: true })}
-                        />
-                        {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
+
+                        <div className={styles.model_form}>
+                            <label className={styles.model_label}>Organisation Name</label>
+                            <input
+                                defaultValue={data}
+                                type="text"
+                                className={`${styles.model_input} form_control`}
+                                name="name"
+                                {...register("name", { required: true })}
+                            />
+                            {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
+                        </div>
                         <div className={styles.model_btn}>
                             <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeorganization(false)}>Cancel</button></a>
                             <a> <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >Save Changes</button></a>

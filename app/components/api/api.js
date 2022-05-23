@@ -246,10 +246,12 @@ const pastdate = sevendaybeforedate;
 
 const loginHandledAxios = (req) => axios(req)
     .catch((error) => {
-      if ((error.response.data.code = 401)) {
+      if ((error.response.data.code == 401)) {
         window.localStorage.clear();
         document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
         window.location.href = "/signin";
+      } else {
+        throw error
       }
     })
 const Api = {
