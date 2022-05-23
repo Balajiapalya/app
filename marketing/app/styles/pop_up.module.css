@@ -10,6 +10,7 @@
     width: 959px;
     margin: 3em auto;
     padding: 15px;
+    
 }
 
 .pop_up_container {
@@ -17,10 +18,14 @@
     float: left;
     background-color: #fff;
     padding: 15px;
+    border-radius: 4px;
 }
 
 .pop_up_container .close {
     text-align: right;
+}
+.pop_up_container .close img{
+    cursor: pointer;
 }
 
 .pop_up_content {
@@ -134,4 +139,5 @@
     text-align: left;
     color: #fff;
     font-family: Lato-Semibold;
+    cursor: pointer;
 }
