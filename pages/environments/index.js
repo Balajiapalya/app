@@ -41,6 +41,7 @@ export default function Environment() {
     Api.Get_env_data()
       .then((res) => {
         if ((res.data.status = "Success")) {
+          localStorage.setItem("envuuid", res.data.data[0].uuid)
           set_envdata(res.data.data);
           var envcount = res.data.data.length;
           let openArr = [];
@@ -65,7 +66,7 @@ export default function Environment() {
   const Add_org_stats = () => {
     Api.Org_stats()
       .then(res => {
-        console.log(res.data.data)
+        // console.log(res.data.data)
         setOrgStats(res.data.data)
       })
   }
@@ -113,7 +114,6 @@ export default function Environment() {
         <div className={styles.settings}>
           <div className={styles.header}>
             <h2>Environments</h2>
-            <h3>{orgName}</h3>
           </div>
           <div className={styles.environments_button}>
             <p>
@@ -122,7 +122,8 @@ export default function Environment() {
               change the names or create additional environments as needed.
             </p>
             <button onClick={() => handlePopUp()} className="btn">
-              <img src="/images/iconfeather-plus.svg" /> Add Environment
+              {" "}
+              <img src="/images/iconfeather-plus.svg" /> Add environment
             </button>
           </div>
           <div className={`${styles.environments_table} table`}>
@@ -142,7 +143,10 @@ export default function Environment() {
                       <form>
                         {closemodal[i] && (
                           <div>
-                            {items.name}
+                            <span className={styles.env_name}>
+                              {items.name}
+                            </span>
+
                             <a>
                               <img
                                 className={styles.edit_img}
@@ -251,7 +255,7 @@ export default function Environment() {
                               </div>
                               <div className={styles.box_data_types}>
                                 <span className={styles.types_heading}>
-                                  Playing time
+                                  Watched time
                                 </span>
                                 <br />
                                 <span className={styles.types_value}>

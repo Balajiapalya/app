@@ -14,12 +14,11 @@
 .model_main {
     width: 100%;
     float: left;
-    margin: auto;
     background-color: #f4f6f8;
     border: 1px solid #ddd;
     border-radius: 6px;
     display: block;
-    margin-top: 222px;
+    margin-top: 40%;
 }
 
 .model_nav {
@@ -60,10 +59,9 @@
     padding: 20px;
 }
 .model_label {
-    /* width: calc(100% - 41px); */
     width: 100%;
     float: left;
-    margin: 10px 0px 8px 0px;
+    margin: 15px 0px 8px 0px;
     font-size: 14px;
     font-family: Inter-Regular;
 
