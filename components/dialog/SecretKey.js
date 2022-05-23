@@ -43,11 +43,11 @@ const SecretKey = ({ setNewToken, closetoken, res }) => {
                 <h2>Below is the new Access Token:</h2>
                 <h3>Access Token ID:</h3>
                 <input ref={refOne} defaultValue={res.accessTokenId} readOnly />
-                <img onClick={() => copyText()} className={styles.imgCopy} src="images/iconionic-ios-copy.svg" />
+                <img onClick={() => copyText()} className={styles.imgCopy} src="/images/iconionic-ios-copy.svg" />
                 <h3>Secret Key:</h3>
                 <h4>We don&apos;t store the secret key. Please copy or download it into your system</h4>
                 <input ref={refTwo} defaultValue={res.secretKey} readOnly />
-                <img onClick={() => copyTwo()} className={styles.imgCopy} src="images/iconionic-ios-copy.svg" />
+                <img onClick={() => copyTwo()} className={styles.imgCopy} src="/images/iconionic-ios-copy.svg" />
                 <br />
                 <div className={styles.butn}>
                     <a onClick={() => downloadFile()}>Download as .env file</a>

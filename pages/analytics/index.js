@@ -103,7 +103,7 @@ export default function Analytics_index() {
                                     </div>
                                 </div>
 
-                                <img className={styles.clickable} src="images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
+                                <img className={styles.clickable} src="/images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
                                 <img className={styles.store} src='/images/iconawesome-folder.svg' />
                             </div>
 

@@ -56,7 +56,7 @@ function Signingkeys() {
                                     {/* <td>{item.createdBy}</td> */}
                                     <td>Active</td>
                                     <td>
-                                        <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="images/iconmaterial-delete.svg" alt="icon"></img></a>
+                                        <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="/images/iconmaterial-delete.svg" alt="icon"></img></a>
                                     </td>
                                 </tr>
 

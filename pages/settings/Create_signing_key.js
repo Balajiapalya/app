@@ -111,9 +111,9 @@ export default function Create_signing_key({ closesigninkeys }) {
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                                 {option ? option : 'Development'}
-                                <img className={styles.selectFile} src="images/iconawesome-folder.svg" alt='icon'></img>
+                                <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
-                            <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.svg" alt='icon'></img></button>
+                            <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="/images/updown.svg" alt='icon'></img></button>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -141,7 +141,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                                     {selected ? selected : 'Product'}
                                     
                                 </div>
-                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="images/iconawesome-chevrondown.svg" alt='icon'></img>
+                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

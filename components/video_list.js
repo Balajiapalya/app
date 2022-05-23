@@ -65,7 +65,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.thumbnailUrl ? <td className={styles.thumbnail}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
             {i.duration ? <td>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td>-</td>}
             {i.resolution ? <td>{i.resolution}</td> : <td>-</td>}
-            {i.status == "Failed" ? <td>{i.status}</td> : <td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.svg`} /></td>}
+            {i.status == "Failed" ? <td>{i.status}</td> : <td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>

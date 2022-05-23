@@ -45,11 +45,14 @@ function Organisation() {
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
-                setdata(res.data.data)
+                if(res.data.data=="Success"){
+                    setdata(res.data.data);
+                }
+                
             })
         Api.Get_organization_data()
             .then(res => {
-                if (res.data.status = "succes") {
+                if (res.data.status = "Success") {
                     setorgdata(res.data.data.users)
                     setOrg(localStorage.getItem('orgName'))
                     localStorage.setItem("ownerEmail", res.data.data.users[0].email)
@@ -62,11 +65,7 @@ function Organisation() {
                     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
                     window.location.href = '/signin'
                 }
-            })
-        Api.Get_env_data()
-            .then(res => {
-                localStorage.setItem("envuuid", res.data.data[0].uuid)
-            })
+            });
     }, [openModel,openremove])
 
     return (
@@ -111,7 +110,7 @@ function Organisation() {
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
                                     <a href="#">Resend</a></td>}
 
-                                {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="images/iconmaterial-delete.svg" alt="icon"></img></a></td> : <td></td>}
+                                {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="/images/iconmaterial-delete.svg" alt="icon"></img></a></td> : <td></td>}
                             </tr>
                         )}
                         {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}

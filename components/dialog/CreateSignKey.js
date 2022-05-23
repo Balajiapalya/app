@@ -42,11 +42,11 @@ const CreateSignKey = ({ setOpenCreate, signRes, closesigninkeys }) => {
                 <h2>Below is your new Signinkey Key:</h2>
                 <h3>Signin Key ID:</h3>
                 <input ref={refSign} defaultValue={signRes.signingKeyId} readOnly />
-                <img onClick={() => copySignKey()} className={styles.imgCopy} src="images/iconionic-ios-copy.svg" />
+                <img onClick={() => copySignKey()} className={styles.imgCopy} src="/images/iconionic-ios-copy.svg" />
                 <h3>Base64-encoded Private Key:</h3>
                 <h4>We don&apos;t store the secret key. Please copy or download it into your system</h4>
                 <textarea ref={refKey} defaultValue={res} readOnly />
-                <img onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="images/iconionic-ios-copy.svg" />
+                <img onClick={() => privateKey()} className={`${styles.imgCopy} ${styles.copy}`} src="/images/iconionic-ios-copy.svg" />
                 <br />
                 <div className={`${styles.butn}`}>
                     <a onClick={() => downloadFile()}>Download as .pem file</a>
