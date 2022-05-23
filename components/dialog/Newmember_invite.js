@@ -73,7 +73,7 @@ const handleSelected=(prod)=>{
         <div className={styles.model_main}>
           <div className={styles.model_nav}>
             <h3 className={styles.model_title}>Invite New Member</h3>
-            <a className={styles.model_close} role="button" onClick={() => closeModel(false)} ><img src="images/close.svg" alt='icon' /> </a>
+            <a className={styles.model_close} role="button" onClick={() => closeModel(false)} ><img src="/images/close.svg" alt='icon' /> </a>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} >
             <div className={styles.model_form}>
@@ -105,7 +105,7 @@ const handleSelected=(prod)=>{
                     {selected ? selected : 'Product'}
 
                   </div>
-                  <img className={styles.dropdownOneInvite} onClick={() => setProductSelect(!productSelect)} src="images/iconawesome-chevrondown.svg" alt='icon'></img>
+                  <img className={styles.dropdownOneInvite} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                   {
                     productSelect && <div className={styles.inviteOptions}>
                       <input className={styles.searchSelectInvite} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

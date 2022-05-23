@@ -686,6 +686,14 @@
     background-color: inherit
 }
 
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
+}
+
 
 /*-------------Media queries of organisation----------*/
 

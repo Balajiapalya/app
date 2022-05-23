@@ -78,8 +78,13 @@ export default function Accounts() {
   const Org_name = Orgname;
 
   const handleNext = () => {
-    document.body.style.overflow = 'hidden'
+    // document.body.style.overflow = 'hidden'
     set_openneworg(true)
+    let table=document.querySelector('.table');
+    let popup=document.querySelector('.popup');
+    table.classList.add(`${styles.no_display}`)
+    table.classList.remove(`${styles.display}`)
+    popup.classList.remove(`${styles.no_display}`)
   }
   return (
 
@@ -159,7 +164,7 @@ export default function Accounts() {
                   </div>
                   <div className={styles.organization}>
                     <h2>Organization</h2>
-                    <div className={styles.organization_details}>
+                    <div className={`${styles.organization_details} table`}>
                       <table>
                         <tbody>
                           {neworg.map((items, key) => {
@@ -199,9 +204,9 @@ export default function Accounts() {
                     </div>
                   </div>
                 </div>
-                {openneworg && (
-                  <Create_new_organization closeneworg={set_openneworg} />
-                )}
+                <div  className={`${styles.no_display} popup`}>
+                  <Create_new_organization  table={process.browser && document.querySelector('.table')} closeneworg={set_openneworg} />
+                </div>
                 <ManageAccount />
               </div>
             </div>

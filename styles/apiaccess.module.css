@@ -193,7 +193,15 @@
 .wrapper_access_tokes .table table tbody tr {
     border-bottom: 1px solid #ecedef;
     /* height: 6em;   */
-    height: 139px;
+    height: 108px;
+}
+
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
 }
 
 /*--------------media quries of access tokenks-------------*/

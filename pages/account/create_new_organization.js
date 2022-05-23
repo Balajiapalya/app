@@ -1,17 +1,18 @@
 import styles from '../../styles/model.module.css';
+import styleDis from "../../styles/accounts.module.css";
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 
 
-export default function Create_new_organization({ closeneworg }) {
+export default function Create_new_organization({ closeneworg ,table}) {
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_org_name => {
-        document.body.style.overflow='scroll'
+        // document.body.style.overflow='scroll'
         Api.Create_new_organization(new_org_name)
         .then(res=>{
-            closeneworg(false)
+            handleClose()
             // console.log(res)
         })
         .catch(error=>{
@@ -20,11 +21,14 @@ export default function Create_new_organization({ closeneworg }) {
     }
 
     const handleClose=()=>{
-        document.body.style.overflow='scroll'
+        // document.body.style.overflow='scroll'
         closeneworg(false)
+        let inpopUp=document.querySelector('.inpopup');
+      inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
+      table.classList.remove(`${styleDis.no_display}`);
     }
     return (
-        <div className={`${styles.container} ${styles.accesstoken_model}`}>
+        <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
             <div className={styles.body}>
 
                 <div className={styles.model_nav}>
