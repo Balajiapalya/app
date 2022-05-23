@@ -21,7 +21,7 @@ export default function Payment_history({ closepaymenthistory }) {
         <div className={styles.model_main}>
           <div className={styles.model_nav}>
             <h3 className={styles.model_title}>Payment History</h3>
-            <a className={styles.model_close} role="button" onClick={() => closepaymenthistory(false)}><img src="images/close.svg" alt='close' /></a>
+            <a className={styles.model_close} role="button" onClick={() => closepaymenthistory(false)}><img src="/images/close.svg" alt='close' /></a>
           </div>
 
           <table className={styles.table}>
@@ -37,7 +37,7 @@ export default function Payment_history({ closepaymenthistory }) {
                 <tr className={styles.tr}>
                   <td>{createdDate(items.paymentDate)}</td>
                   <td>{items.amount} {items.currency}</td>
-                  <td><a href={items.downloadableInvoiceUrl} target='_blank' rel="noreferrer" download='invoice'><img src="images/download.svg" alt='icon'></img></a></td>
+                  <td><a href={items.downloadableInvoiceUrl} target='_blank' rel="noreferrer" download='invoice'><img src="/images/download.svg" alt='icon'></img></a></td>
                 </tr>
 
               </tbody>

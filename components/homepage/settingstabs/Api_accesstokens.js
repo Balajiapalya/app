@@ -23,7 +23,6 @@ function Api_accesstokes() {
         Api.Get_access_token()
             .then((res) => {
                 if ((res.data.status = "Success")) {
-                    // console.log(res)
                     set_accessdata(res.data.data)
                     var envcount = res.data.data.length;
                     let openArr = [];
@@ -45,13 +44,12 @@ function Api_accesstokes() {
               window.addEventListener('keydown', close)
             return () => window.removeEventListener('keydown', close);
             
-    }, [opentoken, openrevoke,render]);
+    }, [opentoken,openrevoke,render]);
     
    
     const setPopups = (index, item) => {
         if (item) {
             // setValue(item.name)
-
         }
         openModel[index] = !openModel[index];
         closemodal[index] = !closemodal[index]
@@ -60,7 +58,6 @@ function Api_accesstokes() {
     }
     const submitEdit=(e)=>{  
         e.preventDefault()
-        // console.log(e.target.value)
         localStorage.setItem('accessId',e.target.value)
         let accessId=localStorage.getItem('accessId')
         let newObj=new Object()
@@ -72,7 +69,11 @@ function Api_accesstokes() {
 
     const handlePopup=()=>{
         settoken(true);
-        document.body.style.overflow='hidden'
+        let table=document.querySelector('.table');
+        let popup=document.querySelector('.popup');
+        table.classList.add(`${styles.no_display}`)
+        table.classList.remove(`${styles.display}`)
+        popup.classList.remove(`${styles.no_display}`)
     }
  
     return (
@@ -83,8 +84,10 @@ function Api_accesstokes() {
                     {/* <a><button className="btn" onClick={() => settoken(true)}>Create new Token</button></a> */}
                     <a><button className="btn" onClick={() => handlePopup()}>Create new Token</button></a>
                 </div>
-                {opentoken && <Accesstoken closetoken={settoken} />}
-                <div className={styles.table}>
+                <div  className={`${styles.no_display} popup`}>
+                <Accesstoken table={process.browser && document.querySelector('.table')} closetoken={settoken}/>
+                </div>
+                <div className={`${styles.table} table`}>
                     <table>
                         <thead>
                             <tr>

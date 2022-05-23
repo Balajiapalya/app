@@ -279,6 +279,13 @@
     text-align: center;
     color: #212b36;
 }
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
+}
 
 @media screen and (max-width:991px) {
     .personal_detials {
