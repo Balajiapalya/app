@@ -1,25 +1,72 @@
 import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import Api from '../api/api';
 
 export default function Subtitles() {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
+    const [subtitle, setsubtitle] = useState([]);
     const togglebtn = (index) => {
         settoggleposition(index);
     }
-
+    const printTheJSONInPrettyFormat = () => {
+        var badJSON = document.getElementById('JSONFormat').value;
+        var parseJSON = JSON.parse(badJSON);
+        var JSONInPrettyFormat = JSON.stringify(parseJSON, undefined, 4);
+        document.getElementById('JSONFormat').value =
+            JSONInPrettyFormat;
+    }
+    useEffect(() => {
+        subtitle_list();
+        // delete_subtitle();
+    }, [])
+    const subtitle_list = () => {
+        Api.Get_subtitle_list()
+            .then(res => {
+                if (res.data.status = "Success") {
+                    setsubtitle(res.data.data);
+                }
+            })
+    };
+    const delete_subtitle = (e) => {
+        Api.Delete_subtitle(e)
+            .then(res => {
+                if (res.data.status = "Success") {
+                    Api.Get_subtitle_list()
+                        .then(res => {
+                            if (res.data.status = "Success") {
+                                setsubtitle(res.data.data);
+                            }
+                        })
+                }
+            })
+    };
+    const onSubmit = subtitle => {
+        Api.Create_subtitle(JSON.parse(subtitle.code))
+            .then(res => {
+                if (res.data.status="Success") {
+                    Api.Get_subtitle_list()
+                        .then(res => {
+                            if (res.data.status = "Success") {
+                                setsubtitle(res.data.data);
+                            }
+                        })
+                }
+            })
+    };
     return (
         <Fragment>
 
             <div className={styles.subtitles}>
                 <div className={styles.subtitles_list}>
-                    <h2>Subtitle List</h2>
+                    <h2>List of Subtitles</h2>
                     <div className={styles.videos_table}>
                         <table>
                             <thead>
                                 <tr>
-
                                     <th>Added on</th>
                                     <th>Name</th>
                                     <th>Subtitle ID</th>
@@ -29,48 +76,21 @@ export default function Subtitles() {
                                 </tr>
                             </thead>
                             <tbody >
-                                <tr>
+                                {subtitle.map((key,item) =>
+                                    <tr key={key}>
+                                        <td>02/12/21<br></br>6:03pm</td>
+                                        <td>{item.name}</td>
+                                        <td className={styles.subtitle_id}>{item.uuid}</td>
+                                        <td>{item.languageCode}</td>
+                                        <td className={styles.actionicons}>
+                                            <img src="/images/download.svg" alt="download" />
+                                            <img onClick={() => delete_subtitle(item.uuid)} src="/images/iconmaterial-delete.svg" alt="delete" />
 
-                                    <td>02/12/21<br></br>6:03pm</td>
-                                    <td>English</td>
-                                    <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td>VTT</td>
-                                    <td className={styles.actionicons}>
-                                        <img src="/images/download.svg" alt="download" />
-                                        <img src="/images/iconmaterial-delete.svg" alt="delete" />
+                                        </td>
+                                    </tr>
+                                )}
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>02/12/21<br></br>6:03pm</td>
-                                    <td>French</td>
-                                    <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td>VTT</td>
-                                    <td className={styles.actionicons}>
-                                        <img src="/images/download.svg" alt="download" />
-                                        <img src="/images/iconmaterial-delete.svg" alt="delete" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>02/12/21<br></br>6:03pm</td>
-                                    <td>Spanish</td>
-                                    <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td>VTT</td>
-                                    <td className={styles.actionicons}>
-                                        <img src="/images/download.svg" alt="download" />
-                                        <img src="/images/iconmaterial-delete.svg" alt="delete" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>02/12/21<br></br>6:03pm</td>
-                                    <td>German</td>
-                                    <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
-                                    <td>VTT</td>
-                                    <td className={styles.actionicons}>
-                                        <img src="/images/download.svg" alt="download" />
-                                        <img src="/images/iconmaterial-delete.svg" alt="delete" />
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -80,10 +100,10 @@ export default function Subtitles() {
                     <div className={styles.Videodelivery_addnewassets}>
                         <h2>Upload subtitle files</h2>
                         <div className={styles.upload_file}>
-                            <h2>upload your file</h2>
+                            <h2 className={styles.upload_file_heading}>upload your file</h2>
                             <div className={styles.upload_btn_wrapper}>
                                 <button className={styles.btn}>Select File</button>
-                                <input type="file" name="myfile" />
+                                {/* <input type="file" name="myfile" /> */}
                             </div>
 
                         </div>
@@ -99,13 +119,27 @@ export default function Subtitles() {
                                 <button className={toggleposition == 3 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(3)}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
                                 <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
                             </div>
-                            <div className={styles.code}>
-                                <textarea
-                                    className={styles.code_input}
-                                    type='text'
-                                />
-                            </div>
-                            <button className={styles.btn}>Run Request</button>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className={styles.code}>
+                                    {toggleposition == 2 ?
+                                        <textarea
+                                            defaultValue={`${JSON.stringify(
+                                                {
+                                                    "url": "www.google.com",
+                                                    "name": "English US",
+                                                    "language_code": "en_US",
+                                                    "support_closed_captions": false
+                                                }
+                                                , undefined, 2)}`}
+                                            id="JSONFormat"
+                                            className={`${styles.code_input} form_control`}
+                                            type='text'
+                                            name='code'
+                                            {...register("code", { required: true })}
+                                        /> : null}
+                                </div>
+                                <button className={styles.btn}>Run Request</button>
+                            </form>
                         </div>
                     </div>
                 </div>
