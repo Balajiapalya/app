@@ -82,9 +82,14 @@ export default function Accounts() {
     set_openneworg(true)
     let table=document.querySelector('.table');
     let popup=document.querySelector('.popup');
+    let account=document.querySelector('.accounts')
     table.classList.add(`${styles.no_display}`)
     table.classList.remove(`${styles.display}`)
+    account.classList.add(`${styles.no_display}`)
+    account.classList.remove(`${styles.display}`)
     popup.classList.remove(`${styles.no_display}`)
+
+
   }
   return (
 
@@ -205,9 +210,11 @@ export default function Accounts() {
                   </div>
                 </div>
                 <div  className={`${styles.no_display} popup`}>
-                  <Create_new_organization  table={process.browser && document.querySelector('.table')} closeneworg={set_openneworg} />
+                  <Create_new_organization  table={process.browser && document.querySelector('.table')} accounts={process.browser && document.querySelector('.accounts')} closeneworg={set_openneworg} />
                 </div>
+                <div className='accounts'>
                 <ManageAccount />
+                </div>
               </div>
             </div>
           </div>

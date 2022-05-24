@@ -80,7 +80,7 @@ const VideoList = ({ i, create_On, created_time }) => {
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => togglethumbnail()}><img src='/images/insert-picture-icon.svg' alt='thumbnails' /><a>Thumbnails</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `}><img src='/images/closed-caption.svg' alt='subtitles' /><a>Subtitles</a></button>
-                                    <button className={`${styles.dropdown_btn_middle} `}><img src='/images/gif-file-format-symbol.svg' alt='gifs' /><a>Gifs</a></button>
+                                    {/* <button className={`${styles.dropdown_btn_middle} `}><img src='/images/gif-file-format-symbol.svg' alt='gifs' /><a>Gifs</a></button> */}
                                     <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Video</a></button>
                                 </div>
                                 : null}
