@@ -24,6 +24,7 @@
 }
 
 .wrapper_webhooks .head button {
+    text-transform: capitalize;
     height: 40px;
     width: 178px;
     float: right;

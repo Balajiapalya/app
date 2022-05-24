@@ -704,18 +704,22 @@
 
 .videosdelivery_assets .header h2 {
     color: #212b36;
+    display: inline;
     font-family: Inter-Medium;
     font-size: 28px;
-    padding-left: 28px;
+    /* padding-left: 28px; */
     margin-top: 5px;
 }.videosdelivery_assets .header h2 button{
+    /* padding-left: 28px; */
     color: #2863eb;
     margin-left: 5px;
     background-color: inherit;
     border: none;
     padding: 0px;
 }
-
+.styleTitle{
+    padding-left: 28px;
+}
 .input_title {
     padding-left: 25px;
     padding-top: 2px;

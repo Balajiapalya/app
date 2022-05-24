@@ -31,6 +31,7 @@ function Organisation() {
         return `Joined ${mnth} ${retDate}, ${year}`    
     }
     const dateNew=(newDate)=>{
+        console.log(newDate)
         if(newDate<=20 && newDate>=4 || newDate>23){
             return newDate+'th'
         }
@@ -42,6 +43,7 @@ function Organisation() {
             return newDate+'rd'
         }
     }
+    
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
