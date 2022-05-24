@@ -76,8 +76,8 @@ export default function Subtitles() {
                                 </tr>
                             </thead>
                             <tbody >
-                                {subtitle.map((item, res) =>
-                                    <tr>
+                                {subtitle.map((key,item) =>
+                                    <tr key={key}>
                                         <td>02/12/21<br></br>6:03pm</td>
                                         <td>{item.name}</td>
                                         <td className={styles.subtitle_id}>{item.uuid}</td>
