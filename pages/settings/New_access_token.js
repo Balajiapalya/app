@@ -132,7 +132,7 @@ export default function New_Access_token({ table ,closetoken}) {
                         {option ? option : 'Development'}
                         <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                      </div>
-                     <button type="button" onClick={() => handleSelect()} className={styles.drpdwn}><img src="/images/updown.png" alt='icon'></img></button>
+                     <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
 
                      {select &&
                         <div className={styles.dropdown}>

@@ -926,3 +926,6 @@
     color: #196068;
     font-family: Inter-Regular;
 }
+.singleOption:hover{
+    background-color: #f0f8fd;
+}

@@ -12,13 +12,17 @@
 
 .videos_table table thead tr th {
     text-align: left;
-    padding: 5px 10px;
-    color: #212b36;
+    padding: 10px 10px;
     font-family: Inter-Medium;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    color: #212b36;
+    border-bottom: solid 1px #e3e3e3;
     /* word-break: break-all; */
-    font-size: 14px;
 }
 
 .videos_table table thead tr th input {
@@ -35,11 +39,17 @@
 }
 
 .videos_table table tbody tr td {
-    padding: 5px 10px;
+    padding: 13px 10px;
     word-break: break-all;
-    color: #212b36;
     font-family: Inter-Regular;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
     height: 3em;
     border-bottom: 1px solid #ecedef;
 }
@@ -147,7 +157,7 @@
 .create_image h4 {
     margin: 15px 0px 8px 20px;
     font-family: Inter-Regular;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -335,9 +345,15 @@
 
 /* subtitle */
 .subtitles h2 {
-    font-size: 18px;
-    font-family: Inter-SemiBold;
-
+    font-family: Inter-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6f7c8b;
 }
 
 .subtitle_file {
@@ -346,8 +362,27 @@
 }
 
 .subtitle_file h2 {
-    font-size: 18px;
-    font-family: Inter-SemiBold;
+    font-family: Inter-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6f7c8b;
+}
+
+.upload_file_heading {
+    font-family: Inter-Regular !important;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left !important;
+    color: #212b36 !important;
 }
 
 .actionicons img {
@@ -896,7 +931,7 @@
 }
 
 .subtitles_list {
-    width: 48%;
+    width: 50%;
     float: left;
 }
 
@@ -955,10 +990,13 @@
     /* width:0%; */
 
 }
-
-.subtitles_list_table table tbody tr td:nth-child(3) {
+.subtitle_id{
     width: 36%;
 }
+
+/* .subtitles_list_table table tbody tr td:nth-child(3) {
+    width: 36%;
+} */
 
 .videoclips table tbody tr td a {
     color: #2863eb;
@@ -979,7 +1017,7 @@
 }
 
 .create_videoclips {
-    width: 51%;
+    width: 48%;
     float: right;
     margin-bottom: 20px;
 }
@@ -1520,7 +1558,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #69737e;
-    margin:9px 20px 20px 15px;
+    margin: 9px 20px 20px 15px;
 
 
 }

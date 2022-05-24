@@ -830,6 +830,9 @@
     color: #196068;
     font-family: Inter-Regular;
 }
+.singleOption:hover{
+    background-color: #f4f6f8;
+}
 /* popup */
 .no_display{
     display:none;

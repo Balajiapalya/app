@@ -113,7 +113,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                                 {option ? option : 'Development'}
                                 <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
-                            <button onClick={() => handleSelect()} className={styles.drpdwn}><img src="/images/updown.svg" alt='icon'></img></button>
+                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.svg" alt='icon'></img>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

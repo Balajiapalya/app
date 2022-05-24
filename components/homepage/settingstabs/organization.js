@@ -45,7 +45,7 @@ function Organisation() {
     useEffect(() => {
         Api.Get_roles_data()
             .then(res => {
-                if(res.data.data=="Success"){
+                if(res.data.status=="Success"){
                     setdata(res.data.data);
                 }
                 
