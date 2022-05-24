@@ -1,14 +1,14 @@
 import axios from "axios";
-let PROFILE_LINK = process.env.VG_PROFILE_SERVICE_API;
+let PROFILE_LINK = process.env.VG_API_HOST+'/profile';
 const PROFILE_BASE_URL = () => PROFILE_LINK;
 
-let VIDEO_LINK = process.env.VG_VEDIO_SERVICE_API;
+let VIDEO_LINK = process.env.VG_API_HOST+'/video';
 const VIDEO_BASE_URL = () => VIDEO_LINK;
 
-let BILLING_LINK = process.env.VG_BILLING_SERVICE_API;
+let BILLING_LINK = process.env.VG_API_HOST+'/billing';
 const BILLING_BASE_URL = () => BILLING_LINK;
 
-let DATA_LINK = process.env.VG_DATA_SERVICE_API;
+let DATA_LINK = process.env.VG_API_HOST+'/data';
 const DATA_BASE_URL = () => DATA_LINK;
 
 export const SignIn_Data = () => {

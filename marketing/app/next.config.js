@@ -6,6 +6,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    TEST_VG_HOST: process.env.TEST_VG_HOST,
+    VG_DASHBOARD_HOST: process.env.VG_DASHBOARD_HOST
   },
 }

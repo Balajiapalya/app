@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import Lets_talk from '../components/lets_talk';
 import { useState } from 'react';
 import Link from 'next/link'
-let VG_host = process.env.TEST_VG_HOST
+let DASHBOARD_HOST = process.env.VG_DASHBOARD_HOST
 
 export default function Home() {
   const [openmodel,setmodel]=useState(false);
@@ -16,8 +16,8 @@ export default function Home() {
           </div>
           <div className={styles.header_btns}>
             <button>API Docs</button>
-           <button className={styles.sign_in_btn}><a href={`${VG_host}/signin`}>Sign in</a></button>
-            <button className={styles.sign_up_btn}><a href={`${VG_host}/signup`}>Sign up</a></button>
+           <button className={styles.sign_in_btn}><a href={`${DASHBOARD_HOST}/signin`}>Sign in</a></button>
+            <button className={styles.sign_up_btn}><a href={`${DASHBOARD_HOST}/signup`}>Sign up</a></button>
           </div>
         </div>
         <div className={styles.content}>
