@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Api from './api/api';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
+import { useRouter } from 'next/router';
 
 export default function Direct_upload() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -11,6 +12,7 @@ export default function Direct_upload() {
     let [loading, setLoading] = useState(false);
     let [color, setColor] = useState("#999");
     const [uploaded, setuploaded] = useState(false);
+    const router = useRouter();
     let handleChange = e => {
         var files = e.target.files;
         var filesArray = [].slice.call(files);
@@ -42,6 +44,11 @@ export default function Direct_upload() {
                             if (Headers.status = 200) {
                                 setLoading(false)
                                 setuploaded(true)
+                                router.push={
+                                    pathname:'/videos/index',
+                                }
+
+
                             }
                         })
 
@@ -68,7 +75,7 @@ export default function Direct_upload() {
                     </div>
 
                     <div className={styles.direct_upload_title}>
-                        {uploaded && <div className={styles.uploaded_check}><img  src='/Images/iconawesome-check-circle.png' alt='uploaded' /><span>file uploaded</span></div>}
+                        {uploaded && <div className={styles.uploaded_check}><img  src='/images/asset_status/ready.svg' alt='uploaded' /><span>file uploaded</span></div>}
                         <ClipLoader className={styles.loader} color={color} loading={loading} size={12} />
 
                         <input

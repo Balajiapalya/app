@@ -39,7 +39,7 @@ export default function Newstream_monitor() {
                     </div>
                     <label className={styles.model_label}>premiumfeatures</label>
                     <div className={styles.premiumfeatures}>
-                    <img src="/images/iconawesome-check-circle.png" alt="check"></img>
+                    <img src="/images/asset_status/ready.svg" alt="check"></img>
                         <label className={styles.model_label}>Realtime Monitoring</label>
                         <p>Stream will be monitored continously.You will receive realtime info on overall stream health and other key metrics.</p>
 

@@ -23,6 +23,7 @@
 
 
 .wrapper_signing_keys .head button {
+    text-transform: capitalize;
     height: 40px;
     width: 178px;
     float: right;
@@ -82,7 +83,7 @@
 }
 
 .wrapper_signing_keys .table table tbody tr td {
-    padding-left: 12px;
+    padding:20px 16px 20px 12px;
     color: #212b36;
     word-break: break-all;
     font-family: Inter-Regular;
@@ -116,8 +117,16 @@
 
 .wrapper_signing_keys .table table tbody tr {
     border-bottom: 1px solid #8080804d 0.9;
-    height: 60px;
+    /* height: 54px; */
 }
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
+}
+
 
 /*---------------------Media quries of signing keys-------------------*/
 

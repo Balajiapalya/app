@@ -1,11 +1,12 @@
 import styles from '../../styles/model.module.css';
+import styleDis from "../../styles/settings.module.css";
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import { useEffect, useState,useRef } from 'react';
 import { useRouter } from 'next/router'
 
 
-export default function Add_new_environment({ closeenv }) {
+export default function Add_new_environment({table, closeenv }) {
 
     const [env, setenv] = useState([]);
     const [selected,setSelected]=useState();
@@ -14,8 +15,6 @@ export default function Add_new_environment({ closeenv }) {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
-
-        document.body.style.overflow = 'scroll';
         new_env_data.environmentTypeId=idSubmit
         const uuid = localStorage.getItem("uuid");
         new_env_data.orgUUID = uuid;
@@ -23,11 +22,14 @@ export default function Add_new_environment({ closeenv }) {
             .then(res => {
                 if (res.data.status = "Success") {
                     closeenv(false)
+                    closePopUp()
                 }
             })
             .catch(error => {
                 console.log(error)
             })
+            
+            
     }
     useEffect(() => {
         Api.Env_data()
@@ -39,7 +41,9 @@ export default function Add_new_environment({ closeenv }) {
             })
     }, [])
     const closePopUp = () => {
-        document.body.style.overflow = 'scroll';
+        let inpopUp=document.querySelector('.inpopup');
+      inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
+      table.classList.remove(`${styleDis.no_display}`);
         closeenv(false)
     }
 // dropdown
@@ -76,7 +80,7 @@ export default function Add_new_environment({ closeenv }) {
         setProductSelect(false)
     }
     return (
-        <div className={`${styles.container} ${styles.accesstoken_model}`}>
+        <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
             <div className={styles.body}>
                 <div className={styles.model_nav}>
                     <a className={styles.model_close} role="button" onClick={() => closePopUp()}><img src="/images/close.svg" alt='icon' /> </a>
@@ -111,7 +115,7 @@ export default function Add_new_environment({ closeenv }) {
                                 {selected ? selected : 'Product'}
 
                             </div>
-                            <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
+                            <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                             {
                                 productSelect && <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

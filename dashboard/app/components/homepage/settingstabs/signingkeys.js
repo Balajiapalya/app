@@ -22,8 +22,12 @@ function Signingkeys() {
             })
     }, [opensigninkeys, removekeys])
     const handlePopUp=()=>{
-        document.body.style.overflow='hidden'
-        setopensigninkeys(true)
+        setopensigninkeys(true);
+        let table=document.querySelector('.tablemain');
+        let popup=document.querySelector('.popup');
+        table.classList.add(`${styles.no_display}`)
+        table.classList.remove(`${styles.display}`)
+        popup.classList.remove(`${styles.no_display}`)
     }
     return (
         <Fragment>
@@ -32,8 +36,10 @@ function Signingkeys() {
                     <p>Signin keys are used to sign JSON Web Tokens (JWTs) for securing certain requests. Video keys can be used to secure playback URLs,and Data keys can be used to secure access to real-time viewer counts.</p>
                     <button className="btn" onClick={() => handlePopUp()}>Create new Key</button>
                 </div>
-                {opensigninkeys && <Create_signing_key closesigninkeys={setopensigninkeys} />}
-                <div className={styles.table}>
+                <div  className={`${styles.no_display} popup`}>
+                <Create_signing_key closesigninkeys={setopensigninkeys} table={process.browser && document.querySelector('.tablemain')}/>
+                </div>
+                <div className={`${styles.table} tablemain`}>
                     <table>
                         <thead>
                             <tr>
@@ -56,7 +62,7 @@ function Signingkeys() {
                                     {/* <td>{item.createdBy}</td> */}
                                     <td>Active</td>
                                     <td>
-                                        <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="images/iconmaterial-delete.svg" alt="icon"></img></a>
+                                        <a onClick={() => [`${setremovekeys(true)}`] [`${setObj(item)}`]}><img src="/images/iconmaterial-delete.svg" alt="icon"></img></a>
                                     </td>
                                 </tr>
 

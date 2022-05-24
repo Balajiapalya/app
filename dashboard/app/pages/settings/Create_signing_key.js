@@ -1,11 +1,12 @@
 import styles from '../../styles/model.module.css'
+import styleDis from '../../styles/signinkeys.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 import CreateSignKey from '../../components/dialog/CreateSignKey'
 
-export default function Create_signing_key({ closesigninkeys }) {
+export default function Create_signing_key({ closesigninkeys, table }) {
     const [data, setData] = useState([])
     const [prod, setProd] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -30,19 +31,18 @@ export default function Create_signing_key({ closesigninkeys }) {
         signin_key.productTypeId=idSubmit
         signin_key.environmentUUID = localStorage.getItem('envuuid')
         Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
-        document.body.style.overflow = 'hidden'
         setOpenCreate(true)
     }
     const closePopUp = () => {
-        document.body.style.overflow = 'scroll'
-        closesigninkeys(false)
+        let inpopUp=document.querySelector('.inpopup');
+      inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
+      table.classList.remove(`${styleDis.no_display}`);
     }
 
     const handleSelect = () => {
         setSelect(!select)
     }
     const handleOption = (option) => {
-        console.log(option)
         setOption(option.name)
         setSelect(false)
     }
@@ -83,10 +83,10 @@ export default function Create_signing_key({ closesigninkeys }) {
         setProductSelect(false)
     }
     return (
-        <div className={`${styles.container} ${styles.newkey}`} >
+        <div className={`${styles.container} ${styles.newkey} inpopup`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.png" alt='icon' width='20' height='20' /> </a>
+                    <a onClick={() => closePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
 
                 </div>
                 <div className={styles.main}>
@@ -104,16 +104,16 @@ export default function Create_signing_key({ closesigninkeys }) {
                                 </>)}
                             </select>
 
-                            <img className={styles.file} src="/images/iconawesome-folder.png" alt='icon' />
-                            <button type="text" className={styles.up}><img src="/images/updown.png" alt='icon'></img></button>
+                            <img className={styles.file} src="/images/iconawesome-folder.svg" alt='icon' />
+                            <button type="text" className={styles.up}><img src="/images/updown.svg" alt='icon'></img></button>
                         </div> */}
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                                 {option ? option : 'Development'}
-                                <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
+                                <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
-                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="imagesvg/dropdown.svg" alt='icon'></img>
+                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.svg" alt='icon'></img>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -127,21 +127,11 @@ export default function Create_signing_key({ closesigninkeys }) {
                         </div>
                         <div>
                             <label className={styles.model_label}>Product</label>
-                            {/* <select
-                                name="productTypeId"
-                                className={styles.model_selection}
-                                {...register("productTypeId", { required: true, valueAsNumber: true })}
-                            >
-                                {prod.map(product =>
-                                    <option key={product.id} value={product.id}>{product.name}</option>)}
-                            </select> */}
-
                             <div ref={dropdownprod} className={styles.select}>
                                 <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
-                                    {selected ? selected : 'Product'}
-                                    
+                                    {selected ? selected : 'Product'}      
                                 </div>
-                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="imagesvg/group.svg" alt='icon'></img>
+                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
@@ -158,7 +148,7 @@ export default function Create_signing_key({ closesigninkeys }) {
                             <button type="submit" className={`${styles.save_btn} btn btn-primary`} >create Signing Key</button>
                         </div>
                     </form>
-                    {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes} closesigninkeys={closesigninkeys} />}
+                    {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes} closesigninkeys={closesigninkeys} close={closePopUp}/>}
                 </div>
             </div>
         </div>

@@ -418,15 +418,17 @@
 
 .videodelivery {
     background-color: #f4f6f8;
-    height: 280vh;
+    /* height: 280vh; */
     border: 1px solid whitesmoke;
     width: 100%;
     display: table;
     position: absolute;
     z-index: 99;
     top: 0;
-    left: 0
+    left: 0;
+    padding:5vh;
 }
+
 
 .Videodelivery_addnewassets {
     width: 667px;
@@ -702,18 +704,22 @@
 
 .videosdelivery_assets .header h2 {
     color: #212b36;
+    display: inline;
     font-family: Inter-Medium;
     font-size: 28px;
-    padding-left: 28px;
+    /* padding-left: 28px; */
     margin-top: 5px;
 }.videosdelivery_assets .header h2 button{
+    /* padding-left: 28px; */
     color: #2863eb;
     margin-left: 5px;
     background-color: inherit;
     border: none;
     padding: 0px;
 }
-
+.styleTitle{
+    padding-left: 28px;
+}
 .input_title {
     padding-left: 25px;
     padding-top: 2px;
@@ -805,9 +811,9 @@
 }
 .store{
     position: absolute;
-    top: 23px;
+    top: 26px;
     padding-left: 8px;
-    height: 24px;
+    /* height: 24px; */
 }
 .clickable{
     position: absolute;
@@ -828,6 +834,17 @@
     color: #196068;
     font-family: Inter-Regular;
 }
+.singleOption:hover{
+    background-color: #f4f6f8;
+}
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
+}
+
 /* @media only screen and (min-width: 200px)   {
     .videos_table table thead tr th {
         text-align: left;

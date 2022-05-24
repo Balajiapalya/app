@@ -78,7 +78,7 @@ export default function Analytics_index() {
                 <div className={styles.header_development}>
                     <div className="container">
                         {/* <div className={styles.content_development}>
-                            <img className={styles.store_icon_png} src='/images/storeicon.png' />
+                            <img className={styles.store_icon_png} src='/images/iconawesome-folder.svg' />
                             <p>{orName} <br />
                                 <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                     {envSelect.map(i => <>
@@ -103,8 +103,8 @@ export default function Analytics_index() {
                                     </div>
                                 </div>
 
-                                <img className={styles.clickable} src="images/updown.png" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
-                                <img className={styles.store} src='/images/storeicon.png' />
+                                <img className={styles.clickable} src="/images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
+                                <img className={styles.store} src='/images/iconawesome-folder.svg' />
                             </div>
 
                             {vidDropdown &&

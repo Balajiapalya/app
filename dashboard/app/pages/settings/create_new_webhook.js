@@ -1,10 +1,12 @@
 import styles from '../../styles/model.module.css';
+import styleDis from '../../styles/webhooks.module.css';
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Api from '../../components/api/api';
 import { useState, useEffect,useRef } from 'react'
+import Image from 'next/image'
 
-export default function Create_new_webhook({ closewebhook }) {
+export default function Create_new_webhook({ closewebhook,table }) {
     const [data, setData] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [option, setOption] = useState();
@@ -15,14 +17,20 @@ export default function Create_new_webhook({ closewebhook }) {
     }, [])
 
     const onSubmit = webhook_data => {
-        document.body.style.overflow = 'scroll'
+        // document.body.style.overflow = 'scroll'
         let newObj = Object.fromEntries(Object.entries(webhook_data).slice(0, 2))
         newObj.environmentUUID = localStorage.getItem('envuuid')
-        Api.Create_webhook_data(newObj).then(res => closewebhook(false))
+        Api.Create_webhook_data(newObj).then(res =><>
+        {closePopup()}
+        {closewebhook(false)}
+        </>)
     }
     const closePopup = () => {
-        document.body.style.overflow = 'scroll';
-        closewebhook(false)
+        // document.body.style.overflow = 'scroll';
+        // closewebhook(false)
+        let inpopUp=document.querySelector('.inpopup');
+        inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
+        table.classList.remove(`${styleDis.no_display}`);
     }
 
     const handleSelect = () => {
@@ -59,10 +67,10 @@ export default function Create_new_webhook({ closewebhook }) {
         }
      }, [])
     return (
-        <div className={`${styles.container} ${styles.newwebhook_model}`} >
+        <div className={`${styles.container} ${styles.newwebhook_model} inpopup`} >
             <div className={styles.body}>
                 <div className={styles.model_nav}>
-                    <a className={styles.model_close} role="button" onClick={() => closePopup()}><img src="/images/asset_status/iconClose.png" alt='icon' /> </a>
+                    <a className={styles.model_close} role="button" onClick={() => closePopup()}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
                 </div>
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>New Webhook</h3>
@@ -78,16 +86,17 @@ export default function Create_new_webhook({ closewebhook }) {
                                     </>)}
                             </select>
                             {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
-                            <img className={styles.file} src="/images/iconawesome-folder.png" alt='icon'></img>
-                            <button type="text" className={styles.up}><img src="/images/updown.png" alt='icon'></img></button>
+                            <img className={styles.file} src="/images/iconawesome-folder.svg" alt='icon'></img>
+                            <button type="text" className={styles.up}><img src="/images/updown.svg" alt='icon'></img></button>
                         </div> */}
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                                 {option ? option : 'Development'}
-                                <img className={styles.selectFile} src="images/iconawesome-folder.png" alt='icon'></img>
+                                <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
-                            <button type="button" onClick={() => handleSelect()} className={styles.drpdwn}><img src="images/updown.png" alt='icon'></img></button>
+
+                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
                             {select &&
                                 <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

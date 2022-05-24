@@ -21,7 +21,6 @@ export default function Delete__stream({ close_delete_stream }) {
                     </div>
                 </div>
             </div>
-            </div>
         </div>
     )
 }

@@ -236,6 +236,7 @@
 }
 
 .org_btn img {
+    height: 16px;
     float: right;
 }
 
@@ -277,6 +278,13 @@
     letter-spacing: normal;
     text-align: center;
     color: #212b36;
+}
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
 }
 
 @media screen and (max-width:991px) {

@@ -21,7 +21,13 @@
     url(../public/font/Inter-SemiBold.woff) format('woff'),
     url(../public/font/Inter-SemiBold.woff2) format('woff2');
 }
-
+@font-face {
+  font-family: Inter-Italic;
+  src: url(../public/font/Inter-Italic.ttf) format('ttf'),
+    url(../public/font/Inter-Italic.eot) format('eot'),
+    url(../public/font/Inter-Italic.woff) format('woff'),
+    url(../public/font/Inter-Italic.woff2) format('woff2');
+}
 @font-face {
   font-family: OpenSans-SemiBold;
   src: url(../public/font/OpenSans-SemiBold.ttf) format('ttf'),

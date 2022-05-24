@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import Settings from '../pages/settings/settings';
+import styles from '../styles/Home.module.css'; 
 import Layout from '../components/common/layout';
+import Environment from '../pages/environments/index'
 
 export default function Home() {
   return (
@@ -9,9 +9,10 @@ export default function Home() {
       <Head>
         <title>Videograph</title>
         <meta name="description" content="powered by yupp" />
-        <link rel="icon" href="images/favicon/favicon-16x16.png" />
+        <link rel="icon" href="/images/favicon/favicon-16x16.png" />
       </Head>
-      <Settings />
+      {/* <Settings /> */}
+      <Environment/>
     </div>
   )
 }

@@ -48,7 +48,7 @@ export default function Gifs() {
                         <div className={styles.thumbnail_copy}>
                             <p className={styles.thumbnail_copy_link}>  </p>
                             <div className={styles.copy_img}>
-                                <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                             </div>
                         </div>
 
@@ -80,7 +80,7 @@ export default function Gifs() {
                             <div className={styles.thumbnail_copy}>
                                 <p className={styles.thumbnail_copy_link}>  </p>
                                 <div className={styles.copy_img}>
-                                    <img src='/images/iconionic-ios-copy.png' alt='copy' />
+                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                                 </div>
                             </div>
 

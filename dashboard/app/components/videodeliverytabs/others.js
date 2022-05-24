@@ -12,17 +12,29 @@ export default function Others() {
     const [tags, setTags] = useState([])
     // const [selected, setSelected] = useState([]);
     const [dataVideo, setDataVideo] = useState([])
+    const [inputTitle,setInputTitle]=useState()
 
 
     const onSubmit = (video_data) => {
+        let doc=document.querySelector('.child')
+        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent=inputTitle
+        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent=inputTitle
         video_data['tags'] = tags;
         video_data['metadata'] = meta;
-        Api.Meta_tag(video_data).then(res => {
-        })
-            .catch(error => {
-                console.log(error)
+        console.log(video_data)
+        if(inputTitle){
+            video_data['title']=inputTitle
+        }else{
+            video_data['title']=localStorage.getItem('asset_title')
+        }
+            Api.Meta_tag(video_data).then(res => {
             })
-
+                .catch(error => {
+                    console.log(error)
+                })
+    
+        
+        
     }
     // set in object
     const handleData = (e) => {
@@ -45,7 +57,7 @@ export default function Others() {
 
     useEffect(() => {
         Api.Get_Env_item().then(res => {
-
+            console.log(res.data.data.title)
             setDataVideo(res.data.data)
             setTags(res.data.data.tags)
             setMeta(res.data.data.metadata)
@@ -72,6 +84,9 @@ export default function Others() {
         setTags([...tags])
         return tags
     }
+    const handleInput=(e)=>{
+        setInputTitle(e.target.value)
+    }
     return (
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -82,9 +97,10 @@ export default function Others() {
                             <h2>Title &amp; Description</h2>
                             <div className={styles.title_description_box}>
                                 <label className={styles.model_label}>Title</label>
-                                <input type="text" className={styles.title_input} defaultValue={dataVideo.title} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" />
+                                {/* <input type="text" className={styles.title_input} defaultValue={dataVideo.title} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" /> */}
+                                <input type="text" className={`${styles.title_input} child`} defaultValue={dataVideo.title} name="Title" placeholder="Enter title or video" onChange={(e)=>handleInput(e)}/>
                                 <label className={styles.model_label}>Description</label>
-                                <input type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description", { required: true })} placeholder="Enter your description" />
+                                <input type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description",{required:true})} placeholder="Enter your description" />
                                 <div className={styles.submit}>
                                     <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
                                 </div>
@@ -128,7 +144,7 @@ export default function Others() {
                                             <th>
 
                                                 <input className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
-                                                <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/iconfeather-plus-grey.png' /> Add</button>
+                                                <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/iconfeather-plus-grey.svg' /> Add</button>
                                             </th>
 
                                         </tr>
@@ -159,7 +175,7 @@ export default function Others() {
                         </div>
                     </div>
                     <div className={styles.image_guickpreview_poster}>
-                        <div className={styles.image_poster}>
+                        {/* <div className={styles.image_poster}>
                             <h2>Image Poster</h2>
                             <div className={styles.image_poster_box}>
                                 <img src="/images/Image 19.png" className={styles.image_layer} alt="image" />
@@ -169,9 +185,9 @@ export default function Others() {
                                     <button className={styles.upload_btn}>Upload Image</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className={styles.quickpreview_poster}>
+                        {/* <div className={styles.quickpreview_poster}>
                             <h2>Quick Preview Poster</h2>
                             <div className={styles.quickpreview_poster_box}>
                                 <img src="/images/Image 19.png" className={styles.image_layer} alt="image" />
@@ -181,10 +197,10 @@ export default function Others() {
                                     <button className={styles.upload_btn}>Create Gif</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
-                    <div className={styles.controls}>
+                    {/* <div className={styles.controls}>
                         <h2>Controls</h2>
                         <div className={styles.controls_box}>
                             <div className={styles.seek_bar}>
@@ -201,7 +217,7 @@ export default function Others() {
                             </div>
 
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </form>
         </Fragment >
