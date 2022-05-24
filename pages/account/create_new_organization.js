@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 
 
-export default function Create_new_organization({ closeneworg ,table}) {
+export default function Create_new_organization({ closeneworg ,table,accounts}) {
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -26,6 +26,7 @@ export default function Create_new_organization({ closeneworg ,table}) {
         let inpopUp=document.querySelector('.inpopup');
       inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
       table.classList.remove(`${styleDis.no_display}`);
+      accounts.classList.remove(`${styleDis.no_display}`);
     }
     return (
         <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
