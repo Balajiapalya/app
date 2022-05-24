@@ -115,7 +115,7 @@ export default function Add_new_environment({table, closeenv }) {
                                 {selected ? selected : 'Product'}
 
                             </div>
-                            <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="images/iconawesome-chevrondown.svg" alt='icon'></img>
+                            <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                             {
                                 productSelect && <div className={styles.dropdown}>
                                     <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

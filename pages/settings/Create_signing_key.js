@@ -131,7 +131,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                                 <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
                                     {selected ? selected : 'Product'}      
                                 </div>
-                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="images/iconawesome-chevrondown.svg" alt='icon'></img>
+                                <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                                 {
                                     productSelect && <div className={styles.dropdown}>
                                         <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />

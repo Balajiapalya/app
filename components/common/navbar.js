@@ -50,10 +50,10 @@ const router=useRouter()
                 <div className={styles.uppercomponents}>
                     <ul>
                          <li className={styles.brand_logo}>
-                            <Link href='/'><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/environments'? '/images/vg_logo.svg' : '/images/vg_logo.svg'} alt='icon'></img><span className={styles.title}>Videograph</span></a></Link>
+                            <Link href='/'><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/'? '/images/vg_logo.svg' : '/images/vg_logo.svg'} alt='icon'></img><span className={styles.title}>Videograph</span></a></Link>
                         </li>
                         <li>
-                            <Link href="/environments"><a className={router.pathname=='/environments'  ? `${styles.activate}` : ''}><img src={router.pathname=='/environments'? '/images/iconmaterial-home(white).svg' : '/images/iconmaterial-home.svg'} alt='icon'></img><span>Environments</span></a></Link>
+                            <Link href="/"><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/'? '/images/iconmaterial-home(white).svg' : '/images/iconmaterial-home.svg'} alt='icon'></img><span>Environments</span></a></Link>
                         </li>
                         <li>
                             <Link href='/videos'><a className={router.pathname=='/videos' || router.pathname=='/videos/video'  ? `${styles.activate}` : ''}><img src={router.pathname=='/videos' || router.pathname=='/videos/video' ? '/images/iconmaterial-video-library(white).svg' : '/images/iconmaterial-video-library.svg'} alt='icon'></img><span>Videos</span></a></Link>
@@ -85,7 +85,7 @@ const router=useRouter()
                             {/* </Link> */}
                         </li>
                         <li>
-                            <Link href="/"><a className={router.pathname=='/' ? `${styles.activate}` : ''}><img src={router.pathname=='/'? "/images/iconionic-ios-settings(white).svg" : "/images/iconionic-ios-settings.svg"} alt='icon'></img><span>Settings</span></a></Link>
+                            <Link href="/settings"><a className={router.pathname=='/settings' ? `${styles.activate}` : ''}><img src={router.pathname=='/settings'? "/images/iconionic-ios-settings(white).svg" : "/images/iconionic-ios-settings.svg"} alt='icon'></img><span>Settings</span></a></Link>
                         </li>
                         <li>
                             <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).svg" : "/images/iconawesome-user-alt.svg"} alt='icon'></img><span><p className={router.pathname=='/account' ? `${styles.user_detail} ${styles.activate}` : `${styles.user_detail}`}>{ownername} <br />{OrgName}</p></span></a></Link>
