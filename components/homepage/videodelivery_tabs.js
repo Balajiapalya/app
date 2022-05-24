@@ -53,12 +53,12 @@ function Videodelivery_tabs() {
                 >
                     <span>Subtitles</span>
                 </button>
-                <button
+                {/* <button
                     className={toggleState === 5 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
                     onClick={() => toggleTab(5)}
                 >
                     <span>Gifs</span>
-                </button>
+                </button> */}
                 <button
                     className={toggleState === 6 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
                     onClick={() => toggleTab(6)}
@@ -95,13 +95,13 @@ function Videodelivery_tabs() {
                     {toggleState===4 &&<Subtitles />}
                 </div>
 
-                <div
+                {/* <div
                     className={toggleState === 5 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
                     {toggleState===5 && <Gifs />}
 
-                </div>
+                </div> */}
                 <div
                     className={toggleState === 6 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >

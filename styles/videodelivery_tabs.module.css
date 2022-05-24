@@ -407,6 +407,7 @@
 }
 
 .image_form .create_btn button {
+    text-transform: capitalize;
     margin-left: 0px !important;
     margin-bottom: 2px !important;
 }
