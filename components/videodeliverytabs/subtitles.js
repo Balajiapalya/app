@@ -76,7 +76,7 @@ export default function Subtitles() {
                                 </tr>
                             </thead>
                             <tbody >
-                                {subtitle.map((key,item) =>
+                                {subtitle.map((item,key) =>
                                     <tr key={key}>
                                         <td>02/12/21<br></br>6:03pm</td>
                                         <td>{item.name}</td>
