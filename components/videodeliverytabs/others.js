@@ -21,7 +21,6 @@ export default function Others() {
         doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent=inputTitle
         video_data['tags'] = tags;
         video_data['metadata'] = meta;
-        console.log(video_data)
         if(inputTitle){
             video_data['title']=inputTitle
         }else{
@@ -57,12 +56,16 @@ export default function Others() {
 
     useEffect(() => {
         Api.Get_Env_item().then(res => {
-            console.log(res.data.data.title)
             setDataVideo(res.data.data)
             setTags(res.data.data.tags)
             setMeta(res.data.data.metadata)
             // setSelected(res.data.data.tags)
         })
+        return()=>{
+            setDataVideo([])
+            setTags([])
+            setMeta([])
+        }
     }, [])
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();

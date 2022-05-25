@@ -112,7 +112,6 @@
 }
 
 .model_selection {
-    /* width: calc(100% - 40px); */
     width: 100%;
     float: left;
     border-bottom: 2px solid #ddd;
@@ -121,7 +120,6 @@
     padding: 9px;
     outline: none;
     font-family: Inter-Regular;
-    /* margin-left: 20px; */
     background-color: white;
     border: solid 1px rgba(99, 115, 129, 0.3);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -132,7 +130,6 @@
     font-style: normal;
     line-height: 1.23;
     letter-spacing: normal;
-    /* text-align: left; */
     color: #212b36;
 }
 

@@ -26,6 +26,9 @@ export default function Overview() {
             }).catch(error => {
                 console.log(error)
             })
+            return()=>{
+                setplayer([])
+            }
     }, []);
     const showtooltip = () => {
         settooltip(true)
