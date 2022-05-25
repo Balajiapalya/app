@@ -690,7 +690,7 @@
     width: 100%;
     float: left;
 } */
-.dev_select select {
+.dev_select{
     padding: 7px 0px;
     width: 70%;
     border: solid 1px rgba(198, 198, 198, 0.63);
@@ -701,7 +701,7 @@
 }
 
 .dev_options {
-    width: 70%;
+    width: 175px;
     float: left;
     margin-top: 10px;
 }
@@ -734,6 +734,132 @@
 .display{
     display:block;
 }
+/* selectdropdown */
+.dev{
+    width: 100%;
+    float: right;
+}
+.model_selection{
+    border: solid 1px rgba(198, 198, 198, 0.63);
+    height: 34px;
+    padding: 0px 4px 0px 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: Inter-Regular;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: #196068;
+  
+}
+.dropdownOneInvite{
+    /* position: absolute;
+    top: 15px;
+    left: 156px; */
+    cursor:pointer;
+}
+.select{
+    position: relative;
+    cursor: pointer;
+    width: 55%;
+}
+.inviteOptions{
+    border: solid 1px #a8c3db;
+    background-color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 100%;
+    position: absolute;
+    margin-top: 3px;
+    z-index: 2;
+}
+.searchSelectInvite{
+    border: none;
+    outline:none;
+    width:100%;
+    border-bottom:solid 1px #d5dbe2;
+    padding: 8px 6px;
+    font-size:13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    
+}
+.prodopt{
+    padding: 8px 6px;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
+}
+/* .select{
+    width:48%;
+    border: solid 1px rgba(198, 198, 198, 0.63);
+    color: #212b36;
+    font-size: 14px;
+    font-family: Inter-Regular;
+    margin-top:2px;
+    height: 34px;
+    padding: 5px 0px 0px 5px;
+}
+.inviteOptions{
+    width: 190px;
+    margin-left: -6px;
+    background-color: #fff;
+   
+    border: solid 1px #a8c3db;
+ 
+    border-radius: 2px;
+   
+    cursor: pointer
+}
+.dropdownOneInvite{
+    background: none;
+    border:none;
+    outline: none;
+    position: relative;
+    bottom: 19px;
+    height: 6px;
+    left: 164px;
+    cursor: pointer;
+}
+.searchSelectInvite{
+    border: none;
+    outline:none;
+    width:100%;
+    padding:9px;
+    border-bottom:solid 1px #d5dbe2;
+    padding-left: 12px;
+    font-size:13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+}
+.allOptionsInvite{
+    padding:5px 0px 5px 12px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing:normal;
+    color:#196068;
+} */
 
 
 /*-------------Media queries of organisation----------*/
@@ -742,7 +868,9 @@
     .dropdown .dropdownContent {
         right: 50%;
     }
-
+    .select{
+        width: 67%;
+    }
     /* .containercomponents{
         width:20%;
     } */
@@ -840,6 +968,17 @@
         padding: 2px;
         width: 30%;
     }
+    .select{
+        width: 90%;
+    }
+    .dev_head{
+        width: 90%;
+    }
+    .dev_options{
+        width: 90%;
+    }
+   
+
 }
 
 
@@ -870,4 +1009,10 @@
         font-size: 12px;
         color: #212b36;
     }
-}
+    .dev_options{
+        width: 100px;
+    }
+    /* .select{
+        width: 76%;
+    }*/
+} 

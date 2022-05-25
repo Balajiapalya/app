@@ -30,6 +30,9 @@ export default function Overview() {
                     window.location.href = '/signin'
                 }
             })
+            return()=>{
+                setplayer([])
+            }
     }, []);
     const showtooltip = () => {
         settooltip(true)
