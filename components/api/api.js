@@ -1,14 +1,14 @@
 import axios from "axios";
-let PROFILE_LINK = process.env.VG_PROFILE_SERVICE_API;
+let PROFILE_LINK = process.env.VG_API_HOST+'/profile';
 const PROFILE_BASE_URL = () => PROFILE_LINK;
 
-let VIDEO_LINK = process.env.VG_VEDIO_SERVICE_API;
+let VIDEO_LINK = process.env.VG_API_HOST+'/video';
 const VIDEO_BASE_URL = () => VIDEO_LINK;
 
-let BILLING_LINK = process.env.VG_BILLING_SERVICE_API;
+let BILLING_LINK = process.env.VG_API_HOST+'/billing';
 const BILLING_BASE_URL = () => BILLING_LINK;
 
-let DATA_LINK = process.env.VG_DATA_SERVICE_API;
+let DATA_LINK = process.env.VG_API_HOST+'/data';
 const DATA_BASE_URL = () => DATA_LINK;
 
 export const SignIn_Data = () => {
@@ -149,6 +149,16 @@ export const get_video_data = () => {
 export const create_thumbnail = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}/thumbnails?time=${CurrentDate}`
 }
+//videos-> subtitles
+export const add_subtitle_api = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}/subtitles?time=${CurrentDate}`
+}
+export const get_subtitle_list = () => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}/subtitles?time=${CurrentDate}`
+}
+export const delete_subtitle = (e) => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}/subtitles/${e}`
+}
 //others
 export const meta_update = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}?time=${CurrentDate}`
@@ -164,13 +174,13 @@ export const delSigningKey = (id) => {
 }
 //statistics
 export const usage_statistics = (env, toDate, fromDate) => {
-    if(fromDate==undefined) {
+    if (fromDate == undefined) {
         return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`;
     }
-    else{
+    else {
         return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=1d&time=${CurrentDate}`;
     }
-    
+
 }
 export const views_statistics = (env, toDate, fromDate) => {
     if (fromDate == undefined) {
@@ -184,12 +194,12 @@ export const views_statistics = (env, toDate, fromDate) => {
 export const realtime_views = (env, fromDate, interval) => {
     return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
 }
-export const org_stats = () =>{
+export const org_stats = () => {
     return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${uuid}&from=${pastdate}&to=${CurrentDate}`
 }
 //embed
 export const get_video_playback_url = (asset_id) => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/`+asset_id+`/playback_url?time=${CurrentDate}`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/` + asset_id + `/playback_url?time=${CurrentDate}`
 }
 let user_id;
 if (process.browser) {
@@ -238,9 +248,9 @@ if (process.browser) {
 }
 const CurrentDate = current_date;
 let sevendaybeforedate;
-if(process.browser){
-//    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
-        sevendaybeforedate = new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0,0,0,0);
+if (process.browser) {
+    //    sevendaybeforedate = new Date().setDate(new Date().getDate() - 7);
+    sevendaybeforedate = new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0);
 }
 const pastdate = sevendaybeforedate;
 const Api = {
@@ -477,15 +487,15 @@ const Api = {
             }
         }),
     //embed
-    Get_vdo_player: ()=>
+    Get_vdo_player: () =>
         axios({
             method: 'GET',
-            url:get_vdo_player(),
+            url: get_vdo_player(),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
             }
-            
+
         }),
     //account
     Create_new_organization: (new_org_name) =>
@@ -516,17 +526,17 @@ const Api = {
             headers: headers
         }),
     //overview
-    Delete_asset: ()=>
-     axios({
-         method:'DELETE',
-         url: delete_asset(),
-         headers: {
-            'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${envuuid}`
-        }
-     }),
+    Delete_asset: () =>
+        axios({
+            method: 'DELETE',
+            url: delete_asset(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${envuuid}`
+            }
+        }),
     //thumbnails
-    Create_thumbnail: (thumbnail)=> 
+    Create_thumbnail: (thumbnail) =>
         axios({
             method: 'POST',
             data: thumbnail,
@@ -534,6 +544,35 @@ const Api = {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${envuuid}`
+            }
+        }),
+    //subtitles
+    Create_subtitle: (subtitle) =>
+        axios({
+            method: 'POST',
+            data: subtitle,
+            url: add_subtitle_api(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
+    Get_subtitle_list: () =>
+        axios({
+            method: 'GET',
+            url: get_subtitle_list(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
+    Delete_subtitle: (e) =>
+        axios({
+            method: 'DELETE',
+            url: delete_subtitle(e),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
     //others
@@ -606,12 +645,12 @@ const Api = {
             url: realtime_views(env, fromDate, interval),
             headers: headers,
         }),
-    Org_stats: ()=>
-    axios({
-        method:'GET',
-        url:org_stats(),
-        headers:headers,
-    }),
+    Org_stats: () =>
+        axios({
+            method: 'GET',
+            url: org_stats(),
+            headers: headers,
+        }),
     Get_Playback_URL: (ast_id) =>
         axios({
             method: 'GET',
