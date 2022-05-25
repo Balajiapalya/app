@@ -35,7 +35,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.content_img}>
-            <img src="./design.svg" alt="design" />
+            <img src="./banner_image.png" alt="banner_img" />
           </div>
         </div>
 
