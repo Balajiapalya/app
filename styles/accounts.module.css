@@ -173,11 +173,10 @@
 .personal_detials .model_save_btn,
 .organization .model_save_btn {
     margin: 15px 10px 15px 0px;
-    background-color: #fff;
     border-radius: 4px;
+    padding: 12px 20px;
     border: solid 1px #9b9b9b;
-    font-family: "Inter-Regular";
-    font-size: 16px;
+    font-family: Inter-Regular;
     text-align: left;
     background-color: inherit;
     outline: none;
@@ -187,7 +186,6 @@
     font-style: normal;
     line-height: 1.21;
     letter-spacing: normal;
-    text-align: center;
     color: #212b36;
 }
 
@@ -278,6 +276,7 @@
     letter-spacing: normal;
     text-align: center;
     color: #212b36;
+    padding: 12px 20px;
 }
 /* popup */
 .no_display{

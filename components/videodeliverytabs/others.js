@@ -63,6 +63,13 @@ export default function Others() {
             setMeta(res.data.data.metadata)
             // setSelected(res.data.data.tags)
         })
+        .catch(error => {
+            if(error.response.data.message="Token expired"){
+                window.localStorage.clear();
+                document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                window.location.href = '/signin'
+            }
+        })
     }, [])
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();

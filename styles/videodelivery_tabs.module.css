@@ -12,7 +12,7 @@
 
 .videos_table table thead tr th {
     text-align: left;
-    padding: 10px 10px;
+    padding: 16px 12px;
     font-family: Inter-Medium;
     font-size: 14px;
     font-weight: 500;
@@ -80,6 +80,7 @@
     font-style: normal;
     line-height: 1.21;
     letter-spacing: normal;
+    cursor: pointer;
 }
 
 .upload_btn_wrapper input[type=file] {
@@ -139,13 +140,12 @@
     color: #212b36;
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 20px;
     background-color: #fff;
     border: solid 1px #9a9a9a;
     margin: 10px 0px 10px 15px;
     font-family: Inter-Regular;
     font-size: 14px;
-
+    cursor: pointer;
 }
 
 .active {
@@ -169,7 +169,7 @@
 }
 
 .thumbnail_copy {
-    font-size: 12px;
+    font-size: 13px;
     border: solid 1px rgba(99, 115, 129, 0.3);
     font-family: Inter-Regular;
     margin: 0px 0px 28px 20px;
@@ -178,12 +178,17 @@
     word-break: break-all;
     width: 94%;
     float: left;
+    border-radius: 2px;
+
 }
 
 .thumbnail_copy_link {
-    width: 80%;
+    width: 90%;
     float: left;
     margin-bottom: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .copy_img {
@@ -247,7 +252,7 @@
 }
 
 .copy_img {
-    width: 5%;
+    width: 12px;
     float: right;
 }
 
@@ -386,7 +391,11 @@
 }
 
 .actionicons img {
-    margin-right: 5px;
+    cursor: pointer;
+}
+
+.actionicons .download_img {
+    margin-right: 15px;
 }
 
 .post span {
@@ -623,6 +632,11 @@
     border-spacing: 15px 10px;
 }
 
+.asset_detials_content .content_table tbody tr {
+    width: 100%;
+    float: left;
+}
+
 .asset_detials_content .content_table tbody tr .title {
     font-size: 13px;
     font-weight: normal;
@@ -740,7 +754,6 @@
 .link_hls p,
 .link_embedcode p,
 .link_thumbnail p {
-    padding: 10px 0px 0px 10px;
     word-break: break-all;
     font-size: 13px;
     font-weight: normal;
@@ -751,14 +764,24 @@
     letter-spacing: normal;
     text-align: left;
     color: #212b36;
+    width: 100%;
+    float: left;
+    margin-bottom: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .copy_link {
     width: 100%;
-    float: left;
-    background-color: #fff;
+    background-color: #f7f7f7;
     border: solid 1px rgba(99, 115, 129, 0.3);
     border-radius: 2px;
+    font-size: 12px;
+    font-family: Inter-Regular;
+    padding: 10px;
+    word-break: break-all;
+    float: left;
 }
 
 .copy_link_videoUrl {
@@ -766,7 +789,7 @@
 }
 
 .copy_link_videoUrl p {
-    margin-bottom: 1.5em;
+    margin-bottom: 0em;
 }
 
 .copy_link .link {
@@ -843,7 +866,6 @@
 }
 
 .media_info p {
-    font-size: 14px;
     padding: 5px;
     word-break: break-all;
     font-size: 13px;
@@ -855,11 +877,14 @@
     letter-spacing: normal;
     text-align: left;
     color: #212b36;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .media_info h4 {
     margin-left: 14px;
-    font-family: Inter-Regular;
+    font-family: Inter-Medium;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -889,7 +914,7 @@
 }
 
 .media_info table thead tr th {
-    padding: 0px 5px;
+    padding: 0px 0px 0px 12px;
     font-size: 14px;
     font-weight: 500;
     font-stretch: normal;
@@ -909,7 +934,7 @@
 }
 
 .media_info table tbody tr td {
-    padding: 0px 5px;
+    padding: 0px 0px 0px 12px;
     font-size: 13px;
     font-weight: normal;
     font-stretch: normal;
@@ -948,14 +973,17 @@
 
 .subtitles_list_table table thead tr th {
     text-align: left;
-    /* padding: 13px 10px; */
-    padding-left: 12px;
+    padding: 16px 12px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
     color: #212b36;
-    font-family: Inter-Medium;
-    font-size: 14px;
-    font-weight: 600;
-    word-break: break-all;
-    font-size: 14px;
+    border-bottom: 1px solid #ecedef;
 }
 
 .subtitles_list_table table thead tr {
@@ -980,19 +1008,20 @@
 }
 
 .subtitles_list_table table tbody tr td {
-    /* padding: 14px 8px; */
     padding: 23px 0px 23px 12px;
     word-break: break-all;
     color: #212b36;
     font-family: Inter-Regular;
-    font-size: 14px;
+    font-size: 13px;
     /* height: 3em; */
     border-bottom: 1px solid #ecedef;
     /* width:0%; */
 
 }
-.subtitle_id{
-    width: 36%;
+
+.video_id,
+.subtitle_id {
+    width: 13em
 }
 
 /* .subtitles_list_table table tbody tr td:nth-child(3) {
@@ -1051,17 +1080,43 @@
     float: left;
 }
 
+.start_time h5,
+.end_time h5 {
+    font-family: Inter-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
+}
+
+.start_time input,
+.end_time input {
+    border-radius: 2px;
+    border: solid 1px #91a1af;
+    background-color: #fff;
+    padding: 13px 14px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
+    width: 94%;
+    outline: none;
+}
+
 .end_time {
     width: 50%;
     float: right;
 }
 
-.start_time input,
-.end_time input {
-    padding: 5px;
-    outline: none;
-    width: 94%;
-}
 
 .create_video_clip_button {
     width: 100%;
@@ -1070,13 +1125,19 @@
 }
 
 .create_video_clip_button button {
-    padding: 7px;
+    padding: 12px 18px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 4px;
     border: 1px solid #2863eb;
-    color: #2863eb;
-    font-family: Inter-Medium;
+    font-family: Inter;
     font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2863eb;
 }
 
 
