@@ -33,7 +33,7 @@
   color: #212b36
 }
 .tabs_item{
-  padding: 10px 17px 10px 17px;
+  padding: 10px 17px 12px 17px;
   text-align: center;
   background: transparent;
   color: #56606e;
@@ -55,7 +55,7 @@
     content: "";
     display: block;
     position: absolute;
-    bottom: -11px;
+    bottom: -14px;
     left: -17px;
     width: 147.8px;
     height: 2px;

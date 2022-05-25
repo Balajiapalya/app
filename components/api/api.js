@@ -456,7 +456,7 @@ const Api = {
             url: post_direct_video(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
 
         }),
@@ -543,7 +543,7 @@ const Api = {
             url: create_thumbnail(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
     //subtitles

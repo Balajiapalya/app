@@ -10,15 +10,14 @@ export default function Videoclips() {
             <div className={styles.videoclips}>
                 <div className={styles.subtitles_list}>
                     <h2>List of Video Clips</h2>
-                    <div className={styles.subtitles_list_table}>
+                    <div className={styles.videos_table}>
                         <table>
                             <thead>
                                 <tr>
 
                                     <th>Added on</th>
                                     <th>Name</th>
-                                    <th>Video ID</th>
-
+                                    <th className={styles.video_id}>Video ID</th>   
                                     <th>Actions</th>
 
                                 </tr>

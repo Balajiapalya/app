@@ -25,7 +25,11 @@ export default function Analytics_index() {
                 }
             })
             .catch(error => {
-                console.log(error);
+                if(error.response.data.message="Token expired"){
+                    window.localStorage.clear();
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
             })
     }
     // const handleChange = (e) => {

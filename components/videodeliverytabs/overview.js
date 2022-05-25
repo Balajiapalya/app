@@ -24,7 +24,11 @@ export default function Overview() {
                     localStorage.setItem("asset_title", res.data.data.title);
                 }
             }).catch(error => {
-                console.log(error)
+                if(error.response.data.message="Token expired"){
+                    window.localStorage.clear();
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
             })
             return()=>{
                 setplayer([])
@@ -164,7 +168,7 @@ export default function Overview() {
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
                                                     <img onClick={() => showtooltip()} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
-                                                {tooltip ? <span className={styles.tooltip}>copied</span> : null}
+                                                {/* {tooltip ? <span className={styles.tooltip}>copied</span> : null} */}
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +200,7 @@ export default function Overview() {
                                                 <CopyToClipboard text={localStorage.getItem('thumbnail')}>
                                                     <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
-                                                {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null}
+                                                {/* {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null} */}
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +221,7 @@ export default function Overview() {
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
                                                 <img onClick={() => showtooltipURL()} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                             </CopyToClipboard>
-                                            {tooltipURL ? <span className={styles.tooltip}>copied</span> : null}
+                                            {/* {tooltipURL ? <span className={styles.tooltip}>copied</span> : null} */}
                                         </div>
                                     </div>
                                 </div>
