@@ -173,7 +173,7 @@ export default function Environment() {
                                 This field is required
                               </p>
                             )}
-                            <div className={styles.dev_select}>
+                            <div className={styles.dev}>
                               <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} />
                             </div>
                           </div>
