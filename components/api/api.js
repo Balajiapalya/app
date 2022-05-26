@@ -63,7 +63,10 @@ export const get_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}&time=${CurrentDate}`;
 };
 export const delete_webhook = (del_webhook) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`;
+}
+export const update_webhook = (webhookId) => {
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${webhookId}?time=${CurrentDate}`;
 }
 //access token
 export const Create_aaccess_token = () => {
@@ -375,6 +378,13 @@ const Api = {
             data: del_webhook,
             headers: headers,
         }),//delete webhook
+    Update_webhook: (data,webhookId) =>
+        axios({
+            method: 'PUT',
+            url: update_webhook(webhookId,data),
+            data: data,
+            headers: headers,
+        }),
     //signin key
     Get_sigin_keys: () =>
         axios({
@@ -454,7 +464,7 @@ const Api = {
             method: 'POST',
             data: direct_video_upload,
             url: post_direct_video(),
-            headers: {
+            headers: {  
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }

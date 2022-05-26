@@ -366,7 +366,7 @@
 .secret .butn {
     text-decoration: underline;
     padding-top: 10px;
-
+    cursor: pointer;
     font-family: Inter-Regular;
     font-size: 14px;
     font-weight: normal;

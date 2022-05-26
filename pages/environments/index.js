@@ -89,7 +89,7 @@ export default function Environment() {
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log(openModel[index], closemodal[index])
+
   }
   let orgname;
   if (process.browser) {

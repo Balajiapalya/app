@@ -15,13 +15,15 @@ export default function New_Access_token({ table, closetoken }) {
    const [resp, setRes] = useState([])
    const [select, setSelect] = useState(false)
    const [option, setOption] = useState()
+   const[uuid,setuuid] = useState()
+  
    const [sys, setSys] = useState([])
    const [readSelect, setRead] = useState(true)
    const [writeSelect, setWrite] = useState(true)
    const [envSelect, setEnvSelect] = useState([]);
 
    useEffect(() => {
-      Api.Get_environment_types_data().then(res =>
+      Api.Get_env_data().then(res =>
          setData(res.data.data))
       Api.Get_product_data().then(res => <>
          {setItems(res.data.data[1])}
@@ -43,6 +45,11 @@ export default function New_Access_token({ table, closetoken }) {
       }
    }, [])
    const onSubmit = access_data => {
+      // console.log(access_data)
+      if (access_data.video) {
+         access_data.canRead = true
+         access_data.canWrite = true
+      }
       let vidElement=document.querySelector('.videoMain').checked
       const dataCheck = document.querySelector('.dataCheck').checked
 
@@ -63,7 +70,7 @@ export default function New_Access_token({ table, closetoken }) {
       }
       console.log(dataCheck)
       let sliced = Object.fromEntries(Object.entries(access_data).slice(4, 7))
-      sliced.envUUID = localStorage.getItem('envuuid')
+      sliced.envUUID = uuid
       if (vidElement || access_data.data) {
          Api.Create_aaccess_token_data(sliced).then(res =>
             setRes(res.data.data)
@@ -88,7 +95,9 @@ export default function New_Access_token({ table, closetoken }) {
       setSelect(!select)
    }
    const handleOption = (option) => {
+      console.log(option.uuid)
       setOption(option.name)
+      setuuid(option.uuid)
       setSelect(false)
    }
    const searchHandle = (e) => {
@@ -202,7 +211,7 @@ export default function New_Access_token({ table, closetoken }) {
 
                   <div ref={selectDropdown} className={styles.select}>
                      <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                        {option ? option : 'Development'}
+                        {option ? option :''}
                         <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                      </div>
                      <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
