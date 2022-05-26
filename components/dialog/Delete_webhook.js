@@ -3,7 +3,7 @@ import Api from '../api/api'
 
 export default function Delete_webhook({ closedeletewebhook, item }) {
     const handleDelete = () => {
-        Api.Delete_webhook(item.id).then(res => closedeletewebhook(false))
+        Api.Delete_webhook(item.uuid).then(res => closedeletewebhook(false))
     }
     return (
         <div className={`${styles.model} ${styles.remove_user_modal} ${styles.opc}`} >
