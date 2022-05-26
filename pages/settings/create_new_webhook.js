@@ -94,7 +94,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option ? option : 'Development'}
+                                {option ? option : ''}
                                 <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
 

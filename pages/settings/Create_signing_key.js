@@ -112,7 +112,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option ? option : 'Development'}
+                                {option ? option : ''}
                                 <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
                             <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.svg" alt='icon'></img>
