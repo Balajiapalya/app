@@ -11,13 +11,14 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     const [prod, setProd] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [option, setOption] = useState();
+    const [uuid,setuuid] = useState();
     const [select, setSelect] = useState(false)
     const [productSelect, setProductSelect] = useState(false)
     const [selected,setSelected]=useState()
     const [idSubmit,setIdSubmit]=useState()
 
     useEffect(() => {
-        Api.Get_environment_types_data()
+        Api.Get_env_data()
             .then(res =>
                 setData(res.data.data))
         Api.Get_product_data()
@@ -29,7 +30,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
 
     const onSubmit = signin_key => {
         signin_key.productTypeId=idSubmit
-        signin_key.environmentUUID = localStorage.getItem('envuuid')
+        signin_key.environmentUUID = uuid
         Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
         setOpenCreate(true)
     }
@@ -44,6 +45,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     }
     const handleOption = (option) => {
         setOption(option.name)
+        setuuid(option.uuid)
         setSelect(false)
     }
     const searchHandle = (e) => {
@@ -129,7 +131,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                             <label className={styles.model_label}>Product</label>
                             <div ref={dropdownprod} className={styles.select}>
                                 <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
-                                    {selected ? selected : 'Product'}      
+                                    {selected ? selected : ''}      
                                 </div>
                                 <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                                 {

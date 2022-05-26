@@ -31,7 +31,6 @@ function Organisation() {
         return `Joined ${mnth} ${retDate}, ${year}`    
     }
     const dateNew=(newDate)=>{
-        console.log(newDate)
         if(newDate<=20 && newDate>=4 || newDate>23){
             return newDate+'th'
         }

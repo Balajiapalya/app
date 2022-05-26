@@ -16,7 +16,7 @@ export default function Videodelivery_addnewassets({ table }) {
     }
 
     const onSubmit = video_url_data => {
-        console.log(JSON.parse(video_url_data.code))
+        // console.log(JSON.parse(video_url_data.code))
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
                 if (res.data.status = "Success") {

@@ -22,7 +22,7 @@ export default function Direct_upload() {
     };
 
     const onSubmit = direct_video_upload => {
-        console.log(direct_video_upload)
+        // console.log(direct_video_upload)
         const file = direct_video_upload.file[0];
        
         Api.Direct_upload_post(direct_video_upload)

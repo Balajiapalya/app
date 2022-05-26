@@ -2,6 +2,7 @@ import styles from '../../styles/model.module.css'
 import Api from '../api/api'
 
 export default function Delete_signing_key({ closereovekeys, item }) {
+    // console.log(item)
     const handleDelete = () => {
         Api.Delete_key_signing(item.signingKeyId).then(res => closereovekeys(false))
     }

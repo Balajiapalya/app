@@ -112,7 +112,7 @@ export default function Add_new_environment({table, closeenv }) {
 
                         <div ref={dropdownprod} className={styles.select}>
                             <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
-                                {selected ? selected : 'Product'}
+                                {selected ? selected : ''}
 
                             </div>
                             <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
