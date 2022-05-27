@@ -31,13 +31,6 @@ export default function Environment() {
       .then((res) => {
         setenv(res.data.data);
       })
-      .catch((error) => {
-        if ((error.response.data.code = 401)) {
-          window.localStorage.clear();
-          document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
-          window.location.href = "/signin";
-        }
-      });
     Api.Get_env_data()
       .then((res) => {
         if ((res.data.status = "Success")) {
@@ -54,13 +47,6 @@ export default function Environment() {
           setclosemodal(closeArr);
         }
       })
-      .catch((error) => {
-        if ((error.response.data.code = 401)) {
-          window.localStorage.clear();
-          document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
-          window.location.href = "/signin";
-        }
-      });
     Add_org_stats();
   }, [addnewenv, load]);
   const Add_org_stats = () => {

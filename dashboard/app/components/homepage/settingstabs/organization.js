@@ -61,13 +61,6 @@ function Organisation() {
                 }
 
             })
-            .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
-            });
     }, [openModel,openremove])
 
     return (
