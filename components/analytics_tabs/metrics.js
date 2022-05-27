@@ -190,13 +190,6 @@ export default function Metrics() {
                 .then(res => {
                     set_amountstreamed(res && res.data && res.data.data && res.data.data.totalUsageRecords && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0] && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs);
                 })
-                .catch(error => {
-                    if (error.response.data.code = 401) {
-                        window.localStorage.clear();
-                        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                        window.location.href = '/signin'
-                    }
-                })
         }
     };
     const Views_statistics_data = (toDate, fromDate) => {
@@ -209,13 +202,6 @@ export default function Metrics() {
                 setOsviews(res.data.data.osViews);
                 setapplicationsviews(res.data.data.applicationViews);
                 setplayerviews(res.data.data.playerViews)
-            })
-            .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
             })
     }
     useEffect(() => {

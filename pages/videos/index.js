@@ -58,13 +58,6 @@ export default function Videos() {
         Api.Video_list(data)
             .then(res =>
                 setVideoData(res.data.data))
-            .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
-            })
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)

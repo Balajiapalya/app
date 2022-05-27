@@ -31,13 +31,6 @@ export default function Environment() {
       .then((res) => {
         setenv(res.data.data);
       })
-      .catch((error) => {
-        if ((error.response.data.code = 401)) {
-          window.localStorage.clear();
-          document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
-          window.location.href = "/signin";
-        }
-      });
     Api.Get_env_data()
       .then((res) => {
         if ((res.data.status = "Success")) {
@@ -54,13 +47,6 @@ export default function Environment() {
           setclosemodal(closeArr);
         }
       })
-      .catch((error) => {
-        if ((error.response.data.code = 401)) {
-          window.localStorage.clear();
-          document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
-          window.location.href = "/signin";
-        }
-      });
     Add_org_stats();
   }, [addnewenv, load]);
   const Add_org_stats = () => {
@@ -89,7 +75,7 @@ export default function Environment() {
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-
+    console.log(openModel[index], closemodal[index])
   }
   let orgname;
   if (process.browser) {
@@ -173,7 +159,7 @@ export default function Environment() {
                                 This field is required
                               </p>
                             )}
-                            <div className={styles.dev}>
+                            <div className={styles.dev_select}>
                               <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} />
                             </div>
                           </div>

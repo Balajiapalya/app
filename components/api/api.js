@@ -63,10 +63,7 @@ export const get_webhook = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks?organizationId=${uuid}&time=${CurrentDate}`;
 };
 export const delete_webhook = (del_webhook) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`;
-}
-export const update_webhook = (webhookId) => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${webhookId}?time=${CurrentDate}`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`
 }
 //access token
 export const Create_aaccess_token = () => {
@@ -256,81 +253,90 @@ if (process.browser) {
     sevendaybeforedate = new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0);
 }
 const pastdate = sevendaybeforedate;
+
+const loginHandledAxios = (req) => axios(req).catch((error) => {
+  if (error.response.data.code == 401) {
+     window.localStorage.clear();
+     document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
+     window.location.href = "/signin";
+  } else  throw error
+})
+
 const Api = {
     Sign_up_data: (login_details) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Sign_up(),
             data: login_details,
         }),//this is called signup
     SignIn_details: (signin_details) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: SignIn_Data(),
             data: signin_details,
         }),//this is called in signin
     Reset_pswEmail: (email) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: email,
             url: post_emailtoResetPswd(),
             headers: headers
         }),
     Reset_password: (paswrd) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: paswrd,
             url: password_reset(),
             headers: headers
         }),
     Create_account_data: (createaccount_data, id) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Create_user_account(),
             data: createaccount_data,
         }),
     Get_roles_data: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_roles(),
             headers: headers,
         }),//this is called in newmember_invite
 
     Get_organization_data: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_organization(),
             headers: headers,
         }),//this is calleed in organization
     Remove_user_data: (data) =>
-        axios({
+        loginHandledAxios({
             method: 'DELETE',
             url: Remove_user(),
             data: data,
             headers: headers,
         }),
     Get_environment_types_data: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_environment_types(),
             headers: headers,
         }),// this is called where ever environments are there
     Edit_organisation_name_data: (organization_data) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Edit_organisation_name(),
             data: organization_data,
             headers: headers,
         }),//this is called in edit_organisation_name
     Newmember_invite_data: (admin_invite_code) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Newmember_invite(),
             data: admin_invite_code,
             headers: headers,
         }),
     Editted_data: (data) =>
-        axios({
+        loginHandledAxios({
             method: 'PUT',
             url: editted_data(),
             data: data,
@@ -338,20 +344,20 @@ const Api = {
         }),
     //access token
     Get_access_token: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_access_token(),
             headers: headers,
         }),
     Create_aaccess_token_data: (access_data) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Create_aaccess_token(),
             data: access_data,
             headers: headers,
         }),
     Revoke_acceesstoken: (del) =>
-        axios({
+        loginHandledAxios({
             method: 'DELETE',
             url: revoke_acceesstoken(del),
             data: del,
@@ -359,61 +365,54 @@ const Api = {
         }),//revoke accesstoken
     //webhook
     Get_webhook: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_webhook(),
             headers: headers,
         }),
     Create_webhook_data: (webhook_data) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Create_webhook(),
             data: webhook_data,
             headers: headers,
         }),
     Delete_webhook: (del_webhook) =>
-        axios({
+        loginHandledAxios({
             method: 'DELETE',
             url: delete_webhook(del_webhook),
             data: del_webhook,
             headers: headers,
         }),//delete webhook
-    Update_webhook: (data,webhookId) =>
-        axios({
-            method: 'PUT',
-            url: update_webhook(webhookId,data),
-            data: data,
-            headers: headers,
-        }),
     //signin key
     Get_sigin_keys: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_signin_keys(),
             headers: headers,
         }),
     Create_signin_keys_data: (signin_key) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: Create_signin_keys(),
             data: signin_key,
             headers: headers,
         }),
     Delete_key_signing: (id) =>
-        axios({
+        loginHandledAxios({
             method: 'DELETE',
             url: delSigningKey(id),
             headers: headers
         }),
     Get_product_data: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_product(),
             headers: headers,
         }),//create_signing_key
     //videos
     Video_list: (data) =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: getList_videos(),
             headers: {
@@ -422,7 +421,7 @@ const Api = {
             },
         }),
     post_video: (video_url_data) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: video_url_data,
             url: video_url(),
@@ -433,26 +432,26 @@ const Api = {
         }),
     //environments
     Get_env_data: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_environment(),
             headers: headers,
         }),
     Env_data: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_new_env(),
             headers: headers,
         }),
     Post_env: (new_env_data) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: new_env_data,
             url: post_env(),
             headers: headers,
         }),
     Update_env: (dev_data, data) =>
-        axios({
+        loginHandledAxios({
             method: 'PUT',
             data: dev_data,
             url: update_env(data),
@@ -460,18 +459,18 @@ const Api = {
         }),
     //direct upload
     Direct_upload_post: (direct_video_upload) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: direct_video_upload,
             url: post_direct_video(),
-            headers: {  
+            headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+                'EnvironmentId': `${envuuid}`
             }
 
         }),
     Direct_upload_get_data: (data) =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_direct_video_data(),
             headers: {
@@ -481,14 +480,14 @@ const Api = {
         }),//called in videos
     //selected
     Selected_option: (data) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: data,
             url: post_selected(),
             headers: headers
         }),
     Get_Env_item: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_video_data(),
             headers: {
@@ -498,7 +497,7 @@ const Api = {
         }),
     //embed
     Get_vdo_player: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_vdo_player(),
             headers: {
@@ -509,27 +508,27 @@ const Api = {
         }),
     //account
     Create_new_organization: (new_org_name) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             url: create_new_organization(),
             data: new_org_name,
             headers: headers
         }),
     User_update: (update_user_data) =>
-        axios({
+        loginHandledAxios({
             method: "PUT",
             url: update_user(),
             data: update_user_data,
             headers: headers
         }),
     Get_User_update: () =>
-        axios({
+        loginHandledAxios({
             method: "GET",
             url: update_user(),
             headers: headers
         }),
     Password_Change: (paswrd) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: paswrd,
             url: change_paswrd(),
@@ -537,7 +536,7 @@ const Api = {
         }),
     //overview
     Delete_asset: () =>
-        axios({
+        loginHandledAxios({
             method: 'DELETE',
             url: delete_asset(),
             headers: {
@@ -547,18 +546,18 @@ const Api = {
         }),
     //thumbnails
     Create_thumbnail: (thumbnail) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: thumbnail,
             url: create_thumbnail(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+                'EnvironmentId': `${envuuid}`
             }
         }),
     //subtitles
     Create_subtitle: (subtitle) =>
-        axios({
+        loginHandledAxios({
             method: 'POST',
             data: subtitle,
             url: add_subtitle_api(),
@@ -568,7 +567,7 @@ const Api = {
             }
         }),
     Get_subtitle_list: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_subtitle_list(),
             headers: {
@@ -577,7 +576,7 @@ const Api = {
             }
         }),
     Delete_subtitle: (e) =>
-        axios({
+        loginHandledAxios({
             method: 'DELETE',
             url: delete_subtitle(e),
             headers: {
@@ -587,7 +586,7 @@ const Api = {
         }),
     //others
     Meta_tag: (data) =>
-        axios({
+        loginHandledAxios({
             method: 'PUT',
             data: data,
             url: meta_update(),
@@ -598,32 +597,32 @@ const Api = {
         }),
     //billing
     List_billing_plans: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: list_billing_plans(),
             headers: headers,
         }),
     Org_list_billing_plans: () =>
-        axios({
+        loginHandledAxios({
             method: "GET",
             url: org_list_billing_plans(),
             headers: headers,
         }),
     List_org_subscriptions: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: list_org_subscriptions(),
             headers: headers,
         }),
     Get_account_info: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_account_info(),
             headers: headers,
         }),
 
     Payment_history: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: payment_history(),
             headers: headers,
@@ -631,38 +630,38 @@ const Api = {
 
     //Statistics
     Usage_statistics: (env, toDate, fromDate) =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: usage_statistics(env, toDate, fromDate),
             headers: headers,
         }),
     Views_statistics: (env, toDate, fromDate) =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: views_statistics(env, toDate, fromDate),
             headers: headers,
         }),
     EditApiAccessToken: (value, accessId) =>
-        axios({
+        loginHandledAxios({
             method: 'PUT',
             data: value,
             url: editAccessToken(accessId),
             headers: headers
         }),
     Realtime_views: (env, fromDate, interval) =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: realtime_views(env, fromDate, interval),
             headers: headers,
         }),
     Org_stats: () =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: org_stats(),
             headers: headers,
         }),
     Get_Playback_URL: (ast_id) =>
-        axios({
+        loginHandledAxios({
             method: 'GET',
             url: get_video_playback_url(ast_id)
         }),

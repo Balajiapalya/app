@@ -46,13 +46,6 @@ export default function Overview() {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
                 })
-                .catch(error => {
-                    if (error.response.data.code = 401) {
-                        window.localStorage.clear();
-                        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                        window.location.href = '/signin'
-                    }
-                })
 
         }
     };
@@ -64,13 +57,6 @@ export default function Overview() {
                     setdeviceviews(res.data.data.deviceViews)
                     set_devicelength((res.data.data.deviceViews))
                     setcountryviews(res.data.data.countryViews)
-                })
-                .catch(error => {
-                    if (error.response.data.code = 401) {
-                        window.localStorage.clear();
-                        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                        window.location.href = '/signin'
-                    }
                 })
         }
     };

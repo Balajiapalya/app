@@ -27,7 +27,7 @@ function Webhooks() {
 
             })
             .catch(error => {
-                if (error.response.data.code = 400) {
+                if (error.response.data.code == 400) {
                     seterror(error.response.data.message)
                     // console.log(error.response.data.message)
                 }

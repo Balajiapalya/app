@@ -31,6 +31,7 @@ function Organisation() {
         return `Joined ${mnth} ${retDate}, ${year}`    
     }
     const dateNew=(newDate)=>{
+        console.log(newDate)
         if(newDate<=20 && newDate>=4 || newDate>23){
             return newDate+'th'
         }
@@ -60,13 +61,6 @@ function Organisation() {
                 }
 
             })
-            .catch(error => {
-                if (error.response.data.code = 401) {
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
-            });
     }, [openModel,openremove])
 
     return (

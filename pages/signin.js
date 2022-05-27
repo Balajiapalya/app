@@ -26,7 +26,7 @@ export default function Signin() {
       })
       .catch(error => {
         setValidation(true)
-        if (error.response.data.code = 400) {
+        if (error.response.data.code == 400) {
           seterror(error.response.data.message)
         }
       })
