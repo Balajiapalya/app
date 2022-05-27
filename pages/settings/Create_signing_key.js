@@ -16,11 +16,13 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     const [productSelect, setProductSelect] = useState(false)
     const [selected,setSelected]=useState()
     const [idSubmit,setIdSubmit]=useState()
+    const [defaultEnv,setDefaultEnv]=useState()
 
     useEffect(() => {
         Api.Get_env_data()
-            .then(res =>
-                setData(res.data.data))
+            .then(res =><>
+                {setData(res.data.data)}
+                {setDefaultEnv(res.data.data[0].name)}</>)
         Api.Get_product_data()
             .then(res =>
                 setProd(res.data.data))
@@ -112,7 +114,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option ? option : ''}
+                                {option ? option : defaultEnv}
                                 <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
                             <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.svg" alt='icon'></img>

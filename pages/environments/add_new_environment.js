@@ -12,6 +12,7 @@ export default function Add_new_environment({table, closeenv }) {
     const [selected,setSelected]=useState();
   const [productSelect, setProductSelect] = useState(false)
   const [idSubmit,setIdSubmit]=useState()
+  
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
@@ -34,7 +35,9 @@ export default function Add_new_environment({table, closeenv }) {
     useEffect(() => {
         Api.Env_data()
             .then(res => {
-                setenv(res.data.data)
+               return(<> {setenv(res.data.data)}
+                {setSelected(res.data.data[0].name)}
+               </>)
             })
             .catch(error => {
                 console.log(error)
