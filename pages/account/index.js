@@ -38,13 +38,6 @@ export default function Accounts() {
       sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
     })
-      .catch(error => {
-        if (error.response.data.code = 401) {
-          window.localStorage.clear();
-          document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-          window.location.href = '/signin'
-        }
-      })
   }, [openneworg]);
   const selectOrganization = (e, key) => {
 

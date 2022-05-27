@@ -23,7 +23,7 @@ export default function Create_account() {
                 }
             })
             .catch(error => {
-                if (error.response.data.code = 400) {
+                if (error.response.data.code == 400) {
                     seterror(error.response.data.message)
                 }
             })
