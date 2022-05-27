@@ -11,8 +11,14 @@ function Webhooks() {
     const [webhook, setwebnook] = useState([]);
     const [error, seterror] = useState();
     const [obj, setObj] = useState([])
+    const [checkedActive, set_chackedActive] = useState();
+    const [checkedInactive, set_checkedInactive] = useState();
     useEffect(() => {
 
+        Webhook_data();
+
+    }, [openwebhook, removewebhook]);
+    const Webhook_data = () => {
         Api.Get_webhook()
             .then(res => {
                 if (res.data.status = "Success") {
@@ -26,34 +32,34 @@ function Webhooks() {
                     // console.log(error.response.data.message)
                 }
             })
-
-    }, [openwebhook, removewebhook]);
+    }
     const create_On = (date) => {
         var y = new Date(date);
         return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
     };
-    const popup=()=>{
+    const popup = () => {
         // document.body.style.overflow='hidden'
         setopenwebhook(true);
-        let table=document.querySelector('.tablemain');
-        let popup=document.querySelector('.popup');
+        let table = document.querySelector('.tablemain');
+        let popup = document.querySelector('.popup');
         table.classList.add(`${styles.no_display}`)
         table.classList.remove(`${styles.display}`)
         popup.classList.remove(`${styles.no_display}`)
     }
+    
     return (
         <Fragment>
             <section className={styles.wrapper_webhooks}>
                 <div className={styles.head}>
-                    <p>Use Webhooks to get real time updates on any events that happens outside of an API request cycle.<br/>
+                    <p>Use Webhooks to get real time updates on any events that happens outside of an API request cycle.<br />
                         Webhooks can be configured for any environment and notifications will be sent for all events for the environment.
                     </p>
-                    <button className="btn" onClick={() =>popup()}>Create new Webhook</button>
+                    <button className="btn" onClick={() => popup()}>Create new Webhook</button>
                 </div>
-                <div  className={`${styles.no_display} popup`}>
-                <Create_new_webhook table={process.browser && document.querySelector('.tablemain')} closewebhook={setopenwebhook}/>
+                <div className={`${styles.no_display} popup`}>
+                    <Create_new_webhook table={process.browser && document.querySelector('.tablemain')} closewebhook={setopenwebhook} />
                 </div>
-               <div className={`${styles.table} tablemain`}>
+                <div className={`${styles.table} tablemain`}>
                     <table>
                         <thead>
                             <tr>
@@ -76,7 +82,9 @@ function Webhooks() {
                                     {/* <td>{item.createdBy}</td> */}
                                     <td>Active</td>
                                     <td>
-                                        <input type="checkbox" className={styles.input}></input>
+                                        {/* <a ><img src="/images/checkbox_unchecked.svg"></img></a>
+                                        <a ><img src="/images/checkbox_checked.svg"></img></a> */}
+                                        <input  type="checkbox" className={styles.input}></input>
                                         <a onClick={() => [`${setremovewebhook(true)}`][`${setObj(item)}`]}><img src="/images/iconmaterial-delete.svg" alt="icon" ></img></a>
                                     </td>
                                     {removewebhook && <Delete_webhook item={obj} closedeletewebhook={setremovewebhook} />}

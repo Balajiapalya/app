@@ -22,8 +22,9 @@ export default function Direct_upload() {
     };
 
     const onSubmit = direct_video_upload => {
+        // console.log(direct_video_upload)
         const file = direct_video_upload.file[0];
-
+       
         Api.Direct_upload_post(direct_video_upload)
             .then(res => {
                 if (res.data.success = "Success") {
@@ -44,17 +45,25 @@ export default function Direct_upload() {
                             if (Headers.status = 200) {
                                 setLoading(false)
                                 setuploaded(true)
-                                router.push={
-                                    pathname:'/videos/index',
+                                router.push = {
+                                    pathname: '/videos/index',
                                 }
 
 
                             }
                         })
+                        
 
                 }
 
             })
+            // .catch(error => {
+            //     if (error.response.data.message = "Token expired") {
+            //         window.localStorage.clear();
+            //         document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+            //         window.location.href = '/signin'
+            //     }
+            // })
     }
 
     return (
@@ -75,7 +84,7 @@ export default function Direct_upload() {
                     </div>
 
                     <div className={styles.direct_upload_title}>
-                        {uploaded && <div className={styles.uploaded_check}><img  src='/images/asset_status/ready.svg' alt='uploaded' /><span>file uploaded</span></div>}
+                        {uploaded && <div className={styles.uploaded_check}><img src='/images/asset_status/ready.svg' alt='uploaded' /><span>file uploaded</span></div>}
                         <ClipLoader className={styles.loader} color={color} loading={loading} size={12} />
 
                         <input

@@ -18,7 +18,7 @@ export default function Thumbnails_api() {
             JSONInPrettyFormat;
     }
     const onSubmit = thumbnail => {
-        console.log(JSON.parse(thumbnail.code))
+        // console.log(JSON.parse(thumbnail.code))
         Api.Create_thumbnail(JSON.parse(thumbnail.code))
             .then(res => {
                 if (res.data.code = 200) {

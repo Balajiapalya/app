@@ -10,24 +10,26 @@ export default function Create_new_webhook({ closewebhook,table }) {
     const [data, setData] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [option, setOption] = useState();
-    const [select, setSelect] = useState(false)
+    const [uuid,setuuid] = useState();
+    const [select, setSelect] = useState(false);
+    const [defaultEnv,setDefaultEnv]=useState()
+    
     useEffect(() => {
-        Api.Get_environment_types_data().then(res =>
-            setData(res.data.data))
+        Api.Get_env_data().then(res =><>
+            {setData(res.data.data)}
+            {setDefaultEnv(res.data.data[0].name)}
+            </>)
     }, [])
 
     const onSubmit = webhook_data => {
-        // document.body.style.overflow = 'scroll'
         let newObj = Object.fromEntries(Object.entries(webhook_data).slice(0, 2))
-        newObj.environmentUUID = localStorage.getItem('envuuid')
+        newObj.environmentUUID = uuid
         Api.Create_webhook_data(newObj).then(res =><>
         {closePopup()}
         {closewebhook(false)}
         </>)
     }
     const closePopup = () => {
-        // document.body.style.overflow = 'scroll';
-        // closewebhook(false)
         let inpopUp=document.querySelector('.inpopup');
         inpopUp.parentElement.classList.add(`${styleDis.no_display}`);
         table.classList.remove(`${styleDis.no_display}`);
@@ -38,6 +40,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
      }
      const handleOption = (option) => {
         setOption(option.name)
+        setuuid(option.uuid)
         setSelect(false)
      }
      const searchHandle = (e) => {
@@ -92,7 +95,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option ? option : 'Development'}
+                                {option ? option : defaultEnv}
                                 <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
 

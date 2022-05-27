@@ -102,7 +102,7 @@ const handleSelected=(prod)=>{
 
                 <div ref={dropdownprod} className={styles.select}>
                   <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
-                    {selected ? selected : 'Product'}
+                    {selected ? selected : 'Owner'}
 
                   </div>
                   <img className={styles.dropdownOneInvite} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>

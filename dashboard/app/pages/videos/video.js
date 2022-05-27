@@ -4,9 +4,11 @@ import Videodelivery_tabs from '../../components/homepage/videodelivery_tabs';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Api from '../../components/api/api';
+import { useRouter } from "next/router";
 
 
 export default function Video() {
+    const reff=useRouter()
     const [headtitle, setheadttitle] = useState(true);
     const [save, setsave] = useState(false);
     const [editInput,setEditInput]=useState()
@@ -28,16 +30,17 @@ export default function Video() {
         setsave(true)
     }
     const saveName = () => {
+       
         let doc=document.querySelector('.headerDiv')
-        doc.getElementsByClassName('child')[0].value=editInput
-        console.log(doc.getElementsByClassName('child'))
+        if(doc.getElementsByClassName('child')[0]!==undefined){
+            doc.getElementsByClassName('child')[0].value=editInput
+        }
         localStorage.setItem('asset_title',editInput)
         let obj=new Object()
         obj.title=editInput
         obj.description=data.description
         obj.tags=data.tags
-        obj.metadata=data.metadata
-        console.log(data.metadata,'ddesc')
+        obj.metadata=data.metadata;
         Api.Meta_tag(obj).then(res=>setEdittedTitle(res.data.data.title))
         setsave(false);
         setheadttitle(true);
@@ -81,7 +84,7 @@ export default function Video() {
                                     </div>
                                     {save ?
                                         <div className={styles.input_title}>
-                                            <input onChange={(e)=>handleInput(e)}/>
+                                            <input onChange={(e)=>handleInput(e)} defaultValue={title}/>
                                             <button onClick={() => saveName()}>Save</button>
                                             <button onClick={() => cancelName()}>cancel</button>
                                         </div> : null}

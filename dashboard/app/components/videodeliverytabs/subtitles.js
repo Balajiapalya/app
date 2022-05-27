@@ -30,6 +30,13 @@ export default function Subtitles() {
                     setsubtitle(res.data.data);
                 }
             })
+            .catch(error => {
+                if(error.response.data.message="Token expired"){
+                    window.localStorage.clear();
+                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
+            })
     };
     const delete_subtitle = (e) => {
         Api.Delete_subtitle(e)
@@ -57,13 +64,21 @@ export default function Subtitles() {
                 }
             })
     };
+    const created_date = (date) => {
+        var y = new Date(date)
+        return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" })
+    }
+    const created_time = (date) => {
+        var t = new Date(date)
+        return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
+    }
     return (
         <Fragment>
 
             <div className={styles.subtitles}>
                 <div className={styles.subtitles_list}>
                     <h2>List of Subtitles</h2>
-                    <div className={styles.videos_table}>
+                    <div className={styles.subtitles_list_table}>
                         <table>
                             <thead>
                                 <tr>
@@ -78,12 +93,12 @@ export default function Subtitles() {
                             <tbody >
                                 {subtitle.map((item,key) =>
                                     <tr key={key}>
-                                        <td>02/12/21<br></br>6:03pm</td>
+                                        <td>{created_date(item.createdOn)}<br/>{created_time(item.createdOn)}</td>
                                         <td>{item.name}</td>
                                         <td className={styles.subtitle_id}>{item.uuid}</td>
-                                        <td>{item.languageCode}</td>
+                                        <td>{item.format}</td>
                                         <td className={styles.actionicons}>
-                                            <img src="/images/download.svg" alt="download" />
+                                            <img src="/images/download.svg" className={styles.download_img} alt="download" />
                                             <img onClick={() => delete_subtitle(item.uuid)} src="/images/iconmaterial-delete.svg" alt="delete" />
 
                                         </td>
@@ -100,7 +115,7 @@ export default function Subtitles() {
                     <div className={styles.Videodelivery_addnewassets}>
                         <h2>Upload subtitle files</h2>
                         <div className={styles.upload_file}>
-                            <h2 className={styles.upload_file_heading}>upload your file</h2>
+                            <h2 className={styles.upload_file_heading}>Upload your file</h2>
                             <div className={styles.upload_btn_wrapper}>
                                 <button className={styles.btn}>Select File</button>
                                 {/* <input type="file" name="myfile" /> */}

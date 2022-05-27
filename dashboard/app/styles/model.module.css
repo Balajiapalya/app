@@ -112,7 +112,6 @@
 }
 
 .model_selection {
-    /* width: calc(100% - 40px); */
     width: 100%;
     float: left;
     border-bottom: 2px solid #ddd;
@@ -121,7 +120,6 @@
     padding: 9px;
     outline: none;
     font-family: Inter-Regular;
-    /* margin-left: 20px; */
     background-color: white;
     border: solid 1px rgba(99, 115, 129, 0.3);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -132,7 +130,6 @@
     font-style: normal;
     line-height: 1.23;
     letter-spacing: normal;
-    /* text-align: left; */
     color: #212b36;
 }
 
@@ -369,7 +366,7 @@
 .secret .butn {
     text-decoration: underline;
     padding-top: 10px;
-
+    cursor: pointer;
     font-family: Inter-Regular;
     font-size: 14px;
     font-weight: normal;
@@ -579,7 +576,7 @@
 
 .access_token_checkbox {
     width: 100%;
-    height: 147px;
+    height: 226px;
     margin-bottom: 4px;
     background-color: #fff;
     float: left;
@@ -587,7 +584,7 @@
     color: #444;
     font-size: 14px;
     border: 1px solid #ddd;
-    padding: 16px 317px 10px 15px;
+    padding: 14px 317px 10px 15px;
 }
 
 .access_token_checkbox label {
