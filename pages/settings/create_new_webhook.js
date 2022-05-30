@@ -12,12 +12,12 @@ export default function Create_new_webhook({ closewebhook,table }) {
     const [option, setOption] = useState();
     const [uuid,setuuid] = useState();
     const [select, setSelect] = useState(false);
-    const [defaultEnv,setDefaultEnv]=useState()
     
+
     useEffect(() => {
         Api.Get_env_data().then(res =><>
             {setData(res.data.data)}
-            {setDefaultEnv(res.data.data[0].name)}
+            {setOption(res.data.data[0].name)}
             </>)
     }, [])
 
@@ -95,7 +95,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option ? option : defaultEnv}
+                                {option}
                                 <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                             </div>
 
