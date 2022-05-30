@@ -23,12 +23,6 @@ export default function Overview() {
                     setplayer([res.data.data])
                     localStorage.setItem("asset_title", res.data.data.title);
                 }
-            }).catch(error => {
-                if(error.response.data.message="Token expired"){
-                    window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
-                    window.location.href = '/signin'
-                }
             })
             return()=>{
                 setplayer([])
