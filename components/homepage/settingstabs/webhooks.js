@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Create_new_webhook from "../../../pages/settings/create_new_webhook";
 import Delete_webhook from "../../dialog/Delete_webhook";
 import Api from "../../api/api";
+import WebhookToggleImg from './WebhookToggleImg'
 
 function Webhooks() {
     const [openwebhook, setopenwebhook] = useState(false);
@@ -13,6 +14,8 @@ function Webhooks() {
     const [obj, setObj] = useState([])
     const [checkedActive, set_chackedActive] = useState();
     const [checkedInactive, set_checkedInactive] = useState();
+    
+
     useEffect(() => {
 
         Webhook_data();
@@ -82,9 +85,11 @@ function Webhooks() {
                                     {/* <td>{item.createdBy}</td> */}
                                     <td>Active</td>
                                     <td>
-                                        {/* <a ><img src="/images/checkbox_unchecked.svg"></img></a>
-                                        <a ><img src="/images/checkbox_checked.svg"></img></a> */}
-                                        <input  type="checkbox" className={styles.input}></input>
+                                        <WebhookToggleImg item={item}/>
+                                        
+
+                                        {/* <a ><img src="/images/checkbox_checked.svg"></img></a> */}
+                                        {/* <input  type="checkbox" className={styles.input}></input> */}
                                         <a onClick={() => [`${setremovewebhook(true)}`][`${setObj(item)}`]}><img src="/images/iconmaterial-delete.svg" alt="icon" ></img></a>
                                     </td>
                                     {removewebhook && <Delete_webhook item={obj} closedeletewebhook={setremovewebhook} />}
