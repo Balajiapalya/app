@@ -79,7 +79,7 @@ export default function Overview() {
                 <div key={ind} className={styles.overview}>
                     <div className={styles.url_buttons}>
                         <div className={styles.geturl}>
-                            <p>GET/services/api/v1/contents/{i.videoId}</p>
+                            <p>GET /services/api/v1/contents/{i.contentId}</p>
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
@@ -100,8 +100,8 @@ export default function Overview() {
                                 <tbody>
                                     <div>
                                         <tr>
-                                            <td className={styles.title}>Video ID</td>
-                                            {i.videoId ? <td className={styles.content}>{i.videoId}</td> : <td>-</td>}
+                                            <td className={styles.title}>Content ID</td>
+                                            {i.contentId ? <td className={styles.content}>{i.contentId}</td> : <td>-</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
@@ -141,11 +141,11 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`${window.location.origin}/videos/embed?videoId=`}{i.videoId}</p>
+                                                <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.videoId}`}>
+                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.contentId}`}>
                                                     <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>
@@ -174,11 +174,11 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`} </p>
+                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`}>
+                                                <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`}>
                                                     <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>

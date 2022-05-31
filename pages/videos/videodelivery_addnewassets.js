@@ -19,9 +19,9 @@ export default function Videodelivery_addnewassets({ table }) {
         // console.log(JSON.parse(video_url_data.code))
         Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
-                if (res.data.status = "Success") {
-                    // window.location.reload() 
-                    close_asset(false)
+               if (res.data.status == "Success") {
+                     window.location.reload()
+//                    close_asset(true)
                 }
             })
             .catch(error => {
@@ -58,7 +58,7 @@ export default function Videodelivery_addnewassets({ table }) {
                     <input
                         type='text'
                         readOnly
-                        value={`POST  http://13.235.3.29/video/services/api/v1/contents`}
+                        value={`POST  https://api.videograph.ai/video/services/api/v1/contents`}
                     />
                     <span>POST body editor:</span>
                     <div className={styles.language_select}>
@@ -72,11 +72,11 @@ export default function Videodelivery_addnewassets({ table }) {
                         <div className={styles.code}>
                             {toggleposition == 2 ?
                                 <textarea
-                                    defaultValue={`${JSON.stringify([
+                                    defaultValue={`${JSON.stringify(
                                         {
                                             "title": "Video title",
                                             "description": "Video description",
-                                            "video": [
+                                            "content": [
                                                 {
                                                     "url": "http://techslides.com/demos/sample-videos/small.mp4",
                                                     "start_offset": 0
@@ -94,10 +94,9 @@ export default function Videodelivery_addnewassets({ table }) {
                                             ],
                                             "playback_policy": ["public"],
                                             "mp4_support": false,
-                                            "save_original_copy": false,
-                                            // "test_video": true
+                                            "save_original_copy": false
                                         }
-                                    ], undefined, 2)}`}
+                                    , undefined, 2)}`}
                                     id="prettyJSONFormat"
                                     className={`${styles.code_input} form_control`}
                                     type='text'
