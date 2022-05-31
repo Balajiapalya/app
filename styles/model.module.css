@@ -53,11 +53,13 @@
     float: right;
     /* padding: 15px 10px; */
 }
-.model_form{
+
+.model_form {
     width: 100%;
     float: left;
     padding: 20px;
 }
+
 .model_label {
     width: 100%;
     float: left;
@@ -138,7 +140,8 @@
     margin: 10px;
     font-family: OpenSans-SemiBold;
 }
-.model_btn_token{
+
+.model_btn_token {
     float: right;
     margin: 10px 0px;
     font-family: OpenSans-SemiBold;
@@ -179,7 +182,8 @@
     text-align: center;
     color: #fff;
 }
-.save_btn{
+
+.save_btn {
     padding: 12px 28px 11px;
     margin: 8px 0px 15px 10px;
     font-family: Inter-Medium;
@@ -508,23 +512,35 @@
 .paymenthistory thead tr {
     text-align: left;
     font-family: Inter-Medium;
-    color: #212b36;
     font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    color: #212b36;
 }
 
 .paymenthistory thead tr th {
-    padding: 10px 5px;
+    padding: 12px;
 }
 
 .paymenthistory tbody tr td {
     border-top: 1px solid #f4f6f8;
-    padding: 5px;
-    text-align: left;
-    border-spacing: 5px 5px;
-    color: #56606e;
+    padding: 12px;
     font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
 }
-
+.download_img img{
+    margin-left: 15px;
+}
 .paymenthistory .model_btn {
     float: initial;
     text-align: center;
@@ -795,14 +811,15 @@
     background: none;
     border: none;
     outline: none;
-    outline:none;
-    position:absolute;
-    top:10px;
+    outline: none;
+    position: absolute;
+    top: 10px;
     cursor: pointer;
     right: 8px;
     /* height: 12px; */
 }
-.dropdownOne{
+
+.dropdownOne {
     background: none;
     border: none;
     outline: none;
@@ -813,13 +830,15 @@
     right: 8px;
     cursor: pointer;
 }
+
 /* newmemberinvite */
-.icon{
+.icon {
     position: relative;
     left: 422px;
     bottom: 16px;
 }
-.selectFile{
+
+.selectFile {
     position: absolute;
     top: 10px;
     /* left: 20px; */
@@ -838,10 +857,10 @@
     /* height: 186px; */
     width: 100%;
 
-    z-index:1;
+    z-index: 1;
     /* height: 186px; */
     background-color: #fff;
-   
+
     position: absolute;
     border: solid 1px #a8c3db;
     margin-top: 2px;
@@ -880,9 +899,11 @@
     text-align: left;
     color: #196068;
 }
-.select .allOptions div:hover{
+
+.select .allOptions div:hover {
     background-color: #f4f6f8;
 }
+
 .newkey .access_token_link {
     font-size: x-small;
 }
@@ -1175,58 +1196,65 @@
     margin-bottom: 2px; */
     font-size: 12px;
 }
+
 /* dropdown newmemberinvite */
-.inviteOptions{
-    width:455px;
+.inviteOptions {
+    width: 455px;
     background-color: #fff;
-    position:absolute;
-    border:solid 1px #a8c3db;
-    margin-top:2px;
+    position: absolute;
+    border: solid 1px #a8c3db;
+    margin-top: 2px;
     border-radius: 2px;
-    top:455px;
+    top: 455px;
     cursor: pointer;
 }
-.dropdownOneInvite{
+
+.dropdownOneInvite {
     background: none;
-    border:none;
+    border: none;
     outline: none;
     position: relative;
-    bottom:36px;
+    bottom: 36px;
     height: 8px;
-    left:432px;
+    left: 432px;
     cursor: pointer;
 }
-.searchSelectInvite{
+
+.searchSelectInvite {
     border: none;
-    outline:none;
-    width:100%;
-    padding:9px;
-    border-bottom:solid 1px #d5dbe2;
+    outline: none;
+    width: 100%;
+    padding: 9px;
+    border-bottom: solid 1px #d5dbe2;
     padding-left: 12px;
-    font-size:13px;
+    font-size: 13px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.25;
     letter-spacing: normal;
 }
-.allOptionsInvite{
-    padding:5px 0px 5px 0px;
+
+.allOptionsInvite {
+    padding: 5px 0px 5px 0px;
     font-family: Inter-Regular;
     font-size: 13px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.25;
-    letter-spacing:normal;
-    color:#196068;
+    letter-spacing: normal;
+    color: #196068;
 }
-.allOptionsInvite div{
+
+.allOptionsInvite div {
     padding: 5px;
 }
-.allOptionsInvite div:hover{
+
+.allOptionsInvite div:hover {
     background-color: #f4f6f8;
 }
+
 @media (min-width: 280px) and (max-width:510px) {
 
 
