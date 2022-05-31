@@ -268,6 +268,7 @@
     line-height: 1.21;
     letter-spacing: normal;
     color: #212b36;
+    border-bottom: 1px solid #ecedef;
 }
 
 .videos_table table thead tr th img {

@@ -174,11 +174,11 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`} </p>
+                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p>
 
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.videoId}" allowfullscreen ></iframe>`}>
+                                                <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`}>
                                                     <img src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                             </div>

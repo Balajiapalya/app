@@ -37,7 +37,7 @@ export default function Payment_history({ closepaymenthistory }) {
                 <tr className={styles.tr}>
                   <td>{createdDate(items.paymentDate)}</td>
                   <td>{items.amount} {items.currency}</td>
-                  <td><a href={items.downloadableInvoiceUrl} target='_blank' rel="noreferrer" download='invoice'><img src="/images/download.svg" alt='icon'></img></a></td>
+                  <td className={styles.download_img}><a href={items.downloadableInvoiceUrl} target='_blank' rel="noreferrer" download='invoice'><img src="/images/download.svg" alt='icon'></img></a></td>
                 </tr>
 
               </tbody>
