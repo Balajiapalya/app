@@ -164,7 +164,7 @@ export const delete_subtitle = (e) => {
 }
 //others
 export const meta_update = () => {
-    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${asset_id}?time=${CurrentDate}`
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}?time=${CurrentDate}`
 }
 export const post_emailtoResetPswd = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/reset-password-request?time=${CurrentDate}`
@@ -260,6 +260,7 @@ if (process.browser) {
 const pastdate = sevendaybeforedate;
 
 const loginHandledAxios = (req) => axios(req).catch((error) => {
+ 
   if (error.response.data.code == 401) {
      window.localStorage.clear();
      document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
@@ -604,7 +605,7 @@ const Api = {
             url: meta_update(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
     //billing
