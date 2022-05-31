@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
+import Api from "../../api/api";
 
-const WebhookToggleImg = ({item}) => {
-    console.log(item)
-    const [activeState,setActiveState]=useState(true)
-    const [deactivateState,setDeactivateState]=useState(false)
-
+const WebhookToggleImg = ({item,set_chackedActive,checkedActive}) => {
+    const [activeState,setActiveState]=useState(item.isEnable)
     const handleActive=()=>{
         setActiveState(!activeState)
-        setDeactivateState(!deactivateState)
+        let id=item.uuid
+        let obj=new Object();
+        obj.isEnabled=!activeState
+        if(id!==undefined){
+            Api.WebhookUpdate(obj,id).then(res=>
+                set_chackedActive(!checkedActive))
+        }
     }
+    
     return (
         <>
-            {activeState && <a onClick={() => handleActive()}><img src="/images/checkbox_checked.svg"></img></a>}
-            {deactivateState && <a onClick={() => handleActive()}><img src="/images/checkbox_unchecked.svg"></img></a>}
+            {activeState ? <a onClick={() => handleActive()}><img src="/images/checkbox_checked.svg"></img></a>:
+            <a onClick={() => handleActive()}><img src="/images/checkbox_unchecked.svg"></img></a>}
         </>
     )
 }

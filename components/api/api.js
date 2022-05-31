@@ -65,6 +65,9 @@ export const get_webhook = () => {
 export const delete_webhook = (del_webhook) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`
 }
+export const updateBtn=(id)=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${id}`
+}
 //access token
 export const Create_aaccess_token = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/api-access-tokens?time=${CurrentDate}`;
@@ -201,6 +204,8 @@ export const org_stats = () => {
 export const get_video_playback_url = (asset_id) => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/` + asset_id + `/playback_url?time=${CurrentDate}`
 }
+
+
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -384,6 +389,13 @@ const Api = {
             data: del_webhook,
             headers: headers,
         }),//delete webhook
+        WebhookUpdate:(data,webhookid)=>
+        loginHandledAxios({
+            method:'PUT',
+            url:updateBtn(webhookid),
+            data:data,
+            headers: headers,
+        }),
     //signin key
     Get_sigin_keys: () =>
         loginHandledAxios({
