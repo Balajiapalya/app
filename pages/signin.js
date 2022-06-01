@@ -8,9 +8,11 @@ export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
   const [validation, setValidation] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
+  const watchField=watch(['login','password'])
   const onSubmit = login_details => {
     login_details.password = btoa(login_details.password)
+    if(login_details.login.length>1 && login_details.password.length>1){
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {
@@ -23,6 +25,7 @@ export default function Signin() {
           localStorage.setItem('userID', res.data.data.uuid);
           window.location.pathname = '/';
         }
+        reset()
       })
       .catch(error => {
         setValidation(true)
@@ -30,6 +33,7 @@ export default function Signin() {
           seterror(error.response.data.message)
         }
       })
+    }
   }
   const handleChange = () => {
     setValidation(false)
@@ -53,7 +57,7 @@ export default function Signin() {
                 placeholder="Enter email address"
                 name="login"
                 className={`${styles.signup_input} form_control`}
-                {...register("login", { required: true })}
+                {...register("login", { required:watchField[1]!=undefined && watchField[1].length>1?false:true })}
                 onChange={() => handleChange()}
               />
             </div>
@@ -66,7 +70,7 @@ export default function Signin() {
                 placeholder="Enter password"
                 name="password"
                 className={`${styles.signup_input} form_control`}
-                {...register("password", { required: true })}
+                {...register("password", { required:watchField[1]!=undefined && watchField[1].length>1?false:true })}
                 onChange={() => handleChange()}
               />
               {validation && <span className='error'>{error}</span>}
