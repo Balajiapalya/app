@@ -109,6 +109,7 @@ export default function Videos() {
     }
     const orName = orgname;
     const handleSearch = (e) => {
+        console.log(e)
         let input = e.target.value.toUpperCase()
         let table = document.querySelector('.table_input')
         let tRow = table.getElementsByTagName('tr')

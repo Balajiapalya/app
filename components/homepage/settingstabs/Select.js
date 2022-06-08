@@ -36,13 +36,12 @@ const Select = ({ item, data }) => {
 
 
     const handleChange = (i, ind) => {
-
         let element = new Object()
         element.email = item.email
         element.roleId = parseInt(i.id)
         let arr = []
         arr.push(element)
-        Api.Selected_option(arr).then(res => setOpt(ind + 1))
+        Api.Selected_option(arr).then(res => setOpt(i.id))
         setIsActive(false)
     }
     return (
@@ -56,11 +55,11 @@ const Select = ({ item, data }) => {
 
         <div ref={node} className={styles.dropdown}>
             <div className={styles.dropdownBtn} onClick={() => setIsActive(!isActive)}>
-                {opt == 1 ? 'Owner' : opt == 2 ? 'Admin' : 'Member'}
+                {opt == 2 ? 'Admin' : opt == 3 ? 'Member' : ''}
                 <img src="/images/iconawesome-chevrondown.png" />
             </div>
             {isActive && <div className={styles.dropdownContent}>
-                {data.map((i, ind) =>
+                {data.slice(1).map((i, ind) =>
                     <div key={ind} onClick={() => handleChange(i, ind)} className={styles.dropdownItem}>{i.name}{i.id === opt && <img src="images/check.svg" />}</div>
                 )}
             </div>}

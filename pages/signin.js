@@ -77,7 +77,7 @@ export default function Signin() {
             </div>
             {errors.password && <p className={'validations'}>This field is required</p>}<br />
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign in </button>
-            <Link href="/email"><h4 className={styles.forgotpw}>Forgot password?</h4></Link>
+            <Link href="/email"><h4 className={styles.forgotpw}>Forgot Password?</h4></Link>
           </form>
           <h4 className={styles.already_account}>Don&#39;t have an account?</h4>
           <Link href="/signup"><a className={styles.signin_link}>Sign up</a></Link>
