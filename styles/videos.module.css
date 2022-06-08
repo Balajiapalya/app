@@ -774,7 +774,7 @@
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  padding:8px;
+  padding:10px 0px 10px 13px;
   color: #196068;
 }
 .all{
@@ -824,7 +824,7 @@
     cursor: pointer;
 }
 .singleOption{
-    padding:8px;
+    padding:4px 0px 4px 22px;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -844,6 +844,27 @@
 }
 .display{
     display:block;
+}
+/* topdropdown */
+.openDropdown{
+    height: 5px;
+    margin-left: 8px;
+    margin-right: 3px;
+    position: relative;
+    bottom: 2px;
+}
+.orgNames{
+    padding:3px;
+    font-family: 'Inter-Medium';
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #113b40;
+    text-transform: capitalize;
 }
 
 /* @media only screen and (min-width: 200px)   {

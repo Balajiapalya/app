@@ -19,7 +19,10 @@ export default function Videos() {
     const [ordernum, set_ordernum] = useState("ASC")
     const [vidDropdown, setVidDropdown] = useState()
     const [selected, setSelected] = useState(false)
-    const [defaultenv,setDefaultenv]=useState()
+    const [defaultenv, setDefaultenv] = useState();
+    const [org, setOrg] = useState([])
+    const [openEnv, setOpenEnv] = useState(false);
+    const [clicked, setClicked] = useState()
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -61,7 +64,7 @@ export default function Videos() {
         Api.Env_data()
             .then(res => {
                 setenv(res.data.data)
-                
+
             })
             .catch(error => {
                 console.log(error)
@@ -75,11 +78,21 @@ export default function Videos() {
             .catch(error => {
                 console.log(error)
             })
+        Api.Get_User_update().then(res => {
+            setOrg(res.data.data.organizations)
+        })
+        return()=>{
+            setVideoData([]);
+            setenv([])
+            setEnvSelect([])
+            setOrg([])
+        }
     }, [id, add_asset])
 
     const handleChange = (i) => {
         setId(i.uuid)
-        localStorage.setItem("envuuid", i.uuid)
+        localStorage.setItem("envuuid", i.uuid);
+        localStorage.setItem("uuid", clicked);
     }
 
     const create_On = (date) => {
@@ -117,7 +130,7 @@ export default function Videos() {
         }
     }
 
-    
+
     const searchHandle = (e) => {
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
@@ -134,11 +147,14 @@ export default function Videos() {
     const handleSelected = (item) => {
         setSelected(item.name)
         setVidDropdown(false)
+        setOpenEnv(false)
     }
     let dropdownprod = useRef()
     useEffect(() => {
+        
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
+                setOpenEnv(false)
                 setVidDropdown(false)
             }
         }
@@ -148,30 +164,37 @@ export default function Videos() {
         }
     }, [])
 
-    const handlePopup=()=>{
+    const handlePopup = () => {
         // set_asset(true)
-        let table=document.querySelector('.table');
-        let popup=document.querySelector('.popup');
+        let table = document.querySelector('.table');
+        let popup = document.querySelector('.popup');
         table.classList.add(`${styles.no_display}`)
         table.classList.remove(`${styles.display}`)
         popup.classList.remove(`${styles.no_display}`)
     }
+
+    const handleEnv = (i) => {
+        setClicked(i.uuid);
+        setOpenEnv(!openEnv);
+        
+    }
+    
     return (
 
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className="container">
-                        
 
-                             {/* <p>{orName}
+
+                        {/* <p>{orName}
                                 <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
                                     {envSelect.map(i => <>
                                         <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
                                     </>)}
                                 </select>
                                         </p> */}
-                               {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
+                        {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
 
                                     {selected ? selected : 'Product'}
 
@@ -190,32 +213,37 @@ export default function Videos() {
                                     </div>}
                              */}
                         <div className={styles.content} ref={dropdownprod}>
-                                <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
-                                    <div className={styles.names}>
-                                        <div className={styles.org_name}>{orName}</div>
-                                        <div className={styles.displayName}>
-                                            {envSelect.map(i=>{
-                                                if(i.uuid===localStorage.getItem('envuuid')){
-                                                    return selected?selected:i.name
-                                                }
-                                                
-                                            })}
-                                        </div>
+                            <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
+                                <div className={styles.names}>
+                                    <div className={styles.org_name}>{orName}</div>
+                                    <div className={styles.displayName}>
+
+
+                                        {envSelect.map(i => {
+                                            if (i.uuid === localStorage.getItem('envuuid')) {
+                                                return selected ? selected : i.name
+                                            }
+
+                                        })}
                                     </div>
-                                    
-                                    <img className={styles.clickable} src="images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
-                                    <img className={styles.store} src='/images/iconawesome-folder.svg' />
                                 </div>
+
+                                <img className={styles.clickable} src="images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
+                                <img className={styles.store} src='/images/iconawesome-folder.svg' />
+                            </div>
 
                             {vidDropdown &&
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
-                                        {envSelect.map(i =>
-                                            <>
-                                            <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
+                                        {org.map((i,ind) => <>
+                                            <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                            <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
+                                                {i.name}</div>
+                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
                                             </div>
-                                            </>
+                                            )}
+                                        </>
                                         )}
                                     </div>
                                 </div>
@@ -274,7 +302,7 @@ export default function Videos() {
                     </div>
                     {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
                     <div className={`${styles.no_display} popup`}>
-                    <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')}/>
+                        <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} />
                     </div>
                 </div>
             </div>
