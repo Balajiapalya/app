@@ -79,10 +79,10 @@ const router=useRouter()
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            {/* <Link href="/events_logs"> */}
+                            <Link href="/events_logs">
                                 <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/iconawesome-file-alt(white).svg" : "/images/iconawesome-file-alt.svg"} alt='icon'></img><span>Events & Logs</span>
                                 </a>
-                            {/* </Link> */}
+                            </Link>
                         </li>
                         <li>
                             <Link href="/settings"><a className={router.pathname=='/settings' ? `${styles.activate}` : ''}><img src={router.pathname=='/settings'? "/images/iconionic-ios-settings(white).svg" : "/images/iconionic-ios-settings.svg"} alt='icon'></img><span>Settings</span></a></Link>

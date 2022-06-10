@@ -11,11 +11,11 @@ function Logs() {
                         <tr>
                             <th>Status</th>
                             <th>Description</th>
-                            <th>DATE</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr >
                             <td>204 Stream down</td>
                             <td><p>FRANE FREEZE</p>https://Videograph.com/video/v1/assets/00ijr1mxkM<br></br>01pzrh</td>
                             <td>11/11/2021 3:57PM</td>
