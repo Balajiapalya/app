@@ -620,6 +620,8 @@
 }
 
 .edit_img {
+    width: 9px;
+    height: 9px;
     position: relative;
     left: 7px;
     cursor: pointer;
@@ -704,7 +706,7 @@
     margin-bottom: 10px;
     color: #212b36;
     font-family: Inter-Regular;
-    font-size: 16px;
+    font-size: 13px;
     outline: none;
 }
 
@@ -732,8 +734,14 @@
     cursor: pointer;
     float: left;
     text-decoration: underline;
-    color: #848484;
-    font-size: 14px;
+    color: #848484;         
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     font-family: Inter-Regular;
 
 }
@@ -743,10 +751,16 @@
     float: right;
     color: #2863eb;
     text-decoration: underline;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     font-family: Inter-Regular;
     border: none;
-    background-color: inherit
+    background-color: inherit;
 }
 
 /* popup */
@@ -772,7 +786,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 13px;
     font-family: Inter-Regular;
     font-weight: 500;
     font-stretch: normal;
