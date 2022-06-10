@@ -8,27 +8,33 @@ import Layout from '../../components/common/layout'
 export default function Events_logs() {
     return (
         <div className="container">
-        <div className={styles.container}>
-            {/* <div>
+            <div className={styles.container}>
+                {/* <div>
                 <Navbar/>
             </div> */}
-            <div className={styles.settings}>
-                <div className={styles.padding}>
-                    <div className={styles.header}>
-                        <h2>
-                            Events & Logs
-                        </h2>
-                        <h3>
-                            Yupptv
-                        </h3>
+                <div className={styles.settings}>
+                    <div className={styles.padding}>
+                        <div className={styles.header}>
+                            <h2>
+                                Events & Logs
+                            </h2>
+                            <h3>
+                                Yupptv
+                            </h3>
+                        </div>
+                        <Events_logs_tabs />
                     </div>
-                    <Events_logs_tabs/>
                 </div>
             </div>
-        </div>
         </div>
     )
 }
 Events_logs.getLayout = function getLayout(page) {
-    return <Layout>{page}</Layout>;
-  };
+    return <Layout>
+        <div className="wrapper_body">
+
+            {page}
+
+        </div>
+    </Layout>;
+};

@@ -372,7 +372,7 @@
     width: 40%;
     height: 33vh;
     float: right;
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
 }
 
 .countries_table table {
@@ -422,18 +422,19 @@
     text-align: center;
     border-bottom: 1px solid #e6e9f4;
     border-collapse: collapse;
-    filter: blur(0.3px);
+    /* filter: blur(0.3px); */
 }
 
 .countries_table table tbody tr td {
     padding: 5px;
     height: 45px;
     color: #212b36;
-    font-family: Inter;
+    font-family: Inter-Regular;
     font-size: 13px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
+    text-align: left;
     line-height: 1.08;
     letter-spacing: normal;
 }
