@@ -6,7 +6,7 @@ import Api from '../../components/api/api'
 import { useState, useRef } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
-import VideoList, { Video_file } from '../../components/video_list'
+import VideoList from '../../components/video_list'
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -81,7 +81,7 @@ export default function Videos() {
         Api.Get_User_update().then(res => {
             setOrg(res.data.data.organizations)
         })
-        return()=>{
+        return () => {
             setVideoData([]);
             setenv([])
             setEnvSelect([])
@@ -109,7 +109,6 @@ export default function Videos() {
     }
     const orName = orgname;
     const handleSearch = (e) => {
-        console.log(e)
         let input = e.target.value.toUpperCase()
         let table = document.querySelector('.table_input')
         let tRow = table.getElementsByTagName('tr')
@@ -151,7 +150,7 @@ export default function Videos() {
     }
     let dropdownprod = useRef()
     useEffect(() => {
-        
+
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
                 setOpenEnv(false)
@@ -174,11 +173,12 @@ export default function Videos() {
     }
 
     const handleEnv = (i) => {
+        localStorage.setItem("orgName", i.name)
         setClicked(i.uuid);
         setOpenEnv(!openEnv);
-        
+
     }
-    
+
     return (
 
         <div className={styles.container}>
@@ -217,13 +217,10 @@ export default function Videos() {
                                 <div className={styles.names}>
                                     <div className={styles.org_name}>{orName}</div>
                                     <div className={styles.displayName}>
-
-
                                         {envSelect.map(i => {
                                             if (i.uuid === localStorage.getItem('envuuid')) {
                                                 return selected ? selected : i.name
                                             }
-
                                         })}
                                     </div>
                                 </div>
@@ -236,11 +233,14 @@ export default function Videos() {
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
-                                        {org.map((i,ind) => <>
+                                        {org.map((i, ind) => 
+                                        <>
                                             <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                            <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
-                                                {i.name}</div>
-                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
+                                                <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
+                                                {i.name}
+                                            </div>
+                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                                {i.name}
                                             </div>
                                             )}
                                         </>

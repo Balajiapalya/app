@@ -412,6 +412,7 @@
     text-align: left;
     color: #7e84a3;
 }
+
 .countries_table table {
     border-spacing: 0px;
 }
@@ -479,7 +480,7 @@
 
 .percentage {
     width: 100%;
-    float:right;
+    float: right;
     margin-right: 30px;
 }
 
@@ -689,9 +690,11 @@
     width: 100%;
     float: left;
 }
-.countries_heading_content .export_img img{
+
+.countries_heading_content .export_img img {
     margin-top: 0px;
 }
+
 .countries_heading_content h4 {
     width: 70%;
     float: left;
@@ -759,7 +762,7 @@
     width: 100%;
     float: left;
     color: #5a607f;
-    font-size: 12px;   
+    font-size: 12px;
     line-height: 1.23;
     font-family: Inter-Regular;
     margin-bottom: 20px;
@@ -831,92 +834,114 @@
     padding: 5px 15px;
     border-radius: 6px;
 }
-@media screen and (max-width:991px){
-    .countries_devices_container{
+
+@media screen and (max-width:991px) {
+    .countries_devices_container {
         display: block;
     }
-    .countries_container{
+
+    .countries_container {
         width: 100%;
         float: left;
         margin-bottom: 20px;
     }
+
     /* .graphs_container{
         display: block;
     } */
-    .devices_container{
+    .devices_container {
         width: 50%;
         float: left;
     }
+
     .Countries_videos .metric_cards {
         width: 66%;
         float: left;
     }
 
 }
+
 /* dropdown */
-.inputSearch{
-    border:none;
-    outline:none;
-    width:100%;
-    border-bottom:solid 1px #d5dbe2;
+.inputSearch {
+    border: none;
+    outline: none;
+    width: 100%;
+    border-bottom: solid 1px #d5dbe2;
     font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: left;
-  padding:8px
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    padding: 8px
 }
-.all{
+
+.all {
     background-color: #fff;
     position: absolute;
-    top:48px;
-    border:solid 1px #a8c3db;
+    top: 48px;
+    border: solid 1px #a8c3db;
     border-radius: 2px;
     cursor: pointer;
-    width:214px;
+    width: 214px;
     z-index: 1;
 }
-.options{
-    cursor:pointer;
+
+.options {
+    cursor: pointer;
 }
-.content{
+
+.content {
     padding-left: 2px;
 }
-.org_name{
+
+.org_name {
     padding-left: 37px;
-    padding-top:7px;
-    color:#196068;
-    font-size:12px;
+    padding-top: 7px;
+    color: #196068;
+    font-size: 12px;
 }
-.displayName{
+
+.displayName {
     padding-left: 37px;
-    font-size:14px;
+    font-size: 14px;
     font-family: Inter-Medium;
-    color:#196068;
+    color: #196068;
 }
-.names{
+
+.names {
     position: absolute;
-    top:5px;
+    top: 5px;
     padding-left: 3px;
 }
-.store{
+
+.store {
     position: absolute;
     top: 26px;
     padding-left: 8px;
     /* height: 24px; */
 }
-.clickable{
+
+.clickable {
     position: absolute;
-    top:32px;
+    top: 32px;
     height: 12px;
-   padding-left: 198px;
+    padding-left: 198px;
     cursor: pointer;
 }
-.singleOption{
-    padding:8px;
-    font-size: 14px;
+
+.openDropdown {
+    margin: 0px 5px 0px 0px;
+    height: 7px;
+}
+
+
+.singleOption {
+    /* padding:8px; */
+    padding: 5px 0px 5px 30px;
+    /* margin: 10px 0px 0px 0px; */
+    font-size: 12px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -926,6 +951,20 @@
     color: #196068;
     font-family: Inter-Regular;
 }
-.singleOption:hover{
+
+.Org_name {
+    padding: 5px 0px 5px 15px;
+    color: #113b40;
+    font-family: Inter-Medium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+.singleOption:hover {
     background-color: #f0f8fd;
 }
