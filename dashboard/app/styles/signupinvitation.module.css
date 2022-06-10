@@ -24,7 +24,6 @@
     font-weight: 500;
     line-height: 1.18;
     color: #211d1d;
-    font-weight: 600;
 }
 
 .signup_area {
@@ -52,7 +51,7 @@
     margin-bottom: 20px;
 }
 .signup_area img{
-    margin: 20px 0px;
+    margin: 10px 0px 20px 0px;
 }
 
 

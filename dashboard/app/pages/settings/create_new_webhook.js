@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export default function Create_new_webhook({ closewebhook,table }) {
     const [data, setData] = useState([])
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
     const [option, setOption] = useState();
     const [uuid,setuuid] = useState();
     const [select, setSelect] = useState(false);
@@ -28,6 +28,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
         {closePopup()}
         {closewebhook(false)}
         </>)
+        reset()
     }
     const closePopup = () => {
         let inpopUp=document.querySelector('.inpopup');

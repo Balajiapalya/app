@@ -31,7 +31,6 @@ function Organisation() {
         return `Joined ${mnth} ${retDate}, ${year}`    
     }
     const dateNew=(newDate)=>{
-        console.log(newDate)
         if(newDate<=20 && newDate>=4 || newDate>23){
             return newDate+'th'
         }
@@ -99,7 +98,7 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td>
-                                    <Select item={item} data={data} />
+                                    {item.roleId==1 ? 'Owner':<Select item={item} data={data} />}
                                 </td>
                                 
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent

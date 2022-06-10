@@ -8,9 +8,11 @@ export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
   const [validation, setValidation] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
+  const watchField=watch(['login','password'])
   const onSubmit = login_details => {
     login_details.password = btoa(login_details.password)
+    if(login_details.login.length>1 && login_details.password.length>1){
     Api.SignIn_details(login_details)
       .then(res => {
         if (res.data.status == "Success") {
@@ -23,6 +25,7 @@ export default function Signin() {
           localStorage.setItem('userID', res.data.data.uuid);
           window.location.pathname = '/';
         }
+        reset()
       })
       .catch(error => {
         setValidation(true)
@@ -30,6 +33,7 @@ export default function Signin() {
           seterror(error.response.data.message)
         }
       })
+    }
   }
   const handleChange = () => {
     setValidation(false)
@@ -53,7 +57,7 @@ export default function Signin() {
                 placeholder="Enter email address"
                 name="login"
                 className={`${styles.signup_input} form_control`}
-                {...register("login", { required: true })}
+                {...register("login", { required:watchField[1]!=undefined && watchField[1].length>1?false:true })}
                 onChange={() => handleChange()}
               />
             </div>
@@ -66,14 +70,14 @@ export default function Signin() {
                 placeholder="Enter password"
                 name="password"
                 className={`${styles.signup_input} form_control`}
-                {...register("password", { required: true })}
+                {...register("password", { required:watchField[1]!=undefined && watchField[1].length>1?false:true })}
                 onChange={() => handleChange()}
               />
               {validation && <span className='error'>{error}</span>}
             </div>
             {errors.password && <p className={'validations'}>This field is required</p>}<br />
             <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign in </button>
-            <Link href="/email"><h4 className={styles.forgotpw}>Forgot password?</h4></Link>
+            <Link href="/email"><h4 className={styles.forgotpw}>Forgot Password?</h4></Link>
           </form>
           <h4 className={styles.already_account}>Don&#39;t have an account?</h4>
           <Link href="/signup"><a className={styles.signin_link}>Sign up</a></Link>

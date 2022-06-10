@@ -67,7 +67,6 @@
 }
 
 .videos .header h2 {
-    color: #212b36;
     font-size: 22px;
     font-weight: 500;
     font-stretch: normal;
@@ -334,18 +333,21 @@
 }
 
 
-.contextual_menu .content_menu_hover{
+.contextual_menu .content_menu_hover {
     display: none;
-    
+
 }
-.contextual_menu:hover .content_menu_basic{
+
+.contextual_menu:hover .content_menu_basic {
     display: block;
-   
+
 }
-.contextual_menu:hover .content_menu_basic{
+
+.contextual_menu:hover .content_menu_basic {
     display: none;
 }
-.contextual_menu:hover .content_menu_hover{
+
+.contextual_menu:hover .content_menu_hover {
     display: block;
 }
 
@@ -361,22 +363,26 @@
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.08);
     border: solid 0.5px #d6d6d6;
 }
-.dropdown_btn_top{
-    border-radius:4px 4px 0px 0px !important;
-    border-bottom:  1px solid #d5dbe2 !important;
-    border-top:  1px solid transparent !important;
-    border-left:  1px solid transparent !important;
-    border-right: 1px solid transparent !important;     
+
+.dropdown_btn_top {
+    border-radius: 4px 4px 0px 0px !important;
+    border-bottom: 1px solid #d5dbe2 !important;
+    border-top: 1px solid transparent !important;
+    border-left: 1px solid transparent !important;
+    border-right: 1px solid transparent !important;
 }
-.dropdown_btn_bottom{
+
+.dropdown_btn_bottom {
     border-radius: 0px 0px 4px 4px !important;
     border: 1px solid transparent !important;
-    border-bottom:  1px solid #d5dbe2 !important;
+    border-bottom: 1px solid #d5dbe2 !important;
 }
-.dropdown_btn_middle{
+
+.dropdown_btn_middle {
     border: 1px solid transparent !important;
-    border-bottom:  1px solid #d5dbe2 !important;
+    border-bottom: 1px solid #d5dbe2 !important;
 }
+
 .contextual_menu_container .dropdown_list button {
     padding: 10px;
     background-color: #fdfdfd;
@@ -427,7 +433,7 @@
     z-index: 99;
     top: 0;
     left: 0;
-    padding:5vh;
+    padding: 5vh;
 }
 
 
@@ -585,7 +591,7 @@
     line-height: 1.21;
     letter-spacing: normal;
     text-align: left;
-    
+
 }
 
 .model_btn {
@@ -710,7 +716,9 @@
     font-size: 28px;
     /* padding-left: 28px; */
     margin-top: 5px;
-}.videosdelivery_assets .header h2 button{
+}
+
+.videosdelivery_assets .header h2 button {
     /* padding-left: 28px; */
     color: #2863eb;
     margin-left: 5px;
@@ -718,32 +726,37 @@
     border: none;
     padding: 0px;
 }
-.styleTitle{
+
+.styleTitle {
     padding-left: 28px;
 }
+
 .input_title {
     padding-left: 25px;
     padding-top: 2px;
     margin-top: 5px;
     margin-bottom: 1em;
 }
-.input_title input{
+
+.input_title input {
     background-color: inherit;
     border: none;
-    border-bottom:1px solid #555f6a;
+    border-bottom: 1px solid #555f6a;
     width: 90px;
     outline: none;
     color: #555f6a;
 }
-.input_title button{
+
+.input_title button {
     margin-left: 8px;
     color: #2863eb;
     background-color: inherit;
     border: 1px solid #2863eb;
-    border-radius: 3px; 
-    font-size: 12px; 
-    padding: 3px 10px; 
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 3px 10px;
 }
+
 .videosdelivery_assets .header h2 span {
     color: #2863eb;
     font-size: 12px;
@@ -761,71 +774,94 @@
 .edit_img {
     margin-left: 9px;
 }
+
 /* dropdown */
-.inputSearch{
-    border:none;
-    outline:none;
-    width:100%;
-    border-bottom:solid 1px #d5dbe2;
+.inputSearch {
+    border: none;
+    outline: none;
+    width: 100%;
+    border-bottom: solid 1px #d5dbe2;
     font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: left;
-  padding:8px;
-  color: #196068;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    padding: 10px 0px 10px 13px;
+    color: #196068;
 }
-.all{
+
+.all {
     background-color: #fff;
     position: absolute;
-    top:48px;
-    border:solid 1px #a8c3db;
+    top: 48px;
+    border: solid 1px #a8c3db;
     border-radius: 2px;
     cursor: pointer;
-    width:214px;
-    
+    width: 214px;
+
 }
-.options{
-    cursor:pointer;
+
+.options {
+    cursor: pointer;
 }
-.content{
+
+.content {
     padding-left: 2px;
 }
-.org_name{
+
+.org_name {
     padding-left: 37px;
-    padding-top:7px;
-    color:#196068;
-    font-size:12px;
+    padding-top: 13px;
+    font-family: Inter-Regular;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
 }
-.displayName{
+
+.displayName {
     padding-left: 37px;
-    font-size:14px;
     font-family: Inter-Medium;
-    color:#196068;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: #196068;
 }
-.names{
+
+.names {
     position: absolute;
-    top:5px;
+    top: 5px;
     padding-left: 3px;
 }
-.store{
+
+.store {
     position: absolute;
     top: 26px;
     padding-left: 8px;
     /* height: 24px; */
 }
-.clickable{
+
+.clickable {
     position: absolute;
-    top:32px;
+    top: 32px;
     height: 12px;
-   padding-left: 198px;
+    padding-left: 198px;
     cursor: pointer;
 }
-.singleOption{
-    padding:8px;
-    font-size: 14px;
+
+.singleOption {
+    padding: 5px 0px 5px 22px;
+    font-size: 12px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -835,15 +871,40 @@
     color: #196068;
     font-family: Inter-Regular;
 }
-.singleOption:hover{
+
+.singleOption:hover {
     background-color: #f4f6f8;
 }
+
 /* popup */
-.no_display{
-    display:none;
+.no_display {
+    display: none;
 }
-.display{
-    display:block;
+
+.display {
+    display: block;
+}
+
+/* topdropdown */
+.openDropdown {
+    height: 6px;
+    margin: 0px 5px 0px 8px;
+    position: relative;
+    bottom: 2px;
+}
+
+.orgNames {
+    padding: 14px 3px 5px 3px;
+    font-family: 'Inter-Medium';
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #113b40;
+    text-transform: capitalize;
 }
 
 /* @media only screen and (min-width: 200px)   {
