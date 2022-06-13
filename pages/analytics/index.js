@@ -132,9 +132,9 @@ export default function Analytics_index() {
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
                                         {org.map((i,ind) => <>
-                                            {<div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                            {clicked==i.uuid && openEnv ?<img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg' className={styles.openDropdown}></img>
-                                                }{i.name}</div>}
+                                            <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                            <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
+                                                {i.name}</div>
                                             {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
                                             </div>
                                             )}

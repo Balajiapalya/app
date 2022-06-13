@@ -154,7 +154,9 @@
   text-align: left;
   color: #212b36;
 }
-
+.current_video_cost td{
+    font-weight: bold !important;
+}
 /*Right table*/
 
 .tables_right {

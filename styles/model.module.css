@@ -119,14 +119,14 @@
     border-bottom: 2px solid #ddd;
     border-radius: 2px;
     height: 40px;
-    padding: 9px;
+    padding: 9px 12px;
     outline: none;
     font-family: Inter-Regular;
     background-color: white;
     border: solid 1px rgba(99, 115, 129, 0.3);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -825,9 +825,9 @@
     outline: none;
     position: absolute;
     top: 15px;
-    height: 8px;
+    height: 7px;
     /* margin-left: 455px; */
-    right: 8px;
+    right: 15px;
     cursor: pointer;
 }
 

@@ -58,10 +58,6 @@ export default function Environment() {
   }
 
 
-
-
-
-
   const setPopups = (index, items) => {
 
     if (items) {
@@ -100,6 +96,7 @@ export default function Environment() {
         <div className={styles.settings}>
           <div className={styles.header}>
             <h2>Environments</h2>
+            <h3>{orgname}</h3>
           </div>
           <div className={styles.environments_button}>
             <p>

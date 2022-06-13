@@ -539,7 +539,7 @@
     font-family: Inter-Medium;
     text-align: left;
     font-size: 14px;
-    padding: 15px 22px;
+    padding: 15px 20px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
@@ -620,6 +620,8 @@
 }
 
 .edit_img {
+    width: 9px;
+    height: 9px;
     position: relative;
     left: 7px;
     cursor: pointer;
@@ -636,8 +638,14 @@
 }
 
 .types_heading {
-    font-size: 12px;
     font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     color: #808080;
 }
 
@@ -659,7 +667,13 @@
     margin-top: 20px;
     font-family: Inter-Regular;
     font-size: 14px;
-    color: #212b36;
+    color: #565b62;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
 }
 
 .content_head {
@@ -692,7 +706,7 @@
     margin-bottom: 10px;
     color: #212b36;
     font-family: Inter-Regular;
-    font-size: 16px;
+    font-size: 13px;
     outline: none;
 }
 
@@ -720,8 +734,14 @@
     cursor: pointer;
     float: left;
     text-decoration: underline;
-    color: #848484;
-    font-size: 14px;
+    color: #848484;         
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     font-family: Inter-Regular;
 
 }
@@ -731,10 +751,16 @@
     float: right;
     color: #2863eb;
     text-decoration: underline;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     font-family: Inter-Regular;
     border: none;
-    background-color: inherit
+    background-color: inherit;
 }
 
 /* popup */
@@ -760,7 +786,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 13px;
     font-family: Inter-Regular;
     font-weight: 500;
     font-stretch: normal;
@@ -1016,7 +1042,7 @@
     .environments_table tbody tr .table_wr {
         width: 15% !important;
         font-size: 12px;
-        padding-left: 10px !important;
+        padding: 0px 0px 0px 25px !important;
     }
 
     .side_head {
