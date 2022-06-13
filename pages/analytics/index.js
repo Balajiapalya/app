@@ -12,10 +12,14 @@ export default function Analytics_index() {
     const [vidDropdown, setVidDropdown] = useState()
     const [selected, setSelected] = useState(false)
     const [id, setId] = useState();
+    const [org, setOrg] = useState([])
+    const [openEnv, setOpenEnv] = useState(false);
+    const [clicked, setClicked] = useState();
+    const [orgName,setOrgName]=useState();
 
     useEffect(() => {
         seleEnv();
-    }, [uuid]);
+    }, [uuid,id]);
 
     const seleEnv = () => {
         Api.Get_env_data()
@@ -31,6 +35,9 @@ export default function Analytics_index() {
                     window.location.href = '/signin'
                 }
             })
+        Api.Get_User_update().then(res => {
+                setOrg(res.data.data.organizations)
+            })
     }
     // const handleChange = (e) => {
     //     setuuid(e.target.value)
@@ -44,7 +51,9 @@ export default function Analytics_index() {
 // top dropdown
     const handleChange = (i) => {
     setId(i.uuid)
-    localStorage.setItem("envuuid", i.uuid)
+    localStorage.setItem("envuuid", i.uuid);
+    localStorage.setItem("uuid", clicked);
+    localStorage.setItem('orgName',orgName)
     }
     const searchHandle = (e) => {
         let options = document.querySelectorAll('#opt')
@@ -61,13 +70,15 @@ export default function Analytics_index() {
     }
     const handleSelected = (item) => {
         setSelected(item.name)
-        setVidDropdown(false)
+        setVidDropdown(false);
+        setOpenEnv(false)
     }
     let dropdownprod = useRef()
     useEffect(() => {
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
                 setVidDropdown(false)
+                setOpenEnv(false)
             }
         }
         document.addEventListener('mouseup', handleDropdown)
@@ -75,8 +86,13 @@ export default function Analytics_index() {
             document.removeEventListener('mouseup', handleDropdown)
         }
     }, [])
+    const handleEnv = (i) => {
+        setOrgName(i.name);
+        setClicked(i.uuid);
+        setOpenEnv(!openEnv);
+        
+    }
     return (
-
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
@@ -115,11 +131,14 @@ export default function Analytics_index() {
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
-                                        {envSelect.map(i =>
-                                            <>
-                                                <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
-                                                </div>
-                                            </>
+                                        {org.map((i,ind) => <>
+                                            {<div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                            {clicked==i.uuid && openEnv ?<img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg' className={styles.openDropdown}></img>
+                                                }{i.name}</div>}
+                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
+                                            </div>
+                                            )}
+                                        </>
                                         )}
                                     </div>
                                 </div>

@@ -22,7 +22,8 @@ export default function Videos() {
     const [defaultenv, setDefaultenv] = useState();
     const [org, setOrg] = useState([])
     const [openEnv, setOpenEnv] = useState(false);
-    const [clicked, setClicked] = useState()
+    const [clicked, setClicked] = useState();
+    const [orgName,setOrgName]=useState();
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -93,6 +94,7 @@ export default function Videos() {
         setId(i.uuid)
         localStorage.setItem("envuuid", i.uuid);
         localStorage.setItem("uuid", clicked);
+        localStorage.setItem('orgName',orgName)
     }
 
     const create_On = (date) => {
@@ -173,9 +175,10 @@ export default function Videos() {
     }
 
     const handleEnv = (i) => {
+        setOrgName(i.name);
         setClicked(i.uuid);
-        setOpenEnv(!openEnv);
         
+        setOpenEnv(!openEnv);
     }
     
     return (
@@ -216,13 +219,10 @@ export default function Videos() {
                                 <div className={styles.names}>
                                     <div className={styles.org_name}>{orName}</div>
                                     <div className={styles.displayName}>
-
-
                                         {envSelect.map(i => {
                                             if (i.uuid === localStorage.getItem('envuuid')) {
                                                 return selected ? selected : i.name
                                             }
-
                                         })}
                                     </div>
                                 </div>
@@ -236,9 +236,12 @@ export default function Videos() {
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
                                         {org.map((i,ind) => <>
-                                            <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                        {<div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                            {clicked==i.uuid && openEnv ?<img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg' className={styles.openDropdown}></img>
+                                                }{i.name}</div>}
+                                            {/* <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
                                             <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
-                                                {i.name}</div>
+                                                {i.name}</div> */}
                                             {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
                                             </div>
                                             )}

@@ -889,6 +889,7 @@
     padding-top:7px;
     color:#196068;
     font-size:12px;
+    text-transform: capitalize;
 }
 .displayName{
     padding-left: 37px;
@@ -915,7 +916,7 @@
     cursor: pointer;
 }
 .singleOption{
-    padding:8px;
+    padding:4px 0px 4px 22px;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -928,4 +929,26 @@
 }
 .singleOption:hover{
     background-color: #f0f8fd;
+}
+
+/* topdropdown */
+.openDropdown{
+    height: 5px;
+    margin-left: 8px;
+    margin-right: 3px;
+    position: relative;
+    bottom: 2px;
+}
+.orgNames{
+    padding:3px;
+    font-family: 'Inter-Medium';
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #113b40;
+    text-transform: capitalize;
 }
