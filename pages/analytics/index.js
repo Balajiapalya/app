@@ -16,6 +16,7 @@ export default function Analytics_index() {
     const [openEnv, setOpenEnv] = useState(false);
     const [clicked, setClicked] = useState();
     const [orgName,setOrgName]=useState();
+    const [multiSelect,setMultiSelect]=useState([])
 
     useEffect(() => {
         seleEnv();
@@ -71,14 +72,16 @@ export default function Analytics_index() {
     const handleSelected = (item) => {
         setSelected(item.name)
         setVidDropdown(false);
-        setOpenEnv(false)
+        // setOpenEnv(false)
+        setMultiSelect([])
     }
     let dropdownprod = useRef()
     useEffect(() => {
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
                 setVidDropdown(false)
-                setOpenEnv(false)
+                // setOpenEnv(false)
+                setMultiSelect([])
             }
         }
         document.addEventListener('mouseup', handleDropdown)
@@ -86,11 +89,26 @@ export default function Analytics_index() {
             document.removeEventListener('mouseup', handleDropdown)
         }
     }, [])
-    const handleEnv = (i) => {
-        setOrgName(i.name);
+   
+
+    const handleEnv=(i)=>{
         setClicked(i.uuid);
-        setOpenEnv(!openEnv);
+        if(!multiSelect.some(item=>item.uuid==i.uuid)){
+            setMultiSelect([...multiSelect,i])
+        }else {
+            let filtered=multiSelect.filter(item=>item.uuid!==i.uuid)
+            setMultiSelect([...filtered])
+        }
+        setOrgName(i.name);
+        }
+            
         
+    
+    const handleMulti=(i)=>{
+       if(multiSelect.find(item=>item.uuid==i.uuid)){
+           return true
+       }
+       return false
     }
     return (
         <div className={styles.container}>
@@ -133,9 +151,10 @@ export default function Analytics_index() {
                                     <div>
                                         {org.map((i,ind) => <>
                                             <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                            <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
-                                                {i.name}</div>
-                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
+                                                {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg'  className={styles.openDropdown}></img>}
+                                                {i.name}
+                                            </div>
+                                            {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
                                             </div>
                                             )}
                                         </>
