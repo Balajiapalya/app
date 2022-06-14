@@ -6,7 +6,7 @@ import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useRouter } from 'next/router';
 
-export default function Direct_upload() {
+export default function Direct_upload({handlePopUp}) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [filename, set_filename] = useState();
     let [loading, setLoading] = useState(false);
@@ -24,7 +24,8 @@ export default function Direct_upload() {
     const onSubmit = direct_video_upload => {
         // console.log(direct_video_upload)
         const file = direct_video_upload.file[0];
-       
+        direct_video_upload.file_name=filename;
+        if(file){
         Api.Direct_upload_post(direct_video_upload)
             .then(res => {
                 if (res.data.success = "Success") {
@@ -44,11 +45,8 @@ export default function Direct_upload() {
                         .then(Headers => {
                             if (Headers.status = 200) {
                                 setLoading(false)
-                                setuploaded(true)
-                                router.push = {
-                                    pathname: '/videos/index',
-                                }
-
+                                setuploaded(true);
+                                handlePopUp(); 
 
                             }
                         })
@@ -65,6 +63,7 @@ export default function Direct_upload() {
             //     }
             // })
     }
+}
 
     return (
 
@@ -78,7 +77,7 @@ export default function Direct_upload() {
                         <input
                             type="file"
                             name='file'
-                            {...register("file", { required: true })}
+                            {...register("file")}
                             onChange={e => handleChange(e)}
                         />
                     </div>
@@ -91,7 +90,7 @@ export default function Direct_upload() {
                             readOnly
                             name="file_name"
                             defaultValue={filename}
-                            {...register("file_name", { required: true })}
+                            {...register("file_name")}
                             accept="video/*"
                         ></input>
                     </div>

@@ -899,16 +899,10 @@
 
 .org_name {
     padding-left: 37px;
-<<<<<<< HEAD
-    padding-top:7px;
-    color:#196068;
-    font-size:12px;
-    text-transform: capitalize;
-=======
     padding-top: 7px;
     color: #196068;
     font-size: 12px;
->>>>>>> bd67f84673954b3728e33a43ee6b54d1877a9654
+    text-transform: capitalize;
 }
 
 .displayName {
@@ -938,11 +932,6 @@
     padding-left: 198px;
     cursor: pointer;
 }
-<<<<<<< HEAD
-.singleOption{
-    padding:4px 0px 4px 22px;
-    font-size: 14px;
-=======
 
 .openDropdown {
     margin: 0px 5px 0px 0px;
@@ -955,7 +944,6 @@
     padding: 5px 0px 5px 30px;
     /* margin: 10px 0px 0px 0px; */
     font-size: 12px;
->>>>>>> bd67f84673954b3728e33a43ee6b54d1877a9654
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;

@@ -16,9 +16,9 @@ export default function Others() {
 
 
     const onSubmit = (video_data) => {
-        let doc=document.querySelector('.child')
-        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent=inputTitle
-        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent=inputTitle
+        let doc=document.querySelector('.child');
+        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent=inputTitle;
+        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent=inputTitle;
         video_data['tags'] = tags;
         video_data['metadata'] = meta;
         if(inputTitle){
@@ -57,7 +57,10 @@ export default function Others() {
     useEffect(() => {
         Api.Get_Env_item().then(res => {
             setDataVideo(res.data.data)
-            setTags(res.data.data.tags)
+            if(res.data.data.tags[0].length>0){
+                setTags(res.data.data.tags)
+            }
+            
             setMeta(res.data.data.metadata)
             // setSelected(res.data.data.tags)
         })
@@ -135,7 +138,7 @@ export default function Others() {
                                         </div>
                                     )):null}
                                     
-                                    <input {...register("tags", { required: false })} onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text" />
+                                    <input onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text"/>
                                 </div>
                                 <label className={styles.model_label}>Metadata</label>
                                 <table>

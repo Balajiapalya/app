@@ -24,6 +24,7 @@ export default function Videos() {
     const [openEnv, setOpenEnv] = useState(false);
     const [clicked, setClicked] = useState();
     const [orgName,setOrgName]=useState();
+    const [multiSelect,setMultiSelect]=useState([])
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -148,15 +149,17 @@ export default function Videos() {
     const handleSelected = (item) => {
         setSelected(item.name)
         setVidDropdown(false)
-        setOpenEnv(false)
+        // setOpenEnv(false)
+        setMultiSelect([])
     }
     let dropdownprod = useRef()
     useEffect(() => {
 
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
-                setOpenEnv(false)
+                // setOpenEnv(false)
                 setVidDropdown(false)
+                setMultiSelect([])
             }
         }
         document.addEventListener('mouseup', handleDropdown)
@@ -174,18 +177,36 @@ export default function Videos() {
         popup.classList.remove(`${styles.no_display}`)
     }
 
-    const handleEnv = (i) => {
-<<<<<<< HEAD
-        setOrgName(i.name);
-        setClicked(i.uuid);
-        
-        setOpenEnv(!openEnv);
-=======
-        localStorage.setItem("orgName", i.name)
-        setClicked(i.uuid);
-        setOpenEnv(!openEnv);
+    // const handleEnv = (i) => {
+       
+    //     setClicked(i.uuid);
 
->>>>>>> bd67f84673954b3728e33a43ee6b54d1877a9654
+    //     if(clicked!==i.uuid){
+    //         setOpenEnv(true);
+    //     }else{
+    //         setOpenEnv(!openEnv);
+    //     }
+        
+    //     setOrgName(i.name);
+    // }
+    const handleEnv=(i)=>{
+        setClicked(i.uuid);
+        if(!multiSelect.some(item=>item.uuid==i.uuid)){
+            setMultiSelect([...multiSelect,i])
+        }else {
+            let filtered=multiSelect.filter(item=>item.uuid!==i.uuid)
+            setMultiSelect([...filtered])
+        }
+        setOrgName(i.name);
+        }
+            
+        
+    
+    const handleMulti=(i)=>{
+       if(multiSelect.find(item=>item.uuid==i.uuid)){
+           return true
+       }
+       return false
     }
 
     return (
@@ -242,25 +263,14 @@ export default function Videos() {
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
-<<<<<<< HEAD
-                                        {org.map((i,ind) => <>
-                                        {<div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                            {clicked==i.uuid && openEnv ?<img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg' className={styles.openDropdown}></img>
-                                                }{i.name}</div>}
-                                            {/* <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                            <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
-                                                {i.name}</div> */}
-                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
-=======
                                         {org.map((i, ind) => 
                                         <>
                                             <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                                <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
+                                                {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg'  className={styles.openDropdown}></img>}
                                                 {i.name}
                                             </div>
-                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                            {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
                                                 {i.name}
->>>>>>> bd67f84673954b3728e33a43ee6b54d1877a9654
                                             </div>
                                             )}
                                         </>
