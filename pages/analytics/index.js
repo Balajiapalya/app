@@ -12,12 +12,14 @@ export default function Analytics_index() {
     const [vidDropdown, setVidDropdown] = useState()
     const [selected, setSelected] = useState(false)
     const [id, setId] = useState();
-    const [org, setOrg] = useState([]);
-    const [OrgSelected, SetOrg_selected] = useState(false);
+    const [org, setOrg] = useState([])
     const [openEnv, setOpenEnv] = useState(false);
+    const [clicked, setClicked] = useState();
+    const [orgName,setOrgName]=useState();
+    const [multiSelect,setMultiSelect]=useState([])
+
     useEffect(() => {
         seleEnv();
-        DisplayOrgNames();
     }, [uuid,id]);
 
     const seleEnv = () => {
@@ -28,11 +30,14 @@ export default function Analytics_index() {
                 }
             })
             .catch(error => {
-                if (error.response.data.message = "Token expired") {
+                if(error.response.data.message="Token expired"){
                     window.localStorage.clear();
                     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
                     window.location.href = '/signin'
                 }
+            })
+        Api.Get_User_update().then(res => {
+                setOrg(res.data.data.organizations)
             })
     }
     // const handleChange = (e) => {
@@ -44,16 +49,15 @@ export default function Analytics_index() {
         orgname = localStorage.getItem('orgName');
     }
     const orName = orgname;
-    // top dropdown
+// top dropdown
     const handleChange = (i) => {
-        console.log(i)
-        setId(i.uuid)
-        localStorage.setItem("envuuid", i.uuid)
-        localStorage.setItem("uuid", OrgSelected)
+    setId(i.uuid)
+    localStorage.setItem("envuuid", i.uuid);
+    localStorage.setItem("uuid", clicked);
+    localStorage.setItem('orgName',orgName)
     }
     const searchHandle = (e) => {
         let options = document.querySelectorAll('#opt')
-        console.log(e)
         for (let i = 0; i < options.length; i++) {
             let name = options[i].innerHTML.toLowerCase()
             let searchValue = e.target.value.toLowerCase()
@@ -61,21 +65,23 @@ export default function Analytics_index() {
                 options[i].style.display = 'block'
             } else {
                 options[i].style.display = 'none'
+
             }
         }
     }
     const handleSelected = (item) => {
-        console.log(item)
-        setOpenEnv(false)
         setSelected(item.name)
-        setVidDropdown(false)
+        setVidDropdown(false);
+        // setOpenEnv(false)
+        setMultiSelect([])
     }
     let dropdownprod = useRef()
     useEffect(() => {
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
                 setVidDropdown(false)
-                setOpenEnv(false)
+                // setOpenEnv(false)
+                setMultiSelect([])
             }
         }
         document.addEventListener('mouseup', handleDropdown)
@@ -83,21 +89,28 @@ export default function Analytics_index() {
             document.removeEventListener('mouseup', handleDropdown)
         }
     }, [])
-    const DisplayOrgNames = () => {
-        Api.Get_User_update()
-            .then(res => {
-                if (res && res.data && res.data.data && res.data.data.organizations) {
-                    setOrg(res.data.data.organizations)
-                }
-            })
-    }
-    const ToggleDropdown = (item) => {
-        SetOrg_selected(item.uuid)
-        setOpenEnv(!openEnv);
-        localStorage.setItem("orgName", item.name)
+   
+
+    const handleEnv=(i)=>{
+        setClicked(i.uuid);
+        if(!multiSelect.some(item=>item.uuid==i.uuid)){
+            setMultiSelect([...multiSelect,i])
+        }else {
+            let filtered=multiSelect.filter(item=>item.uuid!==i.uuid)
+            setMultiSelect([...filtered])
+        }
+        setOrgName(i.name);
+        }
+            
+        
+    
+    const handleMulti=(i)=>{
+       if(multiSelect.find(item=>item.uuid==i.uuid)){
+           return true
+       }
+       return false
     }
     return (
-
         <div className={styles.container}>
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
@@ -123,6 +136,7 @@ export default function Analytics_index() {
                                             if (i.uuid === localStorage.getItem('envuuid')) {
                                                 return selected ? selected : i.name
                                             }
+
                                         })}
                                     </div>
                                 </div>
@@ -135,21 +149,15 @@ export default function Analytics_index() {
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
-                                        {org.map((i, key) =>
-                                            <>
-
-                                                <div key={key} onClick={() => ToggleDropdown(i)} className={styles.Org_name}>
-                                                    <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
-                                                    {i.name}
-                                                </div>
-
-                                                {OrgSelected == i.uuid && openEnv && i.environments.map(val =>
-                                                    <div key={val.uuid} value={val.uuid} id="opt" onClick={() => `${handleSelected(val)} ${handleChange(val)}`} className={styles.singleOption} >
-                                                        {val.name}
-                                                    </div>
-                                                )}
-
-                                            </>
+                                        {org.map((i,ind) => <>
+                                            <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                                {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg'  className={styles.openDropdown}></img>}
+                                                {i.name}
+                                            </div>
+                                            {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>{i.name}
+                                            </div>
+                                            )}
+                                        </>
                                         )}
                                     </div>
                                 </div>

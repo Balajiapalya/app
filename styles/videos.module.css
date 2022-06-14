@@ -823,6 +823,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #196068;
+    text-transform: capitalize;
 }
 
 .displayName {

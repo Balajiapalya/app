@@ -30,12 +30,13 @@ export default function Video() {
         setsave(true)
     }
     const saveName = () => {
-       
         let doc=document.querySelector('.headerDiv')
+        if(editInput!==undefined){
         if(doc.getElementsByClassName('child')[0]!==undefined){
             doc.getElementsByClassName('child')[0].value=editInput
         }
         localStorage.setItem('asset_title',editInput)
+    }
         let obj=new Object()
         obj.title=editInput
         obj.description=data.description
@@ -76,6 +77,7 @@ export default function Video() {
                                     <div className={styles.header_title}>
                                         {headtitle ?<div className={styles.styleTitle}>
                                         <h2 className='mainTitle'>{editted?editted:title}</h2>
+                                    
                                             <h2 >
                                             
                                                 <button onClick={() => editName()}><img className={styles.edit_img} src="/images/iconmaterial-edit.svg" alt="edit" /><span> Edit</span></button>

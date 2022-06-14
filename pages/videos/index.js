@@ -22,7 +22,9 @@ export default function Videos() {
     const [defaultenv, setDefaultenv] = useState();
     const [org, setOrg] = useState([])
     const [openEnv, setOpenEnv] = useState(false);
-    const [clicked, setClicked] = useState()
+    const [clicked, setClicked] = useState();
+    const [orgName,setOrgName]=useState();
+    const [multiSelect,setMultiSelect]=useState([])
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -93,6 +95,7 @@ export default function Videos() {
         setId(i.uuid)
         localStorage.setItem("envuuid", i.uuid);
         localStorage.setItem("uuid", clicked);
+        localStorage.setItem('orgName',orgName)
     }
 
     const create_On = (date) => {
@@ -146,15 +149,17 @@ export default function Videos() {
     const handleSelected = (item) => {
         setSelected(item.name)
         setVidDropdown(false)
-        setOpenEnv(false)
+        // setOpenEnv(false)
+        setMultiSelect([])
     }
     let dropdownprod = useRef()
     useEffect(() => {
 
         const handleDropdown = (e) => {
             if (!dropdownprod.current.contains(e.target)) {
-                setOpenEnv(false)
+                // setOpenEnv(false)
                 setVidDropdown(false)
+                setMultiSelect([])
             }
         }
         document.addEventListener('mouseup', handleDropdown)
@@ -172,11 +177,36 @@ export default function Videos() {
         popup.classList.remove(`${styles.no_display}`)
     }
 
-    const handleEnv = (i) => {
-        localStorage.setItem("orgName", i.name)
-        setClicked(i.uuid);
-        setOpenEnv(!openEnv);
+    // const handleEnv = (i) => {
+       
+    //     setClicked(i.uuid);
 
+    //     if(clicked!==i.uuid){
+    //         setOpenEnv(true);
+    //     }else{
+    //         setOpenEnv(!openEnv);
+    //     }
+        
+    //     setOrgName(i.name);
+    // }
+    const handleEnv=(i)=>{
+        setClicked(i.uuid);
+        if(!multiSelect.some(item=>item.uuid==i.uuid)){
+            setMultiSelect([...multiSelect,i])
+        }else {
+            let filtered=multiSelect.filter(item=>item.uuid!==i.uuid)
+            setMultiSelect([...filtered])
+        }
+        setOrgName(i.name);
+        }
+            
+        
+    
+    const handleMulti=(i)=>{
+       if(multiSelect.find(item=>item.uuid==i.uuid)){
+           return true
+       }
+       return false
     }
 
     return (
@@ -236,10 +266,10 @@ export default function Videos() {
                                         {org.map((i, ind) => 
                                         <>
                                             <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                                <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>
+                                                {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg'  className={styles.openDropdown}></img>}
                                                 {i.name}
                                             </div>
-                                            {clicked == i.uuid && openEnv && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                            {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
                                                 {i.name}
                                             </div>
                                             )}
