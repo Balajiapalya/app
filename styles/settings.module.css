@@ -45,7 +45,7 @@
 }
 
 .containercomponents {
-    background-color: #333740;
+    background-color: #120724;
     width: 100px;
     box-sizing: border-box;
     color: white;
@@ -107,9 +107,10 @@
 }
 
 .containercomponents .uppercomponents ul li.brand_logo img {
-    right: 6px;
+    /* right: 6px; */
     padding-right: 5px;
-    top: 0;
+    top: 8px;
+    height: 32px;
 }
 
 .containercomponents .uppercomponents ul li.brand_logo a span.title {
@@ -204,8 +205,8 @@
 }
 
 .containercomponents .lowercomponents ul li p {
-    position: absolute;
-    top: -9px;
+    /* position: absolute;
+    top: -9px; */
     /* width: 100%; */
     margin: 0;
     color: #8798ac;
@@ -494,7 +495,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #4a5057;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .environments_button button {
@@ -522,7 +523,7 @@
 .environments_table {
     width: 100%;
     float: left;
-    margin: 40px 0px 0px 0px;
+    margin: 35px 0px 0px 0px;
 }
 
 .environments_table table {
@@ -602,6 +603,7 @@
     width: 100%;
     float: left;
     padding: 5%;
+    cursor: pointer;
 }
 
 .box_content_history {
@@ -1034,7 +1036,7 @@
 
 @media screen and (max-width:1400px) {
     .table_box {
-        width: 100%;
+        width: 85%;
     }
 
 

@@ -4,7 +4,7 @@ import Api from "../../components/api/api";
 import { useEffect, useState } from "react";
 import Add_new_environment from "./add_new_environment";
 import { useForm } from "react-hook-form";
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 import SelectEnv from '../../components/SelectEnv'
 
 export default function Environment() {
@@ -24,6 +24,7 @@ export default function Environment() {
   const [newInput, setNewInput] = useState(valueDefault)
   const [load, setLoad] = useState(true)
   const [OrgStats, setOrgStats] = useState([])
+  const router=useRouter()
 
   useEffect(() => {
     setLoad(true)
@@ -59,12 +60,9 @@ export default function Environment() {
 
 
   const setPopups = (index, items) => {
-
     if (items) {
-
       setId(items.environmentTypeId)
       setValue(items.name)
-
       localStorage.setItem('envuuid', items.uuid)
     }
     openModel[index] = !openModel[index];
@@ -73,11 +71,11 @@ export default function Environment() {
     setclosemodal([...closemodal]);
     console.log(openModel[index], closemodal[index])
   }
-  let orgname;
-  if (process.browser) {
-    orgname = localStorage.getItem("orgName");
-  }
-  const orgName = orgname;
+  // let orgname;
+  // if (process.browser) {
+  //   orgname = localStorage.getItem("orgName");
+  // }
+  // const orgName = orgname;
 
   const handleChange = (e) => {
     setNewInput(e.target.value)
@@ -90,13 +88,22 @@ export default function Environment() {
     table.classList.remove(`${styles.display}`)
     popup.classList.remove(`${styles.no_display}`)
   }
+  //redirect
+  const handleRedirect=(items)=>{
+    localStorage.setItem('envuuid',items.uuid);
+   router.push({pathname:'/videos'})
+  }
+  const handleRedirectAnalytics=(items)=>{
+    localStorage.setItem('envuuid',items.uuid);
+    router.push({pathname:'/analytics'})
+  }
   return (
     <div className="container">
       <div className={styles.container}>
         <div className={styles.settings}>
           <div className={styles.header}>
             <h2>Environments</h2>
-            <h3>{orgname}</h3>
+            {/* <h3>{orgname}</h3> */}
           </div>
           <div className={styles.environments_button}>
             <p>
@@ -164,7 +171,7 @@ export default function Environment() {
                       </form>
                     </td>
                     <td>
-                      <div className={styles.table_box}>
+                      <div className={styles.table_box} onClick={()=>handleRedirect(items)}>
                         <div className={styles.box_content}>
                           <span className={styles.box_content_history}>
                             in last 7 days
@@ -211,7 +218,7 @@ export default function Environment() {
                       </div>
                     </td>
                     <td>
-                      <div className={styles.table_box}>
+                      <div className={styles.table_box} onClick={()=>handleRedirectAnalytics(items)}>
                         <div className={styles.box_content}>
                           <span className={styles.box_content_history}>
                             in last 7 days
