@@ -3,8 +3,8 @@ import { useState, useRef, useEffect } from 'react'
 import styles from "../styles/settings.module.css";
 import Api from './api/api'
 
-const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad }) => {
-    // const [defaultOpt, setDefaultOpt] = useState(id)
+const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad,defaultEnv }) => {
+    const [defaultOpt, setDefaultOpt] = useState(defaultEnv)
     // const [newOpt, setNewOpt] = useState(id)
     const [selected, setSelected] = useState();
     const [productSelect, setProductSelect] = useState(false)
@@ -71,7 +71,7 @@ const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad }) =>
         
             <div ref={dropdownprod} className={styles.select}>
                 <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
-                    <div>{selected ? selected : id==1?'Development':id==2?'Staging':id==3?'QA':'Production'}</div>
+                    <div>{selected ? selected :defaultOpt}</div>
                     <img className={styles.dropdownOneInvite} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                 </div>
                 
