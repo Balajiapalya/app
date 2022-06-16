@@ -64,6 +64,7 @@
 
 .events_data table thead tr th {
     padding: 13px 10px 13px 10px;
+    width: 0%;
     font-family: Inter-Medium;
     font-size: 13px;
     font-weight: normal;

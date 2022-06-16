@@ -24,7 +24,8 @@ export default function Environment() {
   const [newInput, setNewInput] = useState(valueDefault)
   const [load, setLoad] = useState(true)
   const [OrgStats, setOrgStats] = useState([])
-  const router=useRouter()
+  const router=useRouter();
+  const [defaultEnv,setDefaultEnv]=useState()
 
   useEffect(() => {
     setLoad(true)
@@ -63,19 +64,29 @@ export default function Environment() {
     if (items) {
       setId(items.environmentTypeId)
       setValue(items.name)
-      localStorage.setItem('envuuid', items.uuid)
+      localStorage.setItem('envuuid', items.uuid);
+      // for default value in dropdown
+      if(items.environmentTypeId==1){
+        setDefaultEnv('Developement')
+      }else if(items.environmentTypeId==2){
+        setDefaultEnv('Staging')
+      }else if(items.environmentTypeId==3){
+        setDefaultEnv('QA')
+      }else{
+        setDefaultEnv('Production')
+      }
     }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log(openModel[index], closemodal[index])
+    
   }
-  // let orgname;
-  // if (process.browser) {
-  //   orgname = localStorage.getItem("orgName");
-  // }
-  // const orgName = orgname;
+  let orgname;
+  if (process.browser) {
+    orgname = localStorage.getItem("orgName");
+  }
+  const orgName = orgname;
 
   const handleChange = (e) => {
     setNewInput(e.target.value)
@@ -103,7 +114,7 @@ export default function Environment() {
         <div className={styles.settings}>
           <div className={styles.header}>
             <h2>Environments</h2>
-            {/* <h3>{orgname}</h3> */}
+            <h3>{orgname}</h3>
           </div>
           <div className={styles.environments_button}>
             <p>
@@ -164,7 +175,7 @@ export default function Environment() {
                               </p>
                             )}
                             <div className={styles.dev}>
-                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} />
+                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} defaultEnv={defaultEnv}/>
                             </div>
                           </div>
                         )}

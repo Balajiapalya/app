@@ -62,10 +62,15 @@ const VideoList = ({ i, create_On, created_time }) => {
     let domnode = useClickOutside(() => {
         setdropdown(false);
     })
+    const handleSingleCheck=()=>{
+        let singleCheck=document.querySelector('.assetCheck');
+        console.log(singleCheck)
+        // singleCheck.style.backgroundColor="#f0f8fd"
+    }
     return (
         <>
 
-            <td><input className={styles.checkbox} type="checkbox"></input></td>
+            <td><input className={`${styles.checkbox} assetCheck`} type="checkbox" onClick={()=>handleSingleCheck()}></input></td>
             <td className={styles.addedon}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
             {/* <td className={styles.title}>{i.title}</td> */}
             <td className={styles.assetID}>{i.contentId}</td>

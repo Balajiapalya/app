@@ -128,7 +128,7 @@ export default function Overview() {
                         <div className={styles.playback}>
                             <h2>Playback Sample</h2>
                             <div className={styles.playback_content} >
-                                <Player handlethumnail={handlethumnail_callback} className={styles.player} />
+                                <Player handlethumnail={handlethumnail_callback}/>
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.transcodingInfo ?
@@ -220,6 +220,7 @@ export default function Overview() {
                                     </div>
                                 </div>
                                 <div className={styles.Video_info}>
+                                    <div className={styles.videoDiv}>
                                     <h4>Video Info</h4>
                                     <table>
                                         <thead>
@@ -228,7 +229,7 @@ export default function Overview() {
                                                 <th>Height</th>
                                                 <th>Frame Rate</th>
                                                 <th>Encoding</th>
-                                                <th>Duration</th>
+                                                <th className={styles.lastTh}>Duration</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -241,7 +242,8 @@ export default function Overview() {
                                             </tr>
                                         </tbody>
                                     </table>
-
+                                    </div>
+                                    <div className={styles.audioDiv}>
                                     <h4>Audio Info</h4>
                                     <table>
                                         <thead>
@@ -249,7 +251,7 @@ export default function Overview() {
                                                 <th>Sample Rate</th>
                                                 <th>Encoding</th>
                                                 <th>Channels</th>
-                                                <th>Duration</th>
+                                                <th className={styles.audioTh}>Duration</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -261,6 +263,7 @@ export default function Overview() {
                                             </tr>
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
 
                             </div>

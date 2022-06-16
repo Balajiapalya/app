@@ -209,6 +209,28 @@ export default function Videos() {
        return false
     }
 
+    const handleCheck=()=>{
+        let headCheck=document.querySelector('#check');
+        if(headCheck.checked){
+            let rows=document.getElementsByClassName('tbody')[0].getElementsByTagName('tr');
+            for(let i=0;i<rows.length;i++){
+                rows[i].style.backgroundColor='#f0f8fd';
+                let td=rows[i].querySelectorAll('.assetCheck');
+                for(let j=0;j<td.length;j++){
+                    td[j].checked=true;
+                }
+            }
+        }else{
+            let rows=document.getElementsByClassName('tbody')[0].getElementsByTagName('tr');
+            for(let i=0;i<rows.length;i++){
+                rows[i].style.backgroundColor='white';
+                let td=rows[i].querySelectorAll('.assetCheck');
+                for(let j=0;j<td.length;j++){
+                    td[j].checked=false;
+                }
+            }
+        }
+    }
     return (
 
         <div className={styles.container}>
@@ -309,7 +331,7 @@ export default function Videos() {
                         <table className="table_input">
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox"></input></th>
+                                    <th><input type="checkbox" id="check" onClick={()=>handleCheck()}></input></th>
                                     <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
                                     {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.svg' /> </th> */}
                                     <th>Content ID</th>
@@ -320,7 +342,7 @@ export default function Videos() {
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="tbody">
                                 {videoData.map((i, key) => <>
                                     <tr key={key}>
                                         <VideoList create_On={create_On} i={i} created_time={created_time} />
