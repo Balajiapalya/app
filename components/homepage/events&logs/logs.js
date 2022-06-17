@@ -3,9 +3,7 @@ import Api from '../../../components/api/api'
 import { useState,useEffect } from 'react';
 import LogDetails from './LogDetails'
 
-function Logs() {
-const [openLogs,setOpenLogs]=useState(false)
-const [initialLogs,setInitialLogs]=useState(true)
+function Logs({close,set_close,set_open,open}) {
 const [logsData,setLogsData]=useState([])
     useEffect(()=>{
         Api.Get_Logs_data().then(res=>{
@@ -21,13 +19,13 @@ const [logsData,setLogsData]=useState([])
         return dateNew
      }
      const handleComponent=()=>{
-        setOpenLogs(true);
-        setInitialLogs(false)
+        set_close(false)
+        set_open(true)
      }
     return (
 
         <div className={styles.events}>
-            {initialLogs && <><p>Logs show every API action taken.Logs will be stored up to 30 days.</p>
+            {close && <><p>Logs show every API action taken.Logs will be stored up to 30 days.</p>
             <div className={styles.events_data}>
                 <table className={styles.events_logs_table}>
                     <thead>
@@ -50,7 +48,7 @@ const [logsData,setLogsData]=useState([])
                 </table>
 
             </div> </>}
-            {openLogs && <LogDetails/>}
+            {open && <LogDetails/>}
 
         </div>
 

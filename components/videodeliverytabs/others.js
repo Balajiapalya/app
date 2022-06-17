@@ -57,8 +57,14 @@ export default function Others() {
     useEffect(() => {
         Api.Get_Env_item().then(res => {
             setDataVideo(res.data.data)
-            if(res.data.data.tags[0].length>0){
-                setTags(res.data.data.tags)
+            if(res.data.data.tags!=undefined){
+                if(res.data.data.tags[0].length>0){
+                    setTags(res.data.data.tags)
+                }
+                console.log(res.data.data.tags!=undefined)
+                
+            }else{
+                setTags([])
             }
             
             setMeta(res.data.data.metadata)

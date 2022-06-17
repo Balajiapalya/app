@@ -208,6 +208,9 @@ export const get_video_playback_url = (asset_id) => {
 export const get_Logs=()=>{
     return `${DATA_BASE_URL()}/services/api/v1/logs?organizationId=${uuid}`
 }
+export const get_Events=()=>{
+    return `${DATA_BASE_URL()}/services/api/v1/events?organizationId=${uuid}`
+}
 
 
 let user_id;
@@ -683,11 +686,17 @@ const Api = {
             url: get_video_playback_url(ast_id)
         }),
     Get_Logs_data:()=>
-    axios({
+    loginHandledAxios({
         method:'GET',
         url:get_Logs(),
         headers:headers
-    })
+    }),
+    Get_Events_data:()=>
+    loginHandledAxios({
+        method:'GET',
+        url:get_Events(),
+        headers:headers
+    }),
 }
 export default Api
 

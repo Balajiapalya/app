@@ -30,8 +30,6 @@ const EventDetails = () => {
                     </tbody>
                 </table>
             </div>
-            {/* <div className={styles.eventData}> */}
-                
                 <div className={styles.textArea}>
                 <h2>Event Data</h2>
                 <textarea defaultValue={`${JSON.stringify(
@@ -66,8 +64,6 @@ const EventDetails = () => {
                       },undefined,2
                 )}`} className={styles.codeEvent}/>
                 </div>
-            {/* </div> */}
-
         </div>
     )
 }
