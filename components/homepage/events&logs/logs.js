@@ -1,8 +1,11 @@
 import styles from '../../../styles/events&logs.module.css';
 import Api from '../../../components/api/api'
 import { useState,useEffect } from 'react';
+import LogDetails from './LogDetails'
 
 function Logs() {
+const [openLogs,setOpenLogs]=useState(false)
+const [initialLogs,setInitialLogs]=useState(true)
 const [logsData,setLogsData]=useState([])
     useEffect(()=>{
         Api.Get_Logs_data().then(res=>{
@@ -17,10 +20,14 @@ const [logsData,setLogsData]=useState([])
         var dateNew = new Date(+d).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
         return dateNew
      }
+     const handleComponent=()=>{
+        setOpenLogs(true);
+        setInitialLogs(false)
+     }
     return (
 
         <div className={styles.events}>
-            <p>Logs show every API action taken.Logs will be stored up to 30 days.</p>
+            {initialLogs && <><p>Logs show every API action taken.Logs will be stored up to 30 days.</p>
             <div className={styles.events_data}>
                 <table className={styles.events_logs_table}>
                     <thead>
@@ -32,7 +39,7 @@ const [logsData,setLogsData]=useState([])
                     </thead>
                     <tbody>
                         {logsData.map((data,ind)=><>
-                            <tr key={ind}>
+                            <tr key={ind} onClick={()=>handleComponent()}>
                                 <td>{data.status}</td>
                                 <td><p>FRANE FREEZE</p>{data.url}</td>
                                 <td>{dateCreated(data.occurredOn)}</td>
@@ -42,8 +49,8 @@ const [logsData,setLogsData]=useState([])
                     
                 </table>
 
-            </div>
-
+            </div> </>}
+            {openLogs && <LogDetails/>}
 
         </div>
 
