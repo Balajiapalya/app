@@ -49,7 +49,7 @@ export default function Videodelivery_addnewassets({ table }) {
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload />
+                <Direct_upload handlePopUp={handlePopUp}/>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >

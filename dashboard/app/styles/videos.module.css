@@ -539,7 +539,7 @@
 .direct_upload_submit button {
     background-color: #2863eb;
     color: #fff;
-    padding: 5px 20px;
+    padding: 12px 45px;
     border: none;
     border-radius: 5px;
     float: left;
@@ -823,6 +823,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #196068;
+    text-transform: capitalize;
 }
 
 .displayName {

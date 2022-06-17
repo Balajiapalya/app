@@ -1,46 +1,56 @@
 import styles from '../../../styles/events&logs.module.css';
+import Api from '../../../components/api/api'
+import { useState,useEffect } from 'react';
+import LogDetails from './LogDetails'
 
 function Logs() {
+const [openLogs,setOpenLogs]=useState(false)
+const [initialLogs,setInitialLogs]=useState(true)
+const [logsData,setLogsData]=useState([])
+    useEffect(()=>{
+        Api.Get_Logs_data().then(res=>{
+            return(
+                <>
+                    {setLogsData(res.data.data)}
+                </>
+            )
+        })
+      },[])
+     const dateCreated= (d)=>{
+        var dateNew = new Date(+d).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+        return dateNew
+     }
+     const handleComponent=()=>{
+        setOpenLogs(true);
+        setInitialLogs(false)
+     }
     return (
 
         <div className={styles.events}>
-            <p>Logs show every API action taken.Logs will be stored up to 30 days.</p>
+            {initialLogs && <><p>Logs show every API action taken.Logs will be stored up to 30 days.</p>
             <div className={styles.events_data}>
                 <table className={styles.events_logs_table}>
                     <thead>
                         <tr>
                             <th>Status</th>
                             <th>Description</th>
-                            <th>DATE</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>204 Stream down</td>
-                            <td><p>FRANE FREEZE</p>https://Videograph.com/video/v1/assets/00ijr1mxkM<br></br>01pzrh</td>
-                            <td>11/11/2021 3:57PM</td>
-                        </tr>
-                        <tr>
-                            <td>204 Stream down</td>
-                            <td><p>FRANE FREEZE</p>https://Videograph.com/video/v1/assets/00ijr1mxkM<br></br>01pzrh</td>
-                            <td>11/11/2021 3:57PM</td>
-                        </tr>
-                        <tr>
-                            <td>204 Stream down</td>
-                            <td><p>FRANE FREEZE</p>https://Videograph.com/video/v1/assets/00ijr1mxkM<br></br>01pzrh</td>
-                            <td>11/11/2021 3:57PM</td>
-                        </tr>
-                        <tr>
-                            <td>204 Stream down</td>
-                            <td><p>FRANE FREEZE</p>https://Videograph.com/video/v1/assets/00ijr1mxkM<br></br>01pzrh</td>
-                            <td>11/11/2021 3:57PM</td>
-                        </tr>
-
+                        {logsData.map((data,ind)=><>
+                            <tr key={ind} onClick={()=>handleComponent()}>
+                                <td>{data.status}</td>
+                                <td><p>FRANE FREEZE</p>{data.url}</td>
+                                <td>{dateCreated(data.occurredOn)}</td>
+                            </tr>
+                        </>)}
                     </tbody>
+                    
                 </table>
 
-            </div>
-
+            </div> </>}
+            {openLogs && <LogDetails/>}
 
         </div>
 

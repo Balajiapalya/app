@@ -50,7 +50,7 @@ const router=useRouter()
                 <div className={styles.uppercomponents}>
                     <ul>
                          <li className={styles.brand_logo}>
-                            <Link href='/'><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/'? '/images/vg_logo.svg' : '/images/vg_logo.svg'} alt='icon'></img><span className={styles.title}>Videograph</span></a></Link>
+                            <Link href='/'><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/'? '/images/vgicon.webp' : '/images/vgicon.webp'} alt='icon'></img><span className={styles.title}>Videograph</span></a></Link>
                         </li>
                         <li>
                             <Link href="/"><a className={router.pathname=='/'  ? `${styles.activate}` : ''}><img src={router.pathname=='/'? '/images/iconmaterial-home(white).svg' : '/images/iconmaterial-home.svg'} alt='icon'></img><span>Environments</span></a></Link>
@@ -61,34 +61,35 @@ const router=useRouter()
                         <li>
                             <Link href='/analytics'><a className={router.pathname=='/analytics' ? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/iconsimple-googleanalytics(white).svg' : '/images/iconsimple-googleanalytics.svg'} alt='icon'></img><span>Analytics</span></a></Link>
                         </li>
-                        <li style={opendropdown|| router.pathname=='/tools/streammonitor'|| router.pathname=='/tools/subtitleconverter'? { backgroundColor: "#262b36", color: 'white' } : { backgroundColor: null }} className={styles.tools}>
+                        {/* <li style={opendropdown|| router.pathname=='/tools/streammonitor'|| router.pathname=='/tools/subtitleconverter'? { backgroundColor: "#262b36", color: 'white' } : { backgroundColor: null }} className={styles.tools}>
                             <a className={styles.list_heading} 
-                            // onClick={() => setdropdown(!opendropdown)}
+                            onClick={() => setdropdown(!opendropdown)}
                             >
                                 <img src={opendropdown ? "/images/iconawesome-tools(white).png" : "/images/iconawesome-tools.svg"} alt="icon"></img><span>Tools</span></a>
-                            {/* {opendropdown ? <div><ul className={styles.list}>
+                            {opendropdown ? <div><ul className={styles.list}>
                                 <li><Link href="/tools/streammonitor"><a className={router.pathname=='/tools/streammonitor'? `${styles.activate}`:''}>Stream Monitor</a></Link></li>
                                 <li><a>Image Optimization</a></li>
                                 <li><Link href="/tools/subtitleconverter"><a className={router.pathname=='/tools/subtitleconverter'? `${styles.activate}`:''}>Subtitle Converter</a></Link></li>
                                 <li><a>Video player</a></li>
                                 <li><a>Player Validator</a></li>
-                            </ul></div> : null} */}
-                        </li>
+                            </ul></div> : null}
+                        </li> */}
                     </ul>
                 </div>
                 <div className={styles.lowercomponents}>
                     <ul>
                         <li>
-                            {/* <Link href="/events_logs"> */}
+                            <Link href="/events_logs">
                                 <a className={router.pathname=='/events_logs' ? `${styles.activate}` : ''}><img src={router.pathname=='/events_logs' ? "/images/iconawesome-file-alt(white).svg" : "/images/iconawesome-file-alt.svg"} alt='icon'></img><span>Events & Logs</span>
                                 </a>
-                            {/* </Link> */}
+                            </Link>
                         </li>
                         <li>
                             <Link href="/settings"><a className={router.pathname=='/settings' ? `${styles.activate}` : ''}><img src={router.pathname=='/settings'? "/images/iconionic-ios-settings(white).svg" : "/images/iconionic-ios-settings.svg"} alt='icon'></img><span>Settings</span></a></Link>
                         </li>
                         <li>
-                            <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).svg" : "/images/iconawesome-user-alt.svg"} alt='icon'></img><span><p className={router.pathname=='/account' ? `${styles.user_detail} ${styles.activate}` : `${styles.user_detail}`}>{ownername} <br />{OrgName}</p></span></a></Link>
+                            {/* <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).svg" : "/images/iconawesome-user-alt.svg"} alt='icon'></img><span><p className={router.pathname=='/account' ? `${styles.user_detail} ${styles.activate}` : `${styles.user_detail}`}>{ownername} <br />{OrgName}</p></span></a></Link> */}
+                            <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).svg" : "/images/iconawesome-user-alt.svg"} alt='icon'></img><span><p className={router.pathname=='/account' ? ` ${styles.activate}` : ''}>{ownername}</p></span></a></Link>
                         </li>
                         <li>
                             <Link href="/signin"><a className={styles.logout} onClick={() => handlelogout()}><img src={ router.pathname=='/signin' ? "/images/iconfeather-log-out.png" : "/images/iconfeather-log-out.png"} alt='icon'></img><span>Logout</span></a></Link>

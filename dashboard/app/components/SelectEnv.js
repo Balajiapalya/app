@@ -3,23 +3,22 @@ import { useState, useRef, useEffect } from 'react'
 import styles from "../styles/settings.module.css";
 import Api from './api/api'
 
-const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad }) => {
-    const [defaultOpt, setDefaultOpt] = useState(id)
-    const [newOpt, setNewOpt] = useState(id)
+const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad,defaultEnv }) => {
+    const [defaultOpt, setDefaultOpt] = useState(defaultEnv)
+    // const [newOpt, setNewOpt] = useState(id)
     const [selected, setSelected] = useState();
     const [productSelect, setProductSelect] = useState(false)
-    const [idSubmit, setIdSubmit] = useState()
+    const [idSubmit, setIdSubmit] = useState(id)
 
-    const handleSelectChange = (e) => {
-        setNewOpt(e.target.value)
-    }
+    // const handleSelectChange = (e) => {
+    //     setNewOpt(e.target.value)
+    // }
     const handleSave = (e) => {
         e.preventDefault()
-
         let data = localStorage.getItem('envuuid');
         const obj = new Object()
         obj.name = newInput ? newInput : valueDefault;
-        obj.environmentTypeId = parseInt(newOpt)
+        obj.environmentTypeId = parseInt(idSubmit)
         Api.Update_env(obj, data).then(res => setLoad(false))
     }
 
@@ -56,6 +55,7 @@ const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad }) =>
         setIdSubmit(prod.id)
         setProductSelect(false)
     }
+
     return (
         <>
             {/* <select
@@ -71,7 +71,7 @@ const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad }) =>
         
             <div ref={dropdownprod} className={styles.select}>
                 <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
-                    <div>{selected ? selected : 'Development'}</div>
+                    <div>{selected ? selected :defaultOpt}</div>
                     <img className={styles.dropdownOneInvite} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                 </div>
                 

@@ -45,7 +45,7 @@
 }
 
 .containercomponents {
-    background-color: #333740;
+    background-color: #120724;
     width: 100px;
     box-sizing: border-box;
     color: white;
@@ -107,9 +107,10 @@
 }
 
 .containercomponents .uppercomponents ul li.brand_logo img {
-    right: 6px;
+    /* right: 6px; */
     padding-right: 5px;
-    top: 0;
+    top: 8px;
+    height: 32px;
 }
 
 .containercomponents .uppercomponents ul li.brand_logo a span.title {
@@ -204,8 +205,8 @@
 }
 
 .containercomponents .lowercomponents ul li p {
-    position: absolute;
-    top: -9px;
+    /* position: absolute;
+    top: -9px; */
     /* width: 100%; */
     margin: 0;
     color: #8798ac;
@@ -494,7 +495,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #4a5057;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .environments_button button {
@@ -522,7 +523,7 @@
 .environments_table {
     width: 100%;
     float: left;
-    margin: 40px 0px 0px 0px;
+    margin: 35px 0px 0px 0px;
 }
 
 .environments_table table {
@@ -602,6 +603,7 @@
     width: 100%;
     float: left;
     padding: 5%;
+    cursor: pointer;
 }
 
 .box_content_history {
@@ -620,6 +622,8 @@
 }
 
 .edit_img {
+    width: 9px;
+    height: 9px;
     position: relative;
     left: 7px;
     cursor: pointer;
@@ -704,7 +708,7 @@
     margin-bottom: 10px;
     color: #212b36;
     font-family: Inter-Regular;
-    font-size: 16px;
+    font-size: 13px;
     outline: none;
 }
 
@@ -732,8 +736,14 @@
     cursor: pointer;
     float: left;
     text-decoration: underline;
-    color: #848484;
-    font-size: 14px;
+    color: #848484;         
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     font-family: Inter-Regular;
 
 }
@@ -743,10 +753,16 @@
     float: right;
     color: #2863eb;
     text-decoration: underline;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
     font-family: Inter-Regular;
     border: none;
-    background-color: inherit
+    background-color: inherit;
 }
 
 /* popup */
@@ -772,7 +788,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 13px;
     font-family: Inter-Regular;
     font-weight: 500;
     font-stretch: normal;
@@ -1020,7 +1036,7 @@
 
 @media screen and (max-width:1400px) {
     .table_box {
-        width: 100%;
+        width: 85%;
     }
 
 

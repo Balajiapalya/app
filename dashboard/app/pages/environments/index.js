@@ -4,7 +4,7 @@ import Api from "../../components/api/api";
 import { useEffect, useState } from "react";
 import Add_new_environment from "./add_new_environment";
 import { useForm } from "react-hook-form";
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 import SelectEnv from '../../components/SelectEnv'
 
 export default function Environment() {
@@ -24,6 +24,8 @@ export default function Environment() {
   const [newInput, setNewInput] = useState(valueDefault)
   const [load, setLoad] = useState(true)
   const [OrgStats, setOrgStats] = useState([])
+  const router=useRouter();
+  const [defaultEnv,setDefaultEnv]=useState()
 
   useEffect(() => {
     setLoad(true)
@@ -59,19 +61,26 @@ export default function Environment() {
 
 
   const setPopups = (index, items) => {
-
     if (items) {
-
       setId(items.environmentTypeId)
       setValue(items.name)
-
-      localStorage.setItem('envuuid', items.uuid)
+      localStorage.setItem('envuuid', items.uuid);
+      // for default value in dropdown
+      if(items.environmentTypeId==1){
+        setDefaultEnv('Developement')
+      }else if(items.environmentTypeId==2){
+        setDefaultEnv('Staging')
+      }else if(items.environmentTypeId==3){
+        setDefaultEnv('QA')
+      }else{
+        setDefaultEnv('Production')
+      }
     }
     openModel[index] = !openModel[index];
     closemodal[index] = !closemodal[index]
     setopeninvitemember(openModel);
     setclosemodal([...closemodal]);
-    console.log(openModel[index], closemodal[index])
+    
   }
   let orgname;
   if (process.browser) {
@@ -89,6 +98,15 @@ export default function Environment() {
     table.classList.add(`${styles.no_display}`)
     table.classList.remove(`${styles.display}`)
     popup.classList.remove(`${styles.no_display}`)
+  }
+  //redirect
+  const handleRedirect=(items)=>{
+    localStorage.setItem('envuuid',items.uuid);
+   router.push({pathname:'/videos'})
+  }
+  const handleRedirectAnalytics=(items)=>{
+    localStorage.setItem('envuuid',items.uuid);
+    router.push({pathname:'/analytics'})
   }
   return (
     <div className="container">
@@ -157,14 +175,14 @@ export default function Environment() {
                               </p>
                             )}
                             <div className={styles.dev}>
-                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} />
+                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} defaultEnv={defaultEnv}/>
                             </div>
                           </div>
                         )}
                       </form>
                     </td>
                     <td>
-                      <div className={styles.table_box}>
+                      <div className={styles.table_box} onClick={()=>handleRedirect(items)}>
                         <div className={styles.box_content}>
                           <span className={styles.box_content_history}>
                             in last 7 days
@@ -211,7 +229,7 @@ export default function Environment() {
                       </div>
                     </td>
                     <td>
-                      <div className={styles.table_box}>
+                      <div className={styles.table_box} onClick={()=>handleRedirectAnalytics(items)}>
                         <div className={styles.box_content}>
                           <span className={styles.box_content_history}>
                             in last 7 days
