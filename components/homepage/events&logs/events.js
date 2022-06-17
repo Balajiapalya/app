@@ -1,5 +1,6 @@
 import styles from '../../../styles/events&logs.module.css';
 import { useState } from 'react';
+import EventDetails from './EventDetails'
 function Events() {
   const [close, set_close] = useState(true);
   const [open, set_open] = useState(false)
@@ -61,8 +62,8 @@ function Events() {
             </table>
           </div>
         </div> : ""}
-        {open?<div onClick={()=>`${set_close(true)} ${set_open(false)}`}>hii</div>:''}
-
+        {/* {open?<div onClick={()=>`${set_close(true)} ${set_open(false)}`}>hii</div>:''} */}
+        {open && <EventDetails/>}
     </>
 
   )
