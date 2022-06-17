@@ -1,16 +1,28 @@
 import styles from '../../../styles/events&logs.module.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import EventDetails from './EventDetails'
-function Events() {
-  const [close, set_close] = useState(true);
-  const [open, set_open] = useState(false)
+import Api from '../../../components/api/api';
+function Events({close,set_close,set_open,open}) {
+  
+  const [event,setEvent] = useState([]);
   const handleClick = ()=>{
     set_close(false)
     set_open(true)
   }
+  useEffect(()=>{
+    Api.Get_Events_data().then(res=>{
+        return(
+            <>
+                {setEvent(res.data.data)}
+            </>
+        )
+       
+    })
+  },[])
+ 
   return (
     <>
-      {close ?
+      {close  ?
         <div className={styles.events}>
           <p>Events let you know when something ha happened in your system.<br></br>Events will be stored up to 30 days.</p>
           <div className={styles.events_data}>
@@ -22,6 +34,16 @@ function Events() {
                   <th>Date</th>
                 </tr>
               </thead>
+              {/* <tbody>
+              {event.map((data,ind)=><>
+             
+                            <tr key={ind} onClick={()=>handleComponent()}>
+                                <td>{data.status}</td>
+                                <td><p>FRANE FREEZE</p>{data.url}</td>
+                                <td>{dateCreated(data.occurredOn)}</td>
+                            </tr>
+                        </>)}
+              </tbody> */}
               <tbody>
                 <tr>
                   <td onClick={() => handleClick()}>Video.detect.framefreeze</td>
