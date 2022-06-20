@@ -43,7 +43,7 @@ const EventDetails = (props) => {
                         <tbody>
                             <tr>
                                 <td>Log ID</td>
-                                <td>3a94c249-d5a9-41cc-ae19-9cecf1cbcbd5</td>
+                                <td>{logDetail.contentUUID}</td>
                             </tr>
                             <tr>
                                 <td>Date</td>
@@ -57,7 +57,7 @@ const EventDetails = (props) => {
                                 <td>URL</td>
                                 <td>{logDetail.url}</td>
                             </tr>
-                            <tr>
+                            {/* <tr>
                                 <td>Status</td>
                                 <td>{logDetail.status}</td>
                             </tr>
@@ -72,7 +72,7 @@ const EventDetails = (props) => {
                             <tr>
                                 <td>Environment</td>
                                 <td>Production</td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>
@@ -84,9 +84,10 @@ const EventDetails = (props) => {
 
             <div className={styles.textArea}>
                 <h2>Response Body</h2>
-                <textarea defaultValue={parseResp && `${JSON.stringify(parseResp, undefined, 2)}`}
+                <textarea defaultValue={parseResp && `${JSON.stringify(parseResp.data, undefined, 2)}`}
                     className={styles.codeEvent} />
             </div>
+            {console.log(logDetail)}
 
         </div>
     )

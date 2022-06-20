@@ -51,14 +51,14 @@ const EventDetails = (uuidEvnt) => {
                             <td>Type</td>
                             <td>{event.messageType}</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td>Source</td>
                             <td>ui</td>
                         </tr>
                         <tr>
                             <td>Environment</td>
                             <td>Production</td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
