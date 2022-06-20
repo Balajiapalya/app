@@ -208,10 +208,15 @@ export const get_video_playback_url = (asset_id) => {
 export const get_Logs=()=>{
     return `${DATA_BASE_URL()}/services/api/v1/logs?organizationId=${uuid}`
 }
-export const get_Events=()=>{
-    return `${DATA_BASE_URL()}/services/api/v1/events?organizationId=${uuid}`
+export const get_Events=(id)=>{
+    return `${DATA_BASE_URL()}/services/api/v1/events?organizationId=${id}`
 }
-
+export const get_Events_Detail=(uuidEvent)=>{
+    return `${DATA_BASE_URL()}/services/api/v1/events/${uuidEvent}`
+}
+export const get_Log_Detail=(id)=>{
+    return `${DATA_BASE_URL()}/services/api/v1/logs/${id}`
+}
 
 let user_id;
 if (process.browser) {
@@ -691,10 +696,22 @@ const Api = {
         url:get_Logs(),
         headers:headers
     }),
-    Get_Events_data:()=>
+    Get_Events_data:(id)=>
     loginHandledAxios({
         method:'GET',
-        url:get_Events(),
+        url:get_Events(id),
+        headers:headers
+    }),
+    Get_Events_details:(uuid)=>
+    loginHandledAxios({
+        method:'GET',
+        url:get_Events_Detail(uuid),
+        headers:headers
+    }),
+    Get_Log_details:(id)=>
+    loginHandledAxios({
+        method:'GET',
+        url:get_Log_Detail(id),
         headers:headers
     }),
 }

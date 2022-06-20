@@ -2,27 +2,36 @@ import styles from '../../../styles/events&logs.module.css';
 import { useState,useEffect } from 'react';
 import EventDetails from './EventDetails'
 import Api from '../../../components/api/api';
-function Events({close,set_close,set_open,open}) {
+function Events({closeEvt,setCloseEvt,openEvent,setOpenEvent}) {
   
   const [event,setEvent] = useState([]);
-  const handleClick = ()=>{
-    set_close(false)
-    set_open(true)
+  const [uuidEvnt,setUuid]=useState()
+  let uuid
+  if(process.browser){
+      uuid=localStorage.getItem('uuid')
   }
   useEffect(()=>{
-    Api.Get_Events_data().then(res=>{
+    Api.Get_Events_data(uuid).then(res=>{
         return(
             <>
                 {setEvent(res.data.data)}
             </>
         )
-       
     })
   },[])
- 
+  const dateCreated= (d)=>{
+    var dateNew = new Date(+d).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+    return dateNew
+ }
+ const handleComponent=(data)=>{
+  setCloseEvt(false);
+  setOpenEvent(true);
+  setUuid(data.uuid)
+}
+
   return (
     <>
-      {close  ?
+      {closeEvt  ?
         <div className={styles.events}>
           <p>Events let you know when something ha happened in your system.<br></br>Events will be stored up to 30 days.</p>
           <div className={styles.events_data}>
@@ -34,58 +43,20 @@ function Events({close,set_close,set_open,open}) {
                   <th>Date</th>
                 </tr>
               </thead>
-              {/* <tbody>
+              <tbody>
               {event.map((data,ind)=><>
-             
-                            <tr key={ind} onClick={()=>handleComponent()}>
-                                <td>{data.status}</td>
-                                <td><p>FRANE FREEZE</p>{data.url}</td>
+                            <tr key={ind} onClick={()=>handleComponent(data)}>
+                                <td>{data.messageType}</td>
+                                <td>{data.uuid}</td>
                                 <td>{dateCreated(data.occurredOn)}</td>
                             </tr>
                         </>)}
-              </tbody> */}
-              <tbody>
-                <tr>
-                  <td onClick={() => handleClick()}>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
-                <tr>
-                  <td>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
-                <tr>
-                  <td>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
-                <tr>
-                  <td>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
-                <tr>
-                  <td>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
-                <tr>
-                  <td>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
-                <tr>
-                  <td>Video.detect.framefreeze</td>
-                  <td>abae8ba0-0970-41a6-834c-667110b861031</td>
-                  <td>11/11/2021 3:57PM</td>
-                </tr>
               </tbody>
+              
             </table>
           </div>
-        </div> : ""}
-        {/* {open?<div onClick={()=>`${set_close(true)} ${set_open(false)}`}>hii</div>:''} */}
-        {open && <EventDetails/>}
+        </div> : ""}        
+        {openEvent && <EventDetails uuidEvnt={uuidEvnt} setCloseEvt={setCloseEvt} setOpenEvent={setOpenEvent}/>}
     </>
 
   )
