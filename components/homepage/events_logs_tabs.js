@@ -7,12 +7,16 @@ function Events_logs_tabs() {
   const [toggleState, setToggleState] = useState(1);
   const [close, set_close] = useState(true);
   const [open, set_open] = useState(false);
+  const [closeEvt,setCloseEvt  ] = useState(true);
+  const [openEvent,setOpenEvent]=useState(false)
 
   const toggleTab = (index) => {
       
     setToggleState(index);
     set_close(true);
     set_open(false);
+    setCloseEvt(true);
+  setOpenEvent(false);
 
   };
 
@@ -39,7 +43,7 @@ function Events_logs_tabs() {
           <div
             className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
           >
-            <Events toggleState={toggleState} close={close} set_close={set_close} open={open} set_open={set_open}/>
+            <Events toggleState={toggleState} closeEvt={closeEvt} setCloseEvt={setCloseEvt} openEvent={openEvent} setOpenEvent={setOpenEvent}/>
             {/* <Organisation /> */}
           </div>
 

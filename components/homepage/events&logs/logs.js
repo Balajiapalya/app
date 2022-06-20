@@ -4,7 +4,8 @@ import { useState,useEffect } from 'react';
 import LogDetails from './LogDetails'
 
 function Logs({close,set_close,set_open,open}) {
-const [logsData,setLogsData]=useState([])
+const [logsData,setLogsData]=useState([]);
+const [logUuid,setLogUuid]=useState()
     useEffect(()=>{
         Api.Get_Logs_data().then(res=>{
             return(
@@ -18,9 +19,10 @@ const [logsData,setLogsData]=useState([])
         var dateNew = new Date(+d).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
         return dateNew
      }
-     const handleComponent=()=>{
-        set_close(false)
-        set_open(true)
+     const handleComponent=(data)=>{
+        set_close(false);
+        set_open(true);
+        setLogUuid(data.uuid)
      }
     return (
 
@@ -37,7 +39,7 @@ const [logsData,setLogsData]=useState([])
                     </thead>
                     <tbody>
                         {logsData.map((data,ind)=><>
-                            <tr key={ind} onClick={()=>handleComponent()}>
+                            <tr key={ind} onClick={()=>handleComponent(data)}>
                                 <td>{data.status}</td>
                                 <td><p>FRANE FREEZE</p>{data.url}</td>
                                 <td>{dateCreated(data.occurredOn)}</td>
@@ -48,7 +50,7 @@ const [logsData,setLogsData]=useState([])
                 </table>
 
             </div> </>}
-            {open && <LogDetails/>}
+            {open && <LogDetails logUuid={logUuid} set_close={set_close} set_open={set_open}/>}
 
         </div>
 
