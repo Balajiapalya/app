@@ -4,8 +4,10 @@ import { useState,useEffect } from 'react';
 import LogDetails from './LogDetails'
 
 function Logs({close,set_close,set_open,open}) {
+    
 const [logsData,setLogsData]=useState([]);
 const [logUuid,setLogUuid]=useState()
+
     useEffect(()=>{
         Api.Get_Logs_data().then(res=>{
             return(
@@ -16,7 +18,7 @@ const [logUuid,setLogUuid]=useState()
         })
       },[])
      const dateCreated= (d)=>{
-        var dateNew = new Date(+d).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+        var dateNew = new Date(+d).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})
         return dateNew
      }
      const handleComponent=(data)=>{
@@ -38,13 +40,13 @@ const [logUuid,setLogUuid]=useState()
                         </tr>
                     </thead>
                     <tbody>
-                        {logsData.map((data,ind)=><>
+                        {logsData.map((data,ind)=>
                             <tr key={ind} onClick={()=>handleComponent(data)}>
-                                <td>{data.status}</td>
-                                <td><p>FRANE FREEZE</p>{data.url}</td>
+                                <td>{data.status=='200'?'200 OK':data.status=='201'?'201 Created':data.status}</td>
+                                <td>{data.url}</td>
                                 <td>{dateCreated(data.occurredOn)}</td>
                             </tr>
-                        </>)}
+                        )}
                     </tbody>
                     
                 </table>

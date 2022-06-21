@@ -26,7 +26,9 @@ const EventDetails = (uuidEvnt) => {
       },[])
      
     const handleDate=(date)=>{
-        return new Date(+date).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+        // return new Date(+date).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+        var dateNew = new Date(+date).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})
+        return dateNew
     }
     const handleComponent=()=>{
         uuidEvnt.setCloseEvt(true);
@@ -41,7 +43,7 @@ const EventDetails = (uuidEvnt) => {
                     <tbody>
                         <tr>
                             <td>Event Id</td>
-                            <td>{event.contentId}</td>
+                            <td>{event.uuid}</td>
                         </tr>
                         <tr>
                             <td>Date</td>
@@ -62,11 +64,11 @@ const EventDetails = (uuidEvnt) => {
                     </tbody>
                 </table>
             </div>
-                <div className={styles.textArea}>
+            {eventData && <div className={styles.textArea}>
                 <h2>Event Data</h2>
-                <textarea  defaultValue={eventData && `${JSON.stringify(eventData,undefined,2)}`}
-    className={styles.codeEvent}/>
-                </div>
+                 <textarea  defaultValue={eventData && `${JSON.stringify(eventData,undefined,2)}`}
+    className={styles.codeEvent} readOnly/>
+                </div>}
         </div>
     )
 }

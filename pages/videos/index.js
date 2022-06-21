@@ -11,7 +11,7 @@ import VideoList from '../../components/video_list'
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
     const [add_asset, set_asset] = useState(false);
-    const [env, setenv] = useState([]);
+    // const [env, setenv] = useState([]);
     const [envSelect, setEnvSelect] = useState([]);
     const [id, setId] = useState();
     const [dirdata, set_directdata] = useState([]);
@@ -63,14 +63,14 @@ export default function Videos() {
         Api.Video_list(data)
             .then(res =>
                 setVideoData(res.data.data))
-        Api.Env_data()
-            .then(res => {
-                setenv(res.data.data)
-
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        // Api.Env_data()
+        //     .then(res => {
+        //         setenv(res.data.data)
+               
+        //     })
+            // .catch(error => {
+            //     console.log(error)
+            // })
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
@@ -85,7 +85,7 @@ export default function Videos() {
         })
         return () => {
             setVideoData([]);
-            setenv([])
+            // setenv([])
             setEnvSelect([])
             setOrg([])
         }

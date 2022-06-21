@@ -43,16 +43,16 @@ function Events_logs_tabs() {
           <div
             className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
           >
-            <Events toggleState={toggleState} closeEvt={closeEvt} setCloseEvt={setCloseEvt} openEvent={openEvent} setOpenEvent={setOpenEvent}/>
+            <Events closeEvt={closeEvt} setCloseEvt={setCloseEvt} openEvent={openEvent} setOpenEvent={setOpenEvent}/>
             {/* <Organisation /> */}
           </div>
 
-          <div
+          {toggleState === 2 && <div
             className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
           >
             <Logs close={close} set_close={set_close} open={open} set_open={set_open} />
             {/* <Billing /> */}
-          </div>
+          </div>}
 
 
 

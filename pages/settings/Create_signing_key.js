@@ -35,8 +35,11 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     const onSubmit = signin_key => {
         signin_key.productTypeId=idSubmit
         signin_key.environmentUUID = uuid
-        Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
-        setOpenCreate(true)
+        if(signin_key.productTypeId!=undefined && signin_key.environmentUUID!=undefined){
+            Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
+            setOpenCreate(true)
+        }
+        
     }
     const closePopUp = () => {
         let inpopUp=document.querySelector('.inpopup');
@@ -99,21 +102,6 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                     <h3 className={styles.model_title}>New Signing Key</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className={styles.model_label}>Environment</label>
-                        {/* <div className={styles.select}>
-                            <select
-                                name="environmentUUID"
-                                className={`${styles.development} ${styles.model_selection}`}
-                                {...register("environmentUUID", { required: true })}
-                            >
-                                {data.map(item => <>
-                                    <option key={item.id} value={item.id}>{item.name}</option>
-                                </>)}
-                            </select>
-
-                            <img className={styles.file} src="/images/iconawesome-folder.svg" alt='icon' />
-                            <button type="text" className={styles.up}><img src="/images/updown.svg" alt='icon'></img></button>
-                        </div> */}
-
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                                 {option}
