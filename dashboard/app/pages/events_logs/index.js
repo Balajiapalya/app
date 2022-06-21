@@ -19,7 +19,7 @@ export default function Events_logs() {
                                 Events & Logs
                             </h2>
                             <h3>
-                                Yupptv
+                            {process.browser && localStorage.getItem('orgName')}
                             </h3>
                         </div>
                         <Events_logs_tabs />

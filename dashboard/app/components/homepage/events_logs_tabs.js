@@ -5,10 +5,21 @@ import Logs from "./events&logs/logs";
 
 function Events_logs_tabs() {
   const [toggleState, setToggleState] = useState(1);
+  const [close, set_close] = useState(true);
+  const [open, set_open] = useState(false);
+  const [closeEvt,setCloseEvt  ] = useState(true);
+  const [openEvent,setOpenEvent]=useState(false)
 
   const toggleTab = (index) => {
+      
     setToggleState(index);
+    set_close(true);
+    set_open(false);
+    setCloseEvt(true);
+  setOpenEvent(false);
+
   };
+
   return (
     <div className={styles.events_logs}>
       <div className={styles.wrapper_tabs}>
@@ -32,16 +43,16 @@ function Events_logs_tabs() {
           <div
             className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
           >
-            <Events/>
+            <Events closeEvt={closeEvt} setCloseEvt={setCloseEvt} openEvent={openEvent} setOpenEvent={setOpenEvent}/>
             {/* <Organisation /> */}
           </div>
 
-          <div
+          {toggleState === 2 && <div
             className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
           >
-            <Logs />
+            <Logs close={close} set_close={set_close} open={open} set_open={set_open} />
             {/* <Billing /> */}
-          </div>
+          </div>}
 
 
 

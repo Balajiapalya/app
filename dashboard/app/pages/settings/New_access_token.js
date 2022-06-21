@@ -77,7 +77,7 @@ export default function New_Access_token({ table, closetoken }) {
 
       let sliced = Object.fromEntries(Object.entries(access_data).slice(5, 7))
       sliced.envUUID = uuid
-      
+      if(sliced.envUUID!==undefined && sliced.name!==undefined){
          Api.Create_aaccess_token_data(sliced).then(res =>
             setRes(res.data.data)
          )
@@ -86,6 +86,8 @@ export default function New_Access_token({ table, closetoken }) {
             })
 
       setNewToken(true)
+      }
+         
    }
 
 
@@ -192,23 +194,6 @@ export default function New_Access_token({ table, closetoken }) {
                <h3 className={styles.model_title}>New Access Token</h3>
                <form onSubmit={handleSubmit(onSubmit)}>
                   <label className={styles.model_label}>Environment</label>
-                  {/* <div className={styles.select}>
-                     <select
-                        name="environmentTypeId"
-                        className={`${styles.development} ${styles.model_selection}`}
-                        {...register("environmentTypeId", { required: true, valueAsNumber: true })}
-                     >
-                        {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
-
-                        {data.map(option =>
-                           <>
-                              <option key={option.id} value={option.id}>{option.name}</option>
-                           </>)}
-                     </select>
-                     <img className={styles.file} src="images/iconawesome-folder.svg" alt='icon'></img>
-                     <button type="text" className={styles.up}><img src="images/updown.svg" alt='icon'></img></button>
-                  </div> */}
-
                   <div ref={selectDropdown} className={styles.select}>
                      <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
                         {option ? option :defaultEnv}
@@ -222,7 +207,7 @@ export default function New_Access_token({ table, closetoken }) {
                            <div className={styles.allOptions}>
                               {data.map(option =>
                               <>
-                              {console.log(data[0].name)}
+                              
                                  <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div></>
                               )}
                              
