@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 
 const EventDetails = (props) => {
     const [logDetail, setLogDetail] = useState([]);
-    const [parseResp, setParseResp] = useState()
-    const [parseReq, setParseReq] = useState()
+    const [parseResp, setParseResp] = useState();
+    const [parseReq, setParseReq] = useState();
     
     useEffect(() => {
         Api.Get_Log_details(props.logUuid).then(res => {
@@ -17,6 +17,9 @@ const EventDetails = (props) => {
                 </>
             )
 
+        })
+        .catch(error=>{
+            console.log(error.response.status)
         })
         return () => {
             setLogDetail([])
