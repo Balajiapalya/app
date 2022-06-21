@@ -8,13 +8,10 @@ const EventDetails = (props) => {
     const [parseReq, setParseReq] = useState()
     
     useEffect(() => {
-
         Api.Get_Log_details(props.logUuid).then(res => {
             return (
                 <>
-
                     {setLogDetail(res.data.data)}
-
                     {res.data.data.responseBody && setParseResp(JSON.parse(res.data.data.responseBody))}
                     {res.data.data.reqBody && setParseReq(JSON.parse(res.data.data.reqBody))}
                 </>
@@ -28,7 +25,8 @@ const EventDetails = (props) => {
     }, [])
 
     const handleDate = (date) => {
-        return new Date(+date).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+        var dateNew = new Date(+date).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})
+        return dateNew
     }
     const handleComponent = () => {
         props.set_close(true);
@@ -43,7 +41,7 @@ const EventDetails = (props) => {
                         <tbody>
                             <tr>
                                 <td>Log ID</td>
-                                <td>{logDetail.contentUUID}</td>
+                                <td>{logDetail.uuid}</td>
                             </tr>
                             <tr>
                                 <td>Date</td>
@@ -77,17 +75,18 @@ const EventDetails = (props) => {
                     </table>
                 </div>
             </div>
-            <div className={styles.textArea}>
+           
+            {parseReq && <div className={styles.textArea}>
                 <h2>Request Body</h2>
-                <textarea defaultValue={parseReq && `${JSON.stringify(parseReq, undefined, 2)}`} className={styles.logTextArea} />
-            </div>
+                <textarea defaultValue={parseReq && `${JSON.stringify(parseReq, undefined, 2)}`} className={styles.logTextArea} readOnly/>
+            </div>}
 
             <div className={styles.textArea}>
                 <h2>Response Body</h2>
                 <textarea defaultValue={parseResp && `${JSON.stringify(parseResp.data, undefined, 2)}`}
-                    className={styles.codeEvent} />
+                    className={styles.codeEvent} readOnly/>
             </div>
-            {console.log(logDetail)}
+           
 
         </div>
     )

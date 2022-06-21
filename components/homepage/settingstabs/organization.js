@@ -88,7 +88,7 @@ function Organisation() {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>status</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>

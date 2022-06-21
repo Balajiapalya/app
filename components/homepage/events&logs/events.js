@@ -20,7 +20,7 @@ function Events({closeEvt,setCloseEvt,openEvent,setOpenEvent}) {
     })
   },[])
   const dateCreated= (d)=>{
-    var dateNew = new Date(+d).toLocaleString('en-US', { timeZone: 'Indian/Christmas' })
+    var dateNew = new Date(+d).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})
     return dateNew
  }
  const handleComponent=(data)=>{
@@ -44,13 +44,13 @@ function Events({closeEvt,setCloseEvt,openEvent,setOpenEvent}) {
                 </tr>
               </thead>
               <tbody>
-              {event.map((data,ind)=><>
+              {event.map((data,ind)=>
                             <tr key={ind} onClick={()=>handleComponent(data)}>
                                 <td>{data.messageType}</td>
                                 <td>{data.uuid}</td>
                                 <td>{dateCreated(data.occurredOn)}</td>
                             </tr>
-                        </>)}
+                        )}
               </tbody>
               
             </table>

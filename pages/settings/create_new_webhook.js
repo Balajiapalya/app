@@ -24,11 +24,14 @@ export default function Create_new_webhook({ closewebhook,table }) {
     const onSubmit = webhook_data => {
         let newObj = Object.fromEntries(Object.entries(webhook_data).slice(0, 2))
         newObj.environmentUUID = uuid
-        Api.Create_webhook_data(newObj).then(res =><>
-        {closePopup()}
-        {closewebhook(false)}
-        </>)
-        reset()
+        if(newObj.url!==undefined && newObj.environmentUUID!==undefined){
+            Api.Create_webhook_data(newObj).then(res =><>
+                {closePopup()}
+                {closewebhook(false)}
+                </>)
+                reset()
+        }
+       
     }
     const closePopup = () => {
         let inpopUp=document.querySelector('.inpopup');
