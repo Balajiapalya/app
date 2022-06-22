@@ -9,15 +9,12 @@ const EventDetails = (uuidEvnt) => {
     useEffect(()=>{
         
         Api.Get_Events_details(uuidEvnt.uuidEvnt).then(res=>{
-            return(
-                <>
-               
+            if (res && res.data && res.data.data) {
                     {setEvent(res.data.data)}
                     {res.data.data.eventData && setEventData(JSON.parse(res.data.data.eventData))}
-                </>
-            )
+            }
            
-        })
+        }).catch(err=>console.log(err))
         return()=>{
             setEventData([]);
             setEvent([])

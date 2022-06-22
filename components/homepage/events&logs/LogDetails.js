@@ -9,14 +9,11 @@ const EventDetails = (props) => {
     
     useEffect(() => {
         Api.Get_Log_details(props.logUuid).then(res => {
-            return (
-                <>
+            if (res && res.data && res.data.data) {
                     {setLogDetail(res.data.data)}
                     {res.data.data.responseBody && setParseResp(JSON.parse(res.data.data.responseBody))}
                     {res.data.data.reqBody && setParseReq(JSON.parse(res.data.data.reqBody))}
-                </>
-            )
-
+            }
         })
         .catch(error=>{
             console.log(error.response.status)

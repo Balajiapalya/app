@@ -203,7 +203,7 @@ export default function Overview() {
                         </div> : <div />}
                     {i.transcodingInfo ?
                         <div className={styles.input_file}>
-                            <h2>Input File Media Info</h2>
+                            <h2>Video Source Info</h2>
                             <div className={styles.media_info}>
                                 <h4>Video URL</h4>
                                 <div className={styles.video_url}>
