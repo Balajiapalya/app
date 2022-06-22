@@ -141,8 +141,8 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p>
-
+                                                {/* <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p> */}
+                                                <input defaultValue={`${window.location.origin}/videos/embed?videoId=${i.contentId}`} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.contentId}`}>
@@ -156,7 +156,8 @@ export default function Overview() {
                                         <h4>Link to HLS</h4>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p>{i.transcodingResponse.playback_url}</p>
+                                                {/* <p>{i.transcodingResponse.playback_url}</p> */}
+                                                <input defaultValue={i.transcodingResponse.playback_url} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
@@ -174,8 +175,8 @@ export default function Overview() {
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p>
-
+                                                {/* <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p> */}
+                                                <input defaultValue={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`}>
@@ -188,7 +189,8 @@ export default function Overview() {
                                         <h4>Link to Thumbnail</h4>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p>{localStorage.getItem('thumbnail')}</p>
+                                                {/* <p>{localStorage.getItem('thumbnail')}</p> */}
+                                                <input defaultValue={localStorage.getItem('thumbnail')} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={localStorage.getItem('thumbnail')}>
