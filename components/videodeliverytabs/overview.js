@@ -211,7 +211,7 @@ export default function Overview() {
                                 <div className={styles.video_url}>
                                     <div className={`${styles.copy_link} ${styles.copy_link_videoUrl}`}>
                                         <div className={styles.link}>
-                                            <p>{i.transcodingInfo.mediaUrl}</p>
+                                            <input defaultValue={i.transcodingInfo.mediaUrl} className={styles.copyInput} readOnly/>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
