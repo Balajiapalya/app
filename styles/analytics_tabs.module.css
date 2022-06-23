@@ -77,9 +77,12 @@
 
 /*-----overview-----*/
 .video_type_container {
-    width: 100%;
+    /* width: 100%;
     float: left;
-    display: flex;
+    display: flex; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
 }
 
 .encoded_video,
@@ -155,10 +158,14 @@
 /* .realtime_chart canvas{
     height: 200px !important;
 } */
-.encoded_video,
+.encoded_video{
+    width: 100%;
+    border-radius: 4px;
+}
 .stored_video {
     margin-right: 10px;
     border-radius: 4px;
+    
 }
 
 .timeperiod {
@@ -232,7 +239,7 @@
     width: 100%;
     float: left;
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -249,7 +256,7 @@
 .countries_container {
     width: 65%;
     float: left;
-    margin-right: 10px;
+    margin-right: 20px;
     position: relative;
     border-radius: 4px;
 }
