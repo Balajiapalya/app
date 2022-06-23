@@ -61,8 +61,8 @@ export default function Videos() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         Api.Video_list(data)
-            .then(res =>
-                setVideoData(res.data.data))
+            .then(res =><>
+                {setVideoData(res.data.data)}</>)
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
@@ -74,6 +74,7 @@ export default function Videos() {
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
+                    localStorage.setItem("envuuid", res.data.data[0].uuid)
                     setEnvSelect(res.data.data)
                 }
             })
