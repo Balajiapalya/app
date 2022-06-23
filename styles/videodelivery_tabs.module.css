@@ -808,6 +808,12 @@
     width: 90%;
     float: left;
 }
+.copyInput{
+    outline: none;
+    border: none;
+    width: 100%;
+    background: none;
+}
 
 .tooltip {
     position: relative;

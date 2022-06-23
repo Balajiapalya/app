@@ -343,11 +343,11 @@ export default function Videos() {
                                 </tr>
                             </thead>
                             <tbody className="tbody">
-                                {videoData.map((i, key) => <>
+                                {videoData.map((i, key) => 
                                     <tr key={key}>
                                         <VideoList create_On={create_On} i={i} created_time={created_time} />
                                     </tr>
-                                </>)}
+                                )}
                             </tbody>
                         </table>
 

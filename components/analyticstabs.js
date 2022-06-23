@@ -32,7 +32,7 @@ function Analytics_tabs() {
                 <div
                     className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    {toggleState==1 ? <Overview/>:null }
+                    {toggleState==1 ? <Overview setToggleState={setToggleState}/>:null }
                    
                 </div>
 

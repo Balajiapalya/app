@@ -20,7 +20,7 @@ const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-map
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(PointElement, LineElement, Filler);
 
-export default function Overview() {
+export default function Overview({setToggleState}) {
     const valueEnv = useContext(EnvValue)
     const [usagestatistics, set_usagestatistics] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
@@ -380,7 +380,7 @@ export default function Overview() {
                                 </tbody>
                             </table>
                             {/* <span className={styles.country_table_top_border}></span> */}
-                            <div className={styles.more_insights}>
+                            <div className={styles.more_insights} onClick={()=>setToggleState(2)}>
                                 <a>More Insights &gt;</a>
                             </div>
                         </div>

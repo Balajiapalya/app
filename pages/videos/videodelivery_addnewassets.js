@@ -16,17 +16,23 @@ export default function Videodelivery_addnewassets({ table }) {
     }
 
     const onSubmit = video_url_data => {
-        // console.log(JSON.parse(video_url_data.code))
-        Api.post_video(JSON.parse(video_url_data.code))
+       
+        try{
+            Api.post_video(JSON.parse(video_url_data.code))
             .then(res => {
                if (res.data.status == "Success") {
                      window.location.reload()
-//                    close_asset(true)
+                   close_asset(true)
                 }
             })
             .catch(error => {
                 console.log(error)
             })
+        }
+        catch(e){
+            console.log(e)
+        }
+        
     }
     const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
