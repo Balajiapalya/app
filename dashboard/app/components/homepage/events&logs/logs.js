@@ -10,12 +10,10 @@ const [logUuid,setLogUuid]=useState()
 
     useEffect(()=>{
         Api.Get_Logs_data().then(res=>{
-            return(
-                <>
-                    {setLogsData(res.data.data)}
-                </>
-            )
-        })
+            if (res && res.data && res.data.data) {
+            {setLogsData(res.data.data)}
+            }
+        }).catch(err=>console.log(err))
       },[])
      const dateCreated= (d)=>{
         var dateNew = new Date(+d).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})

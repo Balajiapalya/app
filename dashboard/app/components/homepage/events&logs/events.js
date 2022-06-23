@@ -12,12 +12,10 @@ function Events({closeEvt,setCloseEvt,openEvent,setOpenEvent}) {
   }
   useEffect(()=>{
     Api.Get_Events_data(uuid).then(res=>{
-        return(
-            <>
-                {setEvent(res.data.data)}
-            </>
-        )
-    })
+      if (res && res.data && res.data.data) {
+            {setEvent(res.data.data)}
+      } 
+    }).catch(err=>console.log(err))
   },[])
   const dateCreated= (d)=>{
     var dateNew = new Date(+d).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})

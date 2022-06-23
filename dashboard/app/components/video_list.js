@@ -77,21 +77,21 @@ const VideoList = ({ i, create_On, created_time }) => {
     return (
         <>
 
-            <td id='td'><input className={`${styles.checkbox} assetCheck`} type="checkbox" onClick={()=>handleSingleCheck()}></input></td>
-            <td className={styles.addedon}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
+            <td id='td'><input className={`${styles.checkbox} ${styles.tdCursor} assetCheck`} type="checkbox" onClick={()=>handleSingleCheck()}></input></td>
+            <td className={`${styles.addedon} ${styles.tdCursor}`} onClick={() => handleChange()}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
             {/* <td className={styles.title}>{i.title}</td> */}
-            <td className={styles.assetID}>{i.contentId}</td>
-            {i.thumbnailUrl ? <td className={styles.thumbnail}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
-            {i.duration ? <td>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td>-</td>}
-            {i.resolution ? <td>{i.resolution}</td> : <td>-</td>}
-            {i.status == "Failed" ? <td>{i.status}</td> : <td >{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+            <td className={`${styles.assetID} ${styles.tdCursor}`}  onClick={() => handleChange()}>{i.contentId}</td>
+            {i.thumbnailUrl ? <td className={`${styles.thumbnail} ${styles.tdCursor}`}  onClick={() => handleChange()}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
+            {i.duration ? <td className={styles.tdCursor}  onClick={() => handleChange()}>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td  className={styles.tdCursor}  onClick={() => handleChange()}>-</td>}
+            {i.resolution ? <td  onClick={() => handleChange()} className={styles.tdCursor}>{i.resolution}</td> : <td onClick={() => handleChange()}  className={styles.tdCursor}>-</td>}
+            {i.status == "Failed" ? <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status}</td> : <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>
                         <div ref={domnode} className={styles.contextual_menu}>
                             <div onClick={() => setdropdown(dropdown => !dropdown)}>
-                                <img className={styles.content_menu_basic} src='/images/content-menu-basic.svg' alt='menu' />
-                                <img className={styles.content_menu_hover} src='/images/content-menu-hover.svg' alt='menu' />
+                                <img className={`${styles.content_menu_basic} ${styles.tdCursor}`} src='/images/content-menu-basic.svg' alt='menu' />
+                                <img className={`${styles.content_menu_hover} ${styles.tdCursor}`} src='/images/content-menu-hover.svg' alt='menu' />
                             </div>
                             {dropdown ?
                                 <div className={styles.dropdown_list}>

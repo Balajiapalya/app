@@ -77,9 +77,12 @@
 
 /*-----overview-----*/
 .video_type_container {
-    width: 100%;
+    /* width: 100%;
     float: left;
-    display: flex;
+    display: flex; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
 }
 
 .encoded_video,
@@ -155,10 +158,14 @@
 /* .realtime_chart canvas{
     height: 200px !important;
 } */
-.encoded_video,
+.encoded_video{
+    width: 100%;
+    border-radius: 4px;
+}
 .stored_video {
     margin-right: 10px;
     border-radius: 4px;
+    
 }
 
 .timeperiod {
@@ -232,7 +239,7 @@
     width: 100%;
     float: left;
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -249,7 +256,7 @@
 .countries_container {
     width: 65%;
     float: left;
-    margin-right: 10px;
+    margin-right: 20px;
     position: relative;
     border-radius: 4px;
 }
@@ -295,7 +302,7 @@
     font-family: Inter-Regular;
     font-size: 13px;
     line-height: 1.08;
-
+    cursor: pointer;
 }
 
 .doughnut_more_insights {
@@ -899,17 +906,30 @@
 
 .org_name {
     padding-left: 37px;
-    padding-top: 7px;
+    padding-top: 13px;
+    font-family: Inter-Regular;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
     color: #196068;
-    font-size: 12px;
     text-transform: capitalize;
 }
 
 .displayName {
     padding-left: 37px;
-    font-size: 14px;
     font-family: Inter-Medium;
-    color: #196068;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: #196068;
 }
 
 .names {
@@ -940,9 +960,7 @@
 
 
 .singleOption {
-    /* padding:8px; */
-    padding: 5px 0px 5px 30px;
-    /* margin: 10px 0px 0px 0px; */
+    padding: 5px 0px 5px 22px;
     font-size: 12px;
     font-weight: normal;
     font-stretch: normal;
@@ -980,9 +998,9 @@
     bottom: 2px;
 }
 .orgNames{
-    padding:3px;
+    padding: 14px 3px 5px 3px;
     font-family: 'Inter-Medium';
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;

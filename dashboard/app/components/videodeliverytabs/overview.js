@@ -73,6 +73,41 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
+    const handleCopyOne=()=>{
+        let copiedText=document.querySelector('.cpyOne');
+        copiedText.style.display="block"
+        setTimeout(function(){
+            copiedText.style.display=""
+        },1000) 
+    }
+    const handleCopyTwo=()=>{
+        let copiedText=document.querySelector('.cpyTwo');
+        copiedText.style.display="block"
+        setTimeout(function(){
+            copiedText.style.display=""
+        },1000) 
+    }
+    const handleCopyThree=()=>{
+        let copiedText=document.querySelector('.cpyThree');
+        copiedText.style.display="block"
+        setTimeout(function(){
+            copiedText.style.display=""
+        },1000) 
+    }
+    const handleCopyFour=()=>{
+        let copiedText=document.querySelector('.cpyFour');
+        copiedText.style.display="block"
+        setTimeout(function(){
+            copiedText.style.display=""
+        },1000) 
+    }
+    const handleCopyFive=()=>{
+        let copiedText=document.querySelector('.cpyFive');
+        copiedText.style.display="block"
+        setTimeout(function(){
+            copiedText.style.display=""
+        },1000) 
+    }
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -137,30 +172,38 @@ export default function Overview() {
                             <div className={styles.link_copy}>
                                 <div className={styles.video_hls}>
                                     <div className={styles.link_video}>
+                                        <div className={styles.dispayInline}>
                                         <h4>Link to video</h4>
+                                        <div className={`${styles.copiedMsg} cpyOne`}>Copied</div>
+                                        </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p>
-
+                                                {/* <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p> */}
+                                                <input defaultValue={`${window.location.origin}/videos/embed?videoId=${i.contentId}`} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.contentId}`}>
-                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={()=>handleCopyOne()}/>
                                                 </CopyToClipboard>
                                             </div>
-                                            
+                                          
                                         </div>
+                                        
                                     </div>
                                     <div className={styles.link_hls}>
+                                    <div className={styles.dispayInline}>
                                         <h4>Link to HLS</h4>
+                                        <div  className={`${styles.copiedMsg} cpyTwo`}>Copied</div>
+                                    </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p>{i.transcodingResponse.playback_url}</p>
+                                                {/* <p>{i.transcodingResponse.playback_url}</p> */}
+                                                <input defaultValue={i.transcodingResponse.playback_url} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
-                                                    <img onClick={() => showtooltip()} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                    <img onClick={() => `${showtooltip()} ${handleCopyTwo()}`} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                                 {/* {tooltip ? <span className={styles.tooltip}>copied</span> : null} */}
                                             </div>
@@ -169,30 +212,36 @@ export default function Overview() {
                                 </div>
                                 <div className={styles.embed_thubnail}>
                                     <div className={styles.link_embedcode}>
+                                    <div className={styles.dispayInline}>
                                         <h4>Embed code</h4>
-                
+                                        <div  className={`${styles.copiedMsg} cpyThree`}>Copied</div>
+                                    </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
-                                                <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p>
-
+                                                {/* <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p> */}
+                                                <input defaultValue={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`}>
-                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={()=>handleCopyThree()}/>
                                                 </CopyToClipboard>
                                             </div>
                                         </div>
                                     </div>
                                     <div className={styles.link_thumbnail}>
+                                    <div className={styles.dispayInline}>
                                         <h4>Link to Thumbnail</h4>
+                                        <div className={`${styles.copiedMsg} cpyFour`}>Copied</div>
+                                    </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
-                                                <p>{localStorage.getItem('thumbnail')}</p>
+                                                {/* <p>{localStorage.getItem('thumbnail')}</p> */}
+                                                <input defaultValue={localStorage.getItem('thumbnail')} className={styles.copyInput} readOnly/>
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={localStorage.getItem('thumbnail')}>
-                                                    <img onClick={() => showthubmailtooltipURL()} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                    <img onClick={() => `${showthubmailtooltipURL()} ${handleCopyFour()}`} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                                 {/* {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null} */}
                                             </div>
@@ -203,17 +252,20 @@ export default function Overview() {
                         </div> : <div />}
                     {i.transcodingInfo ?
                         <div className={styles.input_file}>
-                            <h2>Input File Media Info</h2>
+                            <h2>Video Source Info</h2>
                             <div className={styles.media_info}>
+                            <div className={styles.dispayInlineDown}>
                                 <h4>Video URL</h4>
+                                <div  className={`${styles.copiedMsg} cpyFive`}>Copied</div>
+                            </div>
                                 <div className={styles.video_url}>
                                     <div className={`${styles.copy_link} ${styles.copy_link_videoUrl}`}>
                                         <div className={styles.link}>
-                                            <p>{i.transcodingInfo.mediaUrl}</p>
+                                            <input defaultValue={i.transcodingInfo.mediaUrl} className={styles.copyInput} readOnly/>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
-                                                <img onClick={() => showtooltipURL()} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                <img onClick={() => `${showtooltipURL()} ${handleCopyFive()}`} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                             </CopyToClipboard>
                                             {/* {tooltipURL ? <span className={styles.tooltip}>copied</span> : null} */}
                                         </div>
