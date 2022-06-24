@@ -184,7 +184,7 @@ export default function Accounts() {
                                     >
                                       {items.name}{" "}
                                       {key == highlightedorg && (
-                                        <img src="/images/asset_status/ready.svg"></img>
+                                        <img src="/images/asset_status/Ready.svg"></img>
                                       )}
                                     </button>
                                   </a>
