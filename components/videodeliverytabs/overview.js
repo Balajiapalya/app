@@ -6,6 +6,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Hls from 'hls.js';
 import Player from '../player';
 import Embed from '../../pages/videos/embed';
+import Delete_content from '../dialog/delete_content';
 
 export default function Overview() {
     const router = useRouter();
@@ -13,6 +14,7 @@ export default function Overview() {
     const [tooltip, settooltip] = useState(false);
     const [tooltipURL, settooltipURL] = useState(false);
     const [thumbnailurl, setthumbnail] = useState(false);
+    const [Pop_up,setPop_up] = useState(false)
     const Vdplayer = useRef();
     // console.log(window.location.origin)
     useEffect(() => {
@@ -122,10 +124,10 @@ export default function Overview() {
                                 
                             </div>
                             <div className={styles.delete_stream}>
-                                <button onClick={() => delete_asset()} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
-                               
+                                <button onClick={()=>setPop_up(true)} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
+                                {/* onClick={() => delete_asset()} */}
                             </div>
-
+                            
                         </div>
                     </div>
                     <div className={styles.asset_detials}>
@@ -321,6 +323,7 @@ export default function Overview() {
                             </div>
                         </div> : <div />}
                 </div>)}
+                {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up}/>}
         </Fragment>
     )
 }
