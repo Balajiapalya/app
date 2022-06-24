@@ -517,7 +517,8 @@
 }
 
 .environments_button button img {
-    /* padding-right: 3px; */
+    position: relative;
+    top: 2px;
 }
 
 .environments_table {
