@@ -84,7 +84,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.thumbnailUrl ? <td className={`${styles.thumbnail} ${styles.tdCursor}`}  onClick={() => handleChange()}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td></td>}
             {i.duration ? <td className={styles.tdCursor}  onClick={() => handleChange()}>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td  className={styles.tdCursor}  onClick={() => handleChange()}>-</td>}
             {i.resolution ? <td  onClick={() => handleChange()} className={styles.tdCursor}>{i.resolution}</td> : <td onClick={() => handleChange()}  className={styles.tdCursor}>-</td>}
-            {i.status == "Failed" ? <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status}</td> : <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+            {i.status == "Failed" ? <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status}<img className={styles.failed_img} src='/images/iconmaterial-info-outline.png'/></td> : <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>

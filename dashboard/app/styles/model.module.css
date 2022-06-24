@@ -1,5 +1,5 @@
 .model {
-    background-color: #3f3e45;
+    background-color: #3f3e45d4;
     width: 100%;
     height: 100vh;
     float: left;
@@ -194,7 +194,7 @@
     line-height: 1.21;
     letter-spacing: normal;
     text-align: center;
-    color: #fff;
+    color: #fff; 
 }
 
 

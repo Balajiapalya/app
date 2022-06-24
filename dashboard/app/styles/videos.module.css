@@ -308,7 +308,11 @@
     color: #212b36;
     border-bottom: 1px solid #ecedef;
 }
-
+.failed_img{
+    width: 13px;
+    vertical-align: inherit;
+    margin: 0px 0px 0px 2px;
+}
 .ready_img {
     width: 13px;
     vertical-align: inherit;
