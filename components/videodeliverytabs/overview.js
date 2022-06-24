@@ -75,40 +75,12 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
-    const handleCopyOne=()=>{
-        let copiedText=document.querySelector('.cpyOne');
+    const handleCopy=(event)=>{
+        let copiedText=event.target.parentNode.parentNode.previousSibling.lastChild;
         copiedText.style.display="block"
         setTimeout(function(){
             copiedText.style.display=""
-        },1000) 
-    }
-    const handleCopyTwo=()=>{
-        let copiedText=document.querySelector('.cpyTwo');
-        copiedText.style.display="block"
-        setTimeout(function(){
-            copiedText.style.display=""
-        },1000) 
-    }
-    const handleCopyThree=()=>{
-        let copiedText=document.querySelector('.cpyThree');
-        copiedText.style.display="block"
-        setTimeout(function(){
-            copiedText.style.display=""
-        },1000) 
-    }
-    const handleCopyFour=()=>{
-        let copiedText=document.querySelector('.cpyFour');
-        copiedText.style.display="block"
-        setTimeout(function(){
-            copiedText.style.display=""
-        },1000) 
-    }
-    const handleCopyFive=()=>{
-        let copiedText=document.querySelector('.cpyFive');
-        copiedText.style.display="block"
-        setTimeout(function(){
-            copiedText.style.display=""
-        },1000) 
+        },1000)
     }
     return (
         <Fragment>
@@ -146,7 +118,7 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.svg`} /></td>
+                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
@@ -186,7 +158,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.contentId}`}>
-                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={()=>handleCopyOne()}/>
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy}/>
                                                 </CopyToClipboard>
                                             </div>
                                           
@@ -205,7 +177,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
-                                                    <img onClick={() => `${showtooltip()} ${handleCopyTwo()}`} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                    <img onClick={(event) => handleCopy(event)} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                                 {/* {tooltip ? <span className={styles.tooltip}>copied</span> : null} */}
                                             </div>
@@ -226,7 +198,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`}>
-                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={()=>handleCopyThree()}/>
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy}/>
                                                 </CopyToClipboard>
                                             </div>
                                         </div>
@@ -243,7 +215,7 @@ export default function Overview() {
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={localStorage.getItem('thumbnail')}>
-                                                    <img onClick={() => `${showthubmailtooltipURL()} ${handleCopyFour()}`} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                    <img onClick={(event) => handleCopy(event)} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                                 </CopyToClipboard>
                                                 {/* {thumbnailurl ? <span className={styles.tooltip}>copied</span> : null} */}
                                             </div>
@@ -260,19 +232,17 @@ export default function Overview() {
                                 <h4>Video URL</h4>
                                 <div  className={`${styles.copiedMsg} cpyFive`}>Copied</div>
                             </div>
-                                <div className={styles.video_url}>
-                                    <div className={`${styles.copy_link} ${styles.copy_link_videoUrl}`}>
+                                    <div className={`${styles.video_url} ${styles.copy_link} ${styles.copy_link_videoUrl}`}>
                                         <div className={styles.link}>
                                             <input defaultValue={i.transcodingInfo.mediaUrl} className={styles.copyInput} readOnly/>
                                         </div>
                                         <div className={styles.copy_img}>
                                             <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
-                                                <img onClick={() => `${showtooltipURL()} ${handleCopyFive()}`} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                                <img onClick={(event) => handleCopy(event)} src='/images/iconionic-ios-copy.svg' alt='copy' />
                                             </CopyToClipboard>
                                             {/* {tooltipURL ? <span className={styles.tooltip}>copied</span> : null} */}
                                         </div>
                                     </div>
-                                </div>
                                 <div className={styles.Video_info}>
                                     <div className={styles.videoDiv}>
                                     <h4>Video Info</h4>

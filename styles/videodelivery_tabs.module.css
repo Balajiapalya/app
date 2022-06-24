@@ -817,6 +817,8 @@
 .copiedMsg{
     display: none;
     font-size: 12px;
+    color: #cacaca;
+    font-style: italic;
 }
 .dispayInline{
     display: flex;
