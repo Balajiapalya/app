@@ -6,5 +6,5 @@ build_version=`cat version.txt`.$(date '+%Y%m%d')
 
 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 989431465196.dkr.ecr.ap-south-1.amazonaws.com
 
-docker build -t ntrphanikumaryupptv/yupptv:vg-dashboard-$release_version -t 989431465196.dkr.ecr.ap-south-1.amazonaws.com/vg-dashboard:$build_version .
+docker build -t 989431465196.dkr.ecr.ap-south-1.amazonaws.com/vg-dashboard:$release_version -t 989431465196.dkr.ecr.ap-south-1.amazonaws.com/vg-dashboard:$build_version .
 docker push 989431465196.dkr.ecr.ap-south-1.amazonaws.com/vg-dashboard --all-tags
