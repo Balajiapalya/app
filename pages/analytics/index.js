@@ -40,10 +40,7 @@ export default function Analytics_index() {
                 setOrg(res.data.data.organizations)
             })
     }
-    // const handleChange = (e) => {
-    //     setuuid(e.target.value)
-    //     localStorage.setItem("envuuid", e.target.value)
-    // }
+    
     let orgname;
     if (process.browser) {
         orgname = localStorage.getItem('orgName');
@@ -115,18 +112,6 @@ export default function Analytics_index() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className="container">
-                        {/* <div className={styles.content_development}>
-                            <img className={styles.store_icon_png} src='/images/iconawesome-folder.svg' />
-                            <p>{orName} <br />
-                                <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
-                                    {envSelect.map(i => <>
-                                        <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
-                                        <div className='hidden'><Overview /></div>
-                                    </>)}
-                                </select>
-                            </p>
-                        </div> */}
-
                         <div className={styles.content} ref={dropdownprod}>
                             <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
                                 <div className={styles.names}>
