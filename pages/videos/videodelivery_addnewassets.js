@@ -30,7 +30,7 @@ export default function Videodelivery_addnewassets({ table }) {
             })
         }
         catch(e){
-            console.log(e)
+            // console.log(e)
         }
         
     }

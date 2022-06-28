@@ -401,8 +401,7 @@ export default function Overview({setToggleState}) {
 
                         </div>
                         <span className={styles.top_border}></span>
-                        <div className={styles.doughnut_insight}>
-
+                        <div className={styles.doughnut_insight} onClick={()=>setToggleState(2)}>
                             <a>More Insights &gt;</a>
                         </div>
                     </div>
