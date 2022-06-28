@@ -245,7 +245,7 @@
 
 .countries_container,
 .devices_container {
-    /* height: 50vh; */
+    height: 50vh;
     border-radius: 6px;
     padding: 15px 15px;
     background-color: #ffff;
@@ -254,7 +254,7 @@
 }
 
 .countries_container {
-    width: 65%;
+    width: 66%;
     float: left;
     margin-right: 20px;
     position: relative;
@@ -560,14 +560,14 @@
 }
 
 .toggle_date_week_month {
-    width: 63%;
+    width: 67%;
     float: left;
     text-align: end;
     margin-right: 10px;
 }
 
 .date_picker {
-    width: 33%;
+    width: 30%;
     float: right;
     display: inline-flex;
     height: 30px;
@@ -602,7 +602,7 @@
 
 .cards_container {
     width: 25%;
-    margin-right: 10px;
+    margin-right: 15px;
     padding: 10px;
     border-radius: 6px;
     /* height:8em; */
@@ -680,7 +680,7 @@
 }
 
 .Countries_videos .metric_cards {
-    width: 33%;
+    width: 32.33%;
     height: 50vh;
     padding: 5px 15px;
     float: right;
@@ -720,7 +720,7 @@
 }
 
 .devices_card {
-    width: 33%;
+    width: 32.33%;
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -787,12 +787,12 @@
 
 .player_card,
 .applications_card {
-    width: 33%;
+    width: 32.33%;
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
-    margin-left: 10px;
+    margin-left: 20px;
     border-radius: 6px;
 }
 
@@ -835,7 +835,7 @@
 }
 
 .Os_views {
-    width: 33%;
+    width: 32.33%;
     background-color: #fff;
     height: 50vh;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
