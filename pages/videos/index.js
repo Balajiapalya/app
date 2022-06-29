@@ -337,7 +337,7 @@ export default function Videos() {
                         </div>
                         <div className={styles.search}>
                             <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
-                            <img src='/images/search_icon.png' alt='icon'></img>
+                            <img src='/images/search_icon.svg' alt='icon'></img>
                         </div>
                         <div className={`${styles.videos_table} table`}>
                             <table className="table_input">
