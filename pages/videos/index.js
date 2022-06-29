@@ -73,8 +73,10 @@ export default function Videos() {
                     }
                 })}
 
-
                 {setVideoData(res.data.data)}</>)
+                {reload && setTimeout(()=>{
+                    setReload(false)
+                },1000*210)}
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
