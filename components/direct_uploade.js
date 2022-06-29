@@ -45,12 +45,12 @@ export default function Direct_upload({handlePopUp,setReload}) {
                         .then(Headers => {
                           
                             if (Headers.status = 200) {
-                                setTimeout(function(){
+                                // setTimeout(function(){
                                     setLoading(false)
                                     setuploaded(true);
                                     setReload(true)
                                     handlePopUp();
-                                },1000*210)
+                                // },1000*210)
                                  
 
                             }
