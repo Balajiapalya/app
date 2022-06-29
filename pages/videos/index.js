@@ -21,10 +21,12 @@ export default function Videos() {
     const [selected, setSelected] = useState(false)
     const [defaultenv, setDefaultenv] = useState();
     const [org, setOrg] = useState([])
-    const [openEnv, setOpenEnv] = useState(false);
+    // const [openEnv, setOpenEnv] = useState(false);
     const [clicked, setClicked] = useState();
     const [orgName, setOrgName] = useState();
     const [multiSelect, setMultiSelect] = useState([])
+    const [timer, setTimer] = useState(false);
+    const [reload, setReload] = useState(false);
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -62,6 +64,16 @@ export default function Videos() {
         const data = localStorage.getItem("envuuid")
         Api.Video_list(data)
             .then(res => <>
+
+                {res.data.data.map(item => {
+                    if (item.status == 'Processing') {
+                        setTimeout(() => {
+                            setTimer(true)
+                        }, 1000 * 60)
+                    }
+                })}
+
+
                 {setVideoData(res.data.data)}</>)
         // Api.Env_data()
         //     .then(res => {
@@ -90,7 +102,7 @@ export default function Videos() {
             setEnvSelect([])
             setOrg([])
         }
-    }, [id, add_asset])
+    }, [id, add_asset, timer, reload])
 
     const handleChange = (i) => {
         setId(i.uuid)
@@ -235,7 +247,6 @@ export default function Videos() {
     return (
 
         <div className={styles.container}>
-
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className="container">
@@ -249,9 +260,7 @@ export default function Videos() {
                                 </select>
                                         </p> */}
                         {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
-
                                     {selected ? selected : 'Product'}
-
                                 </div>
                                 
                                 <img className={styles.storefolder} src='/images/iconawesome-folder.svg' />
@@ -328,7 +337,7 @@ export default function Videos() {
                         </div>
                         <div className={styles.search}>
                             <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
-                            <img src='/images/search_icon.svg' alt='icon'></img>
+                            <img src='/images/search_icon.png' alt='icon'></img>
                         </div>
                         <div className={`${styles.videos_table} table`}>
                             <table className="table_input">
@@ -357,7 +366,7 @@ export default function Videos() {
                         </div>
                         {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
                         <div className={`${styles.no_display} popup`}>
-                            <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} />
+                            <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} />
                         </div>
                     </div>
                 </div>

@@ -126,8 +126,13 @@ export default function Overview({setToggleState}) {
             },
             y: {
                 display: true,
-                grid: {
-                    display: false,
+                grid:{
+                    display:false
+                },
+                max: 6,
+                min: 0,
+                ticks: {
+                    stepSize: 1
                 }
             }
         }
@@ -330,7 +335,8 @@ export default function Overview({setToggleState}) {
                                 <span>Viewership in the last 7 days.</span>
                             </div>
                             <div>
-                                <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
+                                <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{height: '38vh',
+                                                        width: '100%',}}>
                                     <ZoomableGroup>
                                         <Geographies geography={geoUrl}>
                                             {({ geographies }) =>
