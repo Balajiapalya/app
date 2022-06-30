@@ -92,7 +92,6 @@
 .videos_delivery a {
     width: 50%;
     float: right;
-    margin-top: -3em;
 }
 
 /* .videos_delivery a img{
@@ -104,6 +103,7 @@
 } */
 .videos .videos_delivery p {
     width: 50%;
+    float: left;
     font-family: Inter;
     font-size: 13px;
     font-weight: normal;
