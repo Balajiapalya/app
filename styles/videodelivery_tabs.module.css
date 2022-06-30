@@ -799,7 +799,7 @@
     justify-content: space-between;
     background-color: #fff !important;
     border-radius: 3px;
-  
+
 }
 
 .copy_link_videoUrl p {
@@ -810,25 +810,29 @@
     width: 90%;
     float: left;
 }
-.copyInput{
+
+.copyInput {
     outline: none;
     border: none;
     width: 100%;
     background: none;
 }
-.copiedMsg{
+
+.copiedMsg {
     display: none;
     font-size: 12px;
     color: #cacaca;
     font-style: italic;
 }
-.dispayInline{
+
+.dispayInline {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.dispayInlineDown{
+
+.dispayInlineDown {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -907,16 +911,19 @@
     width: 100%;
     float: left;
 }
-.audioDiv{
+
+.audioDiv {
     width: 100%;
     float: right;
     margin-top: 5px
 }
-.videoDiv{
+
+.videoDiv {
     width: 100%;
     float: right;
     margin-top: 10px
 }
+
 .media_info p {
     /* padding: 5px; */
     word-break: break-all;
@@ -997,11 +1004,13 @@
     text-align: left;
     color: #212b36;
 }
-.lastTh{
-    padding-right: 180px!important;
+
+.lastTh {
+    padding-right: 180px !important;
 }
-.audioTh{
-    padding-right: 180px!important;
+
+.audioTh {
+    padding-right: 180px !important;
 }
 
 /* videoclips*/
@@ -1722,6 +1731,19 @@
 }
 
 /* media */
+@media screen and (max-width: 991px) {
+    .functional_buttons {
+        float: none;
+    }
+
+    .link_video,
+    .link_embedcode {
+        width: 45.8%;
+        float: left;
+        margin-left: 15px;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
 
     .title_description,
