@@ -56,6 +56,7 @@ export default function Metrics() {
     const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0));
     const [endDate, setEndDate] = useState(Date.now());
     const options = {
+        maintainAspectRation:false,
         responsive: true,
         plugins: {
             legend: {
@@ -71,17 +72,27 @@ export default function Metrics() {
                 ticks: {
                     autoSkip: false,
                     maxRotation: 0,
-                    minRotation: 0
+                    minRotation: 0,
+                    font: {
+                        size: 12,
+
+                    },
+                    color: '#5d6381'
                 }
             },
             y: {
                 grid: {
                     display: false
                 },
-                max:5,
-                min:0,
-                ticks:{
-                    stepSize:1
+                max: 5,
+                min: 0,
+                ticks: {
+                    stepSize: 1,
+                    font: {
+                        size: 12,
+
+                    },
+                    color: '#5d6381'
                 }
             }
         }
@@ -216,7 +227,7 @@ export default function Metrics() {
     let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 
     const from_Date = (date) => {
-        
+
         if (date == undefined) {
             var fd = new Date(new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0));
             return fd.toLocaleString("en-AU", { month: "short", day: "2-digit", year: "numeric" });
@@ -238,7 +249,7 @@ export default function Metrics() {
         }
 
     }
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.Metrics_heading}>
@@ -259,7 +270,7 @@ export default function Metrics() {
                                 startDate={startDate}
                                 endDate={endDate}
                                 dateFormat="dd/MM/yyyy"
-                                // showMonthYearPicker
+                            // showMonthYearPicker
                             />
                             <DatePicker
                                 selected={endDate}
@@ -269,7 +280,7 @@ export default function Metrics() {
                                 endDate={endDate}
                                 dateFormat="dd/MM/yyyy"
                                 // showMonthYearPicker
-                                onSelect={(date)=>datepicker(date)}
+                                onSelect={(date) => datepicker(date)}
                             />
                         </div>
                     </div>
@@ -284,7 +295,7 @@ export default function Metrics() {
                             <h4>No.of Views</h4>
                             <div className={styles.totalViews}>
                                 <h5>{item.totalViews}</h5>
-                                
+
                             </div>
                         </div>
                         <div className={styles.card_logo}>
@@ -296,7 +307,7 @@ export default function Metrics() {
                         <div className={styles.cards_details}>
                             <h4>No.of Unique Views</h4>
                             <div className={styles.UniqueViews}>
-                                <h5>{item.uniqueViews}</h5>  
+                                <h5>{item.uniqueViews}</h5>
                             </div>
                         </div>
                         <div className={styles.card_logo}>
@@ -309,11 +320,11 @@ export default function Metrics() {
                             <h4>Watched Time</h4>
                             <div className={styles.UniqueViews}>
                                 {amountstreamed == null ? <h5>0 hrs</h5> : <h5>{(amountstreamed / 3600).toFixed(0)} hrs</h5>}
-                               
+
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img  src='/images/metrics-watched-time.png' alt='img' />
+                            <img src='/images/metrics-watched-time.png' alt='img' />
                         </div>
                         <span className={styles.card_info}>Time (in hours) that viewers watched videos.</span>
                     </div>
@@ -321,7 +332,7 @@ export default function Metrics() {
                         <div className={styles.cards_details}>
                             <h4>Errors</h4>
                             <div className={styles.UniqueViews}>
-                                <h5>{item.errors}</h5> 
+                                <h5>{item.errors}</h5>
                             </div>
                         </div>
                         <div className={styles.card_logo}>
@@ -330,134 +341,150 @@ export default function Metrics() {
                         <span className={styles.card_info}>Number of playback errors detected by Videograph.</span>
                     </div>
                 </div>
-                <div className={styles.Countries_videos}>
-                    <div className={styles.countries_container}>
-                        <div className={styles.countries_map} >
-                            <div className={styles.countries_heading}>
-                                <div className={styles.countries_heading_content}>
-                                    <h4 className={styles.heading}>Countries</h4>
-                                    <div className={styles.export_img}>
-                                        <img src='/images/export.png' />
+               
+                    <div className={styles.Countries_videos}>
+                        <div className={styles.countries_container}>
+                            <div className={styles.countries_map} >
+                                <div className={styles.countries_heading}>
+                                    <div className={styles.countries_heading_content}>
+                                        <h4 className={styles.heading}>Countries</h4>
+                                        <div className={styles.export_img}>
+                                            <img src='/images/export.png' />
+                                        </div>
                                     </div>
+                                    <span className={styles.card_info}>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                                 </div>
-                                <span className={styles.card_info}>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
-                            </div>
-                            <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{height: '34vh',
-                                                        width: '100%',}}>
-                                <ZoomableGroup>
-                                    <Geographies geography={geoUrl}>
-                                        {({ geographies }) =>
-                                            geographies.map(geo => (
-                                                <Geography
-                                                    key={geo.rsmKey}
-                                                    geography={geo}
+                                <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                }}>
+                                    <ZoomableGroup>
+                                        <Geographies geography={geoUrl}>
+                                            {({ geographies }) =>
+                                                geographies.map(geo => (
+                                                    <Geography
+                                                        key={geo.rsmKey}
+                                                        geography={geo}
 
-                                                    style={{
-                                                        default: {
-                                                            // fill:`${countryviews.map((i,key)=>geo.properties.ISO_A2==i.key)}`?"#89abff":"#e6e9f4",
-                                                            fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
-                                                            outline: "none"
-                                                        },
-                                                        hover: {
-                                                            fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
-                                                            outline: "none"
-                                                        },
-                                                    }}
-                                                />
-                                            ))
-                                        }
-                                    </Geographies>
-                                </ZoomableGroup>
-                            </ComposableMap>
-                        </div>
-                        <div className={styles.countries_table} >
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th >Country</th>
-                                        <th>Percentage</th>
-                                        <th>Views</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {countryviews.map((country, key) =>
-                                        <tr key={key}>
-                                            <td className={styles.countries_name}> {regionNames.of(country.key)}</td>
-                                            <td>{(country.percentage).toFixed()}%</td>
-                                            <td>{country.count}</td>
+                                                        style={{
+                                                            default: {
+                                                                // fill:`${countryviews.map((i,key)=>geo.properties.ISO_A2==i.key)}`?"#89abff":"#e6e9f4",
+                                                                fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
+                                                                outline: "none"
+                                                            },
+                                                            hover: {
+                                                                fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
+                                                                outline: "none"
+                                                            },
+                                                        }}
+                                                    />
+                                                ))
+                                            }
+                                        </Geographies>
+                                    </ZoomableGroup>
+                                </ComposableMap>
+                            </div>
+                            <div className={styles.countries_table} >
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th >Country</th>
+                                            <th>Percentage</th>
+                                            <th>Views</th>
                                         </tr>
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div className={styles.metric_cards}>
-                        <div className={styles.metric_card_heading}>
-                            <h4>Popular Videos</h4>
-                            <div className={styles.export_img}>
-                                <img src='/images/export.png' alt='export' />
+                                    </thead>
+                                    <tbody>
+                                        {countryviews.map((country, key) =>
+                                            <tr key={key}>
+                                                <td className={styles.countries_name}> {regionNames.of(country.key)}</td>
+                                                <td>{(country.percentage).toFixed()}%</td>
+                                                <td>{country.count}</td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        <div className={styles.metric_cards}>
+                            <div className={styles.metric_card_heading}>
+                                <h4>Popular Videos</h4>
+                                <div className={styles.export_img}>
+                                    <img src='/images/export.png' alt='export' />
+                                </div>
+                            </div>
+                            <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                            <div>
+                                <Bar options={options} data={videos_data} style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                }} />
+                            </div>
+                        </div>
+                         <div className={styles.devices_card}>
+                            <div className={styles.metric_card_heading}>
+                                <h4>Devices</h4>
+                                <div className={styles.export_img}>
+                                    <img src='/images/export.png' alt='export' />
+                                </div>
+                            </div>
+                            <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                            <div>
+                                <Bar options={options} data={device_data}  style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                }}/>
+                            </div>
+                        </div>
+                        <div className={styles.player_card}>
+                            <div className={styles.metric_card_heading}>
+                                <h4>Players</h4>
+                                <div className={styles.export_img}>
+                                    <img src='/images/export.png' alt='export' />
+                                </div>
+                            </div>
+                            <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                            <div>
+                                <Bar options={options} data={player_data}  style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                }}/>
+                            </div>
+                        </div>
+                        <div className={styles.applications_card}>
+                            <div className={styles.metric_card_heading}>
+                                <h4>Applications</h4>
+                                <div className={styles.export_img}>
+                                    <img src='/images/export.png' alt='export' />
+                                </div>
+                            </div>
+                            <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                            <div>
+                                <Bar options={options} data={application_data}  style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                }}/>
+                            </div>
+                        </div>
+                        <div className={styles.Os_views_card}>
+                        <div className={styles.Os_views}>
+                            <div className={styles.metric_card_heading}>
+                                <h4>Operating System</h4>
+                                <div className={styles.export_img}>
+                                    <img src='/images/export.png' alt='export' />
+                                </div>
+                            </div>
+                            <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                            <div>
+                                <Bar options={options} data={Os_data} style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                }}/>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
 
-                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
-                        <div>
-                            <Bar options={options} data={videos_data} />
-                        </div>
-
-                    </div>
-                </div>
-                <div className={styles.graphs_container}>
-                    <div className={styles.devices_card}>
-                        <div className={styles.metric_card_heading}>
-                            <h4>Devices</h4>
-                            <div className={styles.export_img}>
-                                <img src='/images/export.png' alt='export' />
-                            </div>
-                        </div>
-                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
-                        <div>
-                            <Bar options={options} data={device_data} />
-                        </div>
-                    </div>
-                    <div className={styles.player_card}>
-                        <div className={styles.metric_card_heading}>
-                            <h4>Players</h4>
-                            <div className={styles.export_img}>
-                                <img src='/images/export.png' alt='export' />
-                            </div>
-                        </div>
-                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
-                        <div>
-                            <Bar options={options} data={player_data} />
-                        </div>
-                    </div>
-                    <div className={styles.applications_card}>
-                        <div className={styles.metric_card_heading}>
-                            <h4>Applications</h4>
-                            <div className={styles.export_img}>
-                                <img src='/images/export.png' alt='export' />
-                            </div>
-                        </div>
-                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
-                        <div>
-                            <Bar options={options} data={application_data} />
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.Os_views_card}>
-                    <div className={styles.Os_views}>
-                        <div className={styles.metric_card_heading}>
-                            <h4>Operating System</h4>
-                            <div className={styles.export_img}>
-                                <img src='/images/export.png' alt='export' />
-                            </div>
-                        </div>
-                        <span>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
-                        <div>
-                            <Bar options={options} data={Os_data} />
-                        </div>
-                    </div>
-                </div>
+                
             </>)}
         </div>
     )

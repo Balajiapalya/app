@@ -76,7 +76,7 @@ export default function Videos() {
                 {setVideoData(res.data.data)}</>)
                 {reload && setTimeout(()=>{
                     setReload(false)
-                },1000*210)}
+                },1000*230)}
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
@@ -88,7 +88,7 @@ export default function Videos() {
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
-                    localStorage.setItem("envuuid", res.data.data[0].uuid)
+                    // localStorage.setItem("envuuid", res.data.data[0].uuid)
                     setEnvSelect(res.data.data)
                 }
             })

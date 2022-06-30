@@ -132,9 +132,15 @@ export default function Overview({setToggleState}) {
                 max: 6,
                 min: 0,
                 ticks: {
-                    stepSize: 1
+                    stepSize: 1,
+                    font:{
+                        size:12,
+                       
+                    },
+                    color:'#5d6381'   
                 }
             }
+            
         }
     };
     const Lineoptions = {
@@ -261,7 +267,8 @@ export default function Overview({setToggleState}) {
                     <div className={styles.video_type_content}>
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordEncodingUsage').map((item, key) =>
                             <div key={key}>
-                                <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                                {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
+                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
                             </div>
                         )]}
 
@@ -282,7 +289,8 @@ export default function Overview({setToggleState}) {
 
                             <div key={key}>
                                 {/* {console.log(item.amountInSecs)} */}
-                                <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                                {/* <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
+                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
                             </div>
                         )]}
 
@@ -300,7 +308,9 @@ export default function Overview({setToggleState}) {
                     <div className={styles.video_type_content}>
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordStreamingUsage').map((item, key) =>
                             <div key={key}>
-                                <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                                
+                                {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
+                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
                             </div>
                         )]}
 
