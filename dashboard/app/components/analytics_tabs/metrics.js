@@ -77,6 +77,11 @@ export default function Metrics() {
             y: {
                 grid: {
                     display: false
+                },
+                max:5,
+                min:0,
+                ticks:{
+                    stepSize:1
                 }
             }
         }
@@ -337,7 +342,8 @@ export default function Metrics() {
                                 </div>
                                 <span className={styles.card_info}>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
                             </div>
-                            <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
+                            <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{height: '34vh',
+                                                        width: '100%',}}>
                                 <ZoomableGroup>
                                     <Geographies geography={geoUrl}>
                                         {({ geographies }) =>

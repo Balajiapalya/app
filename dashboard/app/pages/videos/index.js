@@ -21,10 +21,12 @@ export default function Videos() {
     const [selected, setSelected] = useState(false)
     const [defaultenv, setDefaultenv] = useState();
     const [org, setOrg] = useState([])
-    const [openEnv, setOpenEnv] = useState(false);
+    // const [openEnv, setOpenEnv] = useState(false);
     const [clicked, setClicked] = useState();
-    const [orgName,setOrgName]=useState();
-    const [multiSelect,setMultiSelect]=useState([])
+    const [orgName, setOrgName] = useState();
+    const [multiSelect, setMultiSelect] = useState([])
+    const [timer, setTimer] = useState(false);
+    const [reload, setReload] = useState(false);
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -61,20 +63,32 @@ export default function Videos() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         Api.Video_list(data)
-            .then(res =><>
+            .then(res => <>
+
+                {res.data.data.map(item => {
+                    if (item.status == 'Processing') {
+                        setTimeout(() => {
+                            setTimer(true)
+                        }, 1000 * 60)
+                    }
+                })}
+
                 {setVideoData(res.data.data)}</>)
+                {reload && setTimeout(()=>{
+                    setReload(false)
+                },1000*210)}
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
-               
+
         //     })
-            // .catch(error => {
-            //     console.log(error)
-            // })
+        // .catch(error => {
+        //     console.log(error)
+        // })
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
-                    localStorage.setItem("envuuid", res.data.data[0].uuid)
+                    // localStorage.setItem("envuuid", res.data.data[0].uuid)
                     setEnvSelect(res.data.data)
                 }
             })
@@ -90,13 +104,14 @@ export default function Videos() {
             setEnvSelect([])
             setOrg([])
         }
-    }, [id, add_asset])
+    }, [id, add_asset, timer, reload])
 
     const handleChange = (i) => {
+        console.log(i)
         setId(i.uuid)
         localStorage.setItem("envuuid", i.uuid);
         localStorage.setItem("uuid", clicked);
-        localStorage.setItem('orgName',orgName)
+        localStorage.setItem('orgName', orgName)
     }
 
     const create_On = (date) => {
@@ -179,7 +194,7 @@ export default function Videos() {
     }
 
     // const handleEnv = (i) => {
-       
+
     //     setClicked(i.uuid);
 
     //     if(clicked!==i.uuid){
@@ -187,47 +202,47 @@ export default function Videos() {
     //     }else{
     //         setOpenEnv(!openEnv);
     //     }
-        
+
     //     setOrgName(i.name);
     // }
-    const handleEnv=(i)=>{
+    const handleEnv = (i) => {
         setClicked(i.uuid);
-        if(!multiSelect.some(item=>item.uuid==i.uuid)){
-            setMultiSelect([...multiSelect,i])
-        }else {
-            let filtered=multiSelect.filter(item=>item.uuid!==i.uuid)
+        if (!multiSelect.some(item => item.uuid == i.uuid)) {
+            setMultiSelect([...multiSelect, i])
+        } else {
+            let filtered = multiSelect.filter(item => item.uuid !== i.uuid)
             setMultiSelect([...filtered])
         }
         setOrgName(i.name);
-        }
-            
-        
-    
-    const handleMulti=(i)=>{
-       if(multiSelect.find(item=>item.uuid==i.uuid)){
-           return true
-       }
-       return false
     }
 
-    const handleCheck=()=>{
-        let headCheck=document.querySelector('#check');
-        if(headCheck.checked){
-            let rows=document.getElementsByClassName('tbody')[0].getElementsByTagName('tr');
-            for(let i=0;i<rows.length;i++){
-                rows[i].style.backgroundColor='#f0f8fd';
-                let td=rows[i].querySelectorAll('.assetCheck');
-                for(let j=0;j<td.length;j++){
-                    td[j].checked=true;
+
+
+    const handleMulti = (i) => {
+        if (multiSelect.find(item => item.uuid == i.uuid)) {
+            return true
+        }
+        return false
+    }
+
+    const handleCheck = () => {
+        let headCheck = document.querySelector('#check');
+        if (headCheck.checked) {
+            let rows = document.getElementsByClassName('tbody')[0].getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].style.backgroundColor = '#f0f8fd';
+                let td = rows[i].querySelectorAll('.assetCheck');
+                for (let j = 0; j < td.length; j++) {
+                    td[j].checked = true;
                 }
             }
-        }else{
-            let rows=document.getElementsByClassName('tbody')[0].getElementsByTagName('tr');
-            for(let i=0;i<rows.length;i++){
-                rows[i].style.backgroundColor='white';
-                let td=rows[i].querySelectorAll('.assetCheck');
-                for(let j=0;j<td.length;j++){
-                    td[j].checked=false;
+        } else {
+            let rows = document.getElementsByClassName('tbody')[0].getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].style.backgroundColor = 'white';
+                let td = rows[i].querySelectorAll('.assetCheck');
+                for (let j = 0; j < td.length; j++) {
+                    td[j].checked = false;
                 }
             }
         }
@@ -248,9 +263,7 @@ export default function Videos() {
                                 </select>
                                         </p> */}
                         {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
-
                                     {selected ? selected : 'Product'}
-
                                 </div>
                                 
                                 <img className={styles.storefolder} src='/images/iconawesome-folder.svg' />
@@ -286,17 +299,17 @@ export default function Videos() {
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                     <div>
-                                        {org.map((i, ind) => 
-                                        <>
-                                            <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                                {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img>:<img src='/images/updown.svg'  className={styles.openDropdown}></img>}
-                                                {i.name}
-                                            </div>
-                                            {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
-                                                {i.name}
-                                            </div>
-                                            )}
-                                        </>
+                                        {org.map((i, ind) =>
+                                            <>
+                                                <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                                    {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/updown.svg' className={styles.openDropdown}></img>}
+                                                    {i.name}
+                                                </div>
+                                                {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                                    {i.name}
+                                                </div>
+                                                )}
+                                            </>
                                         )}
                                     </div>
                                 </div>
@@ -306,56 +319,58 @@ export default function Videos() {
                 </div>
             </div>
             <div className="container">
-                <div className={styles.videos}>
+                <div className={styles.settings}>
+                    <div className={styles.videos}>
 
-                    <div className={styles.videos_delivery}>
-                        <div className={styles.header}>
-                            <h2>
-                                Videos
-                            </h2>
-                        </div>
-                        <div className={styles.videos_deliverydata}>
-                            <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
-                                You can Upload a video using API or directly from here to share it with your users</p>
-                            <a >
-                                <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
+                        <div className={styles.videos_delivery}>
+                            <div className={styles.header}>
+                                <h2>
+                                    Videos
+                                </h2>
+                            </div>
+                            <div className={styles.videos_deliverydata}>
+                                <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
+                                    You can Upload a video using API or directly from here to share it with your users</p>
+                                <a >
+                                    <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
 
-                            </a>
+                                </a>
+                            </div>
+                            <span />
                         </div>
-                        <span />
-                    </div>
-                    <div className={styles.search}>
-                        <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
-                        <img src='/images/search_icon.png' alt='icon'></img>
-                    </div>
-                    <div className={`${styles.videos_table} table`}>
-                        <table className="table_input">
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="check" onClick={()=>handleCheck()}></input></th>
-                                    <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
-                                    {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.svg' /> </th> */}
-                                    <th>Content ID</th>
-                                    <th>Image Preview</th>
-                                    <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.svg' /></th>
-                                    <th>Resolution</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody className="tbody">
-                                {videoData.map((i, key) => 
-                                    <tr key={key}>
-                                        <VideoList create_On={create_On} i={i} created_time={created_time} />
+                        <div className={styles.search}>
+                            <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
+                            <img src='/images/search_icon.svg' alt='icon'></img>
+                        </div>
+                        <div className={`${styles.videos_table} table`}>
+                            <table className="table_input">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" id="check" onClick={() => handleCheck()}></input></th>
+                                        <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
+                                        {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.svg' /> </th> */}
+                                        <th>Content ID</th>
+                                        <th>Image Preview</th>
+                                        <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.svg' /></th>
+                                        <th>Resolution</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
-                                )}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody className="tbody">
+                                    {videoData.map((i, key) =>
+                                        <tr key={key}>
+                                            <VideoList create_On={create_On} i={i} created_time={created_time} />
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
 
-                    </div>
-                    {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
-                    <div className={`${styles.no_display} popup`}>
-                        <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} />
+                        </div>
+                        {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
+                        <div className={`${styles.no_display} popup`}>
+                            <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -71,7 +71,9 @@
     color: #212b36;
     border-bottom: 1px solid #e3e3e3;
 }
-
+.url_to_notify{
+    width: 30%;
+}
 .wrapper_webhooks .table table tbody {
     background-color: white;
 }

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import Image from 'next/image'
 
 
-export default function Videodelivery_addnewassets({ table }) {
+export default function Videodelivery_addnewassets({ table,setReload }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const togglebtn = (index) => {
@@ -30,7 +30,7 @@ export default function Videodelivery_addnewassets({ table }) {
             })
         }
         catch(e){
-            console.log(e)
+            // console.log(e)
         }
         
     }
@@ -55,7 +55,7 @@ export default function Videodelivery_addnewassets({ table }) {
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload handlePopUp={handlePopUp}/>
+                <Direct_upload handlePopUp={handlePopUp} setReload={setReload}/>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >

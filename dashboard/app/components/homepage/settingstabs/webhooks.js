@@ -77,7 +77,7 @@ function Webhooks() {
                         <tbody>
                             {webhook.map((item, key) =>
                                 <tr key={key}>
-                                    <td>{item.url}</td>
+                                    <td className={styles.url_to_notify}>{item.url}</td>
                                     <td>{item.signingSecret}</td>
                                     <td>{item.environmentName}</td>
                                     <td>{create_On(item.createdOn)}</td>

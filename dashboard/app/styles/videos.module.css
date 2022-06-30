@@ -6,7 +6,12 @@
 .close {
     float: right;
 }
+.settings {
+    padding: 30px 40px 50px 40px;
+    width: 100%;
+    float: left;
 
+}
 .videos {
     /* padding: 0px 5%; */
     padding: 0px 15px 35px 0px;
@@ -19,7 +24,6 @@
     float: left;
     height: 60px;
     background-color: #eaeaea;
-    margin-bottom: 30px;
 }
 
 /* .header_development {
@@ -88,7 +92,6 @@
 .videos_delivery a {
     width: 50%;
     float: right;
-    margin-top: -3em;
 }
 
 /* .videos_delivery a img{
@@ -100,6 +103,7 @@
 } */
 .videos .videos_delivery p {
     width: 50%;
+    float: left;
     font-family: Inter;
     font-size: 13px;
     font-weight: normal;
@@ -697,7 +701,7 @@
 .videosdelivery_assets {
     width: 100%;
     float: left;
-    padding: 40px 0%;
+    /* padding: 40px 0%; */
 }
 
 /* .videosdelivery_assets .padding {
@@ -800,6 +804,7 @@
     text-align: left;
     padding: 10px 0px 10px 13px;
     color: #196068;
+    border-radius: 2px;
 }
 
 .all {
@@ -809,8 +814,8 @@
     border: solid 1px #a8c3db;
     border-radius: 2px;
     cursor: pointer;
-    width: 214px;
-
+    width: 215px;
+    margin-left: 30px;
 }
 
 .options {
@@ -822,7 +827,7 @@
 }
 
 .org_name {
-    padding-left: 37px;
+    padding-left: 60px;
     padding-top: 13px;
     font-family: Inter-Regular;
     font-size: 10px;
@@ -837,7 +842,7 @@
 }
 
 .displayName {
-    padding-left: 37px;
+    padding-left: 60px;
     font-family: Inter-Medium;
   font-size: 14px;
   font-weight: 500;
@@ -858,7 +863,7 @@
 .store {
     position: absolute;
     top: 26px;
-    padding-left: 8px;
+    padding-left: 30px;
     /* height: 24px; */
 }
 
@@ -866,7 +871,7 @@
     position: absolute;
     top: 32px;
     height: 12px;
-    padding-left: 198px;
+    padding-left: 240px;
     cursor: pointer;
 }
 

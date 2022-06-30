@@ -1,5 +1,7 @@
 .settings {
-    padding: 40px 0%;
+    padding: 16px 40px 50px 40px;
+    width: 100%;
+    float: left;
     /* width: 87%;
     float: right;  */
 }
@@ -22,6 +24,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #212b36;
+    margin-bottom: 0px;
 }
 
 /* .settings .header  h3{
@@ -234,7 +237,6 @@
     margin-block-end: 0em;
     margin-top: 0px;
 }
-
 .countries_devices_container {
     width: 100%;
     float: left;
@@ -245,7 +247,7 @@
 
 .countries_container,
 .devices_container {
-    /* height: 50vh; */
+    height: 50vh;
     border-radius: 6px;
     padding: 15px 15px;
     background-color: #ffff;
@@ -328,7 +330,9 @@
     right: 25px;
     bottom: 15px;
 }
-
+.doughnut_insight a{
+    cursor: pointer;
+}
 .country_table_top_border {
     width: 100%;
     float: left;
@@ -560,14 +564,14 @@
 }
 
 .toggle_date_week_month {
-    width: 63%;
+    width: 67%;
     float: left;
     text-align: end;
     margin-right: 10px;
 }
 
 .date_picker {
-    width: 33%;
+    width: 30%;
     float: right;
     display: inline-flex;
     height: 30px;
@@ -602,7 +606,7 @@
 
 .cards_container {
     width: 25%;
-    margin-right: 10px;
+    margin-right: 15px;
     padding: 10px;
     border-radius: 6px;
     /* height:8em; */
@@ -680,7 +684,7 @@
 }
 
 .Countries_videos .metric_cards {
-    width: 33%;
+    width: 32.33%;
     height: 50vh;
     padding: 5px 15px;
     float: right;
@@ -720,7 +724,7 @@
 }
 
 .devices_card {
-    width: 33%;
+    width: 32.33%;
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -787,12 +791,12 @@
 
 .player_card,
 .applications_card {
-    width: 33%;
+    width: 32.33%;
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
-    margin-left: 10px;
+    margin-left: 20px;
     border-radius: 6px;
 }
 
@@ -835,7 +839,7 @@
 }
 
 .Os_views {
-    width: 33%;
+    width: 32.33%;
     background-color: #fff;
     height: 50vh;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -892,8 +896,9 @@
     border: solid 1px #a8c3db;
     border-radius: 2px;
     cursor: pointer;
-    width: 214px;
+    width: 215px;
     z-index: 1;
+    margin-left: 30px;
 }
 
 .options {
@@ -905,7 +910,7 @@
 }
 
 .org_name {
-    padding-left: 37px;
+    padding-left: 60px;
     padding-top: 13px;
     font-family: Inter-Regular;
     font-size: 10px;
@@ -920,7 +925,7 @@
 }
 
 .displayName {
-    padding-left: 37px;
+    padding-left: 60px;
     font-family: Inter-Medium;
   font-size: 14px;
   font-weight: 500;
@@ -941,7 +946,7 @@
 .store {
     position: absolute;
     top: 26px;
-    padding-left: 8px;
+    padding-left: 30px;
     /* height: 24px; */
 }
 
@@ -949,7 +954,7 @@
     position: absolute;
     top: 32px;
     height: 12px;
-    padding-left: 198px;
+    padding-left: 240px;
     cursor: pointer;
 }
 

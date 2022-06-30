@@ -61,7 +61,7 @@ export default function Others() {
                 if(res.data.data.tags[0].length>0){
                     setTags(res.data.data.tags)
                 }
-                console.log(res.data.data.tags!=undefined)
+                // console.log(res.data.data.tags!=undefined)
                 
             }else{
                 setTags([])

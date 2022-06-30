@@ -101,7 +101,7 @@ export default function New_Access_token({ table, closetoken }) {
       setSelect(!select)
    }
    const handleOption = (option) => {
-      console.log(option.uuid)
+      // console.log(option.uuid)
       setOption(option.name)
       setuuid(option.uuid)
       setSelect(false)
