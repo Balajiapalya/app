@@ -7,14 +7,15 @@ import Hls from 'hls.js';
 import Player from '../player';
 import Embed from '../../pages/videos/embed';
 import Delete_content from '../dialog/delete_content';
-
+import Activities from '../dialog/activities';
 export default function Overview() {
     const router = useRouter();
     const [player, setplayer] = useState([]);
     const [tooltip, settooltip] = useState(false);
     const [tooltipURL, settooltipURL] = useState(false);
     const [thumbnailurl, setthumbnail] = useState(false);
-    const [Pop_up,setPop_up] = useState(false)
+    const [Pop_up, setPop_up] = useState(false);
+    const [activities, setactivities] = useState(false);
     const Vdplayer = useRef();
     // console.log(window.location.origin)
     useEffect(() => {
@@ -26,9 +27,9 @@ export default function Overview() {
                     localStorage.setItem("asset_title", res.data.data.title);
                 }
             })
-            return()=>{
-                setplayer([])
-            }
+        return () => {
+            setplayer([])
+        }
     }, []);
     const showtooltip = () => {
         settooltip(true)
@@ -75,12 +76,12 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
-    const handleCopy=(event)=>{
-        let copiedText=event.target.parentNode.parentNode.previousSibling.lastChild;
-        copiedText.style.display="block"
-        setTimeout(function(){
-            copiedText.style.display=""
-        },1000)
+    const handleCopy = (event) => {
+        let copiedText = event.target.parentNode.parentNode.previousSibling.lastChild;
+        copiedText.style.display = "block"
+        setTimeout(function () {
+            copiedText.style.display = ""
+        }, 1000)
     }
     return (
         <Fragment>
@@ -92,14 +93,14 @@ export default function Overview() {
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
-                                <button className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
-                                
+                                <button onClick={() => setactivities(true)} className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
+
                             </div>
                             <div className={styles.delete_stream}>
-                                <button onClick={()=>setPop_up(true)} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
+                                <button onClick={() => setPop_up(true)} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
                                 {/* onClick={() => delete_asset()} */}
                             </div>
-                            
+
                         </div>
                     </div>
                     <div className={styles.asset_detials}>
@@ -137,7 +138,7 @@ export default function Overview() {
                         <div className={styles.playback}>
                             <h2>Playback Sample</h2>
                             <div className={styles.playback_content} >
-                                <Player handlethumnail={handlethumnail_callback}/>
+                                <Player handlethumnail={handlethumnail_callback} />
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.transcodingInfo ?
@@ -147,33 +148,33 @@ export default function Overview() {
                                 <div className={styles.video_hls}>
                                     <div className={styles.link_video}>
                                         <div className={styles.dispayInline}>
-                                        <h4>Link to video</h4>
-                                        <div className={`${styles.copiedMsg} cpyOne`}>Copied</div>
+                                            <h4>Link to video</h4>
+                                            <div className={`${styles.copiedMsg} cpyOne`}>Copied</div>
                                         </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
                                                 {/* <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p> */}
-                                                <input defaultValue={`${window.location.origin}/videos/embed?videoId=${i.contentId}`} className={styles.copyInput} readOnly/>
+                                                <input defaultValue={`${window.location.origin}/videos/embed?videoId=${i.contentId}`} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.contentId}`}>
-                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy}/>
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy} />
                                                 </CopyToClipboard>
                                             </div>
-                                          
+
                                         </div>
-                                        
+
                                     </div>
                                     <div className={styles.link_hls}>
-                                    <div className={styles.dispayInline}>
-                                        <h4>Link to HLS</h4>
-                                        <div  className={`${styles.copiedMsg} cpyTwo`}>Copied</div>
-                                    </div>
+                                        <div className={styles.dispayInline}>
+                                            <h4>Link to HLS</h4>
+                                            <div className={`${styles.copiedMsg} cpyTwo`}>Copied</div>
+                                        </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
                                                 {/* <p>{i.transcodingResponse.playback_url}</p> */}
-                                                <input defaultValue={i.transcodingResponse.playback_url} className={styles.copyInput} readOnly/>
+                                                <input defaultValue={i.transcodingResponse.playback_url} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={i.transcodingResponse.playback_url}>
@@ -186,32 +187,32 @@ export default function Overview() {
                                 </div>
                                 <div className={styles.embed_thubnail}>
                                     <div className={styles.link_embedcode}>
-                                    <div className={styles.dispayInline}>
-                                        <h4>Embed code</h4>
-                                        <div  className={`${styles.copiedMsg} cpyThree`}>Copied</div>
-                                    </div>
+                                        <div className={styles.dispayInline}>
+                                            <h4>Embed code</h4>
+                                            <div className={`${styles.copiedMsg} cpyThree`}>Copied</div>
+                                        </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
 
                                                 {/* <p>{`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} </p> */}
-                                                <input defaultValue={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} className={styles.copyInput} readOnly/>
+                                                <input defaultValue={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={`<iframe width="560" height="315" src="${window.location.origin}/videos/embed?videoId=${i.contentId}" allowfullscreen ></iframe>`}>
-                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy}/>
+                                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy} />
                                                 </CopyToClipboard>
                                             </div>
                                         </div>
                                     </div>
                                     <div className={styles.link_thumbnail}>
-                                    <div className={styles.dispayInline}>
-                                        <h4>Link to Thumbnail</h4>
-                                        <div className={`${styles.copiedMsg} cpyFour`}>Copied</div>
-                                    </div>
+                                        <div className={styles.dispayInline}>
+                                            <h4>Link to Thumbnail</h4>
+                                            <div className={`${styles.copiedMsg} cpyFour`}>Copied</div>
+                                        </div>
                                         <div className={styles.copy_link}>
                                             <div className={styles.link}>
                                                 {/* <p>{localStorage.getItem('thumbnail')}</p> */}
-                                                <input defaultValue={localStorage.getItem('thumbnail')} className={styles.copyInput} readOnly/>
+                                                <input defaultValue={localStorage.getItem('thumbnail')} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
                                                 <CopyToClipboard text={localStorage.getItem('thumbnail')}>
@@ -228,72 +229,73 @@ export default function Overview() {
                         <div className={styles.input_file}>
                             <h2>Video Source Info</h2>
                             <div className={styles.media_info}>
-                            <div className={styles.dispayInlineDown}>
-                                <h4>Video URL</h4>
-                                <div  className={`${styles.copiedMsg} cpyFive`}>Copied</div>
-                            </div>
-                                    <div className={`${styles.video_url} ${styles.copy_link} ${styles.copy_link_videoUrl}`}>
-                                        <div className={styles.link}>
-                                            <input defaultValue={i.transcodingInfo.mediaUrl} className={styles.copyInput} readOnly/>
-                                        </div>
-                                        <div className={styles.copy_img}>
-                                            <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
-                                                <img onClick={(event) => handleCopy(event)} src='/images/iconionic-ios-copy.svg' alt='copy' />
-                                            </CopyToClipboard>
-                                            {/* {tooltipURL ? <span className={styles.tooltip}>copied</span> : null} */}
-                                        </div>
+                                <div className={styles.dispayInlineDown}>
+                                    <h4>Video URL</h4>
+                                    <div className={`${styles.copiedMsg} cpyFive`}>Copied</div>
+                                </div>
+                                <div className={`${styles.video_url} ${styles.copy_link} ${styles.copy_link_videoUrl}`}>
+                                    <div className={styles.link}>
+                                        <input defaultValue={i.transcodingInfo.mediaUrl} className={styles.copyInput} readOnly />
                                     </div>
+                                    <div className={styles.copy_img}>
+                                        <CopyToClipboard text={i.transcodingInfo ? i.transcodingInfo.mediaUrl : null}>
+                                            <img onClick={(event) => handleCopy(event)} src='/images/iconionic-ios-copy.svg' alt='copy' />
+                                        </CopyToClipboard>
+                                        {/* {tooltipURL ? <span className={styles.tooltip}>copied</span> : null} */}
+                                    </div>
+                                </div>
                                 <div className={styles.Video_info}>
                                     <div className={styles.videoDiv}>
-                                    <h4>Video Info</h4>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Width</th>
-                                                <th>Height</th>
-                                                <th>Frame Rate</th>
-                                                <th>Encoding</th>
-                                                <th className={styles.lastTh}>Duration</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{i.transcodingInfo.videoInfo[0].width}</td>
-                                                <td>{i.transcodingInfo.videoInfo[0].height}</td>
-                                                <td>{i.transcodingInfo.videoInfo[0].frameRate}</td>
-                                                <td>{i.transcodingInfo.videoInfo[0].encoding}</td>
-                                                {i.duration ? <td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        <h4>Video Info</h4>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Width</th>
+                                                    <th>Height</th>
+                                                    <th>Frame Rate</th>
+                                                    <th>Encoding</th>
+                                                    <th className={styles.lastTh}>Duration</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{i.transcodingInfo.videoInfo[0].width}</td>
+                                                    <td>{i.transcodingInfo.videoInfo[0].height}</td>
+                                                    <td>{i.transcodingInfo.videoInfo[0].frameRate}</td>
+                                                    <td>{i.transcodingInfo.videoInfo[0].encoding}</td>
+                                                    {i.duration ? <td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div className={styles.audioDiv}>
-                                    <h4>Audio Info</h4>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Sample Rate</th>
-                                                <th>Encoding</th>
-                                                <th>Channels</th>
-                                                <th className={styles.audioTh}>Duration</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>
-                                                <td>{i.transcodingInfo.audioInfo[0].encoding}</td>
-                                                <td>{i.transcodingInfo.audioInfo[0].channels}</td>
-                                                {i.duration ? <td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        <h4>Audio Info</h4>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Sample Rate</th>
+                                                    <th>Encoding</th>
+                                                    <th>Channels</th>
+                                                    <th className={styles.audioTh}>Duration</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{i.transcodingInfo.audioInfo[0].sampleRate}</td>
+                                                    <td>{i.transcodingInfo.audioInfo[0].encoding}</td>
+                                                    <td>{i.transcodingInfo.audioInfo[0].channels}</td>
+                                                    {i.duration ? <td>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>}
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
 
                             </div>
                         </div> : <div />}
                 </div>)}
-                {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up}/>}
+            {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up} />}
+            {activities && <Activities closeactivities={setactivities} />}
         </Fragment>
     )
 }
