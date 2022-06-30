@@ -100,6 +100,8 @@ export default function Overview({setToggleState}) {
         }
     };
     const realtime_options = {
+        
+        maintainAspectRatio: false,
         responsive: true,
         plugins: {
             legend: {
@@ -296,7 +298,7 @@ export default function Overview({setToggleState}) {
 
                     </div>
                     <div className={styles.line_chart}>
-                        <Line options={Lineoptions} data={stored_linedata} />
+                        <Line options={Lineoptions} data={stored_linedata}/>
                     </div>
                     <div className={styles.timeperiod}>
                         <span >Total minutes of videos stored in last 7 days.</span>
@@ -333,7 +335,11 @@ export default function Overview({setToggleState}) {
                     </div>
                     <h5 className={styles.views_period}>Last 30 minutes views </h5>
                     <div className={styles.realtime_chart}>
-                        <Line options={realtime_options} data={realtime_views} />
+                        <Line options={realtime_options} data={realtime_views} style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                   
+                                }}/>
                     </div>
                 </div>
                 <div className={styles.countries_devices_container}>
