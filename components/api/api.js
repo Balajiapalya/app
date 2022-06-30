@@ -1,14 +1,14 @@
 import axios from "axios";
-let PROFILE_LINK = process.env.VG_API_HOST+'/profile';
+let PROFILE_LINK = process.env.VG_API_HOST + '/profile';
 const PROFILE_BASE_URL = () => PROFILE_LINK;
 
-let VIDEO_LINK = process.env.VG_API_HOST+'/video';
+let VIDEO_LINK = process.env.VG_API_HOST + '/video';
 const VIDEO_BASE_URL = () => VIDEO_LINK;
 
-let BILLING_LINK = process.env.VG_API_HOST+'/billing';
+let BILLING_LINK = process.env.VG_API_HOST + '/billing';
 const BILLING_BASE_URL = () => BILLING_LINK;
 
-let DATA_LINK = process.env.VG_API_HOST+'/data';
+let DATA_LINK = process.env.VG_API_HOST + '/data';
 const DATA_BASE_URL = () => DATA_LINK;
 
 export const SignIn_Data = () => {
@@ -65,7 +65,7 @@ export const get_webhook = () => {
 export const delete_webhook = (del_webhook) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${del_webhook}?time=${CurrentDate}`
 }
-export const updateBtn=(id)=>{
+export const updateBtn = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/webhooks/${id}`
 }
 //access token
@@ -205,19 +205,25 @@ export const get_video_playback_url = (asset_id) => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/` + asset_id + `/playback_url?time=${CurrentDate}`
 }
 //events and logs
-export const get_Logs=()=>{
+export const get_Logs = () => {
     return `${DATA_BASE_URL()}/services/api/v1/logs?organizationId=${uuid}`
 }
-export const get_Events=(id)=>{
+export const get_Events = (id) => {
     return `${DATA_BASE_URL()}/services/api/v1/events?organizationId=${id}`
 }
-export const get_Events_Detail=(uuidEvent)=>{
+export const get_Events_Detail = (uuidEvent) => {
     return `${DATA_BASE_URL()}/services/api/v1/events/${uuidEvent}`
 }
-export const get_Log_Detail=(id)=>{
+export const get_Log_Detail = (id) => {
     return `${DATA_BASE_URL()}/services/api/v1/logs/${id}`
 }
-
+//Activities events and logs
+export const get_Activities_Events = (query) => {
+    return `${DATA_BASE_URL()}/services/api/v1/events?contentId=${query}`
+}
+export const get_Activities_Logs = (query) => {
+    return `${DATA_BASE_URL()}/services/api/v1/logs?contentId=${query}`
+}
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -272,12 +278,12 @@ if (process.browser) {
 const pastdate = sevendaybeforedate;
 
 const loginHandledAxios = (req) => axios(req).catch((error) => {
- 
-  if (error.response.data.code == 401) {
-     window.localStorage.clear();
-     document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
-     window.location.href = "/signin";
-  } else  throw error
+
+    if (error.response.data.code == 401) {
+        window.localStorage.clear();
+        document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
+        window.location.href = "/signin";
+    } else throw error
 })
 
 const Api = {
@@ -402,11 +408,11 @@ const Api = {
             data: del_webhook,
             headers: headers,
         }),//delete webhook
-        WebhookUpdate:(data,webhookid)=>
+    WebhookUpdate: (data, webhookid) =>
         loginHandledAxios({
-            method:'PUT',
-            url:updateBtn(webhookid),
-            data:data,
+            method: 'PUT',
+            url: updateBtn(webhookid),
+            data: data,
             headers: headers,
         }),
     //signin key
@@ -569,6 +575,23 @@ const Api = {
                 'EnvironmentId': `${envuuid}`
             }
         }),
+    //activities in overview
+    Get_Activities_Events: (query) =>
+        loginHandledAxios({
+            method: 'GET',
+            url: get_Activities_Events(query),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        }),
+    Get_Activities_Logs: (query) =>
+        loginHandledAxios({
+            method: 'GET',
+            url: get_Activities_Logs(query),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        }),
     //thumbnails
     Create_thumbnail: (thumbnail) =>
         loginHandledAxios({
@@ -690,30 +713,30 @@ const Api = {
             method: 'GET',
             url: get_video_playback_url(ast_id)
         }),
-    Get_Logs_data:()=>
-    loginHandledAxios({
-        method:'GET',
-        url:get_Logs(),
-        headers:headers
-    }),
-    Get_Events_data:(id)=>
-    loginHandledAxios({
-        method:'GET',
-        url:get_Events(id),
-        headers:headers
-    }),
-    Get_Events_details:(uuid)=>
-    loginHandledAxios({
-        method:'GET',
-        url:get_Events_Detail(uuid),
-        headers:headers
-    }),
-    Get_Log_details:(id)=>
-    loginHandledAxios({
-        method:'GET',
-        url:get_Log_Detail(id),
-        headers:headers
-    }),
+    Get_Logs_data: () =>
+        loginHandledAxios({
+            method: 'GET',
+            url: get_Logs(),
+            headers: headers
+        }),
+    Get_Events_data: (id) =>
+        loginHandledAxios({
+            method: 'GET',
+            url: get_Events(id),
+            headers: headers
+        }),
+    Get_Events_details: (uuid) =>
+        loginHandledAxios({
+            method: 'GET',
+            url: get_Events_Detail(uuid),
+            headers: headers
+        }),
+    Get_Log_details: (id) =>
+        loginHandledAxios({
+            method: 'GET',
+            url: get_Log_Detail(id),
+            headers: headers
+        }),
 }
 export default Api
 
