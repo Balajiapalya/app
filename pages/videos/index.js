@@ -88,7 +88,7 @@ export default function Videos() {
         Api.Get_env_data()
             .then(res => {
                 if (res.data.status = "Success") {
-                    localStorage.setItem("envuuid", res.data.data[0].uuid)
+                    // localStorage.setItem("envuuid", res.data.data[0].uuid)
                     setEnvSelect(res.data.data)
                 }
             })
@@ -107,6 +107,7 @@ export default function Videos() {
     }, [id, add_asset, timer, reload])
 
     const handleChange = (i) => {
+        console.log(i)
         setId(i.uuid)
         localStorage.setItem("envuuid", i.uuid);
         localStorage.setItem("uuid", clicked);
