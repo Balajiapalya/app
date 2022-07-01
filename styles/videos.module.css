@@ -296,7 +296,7 @@
     text-align: center;
 } */
 .videos_table table tbody tr:hover{
-    background-color: rgb(240, 248, 253);
+    background-color: rgb(240, 248, 253) !important;
 }
 .videos_table table tbody tr td {
     padding: 15px 10px;
