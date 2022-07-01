@@ -100,6 +100,8 @@ export default function Overview({setToggleState}) {
         }
     };
     const realtime_options = {
+        
+        maintainAspectRatio: false,
         responsive: true,
         plugins: {
             legend: {
@@ -132,9 +134,15 @@ export default function Overview({setToggleState}) {
                 max: 6,
                 min: 0,
                 ticks: {
-                    stepSize: 1
+                    stepSize: 1,
+                    font:{
+                        size:12,
+                       
+                    },
+                    color:'#5d6381'   
                 }
             }
+            
         }
     };
     const Lineoptions = {
@@ -261,7 +269,8 @@ export default function Overview({setToggleState}) {
                     <div className={styles.video_type_content}>
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordEncodingUsage').map((item, key) =>
                             <div key={key}>
-                                <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                                {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
+                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
                             </div>
                         )]}
 
@@ -282,13 +291,14 @@ export default function Overview({setToggleState}) {
 
                             <div key={key}>
                                 {/* {console.log(item.amountInSecs)} */}
-                                <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                                {/* <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
+                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
                             </div>
                         )]}
 
                     </div>
                     <div className={styles.line_chart}>
-                        <Line options={Lineoptions} data={stored_linedata} />
+                        <Line options={Lineoptions} data={stored_linedata}/>
                     </div>
                     <div className={styles.timeperiod}>
                         <span >Total minutes of videos stored in last 7 days.</span>
@@ -300,7 +310,9 @@ export default function Overview({setToggleState}) {
                     <div className={styles.video_type_content}>
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordStreamingUsage').map((item, key) =>
                             <div key={key}>
-                                <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5>
+                                
+                                {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
+                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
                             </div>
                         )]}
 
@@ -323,7 +335,11 @@ export default function Overview({setToggleState}) {
                     </div>
                     <h5 className={styles.views_period}>Last 30 minutes views </h5>
                     <div className={styles.realtime_chart}>
-                        <Line options={realtime_options} data={realtime_views} />
+                        <Line options={realtime_options} data={realtime_views} style={{
+                                    height: '34vh',
+                                    width: '100%',
+                                   
+                                }}/>
                     </div>
                 </div>
                 <div className={styles.countries_devices_container}>

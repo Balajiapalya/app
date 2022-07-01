@@ -76,7 +76,7 @@ export default function Videos() {
                 {setVideoData(res.data.data)}</>)
                 {reload && setTimeout(()=>{
                     setReload(false)
-                },1000*210)}
+                },1000*180)}
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
@@ -302,7 +302,7 @@ export default function Videos() {
                                         {org.map((i, ind) =>
                                             <>
                                                 <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                                    {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/updown.svg' className={styles.openDropdown}></img>}
+                                                    {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/Iconawesome-chevron-down.svg' className={styles.openDropdown}></img>}
                                                     {i.name}
                                                 </div>
                                                 {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>

@@ -240,9 +240,10 @@
 .countries_devices_container {
     width: 100%;
     float: left;
-    display: flex;
+    display: grid;
     margin-top: 20px;
     margin-bottom: 20px;
+    grid-column-gap: 20px;
 }
 
 .countries_container,
@@ -256,9 +257,11 @@
 }
 
 .countries_container {
-    width: 65%;
-    float: left;
-    margin-right: 20px;
+    /* width: 66%;
+    float: left; */
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /* margin-right: 20px; */
     position: relative;
     border-radius: 4px;
 }
@@ -288,8 +291,10 @@
 }
 
 .devices_container {
-    width: 35%;
+    /* width: 35%; */
     float: left;
+    /* margin-left:20px; */
+    grid-column-start: 3
 }
 
 .more_insights {
@@ -367,8 +372,10 @@
 
 .doughnut_graph canvas {
 
-    height: 153.1px !important;
-    width: 306.2px !important;
+    /* height: 153.1px !important;
+    width: 306.2px !important; */
+    height: 100% !important;
+    width: 100% !important;
     margin: 10px auto;
 }
 
@@ -667,6 +674,11 @@
     width: 100%;
     float: left;
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-rows: repeat(3, 1fr); */
+    row-gap: 20px;
+    column-gap: 20px;
 }
 
 .countries,
@@ -684,7 +696,9 @@
 }
 
 .Countries_videos .metric_cards {
-    width: 32.33%;
+    /* width: 100%; */
+    grid-column-start: 3;
+    grid-column-end: 4;
     height: 50vh;
     padding: 5px 15px;
     float: right;
@@ -724,7 +738,7 @@
 }
 
 .devices_card {
-    width: 32.33%;
+    /* width: 32.33%; */
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -787,16 +801,17 @@
 .Os_views canvas {
     margin-top: 20px;
     height: 35vh !important;
+    width: 100% !important;
 }
 
 .player_card,
 .applications_card {
-    width: 32.33%;
+    /* width: 32.33%; */
     height: 50vh;
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     padding: 5px 15px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     border-radius: 6px;
 }
 
@@ -839,7 +854,7 @@
 }
 
 .Os_views {
-    width: 32.33%;
+    /* width: 32.33%; */
     background-color: #fff;
     height: 50vh;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
@@ -847,31 +862,25 @@
     border-radius: 6px;
 }
 
-@media screen and (max-width:991px) {
+/* @media screen and (max-width:991px) {
     .countries_devices_container {
         display: block;
     }
 
     .countries_container {
         width: 100%;
-        float: left;
-        margin-bottom: 20px;
+       
     }
 
-    /* .graphs_container{
-        display: block;
-    } */
+   
     .devices_container {
         width: 50%;
         float: left;
     }
 
-    .Countries_videos .metric_cards {
-        width: 66%;
-        float: left;
-    }
+    
 
-}
+} */
 
 /* dropdown */
 .inputSearch {
@@ -1014,4 +1023,9 @@
     text-align: left;
     color: #113b40;
     text-transform: capitalize;
+}
+@media screen and (max-width:991px){
+    .countries_table {
+        padding: 0px;
+    }
 }
