@@ -1036,19 +1036,18 @@
 }
 
 .activities {
-    width: 100%;
-    float: left;
-    display: table;
-    position: absolute;
+    width: 660px;
+    margin: auto;
     top: 0;
 }
 
 .activities .main {
     border: 1px solid #ccc;
     display: block;
-    width: 600px;
+    width: 100%;
+    float: left;
     margin: auto;
-    margin-top: 10em;
+    margin-top: 7em;
     background-color: #f4f6f8;
     padding: 20px;
     border-radius: 4px;
@@ -1070,9 +1069,11 @@
     text-align: left;
     color: #212b36;
 }
-.activities_events_logs_table .Id{
+
+.activities_events_logs_table .Id {
     width: 40%;
 }
+
 .activities .nav .model_close {
     float: right;
     /* margin-top: -40px;
@@ -1087,6 +1088,8 @@
 }
 
 .activities_events_logs_table {
+    width: 100%;
+    float: left;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
     border-collapse: collapse;
     color: #212b36;
@@ -1095,8 +1098,16 @@
 
 .activities_events_logs_table tbody {
     background-color: white;
+    display: block;
+    overflow-x : auto;
+    height: 200px;
+    width: 100%;
 }
-
+.activities_events_logs_table thead {
+    width: 100%;
+    float: left;
+    display: inline-table;
+}
 .activities_events_logs_table thead tr {
     height: 40px;
     border-bottom: 1px solid #e3e3e3;
@@ -1133,8 +1144,8 @@
 }
 
 .activities_events_logs_table tbody tr td {
-    font-family: Inter;
-    font-size: 14px;
+    font-family: Inter-Regular;
+    font-size: 12px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -1143,6 +1154,34 @@
     text-align: left;
     color: #212b36;
     padding: 10px 10px;
+}
+.status{
+    width: 12%;
+}
+.Id_head{
+    position: relative;
+    right: 8.5em
+}
+.date_header{
+    width: 22%;
+    position: relative;
+    right: 0.5em;
+}
+/* .description_content{
+    width: 22em;
+} */
+.data_not_found {
+    margin: 2em 0px;
+    width: 100%;
+    text-align: center;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    color: #212b36;
 }
 
 .unlockpremiumfeatures .main img {
