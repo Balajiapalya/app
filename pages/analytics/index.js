@@ -51,7 +51,7 @@ export default function Analytics_index() {
     setId(i.uuid)
     localStorage.setItem("envuuid", i.uuid);
     localStorage.setItem("uuid", clicked);
-    localStorage.setItem('orgName',orgName)
+    localStorage.setItem('orgName',orgName);
     }
     const searchHandle = (e) => {
         let options = document.querySelectorAll('#opt')
@@ -160,7 +160,7 @@ export default function Analytics_index() {
                                 Analytics
                             </h2>
                             <EnvValue.Provider value={process.browser && localStorage.getItem('envuuid')}>
-                                <Analytics_tabs />
+                                <Analytics_tabs id={id}/>
                             </EnvValue.Provider>
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 export default function Signin() {
   const router = useRouter()
   const [error, seterror] = useState([]);
@@ -38,6 +38,11 @@ export default function Signin() {
   const handleChange = () => {
     setValidation(false)
   }
+  useEffect(()=>{
+    if(document.cookie){
+          window.location.pathname = '/';
+    }
+  },[])
   return (
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
