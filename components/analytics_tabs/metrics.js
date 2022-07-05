@@ -40,7 +40,7 @@ ChartJS.register(
 );
 import DatePicker from "react-datepicker";
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-export default function Metrics() {
+export default function Metrics({id}) {
     const valueEnv = useContext(EnvValue)
     const [amountstreamed, set_amountstreamed] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
@@ -221,6 +221,10 @@ export default function Metrics() {
             })
     }
     useEffect(() => {
+        if(id){
+            settoggleposition(2)
+            setweek()
+        }
         Usage_statistics_data();
         Views_statistics_data();
     }, [valueEnv])
