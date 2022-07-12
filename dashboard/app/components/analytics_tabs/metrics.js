@@ -40,7 +40,7 @@ ChartJS.register(
 );
 import DatePicker from "react-datepicker";
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-export default function Metrics({id}) {
+export default function Metrics() {
     const valueEnv = useContext(EnvValue)
     const [amountstreamed, set_amountstreamed] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
@@ -221,10 +221,6 @@ export default function Metrics({id}) {
             })
     }
     useEffect(() => {
-        if(id){
-            settoggleposition(2)
-            setweek()
-        }
         Usage_statistics_data();
         Views_statistics_data();
     }, [valueEnv])
@@ -266,7 +262,7 @@ export default function Metrics({id}) {
                             <button className={toggleposition == 3 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(3), setmonth()]}>Month</button>
                         </div>
                         <div className={styles.date_picker}>
-                            <img  src='/images/calender.png' />
+                            <img onClick={() => datepicker()} src='/images/calender.png' />
                             <DatePicker
                                 selected={startDate}
                                 onChange={(date) => [setStartDate(date)]}

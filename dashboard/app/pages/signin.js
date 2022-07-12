@@ -3,31 +3,15 @@ import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 export default function Signin() {
+  const router = useRouter()
   const [error, seterror] = useState([]);
   const [validation, setValidation] = useState(false);
   const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
-  // const watchField=watch(['login','password']);
-  const [mail,setMail]=useState()
-  const [pswd,setPswd]=useState();
-  const [req,setReq]=useState(false)
-  const [reqEmail,setReqEmail]=useState(false)
-
+  const watchField=watch(['login','password'])
   const onSubmit = login_details => {
-    // login_details.password = btoa(login_details.password)
-    login_details.password=btoa(pswd);
-    login_details.login=mail
-    if(pswd==''){
-      setReq(true)
-    }else{
-      setReq(false)
-    }
-    if(mail==''){
-      setReqEmail(true)
-    }else{
-      setReqEmail(false)
-    }
+    login_details.password = btoa(login_details.password)
     if(login_details.login.length>1 && login_details.password.length>1){
     Api.SignIn_details(login_details)
       .then(res => {
@@ -51,30 +35,9 @@ export default function Signin() {
       })
     }
   }
-  // const handleChange = () => {
-  //   setValidation(false)
-  // }
-  useEffect(()=>{
-
-    const handleEnter=(e)=>{
-      const subBtn=document.getElementById('submitBtn')
-      if(e.key=="Enter"){
-        subBtn.click()
-      }
-    }
-    //if more than one cookie is present in browser
-   let all=document.cookie.split(';')
-   all.forEach(val =>{
-    let value=val.split('=')[0]
-    //for chrome or firefox
- if(value=='Jwt-token' || value==' Jwt-token'){
-  window.location.pathname = '/';
- }
-    
-  })
-
-    document.addEventListener('keydown',handleEnter)
-  },[mail,pswd])
+  const handleChange = () => {
+    setValidation(false)
+  }
   return (
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
@@ -88,7 +51,7 @@ export default function Signin() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label className={styles.label}><h4>Email</h4></label>
-              {/* <input
+              <input
                 autoComplete='current-password'
                 type="email"
                 placeholder="Enter email address"
@@ -96,20 +59,12 @@ export default function Signin() {
                 className={`${styles.signup_input} form_control`}
                 {...register("login", { required:watchField[1]!=undefined && watchField[1].length>1?false:true })}
                 onChange={() => handleChange()}
-              /> */}
-              <input
-                autoComplete='current-password'
-                type="email"
-                placeholder="Enter email address"
-                name="login"
-                className={`${styles.signup_input} form_control`}
-                onChange={(e) => `${setMail(e.target.value)} ${setValidation(false)}`}
               />
             </div>
-            {reqEmail && <p className={'validations'}>This field is required</p>}
+            {errors.login && <p className={'validations'}>This field is required</p>}
             <div>
               <label className={styles.label}><h4>Password</h4></label>
-              {/* <input
+              <input
                 autoComplete='current-password'
                 type="password"
                 placeholder="Enter password"
@@ -117,19 +72,11 @@ export default function Signin() {
                 className={`${styles.signup_input} form_control`}
                 {...register("password", { required:watchField[1]!=undefined && watchField[1].length>1?false:true })}
                 onChange={() => handleChange()}
-              /> */}
-              <input
-                autoComplete='current-password'
-                type="password"
-                placeholder="Enter password"
-                name="password"
-                className={`${styles.signup_input} form_control`}
-                onChange={(e) => `${setPswd(e.target.value)} ${setValidation(false)}`}
               />
               {validation && <span className='error'>{error}</span>}
             </div>
-            {req && <p className={'validations'}>This field is required</p>}<br />
-            <button type='submit' className={`${styles.signup_btn} btn btn-primary`} id="submitBtn">Sign in </button>
+            {errors.password && <p className={'validations'}>This field is required</p>}<br />
+            <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Sign in </button>
             <Link href="/email"><h4 className={styles.forgotpw}>Forgot Password?</h4></Link>
           </form>
           <h4 className={styles.already_account}>Don&#39;t have an account?</h4>

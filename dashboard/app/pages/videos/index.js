@@ -14,12 +14,12 @@ export default function Videos() {
     // const [env, setenv] = useState([]);
     const [envSelect, setEnvSelect] = useState([]);
     const [id, setId] = useState();
-    // const [dirdata, set_directdata] = useState([]);
+    const [dirdata, set_directdata] = useState([]);
     const [order, setorder] = useState("ASC");
     const [ordernum, set_ordernum] = useState("ASC")
     const [vidDropdown, setVidDropdown] = useState()
     const [selected, setSelected] = useState(false)
-    // const [defaultenv, setDefaultenv] = useState();
+    const [defaultenv, setDefaultenv] = useState();
     const [org, setOrg] = useState([])
     // const [openEnv, setOpenEnv] = useState(false);
     const [clicked, setClicked] = useState();
@@ -27,8 +27,6 @@ export default function Videos() {
     const [multiSelect, setMultiSelect] = useState([])
     const [timer, setTimer] = useState(false);
     const [reload, setReload] = useState(false);
-    const [initialLength, setInitialLength] = useState();
-  
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -65,42 +63,20 @@ export default function Videos() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         Api.Video_list(data)
-            .then(res => {
+            .then(res => <>
 
-                {
-                    res.data.data.map(item => {
-                        if (item.status == 'Processing') {
-                            setTimeout(() => {
-                                setTimer(true)
-                            }, 1000 * 60)
-                        }
-                    })
-                }
-                setInitialLength(res.data.data.length)
-               
-                let timerFun = () => {
+                {res.data.data.map(item => {
+                    if (item.status == 'Processing') {
+                        setTimeout(() => {
+                            setTimer(true)
+                        }, 1000 * 60)
+                    }
+                })}
+
+                {setVideoData(res.data.data)}</>)
+                {reload && setTimeout(()=>{
                     setReload(false)
-                    let count=0                    
-                    let intervalFunc = setInterval(() => {
-                        Api.Video_list(data).then(res => { 
-                            let resp= res.data.data.length+count                            
-                            if (initialLength <resp) {
-				                setTimer(!timer)
-                                clearInterval(intervalFunc) 
-                            }
-                            if(resp<initialLength){
-                                count=initialLength-resp
-                            }
-                        })
-                    }, 1000 * 20);
-                }
-              
-                { reload && timerFun() }
-               
-                
-                { setVideoData(res.data.data) }
-            })
-
+                },1000*180)}
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
@@ -217,7 +193,18 @@ export default function Videos() {
         popup.classList.remove(`${styles.no_display}`)
     }
 
-  
+    // const handleEnv = (i) => {
+
+    //     setClicked(i.uuid);
+
+    //     if(clicked!==i.uuid){
+    //         setOpenEnv(true);
+    //     }else{
+    //         setOpenEnv(!openEnv);
+    //     }
+
+    //     setOrgName(i.name);
+    // }
     const handleEnv = (i) => {
         setClicked(i.uuid);
         if (!multiSelect.some(item => item.uuid == i.uuid)) {
@@ -266,6 +253,31 @@ export default function Videos() {
             <div className={styles.background_develepment}>
                 <div className={styles.header_development}>
                     <div className="container">
+
+
+                        {/* <p>{orName}
+                                <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
+                                    {envSelect.map(i => <>
+                                        <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
+                                    </>)}
+                                </select>
+                                        </p> */}
+                        {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
+                                    {selected ? selected : 'Product'}
+                                </div>
+                                
+                                <img className={styles.storefolder} src='/images/iconawesome-folder.svg' />
+                                <img className={styles.drpdwn} src="images/updown.svg" alt='icon' onClick={() => setVideoDrop(!videoDrop)}></img>
+                                {videoDrop &&
+                                    <div className={styles.videoOptions}>
+                                        <input className={styles.searchSelect} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
+                                        <div className={styles.all_options}>
+                                            {envSelect.map(i =>
+                                                <div selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid} id="opt" onClick={() => handleSelected(i)}>{i.name}</div>
+                                            )}
+                                        </div>
+                                    </div>}
+                             */}
                         <div className={styles.content} ref={dropdownprod}>
                             <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
                                 <div className={styles.names}>
@@ -278,9 +290,11 @@ export default function Videos() {
                                         })}
                                     </div>
                                 </div>
+
                                 <img className={styles.clickable} src="images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
                                 <img className={styles.store} src='/images/iconawesome-folder.svg' />
                             </div>
+
                             {vidDropdown &&
                                 <div className={styles.all}>
                                     <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />

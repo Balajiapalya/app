@@ -26,13 +26,8 @@ export default function Thumbnails_api() {
                 }
             })
     }
-    const handleCopy = (event) => {
-        let copiedText = event.target.parentNode.parentNode.firstChild;
-        console.log(copiedText)
-        copiedText.style.display = "block"
-        setTimeout(function () {
-            copiedText.style.display = ""
-        }, 1000)
+    function copy(text) {
+        navigator.clipboard.writeText(text)
     }
     return (
         <div>
@@ -59,7 +54,7 @@ export default function Thumbnails_api() {
                                                 "width": 100,
                                                 "height": 200
                                             }
-                                            , undefined, 2)}`}
+                                        , undefined, 2)}`}
                                         id="JSONFormat"
                                         className={`${styles.code_input} form_control`}
                                         type='text'
@@ -68,16 +63,15 @@ export default function Thumbnails_api() {
                                     /> : null}
                             </div>
                             <button type="submit" className={styles.btn}>Run Request</button>
-                            <span className={styles.image_form_border} />
+                            <span className={styles.image_form_border}/>
                             <h4>Download image from below URL:</h4>
                             <div className={styles.thumbnail_copy}>
-                                <span className={styles.copyMsg} >Copied</span>
                                 <p className={styles.thumbnail_copy_link}>{thumbnailurl}</p>
                                 <div className={styles.copy_img}>
                                     <CopyToClipboard text={thumbnailurl}>
-                                        <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={(event) => handleCopy(event)} />
+                                    <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={() => copy(thumbnailurl)} />
                                     </CopyToClipboard>
-
+                                    
                                 </div>
                             </div>
                         </form>
