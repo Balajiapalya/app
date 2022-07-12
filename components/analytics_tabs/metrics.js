@@ -266,7 +266,7 @@ export default function Metrics({id}) {
                             <button className={toggleposition == 3 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(3), setmonth()]}>Month</button>
                         </div>
                         <div className={styles.date_picker}>
-                            <img onClick={() => datepicker()} src='/images/calender.png' />
+                            <img  src='/images/calender.png' />
                             <DatePicker
                                 selected={startDate}
                                 onChange={(date) => [setStartDate(date)]}

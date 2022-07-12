@@ -179,7 +179,7 @@
     width: 94%;
     float: left;
     border-radius: 2px;
-
+    position: relative;
 }
 
 .thumbnail_copy_link {
@@ -824,7 +824,15 @@
     color: #cacaca;
     font-style: italic;
 }
-
+.copyMsg{
+    position: absolute;
+    right: 0px;
+    bottom: 4.5em;  
+    display: none;  
+    font-size: 12px !important;
+    color: #cacaca;
+    font-style: italic;
+}
 .dispayInline {
     display: flex;
     flex-direction: row;
