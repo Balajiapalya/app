@@ -63,15 +63,15 @@ const VideoList = ({ i, create_On, created_time }) => {
         setdropdown(false);
     })
     const handleSingleCheck=()=>{
-        let singleCheck=document.querySelectorAll('.assetCheck');
-        let tbody=document.getElementById('td').parentElement.parentElement;
-        for(let i=0;i<singleCheck.length;i++){
-           if(singleCheck[i].checked){
-            tbody.getElementsByTagName('tr')[i].style.backgroundColor="#f0f8fd"
-           }else{
-            tbody.getElementsByTagName('tr')[i].style.backgroundColor="white"
-           }
-        }
+            let singleCheck=document.querySelectorAll('.assetCheck');
+            let tbody=document.getElementById('td').parentElement.parentElement;
+            for(let i=0;i<singleCheck.length;i++){
+            if(singleCheck[i].checked){
+                tbody.getElementsByTagName('tr')[i].style.backgroundColor="#f0f8fd"
+            }else{
+                tbody.getElementsByTagName('tr')[i].style.backgroundColor="white"
+            }
+            }
       
     }
     return (
