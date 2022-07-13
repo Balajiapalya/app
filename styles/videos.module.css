@@ -7,14 +7,14 @@
     float: right;
 }
 .settings {
-    padding: 30px 40px 50px 40px;
+    padding: 30px 40px 0px 40px;
     width: 100%;
     float: left;
 
 }
 .videos {
     /* padding: 0px 5%; */
-    padding: 0px 15px 35px 0px;
+    padding: 0px 15px 0px 0px;
     width: 100%;
     float: left;
 }
@@ -921,6 +921,25 @@
     text-align: left;
     color: #113b40;
     text-transform: capitalize;
+}
+/* pagination */
+.pagination{
+    width: 100%;
+    float: left;
+    list-style: none;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    font-size: 1.2rem;
+}
+.pagination .page_num{
+    cursor: pointer;
+    border-radius: 2px;
+    padding:5px 5px;
+}
+.pagination .page_num:hover{
+    background-color: #9a9a9a;
 }
 
 /* @media only screen and (min-width: 200px)   {
