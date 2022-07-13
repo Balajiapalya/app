@@ -33,10 +33,14 @@ export default function Thumbnails() {
     const handleChange = (e) => {
         settime(e.target.value)
     }
-    function copy(text) {
-        navigator.clipboard.writeText(text)
+    const handleCopy = (event) => {
+        let copiedText = event.target.parentNode.parentNode.firstChild;
+        console.log(copiedText)
+        copiedText.style.display = "block"
+        setTimeout(function () {
+            copiedText.style.display = ""
+        }, 1000)
     }
-
     return (
         <Fragment>
             <div className={styles.thumbnails}>
@@ -72,14 +76,16 @@ export default function Thumbnails() {
                         <div className={styles.thumbnail_copy_container}>
                             <h4>Download image from below URL:</h4>
                             <div className={styles.thumbnail_copy}>
+                                <span className={styles.copyMsg} >Copied</span>
                                 <p className={styles.thumbnail_copy_link}>{thumbnailurl}  </p>
+
                                 <div className={styles.copy_img}>
                                     <CopyToClipboard text={thumbnailurl}>
-                                        <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={() => copy(thumbnailurl)} />
+                                        <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={(event) => handleCopy(event)} />
                                     </CopyToClipboard>
                                 </div>
-
                             </div>
+
                         </div>
 
 
