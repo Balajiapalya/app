@@ -11,12 +11,13 @@ const EventDetails = (props) => {
         Api.Get_Log_details(props.logUuid).then(res => {
             if (res && res.data && res.data.data) {
                     {setLogDetail(res.data.data)}
+                    
                     {res.data.data.responseBody && setParseResp(JSON.parse(res.data.data.responseBody))}
                     {res.data.data.reqBody && setParseReq(JSON.parse(res.data.data.reqBody))}
             }
         })
         .catch(error=>{
-            console.log(error.response.status)
+            console.log(error)
         })
         return () => {
             setLogDetail([])
@@ -83,6 +84,7 @@ const EventDetails = (props) => {
 
             <div className={styles.textArea}>
                 <h2>Response Body</h2>
+                
                 <textarea defaultValue={parseResp && `${JSON.stringify(parseResp.data, undefined, 2)}`}
                     className={styles.codeEvent} readOnly/>
             </div>

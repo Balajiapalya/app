@@ -6,9 +6,11 @@ import Logs from "./activitiestabs/logs";
 
 function Activities_tabs() {
     const [toggleState, setToggleState] = useState(1);
+    const [detail,setDetail]=useState(false)
 
     const toggleTab = (index) => {
         setToggleState(index);
+        setDetail(false)
     };
     return (
         <div className={styles.Activities_tabs}>
@@ -32,7 +34,7 @@ function Activities_tabs() {
                     <div
                         className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                     >
-                        <Events/>
+                        <Events setDetail={setDetail} detail={detail}/>
                     </div>
 
                     <div
