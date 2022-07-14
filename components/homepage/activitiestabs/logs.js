@@ -3,8 +3,10 @@ import styles from '../../../styles/model.module.css';
 import Link from "next/link";
 import Api from "../../api/api";
 import { useRouter } from "next/router";
-function Logs() {
+import LogDetailActivity from './LogDetailActivity'
+function Logs({setLogDetail,logDetail}) {
   const [LogsData, setLogsData] = useState([]);
+  const [clickDetail,setClickedDetail]=useState();
   const router = useRouter();
   const query = router.query.videoId
   useEffect(() => {
@@ -15,6 +17,7 @@ function Logs() {
       .then(res => {
         if(res && res.data && res.data.data && res.data.data.length>0)
         setLogsData(res.data.data)
+        
       })
       .catch(error => {
         console.log(error)
@@ -24,9 +27,15 @@ function Logs() {
     var dateNew = new Date(+date).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})
     return dateNew
   }
-  return (
 
-    <div className={styles.activities_logs}>
+  const handleClick=(data)=>{
+    setLogDetail(true)
+    setClickedDetail(data.uuid)
+  }
+ 
+  return (
+<>
+    {LogsData.length!==0 && logDetail==false && <div className={styles.activities_logs}>
 
 
       <p className={styles.activites_details}>Logs show every API action taken.Logs will be stored up to 30 days.</p>
@@ -42,7 +51,7 @@ function Logs() {
           </thead>
           <tbody>
             {LogsData.map((logs, key) =>
-              <tr key={key}>
+              <tr key={key} onClick={()=>handleClick(logs)}>
                 <td className={styles.status}>{logs.status}</td>
                 <td className={styles.description_content}><span>{logs.url}</span><br/><span>{logs.uuid}</span></td>
                 <td>{createdOn(logs.occurredOn)}</td>
@@ -50,9 +59,10 @@ function Logs() {
           </tbody>
         </table> : <p className={styles.data_not_found}>No data found</p>}
 
-    </div>
-
-
+    </div>}
+    {LogsData.length===0 && <div className={styles.noLogs}>No logs available</div>}
+ {logDetail && <LogDetailActivity clickDetail={clickDetail} logDetail={logDetail} setLogDetail={setLogDetail}/>}
+</>
 
 
 

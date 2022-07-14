@@ -8,7 +8,7 @@ const LogDetails = (props) => {
     const [parseReq, setParseReq] = useState();
     
     useEffect(() => {
-        Api.Get_Log_details(props.logUuid).then(res => {
+        Api.Get_Log_details(props.clickDetail).then(res => {
             if (res && res.data && res.data.data) {
                     {setLogDetail(res.data.data)}
                     
@@ -30,11 +30,10 @@ const LogDetails = (props) => {
         return dateNew
     }
     const handleComponent = () => {
-        props.set_close(true);
-        props.set_open(false)
+        props.setLogDetail(false)
     }
     return (
-        <div onClick={() => handleComponent()} className={styles.close}>
+        <div onClick={() => handleComponent()} className={styles.detailActivity}>
             <div className={styles.firstBox} >
                 <h2 className={styles.videoHeading}>POST https://api.videograph.com/video/v1/assets</h2>
                 <div className={styles.eventsDetail}>

@@ -1126,6 +1126,10 @@
     padding: 10px 10px;
 
 }
+.noLogs{
+    height: 31vh;
+    text-align: center;
+}
 
 .activites_details {
     font-family: Inter-Regular;
