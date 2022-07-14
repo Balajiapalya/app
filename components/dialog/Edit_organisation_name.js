@@ -5,6 +5,7 @@ import Api from '../api/api';
 export default function Edit_organization_name({ closeorganization, setEditData }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = organisation_data => {
+        if(!organisation_data.name.match(/^[\s]/)){
         Api.Edit_organisation_name_data(organisation_data)
             .then(res => {
                 localStorage.setItem('orgName', res.data.data.name)
@@ -16,7 +17,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
             })
 
         Api.Editted_data(organisation_data).then(res => setEditData(res.data.data))
-
+        }
     }
     let data = localStorage.getItem('orgName')
 

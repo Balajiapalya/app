@@ -15,6 +15,8 @@ export default function Signup() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [error, seterror] = useState([]);
   const onSubmit = login_details => {
+    let reg=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+if(login_details.email.match(reg)!=null){
     Api.Sign_up_data(login_details)
       .then(res => {
         if (res.data.status = "Success") {
@@ -26,6 +28,7 @@ export default function Signup() {
       .catch(error => {
         seterror(error.response.data.message)
       })
+}
   };
   return (
     <div className={styles.wrapper_signup}>
@@ -39,7 +42,7 @@ export default function Signup() {
             <h4 className={styles.label}>Email</h4>
             <input
               autoComplete='current-password'
-              type="email"
+             
               placeholder="Enter your email address"
               name="login"
               className={`${styles.signup_input} form_control`}
