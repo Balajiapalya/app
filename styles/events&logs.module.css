@@ -154,26 +154,7 @@
   margin-top: 5px;
   cursor: pointer;
 }
-/* event activity */
-.activityEvnt{
-    width: 100%;
-    border: 1px solid rgba(99, 115, 129, 0.15);
-    outline: none;
-    /* height: 300px; */
-    font-size: 13px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.54;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
-  resize: none;
-  padding: 10px;
-  border-radius: 2px;
-  margin-top: 5px;
-  cursor: pointer;
-}
+
 .videoHeading{
     margin:0;
     font-family: Inter-Medium;
@@ -244,4 +225,21 @@
   border-radius: 2px;
   margin-top: 5px;
   cursor: pointer;
+}
+
+/* eventdetailactivity */
+.detailActivity{
+    width: 100%;
+    float: left;
+    cursor: pointer;
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+.detailActivity {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.detailActivity::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }

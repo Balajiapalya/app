@@ -7,10 +7,12 @@ import Logs from "./activitiestabs/logs";
 function Activities_tabs() {
     const [toggleState, setToggleState] = useState(1);
     const [detail,setDetail]=useState(false)
+    const [logDetail,setLogDetail]=useState(false)
 
     const toggleTab = (index) => {
         setToggleState(index);
         setDetail(false)
+        setLogDetail(false)
     };
     return (
         <div className={styles.Activities_tabs}>
@@ -40,7 +42,7 @@ function Activities_tabs() {
                     <div
                         className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                     >
-                        <Logs/>
+                        <Logs logDetail={logDetail} setLogDetail={setLogDetail}/> 
                     </div>
                 </div>
             

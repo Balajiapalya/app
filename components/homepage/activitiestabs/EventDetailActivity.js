@@ -32,7 +32,7 @@ const EventDetailActivity = ({clickDetail,setDetail}) => {
     }
 
     return (
-        <div className={styles.evtDetailMain} onClick={()=>handleComponent()}>
+        <div className={styles.detailActivity} onClick={()=>handleComponent()}>
             <h2 className={styles.videoHeading}>video.asset.deleted</h2>
             <div className={styles.eventsDetail}>
                 <table>
@@ -63,7 +63,7 @@ const EventDetailActivity = ({clickDetail,setDetail}) => {
             {eventData && <div className={styles.textArea}>
                 <h2>Event Data</h2>
                  <textarea  defaultValue={eventData && `${JSON.stringify(eventData,undefined,2)}`}
-    className={styles.activityEvnt} readOnly/>
+    className={styles.codeEvent} readOnly/>
                 </div>}
         </div>
     )
