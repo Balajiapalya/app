@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.6",
     "axios": "^0.26.0",
     "chart.js": "^3.7.1",
     "hls.js": "^1.1.5-0.canary.8326",
@@ -27,7 +28,8 @@
     "react-spinners": "^0.11.0",
     "react-tag-input-component": "^1.0.7",
     "react-video-js-player": "^1.1.1",
-    "use-force-update": "^1.0.7"
+    "use-force-update": "^1.0.7",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "7.32.0",

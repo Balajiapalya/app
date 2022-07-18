@@ -3,7 +3,13 @@ import { useForm } from "react-hook-form";
 import Api from '../components/api/api';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import {yupResolver} from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema=yup.object().shape({
+  email:yup.string().email("Please enter valid email").required('This field is required')
+})
 
 export default function Signup() {
   let invite_code;
@@ -12,11 +18,13 @@ export default function Signup() {
   }
   const invitecode = invite_code;
   const router = useRouter();
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    resolver:yupResolver(schema)
+  });
   const [error, seterror] = useState([]);
   const onSubmit = login_details => {
-    let reg=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-if(login_details.email.match(reg)!=null){
+    // let reg=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+// if(login_details.email.match(reg)!=null){
     Api.Sign_up_data(login_details)
       .then(res => {
         if (res.data.status = "Success") {
@@ -28,8 +36,12 @@ if(login_details.email.match(reg)!=null){
       .catch(error => {
         seterror(error.response.data.message)
       })
-}
+// }
   };
+  useEffect(()=>{
+    const inp=document.querySelector('.form_control')
+    inp.focus()
+  },[])
   return (
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
@@ -42,13 +54,13 @@ if(login_details.email.match(reg)!=null){
             <h4 className={styles.label}>Email</h4>
             <input
               autoComplete='current-password'
-             
               placeholder="Enter your email address"
-              name="login"
+              name="email"
               className={`${styles.signup_input} form_control`}
-              {...register("email", { required: true })}
+              {...register("email")}
             />
-            {errors.email && <p className={'validations'}>This field is required</p>}
+            {/* {errors.email && <p className={'validations'}>This field is required</p>} */}
+            {<p className={'validations'}>{errors.email?.message}</p>}
             <span className='error'>{error}</span>
             <span className={styles.invitation_info}>We will send an invitation link to your email.</span>
             <button type='submit' className={`${styles.btn} btn btn-primary`}>Sign Up</button>
