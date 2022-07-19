@@ -15,15 +15,15 @@ export default function New_Access_token({ table, closetoken }) {
    const [resp, setRes] = useState([])
    const [select, setSelect] = useState(false)
    const [option, setOption] = useState()
-   const[uuid,setuuid] = useState()
+   const [uuid, setuuid] = useState()
    const [sys, setSys] = useState([])
-   const [defaultEnv,setDefaultEnv]=useState()
+   const [defaultEnv, setDefaultEnv] = useState()
 
    useEffect(() => {
-      Api.Get_env_data().then(res =><>
+      Api.Get_env_data().then(res => <>
          {setData(res.data.data)}
          {setDefaultEnv(res.data.data[0].name)}
-            </>)
+      </>)
       Api.Get_product_data().then(res => <>
          {setItems(res.data.data[1])}
          {setProductType(res.data.data[0])}
@@ -38,17 +38,20 @@ export default function New_Access_token({ table, closetoken }) {
       }
    }, [])
    const onSubmit = access_data => {
+      let secret = document.querySelector('.secretKey')
+      secret.classList.remove(`${styleDis.no_display}`)
+      secret.classList.add(`${styleDis.display}`)
       if (access_data.video) {
          access_data.canRead = true
          access_data.canWrite = true
       }
-      let vidElement=document.querySelector('.videoMain').checked
+      let vidElement = document.querySelector('.videoMain').checked
       const dataCheck = document.querySelector('.dataCheck').checked
       const read = document.querySelector('#read').checked;
       const write = document.querySelector('#write').checked
       const syst = document.querySelector('#sys').checked
       const sysRead = document.querySelector('#sysRead').checked;
-      const sysWrite=document.querySelector('#sysWrite').checked;
+      const sysWrite = document.querySelector('#sysWrite').checked;
 
       access_data.permissions = []
       let obj = new Object()
@@ -57,27 +60,27 @@ export default function New_Access_token({ table, closetoken }) {
          obj.canRead = read
          obj.canWrite = write;
          access_data.permissions.push(obj)
-      }else if(read){
-         obj.canRead =read;  
+      } else if (read) {
+         obj.canRead = read;
          access_data.permissions.push(obj)
       }
-      let objTwo=new Object()
-      if(dataCheck){
+      let objTwo = new Object()
+      if (dataCheck) {
          objTwo.productTypeId = parseInt(items.id)
-         objTwo.canRead =true;
+         objTwo.canRead = true;
          access_data.permissions.push(objTwo)
       }
-      let objThree=new Object()
-      if(syst){
+      let objThree = new Object()
+      if (syst) {
          objThree.productTypeId = parseInt(sys.id)
-         objThree.canRead =sysRead;
-         objThree.canWrite =sysWrite;
+         objThree.canRead = sysRead;
+         objThree.canWrite = sysWrite;
          access_data.permissions.push(objThree)
       }
 
       let sliced = Object.fromEntries(Object.entries(access_data).slice(5, 7))
       sliced.envUUID = uuid
-      if(sliced.envUUID!==undefined && sliced.name!==undefined){
+      if (sliced.envUUID !== undefined && sliced.name !== undefined) {
          Api.Create_aaccess_token_data(sliced).then(res =>
             setRes(res.data.data)
          )
@@ -85,9 +88,9 @@ export default function New_Access_token({ table, closetoken }) {
                console.log(error)
             })
 
-      setNewToken(true)
+         setNewToken(true)
       }
-         
+
    }
 
 
@@ -145,7 +148,7 @@ export default function New_Access_token({ table, closetoken }) {
          write.checked = false;
       }
    }
-   
+
    const handleWrite = () => {
       const write = document.querySelector('#write')
       const video = document.querySelector('.videoMain')
@@ -159,31 +162,31 @@ export default function New_Access_token({ table, closetoken }) {
          video.checked = false;
       }
    }
-   const handleRead=()=>{
+   const handleRead = () => {
       const video = document.querySelector('.videoMain')
       const read = document.querySelector('#read')
       const dataCheck = document.querySelector('.dataCheck')
-      if(read.checked){
-         read.checked=true;
-      }else{
-         read.checked=false;
-         dataCheck.checked=false;
+      if (read.checked) {
+         read.checked = true;
+      } else {
+         read.checked = false;
+         dataCheck.checked = false;
       }
-      
+
    }
-   const handleSys=()=>{
+   const handleSys = () => {
       const sys = document.querySelector('#sys')
       const sysRead = document.querySelector('#sysRead');
-      const sysWrite=document.querySelector('#sysWrite');
-      if(sys.checked){
-         sysRead.checked=true;
-         sysWrite.checked=true;
-      }else{
-         sysRead.checked=false;
-         sysWrite.checked=false;
+      const sysWrite = document.querySelector('#sysWrite');
+      if (sys.checked) {
+         sysRead.checked = true;
+         sysWrite.checked = true;
+      } else {
+         sysRead.checked = false;
+         sysWrite.checked = false;
       }
    }
-  
+
    return (
       <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
          <div className={styles.body}>
@@ -196,7 +199,7 @@ export default function New_Access_token({ table, closetoken }) {
                   <label className={styles.model_label}>Environment</label>
                   <div ref={selectDropdown} className={styles.select}>
                      <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                        {option ? option :defaultEnv}
+                        {option ? option : defaultEnv}
                         <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                      </div>
                      <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
@@ -206,11 +209,11 @@ export default function New_Access_token({ table, closetoken }) {
                            <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                            <div className={styles.allOptions}>
                               {data.map(option =>
-                              <>
-                              
-                                 <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div></>
+                                 <>
+
+                                    <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div></>
                               )}
-                             
+
                            </div>
                         </div>
                      }
@@ -232,12 +235,12 @@ export default function New_Access_token({ table, closetoken }) {
                         onChange={() => handleCheckBox()}
                      />
                      <label htmlFor={productType.id}> {productType.name}</label><br />
-                     <input type="checkbox" id="read" className={styles.read} name="canRead" {...register("canRead")} onChange={() => handleRead()}/>
+                     <input type="checkbox" id="read" className={styles.read} name="canRead" {...register("canRead")} onChange={() => handleRead()} />
                      <label htmlFor="read"> Read</label><br />
                      <input type="checkbox" id="write" className={styles.write} name="canWrite" {...register("canWrite")} onChange={() => handleWrite()} />
                      <label htmlFor="write" >Write</label><br />
 
-                     <input type="checkbox" className={`${styles.data} dataCheck`} name="data" id={items.id} {...register("data", { required: false })}/>
+                     <input type="checkbox" className={`${styles.data} dataCheck`} name="data" id={items.id} {...register("data", { required: false })} />
                      <label htmlFor={items.id}>{items.name}(read-only)</label><br />
                      <input
                         type="checkbox"
@@ -245,12 +248,12 @@ export default function New_Access_token({ table, closetoken }) {
                         id='sys'
                         className={styles.data}
                         {...register("system")}
-                        onChange={()=>handleSys()}
+                        onChange={() => handleSys()}
                      />
-                     <label htmlFor='sys'>{sys.name}</label><br/>
+                     <label htmlFor='sys'>{sys.name}</label><br />
                      <input id='sysRead' className={styles.read} type="checkbox" />
                      <label> Read</label><br />
-                     <input id='sysWrite' className={styles.write} type="checkbox"/>
+                     <input id='sysWrite' className={styles.write} type="checkbox" />
                      <label>Write</label><br />
                   </div>
                   <label className={styles.model_label}>Access token name</label>
@@ -259,12 +262,15 @@ export default function New_Access_token({ table, closetoken }) {
                   <div className={styles.model_btn_token}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
                      <button type="submit" className={`${styles.save_btn} btn btn-primary`}>create Token</button>
-                     {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} close={handleClose} res={resp} />}
+                     {/* {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} close={handleClose} res={resp} />} */}
+
                   </div>
                </form>
             </div>
          </div>
-
+         <div className={`${styleDis.no_display} secretKey`}>
+            <SecretKey setNewToken={setNewToken} closetoken={closetoken} close={handleClose} res={resp} />
+         </div>
       </div>
 
    )
