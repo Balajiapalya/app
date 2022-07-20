@@ -3,8 +3,11 @@ import styles from '../../../styles/model.module.css';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Api from "../../api/api";
-function Events() {
+import EventDetailActivity from './EventDetailActivity'
+function Events({setDetail,detail}) {
   const [activitiesData, setactivitiesData] = useState([]);
+  const [clickDetail,setClickedDetail]=useState();
+  
   const router = useRouter();
   const query = router.query.videoId
   useEffect(() => {
@@ -25,9 +28,13 @@ function Events() {
     var dateNew = new Date(+date).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})
     return dateNew
   }
+  const handleClick=(data)=>{
+    setDetail(true)
+    setClickedDetail(data.uuid)
+  }
   return (
-
-    <div className={styles.activities_events}>
+    <>
+    {detail===false && <div className={styles.activities_events}>
       <p className={styles.activites_details}>Events let you know when something ha happened in your system.<br></br>Events will be stored up to 30 days.</p>
       {activitiesData !== "" ?<table className={styles.activities_events_logs_table}>
         <thead>
@@ -39,7 +46,7 @@ function Events() {
         </thead>
         <tbody>
           {activitiesData.map((data, key) =>
-            <tr key={key}>
+            <tr key={key} onClick={()=>handleClick(data)}>
               <td>{data.messageType}</td>
               <td className={styles.Id}>{data.uuid}</td>
               <td>{createdOn(data.occurredOn)}</td>
@@ -47,7 +54,9 @@ function Events() {
           )}
         </tbody>
       </table>:<p className={styles.data_not_found}>No data found</p>}
-    </div>
+    </div>}
+    {detail && <EventDetailActivity clickDetail={clickDetail} setDetail={setDetail}/>}
+    </>
   )
 }
 export default Events;

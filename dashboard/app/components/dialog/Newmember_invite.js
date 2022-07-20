@@ -10,19 +10,30 @@ export default function Newmember_invite({ closeModel }) {
   const [selected, setSelected] = useState();
   const [productSelect, setProductSelect] = useState(false)
   const [idSubmit, setIdSubmit] = useState()
+  const [roleError,setRoleError]=useState(false)
+  const [responseError,setResponseError]=useState('')
 
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = admin_invite_code => {
     admin_invite_code.roleId=idSubmit;
+    if(admin_invite_code.roleId==undefined){
+      setRoleError(true)
+    }
+    if(admin_invite_code.roleId!==undefined){
     Api.Newmember_invite_data(admin_invite_code)
       .then(res => {
         closeModel(false)
 
       })
       .catch(error => {
-        console.log(error)
+        setResponseError(error.response.data.message)
+        setTimeout(() => {
+          setResponseError('')
+        }, 1000*3);
+       
       })
+    }
   }
   useEffect(() => {
     Api.Get_roles_data()
@@ -33,6 +44,7 @@ export default function Newmember_invite({ closeModel }) {
 
   // dropdown
   const searchHandle = (e) => {
+    const count=0
     let options = document.querySelectorAll('#opt')
     for (let i = 0; i < options.length; i++) {
         let name = options[i].innerHTML.toLowerCase()
@@ -41,9 +53,20 @@ export default function Newmember_invite({ closeModel }) {
             options[i].style.display = 'block'
         } else {
             options[i].style.display = 'none'
-
+            count++
+                
         }
+        
     }
+    console.log(options.length,count)
+    let div=document.querySelector('.noReslt');
+    if(options.length==count){
+      
+      div.style.display='block'
+    }else{
+      div.style.display='none'
+    }
+    
 }
 
 let dropdownprod = useRef()
@@ -84,7 +107,7 @@ const handleSelected=(prod)=>{
                 name="email"
                 {...register("email", { required: true })}
               />
-              {errors.email && <p className={`${styles.validations} validations`}>This field is required</p>}
+              {errors.email && <p className={`validations`}>This field is required</p>}
 
               <div>
                 <label className={styles.model_label}>Role</label>
@@ -101,22 +124,25 @@ const handleSelected=(prod)=>{
                 </select> */}
 
                 <div ref={dropdownprod} className={styles.select}>
-                  <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
+                  <div className={styles.model_selection} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`}>
                     {selected ? selected : 'Owner'}
-
                   </div>
-                  <img className={styles.dropdownOneInvite} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
+                  <img className={styles.dropdownOneInvite} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                   {
                     productSelect && <div className={styles.inviteOptions}>
                       <input className={styles.searchSelectInvite} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                       <div className={styles.allOptionsInvite}>
                         {data.map(product =>
                           <div key={product.id} value={product.id} id="opt" onClick={() => handleSelected(product)}>{product.name}</div>)}
+                          <div style={{display:'none'}} className='noReslt'>No result found</div>
                       </div>
                     </div>
                   }
+                  {roleError && <p className={`validations`}>Please select the role</p>}
+                  {responseError && <p className={`validations`}>{`${responseError}`}</p>}
                 </div>
-              </div>
+                
+              </div>     
             </div>
             <div className={styles.model_btn}>
               <button type="submit" className={`${styles.model_save_btn} btn btn-primary`} >Send Invitation</button>

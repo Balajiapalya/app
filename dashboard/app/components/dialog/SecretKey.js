@@ -1,4 +1,5 @@
 import styles from '../../styles/model.module.css'
+import styleDis from '../../styles/apiaccess.module.css'
 import { useEffect, useState, useRef } from 'react'
 import Api from '../api/api'
 import Image from 'next/image'
@@ -33,11 +34,18 @@ const SecretKey = ({ setNewToken, closetoken,close, res }) => {
         closetoken(false);
         close()
     }
+    const handlePrevious=()=>{
+        setNewToken(false)
+        closetoken(false)
+        let key=document.querySelector('.secretKey')
+        key.classList.remove(`${styleDis.display}`)
+        key.classList.add(`${styleDis.no_display}`)
+    }
     return (
 
-        <div className={styles.body}>
+        <div className={`${styles.body} secretKey`}>
             <div className={styles.model_nav}>
-                <a className={styles.model_close} role="button" onClick={() => `${setNewToken(false)} ${ closetoken(false)}`}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
+                <a className={styles.model_close} role="button" onClick={() => handlePrevious()}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20'/> </a>
             </div>
             <div className={`${styles.editpaymentdetials} ${styles.secret}`}>
                 <h2>Below is the new Access Token:</h2>

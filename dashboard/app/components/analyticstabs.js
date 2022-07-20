@@ -3,7 +3,7 @@ import styles from '../styles/tabs.module.css';
 import Metrics from "./analytics_tabs/metrics";
 import Overview from "./analytics_tabs/overview";
 
-function Analytics_tabs() {
+function Analytics_tabs({id}) {
     const [toggleState, setToggleState] = useState(1);
 
     const toggleTab = (index) => {
@@ -39,7 +39,7 @@ function Analytics_tabs() {
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    {toggleState==2 ? <Metrics/>:null}
+                    {toggleState==2 ? <Metrics id={id}/>:null}
                     
                 </div>
             </div>

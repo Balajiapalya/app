@@ -7,6 +7,7 @@ import { useState, useRef } from 'react'
 import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
 import VideoList from '../../components/video_list'
+import ReactPaginate from 'react-paginate';
 
 export default function Videos() {
     const [videoData, setVideoData] = useState([]);
@@ -14,12 +15,12 @@ export default function Videos() {
     // const [env, setenv] = useState([]);
     const [envSelect, setEnvSelect] = useState([]);
     const [id, setId] = useState();
-    const [dirdata, set_directdata] = useState([]);
+    // const [dirdata, set_directdata] = useState([]);
     const [order, setorder] = useState("ASC");
     const [ordernum, set_ordernum] = useState("ASC")
     const [vidDropdown, setVidDropdown] = useState()
     const [selected, setSelected] = useState(false)
-    const [defaultenv, setDefaultenv] = useState();
+    // const [defaultenv, setDefaultenv] = useState();
     const [org, setOrg] = useState([])
     // const [openEnv, setOpenEnv] = useState(false);
     const [clicked, setClicked] = useState();
@@ -27,6 +28,12 @@ export default function Videos() {
     const [multiSelect, setMultiSelect] = useState([])
     const [timer, setTimer] = useState(false);
     const [reload, setReload] = useState(false);
+    const [initialLength, setInitialLength] = useState();
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const [currentItems, setCurrentItems] = useState([]);
+    let itemsPerPage = 5
+
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -62,21 +69,47 @@ export default function Videos() {
     }
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
+        const endOffset = itemOffset + itemsPerPage;
         Api.Video_list(data)
-            .then(res => <>
+            .then(res => {
+                setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+                setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+                {
+                    res.data.data.map(item => {
 
-                {res.data.data.map(item => {
-                    if (item.status == 'Processing') {
-                        setTimeout(() => {
-                            setTimer(true)
-                        }, 1000 * 60)
-                    }
-                })}
 
-                {setVideoData(res.data.data)}</>)
-                {reload && setTimeout(()=>{
+                        if (item.status == 'Processing') {
+                            setTimeout(() => {
+                                setTimer(true)
+                            }, 1000 * 60)
+                        }
+                    })
+                }
+                setInitialLength(res.data.data.length)
+
+                let timerFun = () => {
                     setReload(false)
-                },1000*180)}
+                    let count = 0
+                    let intervalFunc = setInterval(() => {
+                        Api.Video_list(data).then(res => {
+                            let resp = res.data.data.length + count
+                            if (initialLength < resp) {
+                                setTimer(!timer)
+                                clearInterval(intervalFunc)
+                            }
+                            if (resp < initialLength) {
+                                count = initialLength - resp
+                            }
+                        })
+                    }, 1000 * 20);
+                }
+
+                { reload && timerFun() }
+
+
+                { setVideoData(res.data.data) }
+            })
+
         // Api.Env_data()
         //     .then(res => {
         //         setenv(res.data.data)
@@ -104,10 +137,9 @@ export default function Videos() {
             setEnvSelect([])
             setOrg([])
         }
-    }, [id, add_asset, timer, reload])
+    }, [id, add_asset, timer, reload, itemOffset])
 
     const handleChange = (i) => {
-        console.log(i)
         setId(i.uuid)
         localStorage.setItem("envuuid", i.uuid);
         localStorage.setItem("uuid", clicked);
@@ -193,18 +225,7 @@ export default function Videos() {
         popup.classList.remove(`${styles.no_display}`)
     }
 
-    // const handleEnv = (i) => {
 
-    //     setClicked(i.uuid);
-
-    //     if(clicked!==i.uuid){
-    //         setOpenEnv(true);
-    //     }else{
-    //         setOpenEnv(!openEnv);
-    //     }
-
-    //     setOrgName(i.name);
-    // }
     const handleEnv = (i) => {
         setClicked(i.uuid);
         if (!multiSelect.some(item => item.uuid == i.uuid)) {
@@ -247,135 +268,129 @@ export default function Videos() {
             }
         }
     }
+    const handlePageClick = (event) => {
+        if (videoData.length !== 0) {
+            const newOffset = (event.selected * itemsPerPage) % videoData.length;
+            setItemOffset(newOffset);
+        }
+
+    };
     return (
-
-        <div className={styles.container}>
-            <div className={styles.background_develepment}>
-                <div className={styles.header_development}>
-                    <div className="container">
-
-
-                        {/* <p>{orName}
-                                <select className={styles.select} id="opt" onChange={(e) => handleChange(e)}>
-                                    {envSelect.map(i => <>
-                                        <option selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid}>{i.name}</option>
-                                    </>)}
-                                </select>
-                                        </p> */}
-                        {/* <div className={styles.dropdown_vid} onClick={() => setVideoDrop(!videoDrop)}>
-                                    {selected ? selected : 'Product'}
+        <>
+            <div className={styles.container}>
+                <div className={styles.background_develepment}>
+                    <div className={styles.header_development}>
+                        <div className="container">
+                            <div className={styles.content} ref={dropdownprod}>
+                                <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
+                                    <div className={styles.names}>
+                                        <div className={styles.org_name}>{orName}</div>
+                                        <div className={styles.displayName}>
+                                            {envSelect.map(i => {
+                                                if (i.uuid === localStorage.getItem('envuuid')) {
+                                                    return selected ? selected : i.name
+                                                }
+                                            })}
+                                        </div>
+                                    </div>
+                                    <img className={styles.clickable} src="images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
+                                    <img className={styles.store} src='/images/iconawesome-folder.svg' />
                                 </div>
-                                
-                                <img className={styles.storefolder} src='/images/iconawesome-folder.svg' />
-                                <img className={styles.drpdwn} src="images/updown.svg" alt='icon' onClick={() => setVideoDrop(!videoDrop)}></img>
-                                {videoDrop &&
-                                    <div className={styles.videoOptions}>
-                                        <input className={styles.searchSelect} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
-                                        <div className={styles.all_options}>
-                                            {envSelect.map(i =>
-                                                <div selected={localStorage.getItem('envuuid') == i.uuid} value={i.uuid} id="opt" onClick={() => handleSelected(i)}>{i.name}</div>
+                                {vidDropdown &&
+                                    <div className={styles.all}>
+                                        <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
+                                        <div>
+                                            {org.map((i, ind) =>
+                                                <>
+                                                    <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                                        {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/Iconawesome-chevron-down.svg' className={styles.openDropdown}></img>}
+                                                        {i.name}
+                                                    </div>
+                                                    {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                                        {i.name}
+                                                    </div>
+                                                    )}
+                                                </>
                                             )}
                                         </div>
-                                    </div>}
-                             */}
-                        <div className={styles.content} ref={dropdownprod}>
-                            <div className={styles.options} onClick={() => setVidDropdown(!vidDropdown)}>
-                                <div className={styles.names}>
-                                    <div className={styles.org_name}>{orName}</div>
-                                    <div className={styles.displayName}>
-                                        {envSelect.map(i => {
-                                            if (i.uuid === localStorage.getItem('envuuid')) {
-                                                return selected ? selected : i.name
-                                            }
-                                        })}
                                     </div>
-                                </div>
-
-                                <img className={styles.clickable} src="images/updown.svg" alt='icon' onClick={() => setVidDropdown(!vidDropdown)} />
-                                <img className={styles.store} src='/images/iconawesome-folder.svg' />
+                                }
                             </div>
-
-                            {vidDropdown &&
-                                <div className={styles.all}>
-                                    <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
-                                    <div>
-                                        {org.map((i, ind) =>
-                                            <>
-                                                <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
-                                                    {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/Iconawesome-chevron-down.svg' className={styles.openDropdown}></img>}
-                                                    {i.name}
-                                                </div>
-                                                {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
-                                                    {i.name}
-                                                </div>
-                                                )}
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
-                            }
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="container">
-                <div className={styles.settings}>
-                    <div className={styles.videos}>
+                <div className="container">
+                    <div className={styles.settings}>
+                        <div className={styles.videos}>
 
-                        <div className={styles.videos_delivery}>
-                            <div className={styles.header}>
-                                <h2>
-                                    Videos
-                                </h2>
-                            </div>
-                            <div className={styles.videos_deliverydata}>
-                                <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
-                                    You can Upload a video using API or directly from here to share it with your users</p>
-                                <a >
-                                    <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
+                            <div className={styles.videos_delivery}>
+                                <div className={styles.header}>
+                                    <h2>
+                                        Videos
+                                    </h2>
+                                </div>
+                                <div className={styles.videos_deliverydata}>
+                                    <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
+                                        You can Upload a video using API or directly from here to share it with your users</p>
+                                    <a >
+                                        <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
 
-                                </a>
+                                    </a>
+                                </div>
+                                <span />
                             </div>
-                            <span />
-                        </div>
-                        <div className={styles.search}>
-                            <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
-                            <img src='/images/search_icon.svg' alt='icon'></img>
-                        </div>
-                        <div className={`${styles.videos_table} table`}>
-                            <table className="table_input">
-                                <thead>
-                                    <tr>
-                                        <th><input type="checkbox" id="check" onClick={() => handleCheck()}></input></th>
-                                        <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
-                                        {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.svg' /> </th> */}
-                                        <th>Content ID</th>
-                                        <th>Image Preview</th>
-                                        <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.svg' /></th>
-                                        <th>Resolution</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="tbody">
-                                    {videoData.map((i, key) =>
-                                        <tr key={key}>
-                                            <VideoList create_On={create_On} i={i} created_time={created_time} />
+                            <div className={styles.search}>
+                                <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
+                                <img src='/images/search_icon.svg' alt='icon'></img>
+                            </div>
+                            <div className={`${styles.videos_table} table`}>
+                                <table className="table_input">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" id="check" onClick={() => handleCheck()}></input></th>
+                                            <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
+                                            {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.svg' /> </th> */}
+                                            <th>Content ID</th>
+                                            <th>Image Preview</th>
+                                            <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.svg' /></th>
+                                            <th>Resolution</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
                                         </tr>
-                                    )}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody className="tbody">
+                                        {currentItems.map((i, key) =>
+                                            <tr key={key}>
+                                                <VideoList create_On={create_On} i={i} created_time={created_time} />
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
 
-                        </div>
-                        {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
-                        <div className={`${styles.no_display} popup`}>
-                            <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} />
+                            </div>
+                            {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
+                            <div className={`${styles.no_display} popup`}>
+                                <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                pageCount={pageCount}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                className={styles.pagination}
+                pageLinkClassName={styles.page_num}
+                previousLinkClassName={styles.page_num}
+                nextLinkClassName={styles.page_num}
+                activeLinkClassName="active"
+            />
+        </>
     )
 }
 
@@ -390,3 +405,5 @@ Videos.getLayout = function getLayout(page) {
         </Layout>
     )
 }
+
+
