@@ -5,23 +5,19 @@ import Api from '../../components/api/api';
 import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 import CreateSignKey from '../../components/dialog/CreateSignKey'
+import EvnDropDown from '../../components/utils/EnvDropDown'
 
 export default function Create_signing_key({ closesigninkeys, table }) {
-    const [data, setData] = useState([])
     const [prod, setProd] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [option, setOption] = useState();
     const [uuid,setuuid] = useState();
-    const [select, setSelect] = useState(false)
     const [productSelect, setProductSelect] = useState(false)
     const [selected,setSelected]=useState()
     const [idSubmit,setIdSubmit]=useState()
+    const [roleError,setRoleError]=useState(false)
 
     useEffect(() => {
-        Api.Get_env_data()
-            .then(res =><>
-                {setData(res.data.data)}
-                {setOption(res.data.data[0].name)}</>)
+    
         Api.Get_product_data()
             .then(res =>{<>
                 {setSelected(res.data.data[0].name)}
@@ -47,14 +43,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
       table.classList.remove(`${styleDis.no_display}`);
     }
 
-    const handleSelect = () => {
-        setSelect(!select)
-    }
-    const handleOption = (option) => {
-        setOption(option.name)
-        setuuid(option.uuid)
-        setSelect(false)
-    }
+    
     const searchHandle = (e) => {
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
@@ -69,14 +58,9 @@ export default function Create_signing_key({ closesigninkeys, table }) {
         }
     }
 
-    let selectDropdown = useRef()
     let dropdownprod = useRef()
     useEffect(() => {
         const handleDropdown = (e) => {
-            if (!selectDropdown.current.contains(e.target)) {
-                setSelect(false)
-               
-            }
             if(!dropdownprod.current.contains(e.target)){
                  setProductSelect(false)
             }
@@ -101,24 +85,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>New Signing Key</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <label className={styles.model_label}>Environment</label>
-                        <div ref={selectDropdown} className={styles.select}>
-                            <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option}
-                                <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
-                            </div>
-                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.svg" alt='icon'></img>
-                            {select &&
-                                <div className={styles.dropdown}>
-                                    <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
-                                    <div className={styles.allOptions}>
-                                        {data.map(option =>
-                                            <div key={option.id} value={option.id} id="opt" onClick={()=>handleOption(option)}>{option.name}</div>
-                                        )}
-                                    </div>
-                                </div>
-                            }
-                        </div>
+                         <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
                         <div>
                             <label className={styles.model_label}>Product</label>
                             <div ref={dropdownprod} className={styles.select}>

@@ -62,6 +62,12 @@ function Organisation() {
             })
     }, [openModel,openremove])
 
+    const handleResend=(item)=>{
+        let obj=new Object()
+        obj.email=item.email
+        Api.ResendInvite(obj).then(res=>console.log(res))
+        .catch(err=>console.log(err))
+    }
     return (
         <Fragment>
             <div className={styles.general}>
@@ -98,11 +104,11 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td>
-                                    {item.roleId==1 ? 'Owner':<Select item={item} data={data} />}
+                                    {item.roleId==1 ? 'Owner':item.roleId==3?'Member':<Select item={item} data={data} />}
                                 </td>
                                 
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
-                                    <a href="#">Resend</a></td>}
+                                    <a onClick={()=>handleResend(item)}>Resend</a></td>}
 
                                 {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="/images/iconmaterial-delete.svg" alt="icon"></img></a></td> : <td></td>}
                             </tr>
