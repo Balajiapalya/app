@@ -33,6 +33,9 @@ const SecretKey = ({ setNewToken, closetoken,close, res }) => {
         setNewToken(false);
         closetoken(false);
         close()
+        let key=document.querySelector('.secretKey')
+        key.classList.remove(`${styleDis.display}`)
+        key.classList.add(`${styleDis.no_display}`)
     }
     const handlePrevious=()=>{
         setNewToken(false)

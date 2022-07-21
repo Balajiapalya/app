@@ -4,22 +4,25 @@ import Api from '../api/api';
 
 export default function Edit_organization_name({ closeorganization, setEditData }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    let data = localStorage.getItem('orgName')
     const onSubmit = organisation_data => {
-        if(!organisation_data.name.match(/^[\s]/)){
-        Api.Edit_organisation_name_data(organisation_data)
+        let trimmed=organisation_data.name.trim()
+        let obj=new Object()
+        obj.name=trimmed
+        if(obj.name!==''){
+        Api.Edit_organisation_name_data(obj)
             .then(res => {
                 localStorage.setItem('orgName', res.data.data.name)
                 // window.location.reload()
+                setEditData(res.data.data)
                 closeorganization(false)
             })
             .catch(error => {
                 console.log(error)
             })
-
-        Api.Editted_data(organisation_data).then(res => setEditData(res.data.data))
         }
     }
-    let data = localStorage.getItem('orgName')
+    
 
     return (
         <div className={styles.model}>

@@ -22,11 +22,14 @@ export const Create_user_account = () => {
 };
 //organization
 export const Edit_organisation_name = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations?time=${CurrentDate}`;
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}?time=${CurrentDate}`;
 };
 export const Newmember_invite = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/invite?time=${CurrentDate}`;
 };
+export const resend_invite=()=>{
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/resend`
+}
 export const get_roles = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/roles?time=${CurrentDate}`
 }
@@ -36,9 +39,7 @@ export const Remove_user = () => {
 export const get_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 };
-export const editted_data = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}&?time=${CurrentDate}`
-};
+
 //Billing
 export const list_billing_plans = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/plans?time=${CurrentDate}`
@@ -347,7 +348,7 @@ const Api = {
         }),// this is called where ever environments are there
     Edit_organisation_name_data: (organization_data) =>
         loginHandledAxios({
-            method: 'POST',
+            method: 'PUT',
             url: Edit_organisation_name(),
             data: organization_data,
             headers: headers,
@@ -359,13 +360,13 @@ const Api = {
             data: admin_invite_code,
             headers: headers,
         }),
-    Editted_data: (data) =>
-        loginHandledAxios({
-            method: 'PUT',
-            url: editted_data(),
-            data: data,
-            headers: headers,
-        }),
+    ResendInvite:(email)=>
+    loginHandledAxios({
+        method: 'POST',
+        url: resend_invite(),
+        data: email,
+        headers: headers,
+    }),
     //access token
     Get_access_token: () =>
         loginHandledAxios({

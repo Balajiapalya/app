@@ -58,7 +58,6 @@ export default function Newmember_invite({ closeModel }) {
         }
         
     }
-    console.log(options.length,count)
     let div=document.querySelector('.noReslt');
     if(options.length==count){
       
@@ -72,7 +71,6 @@ export default function Newmember_invite({ closeModel }) {
 let dropdownprod = useRef()
 useEffect(() => {
     const handleDropdown = (e) => {
-       
         if(!dropdownprod.current.contains(e.target)){
              setProductSelect(false)
         }
@@ -111,18 +109,6 @@ const handleSelected=(prod)=>{
 
               <div>
                 <label className={styles.model_label}>Role</label>
-
-                {/* <select
-                  className={styles.model_selection} name="roleId"
-                  {...register("roleId", {
-                    required: true, valueAsNumber: true,
-                  })}>
-                  {data.map((item, key) =>
-                    <>
-                      <option key={key} value={parseInt(item.id)}>{item.name}</option>
-                    </>)}
-                </select> */}
-
                 <div ref={dropdownprod} className={styles.select}>
                   <div className={styles.model_selection} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`}>
                     {selected ? selected : 'Owner'}
