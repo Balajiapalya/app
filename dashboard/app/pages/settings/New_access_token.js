@@ -5,25 +5,20 @@ import Api from '../../components/api/api';
 import { useEffect, useState, useRef } from 'react'
 import SecretKey from '../../components/dialog/SecretKey'
 import Image from 'next/image'
+import EvnDropDown from '../../components/utils/EnvDropDown'
 
 export default function New_Access_token({ table, closetoken }) {
-   const [data, setData] = useState([])
    const { register, handleSubmit, watch, formState: { errors } } = useForm();
    const [productType, setProductType] = useState([])
    const [items, setItems] = useState([])
    const [newToken, setNewToken] = useState(false)
    const [resp, setRes] = useState([])
-   const [select, setSelect] = useState(false)
-   const [option, setOption] = useState()
-   const [uuid, setuuid] = useState()
+   const [uuid, setuuid] = useState('')
    const [sys, setSys] = useState([])
-   const [defaultEnv, setDefaultEnv] = useState()
+   const [roleError,setRoleError]=useState(false)
+   
 
    useEffect(() => {
-      Api.Get_env_data().then(res => <>
-         {setData(res.data.data)}
-         {setDefaultEnv(res.data.data[0].name)}
-      </>)
       Api.Get_product_data().then(res => <>
          {setItems(res.data.data[1])}
          {setProductType(res.data.data[0])}
@@ -31,16 +26,17 @@ export default function New_Access_token({ table, closetoken }) {
       </>)
 
       return () => {
-         setData([])
+         // setData([])
          setItems([])
          setProductType([])
          setSys([])
       }
    }, [])
    const onSubmit = access_data => {
-      let secret = document.querySelector('.secretKey')
-      secret.classList.remove(`${styleDis.no_display}`)
-      secret.classList.add(`${styleDis.display}`)
+      if(uuid===''){
+         setRoleError(true)
+       }
+      
       if (access_data.video) {
          access_data.canRead = true
          access_data.canWrite = true
@@ -80,10 +76,13 @@ export default function New_Access_token({ table, closetoken }) {
 
       let sliced = Object.fromEntries(Object.entries(access_data).slice(5, 7))
       sliced.envUUID = uuid
-      if (sliced.envUUID !== undefined && sliced.name !== undefined) {
-         Api.Create_aaccess_token_data(sliced).then(res =>
-            setRes(res.data.data)
-         )
+      if (sliced.name !== undefined && uuid!=='') {
+         let secret = document.querySelector('.secretKey')
+         Api.Create_aaccess_token_data(sliced).then(res =><>
+            {setRes(res.data.data)}
+      {secret.classList.remove(`${styleDis.no_display}`)}
+      {secret.classList.add(`${styleDis.display}`)}
+      </>)
             .catch(error => {
                console.log(error)
             })
@@ -100,41 +99,7 @@ export default function New_Access_token({ table, closetoken }) {
       table.classList.remove(`${styleDis.no_display}`);
    }
 
-   const handleSelect = () => {
-      setSelect(!select)
-   }
-   const handleOption = (option) => {
-      // console.log(option.uuid)
-      setOption(option.name)
-      setuuid(option.uuid)
-      setSelect(false)
-   }
-   const searchHandle = (e) => {
-      let options = document.querySelectorAll('#opt')
-      for (let i = 0; i < options.length; i++) {
-         let name = options[i].innerHTML.toLowerCase()
-         let searchValue = e.target.value.toLowerCase()
-         if (name.indexOf(searchValue) > -1) {
-            options[i].style.display = 'block'
-         } else {
-            options[i].style.display = 'none'
-
-         }
-      }
-   }
-
-   let selectDropdown = useRef()
-   useEffect(() => {
-      const handleDropdown = (e) => {
-         if (!selectDropdown.current.contains(e.target)) {
-            setSelect(false)
-         }
-      }
-      document.addEventListener('mouseup', handleDropdown)
-      return () => {
-         document.removeEventListener('mouseup', handleDropdown)
-      }
-   }, [])
+   
 
    const handleCheckBox = () => {
       const video = document.querySelector('.videoMain')
@@ -196,36 +161,13 @@ export default function New_Access_token({ table, closetoken }) {
             <div className={styles.main}>
                <h3 className={styles.model_title}>New Access Token</h3>
                <form onSubmit={handleSubmit(onSubmit)}>
-                  <label className={styles.model_label}>Environment</label>
-                  <div ref={selectDropdown} className={styles.select}>
-                     <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                        {option ? option : defaultEnv}
-                        <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
-                     </div>
-                     <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
-
-                     {select &&
-                        <div className={styles.dropdown}>
-                           <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
-                           <div className={styles.allOptions}>
-                              {data.map(option =>
-                                 <>
-
-                                    <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div></>
-                              )}
-
-                           </div>
-                        </div>
-                     }
-                  </div>
-
+                  <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
+                  {roleError && <p className={`validations`}>Please select the role</p>}
                   <div className={styles.access_token}>
                      <h4 className={styles.access_token_permission}>Permission</h4>
                      <p className={styles.access_token_link}>To know more permission please visit our <a href="#" className={styles.access_token_data}>token access guide</a></p>
                   </div>
                   <div className={styles.access_token_checkbox}>
-
-
                      <input
                         type="checkbox"
                         name="permissions"
@@ -258,7 +200,7 @@ export default function New_Access_token({ table, closetoken }) {
                   </div>
                   <label className={styles.model_label}>Access token name</label>
                   <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
-                  {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
+                  {errors.name && <p className='validations'>This field is required</p>}
                   <div className={styles.model_btn_token}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
                      <button type="submit" className={`${styles.save_btn} btn btn-primary`}>create Token</button>

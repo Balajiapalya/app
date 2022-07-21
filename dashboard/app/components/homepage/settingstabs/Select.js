@@ -45,21 +45,13 @@ const Select = ({ item, data }) => {
         setIsActive(false)
     }
     return (
-        // <div>
-        //     <select onChange={(e) => handleChange(e)}>
-        //         {data.map(i => <>
-        //             <option selected={opt == i.id} value={i.id}>{i.name}</option>
-        //         </>)}
-        //     </select>
-        // </div>
-
         <div ref={node} className={styles.dropdown}>
             <div className={styles.dropdownBtn} onClick={() => setIsActive(!isActive)}>
                 {opt == 2 ? 'Admin' : opt == 3 ? 'Member' : ''}
                 <img src="/images/iconawesome-chevrondown.png" />
             </div>
             {isActive && <div className={styles.dropdownContent}>
-                {data.slice(1).map((i, ind) =>
+                {data.map((i, ind) =>
                     <div key={ind} onClick={() => handleChange(i, ind)} className={styles.dropdownItem}>{i.name}{i.id === opt && <img src="images/check.svg" />}</div>
                 )}
             </div>}

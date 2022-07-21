@@ -83,19 +83,6 @@ export default function Create_new_webhook({ closewebhook,table }) {
                     <h3 className={styles.model_title}>New Webhook</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className={styles.model_label}>Environment</label>
-                        {/* <div className={styles.select}>
-                            <select name="environmentId"
-                                className={`${styles.development} ${styles.model_selection}`}
-                                {...register("environmentId", { required: true })}>
-                                {data.map(option =>
-                                    <>
-                                        <option key={option.id} value={option.id}>{option.name}</option>
-                                    </>)}
-                            </select>
-                            {errors.Environment && <p className={`${styles.validations} validations`}>This field is required</p>}
-                            <img className={styles.file} src="/images/iconawesome-folder.svg" alt='icon'></img>
-                            <button type="text" className={styles.up}><img src="/images/updown.svg" alt='icon'></img></button>
-                        </div> */}
 
                         <div ref={selectDropdown} className={styles.select}>
                             <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
@@ -125,7 +112,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
                             placeholder="Enter url"
                             {...register("url", { required: true })}></input>
 
-                        {errors.URL && <p className={`${styles.validations} validations`}>This field is required</p>}
+                        {errors.url && <p className={`${styles.validations} validations`}>This field is required</p>}
                         <p className={styles.access_token_link}>All events will be sent to this URL.To learn more about the types of events see our <a href="" className={styles.access_token_data}>docs</a></p>
                         <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopup()}>Cancel</button>
