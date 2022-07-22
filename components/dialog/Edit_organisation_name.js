@@ -1,18 +1,21 @@
 import styles from '../../styles/model.module.css';
 import { useForm } from 'react-hook-form';
 import Api from '../api/api';
+import {useEffect} from 'react'
 
 export default function Edit_organization_name({ closeorganization, setEditData }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    let data = localStorage.getItem('orgName')
+   
     const onSubmit = organisation_data => {
         let trimmed=organisation_data.name.trim()
         let obj=new Object()
         obj.name=trimmed
         if(obj.name!==''){
+           
         Api.Edit_organisation_name_data(obj)
             .then(res => {
-                localStorage.setItem('orgName', res.data.data.name)
+                // localStorage.setItem('orgName', res.data.data.name)
+                localStorage.setItem('orgName', obj.name)
                 // window.location.reload()
                 setEditData(res.data.data)
                 closeorganization(false)
@@ -21,9 +24,9 @@ export default function Edit_organization_name({ closeorganization, setEditData 
                 console.log(error)
             })
         }
+        
     }
-    
-
+    let data = localStorage.getItem('orgName')
     return (
         <div className={styles.model}>
             <div className={styles.model_container}>

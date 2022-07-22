@@ -10,11 +10,12 @@ import EvnDropDown from '../../components/utils/EnvDropDown'
 export default function Create_signing_key({ closesigninkeys, table }) {
     const [prod, setProd] = useState([])
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [uuid,setuuid] = useState();
+    const [uuid,setuuid] = useState('');
     const [productSelect, setProductSelect] = useState(false)
     const [selected,setSelected]=useState()
     const [idSubmit,setIdSubmit]=useState()
     const [roleError,setRoleError]=useState(false)
+    const [prodError,setProdError]=useState(false)
 
     useEffect(() => {
     
@@ -31,6 +32,13 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     const onSubmit = signin_key => {
         signin_key.productTypeId=idSubmit
         signin_key.environmentUUID = uuid
+        if(uuid==''){
+            setRoleError(true)
+        }
+        if(idSubmit===undefined){
+            setProdError(true)
+        }
+        console.log(idSubmit)
         if(signin_key.productTypeId!=undefined && signin_key.environmentUUID!=undefined){
             Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
             setOpenCreate(true)
@@ -74,6 +82,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
         setSelected(prod.name)
         setIdSubmit(prod.id)
         setProductSelect(false)
+        setProdError(false)
     }
     return (
         <div className={`${styles.container} ${styles.newkey} inpopup`} >
@@ -86,6 +95,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                     <h3 className={styles.model_title}>New Signing Key</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                          <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
+                         {roleError && <p className={`validations`}>Please select the environment</p>}
                         <div>
                             <label className={styles.model_label}>Product</label>
                             <div ref={dropdownprod} className={styles.select}>
@@ -104,6 +114,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                                 }
                             </div>
                         </div>
+                        {prodError && <p className={`validations`}>Please select the product</p>}
                         <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
                             <button type="submit" className={`${styles.save_btn} btn btn-primary`} >create Signing Key</button>
