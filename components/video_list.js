@@ -46,6 +46,7 @@ const VideoList = ({ i, create_On, created_time }) => {
         let domnode = useRef();
         useEffect(() => {
             let maybehandler = (event) => {
+                if(domnode.current!==null){
                 if (!domnode.current.contains(event.target)) {
                     handler();
                 };
@@ -54,7 +55,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             return () => {
                 document.removeEventListener('mousedown', maybehandler);
             };
-
+        }
         }, []);
         return domnode
     }

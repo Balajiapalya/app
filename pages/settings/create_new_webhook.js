@@ -5,27 +5,31 @@ import axios from 'axios'
 import Api from '../../components/api/api';
 import { useState, useEffect,useRef } from 'react'
 import Image from 'next/image'
+import EvnDropDown from '../../components/utils/EnvDropDown'
 
 export default function Create_new_webhook({ closewebhook,table }) {
     const [data, setData] = useState([])
-    const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
+    const { register,setError, handleSubmit, watch, formState: { errors },reset } = useForm();
     const [option, setOption] = useState();
-    const [uuid,setuuid] = useState();
+    const [uuid,setuuid] = useState('');
     const [select, setSelect] = useState(false);
+    const [roleError,setRoleError]=useState(false)
     
 
-    useEffect(() => {
-        Api.Get_env_data().then(res =><>
-            {setData(res.data.data)}
-            {setOption(res.data.data[0].name)}
-            </>)
-    }, [])
-
     const onSubmit = webhook_data => {
-        let newObj = Object.fromEntries(Object.entries(webhook_data).slice(0, 2))
-        newObj.environmentUUID = uuid
-        if(newObj.url!==undefined && newObj.environmentUUID!==undefined){
-            Api.Create_webhook_data(newObj).then(res =><>
+        console.log(webhook_data)
+        // let newObj = Object.fromEntries(Object.entries(webhook_data).slice(0, 2))
+        webhook_data.environmentUUID = uuid
+        if(uuid==''){
+            setRoleError(true)
+        }
+        if(webhook_data.url.match(/^\s*$/)!=null){
+            setError('url',{message:'This field is required'})
+        }
+        
+        if(webhook_data.url.match(/^\s*$/)===null&& webhook_data.environmentUUID!==''){
+            webhook_data.url= webhook_data.url.trim()
+            Api.Create_webhook_data(webhook_data).then(res =><>
                 {closePopup()}
                 {closewebhook(false)}
                 </>)
@@ -39,40 +43,7 @@ export default function Create_new_webhook({ closewebhook,table }) {
         table.classList.remove(`${styleDis.no_display}`);
     }
 
-    const handleSelect = () => {
-        setSelect(!select)
-     }
-     const handleOption = (option) => {
-        setOption(option.name)
-        setuuid(option.uuid)
-        setSelect(false)
-     }
-     const searchHandle = (e) => {
-        let options = document.querySelectorAll('#opt')
-        for (let i = 0; i < options.length; i++) {
-           let name = options[i].innerHTML.toLowerCase()
-           let searchValue = e.target.value.toLowerCase()
-           if (name.indexOf(searchValue) > -1) {
-              options[i].style.display = 'block'
-           } else {
-              options[i].style.display = 'none'
-  
-           }
-        }
-     }
-  
-     let selectDropdown = useRef()
-     useEffect(() => {
-        const handleDropdown = (e) => {
-           if (!selectDropdown.current.contains(e.target)) {
-              setSelect(false)
-           }
-        }
-        document.addEventListener('mouseup', handleDropdown)
-        return () => {
-           document.removeEventListener('mouseup', handleDropdown)
-        }
-     }, [])
+    
     return (
         <div className={`${styles.container} ${styles.newwebhook_model} inpopup`} >
             <div className={styles.body}>
@@ -82,28 +53,8 @@ export default function Create_new_webhook({ closewebhook,table }) {
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>New Webhook</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <label className={styles.model_label}>Environment</label>
-
-                        <div ref={selectDropdown} className={styles.select}>
-                            <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                                {option}
-                                <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
-                            </div>
-
-                            <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
-                            {select &&
-                                <div className={styles.dropdown}>
-                                    <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
-                                    <div className={styles.allOptions}>
-                                        {data.map(option =>
-                                            <div key={option.id} value={option.id} onClick={() => handleOption(option)} id="opt">{option.name}</div>
-                                        )}
-                                    </div>
-                                </div>
-                            }
-                        </div>
-
-
+                        <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
+                        {roleError && <p className={`validations`}>Please select the environment</p>}
                         <label className={styles.model_label}>URL to notify:</label>
                         <input
                             type="text"

@@ -111,7 +111,7 @@ const handleSelected=(prod)=>{
                 <label className={styles.model_label}>Role</label>
                 <div ref={dropdownprod} className={styles.select}>
                   <div className={styles.model_selection} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`}>
-                    {selected ? selected : 'Owner'}
+                    {selected ? selected : 'Admin'}
                   </div>
                   <img className={styles.dropdownOneInvite} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                   {
