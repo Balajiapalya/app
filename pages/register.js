@@ -39,6 +39,7 @@ export default function Create_account() {
         //     // end of checking space in front and back
             createaccount_data.inviteCode = params.invitecode;
             createaccount_data.password = btoa(createaccount_data.password)
+            if(createaccount_data.inviteCode!==undefined){
             Api.Create_account_data(createaccount_data)
                 .then(res => {
                     if (res.data.status = "Success") {
@@ -57,6 +58,9 @@ export default function Create_account() {
                         seterror(error.response.data.message)
                     }
                 })
+            }else{
+                seterror('no invite code provided')
+            }
         // }
     }
     return (
@@ -146,7 +150,7 @@ export default function Create_account() {
                             name="password"
                             className={`${styles.createaccount_input} form_control`}
                             {...register("password",{required:'This field is required',pattern:{
-                                value:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                                value:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                                 message:'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
                             }})}
                         />

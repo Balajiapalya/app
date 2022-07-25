@@ -48,7 +48,7 @@ export default function Signup() {
             Create your account
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h4 className={styles.label}>Email</h4>
+            <label className={`${styles.label} ${styles.req}`}>Email</label>
             <input
               maxLength={30}
               placeholder="Enter your email address"

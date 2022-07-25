@@ -115,6 +115,10 @@
     border: solid 1px rgba(99, 115, 129, 0.3);
     background-color: #fff;
 }
+.model_label::after{
+    content: '*';
+    color:red;
+}
 
 .personal_detials_form {
     background-color: #fff;

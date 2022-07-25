@@ -11,6 +11,7 @@ import Router,{useRouter} from 'next/router'
 function Videodelivery_tabs() {
     const router=useRouter();
     const [toggleState, setToggleState] = useState(1)
+    const [render,setRender]=useState(true)
 
     useEffect(()=>{
         if(Number(router.query.path==undefined)){
@@ -18,6 +19,9 @@ function Videodelivery_tabs() {
             router.push({pathname:'./video',query:{'videoId':localStorage.getItem('videoId'),'path':1}})    
         }else{
             setToggleState(Number(router.query.path));
+        }
+        if(router.query.status=='Failed'){
+            setRender(false)
         }
     },[router.query.path])
     
@@ -29,7 +33,7 @@ function Videodelivery_tabs() {
     return (
         <div className={styles.wrapper_tabs}>
             <div className={styles.bloc_tabs}>
-                <button
+                {render?<><button
                     className={toggleState === 1 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
                     onClick={() => toggleTab(1)}
                 >
@@ -64,7 +68,20 @@ function Videodelivery_tabs() {
                     onClick={() => toggleTab(6)}
                 >
                     <span>Others</span>
+                </button></>:<>
+                <button
+                    className={toggleState === 1 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
+                    onClick={() => toggleTab(1)}
+                >
+                    <span>Overview</span>
                 </button>
+                <button
+                    className={toggleState === 6 ? `${styles.tabs_item} ${styles.active_tabs}` : `${styles.tabs_item}`}
+                    onClick={() => toggleTab(6)}
+                >
+                    <span>Others</span>
+                </button>
+                </>}
             </div>
 
             <div className={styles.content_tabs_area}>
