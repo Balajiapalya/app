@@ -4,12 +4,12 @@ import Api from '../components/api/api';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState,useEffect } from 'react';
-import {yupResolver} from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+// import {yupResolver} from '@hookform/resolvers/yup'
+// import * as yup from 'yup'
 
-const schema=yup.object().shape({
-  email:yup.string().email("Please enter valid email").required('This field is required')
-})
+// const schema=yup.object().shape({
+//   email:yup.string().email("Please enter valid email").required('This field is required')
+// })
 
 export default function Signup() {
   let invite_code;
@@ -18,9 +18,7 @@ export default function Signup() {
   }
   const invitecode = invite_code;
   const router = useRouter();
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    resolver:yupResolver(schema)
-  });
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [error, seterror] = useState([]);
   const onSubmit = login_details => {
     
@@ -50,13 +48,16 @@ export default function Signup() {
             Create your account
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h4 className={styles.label}>Email</h4>
+            <label className={`${styles.label} ${styles.req}`}>Email</label>
             <input
               maxLength={30}
               placeholder="Enter your email address"
               name="email"
               className={`${styles.signup_input} form_control`}
-              {...register("email")}
+              {...register("email",{required:'This field is required',pattern:{
+                value:/^[A-Z0-9_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message:'invalid email address'
+              }})}
             />
             {/* {errors.email && <p className={'validations'}>This field is required</p>} */}
             {<p className={'validations'}>{errors.email?.message}</p>}

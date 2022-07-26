@@ -3,44 +3,43 @@ import { useForm } from "react-hook-form";
 import Api from "../components/api/api";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+// import { yupResolver } from '@hookform/resolvers/yup'
+// import * as yup from 'yup'
 
-const schema = yup.object().shape({
-    firstName: yup.string().required('This field is required'),
-    lastName: yup.string().required('This field is required'),
-    organizationName: yup.string().required('This field is required'),
-    password: yup.string().required('Please Enter your password').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-    ),
-})
+// const schema = yup.object().shape({
+//     firstName: yup.string().required('This field is required'),
+//     lastName: yup.string().required('This field is required'),
+//     organizationName: yup.string().required('This field is required'),
+//     password: yup.string().required('Please Enter your password').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+//     ),
+// })
 
 export default function Create_account() {
-    const { register, setError, handleSubmit, watch, formState: { errors } } = useForm({
-        resolver: yupResolver(schema)
-    });
+    const { register, setError, handleSubmit, watch, formState: { errors } } = useForm();
     const [error, seterror] = useState([]);
     const reg = useRouter();
     const params = reg.query
     const onSubmit = createaccount_data => {
-        // check if only space is present
-        if(createaccount_data.firstName.match(/^\s*$/) !== null){
-            setError('firstName', { message: 'This field is required' })
-        }
-        if(createaccount_data.lastName.match(/^\s*$/) !== null){
-            setError('lastName', { message: 'This field is required' })
-        }
-        if(createaccount_data.organizationName.match(/^\s*$/) !== null){
-            setError('organizationName', { message: 'This field is required' })
-        }
-        // end of check for only space
-        if (createaccount_data.firstName.match(/^\s*$/) === null && createaccount_data.lastName.match(/^\s*$/) === null && createaccount_data.organizationName.match(/^\s*$/) === null) {
-            // checking space in front and back
-            createaccount_data.firstName = createaccount_data.firstName.trim()
-            createaccount_data.lastName = createaccount_data.lastName.trim()
-            createaccount_data.organizationName = createaccount_data.organizationName.trim()
-            // end of checking space in front and back
+        // // check if only space is present
+        // if(createaccount_data.firstName.match(/^\s*$/) !== null){
+        //     setError('firstName', { message: 'This field is required' })
+        // }
+        // if(createaccount_data.lastName.match(/^\s*$/) !== null){
+        //     setError('lastName', { message: 'This field is required' })
+        // }
+        // if(createaccount_data.organizationName.match(/^\s*$/) !== null){
+        //     setError('organizationName', { message: 'This field is required' })
+        // }
+        // // end of check for only space
+        // if (createaccount_data.firstName.match(/^\s*$/) === null && createaccount_data.lastName.match(/^\s*$/) === null && createaccount_data.organizationName.match(/^\s*$/) === null) {
+        //     // checking space in front and back
+        //     createaccount_data.firstName = createaccount_data.firstName.trim()
+        //     createaccount_data.lastName = createaccount_data.lastName.trim()
+        //     createaccount_data.organizationName = createaccount_data.organizationName.trim()
+        //     // end of checking space in front and back
             createaccount_data.inviteCode = params.invitecode;
             createaccount_data.password = btoa(createaccount_data.password)
+            if(createaccount_data.inviteCode!==undefined){
             Api.Create_account_data(createaccount_data)
                 .then(res => {
                     if (res.data.status = "Success") {
@@ -59,7 +58,10 @@ export default function Create_account() {
                         seterror(error.response.data.message)
                     }
                 })
-        }
+            }else{
+                seterror('no invite code provided')
+            }
+        // }
     }
     return (
         <div className={styles.container}>
@@ -101,7 +103,10 @@ export default function Create_account() {
                             placeholder="Enter your first name"
                             name="firstName"
                             className={`${styles.createaccount_input} form_control`}
-                            {...register("firstName")}
+                            {...register("firstName",{required:'This field is required',pattern:{
+                                value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                message:'Entered value cannot start/end or have only white space'
+                            }})}
 
                         />
                         {<p className={'validations'}>{errors.firstName?.message}</p>}
@@ -113,7 +118,10 @@ export default function Create_account() {
                             placeholder="Enter your last name"
                             name="lastName"
                             className={`${styles.createaccount_input} form_control`}
-                            {...register("lastName")}
+                            {...register("lastName",{required:'This field is required',pattern:{
+                                value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                message:'Entered value cannot start/end or have only white space'
+                            }})}
                         />
                         {<p className={'validations'}>{errors.lastName?.message}</p>}
                         {/* {errors.lastname && <p className={'validations'}>This field is required</p>} */}
@@ -126,7 +134,10 @@ export default function Create_account() {
                             placeholder="Enter your organisation name"
                             name="organizationName"
                             className={`${styles.createaccount_input} form_control`}
-                            {...register("organizationName")}
+                            {...register("organizationName",{required:'This field is required',pattern:{
+                                value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                message:'Entered value cannot start/end or have only white space'
+                            }})}
                         />
                         {<p className={'validations'}>{errors.organizationName?.message}</p>}
                         {/* {errors.organizationName && <p className={'validations'}>This field is required</p>} */}
@@ -138,7 +149,10 @@ export default function Create_account() {
                             placeholder="Must have atleast 8 characters"
                             name="password"
                             className={`${styles.createaccount_input} form_control`}
-                            {...register("password")}
+                            {...register("password",{required:'This field is required',pattern:{
+                                value:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                                message:'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
+                            }})}
                         />
                         {<p className={'validations'}>{errors.password?.message}</p>}
                         {/* {errors.password && <p className={'validations'}>This field is required</p>} */}

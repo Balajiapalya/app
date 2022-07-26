@@ -105,6 +105,10 @@
     margin-bottom: 8px;
 
 }
+.createaccount_label::after{
+    content: '*';
+    color:red;
+}
 
 .createaccount_input {
     border-radius: 2px;

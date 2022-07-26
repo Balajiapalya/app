@@ -19,12 +19,16 @@ export default function Thumbnails_api() {
     }
     const onSubmit = thumbnail => {
         // console.log(JSON.parse(thumbnail.code))
+        try{
         Api.Create_thumbnail(JSON.parse(thumbnail.code))
             .then(res => {
                 if (res.data.code = 200) {
                     set_thumbnailurl(res.data.data.url)
                 }
             })
+        }catch(e){
+            console.log(e)
+        }
     }
     const handleCopy = (event) => {
         let copiedText = event.target.parentNode.parentNode.firstChild;

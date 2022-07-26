@@ -153,6 +153,12 @@
     font-style: normal;
     line-height: 1.25;
     letter-spacing: normal;
+    /* margin-top: 1rem;
+    margin-bottom: 0.5rem; */
+}
+.req::after{
+    content: '*';
+    color:red;
 }
 
 .forgotpw {
@@ -183,7 +189,7 @@
 }
 .logInRem{
     position: relative;
-    bottom: 2px;
+    /* bottom: 2px; */
     left:12px;
     font-family: Inter-Regular;
     font-size: 14px;

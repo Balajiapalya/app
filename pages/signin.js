@@ -4,19 +4,17 @@ import Api from '../components/api/api';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+// import { yupResolver } from '@hookform/resolvers/yup'
+// import * as yup from 'yup'
 
-const schema = yup.object().shape({
-  login: yup.string().email('Please enter valid email').required('This field is required'),
-  password: yup.string().required('This field is required')
-})
+// const schema = yup.object().shape({
+//   login: yup.string().email('Please enter valid email').required('This field is required'),
+//   password: yup.string().required('This field is required')
+// })
 export default function Signin() {
   const [error, seterror] = useState([]);
   const [count, setCount] = useState(0)
-  const { register, setError, handleSubmit,setValue ,formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
-  });
+  const { register, setError, handleSubmit,setValue ,formState: { errors } } = useForm();
  
   const router = useRouter()
   let timer
@@ -113,7 +111,10 @@ export default function Signin() {
                 placeholder="Enter email address"
                 name="login"
                 className={`${styles.signup_input} form_control`}
-                {...register("login")}
+                {...register("login",{required:'This field is required',pattern:{
+                  value:/^[A-Z0-9_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message:'invalid email address'
+                }})}
               />
             </div>
             <p className={'validations'}>{errors.login?.message}</p>
@@ -127,7 +128,7 @@ export default function Signin() {
                 placeholder="Enter password"
                 name="password"
                 className={`${styles.signup_input} form_control`}
-                {...register("password")}
+                {...register("password",{required:'This field is required'})}
               />
               {error && !errors.password && !errors.login && <span className='error'>{error}</span>}
             </div>
