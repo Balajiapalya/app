@@ -52,6 +52,7 @@ export default function Subtitles() {
             })
     };
     const onSubmit = subtitle => {
+        try{
         Api.Create_subtitle(JSON.parse(subtitle.code))
             .then(res => {
                 if (res.data.status="Success") {
@@ -63,6 +64,9 @@ export default function Subtitles() {
                         })
                 }
             })
+        }catch(e){
+            console.log(e)
+        }
     };
     const created_date = (date) => {
         var y = new Date(date)

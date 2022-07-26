@@ -153,6 +153,12 @@
     font-style: normal;
     line-height: 1.25;
     letter-spacing: normal;
+    /* margin-top: 1rem;
+    margin-bottom: 0.5rem; */
+}
+.req::after{
+    content: '*';
+    color:red;
 }
 
 .forgotpw {
@@ -172,7 +178,27 @@
 .hidden {
     display: block;
 }
-
+/* remember me */
+.rememberMe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    float: left;
+    margin-top:1.5rem;
+}
+.logInRem{
+    position: relative;
+    /* bottom: 2px; */
+    left:12px;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+}
 @media (min-width: 320px) and (max-width: 767px) {
     .signup_btn {
         background-color: #2863eb;

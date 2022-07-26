@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/videos.module.css'
 import { useRouter } from "next/router";
+import Image from 'next/image'
 
 
 const VideoList = ({ i, create_On, created_time }) => {
@@ -10,11 +11,12 @@ const VideoList = ({ i, create_On, created_time }) => {
     const [videotitle, setvideotitle] = useState([]);
     const [thumbnail, setthumbnail] = useState([]);
     const [dropdown, setdropdown] = useState(false);
-    const handleChange = () => {
+    const handleChange = (status) => {
+       
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({ pathname: `./videos/video`, query: { 'videoId': i.contentId, 'path': 1 } });
+        router.push({ pathname: `./videos/video`, query: {'status':status, 'videoId': i.contentId, 'path': 1 } });
     }
 
 
@@ -42,26 +44,24 @@ const VideoList = ({ i, create_On, created_time }) => {
     localStorage.setItem('videoId', videoId)
     localStorage.setItem('thumbnail', thumbnail)
 
-    let useClickOutside = (handler) => {
-        let domnode = useRef();
-        useEffect(() => {
-            let maybehandler = (event) => {
-                if (!domnode.current.contains(event.target)) {
-                    handler();
-                };
-            };
-            document.addEventListener('mousedown', maybehandler);
-            return () => {
-                document.removeEventListener('mousedown', maybehandler);
-            };
+    
 
-        }, []);
-        return domnode
-    }
+    let domnode = useRef();
 
-    let domnode = useClickOutside(() => {
-        setdropdown(false);
-    })
+    useEffect(() => {
+
+        let maybehandler = (e) => {
+
+            if (!domnode.current.contains(e.target)) {
+                setdropdown(false);
+            };
+        };
+        document.addEventListener('mouseup', maybehandler);
+        return () => {
+            document.removeEventListener('mouseup', maybehandler);
+        };
+
+    }, []);
     const handleSingleCheck=()=>{
             let singleCheck=document.querySelectorAll('.assetCheck');
             let tbody=document.getElementById('td').parentElement.parentElement;
@@ -78,13 +78,13 @@ const VideoList = ({ i, create_On, created_time }) => {
         <>
 
             <td id='td'><input className={`${styles.checkbox} ${styles.tdCursor} assetCheck`} type="checkbox" onClick={()=>handleSingleCheck()}></input></td>
-            <td className={`${styles.addedon} ${styles.tdCursor}`} onClick={() => handleChange()}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
+            <td className={`${styles.addedon} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
             {/* <td className={styles.title}>{i.title}</td> */}
-            <td className={`${styles.assetID} ${styles.tdCursor}`}  onClick={() => handleChange()}>{i.contentId}</td>
-            {i.thumbnailUrl ? <td className={`${styles.thumbnail} ${styles.tdCursor}`}  onClick={() => handleChange()}><img width="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange()}><img src='/images/placeholder.png' width="100px" /></td>}
-            {i.duration ? <td className={styles.tdCursor}  onClick={() => handleChange()}>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td  className={styles.tdCursor}  onClick={() => handleChange()}>-</td>}
-            {i.resolution ? <td  onClick={() => handleChange()} className={styles.tdCursor}>{i.resolution}</td> : <td onClick={() => handleChange()}  className={styles.tdCursor}>-</td>}
-            {i.status == "Failed" ? <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status}<img className={styles.failed_img} src='/images/iconmaterial-info-outline.png'/></td> : <td  onClick={() => handleChange()}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+            <td className={`${styles.assetID} ${styles.tdCursor}`}  onClick={() => handleChange(i.status)}>{i.contentId}</td>
+            {i.thumbnailUrl ? <td className={`${styles.thumbnail} ${styles.tdCursor}`}  onClick={() => handleChange(i.status)}><img width="100px" height="100px" src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}><img src='/images/placeholder.png' width="100px" /></td>}
+            {i.duration ? <td className={styles.tdCursor}  onClick={() => handleChange(i.status)}>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td  className={styles.tdCursor}  onClick={() => handleChange(i.status)}>-</td>}
+            {i.resolution ? <td  onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.resolution}</td> : <td onClick={() => handleChange(i.status)}  className={styles.tdCursor}>-</td>}
+            {i.status == "Failed" ? <td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}>{i.status}<img className={styles.failed_img} src='/images/iconmaterial-info-outline.png'/></td> : <td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>

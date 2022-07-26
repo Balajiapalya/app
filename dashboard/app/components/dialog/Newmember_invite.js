@@ -103,15 +103,18 @@ const handleSelected=(prod)=>{
                 type="email"
                 className={`${styles.model_input} form_control`}
                 name="email"
-                {...register("email", { required: true })}
+                {...register("email", {required:'This field is required',pattern:{
+                  value:/^[A-Z0-9_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message:'invalid email address'
+                }})}
               />
-              {errors.email && <p className={`validations`}>This field is required</p>}
+              {errors.email?.message}
 
               <div>
                 <label className={styles.model_label}>Role</label>
                 <div ref={dropdownprod} className={styles.select}>
                   <div className={styles.model_selection} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`}>
-                    {selected ? selected : 'Owner'}
+                    {selected ? selected : 'Admin'}
                   </div>
                   <img className={styles.dropdownOneInvite} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                   {

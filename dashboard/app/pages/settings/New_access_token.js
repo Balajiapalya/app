@@ -8,7 +8,7 @@ import Image from 'next/image'
 import EvnDropDown from '../../components/utils/EnvDropDown'
 
 export default function New_Access_token({ table, closetoken }) {
-   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+   const { register, setError,handleSubmit, watch, formState: { errors } } = useForm();
    const [productType, setProductType] = useState([])
    const [items, setItems] = useState([])
    const [newToken, setNewToken] = useState(false)
@@ -76,7 +76,13 @@ export default function New_Access_token({ table, closetoken }) {
 
       let sliced = Object.fromEntries(Object.entries(access_data).slice(5, 7))
       sliced.envUUID = uuid
-      if (sliced.name !== undefined && uuid!=='') {
+      //to check if only space exists
+      if(sliced.name.match(/^\s*$/)!=null){
+         setError('name',{message:'This field is required'})
+      }
+      if (sliced.name.match(/^\s*$/)===null && uuid!=='') {
+        sliced.name= sliced.name.trim()
+         console.log(sliced)
          let secret = document.querySelector('.secretKey')
          Api.Create_aaccess_token_data(sliced).then(res =><>
             {setRes(res.data.data)}
@@ -162,7 +168,7 @@ export default function New_Access_token({ table, closetoken }) {
                <h3 className={styles.model_title}>New Access Token</h3>
                <form onSubmit={handleSubmit(onSubmit)}>
                   <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
-                  {roleError && <p className={`validations`}>Please select the role</p>}
+                  {roleError && <p className={`validations`}>Please select the environment</p>}
                   <div className={styles.access_token}>
                      <h4 className={styles.access_token_permission}>Permission</h4>
                      <p className={styles.access_token_link}>To know more permission please visit our <a href="#" className={styles.access_token_data}>token access guide</a></p>
