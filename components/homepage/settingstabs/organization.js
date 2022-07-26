@@ -19,6 +19,7 @@ function Organisation() {
     const [editData, setEditData] = useState();
     const [org, setOrg] = useState();
     const [item, setItem] = useState();
+    const [optChanged,setOptChanged]=useState(false)
 
 
     const createdDate = (date) => {
@@ -60,8 +61,8 @@ function Organisation() {
                 }
 
             })
-    }, [openModel,openremove])
-
+    }, [openModel,openremove,optChanged])
+console.log(optChanged)
     const handleResend=(item)=>{
         let obj=new Object()
         obj.email=item.email
@@ -104,7 +105,7 @@ function Organisation() {
                                 <td>{item.firstName} {item.lastName}</td>
                                 <td>{item.email}</td>
                                 <td>
-                                    {item.roleId==1 ? 'Owner':item.roleId==3?'Member':<Select item={item} data={data} />}
+                                    {item.roleId==1 ? 'Owner':item.roleId==3?'Member':<Select item={item} data={data} setOptChanged={setOptChanged} optChanged={optChanged}/>}
                                 </td>
                                 
                                 {item.createdOn ? <td>{createdDate(item.createdOn)}</td> : <td>Invite sent
