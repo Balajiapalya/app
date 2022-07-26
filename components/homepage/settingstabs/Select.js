@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Api from '../../api/api'
 import styles from '../../../styles/settings.module.css';
 
-const Select = ({ item, data }) => {
+const Select = ({ item, data ,setOptChanged,optChanged}) => {
     const [isActive, setIsActive] = useState(false)
     const [opt, setOpt] = useState(item.roleId)
     // const handleChange = (e) => {
@@ -41,7 +41,10 @@ const Select = ({ item, data }) => {
         element.roleId = parseInt(i.id)
         let arr = []
         arr.push(element)
-        Api.Selected_option(arr).then(res => setOpt(i.id))
+        Api.Selected_option(arr).then(res => {
+            setOptChanged(!optChanged)
+            setOpt(i.id)
+        })
         setIsActive(false)
     }
     return (
