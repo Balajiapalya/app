@@ -491,13 +491,13 @@ const Api = {
         }),
     //direct upload
     Direct_upload_post: (direct_video_upload) =>
-        loginHandledAxios({
+    loginHandledAxios({
             method: 'POST',
             data: direct_video_upload,
             url: post_direct_video(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
 
         }),
@@ -534,7 +534,7 @@ const Api = {
             url: get_vdo_player(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
 
         }),
@@ -568,12 +568,12 @@ const Api = {
         }),
     //overview
     Delete_asset: () =>
-        loginHandledAxios({
+    loginHandledAxios({
             method: 'DELETE',
             url: delete_asset(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
     //activities in overview
@@ -601,7 +601,7 @@ const Api = {
             url: create_thumbnail(),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'EnvironmentId': `${envuuid}`
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
             }
         }),
     //subtitles

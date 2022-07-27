@@ -13,6 +13,7 @@ export default function Accounts() {
   const [neworg, setnewrog] = useState([]);
   const [highlightedorg, sethighlightedorg] = useState(0);
   const [orgname, setorgname] = useState("")
+  const [saved,setSaved]=useState(false)
   const {
     register,
     handleSubmit,
@@ -25,6 +26,10 @@ export default function Accounts() {
       if ((res.data.status = "Success")) {
         localStorage.setItem("ownername", res.data.data.firstName);
         localStorage.setItem("ownerLastname", res.data.data.lastName);
+        setSaved(true)
+        setTimeout(()=>{
+          setSaved(false)
+        },[1000*3])
       }
     });
   };
@@ -150,7 +155,7 @@ export default function Accounts() {
                       defaultValue={ownerEmail}
                       readOnly
                     />
-
+                    {saved && <p className={"validations"}>Changes saved</p>}
                     <div className={styles.model_btn}>
                       <button
                         type="submit"
