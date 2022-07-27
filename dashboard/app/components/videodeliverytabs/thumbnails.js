@@ -24,6 +24,7 @@ export default function Thumbnails() {
         Api.Create_thumbnail(thumbnail)
             .then(res => {
                 if (res.data.code = 200) {
+                    console.log(res.data.data.url)
                     set_thumbnailurl(res.data.data.url)
                 }
             })

@@ -12,6 +12,7 @@ export default function Add_new_environment({table, closeenv }) {
     const [selected,setSelected]=useState();
   const [productSelect, setProductSelect] = useState(false)
   const [idSubmit,setIdSubmit]=useState()
+  const [validateType,setValidateType]=useState(false)
   
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -19,6 +20,10 @@ export default function Add_new_environment({table, closeenv }) {
         new_env_data.environmentTypeId=idSubmit
         const uuid = localStorage.getItem("uuid");
         new_env_data.orgUUID = uuid;
+        if(new_env_data.environmentTypeId==undefined){
+            setValidateType(true)
+        }
+        if(new_env_data.environmentTypeId!==undefined){
         Api.Post_env(new_env_data)
             .then(res => {
                 if (res.data.status = "Success") {
@@ -30,7 +35,7 @@ export default function Add_new_environment({table, closeenv }) {
                 console.log(error)
             })
             
-            
+        }
     }
     useEffect(() => {
         Api.Env_data()
@@ -81,6 +86,7 @@ export default function Add_new_environment({table, closeenv }) {
         setSelected(prod.name)
         setIdSubmit(prod.id)
         setProductSelect(false)
+        setValidateType(false)
     }
     return (
         <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
@@ -97,9 +103,10 @@ export default function Add_new_environment({table, closeenv }) {
                             className={`${styles.model_input} form_control`}
                             name="name"
                             placeholder="Enter a name"
-                            {...register("name", { required: true })}
+                            {...register("name", { required: 'This field is required' })}
                         />
-                        {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
+                        {/* {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>} */}
+                        {<p className={'validations'}>{errors.name?.message}</p>}
                         <label className={styles.model_label}>Type</label>
 
                         {/* <select
@@ -129,6 +136,7 @@ export default function Add_new_environment({table, closeenv }) {
                                 </div>
                             }
                         </div>
+                        {validateType && <p className={'validations'}>Please select type</p>}
                         <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
                             <button type="submit" className={`${styles.save_btn} btn btn-primary`}>Add Environment</button>
