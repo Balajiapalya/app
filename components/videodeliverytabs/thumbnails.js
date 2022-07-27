@@ -76,7 +76,6 @@ export default function Thumbnails() {
                                             value: /^(0|[1-9]\d*)(\.\d+)?$/,
                                             message: 'please enter only num'
                                         },
-                                        valueAsNumber:true
                                     })} />
                                     {<p className={'validations'}>{errors.width?.message}</p>}
                                 </div>
@@ -88,7 +87,6 @@ export default function Thumbnails() {
                                             value: /^(0|[1-9]\d*)(\.\d+)?$/,
                                             message: 'please enter only num'
                                         },
-                                        valueAsNumber:true
                                     })} />
                                     {<p className={'validations'}>{errors.height?.message}</p>}
                                 </div>

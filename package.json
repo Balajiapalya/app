@@ -27,7 +27,6 @@
     "react-simple-maps": "^2.3.0",
     "react-spinners": "^0.11.0",
     "react-tag-input-component": "^1.0.7",
-    "react-toastify": "^9.0.7",
     "react-video-js-player": "^1.1.1",
     "use-force-update": "^1.0.7",
     "yup": "^0.32.11"

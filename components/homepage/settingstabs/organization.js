@@ -8,10 +8,6 @@ import Api from '../../api/api';
 import { useRouter } from 'next/router';
 import Signin from '../../../pages/signin';
 import Select from './Select'
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-  
-  
 
 function Organisation() {
     const reg = useRouter();
@@ -24,7 +20,6 @@ function Organisation() {
     const [org, setOrg] = useState();
     const [item, setItem] = useState();
     const [optChanged,setOptChanged]=useState(false)
-    const [toastMsg,setToastMsg]=useState(false)
 
 
     const createdDate = (date) => {
@@ -66,13 +61,8 @@ function Organisation() {
                 }
 
             })
-            const toastFun=()=>{
-                toast('User Deleted')
-                setToastMsg(false)
-            }
-            {toastMsg && toastFun()}
     }, [openModel,openremove,optChanged])
-
+console.log(optChanged)
     const handleResend=(item)=>{
         let obj=new Object()
         obj.email=item.email
@@ -124,11 +114,10 @@ function Organisation() {
                                 {!item.createdOn ? <td><a className={styles.img} onClick={() => setopenremove(true)}><img onClick={() => setItem(item)} src="/images/iconmaterial-delete.svg" alt="icon"></img></a></td> : <td></td>}
                             </tr>
                         )}
-                        {openremove && <Removeuser item={item} closeremoveuser={setopenremove} setToastMsg={setToastMsg}/>}
+                        {openremove && <Removeuser item={item} closeremoveuser={setopenremove} />}
                     </tbody>
                 </table>
             </div>
-            <ToastContainer />
         </Fragment>
     )
 }

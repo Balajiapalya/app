@@ -6,10 +6,9 @@ import Direct_upload from '../../components/direct_uploade';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Image from 'next/image'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-export default function Videodelivery_addnewassets({ table, setReload }) {
+
+export default function Videodelivery_addnewassets({ table,setReload }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const togglebtn = (index) => {
@@ -17,31 +16,23 @@ export default function Videodelivery_addnewassets({ table, setReload }) {
     }
 
     const onSubmit = video_url_data => {
-
-        try {
+       
+        try{
             Api.post_video(JSON.parse(video_url_data.code))
-                .then(res => {
-                    if (res.data.status == "Success") {
-                        window.location.reload()
-                        close_asset(true)
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            .then(res => {
+               if (res.data.status == "Success") {
+                     window.location.reload()
+                   close_asset(true)
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
-        catch (e) {
-            toast.error('syntax error', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                });
+        catch(e){
+            // console.log(e)
         }
-
+        
     }
     const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
@@ -52,9 +43,9 @@ export default function Videodelivery_addnewassets({ table, setReload }) {
     }
 
     // popup
-    const handlePopUp = () => {
+    const handlePopUp=()=>{
         // close_asset(false)
-        let inpopUp = document.querySelector('.inpopup');
+        let inpopUp=document.querySelector('.inpopup');
         inpopUp.parentElement.classList.add(`${styles.no_display}`);
         table.classList.remove(`${styles.no_display}`);
     }
@@ -64,7 +55,7 @@ export default function Videodelivery_addnewassets({ table, setReload }) {
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload handlePopUp={handlePopUp} setReload={setReload} />
+                <Direct_upload handlePopUp={handlePopUp} setReload={setReload}/>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >
@@ -111,32 +102,22 @@ export default function Videodelivery_addnewassets({ table, setReload }) {
                                             "mp4_support": false,
                                             "save_original_copy": false
                                         }
-                                        , undefined, 2)}`}
+                                    , undefined, 2)}`}
                                     id="prettyJSONFormat"
                                     className={`${styles.code_input} form_control`}
                                     type='text'
                                     name='code'
                                     {...register("code", { required: true })}
                                 /> : null}
-                            <ToastContainer
-                                position="top-center"
-                                autoClose={5000}
-                                hideProgressBar={false}
-                                newestOnTop={false}
-                                closeOnClick
-                                rtl={false}
-                                pauseOnFocusLoss
-                                draggable
-                                pauseOnHover
-                            />
+
                             {errors.code && <p className={'validations'}>This field is required</p>}
                         </div>
                         <button type='submit' className={`${styles.btn} ${styles.api_submit_btn}`}>Run Request</button>
                     </form>
                 </div>
-            </div>
-
+                </div>
+           
         </div>
-
+  
     )
 }

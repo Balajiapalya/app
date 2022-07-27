@@ -79,16 +79,11 @@ export default function Direct_upload({handlePopUp,setReload}) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.upload_btn_wrapper}>
                         <button className={styles.btn}>Select file</button>
-                        <div className={styles.supportFormats}>
-                        <p>supported formats</p>
-                        <p>mkv,avi,mp4</p>
-                        </div>
                         <input
                             type="file"
-                            accept='video/mp4'
                             name='file'
                             {...register("file")}
-                            onChange={e => handleChange(e)}       
+                            onChange={e => handleChange(e)}
                         />
                     </div>
 

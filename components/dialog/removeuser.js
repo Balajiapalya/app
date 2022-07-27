@@ -4,12 +4,11 @@ import Api from '../api/api'
 import { useState } from 'react/cjs/react.production.min'
 
 
-export default function Removeuser({ closeremoveuser, item,setToastMsg }) {
+export default function Removeuser({ closeremoveuser, item }) {
 
   const handleDelete = () => {
     let del = [item.email]
     Api.Remove_user_data(del).then(res => {
-      setToastMsg(true)
       closeremoveuser(false)
     })
   }
