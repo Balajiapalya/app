@@ -12,7 +12,7 @@ export default function Add_new_environment({table, closeenv }) {
     const [selected,setSelected]=useState();
   const [productSelect, setProductSelect] = useState(false)
   const [idSubmit,setIdSubmit]=useState()
-  const [validateType,setValidateType]=useState(false)
+//   const [validateType,setValidateType]=useState(false)
   
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -21,7 +21,8 @@ export default function Add_new_environment({table, closeenv }) {
         const uuid = localStorage.getItem("uuid");
         new_env_data.orgUUID = uuid;
         if(new_env_data.environmentTypeId==undefined){
-            setValidateType(true)
+            // setValidateType(true)
+            new_env_data.environmentTypeId=1
         }
         if(new_env_data.environmentTypeId!==undefined){
         Api.Post_env(new_env_data)
@@ -136,7 +137,7 @@ export default function Add_new_environment({table, closeenv }) {
                                 </div>
                             }
                         </div>
-                        {validateType && <p className={'validations'}>Please select type</p>}
+                        {/* {validateType && <p className={'validations'}>Please select the type</p>} */}
                         <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
                             <button type="submit" className={`${styles.save_btn} btn btn-primary`}>Add Environment</button>

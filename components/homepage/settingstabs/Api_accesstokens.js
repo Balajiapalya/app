@@ -162,7 +162,7 @@ function Api_accesstokes() {
         <Fragment>
             <section className={styles.wrapper_access_tokes}>
                 <div className={styles.head}>
-                    <p>You can create or  revoke API access tokens. Tokens are used to authenticate API request and are environment specific. To know more visit our <a href="#">guide</a>.</p>
+                    <p>You can create or  revoke API access tokens. Tokens are used to authenticate API request and are environment specific. To know more visit our <a href="https://documenter.getpostman.com/view/19432362/UyxqDPLG" target='_blank' rel="noopener noreferrer">guide</a>.</p>
                     {/* <a><button className="btn" onClick={() => settoken(true)}>Create new Token</button></a> */}
                     <a><button className="btn" onClick={() => handlePopup()}>Create new Token</button></a>
                 </div>
