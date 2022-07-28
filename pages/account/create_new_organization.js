@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Api from '../../components/api/api';
 
 
-export default function Create_new_organization({ closeneworg ,table,accounts}) {
+export default function Create_new_organization({ closeneworg ,table,accounts,setToastMsg}) {
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -12,6 +12,7 @@ export default function Create_new_organization({ closeneworg ,table,accounts}) 
         // document.body.style.overflow='scroll'
         Api.Create_new_organization(new_org_name)
         .then(res=>{
+            setToastMsg(true)
             handleClose()
             // console.log(res)
         })
