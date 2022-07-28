@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import Api from '../api/api';
 import { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Thumbnails_api() {
     const [thumbnailurl, set_thumbnailurl] = useState();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -19,15 +21,23 @@ export default function Thumbnails_api() {
     }
     const onSubmit = thumbnail => {
         // console.log(JSON.parse(thumbnail.code))
-        try{
-        Api.Create_thumbnail(JSON.parse(thumbnail.code))
-            .then(res => {
-                if (res.data.code = 200) {
-                    set_thumbnailurl(res.data.data.url)
-                }
-            })
-        }catch(e){
-            console.log(e)
+        try {
+            Api.Create_thumbnail(JSON.parse(thumbnail.code))
+                .then(res => {
+                    if (res.data.code = 200) {
+                        set_thumbnailurl(res.data.data.url)
+                    }
+                })
+        } catch (e) {
+            toast.error('syntax error', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         }
     }
     const handleCopy = (event) => {
@@ -81,7 +91,17 @@ export default function Thumbnails_api() {
                                     <CopyToClipboard text={thumbnailurl}>
                                         <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={(event) => handleCopy(event)} />
                                     </CopyToClipboard>
-
+                                    <ToastContainer
+                                        position="top-center"
+                                        autoClose={5000}
+                                        hideProgressBar={false}
+                                        newestOnTop={false}
+                                        closeOnClick
+                                        rtl={false}
+                                        pauseOnFocusLoss
+                                        draggable
+                                        pauseOnHover
+                                    />
                                 </div>
                             </div>
                         </form>

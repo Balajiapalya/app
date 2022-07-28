@@ -7,13 +7,16 @@ import { useForm } from "react-hook-form";
 import ManageAccount from "../../components/ManageAccount";
 import Navbar from "../../components/common/navbar";
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default function Accounts() {
   const [openneworg, set_openneworg] = useState(false);
   const [neworg, setnewrog] = useState([]);
   const [highlightedorg, sethighlightedorg] = useState(0);
   const [orgname, setorgname] = useState("")
-  const [saved,setSaved]=useState(false)
+  
+  // const [saved,setSaved]=useState(false)
   const {
     register,
     handleSubmit,
@@ -26,10 +29,19 @@ export default function Accounts() {
       if ((res.data.status = "Success")) {
         localStorage.setItem("ownername", res.data.data.firstName);
         localStorage.setItem("ownerLastname", res.data.data.lastName);
-        setSaved(true)
-        setTimeout(()=>{
-          setSaved(false)
-        },[1000*3])
+        // setSaved(true)
+        // setTimeout(()=>{
+        //   setSaved(false)
+        // },[1000*3])
+        toast.info('Changes saved', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
       }
     });
   };
@@ -155,7 +167,7 @@ export default function Accounts() {
                       defaultValue={ownerEmail}
                       readOnly
                     />
-                    {saved && <p className={"validations"}>Changes saved</p>}
+                    {/* {saved && <p className={"validations"}>Changes saved</p>} */}
                     <div className={styles.model_btn}>
                       <button
                         type="submit"
@@ -223,6 +235,19 @@ export default function Accounts() {
         </div>
         <div className='hidden'><Navbar Orgname={orgname} /></div>
       </div>
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
+{/* Same as */}
+<ToastContainer />
     </div>
     // </div>
   );

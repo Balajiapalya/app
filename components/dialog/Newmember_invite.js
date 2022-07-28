@@ -40,6 +40,15 @@ export default function Newmember_invite({ closeModel }) {
       .then(res => {
         setdata(res.data.data)
       })
+      const handleEsc=(e)=>{
+        if(e.keyCode===27){
+          closeModel(false)
+        }
+      }
+      document.addEventListener('keydown',handleEsc)
+      return()=>{
+        document.removeEventListener('keydown',handleEsc)
+      }
   }, [])
 
   // dropdown

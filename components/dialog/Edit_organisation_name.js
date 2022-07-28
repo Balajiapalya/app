@@ -5,7 +5,17 @@ import {useEffect} from 'react'
 
 export default function Edit_organization_name({ closeorganization, setEditData }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-   
+    useEffect(()=>{
+        const handleEsc=(e)=>{
+          if(e.keyCode===27){
+            closeorganization(false)
+          }
+        }
+        document.addEventListener('keydown',handleEsc)
+        return()=>{
+          document.removeEventListener('keydown',handleEsc)
+        }
+      },[])
     const onSubmit = organisation_data => {
         let trimmed=organisation_data.name.trim()
         let obj=new Object()
