@@ -30,7 +30,7 @@ const SecretKey = ({ setNewToken, closetoken,close, res }) => {
         element.click()
     }
     const handleClose = () => {
-        setNewToken(false);
+        // setNewToken(false);
         closetoken(false);
         close()
         let key=document.querySelector('.secretKey')
@@ -38,7 +38,7 @@ const SecretKey = ({ setNewToken, closetoken,close, res }) => {
         key.classList.add(`${styleDis.no_display}`)
     }
     const handlePrevious=()=>{
-        setNewToken(false)
+        // setNewToken(false)
         closetoken(false)
         let key=document.querySelector('.secretKey')
         key.classList.remove(`${styleDis.display}`)
