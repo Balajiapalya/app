@@ -53,17 +53,17 @@ export default function Videos() {
     };
     const sort_num = (col) => {
         if (ordernum === "ASC") {
-            var sorted_num = [...currentItems].sort((a, b) =>
+            var sorted_num = [...videoData].sort((a, b) =>
                 a[col] > b[col] ? 1 : -1
             );
-            setCurrentItems(sorted_num);
+            setVideoData(sorted_num);
             set_ordernum("DSC");
         }
         if (ordernum === "DSC") {
-            var sorted_num = [...currentItems].sort((a, b) =>
+            var sorted_num = [...videoData].sort((a, b) =>
                 a[col] < b[col] ? 1 : -1
             );
-            setCurrentItems(sorted_num);
+            setVideoData(sorted_num);
             set_ordernum("ASC");
         }
     }
