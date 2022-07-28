@@ -85,7 +85,7 @@ export default function Direct_upload({handlePopUp,setReload}) {
                         </div>
                         <input
                             type="file"
-                            accept='video/mkv,video/avi,video/mp4,video/*'
+                            accept='video/mp4'
                             name='file'
                             {...register("file")}
                             onChange={e => handleChange(e)}       

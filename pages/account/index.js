@@ -58,15 +58,7 @@ export default function Accounts() {
       setnewrog(res.data.data.organizations);
     })
     const toastFun=()=>{
-      toast.info('Organization created', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast('Organization created')
       setToastMsg(false)
   }
   {toastMsg && toastFun()}
@@ -243,14 +235,14 @@ export default function Accounts() {
                 <Create_new_organization table={process.browser && document.querySelector('.table')} accounts={process.browser && document.querySelector('.accounts')} closeneworg={set_openneworg} setToastMsg={setToastMsg}/>
               </div>
               <div className='accounts'>
-                <ManageAccount toast={toast}/>
+                <ManageAccount />
               </div>
             </div>
           </div>
         </div>
         <div className='hidden'><Navbar Orgname={orgname} /></div>
       </div>
-      {/* <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -260,7 +252,7 @@ export default function Accounts() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      /> */}
+      />
       <ToastContainer />
     </div>
     // </div>

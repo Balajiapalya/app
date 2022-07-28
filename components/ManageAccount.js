@@ -12,7 +12,7 @@ import Api from './api/api'
 //   confirmPassword:yup.string().oneOf([yup.ref('newPassword'),null])
 // })
 
-const ManageAccount = ({toast}) => {
+const ManageAccount = () => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [password, set_password] = useState(false);
     const [change_password, set_change_password] = useState(true);
@@ -25,9 +25,6 @@ const ManageAccount = ({toast}) => {
                 passwrd['newPassword'] = btoa(passwrd['newPassword'])
                 const sliced = Object.fromEntries(Object.entries(passwrd).slice(0, 2))
                 Api.Password_Change(sliced).then(res => {
-                    toast('Password changed successfully',{
-                        hideProgressBar: true,
-                    })
                     set_change_password(true);
                     set_password(false)
                 })

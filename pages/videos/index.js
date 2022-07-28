@@ -388,9 +388,8 @@ export default function Videos() {
                 pageLinkClassName={styles.page_num}
                 previousLinkClassName={styles.page_num}
                 nextLinkClassName={styles.page_num}
-                activeLinkClassName={styles.presentPage}
+                activeLinkClassName="active"
             />
-
         </>
     )
 }
