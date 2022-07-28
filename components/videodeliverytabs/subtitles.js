@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import Api from '../api/api';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default function Subtitles() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -45,6 +47,9 @@ export default function Subtitles() {
                     Api.Get_subtitle_list()
                         .then(res => {
                             if (res.data.status = "Success") {
+                                toast('Deleted',{
+                                    hideProgressBar: true,
+                                })
                                 setsubtitle(res.data.data);
                             }
                         })
@@ -162,6 +167,7 @@ export default function Subtitles() {
                         </div>
                     </div>
                 </div>
+                <ToastContainer/>
 
             </div>
 

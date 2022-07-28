@@ -84,10 +84,8 @@ export default function New_Access_token({ table, closetoken }) {
         sliced.name= sliced.name.trim()
          console.log(sliced)
          let secret = document.querySelector('.secretKey')
-         let token=document.querySelector('.createToken')
          Api.Create_aaccess_token_data(sliced).then(res =><>
             {setRes(res.data.data)}
-            {token.classList.add(`${styleDis.no_display}`)}
       {secret.classList.remove(`${styleDis.no_display}`)}
       {secret.classList.add(`${styleDis.display}`)}
       </>)
@@ -95,7 +93,7 @@ export default function New_Access_token({ table, closetoken }) {
                console.log(error)
             })
 
-         // setNewToken(true)
+         setNewToken(true)
       }
 
    }
@@ -162,7 +160,7 @@ export default function New_Access_token({ table, closetoken }) {
 
    return (
       <div className={`${styles.container} ${styles.accesstoken_model} inpopup`}>
-         <div className={`${styles.body} createToken`}>
+         <div className={styles.body}>
             <div className={styles.model_nav}>
                <a className={styles.model_close} role="button" onClick={() => handleClose()}><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
