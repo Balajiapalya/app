@@ -18,6 +18,7 @@ const EvnDropDown=(props)=>{
         
      }
      const handleOption = (option) => {
+      console.log(option,'opt')
         setOption(option.name)
         props.setuuid(option.uuid)
         setSelect(false)
@@ -45,6 +46,30 @@ const EvnDropDown=(props)=>{
      }
     let selectDropdown = useRef()
     useEffect(() => {
+   //    let opt=document.querySelector('.selector')
+   //    let count=-1
+   //    const functn=(e)=>{      
+   //    if(opt!==null && e.keyCode===40){
+   //       if(count<opt.children.length-1){
+   //       count=count+1;
+   //       opt.children[count].focus()
+         
+   //       }
+   //    }else if(opt!==null && e.keyCode===38){
+   //       if(count>0){
+   //          count=count-1;
+   //          opt.children[count].focus()
+   //          }
+   //    }
+   //    if(opt!==null && e.keyCode===13){
+   //       console.log(opt.children[count])
+
+   //    }  
+     
+   // }
+     
+      // document.addEventListener('keydown',functn)
+      
        const handleDropdown = (e) => {
           if (!selectDropdown.current.contains(e.target)) {
              setSelect(false)
@@ -54,7 +79,8 @@ const EvnDropDown=(props)=>{
        return () => {
           document.removeEventListener('mouseup', handleDropdown)
        }
-    }, [])
+       
+    }, [select])
     return(
         <>
             <label className={styles.model_label}>Environment</label>
@@ -68,9 +94,9 @@ const EvnDropDown=(props)=>{
                      {select &&
                         <div className={styles.dropdown}>
                            <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
-                           <div className={styles.allOptions}>
+                           <div className={`${styles.allOptions} selector`}>
                               {data.map(option =>
-                                    <div key={option.uuid} onClick={() => handleOption(option)} id="opt">{option.name}</div>
+                                    <div tabIndex='0' key={option.uuid} onClick={() => handleOption(option)} id="opt">{option.name}</div>
                               )}
                               <div style={{display:'none'}} className='noReslt'>No result found</div>
                            </div>
