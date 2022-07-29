@@ -199,7 +199,7 @@
 
 /* popup */
 .no_display{
-    display:none;
+    display:none !important;
 }
 .display{
     display:block;

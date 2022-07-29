@@ -275,7 +275,9 @@
 
 .accesstoken_model .body {
     height: 100vh;
-    /* position: absolute; */
+    position: absolute;
+    width: 100%;
+    float: left;
 }
 
 
