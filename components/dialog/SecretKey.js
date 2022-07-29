@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Api from '../api/api'
 import Image from 'next/image'
 
-const SecretKey = ({ setNewToken, closetoken,close, res }) => {
+const SecretKey = ({ setNewToken, closetoken,close, res,popup }) => {
     const refOne = useRef()
     const refTwo = useRef()
     const copyText = () => {
@@ -32,14 +32,16 @@ const SecretKey = ({ setNewToken, closetoken,close, res }) => {
     const handleClose = () => {
         // setNewToken(false);
         closetoken(false);
-        close()
+        close();
+        popup.classList.remove(`${styleDis.no_display}`);
         let key=document.querySelector('.secretKey')
         key.classList.remove(`${styleDis.display}`)
         key.classList.add(`${styleDis.no_display}`)
     }
     const handlePrevious=()=>{
         // setNewToken(false)
-        closetoken(false)
+        closetoken(false);
+        popup.classList.remove(`${styleDis.no_display}`);
         let key=document.querySelector('.secretKey')
         key.classList.remove(`${styleDis.display}`)
         key.classList.add(`${styleDis.no_display}`)
