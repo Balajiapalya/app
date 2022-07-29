@@ -1288,6 +1288,10 @@
 }
 
 /* dropdown newmemberinvite */
+.allOptions div:focus{
+    background-color: #ccc;
+    outline: none;
+}
 .inviteOptions {
     width: 455px;
     background-color: #fff;
