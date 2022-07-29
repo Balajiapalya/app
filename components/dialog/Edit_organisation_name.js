@@ -4,7 +4,7 @@ import Api from '../api/api';
 import {useEffect} from 'react'
 
 export default function Edit_organization_name({ closeorganization, setEditData }) {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, setError,formState: { errors } } = useForm();
     useEffect(()=>{
         const handleEsc=(e)=>{
           if(e.keyCode===27){
@@ -17,15 +17,16 @@ export default function Edit_organization_name({ closeorganization, setEditData 
         }
       },[])
     const onSubmit = organisation_data => {
-        let trimmed=organisation_data.name.trim()
-        let obj=new Object()
-        obj.name=trimmed
-        if(obj.name!==''){
+        // let trimmed=organisation_data.name.trim()
+        // let obj=new Object()
+        // obj.name=trimmed
+        
+        // if(obj.name!==''){
            
-        Api.Edit_organisation_name_data(obj)
+        Api.Edit_organisation_name_data(organisation_data)
             .then(res => {
                 // localStorage.setItem('orgName', res.data.data.name)
-                localStorage.setItem('orgName', obj.name)
+                localStorage.setItem('orgName', organisation_data.name)
                 // window.location.reload()
                 setEditData(res.data.data)
                 closeorganization(false)
@@ -33,7 +34,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
             .catch(error => {
                 console.log(error)
             })
-        }
+        // }
         
     }
     let data = localStorage.getItem('orgName')
@@ -53,9 +54,13 @@ export default function Edit_organization_name({ closeorganization, setEditData 
                                 type="text"
                                 className={`${styles.model_input} form_control`}
                                 name="name"
-                                {...register("name", { required: true })}
+                                {...register("name", {required:'This field is required',pattern:{
+                                    value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                    message:'Entered value cannot start/end or have only white space'
+                                }})}
                             />
-                            {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
+                            {/* {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>} */}
+                            {<p className={'validations'}>{errors.name?.message}</p>}
                         </div>
                         <div className={styles.model_btn}>
                             <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeorganization(false)}>Cancel</button></a>
