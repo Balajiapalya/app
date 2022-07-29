@@ -76,7 +76,10 @@ function Organisation() {
     const handleResend=(item)=>{
         let obj=new Object()
         obj.email=item.email
-        Api.ResendInvite(obj).then(res=>console.log(res))
+        Api.ResendInvite(obj).then(res=>
+            {
+                toast('Invite Resent')
+            })
         .catch(err=>console.log(err))
     }
     return (
