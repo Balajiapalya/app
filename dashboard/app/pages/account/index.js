@@ -7,13 +7,17 @@ import { useForm } from "react-hook-form";
 import ManageAccount from "../../components/ManageAccount";
 import Navbar from "../../components/common/navbar";
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Accounts() {
   const [openneworg, set_openneworg] = useState(false);
   const [neworg, setnewrog] = useState([]);
   const [highlightedorg, sethighlightedorg] = useState(0);
   const [orgname, setorgname] = useState("")
-  const [saved,setSaved]=useState(false)
+  const [toastMsg,setToastMsg]=useState(false)
+
+  // const [saved,setSaved]=useState(false)
   const {
     register,
     handleSubmit,
@@ -26,10 +30,19 @@ export default function Accounts() {
       if ((res.data.status = "Success")) {
         localStorage.setItem("ownername", res.data.data.firstName);
         localStorage.setItem("ownerLastname", res.data.data.lastName);
-        setSaved(true)
-        setTimeout(()=>{
-          setSaved(false)
-        },[1000*3])
+        // setSaved(true)
+        // setTimeout(()=>{
+        //   setSaved(false)
+        // },[1000*3])
+        toast.info('Changes saved', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     });
   };
@@ -44,6 +57,20 @@ export default function Accounts() {
       sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
     })
+    const toastFun=()=>{
+      toast.info('Organization created', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setToastMsg(false)
+  }
+  {toastMsg && toastFun()}
+
   }, [openneworg]);
   const selectOrganization = (e, key) => {
 
@@ -155,7 +182,7 @@ export default function Accounts() {
                       defaultValue={ownerEmail}
                       readOnly
                     />
-                    {saved && <p className={"validations"}>Changes saved</p>}
+                    {/* {saved && <p className={"validations"}>Changes saved</p>} */}
                     <div className={styles.model_btn}>
                       <button
                         type="submit"
@@ -213,16 +240,28 @@ export default function Accounts() {
                 </div>
               </div>
               <div className={`${styles.no_display} popup`}>
-                <Create_new_organization table={process.browser && document.querySelector('.table')} accounts={process.browser && document.querySelector('.accounts')} closeneworg={set_openneworg} />
+                <Create_new_organization table={process.browser && document.querySelector('.table')} accounts={process.browser && document.querySelector('.accounts')} closeneworg={set_openneworg} setToastMsg={setToastMsg}/>
               </div>
               <div className='accounts'>
-                <ManageAccount />
+                <ManageAccount toast={toast}/>
               </div>
             </div>
           </div>
         </div>
         <div className='hidden'><Navbar Orgname={orgname} /></div>
       </div>
+      {/* <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      /> */}
+      <ToastContainer />
     </div>
     // </div>
   );

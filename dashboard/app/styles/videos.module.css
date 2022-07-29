@@ -491,6 +491,15 @@
     font-family: Inter-Medium;
     cursor: pointer;
 }
+.supportFormats{
+    position: relative;
+    top: 6px;
+    right: 16px;
+    font-size: 12px;
+}
+.supportFormats p{
+    margin:0px;
+}
 
 .upload_btn_wrapper input[type=file] {
     font-size: 100px;
@@ -498,6 +507,12 @@
     left: 0;
     top: 0;
     opacity: 0;
+}
+.upload_btn_wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .upload_file {
@@ -939,6 +954,9 @@
     padding:5px 5px;
 }
 .pagination .page_num:hover{
+    background-color: #aeb7bd;
+}
+.pagination .presentPage{
     background-color: #9a9a9a;
 }
 

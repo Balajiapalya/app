@@ -1,14 +1,29 @@
 import styles from '../../styles/model.module.css'
 import Link from 'next/link'
 import Api from '../api/api'
-import { useState } from 'react/cjs/react.production.min'
+import {useEffect} from 'react'
 
 
-export default function Removeuser({ closeremoveuser, item }) {
 
-  const handleDelete = () => {
-    let del = [item.email]
-    Api.Remove_user_data(del).then(res => {
+export default function Removeuser({ closeremoveuser, item,setToastMsg }) {
+  useEffect(()=>{
+    const handleEsc=(e)=>{
+      if(e.keyCode===27){
+        closeremoveuser(false)
+      }
+    }
+    document.addEventListener('keydown',handleEsc)
+    return()=>{
+      document.removeEventListener('keydown',handleEsc)
+    }
+  },[])
+
+  const handleDelete = (del) => {
+    // let del = [item.email]
+    let arr=[]
+    arr.push(del)
+    Api.Remove_user_data(arr).then(res => {
+      setToastMsg(true)
       closeremoveuser(false)
     })
   }
@@ -27,7 +42,7 @@ export default function Removeuser({ closeremoveuser, item }) {
           </div>
           <div className={styles.model_btn}>
             <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeremoveuser(false)}>Cancel</button></a>
-            <a><button type="button" onClick={() => handleDelete()} className={`${styles.model_save_btn} btn btn-primary`} >Yes, remove</button></a>
+            <a><button type="button" onClick={() => handleDelete(item.email)} className={`${styles.model_save_btn} btn btn-primary`} >Yes, remove</button></a>
           </div>
         </div>
       </div>
