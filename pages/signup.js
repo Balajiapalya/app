@@ -55,7 +55,7 @@ export default function Signup() {
               name="email"
               className={`${styles.signup_input} form_control`}
               {...register("email",{required:'This field is required',pattern:{
-                value:/^[A-Z0-9_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                value:/^[A-Z0-9_%+-.^*!$`~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message:'invalid email address'
               }})}
             />
