@@ -5,7 +5,7 @@ import Create_signing_key from "../../../pages/settings/Create_signing_key";
 import Delete_signing_key from "../../dialog/Delete_signing_key";
 import Api from "../../api/api";
 
-function Signingkeys() {
+function Signingkeys({toast}) {
     const [opensigninkeys, setopensigninkeys] = useState(false);
     const [removekeys, setremovekeys] = useState(false);
     const [keys, setkeys] = useState([]);
@@ -67,7 +67,7 @@ function Signingkeys() {
                                 </tr>
 
                             )}
-                            {removekeys && <Delete_signing_key item={obj} closereovekeys={setremovekeys} />}
+                            {removekeys && <Delete_signing_key item={obj} closereovekeys={setremovekeys} toast={toast}/>}
                         </tbody>
                     </table>
                 </div>

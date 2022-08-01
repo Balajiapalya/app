@@ -207,8 +207,12 @@ export default function New_Access_token({ table, closetoken }) {
                      <label>Write</label><br />
                   </div>
                   <label className={styles.model_label}>Access token name</label>
-                  <input type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", { required: true })} />
-                  {errors.name && <p className='validations'>This field is required</p>}
+                  <input maxLength={50} type="text" className={`${styles.model_input} form_control`} name="name" placeholder="Development" {...register("name", {required:'This field is required',pattern:{
+                                    value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                    message:'Entered value cannot start/end or have only white space'
+                                }})} />
+                  {<p className={'validations'}>{errors.name?.message}</p>}
+                  
                   <div className={styles.model_btn_token}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
                      <button type="submit" className={`${styles.save_btn} btn btn-primary`}>create Token</button>

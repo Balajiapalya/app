@@ -150,29 +150,33 @@ export default function Accounts() {
                   <form className={styles.personal_detials_form} onSubmit={handleSubmit(onSubmit)}>
                     <label className={styles.model_label}>First Name</label>
                     <input
+                      maxLength={40}
                       defaultValue={ownerFirstname}
                       type="text"
                       className={`${styles.model_input} form_control`}
                       name="firstname"
                       placeholder="sunil"
-                      {...register("firstName", { required: true })}
+                      {...register("firstName", {required:'This field is required',pattern:{
+                        value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                        message:'Entered value cannot start/end or have only white space'
+                    }})}
                     />
-                    {errors.firstName && (
-                      <p className={"validations"}>This field is required</p>
-                    )}
+                    {<p className={'validations'}>{errors.firstName?.message}</p>}
 
                     <label className={styles.model_label}>Last Name</label>
                     <input
+                      maxLength={40}
                       defaultValue={ownerLastname}
                       type="text"
                       className={`${styles.model_input} form_control`}
                       name="lastName"
                       placeholder="Gavaskar"
-                      {...register("lastName", { required: true })}
+                      {...register("lastName",{required:'This field is required',pattern:{
+                        value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                        message:'Entered value cannot start/end or have only white space'
+                    }})}
                     />
-                    {errors.lasttName && (
-                      <p className={"validations"}>This field is required</p>
-                    )}
+                     {<p className={'validations'}>{errors.lastName?.message}</p>}
 
                     <label className={styles.model_label}>Email</label>
                     <input

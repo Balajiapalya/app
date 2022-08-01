@@ -803,6 +803,10 @@
 .edit_img {
     margin-left: 9px;
 }
+.thumbImg{
+    width: 100px;
+    max-height: 67px;
+}
 
 /* dropdown */
 .inputSearch {

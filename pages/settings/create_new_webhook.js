@@ -57,13 +57,18 @@ export default function Create_new_webhook({ closewebhook,table }) {
                         {roleError && <p className={`validations`}>Please select the environment</p>}
                         <label className={styles.model_label}>URL to notify:</label>
                         <input
+                            maxLength={60}
                             type="text"
                             className={`${styles.model_input} form_control`}
                             name="url"
                             placeholder="Enter url"
-                            {...register("url", { required: true })}></input>
+                            {...register("url", {required:'This field is required',pattern:{
+                                value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                message:'Entered value cannot start/end or have only white space'
+                            }})}></input>
 
-                        {errors.url && <p className={`${styles.validations} validations`}>This field is required</p>}
+                        {/* {errors.url && <p className={`${styles.validations} validations`}>This field is required</p>} */}
+                        {<p className={'validations'}>{errors.url?.message}</p>}
                         <p className={styles.access_token_link}>All events will be sent to this URL.To learn more about the types of events see our <a href="" className={styles.access_token_data}>docs</a></p>
                         <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopup()}>Cancel</button>

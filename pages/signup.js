@@ -50,7 +50,7 @@ export default function Signup() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className={`${styles.label} ${styles.req}`}>Email</label>
             <input
-              maxLength={30}
+              maxLength={40}
               placeholder="Enter your email address"
               name="email"
               className={`${styles.signup_input} form_control`}

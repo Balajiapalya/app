@@ -19,7 +19,11 @@ export default function Thumbnails() {
         settoggleposition(index);
     }
     const onSubmit = thumbnail => {
-        thumbnail.videoPositionInSec = Number(gettime)
+        // thumbnail.videoPositionInSec = Number(gettime)        
+        const [hrs,mins,sec]=gettime.split(':')
+        const seconds=(+hrs)*60*60+(+mins)*60+(+sec);
+        thumbnail.videoPositionInSec=+seconds;
+        console.log(thumbnail)
         if(gettime!==undefined){
         Api.Create_thumbnail(thumbnail)
             .then(res => {
@@ -60,9 +64,9 @@ export default function Thumbnails() {
                                         required: 'This field is required',
                                         onChange:(e) => handleChange(e),
                                         pattern: {
-                                            // value: /[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/,
-                                            value: /[0-9]/,
-                                            message: 'please enter only num'
+                                            // value: /[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$/,
+                                            value: /^([0-9]?\d)(?::([0-5]?\d))?(?::([0-5]?\d))?$/,
+                                            message: 'Please enter in the given format'
                                         },
                                     })} type="text" className={styles.model_input} name="videoPositionInSec" value={gettime} placeholder="00:22:33" />
                                     {/* <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} placeholder="00:22:33" {...register("videoPositionInSec", { required: false,valueAsNumber: true})} /> */}

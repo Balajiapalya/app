@@ -42,13 +42,17 @@ export default function Create_new_organization({ closeneworg ,table,accounts,se
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className={styles.model_label}> Name</label>
                         <input
+                            maxLength={50}
                             type="text"
                             className={`${styles.model_input} form_control`}
                             name="name" 
                             placeholder="Enter organization name"
-                            {...register("name", { required: true })}
+                            {...register("name",{required:'This field is required',pattern:{
+                                value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                message:'Entered value cannot start/end or have only white space'
+                            }})}
                         />
-                        {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>}
+                        {<p className={'validations'}>{errors.name?.message}</p>}
                         <div className={styles.model_btn}>
                             <button onClick={() =>  handleClose()} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
                             <button type="submit" className={`${styles.model_save_btn} btn btn-primary`}>Create Organization</button>
