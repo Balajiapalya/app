@@ -62,6 +62,10 @@ const EvnDropDown=(props)=>{
          if(count>0){
             count=count-1;
             opt.children[count].focus()
+            }else{
+               count=opt.children.length-2
+               // count=count-1;
+               opt.children[count].focus()
             }
       }
       if(opt!==null && e.keyCode===13){
