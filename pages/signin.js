@@ -88,8 +88,7 @@ export default function Signin() {
       }
     })
     
-    // document.cookie = 'email=;expires=' + new Date().toUTCString()
-    // document.cookie = 'pswd=;expires=' + new Date().toUTCString()
+    // remember me
     if(document.cookie.match('email')!==null && document.cookie.match('pswd')!==null){
           setValue('login',document.cookie.split(`email=`).pop().split(';')[0]);
           setValue('password',atob(document.cookie.split(`pswd=`).pop().split(';')[0]));     
