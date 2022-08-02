@@ -15,6 +15,8 @@ export default function New_Access_token({ table, closetoken }) {
    const [resp, setRes] = useState([])
    const [uuid, setuuid] = useState('')
    const [sys, setSys] = useState([])
+   const [data, setData] = useState([]);
+   const [defaultEnv, setDefaultEnv] = useState()
    // const [roleError,setRoleError]=useState(false)
    
 
@@ -25,6 +27,10 @@ export default function New_Access_token({ table, closetoken }) {
          {setSys(res.data.data[2])}
       </>)
 
+      Api.Get_env_data().then(res => <>
+         {setData(res.data.data)}
+         {setDefaultEnv(res.data.data[0].name)}
+      </>)
       return () => {
          // setData([])
          setItems([])
@@ -34,8 +40,9 @@ export default function New_Access_token({ table, closetoken }) {
    }, [])
    const onSubmit = access_data => {
       if(uuid===''){
-         console.log(access_data)
+         uuid=data[0].uuid
          // setRoleError(true)
+
        }
       
       if (access_data.video) {
@@ -170,7 +177,7 @@ export default function New_Access_token({ table, closetoken }) {
             <div className={styles.main}>
                <h3 className={styles.model_title}>New Access Token</h3>
                <form onSubmit={handleSubmit(onSubmit)}>
-                  <EvnDropDown setuuid={setuuid}/>
+                  <EvnDropDown data={data} defaultEnv={defaultEnv} setuuid={setuuid}/>
                   {/* {roleError && <p className={`validations`}>Please select the environment</p>} */}
                   <div className={styles.access_token}>
                      <h4 className={styles.access_token_permission}>Permission</h4>
@@ -216,7 +223,7 @@ export default function New_Access_token({ table, closetoken }) {
                   
                   <div className={styles.model_btn_token}>
                      <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => handleClose()}>Cancel</button>
-                     <button type="submit" className={`${styles.save_btn} btn btn-primary`}>create Token</button>
+                     <button type="submit" className={`${styles.save_btn} btn btn-primary`}>Create Token</button>
                      {/* {newToken && <SecretKey setNewToken={setNewToken} closetoken={closetoken} close={handleClose} res={resp} />} */}
                   </div>
                </form>

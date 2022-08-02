@@ -70,7 +70,15 @@ export default function Subtitles() {
                 }
             })
         }catch(e){
-            console.log(e)
+            toast.error('syntax error', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         }
     };
     const created_date = (date) => {

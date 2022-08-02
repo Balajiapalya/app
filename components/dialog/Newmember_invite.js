@@ -118,7 +118,7 @@ const handleSelected=(prod)=>{
                   message:'invalid email address'
                 }})}
               />
-              {errors.email?.message}
+               {<p className={'validations'}>{errors.email?.message}</p>}
 
               <div>
                 <label className={styles.model_label}>Role</label>
