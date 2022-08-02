@@ -38,7 +38,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
         if(idSubmit===undefined){
             setProdError(true)
         }
-        console.log(idSubmit)
+        
         if(signin_key.productTypeId!=undefined && signin_key.environmentUUID!=undefined){
             Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
             setOpenCreate(true)

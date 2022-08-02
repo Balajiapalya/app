@@ -18,7 +18,6 @@ const EvnDropDown=(props)=>{
         
      }
      const handleOption = (option) => {
-      console.log(option,'opt')
         setOption(option.name)
         props.setuuid(option.uuid)
         setSelect(false)
