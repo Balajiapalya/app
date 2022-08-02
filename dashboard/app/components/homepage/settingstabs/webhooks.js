@@ -6,7 +6,8 @@ import Delete_webhook from "../../dialog/Delete_webhook";
 import Api from "../../api/api";
 import WebhookToggleImg from './WebhookToggleImg'
 
-function Webhooks() {
+
+function Webhooks({toast}) {
     const [openwebhook, setopenwebhook] = useState(false);
     const [removewebhook, setremovewebhook] = useState(false);
     const [webhook, setwebnook] = useState([]);
@@ -89,7 +90,7 @@ function Webhooks() {
                                         {/* <input  type="checkbox" className={styles.input}></input> */}
                                         <a onClick={() => [`${setremovewebhook(true)}`][`${setObj(item)}`]}><img src="/images/iconmaterial-delete.svg" alt="icon" ></img></a>
                                     </td>
-                                    {removewebhook && <Delete_webhook item={obj} closedeletewebhook={setremovewebhook} />}
+                                    {removewebhook && <Delete_webhook item={obj} closedeletewebhook={setremovewebhook} toast={toast}/>}
                                 </tr>
                             )}
 
@@ -98,6 +99,7 @@ function Webhooks() {
                 </div>
 
             </section>
+            
         </Fragment>
     )
 }

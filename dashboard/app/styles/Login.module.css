@@ -153,12 +153,12 @@
     font-style: normal;
     line-height: 1.25;
     letter-spacing: normal;
-    /* margin-top: 1rem;
-    margin-bottom: 0.5rem; */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 .req::after{
     content: '*';
-    color:red;
+    color:#ff0015;
 }
 
 .forgotpw {

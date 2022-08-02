@@ -107,9 +107,9 @@ const handleSelected=(prod)=>{
           </div>
           <form onSubmit={handleSubmit(onSubmit)} >
             <div className={styles.model_form}>
-              <label className={styles.model_label}>Email Address</label>
+              <label className={`${styles.model_label} ${styles.req}`}>Email Address</label>
               <input
-                type="email"
+                maxLength={40}
                 className={`${styles.model_input} form_control`}
                 name="email"
                 {...register("email", {required:'This field is required',pattern:{
@@ -120,7 +120,7 @@ const handleSelected=(prod)=>{
               {errors.email?.message}
 
               <div>
-                <label className={styles.model_label}>Role</label>
+                <label className={`${styles.model_label} ${styles.req}`}>Role</label>
                 <div ref={dropdownprod} className={styles.select}>
                   <div className={styles.model_selection} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`}>
                     {selected ? selected : 'Admin'}

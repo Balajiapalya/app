@@ -62,18 +62,18 @@ const ManageAccount = ({toast}) => {
                 }
                 {password && <div>
                     <label className={styles.model_label}>Current Password</label>
-                    <input {...register("oldPassword",{required:'This field is required'})} type="password" className={`${styles.model_input} form_control empty`} name="oldPassword" />
+                    <input maxLength={40} {...register("oldPassword",{required:'This field is required'})} type="password" className={`${styles.model_input} form_control empty`} name="oldPassword" />
                     {/* {errors.oldPassword && <p className={`${styles.validations} validations`}>This field is required</p>} */}
                     {<p className={'validations'}>{errors.oldPassword?.message}</p>}
                     <label className={styles.model_label}>New Password</label>
-                    <input {...register("newPassword",{required:"This field is required",pattern:{
+                    <input maxLength={40} {...register("newPassword",{required:"This field is required",pattern:{
                         value:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                         message:'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
                     }})} type="password" className={`${styles.model_input} form_control empty`} name="newPassword" />
                     {<p className={'validations'}>{errors.newPassword?.message}</p>}
                     {/* {errors.newPassword && <p className={`${styles.validations} validations`}>This field is required</p>} */}
                     <label className={styles.model_label}>Confirm New Password</label>
-                    <input {...register("confirmPassword",{required:"This field is required",validate:val=>val==watch('newPassword'),message:'mismatch'})} type="password" className={`${styles.model_input} form_control empty`}
+                    <input maxLength={40} {...register("confirmPassword",{required:"This field is required",validate:val=>val==watch('newPassword'),message:'mismatch'})} type="password" className={`${styles.model_input} form_control empty`}
                         name="confirmPassword" />
                         {console.log(watch('newPassword'))}
                          {<p className={'validations'}>{errors.confirmPassword && 'mismatch'}</p>}
