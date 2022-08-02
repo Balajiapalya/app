@@ -1,10 +1,12 @@
 import styles from '../../styles/model.module.css'
 import Api from '../api/api'
 
-export default function Delete_signing_key({ closereovekeys, item }) {
+export default function Delete_signing_key({ closereovekeys, item,toast }) {
     // console.log(item)
     const handleDelete = () => {
-        Api.Delete_key_signing(item.signingKeyId).then(res => closereovekeys(false))
+        Api.Delete_key_signing(item.signingKeyId).then(res => {
+            toast('signing key deleted')
+            closereovekeys(false)})
     }
     return (
         <div className={`${styles.model} ${styles.remove_user_modal} ${styles.opc}`} >

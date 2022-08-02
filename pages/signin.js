@@ -26,6 +26,9 @@ export default function Signin() {
       if(check.checked===true){
         document.cookie=`email=${login_details.login}`
         document.cookie=`pswd=${login_details.password}`
+      }else{
+        document.cookie = 'email=;expires=' + new Date().toUTCString();
+        document.cookie = 'pswd=;expires=' + new Date().toUTCString();
       }
       Api.SignIn_details(login_details)
         .then(res => {
@@ -85,11 +88,12 @@ export default function Signin() {
       }
     })
     
-    // document.cookie = 'email=;expires=' + new Date().toUTCString()
-    // document.cookie = 'pswd=;expires=' + new Date().toUTCString()
+    // remember me
     if(document.cookie.match('email')!==null && document.cookie.match('pswd')!==null){
-          setValue('login',document.cookie.split(`email=`).pop().split(';')[0])
-          setValue('password',atob(document.cookie.split(`pswd=`).pop().split(';')[0]))         
+          setValue('login',document.cookie.split(`email=`).pop().split(';')[0]);
+          setValue('password',atob(document.cookie.split(`pswd=`).pop().split(';')[0]));     
+          let check=document.getElementById('remember')
+          check.checked=true
     }
 
   }, [])
@@ -104,9 +108,9 @@ export default function Signin() {
           </h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <label className={styles.label}><h4>Email</h4></label>
+              <label className={`${styles.label} ${styles.req}`}>Email</label>
               <input
-                maxLength={30}
+                maxLength={40}
                 id="email"
                 placeholder="Enter email address"
                 name="login"
@@ -119,16 +123,19 @@ export default function Signin() {
             </div>
             <p className={'validations'}>{errors.login?.message}</p>
             <div>
-              <label className={styles.label}><h4>Password</h4></label>
+              <label className={`${styles.label} ${styles.req}`}>Password</label>
               <input
                 id="password"
-                maxLength={20}
+                maxLength={40}
                 autoComplete='current-password'
                 type="password"
                 placeholder="Enter password"
                 name="password"
                 className={`${styles.signup_input} form_control`}
-                {...register("password",{required:'This field is required'})}
+                {...register("password",{required:'This field is required',pattern:{
+                  value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                  message:'Entered value cannot start/end or have only white space'
+              }})}
               />
               {error && !errors.password && !errors.login && <span className='error'>{error}</span>}
             </div>

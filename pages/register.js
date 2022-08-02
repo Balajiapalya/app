@@ -99,7 +99,7 @@ export default function Create_account() {
                         <label className={styles.createaccount_label}>First Name</label>
                         <input
                             type="text"
-                            maxLength={20}
+                            maxLength={40}
                             placeholder="Enter your first name"
                             name="firstName"
                             className={`${styles.createaccount_input} form_control`}
@@ -114,7 +114,7 @@ export default function Create_account() {
                         <label className={styles.createaccount_label}>Last Name</label>
                         <input
                             type="text"
-                            maxLength={20}
+                            maxLength={40}
                             placeholder="Enter your last name"
                             name="lastName"
                             className={`${styles.createaccount_input} form_control`}
@@ -130,7 +130,7 @@ export default function Create_account() {
                         </label>
                         <input
                             type="text"
-                            maxLength={20}
+                            maxLength={40}
                             placeholder="Enter your organisation name"
                             name="organizationName"
                             className={`${styles.createaccount_input} form_control`}
@@ -144,7 +144,7 @@ export default function Create_account() {
                         <label className={styles.createaccount_label}>Password</label>
                         <input
                             type="password"
-                            maxLength={20}
+                            maxLength={40}
                             autoComplete='new-password'
                             placeholder="Must have atleast 8 characters"
                             name="password"

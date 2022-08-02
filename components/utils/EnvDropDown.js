@@ -46,29 +46,42 @@ const EvnDropDown=(props)=>{
      }
     let selectDropdown = useRef()
     useEffect(() => {
-   //    let opt=document.querySelector('.selector')
-   //    let count=-1
-   //    const functn=(e)=>{      
-   //    if(opt!==null && e.keyCode===40){
-   //       if(count<opt.children.length-1){
-   //       count=count+1;
-   //       opt.children[count].focus()
-         
-   //       }
-   //    }else if(opt!==null && e.keyCode===38){
-   //       if(count>0){
-   //          count=count-1;
-   //          opt.children[count].focus()
-   //          }
-   //    }
-   //    if(opt!==null && e.keyCode===13){
-   //       console.log(opt.children[count])
+      let opt=document.querySelector('.selector')
+      let count=-1
+      const functn=(e)=>{      
+      if(opt!==null && e.keyCode===40){
+         if(count<opt.children.length-2){
+         count=count+1;
+         opt.children[count].focus()  
+         }else{
+            count=-1
+            count=count+1;
+            opt.children[count].focus()
+         }
+      }else if(opt!==null && e.keyCode===38){  
+         if(count>0){
+            count=count-1;
+            opt.children[count].focus()
+            }else{
+               count=opt.children.length-2
+               // count=count-1;
+               opt.children[count].focus()
+            }
+      }
+      if(opt!==null && e.keyCode===13){
+         data.map(item=>{
+            if(opt.children[count].innerHTML===item.name){
+               handleOption(item)
+            }
 
-   //    }  
+         })
+      }  
+    
      
-   // }
+   }
+  
      
-      // document.addEventListener('keydown',functn)
+      document.addEventListener('keydown',functn)
       
        const handleDropdown = (e) => {
           if (!selectDropdown.current.contains(e.target)) {
@@ -100,6 +113,7 @@ const EvnDropDown=(props)=>{
                               )}
                               <div style={{display:'none'}} className='noReslt'>No result found</div>
                            </div>
+                           
                         </div>
                      }
                   </div>

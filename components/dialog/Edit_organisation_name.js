@@ -50,6 +50,7 @@ export default function Edit_organization_name({ closeorganization, setEditData 
                         <div className={styles.model_form}>
                             <label className={styles.model_label}>Organisation Name</label>
                             <input
+                                maxLength={50}
                                 defaultValue={data}
                                 type="text"
                                 className={`${styles.model_input} form_control`}

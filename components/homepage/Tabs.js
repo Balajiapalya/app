@@ -7,6 +7,8 @@ import Apiaccesstokes from "./settingstabs/Api_accesstokens";
 import Webhooks from "./settingstabs/webhooks";
 import Signingkeys from "./settingstabs/signingkeys";
 import Api from "../api/api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Tabs() {
   const [toggleState, setToggleState] = useState(1);
@@ -90,17 +92,18 @@ function Tabs() {
           className={toggleState === 4 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
           {/* <Webhooks /> */}
-          {toggleState===4 ? <Webhooks/>:null}
+          {toggleState===4 ? <Webhooks toast={toast}/>:null}
         </div>
 
         <div
           className={toggleState === 5 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
           {/* <Signingkeys /> */}
-          {toggleState === 5? <Signingkeys/>:null}
+          {toggleState === 5? <Signingkeys toast={toast}/>:null}
         </div>
 
       </div>
+      <ToastContainer hideProgressBar={true}/>
     </div>
   )
 }

@@ -75,6 +75,10 @@
     text-align: left;
     color: #212b36;
 }
+.req::after{
+    content: '*';
+    color:#ff0015;
+}
 
 /* .validations {
     margin-left: 20px;
