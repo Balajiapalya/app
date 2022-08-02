@@ -21,7 +21,7 @@ const EvnDropDown=(props)=>{
         setOption(option.name)
         props.setuuid(option.uuid)
         setSelect(false)
-        props.setRoleError(false)
+      //   props.setRoleError(false)
      }
      const searchHandle = (e) => {
       let count=0;

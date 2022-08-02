@@ -15,7 +15,7 @@ export default function New_Access_token({ table, closetoken }) {
    const [resp, setRes] = useState([])
    const [uuid, setuuid] = useState('')
    const [sys, setSys] = useState([])
-   const [roleError,setRoleError]=useState(false)
+   // const [roleError,setRoleError]=useState(false)
    
 
    useEffect(() => {
@@ -34,7 +34,8 @@ export default function New_Access_token({ table, closetoken }) {
    }, [])
    const onSubmit = access_data => {
       if(uuid===''){
-         setRoleError(true)
+         console.log(access_data)
+         // setRoleError(true)
        }
       
       if (access_data.video) {
@@ -169,8 +170,8 @@ export default function New_Access_token({ table, closetoken }) {
             <div className={styles.main}>
                <h3 className={styles.model_title}>New Access Token</h3>
                <form onSubmit={handleSubmit(onSubmit)}>
-                  <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
-                  {roleError && <p className={`validations`}>Please select the environment</p>}
+                  <EvnDropDown setuuid={setuuid}/>
+                  {/* {roleError && <p className={`validations`}>Please select the environment</p>} */}
                   <div className={styles.access_token}>
                      <h4 className={styles.access_token_permission}>Permission</h4>
                      <p className={styles.access_token_link}>To know more permission please visit our <a href="#" className={styles.access_token_data}>token access guide</a></p>
