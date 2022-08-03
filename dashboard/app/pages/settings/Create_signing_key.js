@@ -14,11 +14,16 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     const [productSelect, setProductSelect] = useState(false)
     const [selected,setSelected]=useState()
     const [idSubmit,setIdSubmit]=useState()
-    const [roleError,setRoleError]=useState(false)
-    const [prodError,setProdError]=useState(false)
+    // const [roleError,setRoleError]=useState(false)
+    // const [prodError,setProdError]=useState(false)
+    const [defaultEnv, setDefaultEnv] = useState()
+    const [data, setData] = useState([])
 
     useEffect(() => {
-    
+          Api.Get_env_data().then(res => <>
+            {setData(res.data.data)}
+            {setDefaultEnv(res.data.data[0].name)}
+         </>)
         Api.Get_product_data()
             .then(res =>{<>
                 {setSelected(res.data.data[0].name)}
@@ -30,15 +35,17 @@ export default function Create_signing_key({ closesigninkeys, table }) {
     const [signRes, setSignRes] = useState([])
 
     const onSubmit = signin_key => {
-        signin_key.productTypeId=idSubmit
-        signin_key.environmentUUID = uuid
+       
         if(uuid==''){
-            setRoleError(true)
+            uuid=data[0].uuid
+            // setRoleError(true)
         }
+        signin_key.environmentUUID = uuid
         if(idSubmit===undefined){
-            setProdError(true)
+            // setProdError(true)
+            idSubmit=prod[0].id
         }
-        console.log(idSubmit)
+        signin_key.productTypeId=idSubmit
         if(signin_key.productTypeId!=undefined && signin_key.environmentUUID!=undefined){
             Api.Create_signin_keys_data(signin_key).then(res => setSignRes(res.data.data))
             setOpenCreate(true)
@@ -82,7 +89,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
         setSelected(prod.name)
         setIdSubmit(prod.id)
         setProductSelect(false)
-        setProdError(false)
+        // setProdError(false)
     }
     return (
         <div className={`${styles.container} ${styles.newkey} inpopup`} >
@@ -94,8 +101,8 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                 <div className={styles.main}>
                     <h3 className={styles.model_title}>New Signing Key</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                         <EvnDropDown setRoleError={setRoleError} setuuid={setuuid}/>
-                         {roleError && <p className={`validations`}>Please select the environment</p>}
+                         <EvnDropDown data={data} defaultEnv={defaultEnv} setuuid={setuuid}/>
+                         {/* {roleError && <p className={`validations`}>Please select the environment</p>} */}
                         <div>
                             <label className={styles.model_label}>Product</label>
                             <div ref={dropdownprod} className={styles.select}>
@@ -114,10 +121,10 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                                 }
                             </div>
                         </div>
-                        {prodError && <p className={`validations`}>Please select the product</p>}
+                        {/* {prodError && <p className={`validations`}>Please select the product</p>} */}
                         <div className={styles.model_btn_token}>
                             <button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closePopUp()}>Cancel</button>
-                            <button type="submit" className={`${styles.save_btn} btn btn-primary`} >create Signing Key</button>
+                            <button type="submit" className={`${styles.save_btn} btn btn-primary`} >Create Signing Key</button>
                         </div>
                     </form>
                     {openCreate && <CreateSignKey setOpenCreate={setOpenCreate} signRes={signRes} closesigninkeys={closesigninkeys} close={closePopUp}/>}

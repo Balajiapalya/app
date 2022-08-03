@@ -38,7 +38,7 @@ export default function Removeuser({ closeremoveuser, item,setToastMsg }) {
 
           <div className={styles.model_removeuser}>
             <h4 className={styles.model_removeusername}>Are you sure you want to remove user?</h4>
-            <p className={styles.model_data}>Once removed,this user will no longer be able to access this organisation on Videograph.</p>
+            <p className={styles.model_data}>Once removed, this user will no longer be able to access this organisation on Videograph.</p>
           </div>
           <div className={styles.model_btn}>
             <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closeremoveuser(false)}>Cancel</button></a>

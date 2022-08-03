@@ -23,12 +23,18 @@ export default function Signin() {
       login_details.password = login_details.password.trim()
       login_details.password = btoa(login_details.password)
       let check=document.getElementById('remember')
+      
       if(check.checked===true){
-        document.cookie=`email=${login_details.login}`
-        document.cookie=`pswd=${login_details.password}`
+        // console.log((login_details.password),'psw')
+        // document.cookie=`email=${login_details.login}`
+        // document.cookie=`pswd=${login_details.password}`
+        localStorage.setItem('email',login_details.login)
+        localStorage.setItem('pswd',login_details.password)
       }else{
-        document.cookie = 'email=;expires=' + new Date().toUTCString();
-        document.cookie = 'pswd=;expires=' + new Date().toUTCString();
+        // document.cookie = 'email=;expires=' + new Date().toUTCString();
+        // document.cookie = 'pswd=;expires=' + new Date().toUTCString();
+        localStorage.removeItem('email')
+        localStorage.removeItem('pswd')
       }
       Api.SignIn_details(login_details)
         .then(res => {
@@ -60,8 +66,10 @@ export default function Signin() {
             }, [1000 * 10])
           }
           if (error.response.data.code == 400) {
-            document.cookie = 'email=;expires=' + new Date().toUTCString()
-            document.cookie = 'pswd=;expires=' + new Date().toUTCString()
+            // document.cookie = 'email=;expires=' + new Date().toUTCString()
+            // document.cookie = 'pswd=;expires=' + new Date().toUTCString()
+             localStorage.removeItem('email')
+             localStorage.removeItem('pswd')
             seterror(error.response.data.message)
             setTimeout(() => {
               seterror('')
@@ -89,11 +97,17 @@ export default function Signin() {
     })
     
     // remember me
-    if(document.cookie.match('email')!==null && document.cookie.match('pswd')!==null){
-          setValue('login',document.cookie.split(`email=`).pop().split(';')[0]);
-          setValue('password',atob(document.cookie.split(`pswd=`).pop().split(';')[0]));     
-          let check=document.getElementById('remember')
-          check.checked=true
+    // if(document.cookie.match('email')!==null && document.cookie.match('pswd')!==null){
+    //       setValue('login',document.cookie.split(`email=`).pop().split(';')[0]);
+    //       setValue('password',atob(document.cookie.split(`pswd=`).pop().split(';')[0]));     
+    //       let check=document.getElementById('remember')
+    //       check.checked=true
+    // }
+    if(localStorage.getItem('email')!==null && localStorage.getItem('pswd')!==null){
+      setValue('login',localStorage.getItem('email'));
+      setValue('password',atob(localStorage.getItem('pswd')));     
+      let check=document.getElementById('remember')
+      check.checked=true
     }
 
   }, [])
