@@ -10,7 +10,7 @@ export default function Newmember_invite({ closeModel }) {
   const [selected, setSelected] = useState();
   const [productSelect, setProductSelect] = useState(false)
   const [idSubmit, setIdSubmit] = useState()
-  const [roleError,setRoleError]=useState(false)
+  // const [roleError,setRoleError]=useState(false)
   const [responseError,setResponseError]=useState('')
 
 
@@ -18,7 +18,8 @@ export default function Newmember_invite({ closeModel }) {
   const onSubmit = admin_invite_code => {
     admin_invite_code.roleId=idSubmit;
     if(admin_invite_code.roleId==undefined){
-      setRoleError(true)
+      admin_invite_code.roleId=2
+      // setRoleError(true)
     }
     if(admin_invite_code.roleId!==undefined){
     Api.Newmember_invite_data(admin_invite_code)
@@ -117,12 +118,12 @@ const handleSelected=(prod)=>{
                   message:'invalid email address'
                 }})}
               />
-              {errors.email?.message}
+               {<p className={'validations'}>{errors.email?.message}</p>}
 
               <div>
-                <label className={`${styles.model_label} ${styles.req}`}>Role</label>
+                <label className={styles.model_label}>Role</label>
                 <div ref={dropdownprod} className={styles.select}>
-                  <div className={styles.model_selection} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`}>
+                  <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
                     {selected ? selected : 'Admin'}
                   </div>
                   <img className={styles.dropdownOneInvite} onClick={() => `${setProductSelect(!productSelect)} ${setRoleError(false)}`} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
@@ -136,7 +137,7 @@ const handleSelected=(prod)=>{
                       </div>
                     </div>
                   }
-                  {roleError && <p className={`validations`}>Please select the role</p>}
+                  {/* {roleError && <p className={`validations`}>Please select the role</p>} */}
                   {responseError && <p className={`validations`}>{`${responseError}`}</p>}
                 </div>
                 

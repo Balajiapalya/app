@@ -4,25 +4,24 @@ import Api from '../../components/api/api';
 
 const EvnDropDown=(props)=>{
     const [option, setOption] = useState()
-    const [data, setData] = useState([])
+   //  const [data, setData] = useState([])
     const [select, setSelect] = useState(false)
-    const [defaultEnv, setDefaultEnv] = useState()
+   //  const [defaultEnv, setDefaultEnv] = useState()
     useEffect(()=>{
-        Api.Get_env_data().then(res => <>
-            {setData(res.data.data)}
-            {setDefaultEnv(res.data.data[0].name)}
-         </>)
+      //   Api.Get_env_data().then(res => <>
+      //       {setData(res.data.data)}
+      //       {setDefaultEnv(res.data.data[0].name)}
+      //    </>)
     },[])
     const handleSelect = () => {
         setSelect(!select)
         
      }
      const handleOption = (option) => {
-      console.log(option,'opt')
         setOption(option.name)
         props.setuuid(option.uuid)
         setSelect(false)
-        props.setRoleError(false)
+      //   props.setRoleError(false)
      }
      const searchHandle = (e) => {
       let count=0;
@@ -99,7 +98,7 @@ const EvnDropDown=(props)=>{
             <label className={styles.model_label}>Environment</label>
                   <div ref={selectDropdown} className={styles.select}>
                      <div className={`${styles.development} ${styles.model_selection}`} onClick={() => handleSelect()}>
-                        {option ? option : defaultEnv}
+                        {option ? option : props.defaultEnv}
                         <img className={styles.selectFile} src="/images/iconawesome-folder.svg" alt='icon'></img>
                      </div>
                      <img onClick={() => handleSelect()} className={styles.drpdwn} src="/images/updown.png" alt='icon'></img>
@@ -108,7 +107,7 @@ const EvnDropDown=(props)=>{
                         <div className={styles.dropdown}>
                            <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                            <div className={`${styles.allOptions} selector`}>
-                              {data.map(option =>
+                              {props.data.map(option =>
                                     <div tabIndex='0' key={option.uuid} onClick={() => handleOption(option)} id="opt">{option.name}</div>
                               )}
                               <div style={{display:'none'}} className='noReslt'>No result found</div>

@@ -16,7 +16,14 @@ const router=useRouter()
     const [opendropdown, setdropdown] = useState(false);
     const [ownername, setownername] = useState([]);
     const handlelogout = () => {
-        window.localStorage.clear();
+        // window.localStorage.clear();
+        localStorage.removeItem('ownerLastname')
+        localStorage.removeItem('ownername')
+        localStorage.removeItem('orgName')
+        localStorage.removeItem('uuid')
+        localStorage.removeItem('userID')
+        localStorage.removeItem('Jwt-token')
+        localStorage.removeItem('envuuid')
         document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
     }
 

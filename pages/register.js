@@ -43,8 +43,10 @@ export default function Create_account() {
             Api.Create_account_data(createaccount_data)
                 .then(res => {
                     if (res.data.status = "Success") {
-                         document.cookie = 'email=;expires=' + new Date().toUTCString()
-                        document.cookie = 'pswd=;expires=' + new Date().toUTCString()
+                        //  document.cookie = 'email=;expires=' + new Date().toUTCString()
+                        // document.cookie = 'pswd=;expires=' + new Date().toUTCString()
+                        localStorage.removeItem('email')
+                        localStorage.removeItem('pswd')
                         localStorage.setItem('orgName', res.data.data.organizations[0].name)
                         localStorage.setItem('uuid', res.data.data.organizations[0].uuid)
 
