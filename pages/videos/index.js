@@ -298,7 +298,7 @@ export default function Videos() {
                                 </div>
                                 {vidDropdown &&
                                     <div className={styles.all}>
-                                        <input className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
+                                        <input maxLength={30} className={styles.inputSearch} onChange={(e) => searchHandle(e)} placeholder="Search by name" />
                                         <div>
                                             {org.map((i, ind) =>
                                                 <>
@@ -333,14 +333,14 @@ export default function Videos() {
                                     <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
                                         You can Upload a video using API or directly from here to share it with your users</p>
                                     <a >
-                                        <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add new video</button>
+                                        <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add New Video</button>
 
                                     </a>
                                 </div>
                                 <span />
                             </div>
                             <div className={styles.search}>
-                                <input type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
+                                <input maxLength={30} type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
                                 <img src='/images/search_icon.svg' alt='icon'></img>
                             </div>
                             <div className={`${styles.videos_table} table`}>

@@ -8,7 +8,7 @@ import Image from 'next/image'
 import EvnDropDown from '../../components/utils/EnvDropDown'
 
 export default function New_Access_token({ table, closetoken }) {
-   const { register, setError,handleSubmit, watch, formState: { errors } } = useForm();
+   const { register, setError,handleSubmit, reset,watch, formState: { errors } } = useForm();
    const [productType, setProductType] = useState([])
    const [items, setItems] = useState([])
    const [newToken, setNewToken] = useState(false)
@@ -90,7 +90,6 @@ export default function New_Access_token({ table, closetoken }) {
       }
       if (sliced.name.match(/^\s*$/)===null && uuid!=='') {
         sliced.name= sliced.name.trim()
-         console.log(sliced)
          let secret = document.querySelector('.secretKey')
          let token=document.querySelector('.createToken')
          Api.Create_aaccess_token_data(sliced).then(res =><>
@@ -98,12 +97,14 @@ export default function New_Access_token({ table, closetoken }) {
          {token.classList.add(`${styleDis.no_display}`)}
       {secret.classList.remove(`${styleDis.no_display}`)}
       {secret.classList.add(`${styleDis.display}`)}
+      {reset()}
       </>)
             .catch(error => {
                console.log(error)
             })
 
          setNewToken(true)
+
       }
 
    }

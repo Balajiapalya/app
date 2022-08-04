@@ -36,14 +36,19 @@ export default function Signin() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className={styles.label}><h3>Enter your email address:</h3></label>
                         <input
+                            maxLength={40}
                             type="email"
                             placeholder="Enter your email address"
                             name="email"
-                            className={`${styles.signup_input} form_control`}
-                            {...register("email", { required: true })}
+                            className={`${styles.signup_input} ${styles.inp} form_control`}
+                            {...register("email",{required:'This field is required',pattern:{
+                                value:/^[A-Z0-9_%+-.^*!$`~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message:'invalid email address'
+                              }})}
                         />
-                        {errors.email && <p className={'validations'}>This field is required</p>}
-                        <p className='msg'>{msg}</p>
+                         {<p className={'validations'}>{errors.email?.message}</p>}
+                         <span className='error'>{msg}</span>
+                        
                         <button type='submit' className={`${styles.signup_btn} btn btn-primary`}>Submit</button>
                     </form>
 

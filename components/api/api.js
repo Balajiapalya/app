@@ -483,7 +483,7 @@ const Api = {
             headers: headers,
         }),
     Update_env: (dev_data, data) =>
-        loginHandledAxios({
+        axios({
             method: 'PUT',
             data: dev_data,
             url: update_env(data),

@@ -330,9 +330,9 @@
     margin-right: 4%;
 }
 
-.active {
+/* .active {
     cursor: pointer;
-}
+} */
 
 .checkcircle {
     width: 10px;
@@ -507,7 +507,14 @@
     left: 0;
     top: 0;
     opacity: 0;
+    width: 19.5%;
+    margin-left: 30px;
+    height: 100%;
 }
+.upload_btn_wrapper ::-webkit-file-upload-button { 
+    cursor:pointer;
+ }
+
 .upload_btn_wrapper{
     display: flex;
     flex-direction: row;
@@ -553,9 +560,16 @@
     outline: none;
     color: #212b36;
     padding: 2px 5px;
-    cursor: pointer;
+    /* cursor: pointer; */
     font-family: Inter-Regular;
     font-size: 14px;
+}
+.paraTag{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    overflow-wrap: break-word;
+    width: 21%;
+    display:none
 }
 
 .direct_upload_submit {
@@ -632,6 +646,7 @@
     background-color: #fff;
     border: solid 1px #9a9a9a;
     margin: 20px 0px 10px 20px;
+    cursor:pointer
 }
 
 .active {
