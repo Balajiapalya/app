@@ -7,17 +7,11 @@ import { useState,useEffect } from 'react';
 
 
 export default function Signup() {
-  let invite_code;
-  if (process.browser) {
-    invite_code = localStorage.getItem("invite-code");
-  }
-  const invitecode = invite_code;
   const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [error, seterror] = useState([]);
-  const onSubmit = login_details => {
-    
-   
+  const onSubmit = mail => {
+    Api.Imporsonate(mail).then(res=>console.log(res))
 
   };
   useEffect(()=>{

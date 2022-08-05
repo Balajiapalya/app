@@ -39,6 +39,7 @@ export default function Signin() {
       Api.SignIn_details(login_details)
         .then(res => {
           if(res.data.data.isInternalUser==true){
+            document.cookie = `Jwt-token=${res.data.data.token}`;
             router.push({
               pathname:'/Imporsonate'
             })
