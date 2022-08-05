@@ -199,6 +199,9 @@
     line-height: 1.21;
     letter-spacing: normal;
 }
+.inp{
+    margin-bottom: 1rem;
+}
 @media (min-width: 320px) and (max-width: 767px) {
     .signup_btn {
         background-color: #2863eb;

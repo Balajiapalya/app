@@ -22,11 +22,11 @@ export default function Revoke_access({ closerevoke, item }) {
 
                     <div className={styles.model_removeuser}>
                         <h4 className={styles.model_removeusername}>Are you sure you want to revoke the access?</h4>
-                        <p className={styles.model_data}>Once access revoke,this token will become invalid for all users. This action cannot be undone.</p>
+                        <p className={styles.model_data}>Once access revoke, this token will become invalid for all users. This action cannot be undone.</p>
                     </div>
                     <div className={styles.model_btn}>
                         <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closerevoke(false)}>Cancel</button></a>
-                        <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={() => handlerevoke()} >Yes,Revoke</button></a>
+                        <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={() => handlerevoke()} >Yes revoke</button></a>
                     </div>
                 </div>
             </div>

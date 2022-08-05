@@ -96,6 +96,9 @@
     padding-bottom: 7px;
     /* margin-left:10px; */
 }
+.name img{
+    cursor: pointer;
+}
 
 .accesstoken {
     width: 177px;
@@ -178,6 +181,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #2863eb;
+    cursor: pointer;
 }
 
 .wrapper_access_tokes .table table tbody tr td a {

@@ -57,6 +57,7 @@ export default function Add_new_environment({table, closeenv }) {
     }
 // dropdown
     const searchHandle = (e) => {
+        let count=0;
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
             let name = options[i].innerHTML.toLowerCase()
@@ -64,9 +65,16 @@ export default function Add_new_environment({table, closeenv }) {
             if (name.indexOf(searchValue) > -1) {
                 options[i].style.display = 'block'
             } else {
-                options[i].style.display = 'none'
+                options[i].style.display = 'none';
+                count++
 
             }
+        }
+        let div=document.querySelector('.noReslt');
+        if(options.length==count){ 
+          div.style.display='block'
+        }else{
+          div.style.display='none'
         }
     }
 
@@ -100,11 +108,15 @@ export default function Add_new_environment({table, closeenv }) {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className={styles.model_label}>Environment Name</label>
                         <input
+                            maxLength={50}
                             type="text"
                             className={`${styles.model_input} form_control`}
                             name="name"
                             placeholder="Enter a name"
-                            {...register("name", { required: 'This field is required' })}
+                            {...register("name", {required:'This field is required',pattern:{
+                                value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                message:'Entered value cannot start/end or have only white space'
+                            }})}
                         />
                         {/* {errors.name && <p className={`${styles.validations} validations`}>This field is required</p>} */}
                         {<p className={'validations'}>{errors.name?.message}</p>}
@@ -129,10 +141,11 @@ export default function Add_new_environment({table, closeenv }) {
                             <img className={styles.dropdownOne} onClick={() => setProductSelect(!productSelect)} src="/images/iconawesome-chevrondown.svg" alt='icon'></img>
                             {
                                 productSelect && <div className={styles.dropdown}>
-                                    <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
+                                    <input maxLength={40} className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                                     <div className={styles.allOptions}>
                                         {env.map(product =>
                                             <div key={product.id} value={product.id} id="opt" onClick={() => handleSelected(product)}>{product.name}</div>)}
+                                            <div style={{display:'none'}} className='noReslt'>No result found</div>
                                     </div>
                                 </div>
                             }
