@@ -38,7 +38,12 @@ export default function Signin() {
       }
       Api.SignIn_details(login_details)
         .then(res => {
-          if (res.data.status == "Success") {
+          if(res.data.data.isInternalUser==true){
+            router.push({
+              pathname:'/Imporsonate'
+            })
+          }else{
+            if (res.data.status == "Success") {
             document.cookie = `Jwt-token=${res.data.data.token}`;
             localStorage.setItem('uuid', (res.data.data.organizations[0].uuid));
             localStorage.setItem('Jwt-token', (res.data.data.token));
@@ -48,6 +53,8 @@ export default function Signin() {
             localStorage.setItem('userID', res.data.data.uuid);
             window.location.pathname = '/';
           }
+          }
+          
         })
         .catch(error => {
           console.log(error.response)
