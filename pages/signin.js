@@ -41,7 +41,7 @@ export default function Signin() {
           if(res.data.data.isInternalUser==true){
             document.cookie = `Jwt-token=${res.data.data.token}`;
             router.push({
-              pathname:'/Imporsonate'
+              pathname:'/Impersonate'
             })
           }else{
             if (res.data.status == "Success") {

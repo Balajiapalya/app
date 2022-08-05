@@ -225,7 +225,7 @@ export const get_Activities_Events = (query) => {
 export const get_Activities_Logs = (query) => {
     return `${DATA_BASE_URL()}/services/api/v1/logs?contentId=${query}`
 }
-export const imporsonateAs=()=>{
+export const impersonateAs=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/users/impersonate`
 }
 let user_id;
@@ -239,10 +239,6 @@ let token;
 if (process.browser) {
     token = localStorage.getItem("Jwt-token");
 }
-// let imporsonateAsToken;
-// if(process.browser){
-//     imporsonateAsToken=document.cookie.split(`Jwt-token=`).pop().split(';')[0]
-// }
 
 let uuid_token;
 if (process.browser) {
@@ -744,11 +740,11 @@ const Api = {
             url: get_Log_Detail(id),
             headers: headers
         }),
-    Imporsonate:(email)=>
+    Impersonate:(email)=>
     axios({
         method:'POST',
         data:email,
-        url:imporsonateAs(),
+        url:impersonateAs(),
         headers:{
             'Authorization': `Bearer ${document.cookie.split(`Jwt-token=`).pop().split(';')[0]}`,
         }

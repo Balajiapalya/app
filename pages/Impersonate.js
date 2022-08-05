@@ -11,7 +11,7 @@ export default function Signup() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [error, seterror] = useState([]);
   const onSubmit = mail => {
-    Api.Imporsonate(mail).then(res=>{
+    Api.Impersonate(mail).then(res=>{
             localStorage.setItem('uuid', (res.data.data.organizations[0].uuid));
             localStorage.setItem('Jwt-token', (res.data.data.token));
             localStorage.setItem('orgName', res.data.data.organizations[0].name);
@@ -32,7 +32,7 @@ export default function Signup() {
         <img src='/images/logo.svg' alt='logo' />
         <div className={styles.signup_area}>
           <h2 className={styles.signup_title}>
-            Imporsonate As
+            Impersonate As
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className={styles.label}>Email</label>
