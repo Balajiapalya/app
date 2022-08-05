@@ -77,10 +77,10 @@ export default function Thumbnails() {
                                     <input type="text" className={styles.model_input} name="width" placeholder="Enter width in px" defaultValue={320} {...register("width", {
                                         required: 'This field is required',
                                         pattern: {
-                                            value: /^(0|[1-9]\d*)(\.\d+)?$/,
+                                            value:  /^(0|[1-9]\d*)(\.\d+)?$/,
                                             message: 'please enter only num'
                                         },
-                                        valueAsNumber:true
+                                        
                                     })} />
                                     {<p className={'validations'}>{errors.width?.message}</p>}
                                 </div>
@@ -92,7 +92,7 @@ export default function Thumbnails() {
                                             value: /^(0|[1-9]\d*)(\.\d+)?$/,
                                             message: 'please enter only num'
                                         },
-                                        valueAsNumber:true
+                                        
                                     })} />
                                     {<p className={'validations'}>{errors.height?.message}</p>}
                                 </div>
