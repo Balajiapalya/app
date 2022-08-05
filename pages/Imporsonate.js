@@ -11,7 +11,15 @@ export default function Signup() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [error, seterror] = useState([]);
   const onSubmit = mail => {
-    Api.Imporsonate(mail).then(res=>console.log(res))
+    Api.Imporsonate(mail).then(res=>{
+            localStorage.setItem('uuid', (res.data.data.organizations[0].uuid));
+            localStorage.setItem('Jwt-token', (res.data.data.token));
+            localStorage.setItem('orgName', res.data.data.organizations[0].name);
+            localStorage.setItem('ownername', res.data.data.firstName);
+            localStorage.setItem('ownerLastname', res.data.data.lastName)
+            localStorage.setItem('userID', res.data.data.uuid);
+            window.location.pathname = '/';
+    }).catch(err=>console.log(err))
 
   };
   useEffect(()=>{
