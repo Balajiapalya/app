@@ -7,7 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useRouter } from 'next/router';
 
 export default function Direct_upload({handlePopUp,setReload}) {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit,setError, watch, formState: { errors } } = useForm();
     const [filename, set_filename] = useState();
     let [loading, setLoading] = useState(false);
     let [color, setColor] = useState("#999");
@@ -25,6 +25,14 @@ export default function Direct_upload({handlePopUp,setReload}) {
         // console.log(direct_video_upload)
         const file = direct_video_upload.file[0];
         direct_video_upload.file_name=filename;
+        if(file===undefined){
+            document.querySelector('.tag').style.display='block'
+            setError('file',{message:'Please Select a file to upload'})
+            setTimeout(()=>{
+                document.querySelector('.tag').style.display='none'
+                setError('file',{message:''})
+            },1000*5)
+        }
         if(file){
         Api.Direct_upload_post(direct_video_upload)
             .then(res => {
@@ -91,7 +99,7 @@ export default function Direct_upload({handlePopUp,setReload}) {
                             onChange={e => handleChange(e)}       
                         />
                     </div>
-
+                    {<p className={`validations ${styles.paraTag} tag`}>{errors.file?.message}</p>}
                     <div className={styles.direct_upload_title}>
                         {uploaded && <div className={styles.uploaded_check}><img src='/images/asset_status/ready.svg' alt='uploaded' /><span>file uploaded</span></div>}
                         <ClipLoader className={styles.loader} color={color} loading={loading} size={12} />

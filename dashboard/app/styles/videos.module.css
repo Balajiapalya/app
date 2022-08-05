@@ -240,6 +240,12 @@
 .videos_table table tr .tdCursor{
     cursor: pointer;
 }
+.videos_table table thead tr th img{
+    cursor: pointer;
+}
+.videos_table table thead tr th input{
+    cursor: pointer;
+}
 
 .checkbox {
     border: 1px solid #c3c3c3 !important;
@@ -330,9 +336,9 @@
     margin-right: 4%;
 }
 
-.active {
+/* .active {
     cursor: pointer;
-}
+} */
 
 .checkcircle {
     width: 10px;
@@ -384,6 +390,18 @@
     border-top: 1px solid transparent !important;
     border-left: 1px solid transparent !important;
     border-right: 1px solid transparent !important;
+}
+.noResult{
+    padding: 9px 0px 9px 12px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
 }
 
 .dropdown_btn_bottom {
@@ -507,7 +525,14 @@
     left: 0;
     top: 0;
     opacity: 0;
+    width: 19.5%;
+    margin-left: 30px;
+    height: 100%;
 }
+.upload_btn_wrapper ::-webkit-file-upload-button { 
+    cursor:pointer;
+ }
+
 .upload_btn_wrapper{
     display: flex;
     flex-direction: row;
@@ -553,9 +578,16 @@
     outline: none;
     color: #212b36;
     padding: 2px 5px;
-    cursor: pointer;
+    /* cursor: pointer; */
     font-family: Inter-Regular;
     font-size: 14px;
+}
+.paraTag{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    overflow-wrap: break-word;
+    width: 21%;
+    display:none
 }
 
 .direct_upload_submit {
@@ -632,6 +664,7 @@
     background-color: #fff;
     border: solid 1px #9a9a9a;
     margin: 20px 0px 10px 20px;
+    cursor:pointer
 }
 
 .active {

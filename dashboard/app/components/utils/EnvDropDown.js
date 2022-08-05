@@ -105,7 +105,7 @@ const EvnDropDown=(props)=>{
 
                      {select &&
                         <div className={styles.dropdown}>
-                           <input className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
+                           <input maxLength={40} className={styles.searchSelect} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                            <div className={`${styles.allOptions} selector`}>
                               {props.data.map(option =>
                                     <div tabIndex='0' key={option.uuid} onClick={() => handleOption(option)} id="opt">{option.name}</div>

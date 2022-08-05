@@ -24,6 +24,7 @@ const router=useRouter()
         localStorage.removeItem('userID')
         localStorage.removeItem('Jwt-token')
         localStorage.removeItem('envuuid')
+        localStorage.removeItem('ownerEmail')
         document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
     }
 

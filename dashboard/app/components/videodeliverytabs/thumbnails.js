@@ -19,16 +19,21 @@ export default function Thumbnails() {
         settoggleposition(index);
     }
     const onSubmit = thumbnail => {
-        // thumbnail.videoPositionInSec = Number(gettime)        
+        thumbnail.videoPositionInSec = Number(gettime)    
+        thumbnail.height=+(thumbnail.height)  
+        thumbnail.width=+(thumbnail.width)
         const [hrs,mins,sec]=gettime.split(':')
         const seconds=(+hrs)*60*60+(+mins)*60+(+sec);
         thumbnail.videoPositionInSec=+seconds;
-        console.log(thumbnail)
+        console.log(+seconds)
+        // if(thumbnail.videoPositionInSec==NaN){
+        //     setError('videoPositionInSec',{message:'Please enter hh:mm:ss format'})
+        // }
         if(gettime!==undefined){
         Api.Create_thumbnail(thumbnail)
             .then(res => {
                 if (res.data.code = 200) {
-                    console.log(res.data.data.url)
+                    console.log(res.data.data)
                     set_thumbnailurl(res.data.data.url)
                 }
             })
@@ -60,13 +65,13 @@ export default function Thumbnails() {
                             <div className={styles.image_form}>
                                 <div className={styles.time}>
                                     <label className={styles.model_label}>Time*</label>
-                                    <input {...register('videoPositionInSec',{
+                                    <input maxLength={30} {...register('videoPositionInSec',{
                                         required: 'This field is required',
                                         onChange:(e) => handleChange(e),
                                         pattern: {
-                                            // value: /[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$/,
-                                            value: /^([0-9]?\d)(?::([0-5]?\d))?(?::([0-5]?\d))?$/,
-                                            message: 'Please enter in the given format'
+                                            // value: /^([0-9]?\d)(?::([0-5]?\d))?(?::([0-5]?\d))?$/,
+                                            value:/^\d?\d:\d{2}:\d{2}$/,
+                                            message: 'Please enter hh:mm:ss format'
                                         },
                                     })} type="text" className={styles.model_input} name="videoPositionInSec" value={gettime} placeholder="00:22:33" />
                                     {/* <input onChange={(e)=>handleChange(e)} type="text" className={styles.model_input} name="videoPositionInSec" defaultValue={gettime} placeholder="00:22:33" {...register("videoPositionInSec", { required: false,valueAsNumber: true})} /> */}
@@ -74,25 +79,25 @@ export default function Thumbnails() {
                                 </div>
                                 <div className={styles.imagewidth}>
                                     <label className={styles.model_label}>Image Width</label>
-                                    <input type="text" className={styles.model_input} name="width" placeholder="Enter width in px" defaultValue={320} {...register("width", {
+                                    <input maxLength={30} type="text" className={styles.model_input} name="width" placeholder="Enter width in px" defaultValue={320} {...register("width", {
                                         required: 'This field is required',
                                         pattern: {
-                                            value: /^(0|[1-9]\d*)(\.\d+)?$/,
+                                            value:  /^(0|[1-9]\d*)(\.\d+)?$/,
                                             message: 'please enter only num'
                                         },
-                                        valueAsNumber:true
+                                        
                                     })} />
                                     {<p className={'validations'}>{errors.width?.message}</p>}
                                 </div>
                                 <div className={styles.imageheight}>
                                     <label className={styles.model_label}>Image Height</label>
-                                    <input type="text" className={styles.model_input} name="height" placeholder="Enter height in px" defaultValue={320} {...register("height", {
+                                    <input maxLength={30} type="text" className={styles.model_input} name="height" placeholder="Enter height in px" defaultValue={320} {...register("height", {
                                         required: 'This field is required',
                                         pattern: {
                                             value: /^(0|[1-9]\d*)(\.\d+)?$/,
                                             message: 'please enter only num'
                                         },
-                                        valueAsNumber:true
+                                        
                                     })} />
                                     {<p className={'validations'}>{errors.height?.message}</p>}
                                 </div>

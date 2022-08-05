@@ -429,7 +429,16 @@
     margin-left: 12px;
     cursor: pointer;
 }
-
+.copied{
+    font-size: 12px;
+    color: #cacaca;
+    font-style: italic;
+}
+.accessCopy{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
 .copy {
     height: 17px;
     margin-left: 12px;
