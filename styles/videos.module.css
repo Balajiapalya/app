@@ -240,6 +240,12 @@
 .videos_table table tr .tdCursor{
     cursor: pointer;
 }
+.videos_table table thead tr th img{
+    cursor: pointer;
+}
+.videos_table table thead tr th input{
+    cursor: pointer;
+}
 
 .checkbox {
     border: 1px solid #c3c3c3 !important;
@@ -384,6 +390,18 @@
     border-top: 1px solid transparent !important;
     border-left: 1px solid transparent !important;
     border-right: 1px solid transparent !important;
+}
+.noResult{
+    padding: 9px 0px 9px 12px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
 }
 
 .dropdown_btn_bottom {

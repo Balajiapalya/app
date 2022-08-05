@@ -53,17 +53,17 @@ export default function Videos() {
     };
     const sort_num = (col) => {
         if (ordernum === "ASC") {
-            var sorted_num = [...videoData].sort((a, b) =>
+            var sorted_num = [...currentItems].sort((a, b) =>
                 a[col] > b[col] ? 1 : -1
             );
-            setVideoData(sorted_num);
+            setCurrentItems(sorted_num);
             set_ordernum("DSC");
         }
         if (ordernum === "DSC") {
-            var sorted_num = [...videoData].sort((a, b) =>
+            var sorted_num = [...currentItems].sort((a, b) =>
                 a[col] < b[col] ? 1 : -1
             );
-            setVideoData(sorted_num);
+            setCurrentItems(sorted_num);
             set_ordernum("ASC");
         }
     }
@@ -182,6 +182,7 @@ export default function Videos() {
 
 
     const searchHandle = (e) => {
+        let count=0;
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
             let name = options[i].innerHTML.toLowerCase()
@@ -190,8 +191,14 @@ export default function Videos() {
                 options[i].style.display = 'block'
             } else {
                 options[i].style.display = 'none'
-
+                count++
             }
+        }
+        let div=document.querySelector('.noReslt');
+        if(options.length==count){ 
+          div.style.display='block'
+        }else{
+          div.style.display='none'
         }
     }
     const handleSelected = (item) => {
@@ -302,16 +309,17 @@ export default function Videos() {
                                         <div>
                                             {org.map((i, ind) =>
                                                 <>
-                                                    <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind}>
+                                                    <div className={styles.orgNames} onClick={() => handleEnv(i)} key={ind} id="opt">
                                                         {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/Iconawesome-chevron-down.svg' className={styles.openDropdown}></img>}
                                                         {i.name}
                                                     </div>
-                                                    {handleMulti(i) && i.environments.map(i => <div key={i.uuid} value={i.uuid} id="opt" onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                                    {handleMulti(i) && i.environments.map(i => <div id="opt" key={i.uuid} value={i.uuid}  onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
                                                         {i.name}
                                                     </div>
                                                     )}
                                                 </>
                                             )}
+                                            <div className={`${styles.noResult} noReslt`} style={{display:'none'}}>No result found</div>
                                         </div>
                                     </div>
                                 }
