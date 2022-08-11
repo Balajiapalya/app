@@ -787,6 +787,7 @@
     background-color: inherit;
     border: none;
     padding: 0px;
+    cursor:pointer;
 }
 
 .styleTitle {
@@ -798,6 +799,9 @@
     padding-top: 2px;
     margin-top: 5px;
     margin-bottom: 1em;
+}
+.validate{
+    width: 36%;
 }
 
 .input_title input {
@@ -816,6 +820,7 @@
     border: 1px solid #2863eb;
     border-radius: 3px;
     font-size: 12px;
+    cursor: pointer;
     padding: 3px 10px;
 }
 

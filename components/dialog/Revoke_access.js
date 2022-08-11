@@ -26,7 +26,7 @@ export default function Revoke_access({ closerevoke, item }) {
                     </div>
                     <div className={styles.model_btn}>
                         <a><button type="button" className={`${styles.model_canel_btn} btn btn-primary`} onClick={() => closerevoke(false)}>Cancel</button></a>
-                        <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={() => handlerevoke()} >Yes revoke</button></a>
+                        <a><button type="button" className={`${styles.model_save_btn} btn btn-primary`} onClick={() => handlerevoke()} >Yes, revoke</button></a>
                     </div>
                 </div>
             </div>

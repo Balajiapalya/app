@@ -14,11 +14,23 @@ export default function Others() {
     const [dataVideo, setDataVideo] = useState([])
     const [inputTitle,setInputTitle]=useState()
 
+    const { register, handleSubmit, watch, getValues,setValue,formState: { errors } } = useForm();
 
     const onSubmit = (video_data) => {
+        // let btn=document.querySelector('.btn')
+        // if(inputTitle===undefined){
+            
+        //     btn.disabled = true;
+        //     btn.style.backgroundColor = '#2893eb';
+        //     btn.style.cursor = 'not-allowed'
+        // }
+        
         let doc=document.querySelector('.child');
+        console.log(inputTitle,'title')
+        if(inputTitle!==undefined){
         doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent=inputTitle;
         doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent=inputTitle;
+        }
         video_data['tags'] = tags;
         video_data['metadata'] = meta;
         if(inputTitle){
@@ -27,6 +39,7 @@ export default function Others() {
             video_data['title']=localStorage.getItem('asset_title')
         }
             Api.Meta_tag(video_data).then(res => {
+                setInputTitle('')
             })
                 .catch(error => {
                     console.log(error)
@@ -56,6 +69,8 @@ export default function Others() {
 
     useEffect(() => {
         Api.Get_Env_item().then(res => {
+            setValue('title',res.data.data.title)
+            setValue('description',res.data.data.description)
             setDataVideo(res.data.data)
             if(res.data.data.tags!=undefined){
                 if(res.data.data.tags[0].length>0){
@@ -77,7 +92,7 @@ export default function Others() {
         }
     }, [])
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+   
 
     const handleKeyDown=(e)=>{
        
@@ -110,9 +125,20 @@ export default function Others() {
                             <div className={styles.title_description_box}>
                                 <label className={styles.model_label}>Title</label>
                                 {/* <input type="text" className={styles.title_input} defaultValue={dataVideo.title} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" /> */}
-                                <input type="text" className={`${styles.title_input} child`} defaultValue={dataVideo.title} name="Title" placeholder="Enter title or video" onChange={(e)=>handleInput(e)}/>
+                                <input maxLength={30} type="text" className={`${styles.title_input} child`} defaultValue={dataVideo.title} name="Title" placeholder="Enter title or video" {...register("title",{required:'This field is required',pattern:{
+                                    value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                    message:'Entered value cannot start/end or have only white space'
+                                },
+                                onChange:(e)=>handleInput(e)
+                            })}/>
+                             {<p className={`${styles.validate} validations`}>{errors.title?.message}</p>}
                                 <label className={styles.model_label}>Description</label>
-                                <input type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description",{required:true})} placeholder="Enter your description" />
+                                <input maxLength={50} type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description",{required:'This field is required',pattern:{
+                                    value:/^[^\s]+(?:$|.*[^\s]+$)/,
+                                    message:'Entered value cannot start/end or have only white space'
+                                }})} placeholder="Enter your description" />
+                                {<p className={`${styles.validate} validations`}>{errors.description?.message}</p>}
+                                {console.log(dataVideo.description)}
                                 <div className={styles.submit}>
                                     <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
                                 </div>
@@ -144,18 +170,18 @@ export default function Others() {
                                         </div>
                                     )):null}
                                     
-                                    <input onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text"/>
+                                    <input maxLength={30} onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text"/>
                                 </div>
                                 <label className={styles.model_label}>Metadata</label>
                                 <table>
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input className={styles.others_input} type="text" value={keys.key} onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" />
+                                                <input maxLength={30} className={styles.others_input} type="text" value={keys.key} onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" />
                                             </th>
                                             <th>
 
-                                                <input className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
+                                                <input maxLength={30} className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
                                                 <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/iconfeather-plus-grey.svg' /> Add</button>
                                             </th>
 
