@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Api from '../../components/api/api';
 import { useRouter } from "next/router";
+import { useForm } from 'react-hook-form';
 
 
 export default function Video() {
+    
     const reff = useRouter()
     const [headtitle, setheadttitle] = useState(true);
     const [save, setsave] = useState(false);
@@ -15,7 +17,7 @@ export default function Video() {
     const [editted, setEdittedTitle] = useState()
     const [data, setData] = useState()
     // const [titlee,setTitle]=useState()
-
+    const { register, handleSubmit, watch, setError,formState: { errors } } = useForm();
     useEffect(() => {
         Api.Get_Env_item().then(res => {
             setData(res.data.data)
@@ -29,7 +31,8 @@ export default function Video() {
         setheadttitle(false)
         setsave(true)
     }
-    const saveName = () => {
+    const onSubmit = () => {
+
         let doc = document.querySelector('.headerDiv')
         if (editInput !== undefined) {
             if (doc.getElementsByClassName('child')[0] !== undefined) {
@@ -47,6 +50,7 @@ export default function Video() {
         setheadttitle(true);
     }
     const cancelName = () => {
+        setError('name',{message:''})
         setsave(false);
         setheadttitle(true);
     }
@@ -86,12 +90,19 @@ export default function Video() {
                                             }
                                         </div>
                                         {save ?
-                                            <div className={styles.input_title}>
-                                                <input onChange={(e) => handleInput(e)} defaultValue={title} />
-                                                <button onClick={() => saveName()}>Save</button>
-                                                <button onClick={() => cancelName()}>cancel</button>
-                                            </div> : null}
-
+                                            <form onSubmit={handleSubmit(onSubmit)} className={styles.input_title}>
+                                                {/* <input onChange={(e) => handleInput(e)} defaultValue={title} /> */}
+                                                <input maxLength={30} {...register('name', {
+                                                    required: 'This field is required', pattern: {
+                                                    value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                                                    message: 'Entered value cannot start/end or have only white space'
+                                                    },
+                                                    onChange:(e) => handleInput(e)
+                                                })}/>
+                                                <button type="submit">Save</button>
+                                                <button onClick={() => cancelName()}>Cancel</button>
+                                                {<p className={`${styles.validate} validations`}>{errors.name?.message}</p>}
+                                            </form> : null}
                                     </div>
                                 </div>
                             </div>

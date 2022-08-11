@@ -24,6 +24,7 @@ const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad,defau
 
     // dropdown
     const searchHandle = (e) => {
+        let count=0;
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
             let name = options[i].innerHTML.toLowerCase()
@@ -32,8 +33,14 @@ const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad,defau
                 options[i].style.display = 'block'
             } else {
                 options[i].style.display = 'none'
-
+                count++
             }
+        }
+        let div=document.querySelector('.noReslt');
+        if(options.length==count){ 
+          div.style.display='block'
+        }else{
+          div.style.display='none'
         }
     }
 
@@ -77,10 +84,11 @@ const SelectEnv = ({ id, env, newInput, valueDefault, setPopup, i, setLoad,defau
                 
                 {
                     productSelect && <div className={styles.inviteOptions}>
-                        <input className={styles.searchSelectInvite} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
+                        <input maxLength={40} className={styles.searchSelectInvite} placeholder="Search by name" onChange={(e) => searchHandle(e)} />
                         <div className={styles.allOptionsInvite}>
                             {env.map(product =>
                                 <div key={product.id} className={styles.prodopt} value={product.id} id="opt" onClick={() => handleSelected(product)}>{product.name}</div>)}
+                             <div style={{display:'none'}} className='noReslt'>No result found</div>
                         </div>
                     </div>
                 }
