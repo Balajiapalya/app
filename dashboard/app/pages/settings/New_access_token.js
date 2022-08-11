@@ -182,7 +182,7 @@ export default function New_Access_token({ table, closetoken }) {
                   {/* {roleError && <p className={`validations`}>Please select the environment</p>} */}
                   <div className={styles.access_token}>
                      <h4 className={styles.access_token_permission}>Permission</h4>
-                     <p className={styles.access_token_link}>To know more permission please visit our <a href="#" className={styles.access_token_data}>token access guide</a></p>
+                     <p className={styles.access_token_link}>To know more permission please visit our <a href="https://documenter.getpostman.com/view/19432362/UyxqDPLG" target='_blank' rel="noopener noreferrer" className={styles.access_token_data}>token access guide</a></p>
                   </div>
                   <div className={styles.access_token_checkbox}>
                      <input

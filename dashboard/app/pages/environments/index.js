@@ -164,6 +164,7 @@ export default function Environment() {
                         {openModel[i] && (
                           <div>
                             <input
+                              maxLength={40}
                               className={styles.dev_head}
                               name="name"
                               defaultValue={valueDefault}

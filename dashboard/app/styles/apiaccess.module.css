@@ -144,7 +144,10 @@
     letter-spacing: normal;
     text-align: left;
 }
-
+.wrap{
+    word-break: break-word;
+    width: 70%;
+}
 .wrapper_access_tokes .table table tbody tr td span {
     font-family: Inter-Regular;
     font-size: 13px;
