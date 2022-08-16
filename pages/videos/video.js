@@ -92,7 +92,7 @@ export default function Video() {
                                         {save ?
                                             <form onSubmit={handleSubmit(onSubmit)} className={styles.input_title}>
                                                 {/* <input onChange={(e) => handleInput(e)} defaultValue={title} /> */}
-                                                <input maxLength={30} {...register('name', {
+                                                <input maxLength={30} defaultValue={title} {...register('name', {
                                                     required: 'This field is required', pattern: {
                                                     value: /^[^\s]+(?:$|.*[^\s]+$)/,
                                                     message: 'Entered value cannot start/end or have only white space'

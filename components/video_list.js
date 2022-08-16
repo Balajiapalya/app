@@ -16,7 +16,8 @@ const VideoList = ({ i, create_On, created_time }) => {
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
-        router.push({ pathname: `./videos/video`, query: {'status':status, 'videoId': i.contentId, 'path': 1 } });
+        localStorage.setItem('status',status)
+        router.push({ pathname: `./videos/video`, query: {'videoId': i.contentId, 'path': 1 } });
     }
 
 
@@ -24,6 +25,7 @@ const VideoList = ({ i, create_On, created_time }) => {
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
+        localStorage.setItem('status',i.status)
         router.push({ pathname: './videos/video', query: { 'videoId': i.contentId, 'path': 2 } });
 
     }
@@ -31,12 +33,14 @@ const VideoList = ({ i, create_On, created_time }) => {
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
+        localStorage.setItem('status',i.status)
         router.push({ pathname: './videos/video', query: { 'videoId': i.contentId, 'path': 3 } });
     }
     const togglesubtitle = () => {
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
+        localStorage.setItem('status',i.status)
         router.push({ pathname: './videos/video', query: { 'videoId': i.contentId, 'path': 4 } });
     }
 
@@ -93,7 +97,7 @@ const VideoList = ({ i, create_On, created_time }) => {
                                 <img className={`${styles.content_menu_basic} ${styles.tdCursor}`} src='/images/content-menu-basic.svg' alt='menu' />
                                 <img className={`${styles.content_menu_hover} ${styles.tdCursor}`} src='/images/content-menu-hover.svg' alt='menu' />
                             </div>
-                            {dropdown ?
+                            {dropdown && i.status!=='Failed' && i.status!=='Processing'?
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
