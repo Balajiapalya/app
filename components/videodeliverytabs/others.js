@@ -171,7 +171,6 @@ export default function Others() {
                                     }
                                 })} placeholder="Enter your description" />
                                 {<p className={`${styles.validate} validations`}>{errors.description?.message}</p>}
-                                {console.log(dataVideo.description)}
                                 <div className={styles.submit}>
                                     <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
                                 </div>

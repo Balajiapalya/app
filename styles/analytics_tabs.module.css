@@ -733,6 +733,7 @@
 }
 
 .export_img img {
+    cursor: pointer;
     margin-top: 1rem;
     float: right;
     margin-right: 10px;
@@ -884,6 +885,19 @@
 } */
 
 /* dropdown */
+.noResult{
+    padding: 9px 0px 9px 12px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #196068;
+}
+
 .inputSearch {
     border: none;
     outline: none;
