@@ -36,7 +36,7 @@ const LogDetails = (props) => {
     }
     return (
         <div>
-            {logDetail&&<div onClick={() => handleComponent()} className={styles.close}>
+            {logDetail && <div onClick={() => handleComponent()} className={styles.close}>
                 <div className={styles.firstBox} >
                     <h2 className={styles.videoHeading}>POST https://api.videograph.com{logDetail.url}</h2>
                     <div className={styles.eventsDetail}>
@@ -44,19 +44,19 @@ const LogDetails = (props) => {
                             <tbody>
                                 <tr>
                                     <td>Log ID</td>
-                                    <td>{logDetail.uuid}</td>
+                                    <td>{logDetail && logDetail.uuid}</td>
                                 </tr>
                                 <tr>
                                     <td>Date</td>
-                                    <td>{handleDate(logDetail.occurredOn)}</td>
+                                    <td>{logDetail && logDetail.occurredOn && handleDate(logDetail.occurredOn)}</td>
                                 </tr>
                                 <tr>
                                     <td>Method</td>
-                                    <td>{logDetail.method}</td>
+                                    <td>{logDetail && logDetail.method}</td>
                                 </tr>
                                 <tr>
                                     <td>URL</td>
-                                    <td>{logDetail.url}</td>
+                                    <td>{logDetail && logDetail.url}</td>
                                 </tr>
                                 {/* <tr>
                                 <td>Status</td>
@@ -87,13 +87,13 @@ const LogDetails = (props) => {
                 <div className={styles.textArea}>
                     <h2>Response Body</h2>
 
-                    <textarea defaultValue={parseResp && `${JSON.stringify(parseResp.data, undefined, 2)}`}
+                    <textarea defaultValue={parseResp && `${JSON.stringify(parseResp, undefined, 2)}`}
                         className={styles.codeEvent} readOnly />
                 </div>
 
 
             </div>}
-            
+
         </div>
     )
 }
