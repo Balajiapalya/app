@@ -78,7 +78,7 @@ function Organisation() {
         obj.email=item.email
         Api.ResendInvite(obj).then(res=>
             {
-                toast('Invite Resent')
+                toast('Invitation Sent')
             })
         .catch(err=>console.log(err))
     }
@@ -100,7 +100,7 @@ function Organisation() {
                 <h3>Members</h3>
                 <a><button className="btn" onClick={() => setopeninvitemember(true)}>Invite Member</button></a>
             </div>
-            {openModel && <Newmember_invite closeModel={setopeninvitemember} />}
+            {openModel && <Newmember_invite closeModel={setopeninvitemember} toast={toast}/>}
             <div className={styles.member_table}>
                 <table>
                     <thead>

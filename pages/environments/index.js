@@ -21,7 +21,7 @@ export default function Environment() {
   const [closemodal, setclosemodal] = useState([]);
   const [valueDefault, setValue] = useState('')
   const [id, setId] = useState()
-  const [newInput, setNewInput] = useState(valueDefault)
+  // const [newInput, setNewInput] = useState(valueDefault)
   const [load, setLoad] = useState(true)
   const [OrgStats, setOrgStats] = useState([])
   const router=useRouter();
@@ -88,9 +88,9 @@ export default function Environment() {
   }
   const orgName = orgname;
 
-  const handleChange = (e) => {
-    setNewInput(e.target.value)
-  }
+  // const handleChange = (e) => {
+  //   setNewInput(e.target.value)
+  // }
   const handlePopUp = () => {
     set_addnewenv(true)
     let table=document.querySelector('.table');
@@ -163,7 +163,7 @@ export default function Environment() {
                         )}
                         {openModel[i] && (
                           <div>
-                            <input
+                            {/* <input
                               maxLength={40}
                               className={styles.dev_head}
                               name="name"
@@ -174,9 +174,9 @@ export default function Environment() {
                               <p className={"validations"}>
                                 This field is required
                               </p>
-                            )}
+                            )} */}
                             <div className={styles.dev}>
-                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} newInput={newInput} env={env} id={id} defaultEnv={defaultEnv}/>
+                              <SelectEnv setLoad={setLoad} setPopup={setPopups} i={i} valueDefault={valueDefault} env={env} id={id} defaultEnv={defaultEnv}/>
                             </div>
                           </div>
                         )}

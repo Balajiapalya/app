@@ -12,41 +12,57 @@ export default function Others() {
     const [tags, setTags] = useState([])
     // const [selected, setSelected] = useState([]);
     const [dataVideo, setDataVideo] = useState([])
-    const [inputTitle,setInputTitle]=useState()
-
-    const { register, handleSubmit, watch, getValues,setValue,formState: { errors } } = useForm();
+    const [inputTitle, setInputTitle] = useState('')
+    const [tagErr, setTagErr] = useState(false)
+    const { register, handleSubmit, watch, setError, getValues, setValue, formState: { errors } } = useForm();
 
     const onSubmit = (video_data) => {
-        // let btn=document.querySelector('.btn')
-        // if(inputTitle===undefined){
-            
-        //     btn.disabled = true;
-        //     btn.style.backgroundColor = '#2893eb';
-        //     btn.style.cursor = 'not-allowed'
-        // }
-        
-        let doc=document.querySelector('.child');
-        console.log(inputTitle,'title')
-        if(inputTitle!==undefined){
-        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent=inputTitle;
-        doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent=inputTitle;
+        if (meta.length <= 0) {
+            if (keys.key !== '' && keys.value === '') {
+                setError('value', { message: 'This field is required' })
+            }
+            if (keys.value !== '' && keys.key === '') {
+                setError('key', { message: 'This field is required' })
+            }
+            if (keys.key !== '' && keys.value !== '') {
+                setError('key', { message: 'Please add first then save' })
+            }
+            if (keys.key === '' && keys.value === '') {
+                setError('key', { message: 'This field is required' })
+                setError('value', { message: 'This field is required' })
+            }
+        } else {
+            setError('key', { message: '' })
+            setError('value', { message: '' })
         }
+        if (tags.length <= 0) {
+            setTagErr(true)
+        } else {
+            setTagErr(false)
+        }
+        let doc = document.querySelector('.child');
+        
         video_data['tags'] = tags;
         video_data['metadata'] = meta;
-        if(inputTitle){
-            video_data['title']=inputTitle
-        }else{
-            video_data['title']=localStorage.getItem('asset_title')
+        if (inputTitle && inputTitle !== '') {
+            video_data['title'] = inputTitle
+        } else {
+            video_data['title'] = localStorage.getItem('asset_title')
         }
+        if (tags.length > 0 && meta.length > 0) {
             Api.Meta_tag(video_data).then(res => {
+                if (inputTitle !== '') {
+                    doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent = inputTitle;
+                    doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent = inputTitle;
+                }
                 setInputTitle('')
             })
                 .catch(error => {
                     console.log(error)
                 })
-    
-        
-        
+        }
+
+
     }
     // set in object
     const handleData = (e) => {
@@ -63,47 +79,61 @@ export default function Others() {
             key: keys.key,
             value: keys.value
         }
-        setMeta([...meta, newObj])
-        setKey({ key: '', value: '' })
+        if (keys.key === '') {
+            setError('key', { message: 'This field is required' })
+        } else {
+            setError('key', { message: '' })
+        }
+        if (keys.value === '') {
+            setError('value', { message: 'This field is required' })
+        } else {
+            setError('value', { message: '' })
+        }
+        if (keys.key !== '' && keys.value !== '') {
+            setMeta([...meta, newObj])
+            setKey({ key: '', value: '' })
+        }
     }
 
     useEffect(() => {
         Api.Get_Env_item().then(res => {
-            setValue('title',res.data.data.title)
-            setValue('description',res.data.data.description)
+            setValue('title', res.data.data.title)
+            setValue('description', res.data.data.description)
             setDataVideo(res.data.data)
-            if(res.data.data.tags!=undefined){
-                if(res.data.data.tags[0].length>0){
+            if (res.data.data.tags != undefined) {
+                if (res.data.data.tags[0].length > 0) {
                     setTags(res.data.data.tags)
                 }
                 // console.log(res.data.data.tags!=undefined)
-                
-            }else{
+
+            } else {
                 setTags([])
             }
-            
+
             setMeta(res.data.data.metadata)
             // setSelected(res.data.data.tags)
         })
-        return()=>{
+        return () => {
             setDataVideo([])
             setTags([])
             setMeta([])
         }
     }, [])
 
-   
 
-    const handleKeyDown=(e)=>{
-       
-        let inputValue=e.target.value;
-        if(e.keyCode==13){
-            if(e.target.value.length>0){
-                setTags([...tags,inputValue])
-                e.target.value="" 
-                e.preventDefault();
+
+    const handleKeyDown = (e) => {
+        setTagErr(false)
+        let inputValue = e.target.value;
+        // if (e.target.value.match(/^[^\s]+$/ !== null)) {
+            if (e.keyCode == 13) {
+                if (e.target.value.length > 0) {
+                    setTags([...tags, inputValue])
+                    e.target.value = ""
+                    e.preventDefault();
+                }
             }
-        }
+        // }
     }
 
     const handleRemoveTag = (i, index) => {
@@ -111,7 +141,7 @@ export default function Others() {
         setTags([...tags])
         return tags
     }
-    const handleInput=(e)=>{
+    const handleInput = (e) => {
         setInputTitle(e.target.value)
     }
     return (
@@ -125,18 +155,21 @@ export default function Others() {
                             <div className={styles.title_description_box}>
                                 <label className={styles.model_label}>Title</label>
                                 {/* <input type="text" className={styles.title_input} defaultValue={dataVideo.title} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" /> */}
-                                <input maxLength={30} type="text" className={`${styles.title_input} child`} defaultValue={dataVideo.title} name="Title" placeholder="Enter title or video" {...register("title",{required:'This field is required',pattern:{
-                                    value:/^[^\s]+(?:$|.*[^\s]+$)/,
-                                    message:'Entered value cannot start/end or have only white space'
-                                },
-                                onChange:(e)=>handleInput(e)
-                            })}/>
-                             {<p className={`${styles.validate} validations`}>{errors.title?.message}</p>}
+                                <input maxLength={30} type="text" className={`${styles.title_input} child`} defaultValue={dataVideo.title} name="Title" placeholder="Enter title or video" {...register("title", {
+                                    required: 'This field is required', pattern: {
+                                        value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                                        message: 'Entered value cannot start/end or have only white space'
+                                    },
+                                    onChange: (e) => handleInput(e)
+                                })} />
+                                {<p className={`${styles.validate} validations`}>{errors.title?.message}</p>}
                                 <label className={styles.model_label}>Description</label>
-                                <input maxLength={50} type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description",{required:'This field is required',pattern:{
-                                    value:/^[^\s]+(?:$|.*[^\s]+$)/,
-                                    message:'Entered value cannot start/end or have only white space'
-                                }})} placeholder="Enter your description" />
+                                <input maxLength={50} type="text" className={styles.description_input} defaultValue={dataVideo.description} name="Description" {...register("description", {
+                                    required: 'This field is required', pattern: {
+                                        value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                                        message: 'Entered value cannot start/end or have only white space'
+                                    }
+                                })} placeholder="Enter your description" />
                                 {<p className={`${styles.validate} validations`}>{errors.description?.message}</p>}
                                 {console.log(dataVideo.description)}
                                 <div className={styles.submit}>
@@ -161,39 +194,61 @@ export default function Others() {
                                         placeHolder="tags"
                                     ></TagsInput> */}
                                     {/* {tags.map(i=>i)} */}
-                                    {tags?tags.map((tag, ind) => (
+                                    {tags ? tags.map((tag, ind) => (
                                         <div key={ind}>
                                             <div className={styles.tagItem}>
                                                 <span className={styles.text}>{tag}</span>
                                                 <span onClick={() => handleRemoveTag(tag, ind)} className={styles.close}>&times;</span>
                                             </div>
                                         </div>
-                                    )):null}
-                                    
-                                    <input maxLength={30} onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text"/>
+                                    )) : null}
+
+                                    {/* <input maxLength={30} onKeyDown={(e) => handleKeyDown(e)} className={styles.tags_input} type="text"/> */}
+                                    <input maxLength={30} {...register("tags", {
+                                        pattern: {
+                                            value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                                            message: 'Entered value cannot start/end or have only white space'
+                                        }
+                                    })} className={styles.tags_input} type="text" onKeyDown={(e) => handleKeyDown(e)}/>
                                 </div>
+                                {<p className={`${styles.validate} validations`}>{errors.tags?.message}</p>}
+                                {tagErr && <p className={`${styles.tagErr} validations`}>This field is required</p>}
                                 <label className={styles.model_label}>Metadata</label>
                                 <table>
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input maxLength={30} className={styles.others_input} type="text" value={keys.key} onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" />
+                                                {/* <input maxLength={30} className={styles.others_input} type="text" value={keys.key} onChange={(e) => handleData(e)} name="key" placeholder="Enter a key" /> */}
+                                                <input maxLength={30} className={styles.others_input} type="text" value={keys.key} {...register("key", {
+                                                    pattern: {
+                                                        value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                                                        message: 'Entered value cannot start/end or have only white space'
+                                                    },
+                                                    onChange:(e) => handleData(e)
+                                                })} name="key" placeholder="Enter a key" />
                                             </th>
                                             <th>
 
-                                                <input maxLength={30} className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" />
+                                                {/* <input maxLength={30} className={styles.others_input} type="text" value={keys.value} onChange={(e) => handleData(e)} name="value" placeholder="Enter a value" /> */}
+                                                <input maxLength={30} className={styles.others_input} type="text" value={keys.value} {...register("value", {
+                                                    pattern: {
+                                                        value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                                                        message: 'Entered value cannot start/end or have only white space'
+                                                    },
+                                                    onChange:(e) => handleData(e)
+                                                })} name="value" placeholder="Enter a value" />
                                                 <button onClick={() => handleClick()} type="button" className={`${styles.add_button} btn`}> <img src='/images/iconfeather-plus-grey.svg' /> Add</button>
                                             </th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {meta?meta.map((i, index) =>
+                                        {meta ? meta.map((i, index) =>
                                             <tr key={index}>
                                                 <td className={styles.metadata_key}>{i.key}</td>
                                                 <td className={styles.metadata_value}>{i.value}</td>
                                             </tr>
-                                        ):''}
+                                        ) : ''}
                                         {/* <tr>
                                             <td>Frame Rate</td>
                                             <td className={styles.table_body}>25 fps</td>
@@ -205,6 +260,10 @@ export default function Others() {
                                         </tr> */}
                                     </tbody>
                                 </table>
+                                <div className={styles.errFields}>
+                                        {<p className={`${styles.validate} validations`}>{errors.key?.message}</p>}
+                                        {<p className={`${styles.value} validations`}>{errors.value?.message}</p>}
+                                </div>
                                 <div className={styles.submit}>
                                     <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
                                 </div>
