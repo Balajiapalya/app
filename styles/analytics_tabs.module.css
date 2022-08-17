@@ -550,6 +550,7 @@
 }
 
 .date_toggle .date_toggle_btn {
+    cursor: pointer;
     background-color: #fff;
     height: 30px;
     border: 1px solid #d7dbec;
