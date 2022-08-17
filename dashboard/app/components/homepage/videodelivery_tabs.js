@@ -20,7 +20,8 @@ function Videodelivery_tabs() {
         }else{
             setToggleState(Number(router.query.path));
         }
-        if(router.query.status=='Failed'){
+        
+        if(localStorage.getItem('status')=='Failed' || localStorage.getItem('status')=='Processing'){
             setRender(false)
         }
     },[router.query.path])

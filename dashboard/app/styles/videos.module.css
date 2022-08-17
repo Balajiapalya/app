@@ -996,10 +996,10 @@
     padding:5px 5px;
 }
 .pagination .page_num:hover{
-    background-color: #aeb7bd;
+    background-color: #e2e2e2;
 }
 .pagination .presentPage{
-    background-color: #9a9a9a;
+    background-color: #e2e2e2;
 }
 
 /* @media only screen and (min-width: 200px)   {

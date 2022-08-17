@@ -1449,7 +1449,8 @@
 }
 
 .tags_metadata_box table {
-    width: 93%;
+    /* width: 93%; */
+    width: calc(100% - 30px);
     border: solid 1px rgba(99, 115, 129, 0.3);
     margin: 5px 20px;
     border-collapse: collapse;
@@ -1462,6 +1463,7 @@
 }
 
 .tags_metadata_box table thead tr th {
+    width: 50%;
     text-align: left;
     padding: 0px 5px;
     color: #797979;
@@ -1485,6 +1487,12 @@
     color: #7e7e7e;
 }
 
+.errFields{
+    display: flex;
+}
+.value{
+    margin-left:0px ;
+}
 .submit {
     width: 100%;
     margin-left: 20px;
@@ -1530,6 +1538,11 @@
 .metadata_value {
     border-left: solid 1px #ecedef;
     border-bottom: solid 1px #ecedef;
+}
+.tagErr{
+    width: 100%;
+    float: left;
+    margin-left: 21px
 }
 
 .table_body {

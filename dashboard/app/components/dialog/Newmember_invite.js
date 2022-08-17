@@ -4,7 +4,7 @@ import Api from '../../components/api/api';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router'
 
-export default function Newmember_invite({ closeModel }) {
+export default function Newmember_invite({ closeModel ,toast}) {
   const router = useRouter();
   const [data, setdata] = useState([]);
   const [selected, setSelected] = useState();
@@ -24,6 +24,7 @@ export default function Newmember_invite({ closeModel }) {
     if(admin_invite_code.roleId!==undefined){
     Api.Newmember_invite_data(admin_invite_code)
       .then(res => {
+        toast('New Member Invited')
         closeModel(false)
 
       })
