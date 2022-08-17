@@ -66,14 +66,10 @@ export default function Environment() {
       setValue(items.name)
       localStorage.setItem('envuuid', items.uuid);
       // for default value in dropdown
-      if(items.environmentTypeId==1){
-        setDefaultEnv('Developement')
-      }else if(items.environmentTypeId==2){
-        setDefaultEnv('Staging')
-      }else if(items.environmentTypeId==3){
-        setDefaultEnv('QA')
-      }else{
-        setDefaultEnv('Production')
+      for(let i=0;i<env.length;i++){
+        if(items.environmentTypeId==env[i].id){
+          setDefaultEnv(env[i].name)
+        }
       }
     }
     openModel[index] = !openModel[index];

@@ -18,7 +18,7 @@
     border: 1px solid #ddd;
     border-radius: 6px;
     display: block;
-    margin-top: 40%;
+    /* margin-top: 40%; */
 }
 
 .model_nav {
@@ -153,7 +153,11 @@
 
 .model_container {
     width: 496px;
-    margin: auto;
+    /* margin: auto; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .model_canel_btn {
@@ -1312,7 +1316,8 @@
     border: solid 1px #a8c3db;
     margin-top: 2px;
     border-radius: 2px;
-    top: 455px;
+    /* top: 455px; */
+    bottom: 23px;
     cursor: pointer;
 }
 

@@ -5,6 +5,7 @@ import { memo, useContext } from "react";
 import Api from '../api/api'
 import NextNProgress from "nextjs-progressbar";
 import {useRouter} from 'next/router'
+import ConfirmLogOut from './ConfirmLogOut'
 
 function Navbar() {
 const router=useRouter()
@@ -15,17 +16,19 @@ const router=useRouter()
 
     const [opendropdown, setdropdown] = useState(false);
     const [ownername, setownername] = useState([]);
+    const [logoutPopup,setLogoutPopup]=useState(false)
     const handlelogout = () => {
         // window.localStorage.clear();
-        localStorage.removeItem('ownerLastname')
-        localStorage.removeItem('ownername')
-        localStorage.removeItem('orgName')
-        localStorage.removeItem('uuid')
-        localStorage.removeItem('userID')
-        localStorage.removeItem('Jwt-token')
-        localStorage.removeItem('envuuid')
-        localStorage.removeItem('ownerEmail')
-        document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+        // localStorage.removeItem('ownerLastname')
+        // localStorage.removeItem('ownername')
+        // localStorage.removeItem('orgName')
+        // localStorage.removeItem('uuid')
+        // localStorage.removeItem('userID')
+        // localStorage.removeItem('Jwt-token')
+        // localStorage.removeItem('envuuid')
+        // localStorage.removeItem('ownerEmail')
+        // document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+        setLogoutPopup(true)
     }
 
     useEffect(() => {
@@ -100,11 +103,12 @@ const router=useRouter()
                             <Link href="/account"><a><img src={router.pathname=='/account'  ? "/images/iconawesome-user-alt(white).svg" : "/images/iconawesome-user-alt.svg"} alt='icon'></img><span><p className={router.pathname=='/account' ? ` ${styles.activate}` : ''}>{ownername}</p></span></a></Link>
                         </li>
                         <li>
-                            <Link href="/signin"><a className={styles.logout} onClick={() => handlelogout()}><img src={ router.pathname=='/signin' ? "/images/iconfeather-log-out.png" : "/images/iconfeather-log-out.png"} alt='icon'></img><span>Logout</span></a></Link>
+                            <a className={styles.logout} onClick={() => handlelogout()}><img src={ router.pathname=='/signin' ? "/images/iconfeather-log-out.png" : "/images/iconfeather-log-out.png"} alt='icon'></img><span>Logout</span></a>
                         </li>
                     </ul>
                 </div>
             </div>
+            {logoutPopup && <ConfirmLogOut setLogoutPopup={setLogoutPopup}/>}
         </div>
     )
 }

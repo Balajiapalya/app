@@ -86,7 +86,7 @@ const SelectEnv = ({ id, env, valueDefault, setPopup, i, setLoad, defaultEnv }) 
                     defaultValue={valueDefault}
                     onChange={(e) => handleChange(e)}
                 />
-                {errName && <p className='validations'>This field is required</p>}
+                {errName && <p className='validations'>This field is required without space at start/end/only space</p>}
                 <div ref={dropdownprod}>
                     <div className={styles.model_selection} onClick={() => setProductSelect(!productSelect)}>
                         <div>{selected ? selected : defaultOpt}</div>

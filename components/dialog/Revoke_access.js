@@ -6,8 +6,9 @@ export default function Revoke_access({ closerevoke, item }) {
     const handlerevoke = () => {
         let del = [item.accessTokenId]
         // console.log(del)
-        Api.Revoke_acceesstoken(del).then(
-            closerevoke(false),
+        Api.Revoke_acceesstoken(del).then(res=>{
+            closerevoke(false)
+        }
         )
     }
 
