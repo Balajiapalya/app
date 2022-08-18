@@ -68,7 +68,7 @@ const EvnDropDown=(props)=>{
             }
       }
       if(opt!==null && e.keyCode===13){
-         data.map(item=>{
+         props.data.map(item=>{
             if(opt.children[count].innerHTML===item.name){
                handleOption(item)
             }

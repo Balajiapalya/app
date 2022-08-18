@@ -9,6 +9,7 @@ import Navbar from "../../components/common/navbar";
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ConfirmLogOut from '../../components/common/ConfirmLogOut'
 
 export default function Accounts() {
   const [openneworg, set_openneworg] = useState(false);
@@ -16,7 +17,7 @@ export default function Accounts() {
   const [highlightedorg, sethighlightedorg] = useState(0);
   const [orgname, setorgname] = useState("")
   const [toastMsg,setToastMsg]=useState(false)
-
+  const [logoutPopup,setLogoutPopup]=useState(false)
   // const [saved,setSaved]=useState(false)
   const {
     register,
@@ -83,9 +84,10 @@ export default function Accounts() {
     sethighlightedorg(key);
   };
   const handlelogout = () => {
-    window.localStorage.clear();
-    document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
-    window.location.pathname = "/signin";
+    // window.localStorage.clear();
+    // document.cookie = "Jwt-token=;expires=" + new Date().toUTCString();
+    // window.location.pathname = "/signin";
+    setLogoutPopup(true)
   };
 
   let email;
@@ -266,6 +268,7 @@ export default function Accounts() {
         pauseOnHover
       /> */}
       <ToastContainer />
+      {logoutPopup && <ConfirmLogOut setLogoutPopup={setLogoutPopup}/>}
     </div>
     // </div>
   );

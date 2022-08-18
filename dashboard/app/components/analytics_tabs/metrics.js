@@ -190,8 +190,15 @@ export default function Metrics({id}) {
         setStartDate(monthbeforedate);
         setEndDate(toDate);
     }
+    const handleStartDate=(date)=>{
+        if(date>new Date()){
+            setStartDate(new Date())
+        }
+    }
     const datepicker = (date) => {
-        // console.log(date)
+        if(date>new Date()){
+            setEndDate(new Date)
+        }
         let toDate = new Date(date).getTime();
         let fromDate = new Date(startDate).getTime();
         Views_statistics_data(toDate, fromDate);
@@ -199,7 +206,7 @@ export default function Metrics({id}) {
         setToday(toDate)
         set_fromDate(fromDate)
     }
-
+ 
     const Usage_statistics_data = (toDate, fromDate) => {
         if (valueEnv) {
             Api.Usage_statistics(valueEnv, toDate, fromDate)
@@ -275,6 +282,7 @@ export default function Metrics({id}) {
                                 endDate={endDate}
                                 dateFormat="dd/MM/yyyy"
                             // showMonthYearPicker
+                            onSelect={(date) => handleStartDate(date)}
                             />
                             <DatePicker
                                 selected={endDate}

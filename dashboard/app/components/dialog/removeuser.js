@@ -22,10 +22,12 @@ export default function Removeuser({ closeremoveuser, item,setToastMsg }) {
     // let del = [item.email]
     let arr=[]
     arr.push(del)
+    if(arr.length>0){
     Api.Remove_user_data(arr).then(res => {
       setToastMsg(true)
       closeremoveuser(false)
     })
+  }
   }
   return (
     <div className={`${styles.model} ${styles.remove_user_modal}`} >
