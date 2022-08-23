@@ -275,6 +275,7 @@ export default function Metrics({id}) {
                         <div className={styles.date_picker}>
                             <img  src='/images/calender.png' />
                             <DatePicker
+                                onFocus={e => e.target.blur()}
                                 selected={startDate}
                                 onChange={(date) => [setStartDate(date)]}
                                 selectsStart
@@ -285,6 +286,7 @@ export default function Metrics({id}) {
                             onSelect={(date) => handleStartDate(date)}
                             />
                             <DatePicker
+                                onFocus={e => e.target.blur()}
                                 selected={endDate}
                                 onChange={(date) => [setEndDate(date)]}
                                 selectsEnd

@@ -589,6 +589,7 @@
 }
 
 .date_picker div input {
+    cursor:pointer;
     width: 100% !important;
     border: none;
     outline: none;
