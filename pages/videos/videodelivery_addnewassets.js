@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Videodelivery_addnewassets({ table, setReload }) {
+export default function Videodelivery_addnewassets({ table, setReload,filename,set_filename,uploaded,setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const togglebtn = (index) => {
@@ -64,7 +64,7 @@ export default function Videodelivery_addnewassets({ table, setReload }) {
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload handlePopUp={handlePopUp} setReload={setReload} />
+                <Direct_upload handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >
