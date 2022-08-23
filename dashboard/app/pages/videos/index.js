@@ -32,6 +32,8 @@ export default function Videos() {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     const [currentItems, setCurrentItems] = useState([]);
+    const [filename, set_filename] = useState();
+    const [uploaded, setuploaded] = useState(false);
     let itemsPerPage = 5
 
 
@@ -225,6 +227,11 @@ export default function Videos() {
 
     const handlePopup = () => {
         // set_asset(true)
+        setuploaded(false);
+        set_filename('')
+        let inp=document.querySelector('input[type=file]')
+        inp.value=''
+        console.log(inp)
         let table = document.querySelector('.table');
         let popup = document.querySelector('.popup');
         table.classList.add(`${styles.no_display}`)
@@ -378,7 +385,7 @@ export default function Videos() {
                             </div>
                             {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
                             <div className={`${styles.no_display} popup`}>
-                                <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} />
+                                <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
                             </div>
                         </div>
                     </div>
