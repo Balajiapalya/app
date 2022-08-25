@@ -24,6 +24,10 @@ useEffect(()=>{
     localStorage.removeItem('Jwt-token')
     localStorage.removeItem('envuuid')
     localStorage.removeItem('ownerEmail')
+    localStorage.removeItem('status')
+    localStorage.removeItem('videoId')
+    localStorage.removeItem('asset_title')
+    localStorage.removeItem('thumbnail')
     document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
     router.push('/signin')
   }

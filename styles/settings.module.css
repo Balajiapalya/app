@@ -200,6 +200,7 @@
 }
 
 .containercomponents .lowercomponents ul li a {
+    cursor:pointer;
     padding: 1em 20px;
     display: block;
 }
