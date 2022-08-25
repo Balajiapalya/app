@@ -5,15 +5,16 @@ import Api from './api/api';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useRouter } from 'next/router';
-import UploadPopUp from './uploadPopUp'
 
-export default function Direct_upload({handlePopUp,setReload,filename,set_filename,uploaded,setuploaded}) {
+// import { ToastContainer, toast } from 'react-toastify';
+
+export default function Direct_upload({handlePopUp,setReload,filename,set_filename,uploaded,setuploaded,toast}) {
     const { register, handleSubmit,setError, watch, formState: { errors } } = useForm();
     // const [filename, set_filename] = useState();
     let [loading, setLoading] = useState(false);
     let [color, setColor] = useState("#999");
     // const [uploaded, setuploaded] = useState(false);
-    const [popup,setPopup]=useState(false)
+    // const [popup,setPopup]=useState(false)
     const router = useRouter();
     let handleChange = e => {
         var files = e.target.files;
@@ -55,14 +56,18 @@ export default function Direct_upload({handlePopUp,setReload,filename,set_filena
                     })
                         .then(Headers => {
                             if (Headers.status = 200) {
-                                setPopup(true)
+                                // setPopup(true)
+                                toast('Video file will be uploaded within few minutes..')
                                 setLoading(false)
                                 setuploaded(true);
-                                setTimeout(()=>{
-                                    setPopup(false)
+
+                                let timeout=setTimeout(()=>{
+                                    toast.dismiss()
+                                    // setPopup(false)
                                     setReload(true)
                                     handlePopUp();
-                                },1000*5)
+                                    
+                                },1000*1)
                                     
                             }
                         })
@@ -122,7 +127,8 @@ export default function Direct_upload({handlePopUp,setReload,filename,set_filena
                 </form>
 
             </div>
-            {popup && <UploadPopUp setPopup={setPopup} setReload={setReload} handlePopUp={handlePopUp}/>}
+            {/* <ToastContainer hideProgressBar={true}/> */}
+            {/* {popup && <UploadPopUp setPopup={setPopup} setReload={setReload} handlePopUp={handlePopUp}/>} */}
         </div>
 
     )
