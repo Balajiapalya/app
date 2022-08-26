@@ -14,10 +14,53 @@ import { useState, useEffect } from 'react';
 export default function Signin() {
   const [error, seterror] = useState([]);
   const [count, setCount] = useState(0)
+  // const [timing,setTiming]=useState(false)
   const { register, setError, handleSubmit,setValue ,formState: { errors } } = useForm();
- 
+
   const router = useRouter()
   let timer
+  let deadline
+  let startTime
+  let timing=false
+  const timerFun=()=>{
+    deadline=1000*20
+            startTime=Date.now()
+            // setStartTime(Date.now())
+            if(timing===false){
+              
+              localStorage.setItem('startTime',startTime)
+              
+            }
+            
+            let remaining=deadline-(Date.now() - localStorage.getItem('startTime')) 
+           const int= setInterval(() => {
+            localStorage.setItem('remainingTime',deadline-(Date.now() - localStorage.getItem('startTime')))
+             
+              if(deadline-(Date.now() - startTime)<=0){
+                clearInterval(int)
+                localStorage.removeItem('startTime',startTime)
+                localStorage.removeItem('remainingTime')
+              }
+            }, 1000*1);
+            
+            // let remaining=deadline-(Date.now() - startTime) 
+            
+            // localStorage.setItem('remainingTime',remaining)
+            // console.log(remaining)
+            const btn = document.querySelector('.btn')
+            btn.disabled = true;
+            btn.style.backgroundColor = '#2893eb';
+            btn.style.cursor = 'not-allowed'
+            timer = setTimeout(() => {
+              btn.disabled = false
+              btn.style.backgroundColor = '#2863eb'
+              btn.style.cursor = 'pointer'
+              setCount(0)
+              clearInterval(int)
+              localStorage.removeItem('remainingTime')
+              localStorage.removeItem('startTime')
+            }, [remaining])
+  }
   const onSubmit = login_details => {
     if (login_details.password.match(/^\s*$/) === null) {
       login_details.password = login_details.password.trim()
@@ -61,17 +104,13 @@ export default function Signin() {
           console.log(error.response)
           setCount(count + 1)
           if (count == 3) {
+            
             const btn = document.querySelector('.btn')
             btn.disabled = true;
             btn.style.backgroundColor = '#2893eb';
             btn.style.cursor = 'not-allowed'
-            timer = setTimeout(() => {
-              console.log('timeout')
-              btn.disabled = false
-              btn.style.backgroundColor = '#2863eb'
-              btn.style.cursor = 'pointer'
-              setCount(0)
-            }, [1000 * 10])
+            timerFun()
+            
           }
           if (error.response.data.code == 400) {
             // document.cookie = 'email=;expires=' + new Date().toUTCString()
@@ -118,6 +157,24 @@ export default function Signin() {
       check.checked=true
     }
 
+
+  //  incorrect credentials
+  
+  const btn = document.querySelector('.btn')
+    if(localStorage.getItem('remainingTime')){
+      timing=true
+      btn.disabled = true;
+      btn.style.backgroundColor = '#2893eb';
+      btn.style.cursor = 'not-allowed'
+      timerFun()
+    }else{
+      btn.disabled = false
+      btn.style.backgroundColor = '#2863eb'
+      btn.style.cursor = 'pointer'
+      setCount(0)
+    }
+  
+    
   }, [])
   
   return (

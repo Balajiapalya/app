@@ -33,7 +33,7 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
         catch (e) {
             toast.error('syntax error', {
                 position: "top-center",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: true,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -54,6 +54,7 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
     // popup
     const handlePopUp = () => {
         // close_asset(false)
+        toast.dismiss()
         let inpopUp = document.querySelector('.inpopup');
         inpopUp.parentElement.classList.add(`${styles.no_display}`);
         table.classList.remove(`${styles.no_display}`);
@@ -64,7 +65,7 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
+                <Direct_upload toast={toast} handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >
@@ -120,8 +121,8 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                                 /> : null}
                             <ToastContainer
                                 position="top-center"
-                                autoClose={5000}
-                                hideProgressBar={false}
+                                autoClose={3000}
+                                hideProgressBar={true}
                                 newestOnTop={false}
                                 closeOnClick
                                 rtl={false}
