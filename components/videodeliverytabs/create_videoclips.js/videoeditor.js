@@ -4,11 +4,18 @@ import Link from "next/link";
 import {useState} from 'react'
 import Api from '../../../components/api/api';
 import { useForm } from 'react-hook-form';
-function Videoditor({strtEnd,setStrtEnd}) {
+function Videoditor() {
     // const {strtEnd,setStrtEnd}=props
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit=(time)=>{
-        setStrtEnd(time)
+        // const [hrs,mins,sec]=time.start_offset.split(':')
+        // const secondsStart=(+hrs)*60*60+(+mins)*60+(+sec);
+        // const [hr,min,secs]=time.end_offset.split(':')
+        // const secondsEnd=(+hr)*60*60+(+min)*60+(+secs)
+        // const obj=new Object()
+        // obj.start_offset=secondsStart
+        // obj.end_offset=secondsEnd
+        // setStrtEnd(obj)
         
     }
     
@@ -24,10 +31,10 @@ function Videoditor({strtEnd,setStrtEnd}) {
                     <h5>Start time*</h5>
                     <input placeholder="00:20:30" {...register('start_offset',{
                                         required: 'This field is required',
-                                        // pattern: {
-                                        //     value:/^\d?\d:\d{2}:\d{2}$/,
-                                        //     message: 'Please enter hh:mm:ss format'
-                                        // },
+                                        pattern: {
+                                            value:/^\d?\d:\d{2}:\d{2}$/,
+                                            message: 'Please enter hh:mm:ss format'
+                                        },
                                     })}></input>
                                     {<p className={'validations'}>{errors.start_offset?.message}</p>}
                 </div>
@@ -35,10 +42,10 @@ function Videoditor({strtEnd,setStrtEnd}) {
                     <h5>End Time*</h5>
                     <input placeholder="00:20:40" {...register('end_offset',{
                                         required: 'This field is required',
-                                        // pattern: {
-                                        //     value:/^\d?\d:\d{2}:\d{2}$/,
-                                        //     message: 'Please enter hh:mm:ss format'
-                                        // },
+                                        pattern: {
+                                            value:/^\d?\d:\d{2}:\d{2}$/,
+                                            message: 'Please enter hh:mm:ss format'
+                                        },
                                     })}></input>
                                     {<p className={'validations'}>{errors.end_offset?.message}</p>}
                 </div>

@@ -77,16 +77,16 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                         value={`POST  https://api.videograph.ai/video/services/api/v1/contents`}
                     />
                     <span>POST body editor:</span>
-                    <div className={styles.language_select}>
+                    {/* <div className={styles.language_select}>
                         <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
                         <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
                         <button className={toggleposition == 3 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(3)}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
                         <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button>
-                    </div>
+                    </div> */}
 
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className={styles.code}>
-                            {toggleposition == 2 ?
+                            {/* {toggleposition == 2 ? */}
                                 <textarea
                                     defaultValue={`${JSON.stringify(
                                         {
@@ -118,7 +118,8 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                                     type='text'
                                     name='code'
                                     {...register("code", { required: true })}
-                                /> : null}
+                                />
+                                 {/* : null} */}
                             <ToastContainer
                                 position="top-center"
                                 autoClose={3000}
