@@ -280,7 +280,7 @@ export default function Metrics({ id }) {
                             <button className={toggleposition == 3 ? `${styles.date_toggle_btn} ${styles.active_btn}` : `${styles.date_toggle_btn}`} onClick={() => [togglebtn(3), setmonth()]}>Month</button>
                         </div>
                         <div className={styles.date_picker}>
-                            <img src='/images/calender.png' />
+                            <img src='/images/calender.svg' />
                             <DatePicker
                                 filterDate={d => {
                                     return d >= new Date(new Date(new Date().setHours(0, 0, 0, 0)).setDate(1)) && new Date() > d;
@@ -328,7 +328,7 @@ export default function Metrics({ id }) {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/images/metrics-views.png' alt='img' />
+                            <img src='/images/metrics-views.svg' alt='img' />
                         </div>
                         <span className={styles.card_info}>Number of views that started playback</span>
                     </div>
@@ -340,7 +340,7 @@ export default function Metrics({ id }) {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/images/metrics-unique-views.png' alt='img' />
+                            <img src='/images/metrics-unique-views.svg' alt='img' />
                         </div>
                         <span className={styles.card_info}>Unique viewers that started playback,based on User ID.</span>
                     </div>
@@ -353,7 +353,7 @@ export default function Metrics({ id }) {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/images/metrics-watched-time.png' alt='img' />
+                            <img src='/images/metrics-watched-time.svg' alt='img' />
                         </div>
                         <span className={styles.card_info}>Time (in hours) that viewers watched videos.</span>
                     </div>
@@ -365,7 +365,7 @@ export default function Metrics({ id }) {
                             </div>
                         </div>
                         <div className={styles.card_logo}>
-                            <img src='/images/metrics-views.png' alt='img' />
+                            <img src='/images/metrics-views.svg' alt='img' />
                         </div>
                         <span className={styles.card_info}>Number of playback errors detected by Videograph.</span>
                     </div>

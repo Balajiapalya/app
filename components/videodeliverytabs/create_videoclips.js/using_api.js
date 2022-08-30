@@ -6,27 +6,15 @@ import Api from '../../../components/api/api';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
 function Using_api() {
- 
-    const [detail,setDetail]=useState('')
+    const router = useRouter();   
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [toggleposition, settoggleposition] = useState(2);
-    const togglebtn = (index) => {
-        settoggleposition(index);
-    }
-    useEffect(() => {
-       
-        Api.Get_Env_item()
-            .then(res => {
-                if (res && res.data && res.data.data) {
-                    // console.log(res.data.data.contentId)
-                   setDetail(res.data.data.contentId)
-                }
-            })
-        return () => {
-            setDetail()
-        }
-    }, []);
+    // const [toggleposition, settoggleposition] = useState(2);
+    // const togglebtn = (index) => {
+    //     settoggleposition(index);
+    // }
+   
 
     const onSubmit = video_url_data => {
         try {
@@ -60,13 +48,13 @@ function Using_api() {
 
                 <div className={styles.language_select}>
                     {/* <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button> */}
-                    <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
+                    {/* <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button> */}
                     {/* <button className={toggleposition == 3 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(3)}><img className={styles.languge_img} src='/images/php.png' alt='php' />Php</button>
                     <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button> */}
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.code}>
-                        {detail && <textarea
+                        <textarea
                             defaultValue={`${JSON.stringify(
                                 
                                     {
@@ -74,7 +62,7 @@ function Using_api() {
                                         "description": "Video description",
                                         "video": [
                                             {
-                                                "url": `vg://${detail}`,
+                                                "url": `vg://${router.query.videoId}`,
                                                 "start_offset": 0,
                                                 "end_offset": 0
                                             }
@@ -128,7 +116,7 @@ function Using_api() {
                             type='text'
                             name='code'
                             {...register("code", { required: true })}
-                        />}
+                        />
                     </div>
                     <button className={styles.btn} type="submit">Run Request</button>
                 </form>

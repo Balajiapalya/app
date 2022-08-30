@@ -6,7 +6,7 @@ import Using_api from "../videodeliverytabs/create_videoclips.js/using_api";
 
 export default function Videoclips_tabs(){
     const [toggleState, setToggleState] = useState(1);
-    const [strtEnd,setStrtEnd]=useState()
+    // const [strtEnd,setStrtEnd]=useState()
     const toggleTab = (index) => {
         setToggleState(index);
     };
@@ -33,13 +33,13 @@ export default function Videoclips_tabs(){
                                 <div
                                     className={toggleState === 1 ? `${styles1.content_tabs} ${styles1.active_content}` : `${styles1.content_tabs}`}
                                 >
-                                    <Videoditor strtEnd={strtEnd} setStrtEnd={setStrtEnd}/>
+                                    <Videoditor/>
                                 </div>
 
                                 <div
                                     className={toggleState === 2 ? `${styles1.content_tabs} ${styles1.active_content}` : `${styles1.content_tabs}`}
                                 >
-                                    <Using_api strtEnd={strtEnd}/>
+                                    <Using_api/>
                                 </div>
                             </div>
 
