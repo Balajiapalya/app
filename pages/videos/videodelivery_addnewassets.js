@@ -106,7 +106,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
                         readOnly
                         value={`POST  https://api.videograph.ai/video/services/api/v1/contents`}
                     />
-                    <span>POST body editor:</span>
+                    <span className={styles.postSpan}>POST body editor:</span>
                     {/* <div className={styles.language_select}>
                         <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
                         <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
@@ -122,7 +122,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
                                 defaultLanguage="node"
                                 // theme="vs-dark"
                                 id="prettyJSONFormat"
-                                className={`${styles.code_input} form_control`}
+                                // className={`${styles.code_input} form_control`}
                                 onChange={(e) => handleChange(e)}
                             />
                             {/* <textarea
