@@ -3,6 +3,10 @@
     float: left;
 
 }
+.notFound{
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+}
 
 .videos_table table {
     width: 100%;
