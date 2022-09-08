@@ -1149,6 +1149,7 @@
 
 .video_editor_player {
     width: 100%;
+    padding:15px;
 }
 
 .video_editor_player img {
