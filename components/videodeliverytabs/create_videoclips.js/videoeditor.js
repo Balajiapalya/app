@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from 'react'
 import Api from '../../../components/api/api';
 import { useForm } from 'react-hook-form';
+import Player from '../../player';
 function Videoditor(props) {
     // const {strtEnd,setStrtEnd}=props
     const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
@@ -22,12 +23,15 @@ function Videoditor(props) {
         .catch(err=>console.log(err))
 
     }
+    const handlethumnail_callback = () => {
 
+    }
     return (
 
         <div className={styles.video_editor_content}>
             <div className={styles.video_editor_player}>
-                <img src="/images/image11.png" alt="image" />
+                {/* <img src="/images/image11.png" alt="image" /> */}
+                <Player handlethumnail={handlethumnail_callback}/>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className={styles.start_end_time}>
