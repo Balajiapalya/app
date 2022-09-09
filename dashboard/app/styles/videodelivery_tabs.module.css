@@ -3,6 +3,10 @@
     float: left;
 
 }
+.notFound{
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+}
 
 .videos_table table {
     width: 100%;
@@ -200,8 +204,15 @@
     width: 100%;
     float: left;
     height: 200px;
-    margin: 10px 15px;
+    /* margin: 10px 15px; */
+    margin:10px 0px;
 
+}
+.codeApi{
+    width: 100%;
+    float: left;
+    height: 200px;
+    margin: 10px 15px;
 }
 
 .code_input {
@@ -399,9 +410,10 @@
 }
 
 .post span {
-    font-family: Inter-Regular;
+    /* commented for code editor */
+    /* font-family: Inter-Regular;
     font-size: 16px;
-    margin-left: 20px;
+    margin-left: 20px; */
 }
 
 /* gifs */
@@ -1136,7 +1148,8 @@
 }
 
 .video_editor_player {
-    width: 97%;
+    width: 100%;
+    padding:15px;
 }
 
 .video_editor_player img {

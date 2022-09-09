@@ -149,6 +149,13 @@ export const delete_asset = () => {
 export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
+// videos -> video clips
+export const create_videoClips=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}/clips`
+}
+export const get_videoClips=()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}/clips`
+}
 // videos -> thumbnails
 export const create_thumbnail = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}/thumbnails?time=${CurrentDate}`
@@ -595,6 +602,26 @@ const Api = {
                 'Authorization': `Bearer ${token}`,
             }
         }),
+    //videoClips
+     Create_Clips:(timingData)=>
+     loginHandledAxios({
+        method:'POST',
+        url:create_videoClips(),
+        data:timingData,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${localStorage.getItem("envuuid")}`
+        }
+     }),
+     Get_Clips:()=>
+     axios({
+        method: 'GET',
+        url: get_videoClips(),
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${localStorage.getItem("envuuid")}`
+        }
+    }),
     //thumbnails
     Create_thumbnail: (thumbnail) =>
         loginHandledAxios({

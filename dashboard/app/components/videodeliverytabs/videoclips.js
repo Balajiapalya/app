@@ -1,29 +1,58 @@
+import { useState, useEffect } from 'react';
 import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
+import Api from '../api/api';
 import Videoclips_tabs from '../homepage/videoclips_tabs';
 
 
 export default function Videoclips() {
-    
+    const [clips, setClips] = useState([])
+    const [reloadAfterPost,setReloadAfterPost]=useState(false)
+    useEffect(() => {
+        Api.Get_Clips().then(res => setClips(res.data.data))
+            .catch(err => console.log(err))
+            return()=>{
+                setClips([])
+            }
+    }, [reloadAfterPost])
+    const create_On = (date) => {
+        var y = new Date(date)
+        return y.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" })
+    }
+    const created_time = (date) => {
+        var t = new Date(date)
+        return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
+    }
     return (
         <Fragment>
             <div className={styles.videoclips}>
                 <div className={styles.subtitles_list}>
                     <h2>List of Video Clips</h2>
                     <div className={styles.videos_table}>
-                        <table>
-                            <thead>
+                    {clips.length===0?<div className={styles.notFound}>No Video Clip Found</div>:<table>
+                        <thead>
                                 <tr>
-
                                     <th>Added on</th>
                                     <th>Name</th>
-                                    <th className={styles.video_id}>Video ID</th>   
+                                    <th className={styles.video_id}>Video ID</th>
                                     <th>Actions</th>
 
                                 </tr>
                             </thead>
-                            <tbody >
-                                <tr>
+                            <tbody>
+                               
+                                {clips.map(item => {
+                                    return (
+                                            <tr key={item.uuid}>
+                                                <td>{create_On(item.createdOn)}<br/>{created_time(item.createdOn)}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.uuid}</td>
+                                                <td className={styles.actionicons}><a>View Video</a>
+                                                </td>
+                                            </tr>
+                                    )
+                                })}
+                                {/* <tr>
 
                                     <td>02/12/21<br></br>6:03pm</td>
                                     <td>Clip1</td>
@@ -51,9 +80,11 @@ export default function Videoclips() {
                                     <td>OPe0o7EObTeS01T3YrydYMyVjjvHFR7AeJOHmH38V0100IM</td>
                                     <td className={styles.actionicons}><a>View Video</a>
                                     </td>
-                                </tr>
+                                </tr> */}
                             </tbody>
-                        </table>
+                            
+                        </table>}
+                       
                     </div>
 
                 </div>
@@ -61,7 +92,7 @@ export default function Videoclips() {
                     <div className={styles.create_videoclips_header}>
                         <h2>Create Video Clips</h2>
                     </div>
-                    <Videoclips_tabs/>
+                    <Videoclips_tabs setReloadAfterPost={setReloadAfterPost} reloadAfterPost={reloadAfterPost}/>
                 </div>
             </div>
         </Fragment>

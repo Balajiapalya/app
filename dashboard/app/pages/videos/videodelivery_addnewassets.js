@@ -9,17 +9,43 @@ import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Videodelivery_addnewassets({ table, setReload,filename,set_filename,uploaded,setuploaded }) {
+import Editor from "@monaco-editor/react";
+
+export default function Videodelivery_addnewassets({ table, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
+    const [codeData, setCodeData] = useState(`${JSON.stringify(
+        {
+            "title": "Video title",
+            "description": "Video description",
+            "content": [
+                {
+                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
+                    "start_offset": 0
+                }
+            ],
+            "tags": [
+                "tag1",
+                "tag2"
+            ],
+            "metadata": [
+                {
+                    "key": "abc",
+                    "value": "pqr"
+                }
+            ],
+            "playback_policy": ["public"],
+            "mp4_support": false,
+            "save_original_copy": false
+        }
+        , undefined, 2)}`)
     const togglebtn = (index) => {
         settoggleposition(index);
     }
 
-    const onSubmit = video_url_data => {
-
+    const onSubmit = () => {
         try {
-            Api.post_video(JSON.parse(video_url_data.code))
+            Api.post_video(JSON.parse(codeData))
                 .then(res => {
                     if (res.data.status == "Success") {
                         window.location.reload()
@@ -39,10 +65,14 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
 
     }
+    const handleChange = (e) => {
+        setCodeData(e)
+    }
+  
     const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
         var parseJSON = JSON.parse(badJSON);
@@ -65,7 +95,7 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <Direct_upload toast={toast} handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
+                <Direct_upload toast={toast} handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded} />
                 <div className={styles.or}></div>
                 <div className={styles.or_text}><span className={styles.divider}>[or]</span></div>
                 <div className={styles.post} >
@@ -76,7 +106,7 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                         readOnly
                         value={`POST  https://api.videograph.ai/video/services/api/v1/contents`}
                     />
-                    <span>POST body editor:</span>
+                    <span className={styles.postSpan}>POST body editor:</span>
                     {/* <div className={styles.language_select}>
                         <button className={toggleposition == 1 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(1)}><img className={styles.languge_img} src='/images/python.png' alt='python' />Python</button>
                         <button className={toggleposition == 2 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(2)}><img className={styles.languge_img} src='/images/node-js.png' alt='node' />Node</button>
@@ -87,39 +117,47 @@ export default function Videodelivery_addnewassets({ table, setReload,filename,s
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className={styles.code}>
                             {/* {toggleposition == 2 ? */}
-                                <textarea
-                                    defaultValue={`${JSON.stringify(
-                                        {
-                                            "title": "Video title",
-                                            "description": "Video description",
-                                            "content": [
-                                                {
-                                                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
-                                                    "start_offset": 0
-                                                }
-                                            ],
-                                            "tags": [
-                                                "tag1",
-                                                "tag2"
-                                            ],
-                                            "metadata": [
-                                                {
-                                                    "key": "abc",
-                                                    "value": "pqr"
-                                                }
-                                            ],
-                                            "playback_policy": ["public"],
-                                            "mp4_support": false,
-                                            "save_original_copy": false
-                                        }
-                                        , undefined, 2)}`}
-                                    id="prettyJSONFormat"
-                                    className={`${styles.code_input} form_control`}
-                                    type='text'
-                                    name='code'
-                                    {...register("code", { required: true })}
-                                />
-                                 {/* : null} */}
+                            <Editor
+                                value={codeData}
+                                defaultLanguage="node"
+                                // theme="vs-dark"
+                                id="prettyJSONFormat"
+                                // className={`${styles.code_input} form_control`}
+                                onChange={(e) => handleChange(e)}
+                            />
+                            {/* <textarea
+                                defaultValue={`${JSON.stringify(
+                                    {
+                                        "title": "Video title",
+                                        "description": "Video description",
+                                        "content": [
+                                            {
+                                                "url": "http://techslides.com/demos/sample-videos/small.mp4",
+                                                "start_offset": 0
+                                            }
+                                        ],
+                                        "tags": [
+                                            "tag1",
+                                            "tag2"
+                                        ],
+                                        "metadata": [
+                                            {
+                                                "key": "abc",
+                                                "value": "pqr"
+                                            }
+                                        ],
+                                        "playback_policy": ["public"],
+                                        "mp4_support": false,
+                                        "save_original_copy": false
+                                    }
+                                    , undefined, 2)}`}
+                                id="prettyJSONFormat"
+                                className={`${styles.code_input} form_control`}
+                                type='text'
+                                name='code'
+                                {...register("code", { required: true })}
+                            /> */}
+                            {/* : null} */}
                             <ToastContainer
                                 position="top-center"
                                 autoClose={3000}

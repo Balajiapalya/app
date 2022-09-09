@@ -4,7 +4,7 @@ import { useState } from "react";
 import Videoditor from "../videodeliverytabs/create_videoclips.js/videoeditor";
 import Using_api from "../videodeliverytabs/create_videoclips.js/using_api";
 
-export default function Videoclips_tabs(){
+export default function Videoclips_tabs(props){
     const [toggleState, setToggleState] = useState(1);
     // const [strtEnd,setStrtEnd]=useState()
     const toggleTab = (index) => {
@@ -33,7 +33,7 @@ export default function Videoclips_tabs(){
                                 <div
                                     className={toggleState === 1 ? `${styles1.content_tabs} ${styles1.active_content}` : `${styles1.content_tabs}`}
                                 >
-                                    <Videoditor/>
+                                    <Videoditor props={props}/>
                                 </div>
 
                                 <div
