@@ -699,7 +699,7 @@
 
 }
 
-.post span {
+.post .postSpan{
     width: 90%;
     margin: 20px;
     font-size: 14px;

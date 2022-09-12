@@ -64,7 +64,7 @@ export default function Thumbnails_api() {
                             <button className={toggleposition == 4 ? `${styles.model_btn} ${styles.active}` : `${styles.model_btn}`} onClick={() => togglebtn(4)}><img className={styles.languge_img} src='/images/go.png' alt='go' />Go</button> */}
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className={styles.code}>
+                            <div className={styles.codeApi}>
                                 {toggleposition == 2 ?
                                     <textarea
                                         defaultValue={`${JSON.stringify(
