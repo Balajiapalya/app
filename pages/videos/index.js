@@ -162,6 +162,7 @@ export default function Videos() {
     }
     const orName = orgname;
     const handleSearch = (e) => {
+        let count=0;
         let input = e.target.value.toUpperCase()
         let table = document.querySelector('.table_input')
         let tRow = table.getElementsByTagName('tr')
@@ -176,9 +177,17 @@ export default function Videos() {
                 if (data.indexOf(input) > -1 || id.indexOf(input) > -1 || stat.indexOf(input) > -1) {
                     tRow[i].style.display = ''
                 } else {
-                    tRow[i].style.display = 'none'
+                    tRow[i].style.display = 'none';
+                     count++
                 }
             }
+        }
+        let div=document.querySelector('.noRow');
+        console.log(tRow.length,count)
+        if(tRow.length-1==count){ 
+          div.style.display='block'
+        }else{
+          div.style.display='none'
         }
     }
 
@@ -379,8 +388,11 @@ export default function Videos() {
                                                 <VideoList create_On={create_On} i={i} created_time={created_time} />
                                             </tr>
                                         )}
+                                      
                                     </tbody>
+                                   
                                 </table>
+                                 <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No result found</div>
 
                             </div>
                             {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}

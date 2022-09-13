@@ -282,9 +282,9 @@ export default function Metrics({ id }) {
                         <div className={styles.date_picker}>
                             <img src='/images/calender.svg' />
                             <DatePicker
-                                filterDate={d => {
-                                    return d >= new Date(new Date(new Date().setHours(0, 0, 0, 0)).setDate(1)) && new Date() > d;
-                                }}
+                                // filterDate={d => {
+                                //     return d >= new Date(new Date(new Date().setHours(0, 0, 0, 0)).setDate(1)) && new Date() > d;
+                                // }}
                                 maxDate={endDate}
                                 onFocus={e => e.target.blur()}
                                 selected={startDate}
@@ -298,7 +298,7 @@ export default function Metrics({ id }) {
                             />
                             <DatePicker
                                 filterDate={d => {
-                                    return d >= new Date(new Date(new Date().setHours(0, 0, 0, 0)).setDate(1)) && new Date() > d;
+                                    return d <new Date()
                                 }}
                                 minDate={startDate}
                                 onFocus={e => e.target.blur()}
