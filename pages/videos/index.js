@@ -162,6 +162,14 @@ export default function Videos() {
     }
     const orName = orgname;
     const handleSearch = (e) => {
+        let div=document.querySelector('.noRow');
+        if(e.target.value==''){
+            document.querySelector('#paginate').style.display='block'
+            div.style.display='none'
+            
+        }else{
+            document.querySelector('#paginate').style.display='none'
+        }
         let count=0;
         let input = e.target.value.toUpperCase()
         let table = document.querySelector('.table_input')
@@ -182,9 +190,8 @@ export default function Videos() {
                 }
             }
         }
-        let div=document.querySelector('.noRow');
         console.log(tRow.length,count)
-        if(tRow.length-1==count){ 
+        if(tRow.length-1==count && count!==0){ 
           div.style.display='block'
         }else{
           div.style.display='none'
@@ -240,7 +247,6 @@ export default function Videos() {
         set_filename('')
         let inp=document.querySelector('input[type=file]')
         inp.value=''
-        console.log(inp)
         let table = document.querySelector('.table');
         let popup = document.querySelector('.popup');
         table.classList.add(`${styles.no_display}`)
@@ -388,12 +394,10 @@ export default function Videos() {
                                                 <VideoList create_On={create_On} i={i} created_time={created_time} />
                                             </tr>
                                         )}
-                                      
                                     </tbody>
-                                   
                                 </table>
-                                 <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No result found</div>
-
+                                 {currentItems.length==0 && <div className={styles.noData}>No Video Data Available</div>}
+                                 <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No Result Found</div>
                             </div>
                             {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
                             <div className={`${styles.no_display} popup`}>
@@ -403,6 +407,7 @@ export default function Videos() {
                     </div>
                 </div>
             </div>
+            <div id='paginate'>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
@@ -417,7 +422,7 @@ export default function Videos() {
                 nextLinkClassName={styles.page_num}
                 activeLinkClassName={styles.presentPage}
             />
-
+            </div>
         </>
     )
 }

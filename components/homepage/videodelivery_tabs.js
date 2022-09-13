@@ -21,7 +21,7 @@ function Videodelivery_tabs() {
             setToggleState(Number(router.query.path));
         }
         
-        if(localStorage.getItem('status')=='Failed' || localStorage.getItem('status')=='Processing'){
+        if(localStorage.getItem('status')=='Failed' || localStorage.getItem('status')=='Processing' || localStorage.getItem('status')=='Pending'){
             setRender(false)
         }
     },[router.query.path])
