@@ -1118,6 +1118,7 @@
 
 .videoclips table tbody tr td a {
     color: #2863eb;
+    cursor: pointer;
 }
 
 .videoclips h2 {
@@ -1227,6 +1228,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #2863eb;
+    cursor: pointer;
 }
 
 

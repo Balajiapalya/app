@@ -4,16 +4,17 @@ import Api from '../../components/api/api';
 import Link from 'next/link'
 import Direct_upload from '../../components/direct_uploade';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Editor from "@monaco-editor/react";
+import Editor, { useMonaco } from "@monaco-editor/react";
 
 export default function Videodelivery_addnewassets({ table, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
+    const monaco = useMonaco();
     const [codeData, setCodeData] = useState(`${JSON.stringify(
         {
             "title": "Video title",
@@ -39,6 +40,19 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
             "save_original_copy": false
         }
         , undefined, 2)}`)
+        useEffect(()=>{
+           if(monaco){
+            monaco.editor.defineTheme('my-theme', {
+                base: 'vs-dark',
+                inherit: true,
+                rules: [],
+                colors: {
+                  'editor.background': '#120724',
+                },
+          });
+          monaco.editor.setTheme('my-theme')
+           }
+        },[monaco])
     const togglebtn = (index) => {
         settoggleposition(index);
     }
@@ -120,7 +134,6 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
                             <Editor
                                 value={codeData}
                                 defaultLanguage="node"
-                                // theme="vs-dark"
                                 id="prettyJSONFormat"
                                 // className={`${styles.code_input} form_control`}
                                 onChange={(e) => handleChange(e)}

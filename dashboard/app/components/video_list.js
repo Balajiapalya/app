@@ -11,8 +11,8 @@ const VideoList = ({ i, create_On, created_time }) => {
     const [videotitle, setvideotitle] = useState([]);
     const [thumbnail, setthumbnail] = useState([]);
     const [dropdown, setdropdown] = useState(false);
+    const [hover,setHover]=useState(false)
     const handleChange = (status) => {
-       
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
@@ -78,6 +78,9 @@ const VideoList = ({ i, create_On, created_time }) => {
             }
       
     }
+    const toggleHover=()=>{
+        setHover(!hover)
+    }
     return (
         <>
 
@@ -88,7 +91,7 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.thumbnailUrl ? <td className={`${styles.thumbnail} ${styles.tdCursor}`}  onClick={() => handleChange(i.status)}><img className={styles.thumbImg} src={`${i.thumbnailUrl}`} alt="image"></img></td> : <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}><img src='/images/placeholder.png' width="100px" /></td>}
             {i.duration ? <td className={styles.tdCursor}  onClick={() => handleChange(i.status)}>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td> : <td  className={styles.tdCursor}  onClick={() => handleChange(i.status)}>-</td>}
             {i.resolution ? <td  onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.resolution}</td> : <td onClick={() => handleChange(i.status)}  className={styles.tdCursor}>-</td>}
-            {i.status == "Failed" ? <td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}>{i.status}<img className={styles.failed_img} src='/images/iconmaterial-info-outline.png'/></td> : <td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+            {i.status == "Failed" ? <td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}><div className={hover?`${styles.visible}`:`${styles.notVisble}`}>failed to upload</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/iconmaterial-info-outline.png'/></td> :i.status=='Pending'? <td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}><div className={hover?`${styles.visible}`:`${styles.notVisble}`}>pending video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/pending.png'/></td>:<td  onClick={() => handleChange(i.status)}  className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.svg`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>
@@ -97,7 +100,7 @@ const VideoList = ({ i, create_On, created_time }) => {
                                 <img className={`${styles.content_menu_basic} ${styles.tdCursor}`} src='/images/content-menu-basic.svg' alt='menu' />
                                 <img className={`${styles.content_menu_hover} ${styles.tdCursor}`} src='/images/content-menu-hover.svg' alt='menu' />
                             </div>
-                            {dropdown && i.status!=='Failed' && i.status!=='Processing'?
+                            {dropdown && i.status!=='Failed' && i.status!=='Processing' && i.status!=='Pending'?
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
@@ -107,6 +110,7 @@ const VideoList = ({ i, create_On, created_time }) => {
                                     <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Video</a></button>
                                 </div>
                                 : null}
+                                {dropdown && i.status=='Failed' ||dropdown && i.status=='Processing' || dropdown && i.status=='Pending'?  <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div>:null}
                         </div>
                     </div>
 

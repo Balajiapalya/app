@@ -3,9 +3,10 @@ import { Fragment } from 'react'
 import styles from '../../styles/videodelivery_tabs.module.css'
 import Api from '../api/api';
 import Videoclips_tabs from '../homepage/videoclips_tabs';
-
+import { useRouter } from "next/router";
 
 export default function Videoclips() {
+    const router = useRouter();
     const [clips, setClips] = useState([])
     const [reloadAfterPost,setReloadAfterPost]=useState(false)
     useEffect(() => {
@@ -22,6 +23,10 @@ export default function Videoclips() {
     const created_time = (date) => {
         var t = new Date(date)
         return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
+    }
+    const handleVideoView=(uuid)=>{
+        localStorage.setItem('videoId', uuid)
+        router.push({ pathname: `./video`, query: {'videoId':uuid, 'path': 1 } });
     }
     return (
         <Fragment>
@@ -47,7 +52,7 @@ export default function Videoclips() {
                                                 <td>{create_On(item.createdOn)}<br/>{created_time(item.createdOn)}</td>
                                                 <td>{item.name}</td>
                                                 <td>{item.uuid}</td>
-                                                <td className={styles.actionicons}><a>View Video</a>
+                                                <td className={styles.actionicons}><a onClick={()=>handleVideoView(item.uuid)}>View Video</a>
                                                 </td>
                                             </tr>
                                     )

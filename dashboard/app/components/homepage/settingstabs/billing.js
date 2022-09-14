@@ -62,7 +62,7 @@ function Billing() {
                             <p>
                                 Manage Billing for both Video and Data plans here.Feel free   to <a href="#">contact us</a> for any queries related billing.
                             </p>
-                            <a href={url} rel="noreferrer" target="_blank"><button className="btn">Edit Payment details</button></a>
+                            <a href={url} rel="noreferrer" target="_blank"><button className="btn">Edit Payment Details</button></a>
                         </div>
                         {/* {openpaymentdetails && <Edit_payment_detials closepaymentdetails={setopenpaymentdetails} />} */}
                         <div className={styles.payment}>
@@ -129,7 +129,7 @@ function Billing() {
                             <div className={styles.payment_details}>
                                 <div className={styles.paymentDet}>
                                     <span className={styles.payment_details_heading}>Account Payment Details</span>
-                                    <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>Veiw Payment history</a></span>
+                                    <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>View Payment history</a></span>
                                 </div>
                                 
                                 <table>
