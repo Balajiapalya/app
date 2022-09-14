@@ -323,6 +323,10 @@
     vertical-align: inherit;
     margin: 0px 0px 0px 2px;
 }
+.noData{
+    text-align: center;
+    padding: 60px;
+}
 .notVisble{
     display: none;
 }
