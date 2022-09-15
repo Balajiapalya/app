@@ -42,14 +42,25 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
         , undefined, 2)}`)
         useEffect(()=>{
            if(monaco){
+           
             monaco.editor.defineTheme('my-theme', {
-                base: 'vs-dark',
+                base: 'vs',
                 inherit: true,
-                rules: [],
+                rules:[{ background: '#ffefef' }],
+                // rules: [{ token: 'comment.js', foreground: '008800' } ],
                 colors: {
-                  'editor.background': '#120724',
+                  'editor.background': '#f7f7f7',
+                  'editor.lineHighlightBackground': '#00000000',
+                  'editor.lineHighlightBorder': '#00000000',
+                //   'editor.foreground': '#000000',
+                  'editorIndentGuide.background': '#ecebec',
+                  'editorIndentGuide.activeBackground': '#e0e0e0',
+                //   'scrollbarSlider.background': '#b1c4f8'       
                 },
+              
+                
           });
+          
           monaco.editor.setTheme('my-theme')
            }
         },[monaco])
@@ -133,44 +144,23 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
                             {/* {toggleposition == 2 ? */}
                             <Editor
                                 value={codeData}
-                                defaultLanguage="node"
+                                defaultLanguage="json"
                                 id="prettyJSONFormat"
                                 // className={`${styles.code_input} form_control`}
                                 onChange={(e) => handleChange(e)}
-                            />
-                            {/* <textarea
-                                defaultValue={`${JSON.stringify(
-                                    {
-                                        "title": "Video title",
-                                        "description": "Video description",
-                                        "content": [
-                                            {
-                                                "url": "http://techslides.com/demos/sample-videos/small.mp4",
-                                                "start_offset": 0
-                                            }
-                                        ],
-                                        "tags": [
-                                            "tag1",
-                                            "tag2"
-                                        ],
-                                        "metadata": [
-                                            {
-                                                "key": "abc",
-                                                "value": "pqr"
-                                            }
-                                        ],
-                                        "playback_policy": ["public"],
-                                        "mp4_support": false,
-                                        "save_original_copy": false
+                                options={{
+                                    minimap: {
+                                      enabled: false,
+                                    },
+                                    fontSize: 12,
+                                    fontFamily:'Inter-Regular',
+                                    scrollbar:{
+                                        verticalScrollbarSize: 12,
                                     }
-                                    , undefined, 2)}`}
-                                id="prettyJSONFormat"
-                                className={`${styles.code_input} form_control`}
-                                type='text'
-                                name='code'
-                                {...register("code", { required: true })}
-                            /> */}
-                            {/* : null} */}
+                                    // "bracketPairColorization.enabled": true
+                              }}
+                              
+                            />
                             <ToastContainer
                                 position="top-center"
                                 autoClose={3000}
@@ -192,4 +182,4 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
         </div>
 
     )
-}
+                      }

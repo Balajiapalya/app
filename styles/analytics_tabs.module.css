@@ -887,7 +887,7 @@
 
 /* dropdown */
 .noResult{
-    padding: 9px 0px 9px 12px;
+    padding: 9px 12px 9px 12px;
     font-family: Inter-Regular;
     font-size: 13px;
     font-weight: normal;
@@ -895,7 +895,7 @@
     font-style: normal;
     line-height: 1.25;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #196068;
 }
 
