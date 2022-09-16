@@ -8,13 +8,12 @@ import { useState,useEffect } from 'react';
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MonacoEditor from '../../components/videodeliverytabs/create_videoclips.js/MonacoEditor'
 
-import Editor, { useMonaco } from "@monaco-editor/react";
 
 export default function Videodelivery_addnewassets({ table, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
-    const monaco = useMonaco();
     const [codeData, setCodeData] = useState(`${JSON.stringify(
         {
             "title": "Video title",
@@ -40,30 +39,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
             "save_original_copy": false
         }
         , undefined, 2)}`)
-        useEffect(()=>{
-           if(monaco){
-           
-            monaco.editor.defineTheme('my-theme', {
-                base: 'vs',
-                inherit: true,
-                rules:[{ background: '#ffefef' }],
-                // rules: [{ token: 'comment.js', foreground: '008800' } ],
-                colors: {
-                  'editor.background': '#f7f7f7',
-                  'editor.lineHighlightBackground': '#00000000',
-                  'editor.lineHighlightBorder': '#00000000',
-                //   'editor.foreground': '#000000',
-                  'editorIndentGuide.background': '#ecebec',
-                  'editorIndentGuide.activeBackground': '#e0e0e0',
-                //   'scrollbarSlider.background': '#b1c4f8'       
-                },
-              
-                
-          });
-          
-          monaco.editor.setTheme('my-theme')
-           }
-        },[monaco])
+        
     const togglebtn = (index) => {
         settoggleposition(index);
     }
@@ -94,9 +70,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
         }
 
     }
-    const handleChange = (e) => {
-        setCodeData(e)
-    }
+    
   
     const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
@@ -142,25 +116,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className={styles.code}>
                             {/* {toggleposition == 2 ? */}
-                            <Editor
-                                value={codeData}
-                                defaultLanguage="json"
-                                id="prettyJSONFormat"
-                                // className={`${styles.code_input} form_control`}
-                                onChange={(e) => handleChange(e)}
-                                options={{
-                                    minimap: {
-                                      enabled: false,
-                                    },
-                                    fontSize: 12,
-                                    fontFamily:'Inter-Regular',
-                                    scrollbar:{
-                                        verticalScrollbarSize: 12,
-                                    }
-                                    // "bracketPairColorization.enabled": true
-                              }}
-                              
-                            />
+                            <MonacoEditor codeData={codeData} setCodeData={setCodeData}/>
                             <ToastContainer
                                 position="top-center"
                                 autoClose={3000}
