@@ -7,7 +7,8 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
-import Editor from "@monaco-editor/react";
+import MonacoEditor from './MonacoEditor'
+
 function Using_api() {
     const router = useRouter();
     const [codeData, setCodeData] = useState(`${JSON.stringify(
@@ -114,77 +115,7 @@ function Using_api() {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.code}>
-                        {/* <textarea
-                            defaultValue={`${JSON.stringify(
-                                
-                                    {
-                                        "title": "Video title",
-                                        "description": "Video description",
-                                        "video": [
-                                            {
-                                                "url": `vg://${router.query.videoId}`,
-                                                "start_offset": 0,
-                                                "end_offset": 0
-                                            }
-                                        ],
-                                        "watermark": [
-                                            {
-                                                "url": "Image url",
-                                                "x_pos": "10px",
-                                                "y_pos": "10px",
-                                                "x_margin": "10px/10%",
-                                                "y_margin": "10px/10%",
-                                                "x_align": "left/center/right",
-                                                "y_align": "top/middle/bottom",
-                                                "width": "10%/100px",
-                                                "height": "10%/100px",
-                                                "opacity": "90%"
-                                            }
-                                        ],
-                                        "subtitle": [
-                                            {
-                                                "url": "",
-                                                "name": "English US",
-                                                "language_code": "en_US",
-                                                "support_closed_captions": false
-                                            }
-                                        ],
-                                        "tags": [
-                                            "tag1",
-                                            "tag2"
-                                        ],
-                                        "metadata": [
-                                            {
-                                                "key": "abc",
-                                                "value": "pqr"
-                                            },
-                                            {
-                                                "key": "...",
-                                                "value": "...."
-                                            }
-                                        ],
-                                        "playback_policy": ["public", "signed"],
-                                        "mp4_support": true,
-                                        "save_original_copy": true,
-                                        "test_video": true
-                                    }
-                                
-                                , undefined, 2)}`}
-                            
-                            id="prettyJSONFormat"
-                            className={`${styles.code_input} form_control`}
-                            type='text'
-                            name='code'
-                            {...register("code", { required: true })}
-                        /> */}
-                        <Editor
-                            value={codeData}
-                            defaultLanguage="node"
-                            // theme="vs-dark"
-                            id="prettyJSONFormat"
-                            // className={`${styles.code_input} form_control`}
-                            onChange={(e) => handleChange(e)}
-                        />
+                        <MonacoEditor codeData={codeData} setCodeData={setCodeData}/>
                     </div>
                     <button className={styles.btn} type="submit">Run Request</button>
                 </form>

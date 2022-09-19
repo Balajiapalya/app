@@ -51,7 +51,7 @@ export default function Signin() {
             btn.disabled = true;
             btn.style.backgroundColor = '#2893eb';
             btn.style.cursor = 'not-allowed'
-            console.log(remaining)
+           
             timer = setTimeout(() => {
               setError('password',{message:''})
               btn.disabled = false
@@ -223,7 +223,7 @@ export default function Signin() {
                   message:'Entered value cannot start/end or have only white space'
               }})}
               />
-              {console.log(error)}
+             
               {error && !errors.password && !errors.login && <span className='error'>{error}</span>}
             </div>
             <p className={'validations'}>{errors.password?.message}</p>

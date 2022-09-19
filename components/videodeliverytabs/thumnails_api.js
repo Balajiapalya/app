@@ -5,10 +5,19 @@ import { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MonacoEditor from './create_videoclips.js/MonacoEditor'
 export default function Thumbnails_api() {
     const [thumbnailurl, set_thumbnailurl] = useState();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
+    const [codeData, setCodeData] = useState(`${JSON.stringify(
+        {
+            "videoPositionInSec": 3,
+            "width": 100,
+            "height": 200
+        }
+        , undefined, 2)}`)
+
     const togglebtn = (index) => {
         settoggleposition(index);
     }
@@ -22,7 +31,7 @@ export default function Thumbnails_api() {
     const onSubmit = thumbnail => {
         // console.log(JSON.parse(thumbnail.code))
         try {
-            Api.Create_thumbnail(JSON.parse(thumbnail.code))
+            Api.Create_thumbnail(JSON.parse(codeData))
                 .then(res => {
                     if (res.data.code = 200) {
                         set_thumbnailurl(res.data.data.url)
@@ -65,7 +74,7 @@ export default function Thumbnails_api() {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className={styles.codeApi}>
-                                {toggleposition == 2 ?
+                                {/* {toggleposition == 2 ?
                                     <textarea
                                         defaultValue={`${JSON.stringify(
                                             {
@@ -79,7 +88,9 @@ export default function Thumbnails_api() {
                                         type='text'
                                         name='code'
                                         {...register("code", { required: true })}
-                                    /> : null}
+                                    /> : null} */}
+                                    {toggleposition==2 ?
+                                     <MonacoEditor codeData={codeData} setCodeData={setCodeData}/>:null}
                             </div>
                             <button type="submit" className={styles.btn}>Run Request</button>
                             <span className={styles.image_form_border} />
