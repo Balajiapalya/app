@@ -405,7 +405,7 @@ export default function Overview({ setToggleState }) {
                                 <svg width={315} height={322} viewBox="142 190 700 316">
                                     <g className="countries">
                                         {
-                                            geographies.map((data, i) => (<>
+                                            geographies.map((data, i) => (
                                                 <path
                                                     key={`path-${i}`}
                                                     d={path(data)}
@@ -415,10 +415,10 @@ export default function Overview({ setToggleState }) {
                                                     strokeWidth={0.5}
                                                     onClick={() => handleCountryClick(i)}
                                                 />
-                                            </>
+                                            
                                             ))
                                         }
-                                        {array.map(i => <path fill="#89abff" d={path(i)} />)}
+                                        {array.map((i,ind) => <path key={ind} fill="#89abff" d={path(i)} />)}
                                     </g>
                                 </svg>
                             </div>
