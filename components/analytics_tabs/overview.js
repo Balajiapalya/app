@@ -5,6 +5,8 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, PointElement, LineElemen
 import { Doughnut } from 'react-chartjs-2';
 import { Line } from "react-chartjs-2";
 import { EnvValue } from '../../pages/analytics/index';
+import { geoEqualEarth, geoPath } from "d3-geo"
+import { feature,mesh } from "topojson-client"
 
 import {
     ZoomableGroup,
@@ -20,7 +22,7 @@ const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-map
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(PointElement, LineElement, Filler);
 
-export default function Overview({setToggleState}) {
+export default function Overview({ setToggleState }) {
     const valueEnv = useContext(EnvValue)
     const [usagestatistics, set_usagestatistics] = useState([]);
     const [viewsStatistics, set_viewsStatistics] = useState([]);
@@ -30,12 +32,24 @@ export default function Overview({setToggleState}) {
     const [realtime, set_realtime] = useState([]);
     const [viewers, totalviewers] = useState([]);
     const [devicelength, set_devicelength] = useState([])
+    //world map
+    let arr = []
+    const [array, setArray] = useState([])
+    const [dataArr, setDataArr] = useState()
+    const [geographies, setGeographies] = useState([])
 
+    const projection = geoEqualEarth()
+    const path = geoPath(projection)
 
     useEffect(() => {
         Usage_statistics_data();
         Views_statistics_data();
         Realtime_views();
+       return()=>{
+        setDataArr()
+        setArray([])
+        setGeographies([])
+       }
     }, [valueEnv]);
 
     const Usage_statistics_data = () => {
@@ -57,6 +71,7 @@ export default function Overview({setToggleState}) {
                     setdeviceviews(res.data.data.deviceViews)
                     set_devicelength((res.data.data.deviceViews))
                     setcountryviews(res.data.data.countryViews)
+                    worldMap(res.data.data.countryViews)
                 })
         }
     };
@@ -70,6 +85,37 @@ export default function Overview({setToggleState}) {
                 .catch(error => console.log(error))
         }
     }
+    // worldMap
+    const worldMap = (countryviewsData) => {
+        fetch("https://unpkg.com/world-atlas@2.0.2/countries-50m.json")
+            .then(response => {
+                if (response.status !== 200) {
+                    console.log(`There was a problem: ${response.status}`)
+                    return
+                }
+                response.json().then(worlddata => {
+                    let geo = feature(worlddata, worlddata.objects.countries).features
+                    for (let i = 0; i < countryviewsData.length; i++) {
+                        for (let j = 0; j < geo.length; j++) {
+                            if(regionNames.of(countryviewsData[i].key).toLowerCase()==geo[j].properties.name.toLowerCase()){
+                                arr.push(geo[j])
+                                setArray(arr)
+                            }
+                        }
+                    }
+                    setDataArr(mesh(worlddata, worlddata.objects.countries, function (a, b) { return a != b }))
+                    setGeographies(feature(worlddata, worlddata.objects.countries).features)
+                })
+            })
+    }
+    const handleCountryClick = countryIndex => {
+        console.log("Clicked on country: ", geographies[countryIndex])
+    }
+    const handleMarkerClick = i => {
+        console.log("Marker: ", cities[i])
+    }
+    // wordlMap end
+
     const options = {
         responsive: false,
         plugins: {
@@ -100,7 +146,7 @@ export default function Overview({setToggleState}) {
         }
     };
     const realtime_options = {
-        
+
         maintainAspectRatio: false,
         responsive: true,
         plugins: {
@@ -128,21 +174,21 @@ export default function Overview({setToggleState}) {
             },
             y: {
                 display: true,
-                grid:{
-                    display:false
+                grid: {
+                    display: false
                 },
                 max: 6,
                 min: 0,
                 ticks: {
                     stepSize: 1,
-                    font:{
-                        size:12,
-                       
+                    font: {
+                        size: 12,
+
                     },
-                    color:'#5d6381'   
+                    color: '#5d6381'
                 }
             }
-            
+
         }
     };
     const Lineoptions = {
@@ -183,7 +229,7 @@ export default function Overview({setToggleState}) {
                 backgroundColor: "rgba(0,128,0,0.2)",
                 borderColor: "rgba(0,128,0,0.5)",
                 borderWidth: 1,
-                pointRadius:0,   
+                pointRadius: 0,
             },
         ]
     };
@@ -196,7 +242,7 @@ export default function Overview({setToggleState}) {
                 backgroundColor: "rgb(255,174,66,0.2)",
                 borderColor: "rgb(255,174,66,1)",
                 borderWidth: 1,
-                pointRadius:0,
+                pointRadius: 0,
             },
         ]
     };
@@ -207,9 +253,9 @@ export default function Overview({setToggleState}) {
                 data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStreamingUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
-                borderColor: "rgba(75,192,192,1)",  
+                borderColor: "rgba(75,192,192,1)",
                 borderWidth: 1,
-                pointRadius:0,
+                pointRadius: 0,
             },
         ]
     }
@@ -225,7 +271,7 @@ export default function Overview({setToggleState}) {
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)",
                 borderWidth: 1,
-                pointRadius:0,
+                pointRadius: 0,
             },
         ]
     }
@@ -260,6 +306,13 @@ export default function Overview({setToggleState}) {
         ],
     };
     let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+
+
+
+
+
+
+
     return (
         <div className={styles.container}>
             <div className={styles.video_type_container}>
@@ -270,7 +323,7 @@ export default function Overview({setToggleState}) {
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordEncodingUsage').map((item, key) =>
                             <div key={key}>
                                 {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
+                                <h5>{parseInt(item.amountInSecs / 60)}mins</h5>
                             </div>
                         )]}
 
@@ -292,13 +345,13 @@ export default function Overview({setToggleState}) {
                             <div key={key}>
                                 {/* {console.log(item.amountInSecs)} */}
                                 {/* <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
+                                <h5>{parseInt(item.amountInSecs / 60)}mins</h5>
                             </div>
                         )]}
 
                     </div>
                     <div className={styles.line_chart}>
-                        <Line options={Lineoptions} data={stored_linedata}/>
+                        <Line options={Lineoptions} data={stored_linedata} />
                     </div>
                     <div className={styles.timeperiod}>
                         <span >Total minutes of videos stored in last 7 days.</span>
@@ -310,9 +363,9 @@ export default function Overview({setToggleState}) {
                     <div className={styles.video_type_content}>
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordStreamingUsage').map((item, key) =>
                             <div key={key}>
-                                
+
                                 {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs/60)}mins</h5>
+                                <h5>{parseInt(item.amountInSecs / 60)}mins</h5>
                             </div>
                         )]}
 
@@ -336,10 +389,10 @@ export default function Overview({setToggleState}) {
                     <h5 className={styles.views_period}>Last 30 minutes views </h5>
                     <div className={styles.realtime_chart}>
                         <Line options={realtime_options} data={realtime_views} style={{
-                                    height: '34vh',
-                                    width: '100%',
-                                   
-                                }}/>
+                            height: '34vh',
+                            width: '100%',
+
+                        }} />
                     </div>
                 </div>
                 <div className={styles.countries_devices_container}>
@@ -349,10 +402,31 @@ export default function Overview({setToggleState}) {
                             <div className={styles.countries_heading}>
                                 <h4 className={styles.heading}>Countries</h4>
                                 <span>Viewership in the last 7 days.</span>
+                                <svg width={315} height={322} viewBox="142 190 700 316">
+                                    <g className="countries">
+                                        {
+                                            geographies.map((data, i) => (
+                                                <path
+                                                    key={`path-${i}`}
+                                                    d={path(data)}
+                                                    className="country"
+                                                    fill='#e6e9f4'
+                                                    stroke="#ffffff"
+                                                    strokeWidth={0.5}
+                                                    onClick={() => handleCountryClick(i)}
+                                                />
+                                            
+                                            ))
+                                        }
+                                        {array.map((i,ind) => <path key={ind} fill="#89abff" d={path(i)} />)}
+                                    </g>
+                                </svg>
                             </div>
                             <div>
-                                <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{height: '38vh',
-                                                        width: '100%',}}>
+                                {/* <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{
+                                    height: '38vh',
+                                    width: '100%',
+                                }}>
                                     <ZoomableGroup>
                                         <Geographies geography={geoUrl}>
                                             {({ geographies }) =>
@@ -376,7 +450,7 @@ export default function Overview({setToggleState}) {
                                             }
                                         </Geographies>
                                     </ZoomableGroup>
-                                </ComposableMap>
+                                </ComposableMap> */}
                             </div>
                         </div>
                         <div className={styles.countries_table} >
@@ -402,7 +476,7 @@ export default function Overview({setToggleState}) {
                                 </tbody>
                             </table>
                             {/* <span className={styles.country_table_top_border}></span> */}
-                            <div className={styles.more_insights} onClick={()=>setToggleState(2)}>
+                            <div className={styles.more_insights} onClick={() => setToggleState(2)}>
                                 <a>More Insights &gt;</a>
                             </div>
                         </div>
@@ -423,7 +497,7 @@ export default function Overview({setToggleState}) {
 
                         </div>
                         <span className={styles.top_border}></span>
-                        <div className={styles.doughnut_insight} onClick={()=>setToggleState(2)}>
+                        <div className={styles.doughnut_insight} onClick={() => setToggleState(2)}>
                             <a>More Insights &gt;</a>
                         </div>
                     </div>
