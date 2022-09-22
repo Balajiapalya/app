@@ -6,7 +6,8 @@ import { Doughnut } from 'react-chartjs-2';
 import { Line } from "react-chartjs-2";
 import { EnvValue } from '../../pages/analytics/index';
 import { geoEqualEarth, geoPath } from "d3-geo"
-import { feature,mesh } from "topojson-client"
+import { feature, mesh } from "topojson-client"
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import {
     ZoomableGroup,
@@ -38,18 +39,19 @@ export default function Overview({ setToggleState }) {
     const [dataArr, setDataArr] = useState()
     const [geographies, setGeographies] = useState([])
 
-    const projection = geoEqualEarth()
+    const projection = geoEqualEarth().scale(160)
+    .translate([ 800 / 2, 300 / 2 ])
     const path = geoPath(projection)
 
     useEffect(() => {
         Usage_statistics_data();
         Views_statistics_data();
         Realtime_views();
-       return()=>{
-        setDataArr()
-        setArray([])
-        setGeographies([])
-       }
+        return () => {
+            setDataArr()
+            setArray([])
+            setGeographies([])
+        }
     }, [valueEnv]);
 
     const Usage_statistics_data = () => {
@@ -97,7 +99,7 @@ export default function Overview({ setToggleState }) {
                     let geo = feature(worlddata, worlddata.objects.countries).features
                     for (let i = 0; i < countryviewsData.length; i++) {
                         for (let j = 0; j < geo.length; j++) {
-                            if(regionNames.of(countryviewsData[i].key).toLowerCase()==geo[j].properties.name.toLowerCase()){
+                            if (regionNames.of(countryviewsData[i].key).toLowerCase() == geo[j].properties.name.toLowerCase()) {
                                 arr.push(geo[j])
                                 setArray(arr)
                             }
@@ -402,25 +404,41 @@ export default function Overview({ setToggleState }) {
                             <div className={styles.countries_heading}>
                                 <h4 className={styles.heading}>Countries</h4>
                                 <span>Viewership in the last 7 days.</span>
-                                <svg width={315} height={322} viewBox="142 190 700 316">
-                                    <g className="countries">
-                                        {
-                                            geographies.map((data, i) => (
-                                                <path
-                                                    key={`path-${i}`}
-                                                    d={path(data)}
-                                                    className="country"
-                                                    fill='#e6e9f4'
-                                                    stroke="#ffffff"
-                                                    strokeWidth={0.5}
-                                                    onClick={() => handleCountryClick(i)}
-                                                />
-                                            
-                                            ))
-                                        }
-                                        {array.map((i,ind) => <path key={ind} fill="#89abff" d={path(i)} />)}
-                                    </g>
-                                </svg>
+                                <TransformWrapper>
+                                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                                        <>
+                                            <TransformComponent>
+                                                <svg width={800 } height={300 } viewBox="70 0 800 300">
+                                                    <g className="countries">
+                                                        {
+                                                            geographies.map((data, i) => (
+                                                                <path
+                                                                    key={`path-${i}`}
+                                                                    d={path(data)}
+                                                                    className="country"
+                                                                    fill='#e6e9f4'
+                                                                    stroke="#ffffff"
+                                                                    strokeWidth={0.5}
+                                                                    onClick={() => handleCountryClick(i)}
+                                                                />
+
+                                                            ))
+                                                        }
+                                                        {array.map((i, ind) => <path key={ind} fill="#89abff" d={path(i)} />)}
+                                                    </g>
+                                                </svg>
+                                            </TransformComponent>
+                                            <div className={styles.toolsZoom}>
+                                                <button onClick={() => zoomIn()}>+</button>
+                                                <button onClick={() => zoomOut()}>-</button>
+                                                {/* <button onClick={() => resetTransform()}>x</button> */}
+                                            </div>
+                                        </>
+                                    )}
+                                </TransformWrapper>
+
+
+
                             </div>
                             <div>
                                 {/* <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{
@@ -476,8 +494,8 @@ export default function Overview({ setToggleState }) {
                                 </tbody>
                             </table>
                             {/* <span className={styles.country_table_top_border}></span> */}
-                            <div className={styles.more_insights} onClick={() => setToggleState(2)}>
-                                <a>More Insights &gt;</a>
+                            <div className={styles.more_insights}>
+                                <a onClick={() => setToggleState(2)}>More Insights &gt;</a>
                             </div>
                         </div>
 

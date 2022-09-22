@@ -115,7 +115,7 @@ const handleSelected=(prod)=>{
                 className={`${styles.model_input} form_control`}
                 name="email"
                 {...register("email", {required:'This field is required',pattern:{
-                  value:/^[A-Z0-9_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  value:/^[A-Z0-9_%+-.^*!$`~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   message:'invalid email address'
                 }})}
               />

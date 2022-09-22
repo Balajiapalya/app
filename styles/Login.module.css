@@ -44,6 +44,7 @@
 }
 
 .signup_input {
+    font-size: 18px;
     border-radius: 2px !important;
     border-color: rgba(99, 115, 129, 0.3) !important;
     padding: 0.8rem;

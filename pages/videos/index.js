@@ -360,7 +360,7 @@ export default function Videos() {
                                     </h2>
                                 </div>
                                 <div className={styles.videos_deliverydata}>
-                                    <p>Upload,Transcode,Store and Deliver your asset using our service.<br />
+                                    <p>Upload, Transcode, Store and Deliver your asset using our service.<br />
                                         You can Upload a video using API or directly from here to share it with your users</p>
                                     <a >
                                         <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add New Video</button>
