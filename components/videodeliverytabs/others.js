@@ -14,9 +14,67 @@ export default function Others() {
     const [dataVideo, setDataVideo] = useState([])
     const [inputTitle, setInputTitle] = useState('')
     const [tagErr, setTagErr] = useState(false)
+    const [rerender,setRerender]=useState(false)
     const { register, handleSubmit, watch, setError, getValues, setValue, formState: { errors } } = useForm();
 
     const onSubmit = (video_data) => {
+        // if (meta.length <= 0) {
+        //     if (keys.key !== '' && keys.value === '') {
+        //         setError('value', { message: 'This field is required' })
+        //     }
+        //     if (keys.value !== '' && keys.key === '') {
+        //         setError('key', { message: 'This field is required' })
+        //     }
+        //     if (keys.key !== '' && keys.value !== '') {
+        //         setError('key', { message: 'Please add first then save' })
+        //     }
+        //     if (keys.key === '' && keys.value === '') {
+        //         setError('key', { message: 'This field is required' })
+        //         setError('value', { message: 'This field is required' })
+        //     }
+        // } else {
+        //     setError('key', { message: '' })
+        //     setError('value', { message: '' })
+        // }
+        // if (tags.length <= 0) {
+        //     setTagErr(true)
+        // } else {
+        //     setTagErr(false)
+        // }
+        let doc = document.querySelector('.child');
+        
+        // video_data['tags'] = tags;
+        // video_data['metadata'] = meta;
+        if (inputTitle && inputTitle !== '') {
+            video_data['title'] = inputTitle
+        } else {
+            video_data['title'] = localStorage.getItem('asset_title')
+        }
+      let arr=Object.entries(video_data)
+    let slice=arr.slice(0,2)
+    let slicedObj=Object.fromEntries(slice)
+    if(dataVideo.metadata.length>0 && dataVideo.tags.length>0){
+        slicedObj['metadata']=dataVideo.metadata
+        slicedObj['tags']=dataVideo.tags
+    }
+        // if (tags.length > 0 && meta.length > 0) {
+            Api.Meta_tag(slicedObj).then(res => {
+                setRerender(!rerender)
+                if (inputTitle !== '') {
+                    doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent = inputTitle;
+                    doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent = inputTitle;
+                }
+                // setInputTitle('')
+            })
+                .catch(error => {
+                    console.log(error)
+                })
+        // }
+
+
+    }
+  
+    const handleTags_KeyVal=()=>{
         if (meta.length <= 0) {
             if (keys.key !== '' && keys.value === '') {
                 setError('value', { message: 'This field is required' })
@@ -40,29 +98,20 @@ export default function Others() {
         } else {
             setTagErr(false)
         }
-        let doc = document.querySelector('.child');
-        
-        video_data['tags'] = tags;
-        video_data['metadata'] = meta;
-        if (inputTitle && inputTitle !== '') {
-            video_data['title'] = inputTitle
-        } else {
-            video_data['title'] = localStorage.getItem('asset_title')
+        let obj=new Object()
+        obj.tags=tags;
+        obj.metadata=meta;
+        console.log(dataVideo,'dataaa')
+        if(dataVideo.title.length>0 && dataVideo.description.length>0){
+            obj['title']=dataVideo.title;
+            obj['description']=dataVideo.description;
         }
         if (tags.length > 0 && meta.length > 0) {
-            Api.Meta_tag(video_data).then(res => {
-                if (inputTitle !== '') {
-                    doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent = inputTitle;
-                    doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('mainTitle')[0].textContent = inputTitle;
-                }
-                setInputTitle('')
+
+            Api.Meta_tag(obj).then(res=>{
+                setRerender(!rerender)
             })
-                .catch(error => {
-                    console.log(error)
-                })
         }
-
-
     }
     // set in object
     const handleData = (e) => {
@@ -118,7 +167,7 @@ export default function Others() {
             setTags([])
             setMeta([])
         }
-    }, [])
+    }, [rerender])
 
 
 
@@ -146,9 +195,10 @@ export default function Others() {
     }
     return (
         <Fragment>
-            <form onSubmit={handleSubmit(onSubmit)}>
+           
                 <div className={styles.others}>
                     <div className={styles.others_content}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={styles.title_description}>
 
                             <h2>Title &amp; Description</h2>
@@ -176,6 +226,7 @@ export default function Others() {
                                 </div>
                             </div>
                         </div>
+                        </form>
                         <div className={styles.tags_metadata}>
                             <h2>Tags &amp; Metadata</h2>
                             <div className={styles.tags_metadata_box}>
@@ -264,7 +315,7 @@ export default function Others() {
                                         {<p className={`${styles.value} validations`}>{errors.value?.message}</p>}
                                 </div>
                                 <div className={styles.submit}>
-                                    <button className={`${styles.others_submit_btn} btn`} type="submit">Save</button>
+                                    <button className={`${styles.others_submit_btn} btn`} onClick={()=>handleTags_KeyVal()}>Save</button>
                                 </div>
                             </div>
 
@@ -315,7 +366,7 @@ export default function Others() {
                         </div>
                     </div> */}
                 </div>
-            </form>
+           
         </Fragment >
     )
 }
