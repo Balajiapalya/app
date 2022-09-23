@@ -23,7 +23,7 @@ export default function Signin() {
   let startTime
   let timing=false
   const timerFun=()=>{
-    deadline=1000*20
+    deadline=1000*300
             startTime=Date.now()
             // setStartTime(Date.now())
             if(timing===false){
@@ -51,7 +51,9 @@ export default function Signin() {
             btn.disabled = true;
             btn.style.backgroundColor = '#2893eb';
             btn.style.cursor = 'not-allowed'
+           
             timer = setTimeout(() => {
+              setError('password',{message:''})
               btn.disabled = false
               btn.style.backgroundColor = '#2863eb'
               btn.style.cursor = 'pointer'
@@ -59,6 +61,7 @@ export default function Signin() {
               clearInterval(int)
               localStorage.removeItem('remainingTime')
               localStorage.removeItem('startTime')
+              localStorage.removeItem('message')
             }, [remaining])
   }
   const onSubmit = login_details => {
@@ -94,17 +97,19 @@ export default function Signin() {
             localStorage.setItem('orgName', res.data.data.organizations[0].name);
             localStorage.setItem('ownername', res.data.data.firstName);
             localStorage.setItem('ownerLastname', res.data.data.lastName)
+            localStorage.setItem('email',login_details.login)
             localStorage.setItem('userID', res.data.data.uuid);
             window.location.pathname = '/';
           }
           }
           
         })
-        .catch(error => {
-          console.log(error.response)
+        .catch(err => {
+          console.log(err.response)
           setCount(count + 1)
-          if (count == 3) {
-            
+          if (count == 5) {
+            setError('password',{message:'Too many invalid logins. To retry please wait for 5 minutes'})
+            localStorage.setItem('message','Too many invalid logins. To retry please wait for 5 minutes')
             const btn = document.querySelector('.btn')
             btn.disabled = true;
             btn.style.backgroundColor = '#2893eb';
@@ -112,12 +117,12 @@ export default function Signin() {
             timerFun()
             
           }
-          if (error.response.data.code == 400) {
+          if (err.response.data.code == 400) {
             // document.cookie = 'email=;expires=' + new Date().toUTCString()
             // document.cookie = 'pswd=;expires=' + new Date().toUTCString()
              localStorage.removeItem('email')
              localStorage.removeItem('pswd')
-            seterror(error.response.data.message)
+            seterror(err.response.data.message)
             setTimeout(() => {
               seterror('')
             }, 1000 * 3);
@@ -129,6 +134,9 @@ export default function Signin() {
   }
 
   useEffect(() => {
+    if(localStorage.getItem('message')){
+    setError('password',{message:localStorage.getItem('message')})
+    }
     const mail = document.getElementById('email')
     mail.focus()
     //if more than one cookie is present in browser to redirect to '/' if already loggedin
@@ -216,6 +224,7 @@ export default function Signin() {
                   message:'Entered value cannot start/end or have only white space'
               }})}
               />
+             
               {error && !errors.password && !errors.login && <span className='error'>{error}</span>}
             </div>
             <p className={'validations'}>{errors.password?.message}</p>

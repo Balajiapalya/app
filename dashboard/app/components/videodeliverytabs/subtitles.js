@@ -5,12 +5,20 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import Api from '../api/api';
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-
+import 'react-toastify/dist/ReactToastify.css';
+import MonacoEditor from './create_videoclips.js/MonacoEditor'
 export default function Subtitles() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const [subtitle, setsubtitle] = useState([]);
+    const [codeData, setCodeData] = useState(`${JSON.stringify(
+        {
+            "url": "www.google.com",
+            "name": "English US",
+            "language_code": "en_US",
+            "support_closed_captions": false
+        }
+        , undefined, 2)}`)
     const togglebtn = (index) => {
         settoggleposition(index);
     }
@@ -58,7 +66,7 @@ export default function Subtitles() {
     };
     const onSubmit = subtitle => {
         try{
-        Api.Create_subtitle(JSON.parse(subtitle.code))
+        Api.Create_subtitle(JSON.parse(codeData))
             .then(res => {
                 if (res.data.status="Success") {
                     Api.Get_subtitle_list()
@@ -153,7 +161,7 @@ export default function Subtitles() {
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className={styles.code}>
-                                    {toggleposition == 2 ?
+                                    {/* {toggleposition == 2 ?
                                         <textarea
                                             defaultValue={`${JSON.stringify(
                                                 {
@@ -168,7 +176,9 @@ export default function Subtitles() {
                                             type='text'
                                             name='code'
                                             {...register("code", { required: true })}
-                                        /> : null}
+                                        /> : null} */}
+                                        {toggleposition==2 ?
+                                        <MonacoEditor codeData={codeData} setCodeData={setCodeData}/>:null}
                                 </div>
                                 <button className={styles.btn}>Run Request</button>
                             </form>

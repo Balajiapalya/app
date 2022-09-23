@@ -8,13 +8,12 @@ import { useState,useEffect } from 'react';
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MonacoEditor from '../../components/videodeliverytabs/create_videoclips.js/MonacoEditor'
 
-import Editor, { useMonaco } from "@monaco-editor/react";
 
 export default function Videodelivery_addnewassets({ table, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
-    const monaco = useMonaco();
     const [codeData, setCodeData] = useState(`${JSON.stringify(
         {
             "title": "Video title",
@@ -40,19 +39,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
             "save_original_copy": false
         }
         , undefined, 2)}`)
-        useEffect(()=>{
-           if(monaco){
-            monaco.editor.defineTheme('my-theme', {
-                base: 'vs-dark',
-                inherit: true,
-                rules: [],
-                colors: {
-                  'editor.background': '#120724',
-                },
-          });
-          monaco.editor.setTheme('my-theme')
-           }
-        },[monaco])
+        
     const togglebtn = (index) => {
         settoggleposition(index);
     }
@@ -83,9 +70,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
         }
 
     }
-    const handleChange = (e) => {
-        setCodeData(e)
-    }
+    
   
     const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
@@ -131,46 +116,7 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className={styles.code}>
                             {/* {toggleposition == 2 ? */}
-                            <Editor
-                                value={codeData}
-                                defaultLanguage="node"
-                                id="prettyJSONFormat"
-                                // className={`${styles.code_input} form_control`}
-                                onChange={(e) => handleChange(e)}
-                            />
-                            {/* <textarea
-                                defaultValue={`${JSON.stringify(
-                                    {
-                                        "title": "Video title",
-                                        "description": "Video description",
-                                        "content": [
-                                            {
-                                                "url": "http://techslides.com/demos/sample-videos/small.mp4",
-                                                "start_offset": 0
-                                            }
-                                        ],
-                                        "tags": [
-                                            "tag1",
-                                            "tag2"
-                                        ],
-                                        "metadata": [
-                                            {
-                                                "key": "abc",
-                                                "value": "pqr"
-                                            }
-                                        ],
-                                        "playback_policy": ["public"],
-                                        "mp4_support": false,
-                                        "save_original_copy": false
-                                    }
-                                    , undefined, 2)}`}
-                                id="prettyJSONFormat"
-                                className={`${styles.code_input} form_control`}
-                                type='text'
-                                name='code'
-                                {...register("code", { required: true })}
-                            /> */}
-                            {/* : null} */}
+                            <MonacoEditor codeData={codeData} setCodeData={setCodeData}/>
                             <ToastContainer
                                 position="top-center"
                                 autoClose={3000}
@@ -192,4 +138,4 @@ export default function Videodelivery_addnewassets({ table, setReload, filename,
         </div>
 
     )
-}
+                      }

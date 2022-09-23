@@ -95,7 +95,8 @@ export default function Accounts() {
   let lastname;
   let Orgname;
   if (process.browser) {
-    email = localStorage.getItem("ownerEmail");
+    // email = localStorage.getItem("ownerEmail");
+    email=localStorage.getItem("email");
     firstname = localStorage.getItem("ownername");
     lastname = localStorage.getItem("ownerLastname");
     Orgname = localStorage.getItem("orgName");
@@ -104,7 +105,7 @@ export default function Accounts() {
   const ownerFirstname = firstname;
   const ownerLastname = lastname;
   const Org_name = Orgname;
-
+console.log(ownerEmail,'email')
   const handleNext = () => {
     // document.body.style.overflow = 'hidden'
     set_openneworg(true)
@@ -184,7 +185,7 @@ export default function Accounts() {
                     <input
                       type="text"
                       className={`${styles.model_input} form_control ${styles.bg_color}`}
-                      placeholder="sunil@gmail.com"
+                      // placeholder="sunil@gmail.com"
                       defaultValue={ownerEmail}
                       readOnly
                     />

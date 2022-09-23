@@ -255,7 +255,9 @@
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
     position: relative;
 }
-
+.countries_container svg{
+    width: 100%;
+}
 .countries_container {
     /* width: 66%;
     float: left; */
@@ -309,7 +311,7 @@
     font-family: Inter-Regular;
     font-size: 13px;
     line-height: 1.08;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .doughnut_more_insights {
@@ -364,6 +366,7 @@
 .more_insights a {
     position: relative;
     right: 20px;
+    cursor: pointer;
 }
 
 .doughnut_graph {
@@ -887,7 +890,7 @@
 
 /* dropdown */
 .noResult{
-    padding: 9px 0px 9px 12px;
+    padding: 9px 12px 9px 12px;
     font-family: Inter-Regular;
     font-size: 13px;
     font-weight: normal;
@@ -895,7 +898,7 @@
     font-style: normal;
     line-height: 1.25;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #196068;
 }
 
@@ -1039,6 +1042,23 @@
     text-align: left;
     color: #113b40;
     text-transform: capitalize;
+}
+/* zoom in and out of worldmap */
+.toolsZoom{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    bottom: 44px;
+}
+.toolsZoom button{
+    width: 17.6px;
+    height: 17.6px;
+    margin: 0 0 7.4px;
+    padding: 0px 0px 19px 0px;
+    border: solid 1px #e2e2ea;
+    background-color: #fff;
+    color: #92929d;
+    border-radius: 4px;
 }
 @media screen and (max-width:991px){
     .countries_table {

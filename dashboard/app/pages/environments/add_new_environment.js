@@ -15,7 +15,7 @@ export default function Add_new_environment({table, closeenv }) {
   const [validateType,setValidateType]=useState(false)
   
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit,reset, watch, formState: { errors } } = useForm();
     const onSubmit = new_env_data => {
         new_env_data.environmentTypeId=idSubmit
         const uuid = localStorage.getItem("uuid");
@@ -24,12 +24,16 @@ export default function Add_new_environment({table, closeenv }) {
             // setValidateType(true)
             new_env_data.environmentTypeId=1
         }
+        
         if(new_env_data.environmentTypeId!==undefined){
         Api.Post_env(new_env_data)
             .then(res => {
                 if (res.data.status = "Success") {
-                    closeenv(false)
-                    closePopUp()
+                    setSelected(env[0].name);
+                    reset();
+                    setIdSubmit()
+                    closeenv(false);
+                    closePopUp();
                 }
             })
             .catch(error => {
