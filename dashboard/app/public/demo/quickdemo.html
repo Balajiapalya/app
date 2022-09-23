@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+
+
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .container {
+            width: 97%;
+            float: left;
+            height: 100vh;
+            background-color: #f4f6f8;
+            padding: 20px 20px;
+        }
+
+        /*------------- container 1 --------------------*/
+        .container .container_1 {
+            width: 50%;
+            float: left;
+            height: 600px;
+        }
+
+        .container .container_1 .head {
+            width: 100%;
+            float: left;
+            background-color: #F0F0F0;
+        }
+
+        .container .container_1 .head p {
+            padding: 24px 10px 1px 20px;
+            margin: 0 0 20px 0;
+            text-align: left;
+            word-spacing: 0.7em;
+            font-size: 16px;
+            color: #54595F;
+            font-family: 'Roboto';
+            font-weight: 400;
+        }
+
+        .container .container_1 .body {
+            width: 100%;
+            float: left;
+        }
+
+        .container .container_1 .body .textarea {
+            width: 100%;
+            float: left;
+            background-color: #fff;
+        }
+
+        .container .container_1 .body .textarea textarea {
+            width: 97%;
+            border: none;
+            height: 200px;
+            resize: none;
+            outline: none;
+            font-family: 'Roboto';
+            font-weight: 400;
+            color: #54595F;
+            padding: 10px
+        }
+
+        .container .container_1 .body .btn {
+            width: 100%;
+            float: left;
+            padding: 20px 0px;
+        }
+
+        .container .container_1 .body .btn button {
+            background-color: #5bc0de;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 3px;
+            color: #54595F;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: 'Roboto';
+            font-weight: 400;
+        }
+
+        .container .container_1 .body .response_body {
+            width: 100%;
+            float: left;
+        }
+
+        .container .container_1 .body .response_body textarea {
+            color: #646464;
+            width: 100%;
+            border: none;
+            height: 200px;
+            resize: none;
+            outline: none;
+            font-size: 16px;
+            line-height: 30px;
+            font-weight: 400;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            font-family: 'Roboto';
+        }
+
+        /*---------------------- container - 2 -----------------------*/
+        .container .container_2 {
+            width: 48%;
+            float: right;
+            height: 500px;
+            /* margin-left: 20px; */
+        }
+
+        .container .container_2 .head {
+            width: 100%;
+            float: left;
+            background-color: #F0F0F0;
+        }
+
+        .container .container_2 .head p {
+            padding: 24px 10px 1px 20px;
+            margin: 0 0 20px 0;
+            text-align: left;
+            word-spacing: 0.7em;
+            font-size: 16px;
+            color: #54595F;
+            font-family: 'Roboto';
+            font-weight: 400;
+        }
+
+        .container .container_2 .player {
+            margin-top: 20px;
+            width: 100%;
+            float: left;
+        }
+
+
+        /*---------------------- media quries------------- */
+        @media screen and (max-width: 991px) and (min-width: 300px) {
+            .container .container_1 {
+                width: 100% !important;
+                float: left;
+
+            }
+
+            .container .container_2 {
+                width: 100% !important;
+                float: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- parent div -->
+    <div class="container">
+        <!-- child div 1 -->
+        <div class="container_1">
+            <!--  POST  HEAD DIV -->
+            <div class="head">
+                <p>POST https://api-test.videograph.ai/video/services/api/v1/contents</p>
+            </div>
+            <!-- Content div, this should contain 3 children of its own -->
+            <div class="body">
+                <div class="textarea">
+                    <textarea id="myTextarea">{"content": [{"url": "http://techslides.com/demos/sample-videos/small.mp4"}],"playback_policy": ["public"],"save_original_copy": true,"mp4_support": true}
+                    </textarea>
+                </div>
+                <div class="btn">
+                    <button onclick="printTheJSONInPrettyFormat()">Run Demo</button>
+                </div>
+                <div class="response_body">
+                    <textarea id="response">you can see the API response here.</textarea>
+                </div>
+            </div>
+        </div>
+        <!-- child div 2 -->
+        <div class="container_2">
+            <!-- Video url  -->
+            <div class="head">
+                <p id="link"></p>
+            </div>
+            <!-- video player -->
+            <div class="player">
+                <video id="video" width="100%" height="300px" controls></video>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script> -->
+    <script>
+        let src = undefined
+        var Id = ''
+        var obj = { "content": [{ "url": "http://techslides.com/demos/sample-videos/small.mp4" }], "playback_policy": ["public"], "save_original_copy": true, "mp4_support": true }
+        var str = JSON.stringify(obj, undefined, 4);
+        document.getElementById('myTextarea').value = str;
+        var linkObj = `https://dashboard-test.videograph.ai/videos/embed?videoId=${Id}`;
+        document.getElementById('link').innerText = linkObj
+        function printTheJSONInPrettyFormat() {
+            const headers = {
+                'Authorization': `Basic ZWY0YjhiMzMtYTMyMy00N2Q3LTk1NWQtMTAxZTU3Y2RjYTAxOjNjZzA0c20xcG10ZGNydHZoYg==`,
+                'Content-Type': `application/json`,
+            };
+
+            var postData = document.getElementById('myTextarea').value;
+
+
+            // api call for posting data
+            axios.post(`https://api-test.videograph.ai/video/services/api/v1/contents?time=${Date.now()}`, postData, { headers })
+                .then(response => {
+                    if (response && response.data && response.data.data && response.data.code == 200) {
+                        let ResponseData = JSON.stringify(response.data.data);
+                        document.getElementById('response').innerText = ResponseData;
+                        Id = response.data.data.contentId;
+                        linkObj = `https://dashboard-test.videograph.ai/videos/embed?videoId=${Id}`;
+                        document.getElementById('link').innerText = linkObj;
+                        yourFunction()
+
+                    }
+                    else {
+                        console.log(response.data)
+                    }
+
+                })
+                .catch(error => console.error(error))
+
+            // api call for playing video
+            function yourFunction() {
+                axios.get(`https://api-test.videograph.ai/video/services/api/v1/contents/` + Id + `/playback_url?time=${Date.now()}`, { headers })
+                    .then(url => {
+                        if (url && url.data && url.data.data && url.data.code == 200) {
+                            if (url.data.data !== undefined) {
+                                var video = document.getElementById('video');
+                                var videoSrc = url.data.data;
+                                if (Hls.isSupported()) {
+                                    var hls = new Hls();
+                                    hls.loadSource(videoSrc);
+                                    hls.attachMedia(video);
+                                }
+                            }
+                            else {
+                                console.log(url.data)
+                            }
+                        }
+                        else {
+                            console.log(url.data)
+                        }
+
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+            var interval = setTimeout(yourFunction, 10000);
+            setTimeout(function () {
+                clearInterval(interval);
+            }, 10 * 60 * 1000);
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
