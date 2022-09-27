@@ -4,6 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import Api from '../api/api';
 import { EnvValue } from '../../pages/analytics/index'
 import { useRouter } from 'next/router';
+import { geoEqualEarth, geoPath } from "d3-geo"
+import { feature, mesh } from "topojson-client"
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -18,14 +21,14 @@ import {
     Filler
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import {
-    ZoomableGroup,
-    ComposableMap,
-    Geographies,
-    Geography,
-    Marker,
-    circle
-} from "react-simple-maps";
+// import {
+//     ZoomableGroup,
+//     ComposableMap,
+//     Geographies,
+//     Geography,
+//     Marker,
+//     circle
+// } from "react-simple-maps";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -55,6 +58,14 @@ export default function Metrics({ id }) {
     const [fromdate, set_fromDate] = useState();
     const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - new Date().getDay())).setHours(0, 0, 0, 0));
     const [endDate, setEndDate] = useState(Date.now());
+    //world map
+    let arr = []
+    const [array, setArray] = useState([])
+    const [dataArr, setDataArr] = useState()
+    const [geographies, setGeographies] = useState([])
+    const projection = geoEqualEarth().scale(160)
+        .translate([800 / 2, 300 / 2])
+    const path = geoPath(projection)
     const options = {
         maintainAspectRation: false,
         responsive: true,
@@ -232,8 +243,10 @@ export default function Metrics({ id }) {
                 setOsviews(res.data.data.osViews);
                 setapplicationsviews(res.data.data.applicationViews);
                 setplayerviews(res.data.data.playerViews)
+                worldMap(res.data.data.countryViews)
             })
     }
+    console.log(geographies)
     useEffect(() => {
         if (id) {
             settoggleposition(2)
@@ -267,7 +280,36 @@ export default function Metrics({ id }) {
         }
 
     }
-
+    // worldMap
+    const worldMap = (countryviewsData) => {
+        fetch("https://unpkg.com/world-atlas@2.0.2/countries-50m.json")
+            .then(response => {
+                if (response.status !== 200) {
+                    console.log(`There was a problem: ${response.status}`)
+                    return
+                }
+                response.json().then(worlddata => {
+                    let geo = feature(worlddata, worlddata.objects.countries).features
+                    for (let i = 0; i < countryviewsData.length; i++) {
+                        for (let j = 0; j < geo.length; j++) {
+                            if (regionNames.of(countryviewsData[i].key).toLowerCase() == geo[j].properties.name.toLowerCase()) {
+                                arr.push(geo[j])
+                                setArray(arr)
+                            }
+                        }
+                    }
+                    setDataArr(mesh(worlddata, worlddata.objects.countries, function (a, b) { return a != b }))
+                    setGeographies(feature(worlddata, worlddata.objects.countries).features)
+                })
+            })
+    }
+    const handleCountryClick = countryIndex => {
+        console.log("Clicked on country: ", geographies[countryIndex])
+    }
+    const handleMarkerClick = i => {
+        console.log("Marker: ", cities[i])
+    }
+    // wordlMap end
     return (
         <div className={styles.container}>
             <div className={styles.Metrics_heading}>
@@ -298,7 +340,7 @@ export default function Metrics({ id }) {
                             />
                             <DatePicker
                                 filterDate={d => {
-                                    return d <new Date()
+                                    return d < new Date()
                                 }}
                                 minDate={startDate}
                                 onFocus={e => e.target.blur()}
@@ -381,37 +423,39 @@ export default function Metrics({ id }) {
                                         <img src='/images/export.png' />
                                     </div>
                                 </div>
-                                <span className={styles.card_info}>Views from {from_Date(fromdate)} to {to_day(Today)}</span>
+                                <span>Viewership in the last 7 days.</span>
+                                <TransformWrapper>
+                                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                                        <>
+                                            <TransformComponent>
+                                                <svg width={800} height={300} viewBox="70 0 800 300">
+                                                    <g className="countries">
+                                                        {
+                                                            geographies.map((data, i) => (
+                                                                <path
+                                                                    key={`path-${i}`}
+                                                                    d={path(data)}
+                                                                    className="country"
+                                                                    fill='#e6e9f4'
+                                                                    stroke="#ffffff"
+                                                                    strokeWidth={0.5}
+                                                                    onClick={() => handleCountryClick(i)}
+                                                                />
+                                                            ))
+                                                        }
+                                                        {array.map((i, ind) => <path key={ind} fill="#89abff" d={path(i)} />)}
+                                                    </g>
+                                                </svg>
+                                            </TransformComponent>
+                                            <div className={styles.toolsZoom}>
+                                                <button onClick={() => zoomIn()}>+</button>
+                                                <button onClick={() => zoomOut()}>-</button>
+                                                {/* <button onClick={() => resetTransform()}>x</button> */}
+                                            </div>
+                                        </>
+                                    )}
+                                </TransformWrapper>
                             </div>
-                            <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{
-                                height: '34vh',
-                                width: '100%',
-                            }}>
-                                <ZoomableGroup>
-                                    <Geographies geography={geoUrl}>
-                                        {({ geographies }) =>
-                                            geographies.map(geo => (
-                                                <Geography
-                                                    key={geo.rsmKey}
-                                                    geography={geo}
-
-                                                    style={{
-                                                        default: {
-                                                            // fill:`${countryviews.map((i,key)=>geo.properties.ISO_A2==i.key)}`?"#89abff":"#e6e9f4",
-                                                            fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
-                                                            outline: "none"
-                                                        },
-                                                        hover: {
-                                                            fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
-                                                            outline: "none"
-                                                        },
-                                                    }}
-                                                />
-                                            ))
-                                        }
-                                    </Geographies>
-                                </ZoomableGroup>
-                            </ComposableMap>
                         </div>
                         <div className={styles.countries_table} >
                             <table>
@@ -425,8 +469,8 @@ export default function Metrics({ id }) {
                                 <tbody>
                                     {countryviews.map((country, key) =>
                                         <tr key={key}>
-                                            <td className={styles.countries_name}> {regionNames.of(country.key)}</td>
-                                            <td>{(country.percentage).toFixed()}%</td>
+                                            <td className={styles.countries_name}>{regionNames.of(country.key)}</td>
+                                            <td>{country.percentage}%</td>
                                             <td>{country.count}</td>
                                         </tr>
                                     )}

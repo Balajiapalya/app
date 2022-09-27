@@ -40,7 +40,7 @@ export default function Overview({ setToggleState }) {
     const [geographies, setGeographies] = useState([])
 
     const projection = geoEqualEarth().scale(160)
-    .translate([ 800 / 2, 300 / 2 ])
+        .translate([800 / 2, 300 / 2])
     const path = geoPath(projection)
 
     useEffect(() => {
@@ -399,16 +399,16 @@ export default function Overview({ setToggleState }) {
                 </div>
                 <div className={styles.countries_devices_container}>
                     <div className={styles.countries_container}>
-
                         <div className={styles.countries_map} >
                             <div className={styles.countries_heading}>
                                 <h4 className={styles.heading}>Countries</h4>
                                 <span>Viewership in the last 7 days.</span>
+
                                 <TransformWrapper>
                                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                                         <>
                                             <TransformComponent>
-                                                <svg width={800 } height={300 } viewBox="70 0 800 300">
+                                                <svg width={800} height={300} viewBox="70 0 800 300">
                                                     <g className="countries">
                                                         {
                                                             geographies.map((data, i) => (
@@ -436,39 +436,6 @@ export default function Overview({ setToggleState }) {
                                         </>
                                     )}
                                 </TransformWrapper>
-
-
-
-                            </div>
-                            <div>
-                                {/* <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{
-                                    height: '38vh',
-                                    width: '100%',
-                                }}>
-                                    <ZoomableGroup>
-                                        <Geographies geography={geoUrl}>
-                                            {({ geographies }) =>
-                                                geographies.map(geo => (
-                                                    <Geography
-                                                        key={geo.rsmKey}
-                                                        geography={geo}
-
-                                                        style={{
-                                                            default: {
-                                                                fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
-                                                                outline: "none"
-                                                            },
-                                                            hover: {
-                                                                fill: geo.properties.ISO_A2 === `${countryviews.map((i, key) => i.key)}` ? "#89abff" : "#e6e9f4",
-                                                                outline: "none"
-                                                            },
-                                                        }}
-                                                    />
-                                                ))
-                                            }
-                                        </Geographies>
-                                    </ZoomableGroup>
-                                </ComposableMap> */}
                             </div>
                         </div>
                         <div className={styles.countries_table} >
