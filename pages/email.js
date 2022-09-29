@@ -24,7 +24,11 @@ export default function Signin() {
 
             })
             .catch(error => {
-                setError('email',{message:error.response.data.message})
+                    setmsg(error.response.data.message)
+                    setTimeout(() => {
+                        setmsg('')
+                    }, 2000);
+                  
             })
 
 
