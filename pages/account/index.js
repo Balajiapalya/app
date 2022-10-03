@@ -45,7 +45,12 @@ export default function Accounts() {
           progress: undefined,
         });
       }
-    });
+    }).catch(error => {
+      if(error.response.data.message="Token expired"){
+          window.localStorage.clear();
+          window.location.href = '/signin'
+      }
+  });
   };
 
   useEffect(() => {
@@ -57,7 +62,12 @@ export default function Accounts() {
       }
       sethighlightedorg(horg);
       setnewrog(res.data.data.organizations);
-    })
+    }).catch(error => {
+      if(error.response.data.message="Token expired"){
+          window.localStorage.clear();
+          window.location.href = '/signin'
+      }
+  })
     const toastFun=()=>{
       toast.info('Organization created', {
         position: "top-right",

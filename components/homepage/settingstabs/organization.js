@@ -56,6 +56,11 @@ function Organisation() {
                     setdata(res.data.data);
                 }
                 
+            }).catch(error=>{
+                if(error.response.data.message="Token expired"){
+                    window.localStorage.clear();
+                    window.location.href = '/signin'
+                }
             })
         Api.Get_organization_data()
             .then(res => {
@@ -65,6 +70,11 @@ function Organisation() {
                     localStorage.setItem("ownerEmail", res.data.data.users[0].email)
                 }
 
+            }).catch(error=>{
+                if(error.response.data.message="Token expired"){
+                    window.localStorage.clear();
+                    window.location.href = '/signin'
+                }
             })
             const toastFun=()=>{
                 toast('User Deleted')
