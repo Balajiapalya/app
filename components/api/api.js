@@ -31,13 +31,13 @@ export const resend_invite=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/resend`
 }
 export const get_roles = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/roles?time=${CurrentDate}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${localStorage.getItem("uuid")}/roles?time=${CurrentDate}`
 }
 export const Remove_user = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
 };
 export const get_organization = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/users?time=${CurrentDate}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${localStorage.getItem("uuid")}/users?time=${CurrentDate}`
 };
 
 //Billing
@@ -137,7 +137,7 @@ export const create_new_organization = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations?time=${CurrentDate}`
 }
 export const update_user = () => {
-    return `${PROFILE_BASE_URL()}/services/api/v1/users/${orgid}?time=${CurrentDate}`
+    return `${PROFILE_BASE_URL()}/services/api/v1/users/${localStorage.getItem("userID")}?time=${CurrentDate}`
 }
 export const change_paswrd = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/${user_id}/change-password?time=${CurrentDate}`

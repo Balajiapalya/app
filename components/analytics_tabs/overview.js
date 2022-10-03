@@ -61,6 +61,11 @@ export default function Overview({ setToggleState }) {
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
+                }).catch(error=>{
+                    if(error.response.data.message="Token expired"){
+                        window.localStorage.clear();
+                        window.location.href = '/signin'
+                    }
                 })
 
         }

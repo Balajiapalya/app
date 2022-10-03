@@ -143,7 +143,7 @@ export default function Subtitles() {
                             <h2 className={styles.upload_file_heading}>Upload your file</h2>
                             <div className={styles.upload_btn_wrapper}>
                                 <button className={styles.btn}>Select File</button>
-                                {/* <input type="file" name="myfile" /> */}
+                                <input type="file" name="myfile" />
                             </div>
 
                         </div>
