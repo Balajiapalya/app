@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { TagsInput } from "react-tag-input-component";
 import Api from '../api/api'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Others() {
     const [keys, setKey] = useState({ key: '', value: '' })
@@ -59,6 +61,7 @@ export default function Others() {
     }
         // if (tags.length > 0 && meta.length > 0) {
             Api.Meta_tag(slicedObj).then(res => {
+                toast('Title and Description saved successfully')
                 setRerender(!rerender)
                 if (inputTitle !== '') {
                     doc.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('header')[0].textContent = inputTitle;
@@ -109,6 +112,7 @@ export default function Others() {
         if (tags.length > 0 && meta.length > 0) {
 
             Api.Meta_tag(obj).then(res=>{
+                toast('Tags and metadata saved successfully')
                 setRerender(!rerender)
             })
         }
@@ -365,6 +369,7 @@ export default function Others() {
 
                         </div>
                     </div> */}
+                    <ToastContainer hideProgressBar={true}/>
                 </div>
            
         </Fragment >

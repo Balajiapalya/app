@@ -32,12 +32,18 @@ export default function Analytics_index() {
             .catch(error => {
                 if(error.response.data.message="Token expired"){
                     window.localStorage.clear();
-                    document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    // document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
                     window.location.href = '/signin'
                 }
             })
         Api.Get_User_update().then(res => {
                 setOrg(res.data.data.organizations)
+            }).catch(error => {
+                if(error.response.data.message="Token expired"){
+                    window.localStorage.clear();
+                    // document.cookie = 'Jwt-token=;expires=' + new Date().toUTCString()
+                    window.location.href = '/signin'
+                }
             })
     }
     
