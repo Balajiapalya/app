@@ -91,11 +91,11 @@ const VideoList = ({ i, create_On, created_time }) => {
             {i.thumbnailUrl
                 ? <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>
                     {/* <img className={styles.thumbImg} src={`${i.thumbnailUrl}`} alt="image"></img> */}
-                    <Image src={`${i.thumbnailUrl}`} alt="image" height="65" width="100"/>
+                    <img src={`${i.thumbnailUrl}`} alt="image" height="65" width="100"/>
                     </td>
                 : <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>
                     {/* <img src='/images/placeholder.png' width="100px" /> */}
-                    <Image src='/images/placeholder.png' alt="holder" height="65" width="100"/>
+                    <img src='/images/placeholder.png' alt="holder" height="65" width="100"/>
                     </td>}
             {i.duration ? <td className={styles.tdCursor} onClick={() => handleChange(i.status)}>{Math.floor(i.duration / 60000)}m {Math.floor((i.duration % 60000) / 1000)}s</td>
                 : <td className={styles.tdCursor} onClick={() => handleChange(i.status)}>-</td>}
