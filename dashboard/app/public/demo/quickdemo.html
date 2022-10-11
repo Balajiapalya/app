@@ -6,8 +6,56 @@
 
 
 <head>
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> -->
     <style>
+        @font-face {
+            font-family: Inter-Medium;
+            src: url(../font/Inter-Medium.ttf) format('ttf'),
+                url(../font/Inter-Medium.eot) format('eot'),
+                url(../font/Inter-Medium.woff) format('woff'),
+                url(../font/Inter-Medium.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: Inter-Regular;
+            src: url(../font/Inter-Regular.ttf) format('ttf'),
+                url(../font/Inter-Regular.eot) format('eot'),
+                url(../font/Inter-Regular.woff) format('woff'),
+                url(../font/Inter-Regular.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: Inter-SemiBold;
+            src: url(../font/Inter-SemiBold.ttf) format('ttf'),
+                url(../font/Inter-SemiBold.eot) format('eot'),
+                url(../font/Inter-SemiBold.woff) format('woff'),
+                url(../font/Inter-SemiBold.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: Inter-Italic;
+            src: url(../font/Inter-Italic.ttf) format('ttf'),
+                url(../font/Inter-Italic.eot) format('eot'),
+                url(../font/Inter-Italic.woff) format('woff'),
+                url(../font/Inter-Italic.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: OpenSans-SemiBold;
+            src: url(../font/OpenSans-SemiBold.ttf) format('ttf'),
+                url(../font/OpenSans-SemiBold.eot) format('eot'),
+                url(../font/OpenSans-SemiBold.woff) format('woff'),
+                url(../font/OpenSans-SemiBold.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: Poppins-Bold;
+            src: url(../font/Poppins-Bold.ttf) format('ttf'),
+                url(../font/Poppins-Bold.eot) format('eot'),
+                url(../font/Poppins-Bold.woff) format('woff'),
+                url(../font/Poppins-Bold.woff2) format('woff2');
+        }
+
         body {
             margin: 0px;
         }
@@ -31,6 +79,8 @@
             width: 100%;
             float: left;
             background-color: #F0F0F0;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
 
         .container .container_1 .head p {
@@ -39,59 +89,77 @@
             text-align: left;
             word-spacing: 0.7em;
             font-size: 16px;
-            color: #54595F;
-            font-family: 'Roboto';
+            color: #1d2123;
+            font-family: 'Inter-Regular';
             font-weight: 400;
         }
 
         .container .container_1 .body {
             width: 100%;
             float: left;
+            border: 1px solid #dbdbdb;
         }
 
         .container .container_1 .body .textarea {
             width: 100%;
             float: left;
             background-color: #fff;
+            border-bottom: 1.5px solid #dddddd;
+            border-radius: 3px;
         }
 
         .container .container_1 .body .textarea textarea {
-            width: 97%;
+            width: 96%;
             border: none;
             height: 200px;
             resize: none;
             outline: none;
-            font-family: 'Roboto';
+            font-family: 'Inter-Regular';
             font-weight: 400;
-            color: #54595F;
-            padding: 10px
+            color: #5d656e;
+            padding: 10px;
+           
         }
 
         .container .container_1 .body .btn {
             width: 100%;
             float: left;
-            padding: 20px 0px;
+            text-align: right;
+            background-color: #fff;
         }
 
         .container .container_1 .body .btn button {
-            background-color: #5bc0de;
-            padding: 12px 24px;
+            background-color: #2b68e8;
+            height: 50px;
+            padding: 12px 30px;
+            margin: 20px;
             border: none;
             border-radius: 3px;
-            color: #54595F;
+            color: #ffffff;
             font-size: 15px;
             cursor: pointer;
-            font-family: 'Roboto';
+            font-family: 'Inter-Medium';
             font-weight: 400;
         }
 
         .container .container_1 .body .response_body {
             width: 100%;
             float: left;
+            background-color: #f0f0f0;
+            border-top: 1px solid #dbdbdb;
+        }
+
+        .container .container_1 .body .response_body h3 {
+            font-family: 'Inter-Regular';
+            font-size: 14px;
+            color: #1d2123;
+            padding: 18px 18px;
+            margin-block-start: 0em;
+            margin-block-end: 0em;
         }
 
         .container .container_1 .body .response_body textarea {
-            color: #646464;
+            color: #5d656e;
             width: 100%;
             border: none;
             height: 200px;
@@ -102,7 +170,8 @@
             font-weight: 400;
             padding: 10px 20px;
             box-sizing: border-box;
-            font-family: 'Roboto';
+            font-family: 'Inter-Regular';
+            background-color: #f0f0f0;
         }
 
         /*---------------------- container - 2 -----------------------*/
@@ -117,6 +186,7 @@
             width: 100%;
             float: left;
             background-color: #F0F0F0;
+            border-radius: 5px;
         }
 
         .container .container_2 .head p {
@@ -125,8 +195,8 @@
             text-align: left;
             word-spacing: 0.7em;
             font-size: 16px;
-            color: #54595F;
-            font-family: 'Roboto';
+            color: #1d2123;
+            font-family: 'Inter-Regular';
             font-weight: 400;
         }
 
@@ -172,6 +242,7 @@
                     <button onclick="printTheJSONInPrettyFormat()">Run Demo</button>
                 </div>
                 <div class="response_body">
+                    <h3>API Response</h3>
                     <textarea id="response">you can see the API response here.</textarea>
                 </div>
             </div>
