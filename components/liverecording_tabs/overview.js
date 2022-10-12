@@ -133,7 +133,7 @@ export default function Overview() {
                     </div>
                     {i.transcodingInfo ?
                         <div className={styles.playback}>
-                            <h2>Live Stream</h2>
+                            <h2>Live Stream Player</h2>
                             <div className={styles.playback_content} >
                                 <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
 

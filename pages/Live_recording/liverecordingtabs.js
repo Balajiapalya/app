@@ -1,7 +1,8 @@
 import styles from '../../styles/livestream.module.css';
 import Layout from '../../components/common/layout';
 import Videodelivery_tabs from '../../components/homepage/videodelivery_tabs';
-import Livestrean_tabs from '../../components/livestream_tabs';
+// import Livestrean_tabs from '../../components/livestream_tabs';
+import Liverecording_tabs from '../../components/liverecording_tabs';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ import { useRouter } from "next/router";
 import { useForm } from 'react-hook-form';
 
 
-export default function Livestream_tabspage() {
+export default function Livesrecording_tabspage() {
     
     const reff = useRouter()
     const [headtitle, setheadttitle] = useState(true);
@@ -74,7 +75,7 @@ export default function Livestream_tabspage() {
                         <div className={`${styles.padding} headerDiv`}>
                             <div className={styles.header}>
                                 <div className={styles.assets}>
-                                    <Link href="/videos"><a>Live streams</a></Link>
+                                    <Link href="/videos"><a>Live recording</a></Link>
                                     <p> &gt; <p className="header">{editted ? editted : title}</p></p>
 
                                 </div>
@@ -108,9 +109,9 @@ export default function Livestream_tabspage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.close}> <Link href="/Live_stream"><a><img src='/images/close.svg' /></a></Link></div>
+                            <div className={styles.close}> <Link href="/Live_recording"><a><img src='/images/close.svg' /></a></Link></div>
                             {/* <Videodelivery_tabs /> */}
-                            <Livestrean_tabs/>
+                            <Liverecording_tabs/>
                         </div>
                     </div>
                 </div>
@@ -119,7 +120,7 @@ export default function Livestream_tabspage() {
     )
 
 }
-Livestream_tabspage.getLayout = function getLayout(page) {
+Livesrecording_tabspage.getLayout = function getLayout(page) {
     return (
         <Layout>
             <div className="wrapper_body">
