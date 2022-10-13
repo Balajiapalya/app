@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Hls from 'hls.js';
 import Player from '../player';
+import Livestream_Player from '../livestream_Player';
 // import Embed from '../../pages/videos/embed';
 // import Delete_content from '../dialog/delete_content';
 // import Activities from '../dialog/activities';
@@ -23,6 +24,11 @@ export default function Overview() {
             .then(res => {
                 if (res && res.data && res.data.data) {
                     setplayer([res.data.data])
+                    if(res.data.data.status=='Active' || res.data.data.status=='Processing'){
+                        setplayback(!playback)
+                    }else{
+                        setplayback(false)
+                    }
                     // localStorage.setItem("asset_title", res.data.data.title);
                 }
             })
@@ -78,7 +84,6 @@ export default function Overview() {
             text.innerText='Inactive'
             liveVid.pause();
         }else{
-            console.log(liveVid,'vid')
             liveVid.classList.remove(`${styles.none}`);
             holder.classList.add(`${styles.none}`);
             holder.classList.remove(`${styles.show}`);
@@ -141,7 +146,7 @@ export default function Overview() {
                                         </tr>
                                     </div>
                                 </tbody>
-                                {i.status !== 'Failed'  &&
+                                {i.status == 'Active' && i.playbackUrl ?
                                     <div className={styles.recordingplayer_action}>
                                         {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
                                             <img src='/images/live_play.svg' />
@@ -150,22 +155,29 @@ export default function Overview() {
                                             <img src='/images/live_stop.svg' />
                                             <span> Stop</span>
                                         </button>}
-                                    </div>
+                                    </div>: i.status == 'Processing' && i.playbackUrl ? <div className={styles.recordingplayer_action}>
+                                        {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
+                                            <img src='/images/live_play.svg' />
+                                            <span> Start</span>
+                                        </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
+                                            <img src='/images/live_stop.svg' />
+                                            <span> Stop</span>
+                                        </button>}
+                                    </div>: null
                                 }
 
                             </table>
                         </div>
                     </div>
-                    {i ?
+                    {i.playbackUrl ?
                         <div className={styles.playback}>
                             <h2>Live Stream</h2>
                             <div className={styles.playback_content} >
                                 <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
-
-                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Player handlethumnail={handlethumnail_callback} />}
+                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
-                    {i.transcodingInfo ?
+                    {i.playbackUrl ?
                         <div className={styles.video_urls}>
                             <h2>Video URLs</h2>
                             <div className={styles.link_copy}>
@@ -179,10 +191,10 @@ export default function Overview() {
                                             <div className={styles.link}>
 
                                                 {/* <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p> */}
-                                                <input defaultValue={`${window.location.origin}/videos/embed?videoId=${i.contentId}`} className={styles.copyInput} readOnly />
+                                                <input defaultValue={`${window.location.origin}/videos/embed?streamId=${i.streamUUID}`} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?videoId=${i.contentId}`}>
+                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?streamId=${i.streamUUID}`}>
                                                     <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy} />
                                                 </CopyToClipboard>
                                             </div>
