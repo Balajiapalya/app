@@ -50,7 +50,7 @@ export default function Create_liveStream({ table, setReload, filename, set_file
                 .then(res => {
                     if (res.data.status == "Success") {
                         window.location.reload()
-                        close_asset(true)
+                        // close_asset(true)
                     }
                 })
                 .catch(error => {
@@ -82,7 +82,7 @@ export default function Create_liveStream({ table, setReload, filename, set_file
 
     // popup
     const handlePopUp = () => {
-        close_asset(false)
+        // close_asset(false)
         toast.dismiss()
         let inpopUp = document.querySelector('.inpopup');
         inpopUp.parentElement.classList.add(`${styles.no_display}`);
