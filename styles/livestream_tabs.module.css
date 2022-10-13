@@ -722,9 +722,9 @@
     display: block;
 }
 
-.playback_content .playback_status span {
+.playback_content .playback_status button {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 10px;
     width: 74px;
     height: 25px;
@@ -734,7 +734,26 @@
     border: solid 1px #9b9b9b;
     font-family: Inter-Medium;
     font-size: 12px;
-    color: #9b9b9b;
+    color: #fff;
+    background-color: inherit;
+}
+
+.playback_content .playback_status button .playback_inactive {
+    position: absolute;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #767676;
+}
+
+.playback_content .playback_status button .playback_active {
+    position: absolute;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f00;
 }
 
 .playback_content img {
@@ -1818,6 +1837,41 @@
 
 .input:checked::before {
     left: 10px;
+}
+
+/* ----------------------------------------live recording-------------------------------- */
+.recordingplayer_action {
+    width: 100%;
+    float: left;
+    text-align: right;
+}
+
+.recordingplayer_action .recordingPlayer_start {
+    border: 1px solid #016fde;
+    color: #fff;
+    background-color: #016fde;
+}
+
+.recordingplayer_action .recordingPlayer_start span {
+    position: relative;
+    bottom: 1px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recordingplayer_action .recordingPlayer_stop {
+    border: 1px solid #016fde;
+    color: #016fde;
+    background-color: inherit;
+}
+
+.recordingplayer_action .recordingPlayer_stop span {
+    position: relative;
+    bottom: 1px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 /* media */

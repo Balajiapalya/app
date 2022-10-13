@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MonacoEditor from '../../components/videodeliverytabs/create_videoclips.js/MonacoEditor'
 
 
-export default function Create_liveStream({ table, setReload, filename, set_filename, uploaded, setuploaded }) {
+export default function Create_liveRecording({ close_asset,Livetable, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const [codeData, setCodeData] = useState(`${JSON.stringify(
@@ -84,9 +84,9 @@ export default function Create_liveStream({ table, setReload, filename, set_file
     const handlePopUp = () => {
         close_asset(false)
         toast.dismiss()
-        let inpopUp = document.querySelector('.inpopup');
-        inpopUp.parentElement.classList.add(`${styles.no_display}`);
-        table.classList.remove(`${styles.no_display}`);
+        // let inpopUp = document.querySelector('.inpopup');
+        // inpopUp.parentElement.classList.add(`${styles.no_display}`);
+        // Livetable.classList.remove(`${styles.no_display}`);
     }
     return (
         <div className={`${styles.videodelivery} inpopup`}>
@@ -94,7 +94,7 @@ export default function Create_liveStream({ table, setReload, filename, set_file
                 <a onClick={() => handlePopUp()} className={styles.model_close} role="button"><Image src="/images/asset_status/iconClose.svg" alt='icon' width='20' height='20' /> </a>
             </div>
             <div className={styles.Videodelivery_addnewassets}>
-                <h2>Create Live Stream</h2>
+                <h2>Create Live Recording</h2>
                 {/* <Direct_upload toast={toast} handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded} /> */}
                 {/* <div className={styles.or}></div> */}
                 {/* <div className={styles.or_text}><span className={styles.divider}>[or]</span></div> */}
