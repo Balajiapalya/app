@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/livestream.module.css'
 import { useRouter } from "next/router";
 import Image from 'next/image'
+import Api from './api/api';
 
 
 const LiveList = ({ i, create_On, created_time }) => {
@@ -12,7 +13,8 @@ const LiveList = ({ i, create_On, created_time }) => {
     const [thumbnail, setthumbnail] = useState([]);
     const [dropdown, setdropdown] = useState(false);
     const [hover, setHover] = useState(false);
-    const [action_status,setaction_status] = useState()
+    const [status,setStatus] = useState(i.status)
+    const [action_status, setaction_status] = useState()
     const handleChange = (status) => {
         setVideoId(i.streamUUID)
         // setvideotitle(i.title)
@@ -22,15 +24,25 @@ const LiveList = ({ i, create_On, created_time }) => {
     }
 
 
-    const handleStreaming = (status) => {
+    const handleStreaming = () => {
+        if(i.status=='Active'){
+            Api.Live_status_stop(i.streamUUID).then((res)=>{
+                setStatus(res.data.data.status)
+            })
+        }
+        else{
+            Api.Live_status_start(i.streamUUID).then((res)=>{
+                setStatus(res.data.data.status)
+            })
+        }
         // setVideoId(i.streamUUID)
         // setvideotitle(i.title)
         // setthumbnail(i.thumbnailUrl)
         // localStorage.setItem('status', i.status)
-        router.push({ pathname: './Live_stream/livestreamtabs', query: { 'streamId': i.streamUUID, 'path': 2 } });
+        // router.push({ pathname: './Live_stream/livestreamtabs', query: { 'streamId': i.streamUUID, 'path': 2 } });
 
     }
-    
+
 
     // localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('streamId', videoId)
@@ -41,11 +53,10 @@ const LiveList = ({ i, create_On, created_time }) => {
     let domnode = useRef();
 
     useEffect(() => {
-        console.log(i.status)
-        if(i.status=='Ready'){
+        if (i.status == 'Active') {
             setaction_status('Stop Streaming')
         }
-        else{
+        else {
             setaction_status('Start Streaming')
         }
         let maybehandler = (e) => {
@@ -85,24 +96,24 @@ const LiveList = ({ i, create_On, created_time }) => {
             {i.thumbnailUrl
                 ? <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>
                     {/* <img className={styles.thumbImg} src={`${i.thumbnailUrl}`} alt="image"></img> */}
-                    <img src={`${i.thumbnailUrl}`} alt="image" height="65" width="100"/>
-                    </td>
+                    <img src={`${i.thumbnailUrl}`} alt="image" height="65" width="100" />
+                </td>
                 : <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>
                     {/* <img src='/images/placeholder.png' width="100px" /> */}
-                    <img src='/images/placeholder.png' alt="holder" height="65" width="100"/>
-                    </td>}
+                    <img src='/images/placeholder.png' alt="holder" height="65" width="100" />
+                </td>}
             {i.status == "Failed"
                 ? <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
-                    : `${styles.notVisble}`}>failed to upload</div>{i.status} 
+                    : `${styles.notVisble}`}>failed to upload</div>{i.status}
                     <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/iconmaterial-info-outline.png' />
-                    </td>
+                </td>
                 : i.status == 'Pending'
                     ? <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
                         : `${styles.notVisble}`}>pending video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/pending.png' /></td>
-                    :i.status=="Processing"
-                    ?<td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
-                    : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/processing.png' /></td>
-                    : <td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+                    : i.status == "Processing"
+                        ? <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
+                            : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/processing.png' /></td>
+                        : <td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>
@@ -111,14 +122,14 @@ const LiveList = ({ i, create_On, created_time }) => {
                                 <img className={`${styles.content_menu_basic} ${styles.tdCursor}`} src='/images/content-menu-basic.svg' alt='menu' />
                                 <img className={`${styles.content_menu_hover} ${styles.tdCursor}`} src='/images/content-menu-hover.svg' alt='menu' />
                             </div>
-                            {dropdown && i.status !== 'Failed' && i.status !== 'Processing' ?
+                            {dropdown && i.status !== 'Failed' ?
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='stream-details' /><a >Stream Details</a></button>
-                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming(i.status)}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>{action_status}</a></button>
+                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming(i)}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>{action_status}</a></button>
                                     <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Video</a></button>
                                 </div>
                                 : null}
-                            {dropdown && i.status == 'Failed' || dropdown && i.status == 'Processing' ? <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div> : null}
+                            {dropdown && i.status == 'Failed'  ? <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div> : null}
                         </div>
                     </div>
 

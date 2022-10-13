@@ -245,6 +245,12 @@ export const create_live_stream = ()=>{
 export const live_stream_data = (streamuuid)=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamuuid?streamuuid:localStorage.getItem('streamId')}`
 }
+export const live_status_start = (streamUUID)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/start`
+}
+export const live_status_stop = (streamUUID)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/stop`
+}
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -815,7 +821,26 @@ const Api = {
             'Authorization': `Bearer ${token}`,
             'EnvironmentId': `${localStorage.getItem("envuuid")}`
         },
-    })
+    }),
+    Live_status_start:(streamUUID)=>
+        loginHandledAxios({
+            method:'POST',
+            url:live_status_start(streamUUID),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        }),
+        Live_status_stop:(streamUUID)=>
+        loginHandledAxios({
+            method:'POST',
+            url:live_status_stop(streamUUID),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        }),
+    
 }
 export default Api
 

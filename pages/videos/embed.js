@@ -6,8 +6,8 @@ import { withRouter, NextRouter, useRouter } from 'next/router'
 
 
 class Embed extends React.Component {
-   
-    
+
+
     componentDidMount() {
         this._getVideoURL();
 
@@ -19,11 +19,30 @@ class Embed extends React.Component {
         // const key = this.props.router.query.videoId;
         // console.log(this.props)
         // console.log(key)
-        
-        Api.Get_Playback_URL(window.location.search.split("videoId=")[1].split("&")[0])
-            .then((response) => {
-                if (response && response.data && response.data.data) {
-                    var url = response.data.data;
+        console.log(window.location.search.includes('videoId'))
+        if (window.location.search.includes('videoId') == true) {
+            Api.Get_Playback_URL(window.location.search.split("videoId=")[1].split("&")[0])
+                .then((response) => {
+                    if (response && response.data && response.data.data) {
+                        var url = response.data.data;
+                        // console.log(url)
+                        if (Hls.isSupported() && this.player) {
+                            const video = this.player;
+                            const hls = new Hls({ enableWorker: false });
+                            hls.loadSource(url);
+                            hls.attachMedia(video);
+                            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                                // var fl = document.getElementById('videoelement');
+                            });
+                        }
+                    }
+
+                });
+        }else if (window.location.search.includes('streamId') == true) {
+            Api.Live_stream_data(window.location.search.split("streamId=")[1].split("&")[0])
+            .then(res => {
+                if (res && res.data && res.data.data) {
+                    var url = res.data.data.playbackUrl;
                     // console.log(url)
                     if (Hls.isSupported() && this.player) {
                         const video = this.player;
@@ -35,12 +54,13 @@ class Embed extends React.Component {
                         });
                     }
                 }
+            })
+        }
 
-            });
     };
 
     render() {
-    //    console.log(window.innerHeight)
+        //    console.log(window.innerHeight)
         return (
             <div>
                 <video
@@ -51,7 +71,7 @@ class Embed extends React.Component {
                     id='videoelement'
 
                 />
-                
+
             </div>
         );
     }

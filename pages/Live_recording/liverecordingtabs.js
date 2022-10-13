@@ -19,14 +19,15 @@ export default function Livesrecording_tabspage() {
     const [editInput, setEditInput] = useState()
     const [editted, setEdittedTitle] = useState()
     const [data, setData] = useState()
-    // const [titlee,setTitle]=useState()
+    const [titlee,setTitle]=useState()
     const { register, handleSubmit, watch, setError,formState: { errors } } = useForm();
     useEffect(() => {
-        // Api.Get_Env_item().then(res => {
-        //     setData(res.data.data)
-        //     // setTitle(res.data.data.title)
-
-        // })
+        Api.Live_stream_data(window.location.search.split("streamId=")[1].split("&")[0])
+        .then(res => {
+            if (res && res.data && res.data.data) {
+               setTitle(res.data.data.title)
+            }
+        })
 
     }, [])
     const editName = () => {
@@ -76,7 +77,7 @@ export default function Livesrecording_tabspage() {
                             <div className={styles.header}>
                                 <div className={styles.assets}>
                                     <Link href="/Live_recording"><a>Live recording</a></Link>
-                                    <p> &gt; <p className="header">{editted ? editted : title}</p></p>
+                                    <p> &gt; <p className="header">{editted ? editted : titlee}</p></p>
 
                                 </div>
                                 <div className={styles.header_asianet}>
@@ -84,7 +85,7 @@ export default function Livesrecording_tabspage() {
                                     <div className={styles.header_title_container}>
                                         <div className={styles.header_title}>
                                             {headtitle ? <div className={styles.styleTitle}>
-                                                <h2 className='mainTitle'>{editted ? editted : title}</h2>
+                                                <h2 className='mainTitle'>{editted ? editted : titlee}</h2>
 
                                                 <h2 >
 
