@@ -21,11 +21,11 @@ export default function Livestream_tabspage() {
     // const [titlee,setTitle]=useState()
     const { register, handleSubmit, watch, setError,formState: { errors } } = useForm();
     useEffect(() => {
-        Api.Get_Env_item().then(res => {
-            setData(res.data.data)
-            // setTitle(res.data.data.title)
+        // Api.Get_Env_item().then(res => {
+        //     setData(res.data.data)
+        //     // setTitle(res.data.data.title)
 
-        })
+        // })
 
     }, [])
     const editName = () => {
@@ -74,7 +74,7 @@ export default function Livestream_tabspage() {
                         <div className={`${styles.padding} headerDiv`}>
                             <div className={styles.header}>
                                 <div className={styles.assets}>
-                                    <Link href="/videos"><a>Live streams</a></Link>
+                                    <Link href="/Live_stream"><a>Live streams</a></Link>
                                     <p> &gt; <p className="header">{editted ? editted : title}</p></p>
 
                                 </div>

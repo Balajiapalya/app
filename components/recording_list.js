@@ -19,14 +19,21 @@ const RecordingList = ({ i, create_On, created_time }) => {
         localStorage.setItem('status', status)
         router.push({ pathname: `./Live_recording/liverecordingtabs`, query: { 'videoId': i.contentId, 'path': 1 } });
     }
-
-
-    const handleStreaming = () => {
+    const handleVideoClips = () => {
         setVideoId(i.contentId)
         setvideotitle(i.title)
         setthumbnail(i.thumbnailUrl)
         localStorage.setItem('status', i.status)
         router.push({ pathname: './Live_recording/liverecordingtabs', query: { 'videoId': i.contentId, 'path': 2 } });
+
+    }
+
+    const handleStreaming = () => {
+        // setVideoId(i.contentId)
+        // setvideotitle(i.title)
+        // setthumbnail(i.thumbnailUrl)
+        // localStorage.setItem('status', i.status)
+        // router.push({ pathname: './Live_recording/liverecordingtabs', query: { 'videoId': i.contentId, 'path': 2 } });
 
     }
     
@@ -107,7 +114,8 @@ const RecordingList = ({ i, create_On, created_time }) => {
                             {dropdown && i.status !== 'Failed' && i.status !== 'Processing' && i.status !== 'Pending' ?
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='stream-details' /><a >Stream Details</a></button>
-                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming()}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>Stop Streaming</a></button>
+                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
+                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming()}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>Stop</a></button>
                                     <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Video</a></button>
                                 </div>
                                 : null}

@@ -12,7 +12,7 @@ function Livestrean_tabs() {
     useEffect(()=>{
         if(Number(router.query.path==undefined)){
             setToggleState(1);
-            router.push({pathname:'./livestreamtabs',query:{'videoId':localStorage.getItem('videoId'),'path':1}})    
+            router.push({pathname:'./livestreamtabs',query:{'streamId':localStorage.getItem('streamId'),'path':1}})    
         }else{
             setToggleState(Number(router.query.path));
         }
@@ -23,7 +23,7 @@ function Livestrean_tabs() {
     },[router.query.path])
     
     const toggleTab = (index) => {
-        router.push({pathname:'./livestreamtabs',query:{'videoId':localStorage.getItem('videoId'),'path':`${index}`}})
+        router.push({pathname:'./livestreamtabs',query:{'streamId':localStorage.getItem('streamId'),'path':`${index}`}})
         setToggleState(index);
     };
     

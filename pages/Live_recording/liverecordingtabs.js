@@ -75,7 +75,7 @@ export default function Livesrecording_tabspage() {
                         <div className={`${styles.padding} headerDiv`}>
                             <div className={styles.header}>
                                 <div className={styles.assets}>
-                                    <Link href="/videos"><a>Live recording</a></Link>
+                                    <Link href="/Live_recording"><a>Live recording</a></Link>
                                     <p> &gt; <p className="header">{editted ? editted : title}</p></p>
 
                                 </div>

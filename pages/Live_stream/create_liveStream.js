@@ -4,49 +4,30 @@ import Api from '../../components/api/api';
 import Link from 'next/link'
 import Direct_upload from '../../components/direct_uploade';
 import { useRouter } from 'next/router';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MonacoEditor from '../../components/videodeliverytabs/create_videoclips.js/MonacoEditor'
 
 
-export default function Create_liveStream({close_asset, Livetable, setReload, filename, set_filename, uploaded, setuploaded }) {
+export default function Create_liveStream({ close_asset, Livetable, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const [codeData, setCodeData] = useState(`${JSON.stringify(
         {
-            "title": "Video title",
-            "description": "Video description",
-            "content": [
-                {
-                    "url": "http://techslides.com/demos/sample-videos/small.mp4",
-                    "start_offset": 0
-                }
-            ],
-            "tags": [
-                "tag1",
-                "tag2"
-            ],
-            "metadata": [
-                {
-                    "key": "abc",
-                    "value": "pqr"
-                }
-            ],
-            "playback_policy": ["public"],
-            "mp4_support": false,
-            "save_original_copy": false
+            "name": "First Channel",
+            "region": "asia-pacific"
         }
         , undefined, 2)}`)
-        
+
     const togglebtn = (index) => {
         settoggleposition(index);
     }
 
     const onSubmit = () => {
         try {
-            Api.post_video(JSON.parse(codeData))
+            Api.Create_live_stream(JSON.parse(codeData))
                 .then(res => {
                     if (res.data.status == "Success") {
                         window.location.reload()
@@ -70,8 +51,8 @@ export default function Create_liveStream({close_asset, Livetable, setReload, fi
         }
 
     }
-    
-  
+
+
     const printTheJSONInPrettyFormat = () => {
         var badJSON = document.getElementById('prettyJSONFormat').value;
         var parseJSON = JSON.parse(badJSON);
@@ -117,7 +98,7 @@ export default function Create_liveStream({close_asset, Livetable, setReload, fi
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className={styles.code}>
                             {/* {toggleposition == 2 ? */}
-                            <MonacoEditor codeData={codeData} setCodeData={setCodeData}/>
+                            <MonacoEditor codeData={codeData} setCodeData={setCodeData} />
                             <ToastContainer
                                 position="top-center"
                                 autoClose={3000}

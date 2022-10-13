@@ -709,6 +709,7 @@
     float: right;
     margin-top: 5px;
     position: relative;
+    background-color: #606060;
 }
 
 .playback_content .playback_status {
@@ -753,7 +754,6 @@
 .playback_content img {
     vertical-align: middle;
     width: 100%;
-    height: 280px;
 }
 
 .playback .playback_action {
