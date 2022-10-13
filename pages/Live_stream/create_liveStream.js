@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MonacoEditor from '../../components/videodeliverytabs/create_videoclips.js/MonacoEditor'
 
 
-export default function Create_liveStream({ close_asset, Livetable, setReload, filename, set_filename, uploaded, setuploaded }) {
+export default function Create_liveStream({ table, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const [codeData, setCodeData] = useState(`${JSON.stringify(
@@ -31,7 +31,7 @@ export default function Create_liveStream({ close_asset, Livetable, setReload, f
                 .then(res => {
                     if (res.data.status == "Success") {
                         window.location.reload()
-                        close_asset(true)
+                        // close_asset(true)
                     }
                 })
                 .catch(error => {
@@ -63,11 +63,11 @@ export default function Create_liveStream({ close_asset, Livetable, setReload, f
 
     // popup
     const handlePopUp = () => {
-        close_asset(false)
+        // close_asset(false)
         toast.dismiss()
-        // let inpopUp = document.querySelector('.inpopup');
-        // inpopUp.parentElement.classList.add(`${styles.no_display}`);
-        // Livetable.classList.remove(`${styles.no_display}`);
+        let inpopUp = document.querySelector('.inpopup');
+        inpopUp.parentElement.classList.add(`${styles.no_display}`);
+        table.classList.remove(`${styles.no_display}`);
     }
     return (
         <div className={`${styles.videodelivery} inpopup`}>

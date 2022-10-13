@@ -198,7 +198,7 @@ export default function Videos() {
                 }
             }
         }
-        console.log(tRow.length,count)
+        
         if(tRow.length-1==count && count!==0){ 
           div.style.display='block'
         }else{
@@ -250,16 +250,18 @@ export default function Videos() {
     }, [])
 
     const handlePopup = () => {
-        set_asset(true)
-        // setuploaded(false);
-        // set_filename('')
-        // let inp=document.querySelector('input[type=file]')
-        // inp.value=''
-        // let Livetable = document.querySelector('.Livetable');
-        // let Livepopup = document.querySelector('.Livepopup');
-        // Livetable.classList.add(`${styles.no_display}`)
-        // Livetable.classList.remove(`${styles.display}`)
-        // Livepopup.classList.remove(`${styles.no_display}`)
+        // set_asset(true)
+        setuploaded(false);
+        set_filename('')
+        let inp=document.querySelector('input[type=file]')
+        if(inp){
+        inp.value=''
+        }
+        let Livetable = document.querySelector('.livetable');
+        let Livepopup = document.querySelector('.Livepopup');
+        Livetable.classList.add(`${styles.no_display}`)
+        Livetable.classList.remove(`${styles.display}`)
+        Livepopup.classList.remove(`${styles.no_display}`)
     }
 
 
@@ -380,7 +382,7 @@ export default function Videos() {
                                 <input maxLength={30} type="text" onChange={(e) => handleSearch(e)} placeholder='Search live streams'></input>
                                 <img src='/images/search_icon.svg' alt='icon'></img>
                             </div>
-                            <div className={`${styles.videos_table} Livetable`}>
+                            <div className={`${styles.videos_table} livetable`}>
                                 <table className="table_input">
                                     <thead>
                                         <tr>
@@ -404,10 +406,10 @@ export default function Videos() {
                                  {currentItems.length==0 && <div className={styles.noData}>No Live Data Available</div>}
                                  <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No Result Found</div>
                             </div>
-                            {add_asset && <Create_liveStream close_asset={set_asset} />}
-                            {/* <div className={`${styles.no_display} Livepopup`}>
-                                <Create_liveStream table={process.browser && document.querySelector('.Livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
-                            </div> */}
+                            {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
+                            <div className={`${styles.no_display} Livepopup`}>
+                                <Create_liveStream table={process.browser && document.querySelector('.livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
+                            </div>
                         </div>
                     </div>
                 </div>

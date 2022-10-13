@@ -67,6 +67,29 @@ export default function Overview() {
             copiedText.style.display = ""
         }, 1000)
     }
+    
+    const handleControls=()=>{
+        const text=document.querySelector('.toggleText');
+        const holder=document.querySelector('#placeholder')
+       setVideToggle(!vidToggle)
+        const liveVid=document.querySelector("#live");
+        if(vidToggle){
+            holder.classList.remove(`${styles.none}`);
+            holder.classList.add(`${styles.show}`);
+            liveVid.classList.add(`${styles.none}`)
+            text.innerText='Inactive'
+            liveVid.pause();
+        }else{
+            console.log(liveVid,'vid')
+            liveVid.classList.remove(`${styles.none}`);
+            holder.classList.add(`${styles.none}`);
+            holder.classList.remove(`${styles.show}`);
+            text.innerText='Active'
+            liveVid.play();
+        }
+        
+    }
+   
     return (
         <Fragment>
             {player.map((i, ind) =>
