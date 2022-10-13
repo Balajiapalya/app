@@ -119,7 +119,7 @@ export default function Overview() {
                                 </tbody>
                                 <div className={styles.recordingplayer_action}>
                                     {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
-                                        <img src='/images/live_stop.svg' />
+                                        <img src='/images/live_play.svg' />
                                         <span> Start</span>
 
                                     </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
