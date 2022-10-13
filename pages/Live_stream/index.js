@@ -74,7 +74,7 @@ export default function Videos() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         const endOffset = itemOffset + itemsPerPage;
-        Api.Live_stream_list()
+        Api.Live_stream_list(false)
             .then(res=>{
                 res&&res.data&&res.data.data&&console.log(res.data.data);
                 setCurrentItems(res.data.data.slice(itemOffset, endOffset));

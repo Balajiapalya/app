@@ -59,7 +59,7 @@ export default function Others() {
         slicedObj['metadata']=dataVideo.metadata
         slicedObj['tags']=dataVideo.tags
     }
-        // if (tags.length > 0 && meta.length > 0) {
+        if (tags.length > 0 && meta.length > 0) {
             Api.Meta_tag(slicedObj).then(res => {
                 toast('Title and Description saved successfully')
                 setRerender(!rerender)
@@ -72,7 +72,7 @@ export default function Others() {
                 .catch(error => {
                     console.log(error)
                 })
-        // }
+        }
 
 
     }
@@ -104,7 +104,7 @@ export default function Others() {
         let obj=new Object()
         obj.tags=tags;
         obj.metadata=meta;
-        console.log(dataVideo,'dataaa')
+        // console.log(dataVideo,'dataaa')
         if(dataVideo.title.length>0 && dataVideo.description.length>0){
             obj['title']=dataVideo.title;
             obj['description']=dataVideo.description;
@@ -149,23 +149,23 @@ export default function Others() {
     }
 
     useEffect(() => {
-        Api.Get_Env_item().then(res => {
-            setValue('title', res.data.data.title)
-            setValue('description', res.data.data.description)
-            setDataVideo(res.data.data)
-            if (res.data.data.tags != undefined) {
-                if (res.data.data.tags[0].length > 0) {
-                    setTags(res.data.data.tags)
-                }
-                // console.log(res.data.data.tags!=undefined)
+        // Api.Get_Env_item().then(res => {
+        //     setValue('title', res.data.data.title)
+        //     setValue('description', res.data.data.description)
+        //     setDataVideo(res.data.data)
+        //     if (res.data.data.tags != undefined) {
+        //         if (res.data.data.tags[0].length > 0) {
+        //             setTags(res.data.data.tags)
+        //         }
+        //         // console.log(res.data.data.tags!=undefined)
 
-            } else {
-                setTags([])
-            }
+        //     } else {
+        //         setTags([])
+        //     }
 
-            setMeta(res.data.data.metadata)
-            // setSelected(res.data.data.tags)
-        })
+        //     setMeta(res.data.data.metadata)
+        //     // setSelected(res.data.data.tags)
+        // })
         return () => {
             setDataVideo([])
             setTags([])

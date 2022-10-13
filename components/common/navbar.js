@@ -35,7 +35,7 @@ const router=useRouter()
             localStorage.getItem("ownername")
         )
     }, [])
-    console.log(router.pathname)
+    // console.log(router.pathname)
     let name;
     let orgnames;
     if (process.browser) {

@@ -22,11 +22,11 @@ export default function Livesrecording_tabspage() {
     // const [titlee,setTitle]=useState()
     const { register, handleSubmit, watch, setError,formState: { errors } } = useForm();
     useEffect(() => {
-        Api.Get_Env_item().then(res => {
-            setData(res.data.data)
-            // setTitle(res.data.data.title)
+        // Api.Get_Env_item().then(res => {
+        //     setData(res.data.data)
+        //     // setTitle(res.data.data.title)
 
-        })
+        // })
 
     }, [])
     const editName = () => {

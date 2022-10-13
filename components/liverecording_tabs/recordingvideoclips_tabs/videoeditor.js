@@ -31,7 +31,7 @@ function Videoditor(props) {
         <div className={styles.video_editor_content}>
             <div className={styles.video_editor_player}>
                 {/* <img src="/images/image11.png" alt="image" /> */}
-                <Player handlethumnail={handlethumnail_callback}/>
+                {/* <Player handlethumnail={handlethumnail_callback}/> */}
             </div>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className={styles.start_end_time}>

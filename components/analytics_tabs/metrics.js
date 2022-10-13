@@ -246,7 +246,7 @@ export default function Metrics({ id }) {
                 worldMap(res.data.data.countryViews)
             })
     }
-    console.log(geographies)
+    // console.log(geographies)
     useEffect(() => {
         if (id) {
             settoggleposition(2)
@@ -285,7 +285,7 @@ export default function Metrics({ id }) {
         fetch("https://unpkg.com/world-atlas@2.0.2/countries-50m.json")
             .then(response => {
                 if (response.status !== 200) {
-                    console.log(`There was a problem: ${response.status}`)
+                    // console.log(`There was a problem: ${response.status}`)
                     return
                 }
                 response.json().then(worlddata => {
@@ -304,10 +304,10 @@ export default function Metrics({ id }) {
             })
     }
     const handleCountryClick = countryIndex => {
-        console.log("Clicked on country: ", geographies[countryIndex])
+        // console.log("Clicked on country: ", geographies[countryIndex])
     }
     const handleMarkerClick = i => {
-        console.log("Marker: ", cities[i])
+        // console.log("Marker: ", cities[i])
     }
     // wordlMap end
     return (

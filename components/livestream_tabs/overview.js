@@ -16,14 +16,12 @@ export default function Overview() {
     const [activities, setactivities] = useState(false);
     const Vdplayer = useRef();
     const streamuuid = router.query.streamId
-    // console.log(window.location.origin)
-    console.log(router.query.streamId)
+    
     useEffect(() => {
 
         Api.Live_stream_data(streamuuid)
             .then(res => {
                 if (res && res.data && res.data.data) {
-                    console.log(res.data.data)
                     setplayer([res.data.data])
                     // localStorage.setItem("asset_title", res.data.data.title);
                 }
@@ -122,15 +120,15 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>RTMP URL</td>
-                                            {/* <td className={styles.content}>{created(i.createdOn)} {created_time(i.createdOn)}</td> */}
+                                            <td className={styles.content}>{i.rtmpUrl}</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>RTMPs URL</td>
-                                            {/* <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td> */}
+                                            <td className={styles.content}>{i.rtmpsUrl}</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Stream Key</td>
-                                            {/* {i.duration ? <td className={styles.content}>{Math.floor(i.duration / 60000)} mins {Math.floor((i.duration % 60000) / 1000)} secs</td> : <td>-</td>} */}
+                                            {i.streamKey ? <td className={styles.content}>{i.streamKey}</td> : <td>-</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
