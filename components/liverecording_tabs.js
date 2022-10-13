@@ -13,7 +13,7 @@ function Liverecording_tabs() {
     useEffect(()=>{
         if(Number(router.query.path==undefined)){
             setToggleState(1);
-            router.push({pathname:'./liverecordingtabs',query:{'videoId':localStorage.getItem('videoId'),'path':1}})    
+            router.push({pathname:'./liverecordingtabs',query:{'streamId':localStorage.getItem('streamId'),'path':1}})    
         }else{
             setToggleState(Number(router.query.path));
         }
@@ -24,7 +24,7 @@ function Liverecording_tabs() {
     },[router.query.path])
     
     const toggleTab = (index) => {
-        router.push({pathname:'./liverecordingtabs',query:{'videoId':localStorage.getItem('videoId'),'path':`${index}`}})
+        router.push({pathname:'./liverecordingtabs',query:{'streamId':localStorage.getItem('streamId'),'path':`${index}`}})
         setToggleState(index);
     };
     

@@ -13,18 +13,18 @@ const RecordingList = ({ i, create_On, created_time }) => {
     const [dropdown, setdropdown] = useState(false);
     const [hover, setHover] = useState(false)
     const handleChange = (status) => {
-        setVideoId(i.contentId)
-        setvideotitle(i.title)
-        setthumbnail(i.thumbnailUrl)
-        localStorage.setItem('status', status)
-        router.push({ pathname: `./Live_recording/liverecordingtabs`, query: { 'videoId': i.contentId, 'path': 1 } });
+        setVideoId(i.streamUUID)
+        // setvideotitle(i.title)
+        // setthumbnail(i.thumbnailUrl)
+        // localStorage.setItem('status', status)
+        router.push({ pathname: `./Live_recording/liverecordingtabs`, query: { 'streamId': i.streamUUID, 'path': 1 } });
     }
     const handleVideoClips = () => {
-        setVideoId(i.contentId)
-        setvideotitle(i.title)
-        setthumbnail(i.thumbnailUrl)
-        localStorage.setItem('status', i.status)
-        router.push({ pathname: './Live_recording/liverecordingtabs', query: { 'videoId': i.contentId, 'path': 2 } });
+        // setVideoId(i.streamUUID)
+        // setvideotitle(i.title)
+        // setthumbnail(i.thumbnailUrl)
+        // localStorage.setItem('status', i.status)
+        router.push({ pathname: './Live_recording/liverecordingtabs', query: { 'streamId': i.streamUUID, 'path': 2 } });
 
     }
 
@@ -38,9 +38,9 @@ const RecordingList = ({ i, create_On, created_time }) => {
     }
     
 
-    localStorage.setItem('asset_title', videotitle)
-    localStorage.setItem('videoId', videoId)
-    localStorage.setItem('thumbnail', thumbnail)
+    // localStorage.setItem('asset_title', videotitle)
+    localStorage.setItem('streamId', videoId)
+    // localStorage.setItem('thumbnail', thumbnail)
 
 
 
@@ -81,7 +81,7 @@ const RecordingList = ({ i, create_On, created_time }) => {
             <td id='td'><input className={`${styles.checkbox} ${styles.tdCursor} assetCheck`} type="checkbox" onClick={() => handleSingleCheck()}></input></td>
             <td className={`${styles.addedon} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>{create_On(i.created_at)}<br></br> {created_time(i.created_at)}</td>
             {/* <td className={styles.title}>{i.title}</td> */}
-            <td className={`${styles.assetID} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>{i.contentId}</td>
+            <td className={`${styles.assetID} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>{i.streamUUID}</td>
             {i.thumbnailUrl
                 ? <td className={`${styles.thumbnail} ${styles.tdCursor}`} onClick={() => handleChange(i.status)}>
                     {/* <img className={styles.thumbImg} src={`${i.thumbnailUrl}`} alt="image"></img> */}
@@ -102,7 +102,7 @@ const RecordingList = ({ i, create_On, created_time }) => {
                     :i.status=="Processing"
                     ?<td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
                     : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/processing.png' /></td>
-                    : <td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.svg`} /></td>}
+                    : <td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>

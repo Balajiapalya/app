@@ -236,8 +236,8 @@ export const impersonateAs=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/users/impersonate`
 }
 // Live stream
-export const live_stream_list = () =>{
-    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams?record=false`
+export const live_stream_list = (status) =>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams?record=${status}`
 }
 export const create_live_stream = ()=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams`
@@ -787,10 +787,10 @@ const Api = {
         }
     }),
     // Live stream//
-    Live_stream_list: ()=>
+    Live_stream_list: (status)=>
     axios({
             method: 'GET',
-            url: live_stream_list(),
+            url: live_stream_list(status),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${localStorage.getItem("envuuid")}`

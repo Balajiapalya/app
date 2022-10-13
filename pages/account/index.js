@@ -115,7 +115,7 @@ export default function Accounts() {
   const ownerFirstname = firstname;
   const ownerLastname = lastname;
   const Org_name = Orgname;
-console.log(ownerEmail,'email')
+// console.log(ownerEmail,'email')
   const handleNext = () => {
     // document.body.style.overflow = 'hidden'
     set_openneworg(true)

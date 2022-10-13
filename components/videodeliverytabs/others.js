@@ -104,7 +104,7 @@ export default function Others() {
         let obj=new Object()
         obj.tags=tags;
         obj.metadata=meta;
-        console.log(dataVideo,'dataaa')
+        // console.log(dataVideo,'dataaa')
         if(dataVideo.title.length>0 && dataVideo.description.length>0){
             obj['title']=dataVideo.title;
             obj['description']=dataVideo.description;

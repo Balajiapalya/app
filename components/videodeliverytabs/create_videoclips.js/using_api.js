@@ -79,7 +79,7 @@ function Using_api() {
             Api.post_video(JSON.parse(codeData))
                 .then(res => {
                     if (res.data.status == "Success") {
-                        console.log(res, 'res')
+                        // console.log(res, 'res')
                     }
                 })
                 .catch(error => {

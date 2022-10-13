@@ -51,7 +51,7 @@ export default function Thumbnails_api() {
     }
     const handleCopy = (event) => {
         let copiedText = event.target.parentNode.parentNode.firstChild;
-        console.log(copiedText)
+        // console.log(copiedText)
         copiedText.style.display = "block"
         setTimeout(function () {
             copiedText.style.display = ""

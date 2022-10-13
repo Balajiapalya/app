@@ -75,45 +75,46 @@ export default function Recording() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         const endOffset = itemOffset + itemsPerPage;
-        Api.Video_list(data)
-            .then(res => {
-                setCurrentItems(res.data.data.slice(itemOffset, endOffset));
-                setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
-                {
-                    res.data.data.map(item => {
+        Api.Live_stream_list(true)
+        .then(res=>{
+            res&&res.data&&res.data.data&&console.log(res.data.data);
+            setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+            {
+                res.data.data.map(item => {
 
 
-                        if (item.status == 'Processing') {
-                            setTimeout(() => {
-                                setTimer(true)
-                            }, 1000 * 60)
+                    if (item.status == 'Processing') {
+                        setTimeout(() => {
+                            setTimer(true)
+                        }, 1000 * 60)
+                    }
+                })
+            }
+            setInitialLength(res.data.data.length)
+
+            let timerFun = () => {
+                setReload(false)
+                let count = 0
+                let intervalFunc = setInterval(() => {
+                    Api.Video_list(data).then(res => {
+                        let resp = res.data.data.length + count
+                        if (initialLength < resp) {
+                            setTimer(!timer)
+                            clearInterval(intervalFunc)
+                        }
+                        if (resp < initialLength) {
+                            count = initialLength - resp
                         }
                     })
-                }
-                setInitialLength(res.data.data.length)
+                }, 1000 * 20);
+            }
 
-                let timerFun = () => {
-                    setReload(false)
-                    let count = 0
-                    let intervalFunc = setInterval(() => {
-                        Api.Video_list(data).then(res => {
-                            let resp = res.data.data.length + count
-                            if (initialLength < resp) {
-                                setTimer(!timer)
-                                clearInterval(intervalFunc)
-                            }
-                            if (resp < initialLength) {
-                                count = initialLength - resp
-                            }
-                        })
-                    }, 1000 * 20);
-                }
-
-                { reload && timerFun() }
+            { reload && timerFun() }
 
 
-                { setVideoData(res.data.data) }
-            })
+            { setVideoData(res.data.data) }
+        })
 
         // Api.Env_data()
         //     .then(res => {
@@ -193,7 +194,7 @@ export default function Recording() {
                 }
             }
         }
-        console.log(tRow.length,count)
+        // console.log(tRow.length,count)
         if(tRow.length-1==count && count!==0){ 
           div.style.display='block'
         }else{

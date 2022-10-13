@@ -97,7 +97,7 @@ export default function Overview({ setToggleState }) {
         fetch("https://unpkg.com/world-atlas@2.0.2/countries-50m.json")
             .then(response => {
                 if (response.status !== 200) {
-                    console.log(`There was a problem: ${response.status}`)
+                    // console.log(`There was a problem: ${response.status}`)
                     return
                 }
                 response.json().then(worlddata => {
@@ -116,10 +116,10 @@ export default function Overview({ setToggleState }) {
             })
     }
     const handleCountryClick = countryIndex => {
-        console.log("Clicked on country: ", geographies[countryIndex])
+        // console.log("Clicked on country: ", geographies[countryIndex])
     }
     const handleMarkerClick = i => {
-        console.log("Marker: ", cities[i])
+        // console.log("Marker: ", cities[i])
     }
     // wordlMap end
 

@@ -23,19 +23,18 @@ const LiveList = ({ i, create_On, created_time }) => {
 
 
     const handleStreaming = (status) => {
-        console.log(status)
-        // setVideoId(i.contentId)
+        // setVideoId(i.streamUUID)
         // setvideotitle(i.title)
         // setthumbnail(i.thumbnailUrl)
         // localStorage.setItem('status', i.status)
-        // router.push({ pathname: './Live_stream/livestreamtabs', query: { 'videoId': i.contentId, 'path': 2 } });
+        router.push({ pathname: './Live_stream/livestreamtabs', query: { 'streamId': i.streamUUID, 'path': 2 } });
 
     }
     
 
-    localStorage.setItem('asset_title', videotitle)
+    // localStorage.setItem('asset_title', videotitle)
     localStorage.setItem('streamId', videoId)
-    localStorage.setItem('thumbnail', thumbnail)
+    // localStorage.setItem('thumbnail', thumbnail)
 
 
 
