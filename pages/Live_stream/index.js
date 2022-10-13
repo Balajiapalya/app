@@ -184,13 +184,13 @@ export default function Videos() {
         let tRow = table.getElementsByTagName('tr')
         for (let i = 0; i < tRow.length; i++) {
             let td = tRow[i].getElementsByTagName('td')[2]
-            let tdId = tRow[i].getElementsByTagName('td')[3]
-            let status = tRow[i].getElementsByTagName('td')[6]
-            if (td || tdId || status) {
+            // let tdId = tRow[i].getElementsByTagName('td')[3]
+            let status = tRow[i].getElementsByTagName('td')[4]
+            if (td ||  status) {
                 let data = td.innerText.toUpperCase()
-                let id = tdId.innerText.toUpperCase();
+                // let id = tdId.innerText.toUpperCase();
                 let stat = status.innerText.toUpperCase()
-                if (data.indexOf(input) > -1 || id.indexOf(input) > -1 || stat.indexOf(input) > -1) {
+                if (data.indexOf(input) > -1 ||  stat.indexOf(input) > -1) {
                     tRow[i].style.display = ''
                 } else {
                     tRow[i].style.display = 'none';
