@@ -5,45 +5,32 @@ import { useRouter } from 'next/router';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Hls from 'hls.js';
 import Player from '../player';
-import Embed from '../../pages/videos/embed';
-import Delete_content from '../dialog/delete_content';
-import Activities from '../dialog/activities';
+// import Embed from '../../pages/videos/embed';
+// import Delete_content from '../dialog/delete_content';
+// import Activities from '../dialog/activities';
 export default function Overview() {
     const router = useRouter();
     const [player, setplayer] = useState([]);
     const [playback, setplayback] = useState(false)
     const [Pop_up, setPop_up] = useState(false);
     const [activities, setactivities] = useState(false);
-    const [vidToggle,setVideToggle]=useState(false)
+    const Vdplayer = useRef();
+    const streamuuid = router.query.streamId
     // console.log(window.location.origin)
+    console.log(router.query.streamId)
     useEffect(() => {
 
-        Api.Get_Env_item()
+        Api.Live_stream_data(streamuuid)
             .then(res => {
                 if (res && res.data && res.data.data) {
+                    console.log(res.data.data)
                     setplayer([res.data.data])
-                    localStorage.setItem("asset_title", res.data.data.title);
-                    if (res && res.data && res.data.data && res.data.data.playbackUrl) {
-                        var url = res.data.data.playbackUrl;
-                        const liveVid=document.querySelector("#live")
-                        if (Hls.isSupported() && liveVid) {
-                          const video = liveVid;
-                          const hls = new Hls({ enableWorker: false });
-                          hls.loadSource(url);
-                          hls.attachMedia(video);
-                          console.log(url,'url',hls)
-                          hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                            // video.play();
-                          });
-                        }
-                      }
+                    // localStorage.setItem("asset_title", res.data.data.title);
                 }
             })
-            
-        return () => {
-            setplayer([])
-        }
-        
+        // return () => {
+        //     setplayer([])
+        // }
     }, []);
     const created = (date) => {
         const d = new Date(date)
@@ -54,19 +41,19 @@ export default function Overview() {
         return t.toLocaleString("en-AU", { hour: "2-digit", minute: "2-digit" })
     }
 
-    const delete_asset = () => {
-        Api.Delete_asset()
-            .then(res => {
-                if (res.data.status = "Success") {
-                    router.push({
-                        pathname: "/Live_stream"
-                    })
-                }
-            })
-            .catch(error => {
+    // const delete_asset = () => {
+    //     Api.Delete_asset()
+    //         .then(res => {
+    //             if (res.data.status = "Success") {
+    //                 router.push({
+    //                     pathname: "/Live_stream"
+    //                 })
+    //             }
+    //         })
+    //         .catch(error => {
 
-            })
-    }
+    //         })
+    // }
     const handlethumnail_callback = () => {
 
     }
@@ -109,7 +96,7 @@ export default function Overview() {
                 <div key={ind} className={styles.overview}>
                     <div className={styles.url_buttons}>
                         <div className={styles.geturl}>
-                            <p>GET/video/v1/live-streams/{i.contentId}</p>
+                            <p>GET   /video/v1/live-streams/{i.streamUUID}</p>
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
@@ -131,11 +118,11 @@ export default function Overview() {
                                     <div>
                                         <tr>
                                             <td className={styles.title}>Live Stream ID</td>
-                                            {/* {i.contentId ? <td className={styles.content}>{i.contentId}</td> : <td>-</td>} */}
+                                            {i.streamUUID ? <td className={styles.content}>{i.streamUUID}</td> : <td>-</td>}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>RTMP URL</td>
-                                            {/* <td className={styles.content}>{created(i.created_at)} {created_time(i.created_at)}</td> */}
+                                            {/* <td className={styles.content}>{created(i.createdOn)} {created_time(i.createdOn)}</td> */}
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>RTMPs URL</td>
@@ -147,36 +134,37 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
-                                            {/* {i.transcodingResponse && i.transcodingResponse.data && i.transcodingResponse.data.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td>-</td>} */}
+                                            <td className={styles.content}>{created(i.createdOn)} {created_time(i.createdOn)}</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            {/* {i.transcodingResponse && i.transcodingResponse.data && i.transcodingResponse.data.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td>-</td>} */}
-                                            {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>}
+                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                                            {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
                                         </tr>
                                     </div>
                                 </tbody>
-                                <div className={styles.recordingplayer_action}>
-                                    {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
-                                        <img src='/images/live_stop.svg' />
-                                        <span> Start</span>
+                                {i.status !== 'Failed'  &&
+                                    <div className={styles.recordingplayer_action}>
+                                        {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
+                                            <img src='/images/live_play.svg' />
+                                            <span> Start</span>
+                                        </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
+                                            <img src='/images/live_stop.svg' />
+                                            <span> Stop</span>
+                                        </button>}
+                                    </div>
+                                }
 
-                                    </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
-                                        <img src='/images/live_stop.svg' />
-                                        <span> Stop</span>
-
-                                    </button>}
-                                </div>
                             </table>
                         </div>
                     </div>
-                    {i.transcodingInfo ?
+                    {i ?
                         <div className={styles.playback}>
                             <h2>Live Stream</h2>
                             <div className={styles.playback_content} >
                                 <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
 
-                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' height='250px'></img> : <Player handlethumnail={handlethumnail_callback} />}
+                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Player handlethumnail={handlethumnail_callback} />}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.transcodingInfo ?

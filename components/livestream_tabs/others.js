@@ -149,28 +149,28 @@ export default function Others() {
     }
 
     useEffect(() => {
-        Api.Get_Env_item().then(res => {
-            setValue('title', res.data.data.title)
-            setValue('description', res.data.data.description)
-            setDataVideo(res.data.data)
-            if (res.data.data.tags != undefined) {
-                if (res.data.data.tags[0].length > 0) {
-                    setTags(res.data.data.tags)
-                }
-                // console.log(res.data.data.tags!=undefined)
+        // Api.Live_stream_data(streamuuid).then(res => {
+        //     setValue('title', res.data.data.title)
+        //     setValue('description', res.data.data.description)
+        //     setDataVideo(res.data.data)
+        //     if (res.data.data.tags != undefined) {
+        //         if (res.data.data.tags[0].length > 0) {
+        //             setTags(res.data.data.tags)
+        //         }
+        //         // console.log(res.data.data.tags!=undefined)
 
-            } else {
-                setTags([])
-            }
+        //     } else {
+        //         setTags([])
+        //     }
 
-            setMeta(res.data.data.metadata)
-            // setSelected(res.data.data.tags)
-        })
-        return () => {
-            setDataVideo([])
-            setTags([])
-            setMeta([])
-        }
+        //     setMeta(res.data.data.metadata)
+        //     // setSelected(res.data.data.tags)
+        // })
+        // return () => {
+        //     setDataVideo([])
+        //     setTags([])
+        //     setMeta([])
+        // }
     }, [rerender])
 
 

@@ -235,6 +235,16 @@ export const get_Activities_Logs = (query) => {
 export const impersonateAs=()=>{
     return `${PROFILE_BASE_URL()}/services/api/v1/users/impersonate`
 }
+// Live stream
+export const live_stream_list = () =>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams?record=false`
+}
+export const create_live_stream = ()=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams`
+}
+export const live_stream_data = (streamuuid)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamuuid?streamuuid:localStorage.getItem('streamId')}`
+}
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -775,6 +785,36 @@ const Api = {
         headers:{
             'Authorization': `Bearer ${document.cookie.split(`Jwt-token=`).pop().split(';')[0]}`,
         }
+    }),
+    // Live stream//
+    Live_stream_list: ()=>
+    axios({
+            method: 'GET',
+            url: live_stream_list(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        }),
+
+    Create_live_stream: (stream_data)=>
+    axios({
+        method:'POST',
+        data:stream_data,
+        url:create_live_stream(),
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${localStorage.getItem("envuuid")}`
+        }
+    }),
+    Live_stream_data: (streamuuid)=>
+    axios({
+        method:'GET',
+        url:live_stream_data(streamuuid),
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'EnvironmentId': `${localStorage.getItem("envuuid")}`
+        },
     })
 }
 export default Api

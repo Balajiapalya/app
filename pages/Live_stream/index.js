@@ -74,8 +74,9 @@ export default function Videos() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         const endOffset = itemOffset + itemsPerPage;
-        Api.Video_list(data)
-            .then(res => {
+        Api.Live_stream_list()
+            .then(res=>{
+                res&&res.data&&res.data.data&&console.log(res.data.data);
                 setCurrentItems(res.data.data.slice(itemOffset, endOffset));
                 setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
                 {
@@ -113,6 +114,11 @@ export default function Videos() {
 
                 { setVideoData(res.data.data) }
             })
+        // Api.Video_list(data)
+        //     .then(res => {
+        //         setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+                
+        //     })
 
         // Api.Env_data()
         //     .then(res => {
