@@ -245,16 +245,18 @@ export default function Recording() {
     }, [])
 
     const handlePopup = () => {
-        set_asset(true)
-        // setuploaded(false);
-        // set_filename('')
-        // let inp=document.querySelector('input[type=file]')
-        // inp.value=''
-        // let Livetable = document.querySelector('.Livetable');
-        // let Livepopup = document.querySelector('.Livepopup');
-        // Livetable.classList.add(`${styles.no_display}`)
-        // Livetable.classList.remove(`${styles.display}`)
-        // Livepopup.classList.remove(`${styles.no_display}`)
+        // set_asset(true)
+        setuploaded(false);
+        set_filename('')
+        let inp=document.querySelector('input[type=file]')
+        if(inp){
+        inp.value=''
+        }
+        let Livetable = document.querySelector('.livetable');
+        let Livepopup = document.querySelector('.livepopup');
+        Livetable.classList.add(`${styles.no_display}`)
+        Livetable.classList.remove(`${styles.display}`)
+        Livepopup.classList.remove(`${styles.no_display}`)
     }
 
 
@@ -375,7 +377,7 @@ export default function Recording() {
                                 <input maxLength={30} type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
                                 <img src='/images/search_icon.svg' alt='icon'></img>
                             </div>
-                            <div className={`${styles.videos_table} Livetable`}>
+                            <div className={`${styles.videos_table} livetable`}>
                                 <table className="table_input">
                                     <thead>
                                         <tr>
@@ -399,10 +401,10 @@ export default function Recording() {
                                  {currentItems.length==0 && <div className={styles.noData}>No Live Data Available</div>}
                                  <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No Result Found</div>
                             </div>
-                            {add_asset && <Create_liveRecording close_asset={set_asset} />}
-                            {/* <div className={`${styles.no_display} Livepopup`}>
-                                <Create_liveRecording table={process.browser && document.querySelector('.Livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
-                            </div> */}
+                            {/* {add_asset && <Create_liveRecording close_asset={set_asset} />} */}
+                            <div className={`${styles.no_display} livepopup`}>
+                                <Create_liveRecording table={process.browser && document.querySelector('.livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
+                            </div>
                         </div>
                     </div>
                 </div>
