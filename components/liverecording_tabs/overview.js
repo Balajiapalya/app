@@ -113,7 +113,7 @@ export default function Overview() {
                                         <tr>
                                             <td className={styles.title}>Status</td>
                                             {/* {i.transcodingResponse && i.transcodingResponse.data && i.transcodingResponse.data.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td>-</td>} */}
-                                            {playback == false ? <td><span> Inactive</span></td> : <td><span> Ready</span><img src={`/images/asset_status/${i.status}.png`} /></td>}
+                                            {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>}
                                         </tr>
                                     </div>
                                 </tbody>

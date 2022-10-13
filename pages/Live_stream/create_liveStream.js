@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MonacoEditor from '../../components/videodeliverytabs/create_videoclips.js/MonacoEditor'
 
 
-export default function Create_liveStream({ Livetable, setReload, filename, set_filename, uploaded, setuploaded }) {
+export default function Create_liveStream({close_asset, Livetable, setReload, filename, set_filename, uploaded, setuploaded }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [toggleposition, settoggleposition] = useState(2);
     const [codeData, setCodeData] = useState(`${JSON.stringify(
@@ -82,11 +82,11 @@ export default function Create_liveStream({ Livetable, setReload, filename, set_
 
     // popup
     const handlePopUp = () => {
-        // close_asset(false)
+        close_asset(false)
         toast.dismiss()
-        let inpopUp = document.querySelector('.inpopup');
-        inpopUp.parentElement.classList.add(`${styles.no_display}`);
-        Livetable.classList.remove(`${styles.no_display}`);
+        // let inpopUp = document.querySelector('.inpopup');
+        // inpopUp.parentElement.classList.add(`${styles.no_display}`);
+        // Livetable.classList.remove(`${styles.no_display}`);
     }
     return (
         <div className={`${styles.videodelivery} inpopup`}>
@@ -95,7 +95,7 @@ export default function Create_liveStream({ Livetable, setReload, filename, set_
             </div>
             <div className={styles.Videodelivery_addnewassets}>
                 <h2>Create Live Stream</h2>
-                <Direct_upload toast={toast} handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded} />
+                {/* <Direct_upload toast={toast} handlePopUp={handlePopUp} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded} /> */}
                 {/* <div className={styles.or}></div> */}
                 {/* <div className={styles.or_text}><span className={styles.divider}>[or]</span></div> */}
                 <div className={styles.post} >
@@ -104,7 +104,7 @@ export default function Create_liveStream({ Livetable, setReload, filename, set_
                     <input
                         type='text'
                         readOnly
-                        value={`POST  https://api.videograph.ai/video/services/api/v1/contents`}
+                        value={`POST https://api.videograph.com/video/v1/live_streams`}
                     />
                     <span className={styles.postSpan}>POST body editor:</span>
                     {/* <div className={styles.language_select}>
@@ -139,4 +139,4 @@ export default function Create_liveStream({ Livetable, setReload, filename, set_
         </div>
 
     )
-                      }
+}
