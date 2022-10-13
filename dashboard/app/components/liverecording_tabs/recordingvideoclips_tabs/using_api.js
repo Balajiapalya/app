@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
-import MonacoEditor from './MonacoEditor'
+import MonacoEditor from "../../videodeliverytabs/create_videoclips.js/MonacoEditor";
 
 function Using_api() {
     const router = useRouter();
@@ -76,15 +76,15 @@ function Using_api() {
 
     const onSubmit = video_url_data => {
         try {
-            Api.post_video(JSON.parse(codeData))
-                .then(res => {
-                    if (res.data.status == "Success") {
-                        // console.log(res, 'res')
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            // Api.post_video(JSON.parse(codeData))
+            //     .then(res => {
+            //         if (res.data.status == "Success") {
+            //             console.log(res, 'res')
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.log(error)
+            //     })
         }
         catch (e) {
             toast.error('syntax error', {

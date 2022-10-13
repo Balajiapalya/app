@@ -25,7 +25,7 @@ export default function Thumbnails() {
         const [hrs,mins,sec]=gettime.split(':')
         const seconds=(+hrs)*60*60+(+mins)*60+(+sec);
         thumbnail.videoPositionInSec=+seconds;
-        console.log(+seconds)
+        // console.log(+seconds)
         // if(thumbnail.videoPositionInSec==NaN){
         //     setError('videoPositionInSec',{message:'Please enter hh:mm:ss format'})
         // }
@@ -33,7 +33,7 @@ export default function Thumbnails() {
         Api.Create_thumbnail(thumbnail)
             .then(res => {
                 if (res.data.code = 200) {
-                    console.log(res.data.data)
+                    // console.log(res.data.data)
                     set_thumbnailurl(res.data.data.url)
                 }
             })
@@ -47,7 +47,7 @@ export default function Thumbnails() {
     }
     const handleCopy = (event) => {
         let copiedText = event.target.parentNode.parentNode.firstChild;
-        console.log(copiedText)
+        // console.log(copiedText)
         copiedText.style.display = "block"
         setTimeout(function () {
             copiedText.style.display = ""

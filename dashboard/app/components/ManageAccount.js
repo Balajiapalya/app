@@ -75,7 +75,7 @@ const ManageAccount = ({toast}) => {
                     <label className={styles.model_label}>Confirm New Password</label>
                     <input maxLength={40} {...register("confirmPassword",{required:"This field is required",validate:val=>val==watch('newPassword'),message:'mismatch'})} type="password" className={`${styles.model_input} form_control empty`}
                         name="confirmPassword" />
-                        {console.log(watch('newPassword'))}
+                        {/* {console.log(watch('newPassword'))} */}
                          {<p className={'validations'}>{errors.confirmPassword && 'mismatch'}</p>}
                     {/* {errors.confirmPassword && <p className={`${styles.validations} validations`}>This field is required</p>} */}
                     {mismatch && <p className={styles.mismatch}>{mismatch}</p>}

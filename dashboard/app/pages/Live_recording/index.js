@@ -1,15 +1,18 @@
-import styles from '../../styles/videos.module.css'
+import styles from '../../styles/livestream.module.css'
 import Link from 'next/link';
 import Layout from '../../components/common/layout';
 import { useEffect } from 'react'
 import Api from '../../components/api/api'
 import { useState, useRef } from 'react'
-import Videodelivery_addnewassets from './videodelivery_addnewassets';
 import React from 'react'
-import VideoList from '../../components/video_list'
+import LiveList from '../../components/live_list';
+import RecordingList from '../../components/recording_list';
+import Create_liveRecording from './create_liveRecording';
 import ReactPaginate from 'react-paginate';
+import Videodelivery_addnewassets from '../videos/videodelivery_addnewassets';
+import Create_liveStream from '../Live_stream/create_liveStream';
 
-export default function Videos() {
+export default function Recording() {
     const [videoData, setVideoData] = useState([]);
     const [add_asset, set_asset] = useState(false);
     // const [env, setenv] = useState([]);
@@ -72,45 +75,46 @@ export default function Videos() {
     useEffect(() => {
         const data = localStorage.getItem("envuuid")
         const endOffset = itemOffset + itemsPerPage;
-        Api.Video_list(data)
-            .then(res => {
-                setCurrentItems(res.data.data.slice(itemOffset, endOffset));
-                setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
-                {
-                    res.data.data.map(item => {
+        Api.Live_stream_list(true)
+        .then(res=>{
+            res&&res.data&&res.data.data&&console.log(res.data.data);
+            setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+            {
+                res.data.data.map(item => {
 
 
-                        if (item.status == 'Processing') {
-                            setTimeout(() => {
-                                setTimer(true)
-                            }, 1000 * 60)
+                    if (item.status == 'Processing') {
+                        setTimeout(() => {
+                            setTimer(true)
+                        }, 1000 * 60)
+                    }
+                })
+            }
+            setInitialLength(res.data.data.length)
+
+            let timerFun = () => {
+                setReload(false)
+                let count = 0
+                let intervalFunc = setInterval(() => {
+                    Api.Video_list(data).then(res => {
+                        let resp = res.data.data.length + count
+                        if (initialLength < resp) {
+                            setTimer(!timer)
+                            clearInterval(intervalFunc)
+                        }
+                        if (resp < initialLength) {
+                            count = initialLength - resp
                         }
                     })
-                }
-                setInitialLength(res.data.data.length)
+                }, 1000 * 20);
+            }
 
-                let timerFun = () => {
-                    setReload(false)
-                    let count = 0
-                    let intervalFunc = setInterval(() => {
-                        Api.Video_list(data).then(res => {
-                            let resp = res.data.data.length + count
-                            if (initialLength < resp) {
-                                setTimer(!timer)
-                                clearInterval(intervalFunc)
-                            }
-                            if (resp < initialLength) {
-                                count = initialLength - resp
-                            }
-                        })
-                    }, 1000 * 20);
-                }
-
-                { reload && timerFun() }
+            { reload && timerFun() }
 
 
-                { setVideoData(res.data.data) }
-            })
+            { setVideoData(res.data.data) }
+        })
 
         // Api.Env_data()
         //     .then(res => {
@@ -176,13 +180,13 @@ export default function Videos() {
         let tRow = table.getElementsByTagName('tr')
         for (let i = 0; i < tRow.length; i++) {
             let td = tRow[i].getElementsByTagName('td')[2]
-            let tdId = tRow[i].getElementsByTagName('td')[3]
-            let status = tRow[i].getElementsByTagName('td')[6]
-            if (td || tdId || status) {
+            // let tdId = tRow[i].getElementsByTagName('td')[3]
+            let status = tRow[i].getElementsByTagName('td')[4]
+            if (td ||  status) {
                 let data = td.innerText.toUpperCase()
-                let id = tdId.innerText.toUpperCase();
+                // let id = tdId.innerText.toUpperCase();
                 let stat = status.innerText.toUpperCase()
-                if (data.indexOf(input) > -1 || id.indexOf(input) > -1 || stat.indexOf(input) > -1) {
+                if (data.indexOf(input) > -1 ||  stat.indexOf(input) > -1) {
                     tRow[i].style.display = ''
                 } else {
                     tRow[i].style.display = 'none';
@@ -246,12 +250,14 @@ export default function Videos() {
         setuploaded(false);
         set_filename('')
         let inp=document.querySelector('input[type=file]')
+        if(inp){
         inp.value=''
-        let table = document.querySelector('.table');
-        let popup = document.querySelector('.popup');
-        table.classList.add(`${styles.no_display}`)
-        table.classList.remove(`${styles.display}`)
-        popup.classList.remove(`${styles.no_display}`)
+        }
+        let Livetable = document.querySelector('.livetable');
+        let Livepopup = document.querySelector('.livepopup');
+        Livetable.classList.add(`${styles.no_display}`)
+        Livetable.classList.remove(`${styles.display}`)
+        Livepopup.classList.remove(`${styles.no_display}`)
     }
 
 
@@ -356,14 +362,13 @@ export default function Videos() {
                             <div className={styles.videos_delivery}>
                                 <div className={styles.header}>
                                     <h2>
-                                        Videos
+                                    Live Recording
                                     </h2>
                                 </div>
                                 <div className={styles.videos_deliverydata}>
-                                    <p>Upload, Transcode, Store and Deliver your asset using our service.<br />
-                                        You can Upload a video using API or directly from here to share it with your users</p>
+                                    <p>Use Videograph Live Recording APIs to record the programs and create video clips from the same.</p>
                                     <a >
-                                        <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Add New Video</button>
+                                        <button onClick={() => handlePopup()} className='btn'> <img src="/images/iconfeather-plus.svg" alt='icon' ></img> Create Live Recording</button>
 
                                     </a>
                                 </div>
@@ -373,17 +378,15 @@ export default function Videos() {
                                 <input maxLength={30} type="text" onChange={(e) => handleSearch(e)} placeholder='Search videos'></input>
                                 <img src='/images/search_icon.svg' alt='icon'></img>
                             </div>
-                            <div className={`${styles.videos_table} table`}>
+                            <div className={`${styles.videos_table} livetable`}>
                                 <table className="table_input">
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check" onClick={() => handleCheck()}></input></th>
                                             <th>Added on  <img onClick={() => sort_num("created_at")} src='/images/updown.svg' /></th>
                                             {/* <th>Name <img onClick={() => sorting("title")} src='/images/updown.svg' /> </th> */}
-                                            <th>Content ID</th>
+                                            <th>Stream ID</th>
                                             <th>Image Preview</th>
-                                            <th>Duration <img onClick={() => sort_num("duration")} src='/images/updown.svg' /></th>
-                                            <th>Resolution</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -391,17 +394,17 @@ export default function Videos() {
                                     <tbody className="tbody">
                                         {currentItems.map((i, key) =>
                                             <tr key={key}>
-                                                <VideoList create_On={create_On} i={i} created_time={created_time} />
+                                                <RecordingList create_On={create_On} i={i} created_time={created_time} />
                                             </tr>
                                         )}
                                     </tbody>
                                 </table>
-                                 {currentItems.length==0 && <div className={styles.noData}>No Video Data Available</div>}
+                                 {currentItems.length==0 && <div className={styles.noData}>No Live Data Available</div>}
                                  <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No Result Found</div>
                             </div>
-                            {/* {add_asset && <Videodelivery_addnewassets close_asset={set_asset} />} */}
-                            <div className={`${styles.no_display} popup`}>
-                                <Videodelivery_addnewassets table={process.browser && document.querySelector('.table')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
+                            {/* {add_asset && <Create_liveRecording close_asset={set_asset} />} */}
+                            <div className={`${styles.no_display} livepopup`}>
+                                <Create_liveRecording table={process.browser && document.querySelector('.livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
                             </div>
                         </div>
                     </div>
@@ -427,7 +430,7 @@ export default function Videos() {
     )
 }
 
-Videos.getLayout = function getLayout(page) {
+Recording.getLayout = function getLayout(page) {
     return (
         <Layout>
             <div className="wrapper_body">
