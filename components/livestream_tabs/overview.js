@@ -16,7 +16,7 @@ export default function Overview() {
     const [thumbnailurl, setthumbnail] = useState(false);
     const [Pop_up, setPop_up] = useState(false);
     const [activities, setactivities] = useState(false);
-    const Vdplayer = useRef();
+    const [vidToggle,setVideToggle]=useState(false)
     // console.log(window.location.origin)
     useEffect(() => {
 
@@ -25,11 +25,27 @@ export default function Overview() {
                 if (res && res.data && res.data.data) {
                     setplayer([res.data.data])
                     localStorage.setItem("asset_title", res.data.data.title);
+                    if (res && res.data && res.data.data && res.data.data.playbackUrl) {
+                        var url = res.data.data.playbackUrl;
+                        const liveVid=document.querySelector("#live")
+                        if (Hls.isSupported() && liveVid) {
+                          const video = liveVid;
+                          const hls = new Hls({ enableWorker: false });
+                          hls.loadSource(url);
+                          hls.attachMedia(video);
+                          console.log(url,'url',hls)
+                          hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                            // video.play();
+                          });
+                        }
+                      }
                 }
             })
+            
         return () => {
             setplayer([])
         }
+        
     }, []);
     const created = (date) => {
         const d = new Date(date)
@@ -63,6 +79,29 @@ export default function Overview() {
             copiedText.style.display = ""
         }, 1000)
     }
+    
+    const handleControls=()=>{
+        const text=document.querySelector('.toggleText');
+        const holder=document.querySelector('#placeholder')
+       setVideToggle(!vidToggle)
+        const liveVid=document.querySelector("#live");
+        if(vidToggle){
+            holder.classList.remove(`${styles.none}`);
+            holder.classList.add(`${styles.show}`);
+            liveVid.classList.add(`${styles.none}`)
+            text.innerText='Inactive'
+            liveVid.pause();
+        }else{
+            console.log(liveVid,'vid')
+            liveVid.classList.remove(`${styles.none}`);
+            holder.classList.add(`${styles.none}`);
+            holder.classList.remove(`${styles.show}`);
+            text.innerText='Active'
+            liveVid.play();
+        }
+        
+    }
+   
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -121,12 +160,19 @@ export default function Overview() {
                     {i.transcodingInfo ?
                         <div className={styles.playback}>
                             <h2>Live Stream</h2>
-                            <div className={styles.playback_content} >
-                                <div className={styles.playback_status}><span>Inactive</span></div>
+                            <div className={styles.playback_content}>
+                                <div className={styles.playback_status}><span className='toggleText'>Inactive</span></div>
                                 {/* <Player handlethumnail={handlethumnail_callback} /> */}
-                                <img src='/images/player_placeholder.svg' height='250px'></img>
+                              
+                                <video
+                                width="100%"
+                                height="230px"
+                                id="live"
+                                className={styles.none}
+                                />  
+                                <img src='/images/player_placeholder.svg' height='250px' id="placeholder"></img>
                             </div>
-                            <div className={styles.playback_action}><button className='btn' >Start Streaming</button></div>
+                            <div className={styles.playback_action}><button className='btn' onClick={()=>handleControls()}>Start Streaming</button></div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.transcodingInfo ?
                         <div className={styles.video_urls}>

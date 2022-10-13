@@ -73,7 +73,7 @@ const router=useRouter()
                             <Link href='/analytics'><a className={router.pathname=='/analytics' ? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/iconsimple-googleanalytics(white).svg' : '/images/iconsimple-googleanalytics.svg'} alt='icon'></img><span>Analytics</span></a></Link>
                         </li>
                         <li>
-                            <Link href='/Live_stream'><a className={router.pathname=='/live-stream' ? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/live-streaming.svg' : '/images/live-streaming.svg'} alt='icon'></img><span>Live Stream</span></a></Link>
+                            <Link href='/Live_stream'><a className={router.pathname=='/Live_stream' || router.pathname=='/Live_stream/livestreamtabs'? `${styles.activate}` :''}><img src={router.pathname=='/analytics' ? '/images/live-streaming.svg' : '/images/live-streaming.svg'} alt='icon'></img><span>Live Stream</span></a></Link>
                         </li>
                         {/* <li style={opendropdown|| router.pathname=='/tools/streammonitor'|| router.pathname=='/tools/subtitleconverter'? { backgroundColor: "#262b36", color: 'white' } : { backgroundColor: null }} className={styles.tools}>
                             <a className={styles.list_heading} 

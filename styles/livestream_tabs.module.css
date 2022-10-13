@@ -715,6 +715,12 @@
     width: 100%;
     float: left;
 }
+.none{
+    display: none;
+}
+.show{
+    display: block;
+}
 
 .playback_content .playback_status span {
     position: absolute;
