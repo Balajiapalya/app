@@ -17,7 +17,7 @@ export default function Create_liveStream({ table, setReload, filename, set_file
     const [codeData, setCodeData] = useState(`${JSON.stringify(
         {
             "title": "First Channel",
-            "region": "asia-pacific"
+            "region": "us-east-1"
         }
         , undefined, 2)}`)
 
