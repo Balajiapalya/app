@@ -41,7 +41,7 @@ export default function Recordingvideoclips_tabs(props){
                                 <div
                                     className={toggleState === 2 ? `${styles1.content_tabs} ${styles1.active_content}` : `${styles1.content_tabs}`}
                                 >
-                                    <Using_api/>
+                                    <Using_api props={props}/>
                                 </div>
                             </div>
 

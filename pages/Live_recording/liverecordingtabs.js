@@ -18,7 +18,7 @@ export default function Livesrecording_tabspage() {
     const [save, setsave] = useState(false);
     const [editInput, setEditInput] = useState()
     const [editted, setEdittedTitle] = useState()
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
     const [titlee,setTitle]=useState()
     const { register, handleSubmit, watch, setError,formState: { errors } } = useForm();
     useEffect(() => {
@@ -26,6 +26,7 @@ export default function Livesrecording_tabspage() {
         .then(res => {
             if (res && res.data && res.data.data) {
                setTitle(res.data.data.title)
+               setData(res.data.data)
             }
         })
 
@@ -112,7 +113,7 @@ export default function Livesrecording_tabspage() {
                             </div>
                             <div className={styles.close}> <Link href="/Live_recording"><a><img src='/images/close.svg' /></a></Link></div>
                             {/* <Videodelivery_tabs /> */}
-                            <Liverecording_tabs/>
+                            <Liverecording_tabs data={data}/>
                         </div>
                     </div>
                 </div>

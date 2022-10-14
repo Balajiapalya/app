@@ -8,7 +8,7 @@ import Api from '../api/api'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
-export default function Others() {
+export default function Others(props) {
     const [keys, setKey] = useState({ key: '', value: '' })
     const [meta, setMeta] = useState([])
     const [tags, setTags] = useState([])
@@ -18,7 +18,7 @@ export default function Others() {
     const [tagErr, setTagErr] = useState(false)
     const [rerender,setRerender]=useState(false)
     const { register, handleSubmit, watch, setError, getValues, setValue, formState: { errors } } = useForm();
-
+    console.log(props.data.data.title)
     const onSubmit = (video_data) => {
         // if (meta.length <= 0) {
         //     if (keys.key !== '' && keys.value === '') {
@@ -111,10 +111,10 @@ export default function Others() {
         }
         if (tags.length > 0 && meta.length > 0) {
 
-            Api.Meta_tag(obj).then(res=>{
-                toast('Tags and metadata saved successfully')
-                setRerender(!rerender)
-            })
+            // Api.Meta_tag(obj).then(res=>{
+            //     toast('Tags and metadata saved successfully')
+            //     setRerender(!rerender)
+            // })
         }
     }
     // set in object
@@ -209,7 +209,7 @@ export default function Others() {
                             <div className={styles.title_description_box}>
                                 <label className={styles.model_label}>Title</label>
                                 {/* <input type="text" className={styles.title_input} defaultValue={dataVideo.title} name="Title" {...register("title", { required: true })} placeholder="Enter title or video" /> */}
-                                <input maxLength={30} type="text" className={`${styles.title_input} child`} defaultValue={dataVideo.title} name="Title" placeholder="Enter title or video" {...register("title", {
+                                <input maxLength={30} type="text" className={`${styles.title_input} child`} defaultValue={props.data.data.title} name="Title" placeholder="Enter title or video" {...register("title", {
                                     required: 'This field is required', pattern: {
                                         value: /^[^\s]+(?:$|.*[^\s]+$)/,
                                         message: 'Entered value cannot start/end or have only white space'
@@ -319,7 +319,8 @@ export default function Others() {
                                         {<p className={`${styles.value} validations`}>{errors.value?.message}</p>}
                                 </div>
                                 <div className={styles.submit}>
-                                    <button className={`${styles.others_submit_btn} btn`} onClick={()=>handleTags_KeyVal()}>Save</button>
+                                    <button className={`${styles.others_submit_btn} btn`} >Save</button>
+                                    {/* onClick={()=>handleTags_KeyVal()} */}
                                 </div>
                             </div>
 

@@ -9,60 +9,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import MonacoEditor from "../../videodeliverytabs/create_videoclips.js/MonacoEditor";
 
-function Using_api() {
+function Using_api(props) {
     const router = useRouter();
+    const streamId = router.query.streamId
     const [codeData, setCodeData] = useState(`${JSON.stringify(
                                 
         {
-            "title": "Video title",
-            "description": "Video description",
-            "video": [
-                {
-                    "url": `vg://${router.query.videoId}`,
-                    "start_offset": 0,
-                    "end_offset": 0
-                }
-            ],
-            "watermark": [
-                {
-                    "url": "Image url",
-                    "x_pos": "10px",
-                    "y_pos": "10px",
-                    "x_margin": "10px/10%",
-                    "y_margin": "10px/10%",
-                    "x_align": "left/center/right",
-                    "y_align": "top/middle/bottom",
-                    "width": "10%/100px",
-                    "height": "10%/100px",
-                    "opacity": "90%"
-                }
-            ],
-            "subtitle": [
-                {
-                    "url": "",
-                    "name": "English US",
-                    "language_code": "en_US",
-                    "support_closed_captions": false
-                }
-            ],
-            "tags": [
-                "tag1",
-                "tag2"
-            ],
-            "metadata": [
-                {
-                    "key": "abc",
-                    "value": "pqr"
-                },
-                {
-                    "key": "...",
-                    "value": "...."
-                }
-            ],
-            "playback_policy": ["public", "signed"],
-            "mp4_support": true,
-            "save_original_copy": true,
-            "test_video": true
+            "startTime": 1665725137,
+            "endTime": 1665725154
         }
     
     , undefined, 2)}`)
@@ -75,16 +29,17 @@ function Using_api() {
 
 
     const onSubmit = video_url_data => {
-        try {
-            // Api.post_video(JSON.parse(codeData))
-            //     .then(res => {
-            //         if (res.data.status == "Success") {
-            //             console.log(res, 'res')
-            //         }
-            //     })
-            //     .catch(error => {
-            //         console.log(error)
-            //     })
+        try {       
+            Api.Live_create_clip(JSON.parse(codeData),streamId)
+                .then(res => {
+                    if (res.data.status == "Success") {
+                        res&&res.data&&res.data.data&&props.props.setReloadAfterPost(!props.props.reloadAfterPost)
+                        // console.log(res, 'res')
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
         catch (e) {
             toast.error('syntax error', {
