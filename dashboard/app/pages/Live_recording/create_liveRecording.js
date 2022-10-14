@@ -17,7 +17,7 @@ export default function Create_liveRecording({ table, Livetable, setReload, file
     const [codeData, setCodeData] = useState(`${JSON.stringify(
         {
             "title": "First Channel",
-            "region": "asia-pacific",
+            "region": "us-east-1",
             "record": true
         }
         , undefined, 2)}`)
