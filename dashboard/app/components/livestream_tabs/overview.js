@@ -28,10 +28,12 @@ export default function Overview() {
                     setplayer([res.data.data])
                     setStatus(res.data.data.status)
                     if (res.data.data.status == 'Active') {
+                        setplayer_toggle(res.data.data.playbackUrl)
                         setplayback(!playback)
                     } else {
                         setplayback(false)
                         if (res.data.data.status == 'Processing') {
+                            setplayer_toggle('')
                             // const handlerender = () => {
                             //     Api.Live_stream_data(streamuuid).then((res) => {
                             //         setStatus(res.data.data.status)
@@ -76,20 +78,30 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
+    const interval = ''
     const handlePlayback = (i) => {
         setplayback(!playback)
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
+                
                 if (res.data.data.status == 'Processing') {
                     const handlerender = () => {
                         Api.Live_stream_data(i.streamUUID).then((res) => {
                             setStatus(res.data.data.status)
                         })
                     }
-                    const interval = setInterval(() => handlerender(), 10000)
-                    return () => {
-                      clearInterval(interval);
+                    interval = setInterval(() => {
+                        handlerender()
+                        if (res.data.data.status !== 'Processing') {
+                            clearInterval(interval)
+                        }
+                    }, 30000)
+
+                }
+                else {
+                    if (res.data.data.status !== 'Processing') {
+                        clearInterval(interval)
                     }
                 }
             })
@@ -103,7 +115,7 @@ export default function Overview() {
                             setStatus(res.data.data.status)
                         })
                     }
-                    const interval = setInterval(() => handlerender(), 10000)
+                    const interval = setInterval(() => handlerender(), 30000)
                     return () => {
                       clearInterval(interval);
                     }
@@ -112,6 +124,7 @@ export default function Overview() {
             })
         }
     }
+    
     const handleCopy = (event) => {
         let copiedText = event.target.parentNode.parentNode.previousSibling.lastChild;
         copiedText.style.display = "block"
@@ -222,7 +235,7 @@ export default function Overview() {
                             <h2>Live Stream</h2>
                             <div className={styles.playback_content} >
                                 <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
-                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
+                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={player_toggle} handlethumnail={handlethumnail_callback} />}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.playbackUrl ?
@@ -239,10 +252,10 @@ export default function Overview() {
                                             <div className={styles.link}>
 
                                                 {/* <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p> */}
-                                                <input defaultValue={`${window.location.origin}/videos/embed?streamId=${i.streamUUID}`} className={styles.copyInput} readOnly />
+                                                <input defaultValue={i.playbackUrl} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?streamId=${i.streamUUID}`}>
+                                                <CopyToClipboard text={i.playbackUrl}>
                                                     <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy} />
                                                 </CopyToClipboard>
                                             </div>
