@@ -10,8 +10,9 @@ export default function Videoclips() {
     const router = useRouter();
     const [clips, setClips] = useState([])
     const [reloadAfterPost,setReloadAfterPost]=useState(false)
+    const streamId = router.query.streamId;
     useEffect(() => {
-        Api.Get_Clips().then(res => setClips(res.data.data))
+        Api.Live_video_clip_list(streamId).then(res => setClips(res.data.data))
             .catch(err => console.log(err))
             return()=>{
                 setClips([])
@@ -26,8 +27,8 @@ export default function Videoclips() {
         return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
     }
     const handleVideoView=(uuid)=>{
-        localStorage.setItem('videoId', uuid)
-        router.push({ pathname: `./video`, query: {'videoId':uuid, 'path': 1 } });
+        // localStorage.setItem('videoId', uuid)
+        // router.push({ pathname: `/Live_recording/liverecordingtabs`, query: {'streamId':uuid, 'path': 1 } });
     }
     return (
         <Fragment>
@@ -49,11 +50,11 @@ export default function Videoclips() {
                                
                                 {clips.map(item => {
                                     return (
-                                            <tr key={item.uuid}>
-                                                <td>{create_On(item.createdOn)}<br/>{created_time(item.createdOn)}</td>
+                                            <tr key={item.clipUUID}>
+                                                <td>{create_On(item.created_at)}<br/>{created_time(item.created_at)}</td>
                                                 <td>{item.name}</td>
-                                                <td>{item.uuid}</td>
-                                                <td className={styles.actionicons}><a onClick={()=>handleVideoView(item.uuid)}>View Video</a>
+                                                <td>{item.clipUUID}</td>
+                                                <td className={styles.actionicons}><a onClick={()=>handleVideoView(item.clipUUID)}>View Video</a>
                                                 </td>
                                             </tr>
                                     )

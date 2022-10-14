@@ -15,19 +15,34 @@ export default function Overview() {
     const [playback, setplayback] = useState(false)
     const [Pop_up, setPop_up] = useState(false);
     const [activities, setactivities] = useState(false);
+    const [status, setStatus] = useState()
+    const [player_toggle,setplayer_toggle] = useState();
     const Vdplayer = useRef();
     const streamuuid = router.query.streamId
-    
+
     useEffect(() => {
 
         Api.Live_stream_data(streamuuid)
             .then(res => {
                 if (res && res.data && res.data.data) {
                     setplayer([res.data.data])
-                    if(res.data.data.status=='Active' || res.data.data.status=='Processing'){
+                    setStatus(res.data.data.status)
+                    if (res.data.data.status == 'Active') {
                         setplayback(!playback)
-                    }else{
+                    } else {
                         setplayback(false)
+                        if (res.data.data.status == 'Processing') {
+                            // const handlerender = () => {
+                            //     Api.Live_stream_data(streamuuid).then((res) => {
+                            //         setStatus(res.data.data.status)
+                            //     })
+                            // }
+                            // const interval = setInterval(() => handlerender(), 10000)
+                            // return () => {
+                            //   clearInterval(interval);
+                            // }
+                        }
+
                     }
                     // localStorage.setItem("asset_title", res.data.data.title);
                 }
@@ -61,8 +76,41 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
-    const handlePlayback = () => {
+    const handlePlayback = (i) => {
         setplayback(!playback)
+        if (i.status == 'Active') {
+            Api.Live_status_stop(i.streamUUID).then((res) => {
+                setStatus(res.data.data.status);
+                if (res.data.data.status == 'Processing') {
+                    const handlerender = () => {
+                        Api.Live_stream_data(i.streamUUID).then((res) => {
+                            setStatus(res.data.data.status)
+                        })
+                    }
+                    const interval = setInterval(() => handlerender(), 10000)
+                    return () => {
+                      clearInterval(interval);
+                    }
+                }
+            })
+        }
+        else {
+            Api.Live_status_start(i.streamUUID).then((res) => {
+                // setStatus(res.data.data.status);
+                if (res.data.data.status == 'Processing') {
+                    const handlerender = () => {
+                        Api.Live_stream_data(i.streamUUID).then((res) => {
+                            setStatus(res.data.data.status)
+                        })
+                    }
+                    const interval = setInterval(() => handlerender(), 10000)
+                    return () => {
+                      clearInterval(interval);
+                    }
+                   
+                }
+            })
+        }
     }
     const handleCopy = (event) => {
         let copiedText = event.target.parentNode.parentNode.previousSibling.lastChild;
@@ -71,28 +119,28 @@ export default function Overview() {
             copiedText.style.display = ""
         }, 1000)
     }
-    
-    const handleControls=()=>{
-        const text=document.querySelector('.toggleText');
-        const holder=document.querySelector('#placeholder')
-       setVideToggle(!vidToggle)
-        const liveVid=document.querySelector("#live");
-        if(vidToggle){
+
+    const handleControls = () => {
+        const text = document.querySelector('.toggleText');
+        const holder = document.querySelector('#placeholder')
+        setVideToggle(!vidToggle)
+        const liveVid = document.querySelector("#live");
+        if (vidToggle) {
             holder.classList.remove(`${styles.none}`);
             holder.classList.add(`${styles.show}`);
             liveVid.classList.add(`${styles.none}`)
-            text.innerText='Inactive'
+            text.innerText = 'Inactive'
             liveVid.pause();
-        }else{
+        } else {
             liveVid.classList.remove(`${styles.none}`);
             holder.classList.add(`${styles.none}`);
             holder.classList.remove(`${styles.show}`);
-            text.innerText='Active'
+            text.innerText = 'Active'
             liveVid.play();
         }
-        
+
     }
-   
+
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -141,29 +189,29 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                                            <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
                                             {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
                                         </tr>
                                     </div>
                                 </tbody>
-                                {i.status == 'Active' && i.playbackUrl ?
+                                {status == 'Active' || status == 'InActive' && i.playbackUrl ?
                                     <div className={styles.recordingplayer_action}>
-                                        {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
+                                        {playback == false ? <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_start} btn`}>
                                             <img src='/images/live_play.svg' />
                                             <span> Start</span>
-                                        </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
+                                        </button> : <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_stop} btn`}>
                                             <img src='/images/live_stop.svg' />
                                             <span> Stop</span>
                                         </button>}
-                                    </div>: i.status == 'Processing' && i.playbackUrl ? <div className={styles.recordingplayer_action}>
-                                        {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
+                                    </div> : status == 'Processing' && i.playbackUrl ? <div className={styles.recordingplayer_action}>
+                                        {/* {playback == false ? <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_start} btn`}>
                                             <img src='/images/live_play.svg' />
                                             <span> Start</span>
-                                        </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
+                                        </button> : <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_stop} btn`}>
                                             <img src='/images/live_stop.svg' />
                                             <span> Stop</span>
-                                        </button>}
-                                    </div>: null
+                                        </button>} */}
+                                    </div> : null
                                 }
 
                             </table>
