@@ -5,7 +5,7 @@ import Others from "../components/liverecording_tabs/others";
 import Videoclips from "./liverecording_tabs/videoclips";
 import Router,{useRouter} from 'next/router'
 
-function Liverecording_tabs() {
+function Liverecording_tabs(props) {
     const router=useRouter();
     const [toggleState, setToggleState] = useState(1)
     const [render,setRender]=useState(true)
@@ -66,7 +66,7 @@ function Liverecording_tabs() {
                     className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
-                    {toggleState===3 && <Others />}
+                    {toggleState===3 && <Others data={props} />}
                 </div>
 
             </div>

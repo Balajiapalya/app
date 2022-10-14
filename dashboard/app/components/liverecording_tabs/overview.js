@@ -23,14 +23,22 @@ export default function Overview() {
 
         Api.Live_stream_data(streamuuid)
         .then(res => {
-            if (res && res.data && res.data.data) {
-                // console.log(res.data.data)
-                setplayer([res.data.data])
-                if(res.data.data.status=='Active'){
-                    setplayback(!playback)
-                }else{
-                    setplayback(false)
+            try{
+                if (res && res.data && res.data.data) {
+                    // console.log(res.data.data)
+                    setplayer([res.data.data])
+                    if(res.data.data.status=='Active'){
+                        setplayback(!playback)
+                    }else{
+                        setplayback(false)
+                    }
                 }
+                else{
+                    console.log(res.data.message)
+                }
+            }
+            catch(e){
+                console.log(e)
             }
         })
     }, []);
@@ -122,7 +130,7 @@ export default function Overview() {
                                         </tr>
                                     </div>
                                 </tbody>
-                                {i.status !== 'Failed'  &&
+                                {i.status == 'Active' || i.status == 'InActive'  &&
                                     <div className={styles.recordingplayer_action}>
                                         {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
                                             <img src='/images/live_play.svg' />

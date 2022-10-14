@@ -27,7 +27,7 @@ export const Edit_organisation_name = () => {
 export const Newmember_invite = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/invite?time=${CurrentDate}`;
 };
-export const resend_invite=()=>{
+export const resend_invite = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/organizations/${uuid}/resend`
 }
 export const get_roles = () => {
@@ -150,10 +150,10 @@ export const get_video_data = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem('videoId')}?time=${CurrentDate}`
 }
 // videos -> video clips
-export const create_videoClips=()=>{
+export const create_videoClips = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}/clips`
 }
-export const get_videoClips=()=>{
+export const get_videoClips = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/contents/${localStorage.getItem("videoId")}/clips`
 }
 // videos -> thumbnails
@@ -232,24 +232,30 @@ export const get_Activities_Events = (query) => {
 export const get_Activities_Logs = (query) => {
     return `${DATA_BASE_URL()}/services/api/v1/logs?contentId=${query}`
 }
-export const impersonateAs=()=>{
+export const impersonateAs = () => {
     return `${PROFILE_BASE_URL()}/services/api/v1/users/impersonate`
 }
 // Live stream
-export const live_stream_list = (status) =>{
+export const live_stream_list = (status) => {
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams?record=${status}`
 }
-export const create_live_stream = ()=>{
+export const create_live_stream = () => {
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams`
 }
-export const live_stream_data = (streamuuid)=>{
-    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamuuid?streamuuid:localStorage.getItem('streamId')}`
+export const live_stream_data = (streamuuid) => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamuuid ? streamuuid : localStorage.getItem('streamId')}`
 }
-export const live_status_start = (streamUUID)=>{
+export const live_status_start = (streamUUID) => {
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/start`
 }
-export const live_status_stop = (streamUUID)=>{
+export const live_status_stop = (streamUUID) => {
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/stop`
+}
+export const live_video_clip_list = (streamUUID) => {
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/clips`
+}
+export const live_create_clip = (streamUUID)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/clips`
 }
 let user_id;
 if (process.browser) {
@@ -385,13 +391,13 @@ const Api = {
             data: admin_invite_code,
             headers: headers,
         }),
-    ResendInvite:(email)=>
-    loginHandledAxios({
-        method: 'POST',
-        url: resend_invite(),
-        data: email,
-        headers: headers,
-    }),
+    ResendInvite: (email) =>
+        loginHandledAxios({
+            method: 'POST',
+            url: resend_invite(),
+            data: email,
+            headers: headers,
+        }),
     //access token
     Get_access_token: () =>
         loginHandledAxios({
@@ -516,7 +522,7 @@ const Api = {
         }),
     //direct upload
     Direct_upload_post: (direct_video_upload) =>
-    loginHandledAxios({
+        loginHandledAxios({
             method: 'POST',
             data: direct_video_upload,
             url: post_direct_video(),
@@ -593,7 +599,7 @@ const Api = {
         }),
     //overview
     Delete_asset: () =>
-    loginHandledAxios({
+        loginHandledAxios({
             method: 'DELETE',
             url: delete_asset(),
             headers: {
@@ -619,25 +625,25 @@ const Api = {
             }
         }),
     //videoClips
-     Create_Clips:(timingData)=>
-     loginHandledAxios({
-        method:'POST',
-        url:create_videoClips(),
-        data:timingData,
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${localStorage.getItem("envuuid")}`
-        }
-     }),
-     Get_Clips:()=>
-     axios({
-        method: 'GET',
-        url: get_videoClips(),
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${localStorage.getItem("envuuid")}`
-        }
-    }),
+    Create_Clips: (timingData) =>
+        loginHandledAxios({
+            method: 'POST',
+            url: create_videoClips(),
+            data: timingData,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
+    Get_Clips: () =>
+        axios({
+            method: 'GET',
+            url: get_videoClips(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
     //thumbnails
     Create_thumbnail: (thumbnail) =>
         loginHandledAxios({
@@ -783,18 +789,18 @@ const Api = {
             url: get_Log_Detail(id),
             headers: headers
         }),
-    Impersonate:(email)=>
-    axios({
-        method:'POST',
-        data:email,
-        url:impersonateAs(),
-        headers:{
-            'Authorization': `Bearer ${document.cookie.split(`Jwt-token=`).pop().split(';')[0]}`,
-        }
-    }),
+    Impersonate: (email) =>
+        axios({
+            method: 'POST',
+            data: email,
+            url: impersonateAs(),
+            headers: {
+                'Authorization': `Bearer ${document.cookie.split(`Jwt-token=`).pop().split(';')[0]}`,
+            }
+        }),
     // Live stream//
-    Live_stream_list: (status)=>
-    axios({
+    Live_stream_list: (status) =>
+        loginHandledAxios({
             method: 'GET',
             url: live_stream_list(status),
             headers: {
@@ -803,43 +809,63 @@ const Api = {
             },
         }),
 
-    Create_live_stream: (stream_data)=>
-    axios({
-        method:'POST',
-        data:stream_data,
-        url:create_live_stream(),
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${localStorage.getItem("envuuid")}`
-        }
-    }),
-    Live_stream_data: (streamuuid)=>
-    axios({
-        method:'GET',
-        url:live_stream_data(streamuuid),
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'EnvironmentId': `${localStorage.getItem("envuuid")}`
-        },
-    }),
-    Live_status_start:(streamUUID)=>
+    Create_live_stream: (stream_data) =>
         loginHandledAxios({
-            method:'POST',
-            url:live_status_start(streamUUID),
+            method: 'POST',
+            data: stream_data,
+            url: create_live_stream(),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            }
+        }),
+    Live_stream_data: (streamuuid) =>
+        loginHandledAxios({
+            method: 'GET',
+            url: live_stream_data(streamuuid),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${localStorage.getItem("envuuid")}`
             },
         }),
-        Live_status_stop:(streamUUID)=>
+    Live_status_start: (streamUUID) =>
         loginHandledAxios({
-            method:'POST',
-            url:live_status_stop(streamUUID),
+            method: 'POST',
+            url: live_status_start(streamUUID),
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'EnvironmentId': `${localStorage.getItem("envuuid")}`
             },
         }),
+    Live_status_stop: (streamUUID) =>
+        loginHandledAxios({
+            method: 'POST',
+            url: live_status_stop(streamUUID),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        }),
+    Live_video_clip_list: (streamUUID) => 
+        loginHandledAxios({
+            method: 'GET',
+            url: live_video_clip_list(streamUUID),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        }),
+        Live_create_clip:(time,streamUUID)=>
+        loginHandledAxios({
+            method:'POST',
+            data: time,
+            url: live_create_clip(streamUUID),
+            headers:{
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        }),
+        
     
 }
 export default Api
