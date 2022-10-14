@@ -15,32 +15,43 @@ export default function Overview() {
     const [playback, setplayback] = useState(false)
     const [Pop_up, setPop_up] = useState(false);
     const [activities, setactivities] = useState(false);
+    const [status, setStatus] = useState()
+    const [player_toggle, setplayer_toggle] = useState();
     const Vdplayer = useRef();
     const streamuuid = router.query.streamId
-    // console.log(window.location.origin)
-    // console.log(router.query.streamId)
+
     useEffect(() => {
 
         Api.Live_stream_data(streamuuid)
-        .then(res => {
-            try{
+            .then(res => {
                 if (res && res.data && res.data.data) {
-                    // console.log(res.data.data)
                     setplayer([res.data.data])
-                    if(res.data.data.status=='Active'){
+                    setStatus(res.data.data.status)
+                    if (res.data.data.status == 'Active') {
                         setplayback(!playback)
-                    }else{
+                        setplayer_toggle(res.data.data.playbackUrl)
+                    } else {
                         setplayback(false)
+                        if (res.data.data.status == 'Processing') {
+                            setplayer_toggle('')
+                            // const handlerender = () => {
+                            //     Api.Live_stream_data(streamuuid).then((res) => {
+                            //         setStatus(res.data.data.status)
+                            //     })
+                            // }
+                            // const interval = setInterval(() => handlerender(), 10000)
+                            // return () => {
+                            //   clearInterval(interval);
+                            // }
+                        }
+
                     }
+                    // localStorage.setItem("asset_title", res.data.data.title);
                 }
-                else{
-                    console.log(res.data.message)
-                }
-            }
-            catch(e){
-                console.log(e)
-            }
-        })
+            })
+        // return () => {
+        //     setplayer([])
+        // }
     }, []);
     const created = (date) => {
         const d = new Date(date)
@@ -67,8 +78,54 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
-    const handlePlayback = () => {
+    const interval = ''
+    const handlePlayback = (i) => {
         setplayback(!playback)
+        if (i.status == 'Active') {
+            Api.Live_status_stop(i.streamUUID).then((res) => {
+                setStatus(res.data.data.status);
+                if (res.data.data.status == 'Processing') {
+                    const handlerender = () => {
+                        Api.Live_stream_data(i.streamUUID).then((res) => {
+                            setStatus(res.data.data.status)
+                            setplayer_toggle('')
+                        })
+                    }
+                    interval = setInterval(() => {
+                        handlerender()
+                        if (res.data.data.status !== 'Processing') {
+                            clearInterval(interval)
+                        }
+                    }, 30000)
+
+                }
+                else {
+                    if (res.data.data.status !== 'Processing') {
+                        clearInterval(interval)
+                    }
+                }
+            })
+        }
+        else {
+            Api.Live_status_start(i.streamUUID).then((res) => {
+                // setStatus(res.data.data.status);
+                if (res.data.data.status == 'Processing') {
+                    const handlerender = () => {
+                        Api.Live_stream_data(i.streamUUID).then((res) => {
+                            setStatus(res.data.data.status)
+                        })
+                    }
+                    interval = setInterval(() => handlerender(), 30000)
+
+
+                }
+                else {
+                    if (res.data.data.status !== 'Processing') {
+                        clearInterval(interval)
+                    }
+                }
+            })
+        }
     }
     const handleCopy = (event) => {
         let copiedText = event.target.parentNode.parentNode.previousSibling.lastChild;
@@ -77,13 +134,35 @@ export default function Overview() {
             copiedText.style.display = ""
         }, 1000)
     }
+
+    const handleControls = () => {
+        const text = document.querySelector('.toggleText');
+        const holder = document.querySelector('#placeholder')
+        setVideToggle(!vidToggle)
+        const liveVid = document.querySelector("#live");
+        if (vidToggle) {
+            holder.classList.remove(`${styles.none}`);
+            holder.classList.add(`${styles.show}`);
+            liveVid.classList.add(`${styles.none}`)
+            text.innerText = 'Inactive'
+            liveVid.pause();
+        } else {
+            liveVid.classList.remove(`${styles.none}`);
+            holder.classList.add(`${styles.none}`);
+            holder.classList.remove(`${styles.show}`);
+            text.innerText = 'Active'
+            liveVid.play();
+        }
+
+    }
+
     return (
         <Fragment>
             {player.map((i, ind) =>
                 <div key={ind} className={styles.overview}>
                     <div className={styles.url_buttons}>
                         <div className={styles.geturl}>
-                            <p>GET  /video/v1/live-streams/{i.streamUUID}</p>
+                            <p>GET   /video/v1/live-streams/{i.streamUUID}</p>
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
@@ -125,22 +204,31 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                                            <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
                                             {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
                                         </tr>
                                     </div>
                                 </tbody>
-                                {i.status == 'Active' || i.status == 'InActive'  &&
+                                {status == 'Active' || status == 'InActive' && i.playbackUrl ?
                                     <div className={styles.recordingplayer_action}>
-                                        {playback == false ? <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_start} btn`}>
+                                        {playback == false ? <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_start} btn`}>
                                             <img src='/images/live_play.svg' />
                                             <span> Start</span>
-                                        </button> : <button onClick={() => handlePlayback()} className={`${styles.recordingPlayer_stop} btn`}>
+                                        </button> : <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_stop} btn`}>
                                             <img src='/images/live_stop.svg' />
                                             <span> Stop</span>
                                         </button>}
-                                    </div>
+                                    </div> : status == 'Processing' && i.playbackUrl ? <div className={styles.recordingplayer_action}>
+                                        {/* {playback == false ? <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_start} btn`}>
+                                            <img src='/images/live_play.svg' />
+                                            <span> Start</span>
+                                        </button> : <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_stop} btn`}>
+                                            <img src='/images/live_stop.svg' />
+                                            <span> Stop</span>
+                                        </button>} */}
+                                    </div> : null
                                 }
+
                             </table>
                         </div>
                     </div>
@@ -149,8 +237,7 @@ export default function Overview() {
                             <h2>Live Stream Player</h2>
                             <div className={styles.playback_content} >
                                 <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
-
-                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' height='250px'></img> : <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
+                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={player_toggle} handlethumnail={handlethumnail_callback} />}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.playbackUrl ?
@@ -167,10 +254,10 @@ export default function Overview() {
                                             <div className={styles.link}>
 
                                                 {/* <p>{`${window.location.origin}/videos/embed?videoId=`}{i.contentId}</p> */}
-                                                <input defaultValue={`${window.location.origin}/videos/embed?streamId=${i.streamUUID}`} className={styles.copyInput} readOnly />
+                                                <input defaultValue={i.playbackUrl} className={styles.copyInput} readOnly />
                                             </div>
                                             <div className={styles.copy_img}>
-                                                <CopyToClipboard text={`${window.location.origin}/videos/embed?streamId=${i.streamUUID}`}>
+                                                <CopyToClipboard text={i.playbackUrl}>
                                                     <img src='/images/iconionic-ios-copy.svg' alt='copy' onClick={handleCopy} />
                                                 </CopyToClipboard>
                                             </div>
