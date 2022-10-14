@@ -28,7 +28,7 @@ export default function Videoclips() {
     }
     const handleVideoView=(uuid)=>{
         // localStorage.setItem('videoId', uuid)
-        // router.push({ pathname: `/Live_recording/liverecordingtabs`, query: {'streamId':uuid, 'path': 1 } });
+        router.push({ pathname: `/Live_recording/liverecordingtabs`, query: {'streamId':uuid, 'path': 1 } });
     }
     return (
         <Fragment>
@@ -54,8 +54,7 @@ export default function Videoclips() {
                                                 <td>{create_On(item.created_at)}<br/>{created_time(item.created_at)}</td>
                                                 <td>{item.name}</td>
                                                 <td>{item.clipUUID}</td>
-                                                <td className={styles.actionicons}><a onClick={()=>handleVideoView(item.clipUUID)}>View Video</a>
-                                                </td>
+                                                {item.statusId==3?<td className={styles.actionicons}><a onClick={()=>handleVideoView(item.clipUUID)}>View Video</a></td>:<td className={styles.actionicons}>{item.status}</td>}
                                             </tr>
                                     )
                                 })}

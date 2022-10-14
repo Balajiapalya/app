@@ -4,7 +4,7 @@ import Overview from "../components/livestream_tabs/overview";
 import Others from "../components/livestream_tabs/others";
 import Router,{useRouter} from 'next/router'
 
-function Livestrean_tabs() {
+function Livestrean_tabs(props) {
     const router=useRouter();
     const [toggleState, setToggleState] = useState(1)
     const [render,setRender]=useState(true)
@@ -55,7 +55,7 @@ function Livestrean_tabs() {
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
 
-                    {toggleState===2 && <Others />}
+                    {toggleState===2 && <Others data={props} />}
                 </div>
 
             </div>
