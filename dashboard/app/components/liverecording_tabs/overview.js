@@ -33,7 +33,7 @@ export default function Overview() {
                     } else {
                         setplayback(false)
                         if (res.data.data.status == 'Processing') {
-                            setplayer_toggle('')
+                            // setplayer_toggle('')
                             // const handlerender = () => {
                             //     Api.Live_stream_data(streamuuid).then((res) => {
                             //         setStatus(res.data.data.status)
@@ -84,46 +84,46 @@ export default function Overview() {
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing') {
-                    const handlerender = () => {
-                        Api.Live_stream_data(i.streamUUID).then((res) => {
-                            setStatus(res.data.data.status)
-                            setplayer_toggle('')
-                        })
-                    }
-                    interval = setInterval(() => {
-                        handlerender()
-                        if (res.data.data.status !== 'Processing') {
-                            clearInterval(interval)
-                        }
-                    }, 30000)
+                // if (res.data.data.status == 'Processing') {
+                //     const handlerender = () => {
+                //         Api.Live_stream_data(i.streamUUID).then((res) => {
+                //             setStatus(res.data.data.status)
+                //             setplayer_toggle('')
+                //         })
+                //     }
+                //     interval = setInterval(() => {
+                //         handlerender()
+                //         if (res.data.data.status !== 'Processing') {
+                //             clearInterval(interval)
+                //         }
+                //     }, 30000)
 
-                }
-                else {
-                    if (res.data.data.status !== 'Processing') {
-                        clearInterval(interval)
-                    }
-                }
+                // }
+                // else {
+                //     if (res.data.data.status !== 'Processing') {
+                //         clearInterval(interval)
+                //     }
+                // }
             })
         }
         else {
             Api.Live_status_start(i.streamUUID).then((res) => {
-                // setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing') {
-                    const handlerender = () => {
-                        Api.Live_stream_data(i.streamUUID).then((res) => {
-                            setStatus(res.data.data.status)
-                        })
-                    }
-                    interval = setInterval(() => handlerender(), 30000)
+                setStatus(res.data.data.status);
+                // if (res.data.data.status == 'Processing') {
+                //     const handlerender = () => {
+                //         Api.Live_stream_data(i.streamUUID).then((res) => {
+                //             setStatus(res.data.data.status)
+                //         })
+                //     }
+                //     interval = setInterval(() => handlerender(), 30000)
 
 
-                }
-                else {
-                    if (res.data.data.status !== 'Processing') {
-                        clearInterval(interval)
-                    }
-                }
+                // }
+                // else {
+                //     if (res.data.data.status !== 'Processing') {
+                //         clearInterval(interval)
+                //     }
+                // }
             })
         }
     }
@@ -237,7 +237,7 @@ export default function Overview() {
                             <h2>Live Stream Player</h2>
                             <div className={styles.playback_content} >
                                 <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
-                                {playback == false ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={player_toggle} handlethumnail={handlethumnail_callback} />}
+                                {playback == false && i.status !=='Active' ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> :  <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.playbackUrl ?
