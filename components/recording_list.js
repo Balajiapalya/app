@@ -98,10 +98,10 @@ const RecordingList = ({ i, create_On, created_time }) => {
                     </td>
                 : i.status == 'Pending'
                     ? <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
-                        : `${styles.notVisble}`}>pending video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/pending.png' /></td>
+                        : `${styles.notVisble}`}>pending video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Pending.png' /></td>
                     :i.status=="Processing"
                     ?<td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
-                    : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/processing.png' /></td>
+                    : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
                     : <td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
