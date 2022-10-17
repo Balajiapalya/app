@@ -32,6 +32,9 @@ export default function Signup() {
       })
       .catch(error => {
         seterror(error.response.data.message)
+        setTimeout(()=>{
+          seterror('')
+        },[1000*3])
       })
 
   };
@@ -60,7 +63,7 @@ export default function Signup() {
               }})}
             />
             {/* {errors.email && <p className={'validations'}>This field is required</p>} */}
-            {<p className={'validations'}>{errors.email?.message}</p>}
+            {<p className={'validations'}>{!error&&errors.email?.message}</p>}
             <span className='error'>{error}</span>
             <span className={styles.invitation_info}>We will send an invitation link to your email.</span>
             <button type='submit' className={`${styles.btn} btn btn-primary`}>Sign Up</button>

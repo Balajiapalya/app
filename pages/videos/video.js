@@ -73,7 +73,7 @@ export default function Video() {
                             <div className={styles.header}>
                                 <div className={styles.assets}>
                                     <Link href="/videos"><a>Video List</a></Link>
-                                    <p> &gt; <p className="header">{editted ? editted : title}</p></p>
+                                    <p> &gt; <p className="header">{editted ? editted : title=='undefined'?'':title}</p></p>
 
                                 </div>
                                 <div className={styles.header_asianet}>
@@ -81,7 +81,7 @@ export default function Video() {
                                     <div className={styles.header_title_container}>
                                         <div className={styles.header_title}>
                                             {headtitle ? <div className={styles.styleTitle}>
-                                                <h2 className='mainTitle'>{editted ? editted : title}</h2>
+                                                <h2 className='mainTitle'>{editted ? editted : title=='undefined'?'':title}</h2>
 
                                                 <h2 >
 
