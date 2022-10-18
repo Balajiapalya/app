@@ -17,6 +17,7 @@ export default function Overview() {
     const [activities, setactivities] = useState(false);
     const [status, setStatus] = useState()
     const [player_toggle,setplayer_toggle] = useState();
+    const [hover, setHover] = useState(false)
     const Vdplayer = useRef();
     const streamuuid = router.query.streamId
 
@@ -153,7 +154,9 @@ export default function Overview() {
         }
 
     }
-
+    const toggleHover = () => {
+        setHover(!hover)
+    }
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -202,7 +205,14 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
+                                            {status=='Processing'?
+                                            <td className={styles.content}><div className={hover ? `${styles.visible}`
+                    : `${styles.notVisble}`}>Processing</div>{status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${status}.png`} /></td>
+                :status=='InActive'?
+                <td className={styles.content}><div className={hover ? `${styles.visible}`
+                    : `${styles.notVisble}`}>Inactive</div>{status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${status}.png`} /></td>:
+                    <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
+                }
                                             {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
                                         </tr>
                                     </div>

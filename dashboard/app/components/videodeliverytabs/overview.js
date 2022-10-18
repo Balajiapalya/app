@@ -16,6 +16,7 @@ export default function Overview() {
     const [thumbnailurl, setthumbnail] = useState(false);
     const [Pop_up, setPop_up] = useState(false);
     const [activities, setactivities] = useState(false);
+    const [hover, setHover] = useState(false)
     const Vdplayer = useRef();
     // console.log(window.location.origin)
     useEffect(() => {
@@ -83,6 +84,9 @@ export default function Overview() {
             copiedText.style.display = ""
         }, 1000)
     }
+    const toggleHover = () => {
+        setHover(!hover)
+    }
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -119,7 +123,14 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                                            {i.status=='Failed'?
+                                            <td className={styles.content}><div className={hover ? `${styles.visible}`
+                    : `${styles.notVisble}`}>failed to upload</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${i.status}.png`} /></td>:
+                    i.status=='Processing'?
+                    <td className={styles.content}><div className={hover ? `${styles.visible}`
+                    : `${styles.notVisble}`}>processing the video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${i.status}.png`} /></td>:
+                    <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                }
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>

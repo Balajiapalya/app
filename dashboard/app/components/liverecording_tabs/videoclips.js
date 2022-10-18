@@ -11,6 +11,7 @@ export default function Videoclips() {
     const [clips, setClips] = useState([])
     const [reloadAfterPost,setReloadAfterPost]=useState(false)
     const streamId = router.query.streamId;
+    
     useEffect(() => {
         Api.Live_video_clip_list(streamId).then(res => setClips(res.data.data))
             .catch(err => console.log(err))
@@ -28,7 +29,7 @@ export default function Videoclips() {
     }
     const handleVideoView=(uuid)=>{
         // localStorage.setItem('videoId', uuid)
-        router.push({ pathname: `/Live_recording/liverecordingtabs`, query: {'streamId':uuid, 'path': 1 } });
+        router.push({ pathname: `/videos/video`, query: {'videoId':uuid, 'path': 1 } });
     }
     return (
         <Fragment>
@@ -54,7 +55,7 @@ export default function Videoclips() {
                                                 <td>{create_On(item.created_at)}<br/>{created_time(item.created_at)}</td>
                                                 <td>{item.name}</td>
                                                 <td>{item.clipUUID}</td>
-                                                {item.statusId==3?<td className={styles.actionicons}><a onClick={()=>handleVideoView(item.clipUUID)}>View Video</a></td>:<td className={styles.actionicons}>{item.status}</td>}
+                                                {item.statusId==3?<td className={styles.actionicons}><a onClick={()=>handleVideoView(item.contentUUID)}>View Video</a></td>:<td className={styles.actionicons}>{item.status}</td>}
                                             </tr>
                                     )
                                 })}

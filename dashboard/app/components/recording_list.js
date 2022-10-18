@@ -102,7 +102,9 @@ const RecordingList = ({ i, create_On, created_time }) => {
                     :i.status=="Processing"
                     ?<td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
                     : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
-                    : <td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
+                    :i.status=="InActive"?
+                    <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`: `${styles.notVisble}`}>InActive</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
+                     :<td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
                     <div className={styles.contextual_menu_container}>
