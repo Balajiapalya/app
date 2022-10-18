@@ -60,6 +60,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
 
     
     const searchHandle = (e) => {
+        let count=0;
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
             let name = options[i].innerHTML.toLowerCase()
@@ -68,9 +69,15 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                 options[i].style.display = 'block'
             } else {
                 options[i].style.display = 'none'
-
+                count++;
             }
         }
+    let div=document.querySelector('.noReslt');
+    if(options.length==count){ 
+      div.style.display='block'
+    }else{
+      div.style.display='none'
+    }
     }
 
     let dropdownprod = useRef()
@@ -116,6 +123,7 @@ export default function Create_signing_key({ closesigninkeys, table }) {
                                         <div className={styles.allOptions}>
                                             {prod.map(product =>
                                                 <div key={product.id} value={product.id} id="opt" onClick={()=>handleSelected(product)}>{product.name}</div>)}
+                                            <div style={{display:'none'}} className='noReslt'>No result found</div>
                                         </div>
                                     </div>
                                 }

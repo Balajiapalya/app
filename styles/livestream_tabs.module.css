@@ -529,6 +529,16 @@
 
 
 /* overview */
+.notVisble{
+    display: none;
+    transition: all 4s ease-out;
+}
+.visible{
+    display: block;
+    position: absolute;
+    margin: -19px 0px 0px 15px;
+    transition: all 6s ease-out;
+}
 .url_buttons {
     width: 100%;
     float: left;
