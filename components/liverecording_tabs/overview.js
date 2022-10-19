@@ -207,16 +207,16 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            {status == 'Processing' ?
+                                            {/* {status == 'Processing' ?
                                                 <td className={styles.content}><div className={hover ? `${styles.visible}`
                                                     : `${styles.notVisble}`}>Processing</div>{status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${status}.png`} /></td>
                                                 : status == 'InActive' ?
                                                     <td className={styles.content}><div className={hover ? `${styles.visible}`
                                                         : `${styles.notVisble}`}>Inactive</div>{status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${status}.png`} /></td> :
                                                     <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
-                                            }
+                                            } */}
 
-                                            {/* <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td> */}
+                                            <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
                                             {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
                                         </tr>
                                     </div>
