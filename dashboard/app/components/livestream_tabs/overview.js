@@ -19,10 +19,10 @@ export default function Overview() {
     const [player_toggle,setplayer_toggle] = useState();
     const [hover, setHover] = useState(false)
     const Vdplayer = useRef();
+    const cInterval=useRef()
     const streamuuid = router.query.streamId
 
     useEffect(() => {
-
         Api.Live_stream_data(streamuuid)
             .then(res => {
                 if (res && res.data && res.data.data) {
@@ -35,21 +35,24 @@ export default function Overview() {
                         setplayback(false)
                         if (res.data.data.status == 'Processing') {
                             // setplayer_toggle('')
-                            // const handlerender = () => {
-                            //     Api.Live_stream_data(streamuuid).then((res) => {
-                            //         setStatus(res.data.data.status)
-                            //     })
-                            // }
-                            // const interval = setInterval(() => handlerender(), 10000)
-                            // return () => {
-                            //   clearInterval(interval);
-                            // }
+                            const handlerender = () => {
+                                Api.Live_stream_data(streamuuid).then((res) => {
+                                    setStatus(res.data.data.status)
+                                })
+                            }
+                           
+                            cInterval.current=setInterval(()=>{
+                                handlerender()
+                            },1000*30)
                         }
 
                     }
                     // localStorage.setItem("asset_title", res.data.data.title);
                 }
             })
+            return()=>{
+                clearInterval(cInterval.current)
+            }
         // return () => {
         //     setplayer([])
         // }
@@ -85,31 +88,54 @@ export default function Overview() {
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                
                 if (res.data.data.status == 'Processing') {
-                    const handlerender = () => {
-                        Api.Live_stream_data(i.streamUUID).then((res) => {
+                    const  handlerender=()=>{
+                        Api.Live_stream_data(streamuuid).then((res) => {
                             setStatus(res.data.data.status)
                         })
                     }
-                    interval = setInterval(() => {
+                   
+                    cInterval.current=setInterval(()=>{
                         handlerender()
-                        if (res.data.data.status !== 'Processing') {
-                            clearInterval(interval)
-                        }
-                    }, 30000)
+                    },1000*30)
+                }
 
-                }
-                else {
-                    if (res.data.data.status !== 'Processing') {
-                        clearInterval(interval)
-                    }
-                }
+                // if (res.data.data.status == 'Processing') {
+                //     const handlerender = () => {
+                //         Api.Live_stream_data(i.streamUUID).then((res) => {
+                //             setStatus(res.data.data.status)
+                //         })
+                //     }
+                //     interval = setInterval(() => {
+                //         handlerender()
+                //         if (res.data.data.status !== 'Processing') {
+                //             clearInterval(interval)
+                //         }
+                //     }, 30000)
+
+                // }
+                // else {
+                //     if (res.data.data.status !== 'Processing') {
+                //         clearInterval(interval)
+                //     }
+                // }
             })
         }
         else {
             Api.Live_status_start(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
+                if (res.data.data.status == 'Processing') {
+                    const  handlerender=()=>{
+                        Api.Live_stream_data(streamuuid).then((res) => {
+                            setStatus(res.data.data.status)
+                        })
+                    }
+                   
+                    cInterval.current=setInterval(()=>{
+                        handlerender()
+                    },1000*30)
+                }
+
                 // if (res.data.data.status == 'Processing') {
                 //     const handlerender = () => {
                 //         Api.Live_stream_data(i.streamUUID).then((res) => {
