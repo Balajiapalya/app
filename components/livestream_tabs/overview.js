@@ -35,15 +35,15 @@ export default function Overview() {
                         setplayback(false)
                         if (res.data.data.status == 'Processing') {
                             // setplayer_toggle('')
-                            const handlerender = () => {
-                                Api.Live_stream_data(streamuuid).then((res) => {
-                                    setStatus(res.data.data.status)
-                                })
-                            }
-                            const interval = setInterval(() => handlerender(), 1000*30)
-                            return () => {
-                              clearInterval(interval);
-                            }
+                            // const handlerender = () => {
+                            //     Api.Live_stream_data(streamuuid).then((res) => {
+                            //         setStatus(res.data.data.status)
+                            //     })
+                            // }
+                            // const interval = setInterval(() => handlerender(), 10000)
+                            // return () => {
+                            //   clearInterval(interval);
+                            // }
                         }
 
                     }
