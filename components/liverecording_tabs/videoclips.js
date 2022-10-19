@@ -28,7 +28,7 @@ export default function Videoclips() {
         return t.toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit" });
     }
     const handleVideoView=(uuid)=>{
-        // localStorage.setItem('videoId', uuid)
+        localStorage.setItem('videoId', uuid)
         router.push({ pathname: `/videos/video`, query: {'videoId':uuid, 'path': 1 } });
     }
     return (
