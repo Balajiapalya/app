@@ -20,9 +20,10 @@ export default function Videoclips() {
             setClips(res.data.data)
             if (res && res.data && res.data.data) {
                 for(let i=0;i<res.data.data.length;i++){
-                    if (res.data.data[i].status=='Processing (Clip Unknown)'||res.data.data[i].status == 'Processing'||res.data.data[i].status == 'Initializing') {
-                        response=true
-                    }
+                    // if (res.data.data[i].status=='Processing (Clip Unknown)'||res.data.data[i].status == 'Processing'||res.data.data[i].status == 'Initializing') {
+                    //     response=true
+                    // }
+                    response=true
                 }
               
                   if(response==true){
