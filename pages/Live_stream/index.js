@@ -37,7 +37,7 @@ export default function Videos() {
     const [filename, set_filename] = useState();
     const [uploaded, setuploaded] = useState(false);
     let itemsPerPage = 5
-
+    const cInterval = useRef()
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -72,6 +72,7 @@ export default function Videos() {
         }
     }
     useEffect(() => {
+        let response=false
         const data = localStorage.getItem("envuuid")
         const endOffset = itemOffset + itemsPerPage;
         Api.Live_stream_list(false)
@@ -79,17 +80,45 @@ export default function Videos() {
                 res&&res.data&&res.data.data&&console.log(res.data.data);
                 setCurrentItems(res.data.data.slice(itemOffset, endOffset));
                 setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
-                {
-                    res.data.data.map(item => {
+                // {
+                //     res.data.data.map(item => {
 
 
-                        if (item.status == 'Processing') {
-                            setTimeout(() => {
-                                setTimer(true)
-                            }, 1000 * 60)
-                        }
-                    })
+                //         if (item.status == 'Processing') {
+                //             setTimeout(() => {
+                //                 setTimer(true)
+                //             }, 1000 * 60)
+                //         }
+                //     })
+                // }
+
+                for(let i=0;i<res.data.data.length;i++){
+                    if (res.data.data[i].status=='Initializing'|| res.data.data[i].status=='Processing') {
+                        response=true
+                    }
                 }
+              
+                  if(response==true){
+                    const handlerender = () => {
+                        Api.Live_stream_list(false).then((res) => {
+                            console.log(res.data.data)
+                            setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+                            setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+                            for(let i=0;i<res.data.data.length;i++){
+                                if (res.data.data[i].status=='InActive'||res.data.data[i].status=='Active') {
+                                    response=false;
+                                    clearInterval(cInterval)
+                                }
+                            }
+                        })
+                    }
+        
+                    cInterval.current = setInterval(() => {
+                        handlerender()
+                    }, 1000 * 30)
+                  }else if(response==false){
+                    clearInterval(cInterval)
+                  }
                 setInitialLength(res.data.data.length)
 
                 let timerFun = () => {
@@ -146,6 +175,7 @@ export default function Videos() {
             // setenv([])
             setEnvSelect([])
             setOrg([])
+            clearInterval(cInterval.current)
         }
     }, [id, add_asset, timer, reload, itemOffset])
 

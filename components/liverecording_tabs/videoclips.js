@@ -32,6 +32,7 @@ export default function Videoclips() {
                             for(let i=0;i<res.data.data.length;i++){
                                 if (res.data.data[i].status=='view video') {
                                     response=false;
+                                    clearInterval(cInterval)
                                 }
                             }
                         })
