@@ -15,20 +15,38 @@ export default function Videoclips() {
     const cInterval = useRef()
 
     useEffect(() => {
+        let response=false
         Api.Live_video_clip_list(streamId).then(res => {
             setClips(res.data.data)
-
-
-            const handlerender = () => {
-                Api.Live_video_clip_list(streamId).then((res) => {
-                    setClips(res.data.data)
-
-                })
+            if (res && res.data && res.data.data) {
+                for(let i=0;i<res.data.data.length;i++){
+                    if (res.data.data[i].status=='Processing (Clip Unknown)'||res.data.data[i].status == 'Processing'||res.data.data[i].status == 'Initializing') {
+                        response=true
+                    }
+                }
+              
+                  if(response==true){
+                    const handlerender = () => {
+                        Api.Live_video_clip_list(streamId).then((res) => {
+                            setClips(res.data.data)
+                            for(let i=0;i<res.data.data.length;i++){
+                                if (res.data.data[i].status=='view video') {
+                                    response=false;
+                                }
+                            }
+                        })
+                    }
+        
+                    cInterval.current = setInterval(() => {
+                        handlerender()
+                    }, 1000 * 30)
+                  }else if(response==false){
+                    clearInterval(cInterval)
+                  }
+                
+               
             }
-
-            cInterval.current = setInterval(() => {
-                handlerender()
-            }, 1000 * 30)
+            
         }
                 
             
@@ -38,6 +56,7 @@ export default function Videoclips() {
     )
         .catch(err => console.log(err))
     return () => {
+        clearInterval(cInterval.current)
         setClips([])
     }
 }, [reloadAfterPost])
