@@ -93,9 +93,10 @@ export default function Videos() {
                 // }
 
                 for(let i=0;i<res.data.data.length;i++){
-                    if (res.data.data[i].status=='Initializing'|| res.data.data[i].status=='Processing') {
-                        response=true
-                    }
+                    // if (res.data.data[i].status=='Initializing'|| res.data.data[i].status=='Processing') {
+                    //     response=true
+                    // }
+                    response=true;
                 }
               
                   if(response==true){

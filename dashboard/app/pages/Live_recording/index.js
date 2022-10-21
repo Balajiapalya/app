@@ -39,7 +39,7 @@ export default function Recording() {
     const [uploaded, setuploaded] = useState(false);
     let itemsPerPage = 5
     const cInterval = useRef()
-    
+
     const sorting = (col) => {
         if (order === "ASC") {
             const sorted = [...videoData].sort((a, b) =>
@@ -73,75 +73,76 @@ export default function Recording() {
         }
     }
     useEffect(() => {
-        let response=false
+        let response = false
         const data = localStorage.getItem("envuuid")
         const endOffset = itemOffset + itemsPerPage;
         Api.Live_stream_list(true)
-        .then(res=>{
-            res&&res.data&&res.data.data&&console.log(res.data.data);
-            setCurrentItems(res.data.data.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
-            // {
-            //     res.data.data.map(item => {
+            .then(res => {
+                res && res.data && res.data.data && console.log(res.data.data);
+                setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+                setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+                // {
+                //     res.data.data.map(item => {
 
 
-            //         if (item.status == 'Processing') {
-            //             setTimeout(() => {
-            //                 setTimer(true)
-            //             }, 1000 * 60)
-            //         }
-            //     })
-            // }
-            for(let i=0;i<res.data.data.length;i++){
-                if (res.data.data[i].status=='Initializing'|| res.data.data[i].status=='Processing') {
-                    response=true
+                //         if (item.status == 'Processing') {
+                //             setTimeout(() => {
+                //                 setTimer(true)
+                //             }, 1000 * 60)
+                //         }
+                //     })
+                // }
+                for (let i = 0; i < res.data.data.length; i++) {
+                    //    if (res.data.data[i].status=='Initializing'|| res.data.data[i].status=='Processing') { 
+                    //         response=true
+                    //     }
+                    response = true
                 }
-            }
-          
-              if(response==true){
-                const handlerender = () => {
-                    Api.Live_stream_list(true).then((res) => {
-                        setCurrentItems(res.data.data.slice(itemOffset, endOffset));
-                        setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
-                        for(let i=0;i<res.data.data.length;i++){
-                            if (res.data.data[i].status=='InActive'||res.data.data[i].status=='Active') {
-                                response=false;
-                                clearInterval(cInterval)
+
+                if (response == true) {
+                    const handlerender = () => {
+                        Api.Live_stream_list(true).then((res) => {
+                            setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+                            setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+                            for (let i = 0; i < res.data.data.length; i++) {
+                                if (res.data.data[i].status == 'InActive' || res.data.data[i].status == 'Active') {
+                                    response = false;
+                                    clearInterval(cInterval)
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
+
+                    cInterval.current = setInterval(() => {
+                        handlerender()
+                    }, 1000 * 30)
+                } else if (response == false) {
+                    clearInterval(cInterval)
                 }
-    
-                cInterval.current = setInterval(() => {
-                    handlerender()
-                }, 1000 * 30)
-              }else if(response==false){
-                clearInterval(cInterval)
-              }
-            setInitialLength(res.data.data.length)
+                setInitialLength(res.data.data.length)
 
-            let timerFun = () => {
-                setReload(false)
-                let count = 0
-                let intervalFunc = setInterval(() => {
-                    Api.Video_list(data).then(res => {
-                        let resp = res.data.data.length + count
-                        if (initialLength < resp) {
-                            setTimer(!timer)
-                            clearInterval(intervalFunc)
-                        }
-                        if (resp < initialLength) {
-                            count = initialLength - resp
-                        }
-                    })
-                }, 1000 * 20);
-            }
+                let timerFun = () => {
+                    setReload(false)
+                    let count = 0
+                    let intervalFunc = setInterval(() => {
+                        Api.Video_list(data).then(res => {
+                            let resp = res.data.data.length + count
+                            if (initialLength < resp) {
+                                setTimer(!timer)
+                                clearInterval(intervalFunc)
+                            }
+                            if (resp < initialLength) {
+                                count = initialLength - resp
+                            }
+                        })
+                    }, 1000 * 20);
+                }
 
-            { reload && timerFun() }
+                { reload && timerFun() }
 
 
-            { setVideoData(res.data.data) }
-        })
+                { setVideoData(res.data.data) }
+            })
 
         // Api.Env_data()
         //     .then(res => {
@@ -194,15 +195,15 @@ export default function Recording() {
     }
     const orName = orgname;
     const handleSearch = (e) => {
-        let div=document.querySelector('.noRow');
-        if(e.target.value==''){
-            document.querySelector('#paginate').style.display='block'
-            div.style.display='none'
-            
-        }else{
-            document.querySelector('#paginate').style.display='none'
+        let div = document.querySelector('.noRow');
+        if (e.target.value == '') {
+            document.querySelector('#paginate').style.display = 'block'
+            div.style.display = 'none'
+
+        } else {
+            document.querySelector('#paginate').style.display = 'none'
         }
-        let count=0;
+        let count = 0;
         let input = e.target.value.toUpperCase()
         let table = document.querySelector('.table_input')
         let tRow = table.getElementsByTagName('tr')
@@ -210,29 +211,29 @@ export default function Recording() {
             let td = tRow[i].getElementsByTagName('td')[2]
             // let tdId = tRow[i].getElementsByTagName('td')[3]
             let status = tRow[i].getElementsByTagName('td')[4]
-            if (td ||  status) {
+            if (td || status) {
                 let data = td.innerText.toUpperCase()
                 // let id = tdId.innerText.toUpperCase();
                 let stat = status.innerText.toUpperCase()
-                if (data.indexOf(input) > -1 ||  stat.indexOf(input) > -1) {
+                if (data.indexOf(input) > -1 || stat.indexOf(input) > -1) {
                     tRow[i].style.display = ''
                 } else {
                     tRow[i].style.display = 'none';
-                     count++
+                    count++
                 }
             }
         }
         // console.log(tRow.length,count)
-        if(tRow.length-1==count && count!==0){ 
-          div.style.display='block'
-        }else{
-          div.style.display='none'
+        if (tRow.length - 1 == count && count !== 0) {
+            div.style.display = 'block'
+        } else {
+            div.style.display = 'none'
         }
     }
 
 
     const searchHandle = (e) => {
-        let count=0;
+        let count = 0;
         let options = document.querySelectorAll('#opt')
         for (let i = 0; i < options.length; i++) {
             let name = options[i].innerHTML.toLowerCase()
@@ -244,11 +245,11 @@ export default function Recording() {
                 count++
             }
         }
-        let div=document.querySelector('.noReslt');
-        if(options.length==count){ 
-          div.style.display='block'
-        }else{
-          div.style.display='none'
+        let div = document.querySelector('.noReslt');
+        if (options.length == count) {
+            div.style.display = 'block'
+        } else {
+            div.style.display = 'none'
         }
     }
     const handleSelected = (item) => {
@@ -277,9 +278,9 @@ export default function Recording() {
         // set_asset(true)
         setuploaded(false);
         set_filename('')
-        let inp=document.querySelector('input[type=file]')
-        if(inp){
-        inp.value=''
+        let inp = document.querySelector('input[type=file]')
+        if (inp) {
+            inp.value = ''
         }
         let Livetable = document.querySelector('.livetable');
         let Livepopup = document.querySelector('.livepopup');
@@ -369,13 +370,13 @@ export default function Recording() {
                                                         {handleMulti(i) ? <img src='/images/iconawesome-chevrondown.svg' alt='openDropdown' className={styles.openDropdown}></img> : <img src='/images/Iconawesome-chevron-down.svg' className={styles.openDropdown}></img>}
                                                         {i.name}
                                                     </div>
-                                                    {handleMulti(i) && i.environments.map(i => <div id="opt" key={i.uuid} value={i.uuid}  onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
+                                                    {handleMulti(i) && i.environments.map(i => <div id="opt" key={i.uuid} value={i.uuid} onClick={() => `${handleSelected(i)} ${handleChange(i)}`} className={styles.singleOption}>
                                                         {i.name}
                                                     </div>
                                                     )}
                                                 </>
                                             )}
-                                            <div className={`${styles.noResult} noReslt`} style={{display:'none'}}>No result found</div>
+                                            <div className={`${styles.noResult} noReslt`} style={{ display: 'none' }}>No result found</div>
                                         </div>
                                     </div>
                                 }
@@ -390,7 +391,7 @@ export default function Recording() {
                             <div className={styles.videos_delivery}>
                                 <div className={styles.header}>
                                     <h2>
-                                    Live Recording
+                                        Live Recording
                                     </h2>
                                 </div>
                                 <div className={styles.videos_deliverydata}>
@@ -427,32 +428,32 @@ export default function Recording() {
                                         )}
                                     </tbody>
                                 </table>
-                                 {currentItems.length==0 && <div className={styles.noData}>No Live Data Available</div>}
-                                 <div className={`${styles.noResult} noRow`} style={{display:'none'}}>No Result Found</div>
+                                {currentItems.length == 0 && <div className={styles.noData}>No Live Data Available</div>}
+                                <div className={`${styles.noResult} noRow`} style={{ display: 'none' }}>No Result Found</div>
                             </div>
                             {/* {add_asset && <Create_liveRecording close_asset={set_asset} />} */}
                             <div className={`${styles.no_display} livepopup`}>
-                                <Create_liveRecording table={process.browser && document.querySelector('.livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded}/>
+                                <Create_liveRecording table={process.browser && document.querySelector('.livetable')} setReload={setReload} filename={filename} set_filename={set_filename} uploaded={uploaded} setuploaded={setuploaded} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div id='paginate'>
-            <ReactPaginate
-                breakLabel="..."
-                nextLabel=">"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={3}
-                pageCount={pageCount}
-                previousLabel="<"
-                renderOnZeroPageCount={null}
-                className={styles.pagination}
-                pageLinkClassName={styles.page_num}
-                previousLinkClassName={styles.page_num}
-                nextLinkClassName={styles.page_num}
-                activeLinkClassName={styles.presentPage}
-            />
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel=">"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    pageCount={pageCount}
+                    previousLabel="<"
+                    renderOnZeroPageCount={null}
+                    className={styles.pagination}
+                    pageLinkClassName={styles.page_num}
+                    previousLinkClassName={styles.page_num}
+                    nextLinkClassName={styles.page_num}
+                    activeLinkClassName={styles.presentPage}
+                />
             </div>
         </>
     )
