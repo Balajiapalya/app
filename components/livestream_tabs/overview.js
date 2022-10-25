@@ -33,17 +33,20 @@ export default function Overview() {
                         setplayback(!playback)
                     } else {
                         setplayback(false)
-                        if (res.data.data.status == 'Processing') {
+                        if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Idle)'||res.data.data.status=='Processing (Stream Starting)' || res.data.data.status=='Processing (Stream Stopping)') {
                             // setplayer_toggle('')
                             const handlerender = () => {
                                 Api.Live_stream_data(streamuuid).then((res) => {
+                                    setplayer([res.data.data])
                                     setStatus(res.data.data.status)
                                 })
                             }
                            
                             cInterval.current=setInterval(()=>{
                                 handlerender()
-                            },1000*30)
+                            },1000*3)
+                        }else if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
+                            clearInterval(cInterval.current)
                         }
 
                     }
@@ -82,22 +85,26 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
-    const interval = ''
+   
     const handlePlayback = (i) => {
         setplayback(!playback)
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing') {
+                if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Running)'||res.data.data.status=='Processing (Stream Starting)') {
                     const  handlerender=()=>{
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setStatus(res.data.data.status)
+                            setplayer([res.data.data])
+                            if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
+                                clearInterval(cInterval.current)
+                            }
                         })
                     }
                    
                     cInterval.current=setInterval(()=>{
                         handlerender()
-                    },1000*30)
+                    },1000*3)
                 }
 
                 // if (res.data.data.status == 'Processing') {
@@ -124,16 +131,20 @@ export default function Overview() {
         else {
             Api.Live_status_start(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing') {
+                if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Idle)'||res.data.data.status=='Processing (Stream Starting)') {
                     const  handlerender=()=>{
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setStatus(res.data.data.status)
+                            setplayer([res.data.data])
+                            if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
+                                clearInterval(cInterval.current)
+                            }
                         })
                     }
                    
                     cInterval.current=setInterval(()=>{
                         handlerender()
-                    },1000*30)
+                    },1000*3)
                 }
 
                 // if (res.data.data.status == 'Processing') {
@@ -271,8 +282,9 @@ export default function Overview() {
                         <div className={styles.playback}>
                             <h2>Live Stream</h2>
                             <div className={styles.playback_content} >
-                                <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
-                                {playback == false && i.status == 'Active' ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
+                                <div className={styles.playback_status}>{i.status !== 'Active' ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
+                                {i.status !== 'Active' ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> :i.status=='Active'&& <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
+                                {/* {playback == false && i.status == 'Active' ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />} */}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.playbackUrl ?

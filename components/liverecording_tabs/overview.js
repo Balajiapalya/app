@@ -23,7 +23,6 @@ export default function Overview() {
     const streamuuid = router.query.streamId
 
     useEffect(() => {
-       
         Api.Live_stream_data(streamuuid)
             .then(res => {
                 if (res && res.data && res.data.data) {
@@ -34,20 +33,21 @@ export default function Overview() {
                         setplayer_toggle(res.data.data.playbackUrl)
                     } else {
                         setplayback(false)
-                        if (res.data.data.status == 'Processing') {
+                        if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Idle)'||res.data.data.status=='Processing (Stream Starting)' || res.data.data.status=='Processing (Stream Stopping)') {
                             // setplayer_toggle('')
                             
                             const  handlerender=()=>{
                                 Api.Live_stream_data(streamuuid).then((res) => {
+                                    setplayer([res.data.data])
                                     setStatus(res.data.data.status)
                                 })
                             }
                            
                             cInterval.current=setInterval(()=>{
                                 handlerender()
-                            },1000*30)
+                            },1000*3)
                             
-                        }else{
+                        }else if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
                             clearInterval(cInterval.current)
                         }
 
@@ -94,16 +94,17 @@ export default function Overview() {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
                 if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Running)'||res.data.data.status=='Processing (Stream Starting)') {
-                    console.log('check')
                     const  handlerender=()=>{
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setplayer([res.data.data])
                             setStatus(res.data.data.status)
+                            if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
+                                clearInterval(cInterval.current)
+                            }
                         })
                     }
                    
                     cInterval.current=setInterval(()=>{
-                        console.log('interval')
                         handlerender()
                     },1000*3)
                 }
@@ -114,17 +115,17 @@ export default function Overview() {
             Api.Live_status_start(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
                 if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Idle)'||res.data.data.status=='Processing (Stream Starting)') {
-                    console.log('in')
                     const  handlerender=()=>{
-                        console.log('run')
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setplayer([res.data.data])
                             setStatus(res.data.data.status)
+                            if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
+                                clearInterval(cInterval.current)
+                            }
                         })
                     }
                    
                     cInterval.current=setInterval(()=>{
-                        console.log('start interva')
                         handlerender()
                     },1000*3)
                 }
@@ -163,7 +164,7 @@ export default function Overview() {
     const toggleHover = () => {
         setHover(!hover)
     }
-    console.log(status)
+   
     return (
         <Fragment>
             {player.map((i, ind) =>
