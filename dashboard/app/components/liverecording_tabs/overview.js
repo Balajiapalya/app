@@ -87,74 +87,48 @@ export default function Overview() {
     const handlethumnail_callback = () => {
 
     }
-    const interval = ''
+    
     const handlePlayback = (i) => {
         setplayback(!playback)
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing') {
+                if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Running)'||res.data.data.status=='Processing (Stream Starting)') {
+                    console.log('check')
                     const  handlerender=()=>{
                         Api.Live_stream_data(streamuuid).then((res) => {
+                            setplayer([res.data.data])
                             setStatus(res.data.data.status)
                         })
                     }
                    
                     cInterval.current=setInterval(()=>{
+                        console.log('interval')
                         handlerender()
-                    },1000*30)
+                    },1000*3)
                 }
-                // if (res.data.data.status == 'Processing') {
-                //     const handlerender = () => {
-                //         Api.Live_stream_data(i.streamUUID).then((res) => {
-                //             setStatus(res.data.data.status)
-                //             setplayer_toggle('')
-                //         })
-                //     }
-                //     interval = setInterval(() => {
-                //         handlerender()
-                //         if (res.data.data.status !== 'Processing') {
-                //             clearInterval(interval)
-                //         }
-                //     }, 30000)
-
-                // }
-                // else {
-                //     if (res.data.data.status !== 'Processing') {
-                //         clearInterval(interval)
-                //     }
-                // }
+               
             })
         }
         else {
             Api.Live_status_start(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing') {
+                if (res.data.data.status == 'Processing'||res.data.data.status=='Processing (Stream Idle)'||res.data.data.status=='Processing (Stream Starting)') {
+                    console.log('in')
                     const  handlerender=()=>{
+                        console.log('run')
                         Api.Live_stream_data(streamuuid).then((res) => {
+                            setplayer([res.data.data])
                             setStatus(res.data.data.status)
                         })
                     }
                    
                     cInterval.current=setInterval(()=>{
+                        console.log('start interva')
                         handlerender()
-                    },1000*30)
+                    },1000*3)
                 }
-                // if (res.data.data.status == 'Processing') {
-                //     const handlerender = () => {
-                //         Api.Live_stream_data(i.streamUUID).then((res) => {
-                //             setStatus(res.data.data.status)
-                //         })
-                //     }
-                //     interval = setInterval(() => handlerender(), 30000)
-
-
-                // }
-                // else {
-                //     if (res.data.data.status !== 'Processing') {
-                //         clearInterval(interval)
-                //     }
-                // }
+               
             })
         }
     }
@@ -189,6 +163,7 @@ export default function Overview() {
     const toggleHover = () => {
         setHover(!hover)
     }
+    console.log(status)
     return (
         <Fragment>
             {player.map((i, ind) =>
@@ -278,8 +253,8 @@ export default function Overview() {
                         <div className={styles.playback}>
                             <h2>Live Stream Player</h2>
                             <div className={styles.playback_content} >
-                                <div className={styles.playback_status}>{playback == false ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : <button ><span className={styles.playback_active} ></span> Active</button>}</div>
-                                {playback == false && i.status !== 'Active' ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> : <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
+                                <div className={styles.playback_status}>{i.status !== 'Active' ? <button> <span className={styles.playback_inactive} ></span> Inctive</button> : i.status=='Active'&& <button ><span className={styles.playback_active} ></span> Active</button>}</div>
+                                {i.status !== 'Active' ? <img className={styles.player_placeholder} src='/images/player_placeholder.svg' ></img> :i.status=='Active'&& <Livestream_Player playback_url={i.playbackUrl} handlethumnail={handlethumnail_callback} />}
                             </div>
                         </div> : <div className={styles.playback}>&nbsp;</div>}
                     {i.playbackUrl ?

@@ -529,6 +529,16 @@
 
 
 /* overview */
+.notVisble{
+    display: none;
+    transition: all 4s ease-out;
+}
+.visible{
+    display: block;
+    position: absolute;
+    margin: -19px 0px 0px 15px;
+    transition: all 6s ease-out;
+}
 .url_buttons {
     width: 100%;
     float: left;
@@ -725,12 +735,12 @@
 
 .playback_content .playback_status button {
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 12px;
+    left: 5px;
     width: 74px;
     height: 25px;
     margin: 0 324px 151px 9px;
-    padding: 5px 7px 5px 7px;
+    padding: 3px 7px 5px 14px;
     border-radius: 2px;
     border: solid 1px #9b9b9b;
     font-family: Inter-Medium;
@@ -741,7 +751,8 @@
 
 .playback_content .playback_status button .playback_inactive {
     position: absolute;
-    left: 2px;
+    left: 5px;
+    top: 5px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -750,7 +761,8 @@
 
 .playback_content .playback_status button .playback_active {
     position: absolute;
-    left: 2px;
+    left: 5px;
+    top: 5px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
