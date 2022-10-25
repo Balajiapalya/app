@@ -44,7 +44,7 @@ export default function Overview() {
                            
                             cInterval.current=setInterval(()=>{
                                 handlerender()
-                            },1000*3)
+                            },1000*30)
                         }else if(res.data.data.status=='Active' || res.data.data.status=='InActive'){
                             clearInterval(cInterval.current)
                         }
@@ -104,7 +104,7 @@ export default function Overview() {
                    
                     cInterval.current=setInterval(()=>{
                         handlerender()
-                    },1000*3)
+                    },1000*30)
                 }
 
                 // if (res.data.data.status == 'Processing') {
@@ -144,7 +144,7 @@ export default function Overview() {
                    
                     cInterval.current=setInterval(()=>{
                         handlerender()
-                    },1000*3)
+                    },1000*30)
                 }
 
                 // if (res.data.data.status == 'Processing') {
