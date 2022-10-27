@@ -146,8 +146,8 @@ export default function Overview() {
                                         {i.liveRecording &&
                                             <>
                                                 <tr>
-                                                    <td className={styles.title}>Channel</td>
-                                                    {i.liveRecording && i.liveRecording.channel ? <td className={styles.content}><Link href={`/Live_recording/liverecordingtabs?streamId=${i.liveRecording.streamUUID}&path=1`}><a className={styles.link}>{i.liveRecording.channel} ({i.liveRecording.streamUUID})</a></Link></td> : <td>-</td>}
+                                                    <td className={styles.title}>Stream ID</td>
+                                                    {i.liveRecording && i.liveRecording.channel ? <td className={styles.content}><Link href={`/Live_recording/liverecordingtabs?streamId=${i.liveRecording.streamUUID}&path=1`}><a className={styles.link}>{i.liveRecording.streamUUID}</a></Link></td> : <td>-</td>}
                                                 </tr>
                                                 <tr>
                                                     <td className={styles.title}>Start time</td>
