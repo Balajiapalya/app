@@ -24,18 +24,6 @@ function Videoditor(props) {
         .catch(err=>console.log(err))
 
     }
-    useEffect(()=>{
-        Api.Live_stream_data(streamId)
-            .then(res => {
-                if (res && res.data && res.data.data) {
-                    setplayerUrl(res.data.data.playbackUrl)
-                    // localStorage.setItem("asset_title", res.data.data.title);
-                }
-                else{
-                    console.log(res.data.data)
-                }
-            })
-    },[])
     const handlethumnail_callback = () => {
 
     }
@@ -44,7 +32,7 @@ function Videoditor(props) {
         <div className={styles.video_editor_content}>
             <div className={styles.video_editor_player}>
                 {/* <img src="/images/image11.png" alt="image" /> */}
-                <Livestream_Player playback_url={playerUrl} handlethumnail={handlethumnail_callback} />
+                <Livestream_Player playback_url={props?.props.data?.data.data?.playbackUrl} handlethumnail={handlethumnail_callback} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className={styles.start_end_time}>

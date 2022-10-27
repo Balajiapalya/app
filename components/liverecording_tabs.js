@@ -9,7 +9,6 @@ function Liverecording_tabs(props) {
     const router=useRouter();
     const [toggleState, setToggleState] = useState(1)
     const [render,setRender]=useState(true)
-
     useEffect(()=>{
         if(Number(router.query.path==undefined)){
             setToggleState(1);
@@ -60,7 +59,7 @@ function Liverecording_tabs(props) {
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                   {toggleState===2 && <Videoclips />}
+                   {toggleState===2 && <Videoclips data={props} />}
                 </div>
                 <div
                     className={toggleState === 3 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
