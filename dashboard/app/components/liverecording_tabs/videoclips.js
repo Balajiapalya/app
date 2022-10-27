@@ -7,7 +7,7 @@ import Recordingvideoclips_tabs from './recordingvideoclips_tabs';
 import { useRouter } from "next/router";
 
 
-export default function Videoclips() {
+export default function Videoclips(props) {
     const router = useRouter();
     const [clips, setClips] = useState([])
     const [reloadAfterPost, setReloadAfterPost] = useState(false)
@@ -146,7 +146,7 @@ return (
                 <div className={styles.create_videoclips_header}>
                     <h2>Create Video Clips</h2>
                 </div>
-                <Recordingvideoclips_tabs setReloadAfterPost={setReloadAfterPost} reloadAfterPost={reloadAfterPost} />
+                <Recordingvideoclips_tabs data={props} setReloadAfterPost={setReloadAfterPost} reloadAfterPost={reloadAfterPost} />
             </div>
         </div>
     </Fragment>

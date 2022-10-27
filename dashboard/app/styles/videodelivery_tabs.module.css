@@ -647,7 +647,7 @@
     background-color: #fff;
     float: left;
     margin-top: 5px;
-    height: 300px;
+    /* height: 300px; */
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
     border-radius: 4px;
 }
@@ -687,6 +687,11 @@
     letter-spacing: normal;
     text-align: left;
     color: #445465;
+}
+.asset_detials_content .content_table tbody tr .content .link{
+    text-decoration: underline;
+    color: #2863eb;
+    cursor: pointer;
 }
 
 .asset_detials_content .content_table tbody tr td img {

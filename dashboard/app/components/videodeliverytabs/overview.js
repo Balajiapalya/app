@@ -8,6 +8,7 @@ import Player from '../player';
 import Embed from '../../pages/videos/embed';
 import Delete_content from '../dialog/delete_content';
 import Activities from '../dialog/activities';
+import Link from 'next/link';
 export default function Overview() {
     const router = useRouter();
     const [player, setplayer] = useState([]);
@@ -87,10 +88,12 @@ export default function Overview() {
     const toggleHover = () => {
         setHover(!hover)
     }
+    
     return (
         <Fragment>
             {player.map((i, ind) =>
                 <div key={ind} className={styles.overview}>
+                    {console.log(i.liveRecording)}
                     <div className={styles.url_buttons}>
                         <div className={styles.geturl}>
                             <p>GET /services/api/v1/contents/{i.contentId}</p>
@@ -123,14 +126,14 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
-                                            {i.status=='Failed'?
-                                            <td className={styles.content}><div className={hover ? `${styles.visible}`
-                    : `${styles.notVisble}`}>failed to upload</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${i.status}.png`} /></td>:
-                    i.status=='Processing'?
-                    <td className={styles.content}><div className={hover ? `${styles.visible}`
-                    : `${styles.notVisble}`}>processing the video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${i.status}.png`} /></td>:
-                    <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
-                }
+                                            {i.status == 'Failed' ?
+                                                <td className={styles.content}><div className={hover ? `${styles.visible}`
+                                                    : `${styles.notVisble}`}>failed to upload</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${i.status}.png`} /></td> :
+                                                i.status == 'Processing' ?
+                                                    <td className={styles.content}><div className={hover ? `${styles.visible}`
+                                                        : `${styles.notVisble}`}>processing the video</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} src={`/images/asset_status/${i.status}.png`} /></td> :
+                                                    <td className={styles.content}>{i.status} <img src={`/images/asset_status/${i.status}.png`} /></td>
+                                            }
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Duration</td>
@@ -140,6 +143,23 @@ export default function Overview() {
                                             <td className={styles.title}>Aspect Ratio</td>
                                             {i.transcodingResponse && i.transcodingResponse.data && i.transcodingResponse.data.videoStreams ? <td className={styles.content}>{i.transcodingResponse.data.videoStreams[0].aspectRatio}</td> : <td>-</td>}
                                         </tr>
+                                        {i.liveRecording &&
+                                            <>
+                                                <tr>
+                                                    <td className={styles.title}>Channel Name</td>
+                                                    {i.liveRecording && i.liveRecording.channel ? <td className={styles.content}><Link href={`/Live_recording/liverecordingtabs?streamId=${i.liveRecording.streamUUID}&path=1`}><a className={styles.link}>{i.liveRecording.channel}</a></Link></td> : <td>-</td>}
+                                                </tr>
+                                                <tr>
+                                                    <td className={styles.title}>Start time</td>
+                                                    {i.liveRecording && i.liveRecording.endTime  ? <td className={styles.content}>{created(i.liveRecording.startTime)} {created_time(i.liveRecording.startTime)}</td> : <td>-</td>}
+                                                </tr>
+                                                <tr>
+                                                    <td className={styles.title}>End time</td>
+                                                    {i.liveRecording && i.liveRecording.endTime  ? <td className={styles.content}>{created(i.liveRecording.endTime) } {(created_time(i.liveRecording.endTime))}</td> : <td>-</td>}    
+                                                </tr>
+                                                
+                                            </>}
+
                                     </div>
                                 </tbody>
                             </table>
