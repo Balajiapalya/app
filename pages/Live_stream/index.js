@@ -108,7 +108,7 @@ export default function Videos() {
                             for(let i=0;i<res.data.data.length;i++){
                                 if (res.data.data[i].status=='InActive'||res.data.data[i].status=='Active') {
                                     response=false;
-                                    clearInterval(cInterval)
+                                    clearInterval(cInterval.current)
                                 }
                             }
                         })
