@@ -257,6 +257,9 @@ export const live_video_clip_list = (streamUUID) => {
 export const live_create_clip = (streamUUID)=>{
     return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}/clips`
 }
+export const delete_live_recording = (streamUUID)=>{
+    return `${VIDEO_BASE_URL()}/services/api/v1/livestreams/${streamUUID}`
+}
 let user_id;
 if (process.browser) {
     user_id = localStorage.getItem("userID")
@@ -865,6 +868,15 @@ const Api = {
                 'EnvironmentId': `${localStorage.getItem("envuuid")}`
             },
         }),
+        Live_delete_recording:(streamUUID)=>
+        loginHandledAxios({
+            method:'DELETE',
+            url:delete_live_recording(streamUUID),
+            headers:{
+                'Authorization': `Bearer ${token}`,
+                'EnvironmentId': `${localStorage.getItem("envuuid")}`
+            },
+        })
         
     
 }

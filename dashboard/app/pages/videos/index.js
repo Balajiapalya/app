@@ -35,7 +35,7 @@ export default function Videos() {
     const [filename, set_filename] = useState();
     const [uploaded, setuploaded] = useState(false);
     let itemsPerPage = 5
-
+    const cInterval = useRef()
 
     const sorting = (col) => {
         if (order === "ASC") {
@@ -76,38 +76,67 @@ export default function Videos() {
             .then(res => {
                 setCurrentItems(res.data.data.slice(itemOffset, endOffset));
                 setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
-                {
-                    res.data.data.map(item => {
+                // {
+                //     res.data.data.map(item => {
 
 
-                        if (item.status == 'Processing') {
-                            setTimeout(() => {
-                                setTimer(true)
-                            }, 1000 * 60)
-                        }
-                    })
-                }
+                //         if (item.status == 'Processing') {
+                //             setTimeout(() => {
+                //                 setTimer(true)
+                //             }, 1000 * 60)
+                //         }
+                //     })
+                // }
                 setInitialLength(res.data.data.length)
 
-                let timerFun = () => {
-                    setReload(false)
-                    let count = 0
-                    let intervalFunc = setInterval(() => {
-                        Api.Video_list(data).then(res => {
-                            let resp = res.data.data.length + count
-                            if (initialLength < resp) {
-                                setTimer(!timer)
-                                clearInterval(intervalFunc)
-                            }
-                            if (resp < initialLength) {
-                                count = initialLength - resp
+                // let timerFun = () => {
+                //     setReload(false)
+                //     let count = 0
+                //     let intervalFunc = setInterval(() => {
+                //         Api.Video_list(data).then(res => {
+                //             let resp = res.data.data.length + count
+                //             if (initialLength < resp) {
+                //                 setTimer(!timer)
+                //                 clearInterval(intervalFunc)
+                //             }
+                //             if (resp < initialLength) {
+                //                 count = initialLength - resp
+                //             }
+                //         })
+                //     }, 1000 * 20);
+                // }
+
+                // { reload && timerFun() }
+           
+                let response=false
+                for(let i=0;i<res.data.data.length;i++){
+                    if (res.data.data[i].status=='Processing') {
+                        response=true
+                    }
+                   
+                }
+                if(response==true){
+                    const handlerender = () => {
+                        Api.Video_list(data).then((res) => {
+                            console.log(res.data.data)
+                            setCurrentItems(res.data.data.slice(itemOffset, endOffset));
+                            setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
+                            for(let i=0;i<res.data.data.length;i++){
+                                if (res.data.data[i].status=='Ready') {
+                                    clearInterval(cInterval.current)
+                                    response=false;
+                                    
+                                }
                             }
                         })
-                    }, 1000 * 20);
-                }
-
-                { reload && timerFun() }
-
+                    }
+        
+                    cInterval.current = setInterval(() => {
+                        handlerender()
+                    }, 1000 * 15)
+                  }else if(response==false){
+                    clearInterval(cInterval)
+                  }
 
                 { setVideoData(res.data.data) }
             })

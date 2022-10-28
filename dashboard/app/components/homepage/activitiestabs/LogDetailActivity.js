@@ -4,16 +4,15 @@ import { useState, useEffect } from 'react';
 
 const LogDetails = (props) => {
     const [logDetail, setLogDetail] = useState([]);
-    const [parseResp, setParseResp] = useState();
-    const [parseReq, setParseReq] = useState();
+    const [parseResp, setParseResp] = useState('');
+    const [parseReq, setParseReq] = useState('');
     
     useEffect(() => {
         Api.Get_Log_details(props.clickDetail).then(res => {
             if (res && res.data && res.data.data) {
                     {setLogDetail(res.data.data)}
-                    
-                    {res.data.data.responseBody && setParseResp(JSON.parse(res.data.data.responseBody))}
-                    {res.data.data.reqBody && setParseReq(JSON.parse(res.data.data.reqBody))}
+                    {res.data.data.responseBody && setParseResp(res.data.data.responseBody)}
+                    {res.data.data.reqBody && setParseReq(res.data.data.reqBody)}
             }
         })
         .catch(error=>{
@@ -84,7 +83,7 @@ const LogDetails = (props) => {
             <div className={styles.textArea}>
                 <h2>Response Body</h2>
                 
-                <textarea defaultValue={parseResp && `${JSON.stringify(parseResp.data, undefined, 2)}`}
+                <textarea defaultValue={parseResp && `${JSON.stringify(parseResp, undefined, 2)}`}
                     className={styles.codeEvent} readOnly/>
             </div>
            
