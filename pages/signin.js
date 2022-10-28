@@ -13,7 +13,8 @@ import { useState, useEffect } from 'react';
 // })
 export default function Signin() {
   const [error, seterror] = useState([]);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [togglePassword,setTogglePassword]=useState(false);
   // const [timing,setTiming]=useState(false)
   const { register, setError, handleSubmit,setValue ,formState: { errors } } = useForm();
 
@@ -185,6 +186,9 @@ export default function Signin() {
     
   }, [])
   
+  const handleTogglePassword=()=>{
+    setTogglePassword(!togglePassword)
+  }
   return (
     <div className={styles.wrapper_signup}>
       <main className={styles.main_signup}>
@@ -208,6 +212,7 @@ export default function Signin() {
                 }})}
               />
             </div>
+            
             <p className={'validations'}>{errors.login?.message}</p>
             <div>
               <label className={`${styles.label} ${styles.req}`}>Password</label>
@@ -215,7 +220,7 @@ export default function Signin() {
                 id="password"
                 maxLength={40}
                 autoComplete='current-password'
-                type="password"
+                type={togglePassword?"text":"password"}
                 placeholder="Enter password"
                 name="password"
                 className={`${styles.signup_input} form_control`}
@@ -224,6 +229,10 @@ export default function Signin() {
                   message:'Entered value cannot start/end or have only white space'
               }})}
               />
+              {/* <div className={styles.pswdToggle}>
+                {togglePassword?<img onClick={()=>handleTogglePassword()} src="/images/metrics-unique-views.svg"/>
+                :<img onClick={()=>handleTogglePassword()} src="/images/metrics-views.svg"/>}
+            </div> */}
              
               {error && !errors.password && !errors.login && <span className='error'>{error}</span>}
             </div>
