@@ -8,7 +8,13 @@ function Logs({setLogDetail,logDetail}) {
   const [LogsData, setLogsData] = useState([]);
   const [clickDetail,setClickedDetail]=useState();
   const router = useRouter();
-  const query = router.query.videoId
+  let query = ''
+  if (router.asPath.includes('videoId')) {
+    query = router.query.videoId
+  }
+  else if (router.asPath.includes('streamId')) {
+    query = router.query.streamId
+  }
   useEffect(() => {
     getEventData();
   }, [])

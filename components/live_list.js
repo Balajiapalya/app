@@ -128,7 +128,7 @@ const LiveList = ({ i, create_On, created_time }) => {
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='stream-details' /><a >Stream Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming(i)}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>{action_status}</a></button>
-                                    <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Video</a></button>
+                                    <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Stream</a></button>
                                 </div>
                                 : null}
                             {dropdown && i.status == 'Failed'  ? <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div> : null}
