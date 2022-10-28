@@ -7,8 +7,8 @@ import Hls from 'hls.js';
 import Player from '../player';
 import Livestream_Player from '../livestream_Player';
 // import Embed from '../../pages/videos/embed';
-// import Delete_content from '../dialog/delete_content';
-// import Activities from '../dialog/activities';
+import Delete_content from '../dialog/delete_content';
+import Activities from '../dialog/activities';
 export default function Overview() {
     const router = useRouter();
     const [player, setplayer] = useState([]);
@@ -71,19 +71,19 @@ export default function Overview() {
         return t.toLocaleString("en-AU", { hour: "2-digit", minute: "2-digit" })
     }
 
-    // const delete_asset = () => {
-    //     Api.Delete_asset()
-    //         .then(res => {
-    //             if (res.data.status = "Success") {
-    //                 router.push({
-    //                     pathname: "/Live_stream"
-    //                 })
-    //             }
-    //         })
-    //         .catch(error => {
-
-    //         })
-    // }
+    const delete_asset = () => {
+        Api.Live_delete_recording(streamuuid)
+            .then(res => {
+                if (res.data.status = "Success") {
+                    router.push({
+                        pathname: "/Live_recording"
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     const handlethumnail_callback = () => {
 
     }
@@ -175,11 +175,11 @@ export default function Overview() {
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
-                                <button className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
+                                <button  onClick={() => setactivities(true)} className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
                                 {/* onClick={() => setactivities(true)} */}
                             </div>
                             <div className={styles.delete_stream}>
-                                <button className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
+                                <button onClick={() => setPop_up(true)} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
                                 {/* onClick={() => setPop_up(true)} */}
                             </div>
 
@@ -289,8 +289,8 @@ export default function Overview() {
                             </div>
                         </div> : <div />}
                 </div>)}
-            {/* {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up} />}
-            {activities && <Activities closeactivities={setactivities} />} */}
+            {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up} />}
+            {activities && <Activities closeactivities={setactivities} />}
         </Fragment>
     )
 }

@@ -118,7 +118,7 @@ const RecordingList = ({ i, create_On, created_time }) => {
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='stream-details' /><a >Stream Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming()}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>Stop</a></button>
-                                    <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Video</a></button>
+                                    <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Stream</a></button>
                                 </div>
                                 : null}
                             {dropdown && i.status == 'Failed' || dropdown && i.status == 'Processing' || dropdown && i.status == 'Pending' ? <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div> : null}
