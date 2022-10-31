@@ -208,7 +208,7 @@ export default function Overview() {
                                 {/* onClick={() => setactivities(true)} */}
                             </div>
                             <div className={styles.delete_stream}>
-                                <button onClick={() => setPop_up(true)} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Delete Asset</button>
+                                <button onClick={() => setPop_up(true)} className='btn'>  <img src="/images/iconmaterial-delete.svg" alt="delete"></img> Disable Stream</button>
                                 {/* onClick={() => setPop_up(true)} */}
                             </div>
 
@@ -316,7 +316,7 @@ export default function Overview() {
                             </div>
                         </div> : <div />}
                 </div>)}
-            {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up} />}
+            {Pop_up && <Delete_content router={router} delete_content={delete_asset} closePop_up={setPop_up} />}
             {activities && <Activities closeactivities={setactivities} />}
         </Fragment>
     )
