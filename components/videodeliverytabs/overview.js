@@ -325,7 +325,7 @@ export default function Overview() {
                             </div>
                         </div> : <div />}
                 </div>)}
-            {Pop_up && <Delete_content delete_content={delete_asset} closePop_up={setPop_up} />}
+            {Pop_up && <Delete_content router={router} delete_content={delete_asset} closePop_up={setPop_up} />}
             {activities && <Activities closeactivities={setactivities} />}
         </Fragment>
     )
