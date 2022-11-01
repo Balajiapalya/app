@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/livestream.module.css'
 import { useRouter } from "next/router";
 import Image from 'next/image'
+import Api from './api/api';
 
 
 const RecordingList = ({ i, create_On, created_time }) => {
@@ -12,6 +13,7 @@ const RecordingList = ({ i, create_On, created_time }) => {
     const [thumbnail, setthumbnail] = useState([]);
     const [dropdown, setdropdown] = useState(false);
     const [hover, setHover] = useState(false)
+    const [action_status, setaction_status] = useState(i.status);
     const handleChange = (status) => {
         setVideoId(i.streamUUID)
         // setvideotitle(i.title)
@@ -28,7 +30,20 @@ const RecordingList = ({ i, create_On, created_time }) => {
 
     }
 
-    const handleStreaming = () => {
+    const handleStreaming = (i) => {
+        console.log(i) 
+        if(i.status==='Active'){
+            Api.Live_status_stop(i.streamUUID).then((res)=>{
+                res&&res.data&&res.data.data&&res.data.data.status&&console.log(res.data.data.status)
+                setdropdown(false);
+            })
+        }else if(i.status==='Idle'){
+            Api.Live_status_start(i.streamUUID).then((res) => {
+                res&&res.data&&res.data.data&&res.data.data.status&&console.log(res.data.data.status)
+                setdropdown(false);
+            })
+        }
+        
         // setVideoId(i.contentId)
         // setvideotitle(i.title)
         // setthumbnail(i.thumbnailUrl)
@@ -47,7 +62,12 @@ const RecordingList = ({ i, create_On, created_time }) => {
     let domnode = useRef();
 
     useEffect(() => {
-
+        if (i.status == 'Active') {
+            setaction_status('Stop Streaming')
+        }
+        else {
+            setaction_status('Start Streaming')
+        }
         let maybehandler = (e) => {
 
             if (!domnode.current.contains(e.target)) {
@@ -59,7 +79,7 @@ const RecordingList = ({ i, create_On, created_time }) => {
             document.removeEventListener('mouseup', maybehandler);
         };
 
-    }, []);
+    }, [i.status]);
     const handleSingleCheck = () => {
         let singleCheck = document.querySelectorAll('.assetCheck');
         let tbody = document.getElementById('td').parentElement.parentElement;
@@ -102,8 +122,8 @@ const RecordingList = ({ i, create_On, created_time }) => {
                     :i.status=="Processing"
                     ?<td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
                     : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
-                    :i.status=="InActive"?
-                    <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`: `${styles.notVisble}`}>InActive</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
+                    :i.status=="Idle"?
+                    <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`: `${styles.notVisble}`}>Idle</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
                      :<td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{i.status} <img className={styles.ready_img} src={`/images/asset_status/${i.status}.png`} /></td>}
             <td>
                 <div className={styles.dropdown}>
@@ -117,7 +137,7 @@ const RecordingList = ({ i, create_On, created_time }) => {
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='stream-details' /><a >Stream Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleVideoClips()}><img src='/images/film-editing.svg' alt='video clips' /><a>Video Clips</a></button>
-                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming()}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>Stop</a></button>
+                                    <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming(i)}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>{action_status}</a></button>
                                     <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Stream</a></button>
                                 </div>
                                 : null}

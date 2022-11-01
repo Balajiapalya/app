@@ -171,7 +171,7 @@ export default function Overview() {
                 <div key={ind} className={styles.overview}>
                     <div className={styles.url_buttons}>
                         <div className={styles.geturl}>
-                            <p>GET   /video/v1/live-streams/{i.streamUUID}</p>
+                            <p>GET   /video/services/api/v1/livestreams/{i.streamUUID}</p>
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
