@@ -14,7 +14,7 @@ const LiveList = ({ i, create_On, created_time }) => {
     const [dropdown, setdropdown] = useState(false);
     const [hover, setHover] = useState(false);
     const [status,setStatus] = useState(i.status)
-    const [action_status, setaction_status] = useState()
+    const [action_status, setaction_status] = useState(i.status)
     const handleChange = (status) => {
         setVideoId(i.streamUUID)
         // setvideotitle(i.title)
@@ -25,14 +25,16 @@ const LiveList = ({ i, create_On, created_time }) => {
 
 
     const handleStreaming = () => {
-        if(i.status=='Active'){
+        console.log(i) 
+        if(i.status==='Active'){
             Api.Live_status_stop(i.streamUUID).then((res)=>{
-                setStatus(res.data.data.status)
+                res&&res.data&&res.data.data&&res.data.data.status&&console.log(res.data.data.status)
+                setdropdown(false);
             })
-        }
-        else{
-            Api.Live_status_start(i.streamUUID).then((res)=>{
-                setStatus(res.data.data.status)
+        }else if(i.status==='Idle'){
+            Api.Live_status_start(i.streamUUID).then((res) => {
+                res&&res.data&&res.data.data&&res.data.data.status&&console.log(res.data.data.status)
+                setdropdown(false);
             })
         }
         // setVideoId(i.streamUUID)
@@ -53,10 +55,10 @@ const LiveList = ({ i, create_On, created_time }) => {
     let domnode = useRef();
 
     useEffect(() => {
-        if (i.status == 'Active') {
+        if (i.status === 'Active') {
             setaction_status('Stop Streaming')
         }
-        else {
+        else if(i.status === 'Idle'){
             setaction_status('Start Streaming')
         }
         let maybehandler = (e) => {
@@ -70,7 +72,7 @@ const LiveList = ({ i, create_On, created_time }) => {
             document.removeEventListener('mouseup', maybehandler);
         };
 
-    }, []);
+    }, [i.status]);
     const handleSingleCheck = () => {
         let singleCheck = document.querySelectorAll('.assetCheck');
         let tbody = document.getElementById('td').parentElement.parentElement;
@@ -113,7 +115,7 @@ const LiveList = ({ i, create_On, created_time }) => {
                     : i.status == "Processing"
                         ? <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`
                             : `${styles.notVisble}`}>Processing</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
-                        :i.status == "InActive"? 
+                        :i.status == "Idle"? 
                         <td onClick={() => handleChange(i.status)} className={styles.tdCursor}><div className={hover ? `${styles.visible}`: `${styles.notVisble}`}>InActive</div>{i.status} <img onMouseEnter={toggleHover} onMouseLeave={toggleHover} className={styles.failed_img} src='/images/asset_status/Processing.png' /></td>
                         :<td onClick={() => handleChange(i.status)} className={styles.tdCursor}>{status} <img className={styles.ready_img} src={`/images/asset_status/${status}.png`} /></td>}
             <td>
@@ -124,14 +126,14 @@ const LiveList = ({ i, create_On, created_time }) => {
                                 <img className={`${styles.content_menu_basic} ${styles.tdCursor}`} src='/images/content-menu-basic.svg' alt='menu' />
                                 <img className={`${styles.content_menu_hover} ${styles.tdCursor}`} src='/images/content-menu-hover.svg' alt='menu' />
                             </div>
-                            {dropdown && i.status !== 'Failed' ?
+                            {dropdown && i.status !== 'Failed' && i.status !== 'Processing' && i.status !== 'Pending' ?
                                 <div className={styles.dropdown_list}>
                                     <button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange()}><img src='/images/videoDetails.svg' alt='stream-details' /><a >Stream Details</a></button>
                                     <button className={`${styles.dropdown_btn_middle} `} onClick={() => handleStreaming(i)}><img src='/images/live_stop.svg' alt='Stop streaming' /><a>{action_status}</a></button>
                                     <button className={`${styles.dropdown_btn_bottom} `}><img src='/images/iconawesome-eye-slash.svg' alt='disable' /><a>Disable Stream</a></button>
                                 </div>
                                 : null}
-                            {dropdown && i.status == 'Failed'  ? <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div> : null}
+                            {dropdown && i.status == 'Failed' || dropdown && i.status == 'Processing' || dropdown && i.status == 'Pending'  ? <div className={styles.dropdown_list}><button className={`${styles.dropdown_btn_top} `} onClick={() => handleChange(i.status)}><img src='/images/videoDetails.svg' alt='video-details' /><a >Video Details</a></button></div> : null}
                         </div>
                     </div>
 
