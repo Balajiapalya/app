@@ -6,18 +6,18 @@ const LogDetails = (props) => {
     const [logDetail, setLogDetail] = useState([]);
     const [parseResp, setParseResp] = useState('');
     const [parseReq, setParseReq] = useState('');
-    
+
     useEffect(() => {
         Api.Get_Log_details(props.clickDetail).then(res => {
             if (res && res.data && res.data.data) {
-                    {setLogDetail(res.data.data)}
-                    {res.data.data.responseBody && setParseResp(res.data.data.responseBody)}
-                    {res.data.data.reqBody && setParseReq(res.data.data.reqBody)}
+                { setLogDetail(res.data.data) }
+                { res.data.data.responseBody && setParseResp(res.data.data.responseBody) }
+                { res.data.data.reqBody && setParseReq(res.data.data.reqBody) }
             }
         })
-        .catch(error=>{
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
         return () => {
             setLogDetail([])
         }
@@ -25,7 +25,7 @@ const LogDetails = (props) => {
     }, [])
 
     const handleDate = (date) => {
-        var dateNew = new Date(+date).toLocaleString('en-In',{day:"2-digit",month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})
+        var dateNew = new Date(+date).toLocaleString('en-In', { day: "2-digit", month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
         return dateNew
     }
     const handleComponent = () => {
@@ -34,7 +34,7 @@ const LogDetails = (props) => {
     return (
         <div onClick={() => handleComponent()} className={styles.detailActivity}>
             <div className={styles.firstBox} >
-                <h2 className={styles.videoHeading}>POST https://api.videograph.com/video/v1/assets</h2>
+                <h2 className={styles.videoHeading}>{logDetail.method} {`${logDetail.url}`}</h2>
                 <div className={styles.eventsDetail}>
                     <table>
                         <tbody>
@@ -74,19 +74,19 @@ const LogDetails = (props) => {
                     </table>
                 </div>
             </div>
-           
+
             {parseReq && <div className={styles.textArea}>
                 <h2>Request Body</h2>
-                <textarea defaultValue={parseReq && `${JSON.stringify(parseReq, undefined, 2)}`} className={styles.logTextArea} readOnly/>
+                <textarea defaultValue={parseReq && `${JSON.stringify(parseReq, undefined, 2)}`} className={styles.logTextArea} readOnly />
             </div>}
 
             <div className={styles.textArea}>
                 <h2>Response Body</h2>
-                
+
                 <textarea defaultValue={parseResp && `${JSON.stringify(parseResp, undefined, 2)}`}
-                    className={styles.codeEvent} readOnly/>
+                    className={styles.codeEvent} readOnly />
             </div>
-           
+
 
         </div>
     )

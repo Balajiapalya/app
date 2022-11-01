@@ -38,7 +38,7 @@ const LogDetails = (props) => {
         <div>
             {logDetail && <div onClick={() => handleComponent()} className={styles.close}>
                 <div className={styles.firstBox} >
-                    <h2 className={styles.videoHeading}>POST https://api.videograph.com{logDetail.url}</h2>
+                    <h2 className={styles.videoHeading}>{logDetail.method} {logDetail && logDetail.url}</h2>
                     <div className={styles.eventsDetail}>
                         <table>
                             <tbody>

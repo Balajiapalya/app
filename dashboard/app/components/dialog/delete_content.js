@@ -14,7 +14,7 @@ export default function Delete_content({ router, delete_content, closePop_up }) 
 
                         <div className={styles.model_removeuser}>
                             <h4 className={styles.model_removeusername}>Are you sure you want to disable this stream ?</h4>
-                            <p className={styles.model_data}>Once disabled, this strean will no longer be available and the action cannot be undone.</p>
+                            <p className={styles.model_data}>Once disabled, this stream will no longer be available and the action cannot be undone.</p>
                         </div>
                         <div className={styles.model_btn}>
                             <button onClick={() => closePop_up(false)} type="button" className={`${styles.model_canel_btn} btn btn-primary`}>Cancel</button>
