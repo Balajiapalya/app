@@ -47,7 +47,7 @@ export default function Overview() {
                                 handlerender()
                             }, 1000 * 30)
 
-                        } else if (res.data.data.status == 'Active' || res.data.data.status == 'InActive') {
+                        } else if (res.data.data.status == 'Active' || res.data.data.status == 'Idle') {
                             clearInterval(cInterval.current)
                         }
 
@@ -98,7 +98,7 @@ export default function Overview() {
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setplayer([res.data.data])
                             setStatus(res.data.data.status)
-                            if (res.data.data.status == 'Active' || res.data.data.status == 'InActive') {
+                            if (res.data.data.status == 'Active' || res.data.data.status == 'Idle') {
                                 clearInterval(cInterval.current)
                             }
                         })
@@ -119,7 +119,7 @@ export default function Overview() {
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setplayer([res.data.data])
                             setStatus(res.data.data.status)
-                            if (res.data.data.status == 'Active' || res.data.data.status == 'InActive') {
+                            if (res.data.data.status == 'Active' || res.data.data.status == 'Idle') {
                                 clearInterval(cInterval.current)
                             }
                         })
@@ -150,7 +150,7 @@ export default function Overview() {
             holder.classList.remove(`${styles.none}`);
             holder.classList.add(`${styles.show}`);
             liveVid.classList.add(`${styles.none}`)
-            text.innerText = 'Inactive'
+            text.innerText = 'Idle'
             liveVid.pause();
         } else {
             liveVid.classList.remove(`${styles.none}`);
@@ -229,7 +229,7 @@ export default function Overview() {
                                         </tr>
                                     </div>
                                 </tbody>
-                                {status == 'Active' || status == 'InActive' && i.playbackUrl ?
+                                {status == 'Active' || status == 'Idle' && i.playbackUrl ?
                                     <div className={styles.recordingplayer_action}>
                                         {playback == false ? <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_start} btn`}>
                                             <img src='/images/live_play.svg' />
