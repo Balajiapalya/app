@@ -715,8 +715,8 @@
 }
 
 .playback_content {
-    width: 100%;
-    float: right;
+    /* width: 100%; */
+    float: left;
     margin-top: 5px;
     position: relative;
     background-color: #606060;
