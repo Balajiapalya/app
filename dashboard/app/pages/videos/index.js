@@ -118,7 +118,6 @@ export default function Videos() {
                 if(response==true){
                     const handlerender = () => {
                         Api.Video_list(data).then((res) => {
-                            console.log(res.data.data)
                             setCurrentItems(res.data.data.slice(itemOffset, endOffset));
                             setPageCount(Math.ceil(res.data.data.length / itemsPerPage));
                             for(let i=0;i<res.data.data.length;i++){

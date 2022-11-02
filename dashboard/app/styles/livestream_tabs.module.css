@@ -1885,7 +1885,18 @@
     font-size: 14px;
     font-weight: 500;
 }
-
+.processing_btn{
+    background-color: #cacaca;
+    border: solid 1px #9b9b9b;
+    cursor: not-allowed;
+}
+.processing_btn span{
+    color: #555f6a;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    
+}
 /* media */
 @media screen and (max-width: 991px) {
     .functional_buttons {

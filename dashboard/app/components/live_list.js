@@ -25,16 +25,16 @@ const LiveList = ({ i, create_On, created_time }) => {
 
 
     const handleStreaming = () => {
-        console.log(i) 
+        // console.log(i) 
         if(i.status==='Active'){
             Api.Live_status_stop(i.streamUUID).then((res)=>{
-                res&&res.data&&res.data.data&&res.data.data.status&&console.log(res.data.data.status)
-                setdropdown(false);
+                res&&res.data&&res.data.data&&res.data.data.status&&setdropdown(false);
+              
             })
         }else if(i.status==='Idle'){
             Api.Live_status_start(i.streamUUID).then((res) => {
-                res&&res.data&&res.data.data&&res.data.data.status&&console.log(res.data.data.status)
-                setdropdown(false);
+                res&&res.data&&res.data.data&&res.data.data.status&&setdropdown(false);
+                
             })
         }
         // setVideoId(i.streamUUID)
