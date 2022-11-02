@@ -175,7 +175,7 @@ export default function Overview() {
                         </div>
                         <div className={styles.functional_buttons}>
                             <div className={styles.actions}>
-                                <button  onClick={() => setactivities(true)} className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
+                                <button onClick={() => setactivities(true)} className='btn'> <img src="/images/iconawesome-file-alt.svg" alt="file"></img> Activities</button>
                                 {/* onClick={() => setactivities(true)} */}
                             </div>
                             <div className={styles.delete_stream}>
@@ -238,16 +238,11 @@ export default function Overview() {
                                             <img src='/images/live_stop.svg' />
                                             <span> Stop</span>
                                         </button>}
-                                    </div> : status == 'Processing' && i.playbackUrl ? <div className={styles.recordingplayer_action}>
-                                        {/* {playback == false ? <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_start} btn`}>
-                                            <img src='/images/live_play.svg' />
-                                            <span> Start</span>
-                                        </button> : <button onClick={() => handlePlayback(i)} className={`${styles.recordingPlayer_stop} btn`}>
-                                            <img src='/images/live_stop.svg' />
-                                            <span> Stop</span>
-                                        </button>} */}
-                                    </div> : null
-                                }
+                                    </div> : status?.includes('Processing') == true? <div className={styles.recordingplayer_action}>
+                                        <button className={`${styles.processing_btn} btn`}>
+                                            <span> Start/Stop</span>
+                                        </button>
+                                    </div> : null}
 
                             </table>
                         </div>
