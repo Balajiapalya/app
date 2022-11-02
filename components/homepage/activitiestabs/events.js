@@ -10,7 +10,6 @@ function Events({ setDetail, detail }) {
   // const [query, setquery] = useState('')
   const router = useRouter();
   let query = ''
-  console.log(router.asPath.includes('streamId'))
   if (router.asPath.includes('videoId')) {
     query = router.query.videoId
     // setquery(router.query.videoId)

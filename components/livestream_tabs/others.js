@@ -18,7 +18,6 @@ export default function Others(props) {
     const [tagErr, setTagErr] = useState(false)
     const [rerender,setRerender]=useState(false)
     const { register, handleSubmit, watch, setError, getValues, setValue, formState: { errors } } = useForm();
-    console.log(props.data.data.title)
     const onSubmit = (video_data) => {
         // if (meta.length <= 0) {
         //     if (keys.key !== '' && keys.value === '') {

@@ -1,9 +1,7 @@
 import styles from '../../styles/model.module.css'
 export default function Delete_content({ router, delete_content, closePop_up }) {
-    console.log(router)
     const Delete_Content = () => {
         if (router.asPath.includes('streamId')) {
-            console.log('streamid')
             return (
                 <div className={styles.model_container}>
                     <div className={styles.model_main}>
@@ -24,7 +22,6 @@ export default function Delete_content({ router, delete_content, closePop_up }) 
                 </div>
             )
         } else if (router.asPath.includes('videoId')) {
-            console.log('videoId')
             return (
                 <div className={styles.model_container}>
                     <div className={styles.model_main}>
