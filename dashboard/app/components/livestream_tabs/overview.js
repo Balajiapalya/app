@@ -33,7 +33,7 @@ export default function Overview() {
                         setplayback(!playback)
                     } else {
                         setplayback(false)
-                        if (res.data.data.status == 'Processing' || res.data.data.status == 'Processing (Stream Idle)' || res.data.data.status == 'Processing (Stream Starting)' || res.data.data.status == 'Processing (Stream Stopping)') {
+                        if (res.data.data.status.startsWith('Processing')) {
                             // setplayer_toggle('')
                             const handlerender = () => {
                                 Api.Live_stream_data(streamuuid).then((res) => {
@@ -60,14 +60,7 @@ export default function Overview() {
         //     setplayer([])
         // }
     }, []);
-    const created = (date) => {
-        const d = new Date(date)
-        return d.toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "2-digit" });
-    }
-    const created_time = (date) => {
-        const t = new Date(date)
-        return t.toLocaleString("en-AU", { hour: "2-digit", minute: "2-digit" })
-    }
+    const created = (date) => new Date(date).toLocaleString("en-AU", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit"}).replace(',', ' ');
 
     const delete_asset = () => {
         Api.Live_delete_recording(streamuuid)
@@ -91,7 +84,7 @@ export default function Overview() {
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing' || res.data.data.status == 'Processing (Stream Running)' || res.data.data.status == 'Processing (Stream Starting)') {
+                if (res.data.data.status.startsWith('Processing')) {
                     const handlerender = () => {
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setStatus(res.data.data.status)
@@ -131,7 +124,7 @@ export default function Overview() {
         else {
             Api.Live_status_start(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing' || res.data.data.status == 'Processing (Stream Idle)' || res.data.data.status == 'Processing (Stream Starting)') {
+                if (res.data.data.status.startsWith('Processing')) {
                     const handlerender = () => {
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setStatus(res.data.data.status)
@@ -240,7 +233,7 @@ export default function Overview() {
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Created</td>
-                                            <td className={styles.content}>{created(i.createdOn)} {created_time(i.createdOn)}</td>
+                                            <td className={styles.content}>{created(i.createdOn)}</td>
                                         </tr>
                                         <tr>
                                             <td className={styles.title}>Status</td>
@@ -255,6 +248,12 @@ export default function Overview() {
                                             <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
                                             {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
                                         </tr>
+                                        {i.activeSince &&
+                                            <tr>
+                                                <td className={styles.title}>Active Since</td>
+                                                <td className={styles.content}>{created(i.activeSince)}</td>
+                                            </tr>
+                                        }
                                     </div>
                                 </tbody>
                                 {status == 'Active' || status == 'Idle' && i.playbackUrl ?
