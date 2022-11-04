@@ -111,7 +111,7 @@ const Player = (props) => {
 
   return (
     <div data-vjs-player>
-      <video ref={videoRef} class="video-js vjs-default-skin vjs-big-play-centered"
+      <video ref={videoRef} className={"video-js vjs-default-skin vjs-big-play-centered"}
         width="100%"
         height="230px"
         onSeekedCapture={(e)=>pausedvideo(e)}
