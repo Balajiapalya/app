@@ -9,7 +9,7 @@ function Billing() {
     const [openpaymenthistory, setopenpaymenthistory] = useState(false);
     const [accDetails, set_accDetails] = useState([]);
     const [url, seturl] = useState("")
-    const [date, set_date] = useState([]);
+    const [data, set_data] = useState([]);
     const [videoInfo, set_videoInfo] = useState([]);
     const [videoAdded, set_videoAdded] = useState([]);
     const [videoStreamed, set_videoStreamed] = useState([]);
@@ -29,10 +29,11 @@ function Billing() {
     useEffect(() => {
         account_info(1)
     }, [])
-    const account_info=()=>{
+    const account_info = () => {
         Api.Get_account_info()
             .then(res => {
                 if (res.data.status = "Success") {
+                    set_data(res.data.data.breakup)
                     seturl(res.data.data.changeBillingUrl)
                     set_videoInfo(res.data.data)
                     set_videoAdded(res.data.data.breakup["Encoded Minutes"])
@@ -53,6 +54,27 @@ function Billing() {
         email = localStorage.getItem("ownerEmail");
     }
     const ownerEmail = email;
+    const billing_data = () => {
+        return (
+
+            Object.keys(data).map((item, keys) => {
+                return (
+                    <>
+                        {data[item].amountCharged &&
+                            <tr key={keys}>
+                                <td>{item}</td>
+                                <td>$ {data[item].amountCharged}</td>
+                                <td>{data[item].minutesUsed} mins</td>
+                                <td>$ {data[item].pricePerMinute}</td>
+                            </tr>
+                        }
+                    </>
+
+                )
+            })
+
+        )
+    }
     return (
         <Fragment>
             <div className={styles.container1}>
@@ -72,44 +94,16 @@ function Billing() {
                             <div className={styles.Video_consumption}>
                                 <div className={styles.consumption}>
                                     <span className={styles.Video_consumption_heading}>Video Consumption</span>
-                                    <span className={styles.Video_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span> 
+                                    <span className={styles.Video_consumption_date}>({createdMonth(items.subscriptionStart)} {createdDate(items.subscriptionEnd)} - {createdMonth(items.subscriptionEnd)} {createdDate(items.subscriptionStart)} billing cycle)</span>
                                 </div>
-                                
+
                                 {/* <span> <a href="#">change Plan</a></span> */}
+                                {items.hasActiveSubscription == true ?
                                 <table>
                                     <tbody>
-                                        {[videoAdded].map((items, key) =>
-                                            <tr key={key}>
-                                                <td>Video added</td>
-                                                <td>{items.minutesUsed} min</td>
-                                                <td>at {items.pricePerMinute}</td>
-                                                <td>$ {items.amountCharged}</td>
-                                            </tr>
-                                        )}
+                                        {data && billing_data()}
                                         <tr>
-                                            <td>Video added(Live)</td>
-                                            <td>0 min</td>
-                                            <td>at 0.00 </td>
-                                            <td>$ 0.0 </td>
-                                        </tr>
-                                        {[videostored].map((i, key) =>
-                                            <tr key={key}>
-                                                <td>Video stored</td>
-                                                <td>{i.minutesUsed} min</td>
-                                                <td>at {i.pricePerMinute}</td>
-                                                <td>$ {i.amountCharged}</td>
-                                            </tr>
-                                        )}
-                                        {[videoStreamed].map((item, key) =>
-                                            <tr key={key}>
-                                                <td>Video streamed</td>
-                                                <td>{item.minutesUsed} min</td>
-                                                <td>at {item.pricePerMinute}</td>
-                                                <td>$ {item.amountCharged}</td>
-                                            </tr>
-                                        )}
-                                        <tr>
-                                            <td>videograph credit</td>
+                                            <td>Videograph credit</td>
                                             <td>{items.amountRemaining}$ remaining</td>
                                             <td></td>
                                             <td>($ {items.amountChargeable})</td>
@@ -121,7 +115,7 @@ function Billing() {
                                             <td>$ {items.amountChargeable}</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> : null}
                             </div>
                         </div>
                         {openpaymenthistory && <Payment_history closepaymenthistory={setopenpaymenthistory} />}
@@ -131,7 +125,7 @@ function Billing() {
                                     <span className={styles.payment_details_heading}>Account Payment Details</span>
                                     <span className={styles.view_payment_history}> <a onClick={() => setopenpaymenthistory(true)}>View Payment history</a></span>
                                 </div>
-                                
+
                                 <table>
                                     <tbody>
                                         <tr>

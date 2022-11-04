@@ -52,7 +52,7 @@ export default function Overview({ setToggleState }) {
             setArray([])
             setGeographies([])
         }
-    }, [valueEnv]);
+    }, []);
 
     const Usage_statistics_data = () => {
         const fromDate = new Date().setDate(new Date().getDate() - 7);
@@ -88,6 +88,7 @@ export default function Overview({ setToggleState }) {
                 .then(res => {
                     totalviewers((res.data.data.views).reverse()[0])
                     set_realtime(res.data.data.views)
+                    console.log(res.data.data.views)    
                 })
                 .catch(error => console.log(error))
         }
@@ -269,11 +270,12 @@ export default function Overview({ setToggleState }) {
     const realtime_views = {
         labels: realtime.map((realTime, key) => {
             var dt = new Date(realTime?.timestamp)
+            // console.log(dt)
             return dt.getHours() + ':' + dt.getMinutes();
         }),
         datasets: [
             {
-                data: realtime.map((realTime, key) => realTime.count),
+                data: realtime&&realtime.map((realTime, key) => realTime?.count),
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)",
