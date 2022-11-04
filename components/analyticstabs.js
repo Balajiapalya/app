@@ -32,14 +32,14 @@ function Analytics_tabs({id}) {
                 <div
                     className={toggleState === 1 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    {toggleState==1 ? <Overview setToggleState={setToggleState}/>:null }
+                    {toggleState==1 &&  <Overview setToggleState={setToggleState}/> }
                    
                 </div>
 
                 <div
                     className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
                 >
-                    {toggleState==2 ? <Metrics id={id}/>:null}
+                    {toggleState==2 && <Metrics id={id}/>}
                     
                 </div>
             </div>

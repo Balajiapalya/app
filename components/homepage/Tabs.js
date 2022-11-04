@@ -23,8 +23,11 @@ function Tabs() {
   const subscribed=()=>{
     Api.List_org_subscriptions()
       .then(res => {
-        if (res.data.data[0].uuid = "active") {
+        
+        if (res.data.data[0].status == 'active') {
           setpage(true)
+        }else{
+          setpage(false)
         }
       })
       .catch(error => {
@@ -78,7 +81,7 @@ function Tabs() {
           className={toggleState === 2 ? `${styles.content_tabs} ${styles.active_content}` : `${styles.content_tabs}`}
         >
           {/* <Billing /> */}
-          {toggleState === 2 ? [page ? <Billing/>:<Billing_plans/>]:null}
+          {toggleState === 2 ? [page== true ? <Billing/>:<Billing_plans/>]:null}
           {/* <Billing_plans/> */}
           {/* {page ? <Billing /> : <Billing_plans />} */}
         </div>
