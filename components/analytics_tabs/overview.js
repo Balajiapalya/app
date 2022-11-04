@@ -43,15 +43,21 @@ export default function Overview({ setToggleState }) {
         .translate([800 / 2, 300 / 2])
     const path = geoPath(projection)
 
-    useEffect(() => {
+    useEffect(() => { 
         Usage_statistics_data();
         Views_statistics_data();
         Realtime_views();
+            let intervalFunc = setInterval(() => {
+                Realtime_views()
+            }, 1000 * 15);
+        
         return () => {
             setDataArr()
             setArray([])
             setGeographies([])
+            clearInterval(intervalFunc)
         }
+       
     }, []);
 
     const Usage_statistics_data = () => {
@@ -88,7 +94,7 @@ export default function Overview({ setToggleState }) {
                 .then(res => {
                     totalviewers((res.data.data.views).reverse()[0])
                     set_realtime(res.data.data.views)
-                    console.log(res.data.data.views)    
+                    // console.log(res.data.data.views)    
                 })
                 .catch(error => console.log(error))
         }
@@ -270,7 +276,6 @@ export default function Overview({ setToggleState }) {
     const realtime_views = {
         labels: realtime.map((realTime, key) => {
             var dt = new Date(realTime?.timestamp)
-            // console.log(dt)
             return dt.getHours() + ':' + dt.getMinutes();
         }),
         datasets: [
