@@ -80,12 +80,10 @@ const Livestream_Player = (props) => {
             fluid: true,
             muted: true,
             responsive: true,
-            // sources: [{
-            //   src: url,
-            //   type: 'application/x-mpegURL',
-            //   withCredentials: true,
-            //   liveui:true
-            // }],
+            sources: [{
+              src: url,
+              
+            }],
           }
 
           // videojs.registerPlugin('hlsQualitySelector', qualitySelector);
@@ -112,6 +110,7 @@ const Livestream_Player = (props) => {
 
     if (player) {
       let qualityLevels = player.qualityLevels();
+      console.log(qualityLevels)
       qualityLevels.on('addqualitylevel', function (event) {
         let qualityLevel = event.qualityLevel;
         if (qualityLevel.height) {
@@ -121,7 +120,7 @@ const Livestream_Player = (props) => {
           qualityLevel.enabled = false;
         }
       });
-      console.log(player)
+    
       player.hlsQualitySelector({ displayCurrentQuality: true })
     }
   }, [player])
