@@ -1,8 +1,9 @@
-import React, { Component,useRef, useState, useEffect } from 'react';
+import React, { Component, useRef, useState, useEffect } from 'react';
 import Hls from 'hls.js';
 import Api from './api/api';
 import videojs from 'video.js'
 import 'video.js/dist/video-js.css';
+// used to set quality level
 import qualitySelector from 'videojs-hls-quality-selector';
 import qualityLevels from 'videojs-contrib-quality-levels'
 
@@ -28,9 +29,9 @@ import qualityLevels from 'videojs-contrib-quality-levels'
 //           }
 //         }
 //       });
-    
+
 //   };
-  
+
 //   render() {
 //     const pausedvideo =(e)=>{
 //       this.props.handlethumnail(e.target.currentTime)
@@ -44,14 +45,14 @@ import qualityLevels from 'videojs-contrib-quality-levels'
 //           controls
 //           onSeekedCapture={(e)=>pausedvideo(e)}
 //           onPause={(e)=>pausedvideo(e)}
-          
+
 //         />  
 //       </div>
 //     );
 //   }
 // }
 
-const Player=()=>{
+const Player = (props) => {
   const videoRef = useRef()
   const [player, setPlayer] = useState(undefined)
 
@@ -60,55 +61,63 @@ const Player=()=>{
       .then((response) => {
         if (response && response.data && response.data.data && response.data.data.playbackUrl) {
           var url = response.data.data.playbackUrl;
-      const videoJsOptions = {
-        playbackRates:[0.5,1,1.5,2],
-          autoplay: false,
-          controls: true,
-          fluid: true,
-          muted: true,
-          responsive: true,
-          sources: [{
+          const videoJsOptions = {
+            playbackRates: [0.5, 1, 1.5, 2],
+            autoplay: false,
+            controls: true,
+            fluid: true,
+            muted: true,
+            responsive: true,
+            sources: [{
               src: url,
-          }],
-      }
+            }],
+          }
 
-      // videojs.registerPlugin('hlsQualitySelector', qualitySelector);
-      // videojs.registerPlugin('qualitylevel', qualityLevels);
-    
-      const p = videojs(videoRef.current, videoJsOptions, function onPlayerReaady() {
-        
-          console.log(qualityLevels,videoRef.current,'onPlayerReady')
+          // videojs.registerPlugin('hlsQualitySelector', qualitySelector);
+          // videojs.registerPlugin('qualitylevel', qualityLevels);
+
+          const p = videojs(videoRef.current, videoJsOptions, function onPlayerReaady() {
+
+          })
+          setPlayer(p)
+          return () => {
+            if (player) player.dispose()
+          };
+        }
       })
-      setPlayer(p)
-      return () => {
-          if (player) player.dispose()
-      };
-    }})
   }, [])
 
+  const pausedvideo =(e)=>{
+        props.handlethumnail(e.target.currentTime)
+        }
   useEffect(() => {
-   
-      if (player) {
-        let qualityLevels = player.qualityLevels();
-        qualityLevels.on('addqualitylevel', function (event) {
-          let qualityLevel = event.qualityLevel;
-          if (qualityLevel.height) {
-            console.log(qualityLevel)
-            qualityLevel.enabled = true;
-          } else {
-            qualityLevels.removeQualityLevel(qualityLevel);
-            qualityLevel.enabled = false;
-          }
-        });
-        player.hlsQualitySelector({ displayCurrentQuality: true })
-      }
+
+    if (player) {
+      let qualityLevels = player.qualityLevels();
+      qualityLevels.on('addqualitylevel', function (event) {
+        let qualityLevel = event.qualityLevel;
+        if (qualityLevel.height) {
+          qualityLevel.enabled = true;
+        } else {
+          qualityLevels.removeQualityLevel(qualityLevel);
+          qualityLevel.enabled = false;
+        }
+      });
+      console.log(player)
+      player.hlsQualitySelector({ displayCurrentQuality: true })
+    }
   }, [player])
 
 
   return (
-      <div data-vjs-player>
-              <video ref={videoRef} className="video-js"></video>
-      </div>
+    <div data-vjs-player>
+      <video ref={videoRef} class="video-js vjs-default-skin vjs-big-play-centered"
+        width="100%"
+        height="230px"
+        onSeekedCapture={(e)=>pausedvideo(e)}
+        onPause={(e)=>pausedvideo(e)}
+      ></video>
+    </div>
   );
 }
 export default Player;
