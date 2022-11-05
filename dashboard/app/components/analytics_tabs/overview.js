@@ -162,6 +162,9 @@ export default function Overview({ setToggleState }) {
                 position: 'bottom',
             },
         },
+        interaction: {
+          intersect: false,
+        },
         elements: {
             line: {
                 tension: 0 // disables bezier curves
@@ -184,12 +187,12 @@ export default function Overview({ setToggleState }) {
                 grid: {
                     display: false
                 },
-                max: 6,
-                min: 0,
+//                max: 6,
+//                min: 0,
                 ticks: {
                     stepSize: 1,
                     font: {
-                        size: 12,
+                        size: 10,
 
                     },
                     color: '#5d6381'
@@ -278,7 +281,7 @@ export default function Overview({ setToggleState }) {
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)",
                 borderWidth: 1,
-                pointRadius: 0,
+                pointRadius: 1,
             },
         ]
     }
@@ -330,7 +333,7 @@ export default function Overview({ setToggleState }) {
                         {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordEncodingUsage').map((item, key) =>
                             <div key={key}>
                                 {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs / 60)}mins</h5>
+                                <h5>{parseInt(item.amountInSecs / 60)} mins</h5>
                             </div>
                         )]}
 
@@ -352,7 +355,7 @@ export default function Overview({ setToggleState }) {
                             <div key={key}>
                                 {/* {console.log(item.amountInSecs)} */}
                                 {/* <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs / 60)}mins</h5>
+                                <h5>{parseInt(item.amountInSecs / 60)} mins</h5>
                             </div>
                         )]}
 
@@ -372,7 +375,7 @@ export default function Overview({ setToggleState }) {
                             <div key={key}>
 
                                 {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs / 60)}mins</h5>
+                                <h5>{parseInt(item.amountInSecs / 60)} mins</h5>
                             </div>
                         )]}
 
