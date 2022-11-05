@@ -188,7 +188,7 @@ export default function Overview({ setToggleState }) {
                     display: false
                 },
 //                max: 6,
-//                min: 0,
+                min: 0,
                 ticks: {
                     stepSize: 1,
                     font: {
