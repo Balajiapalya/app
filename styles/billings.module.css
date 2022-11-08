@@ -1,0 +1,482 @@
+/*---------BILLING--------------*/
+
+.query {
+    width: 100%;
+    float: left;
+}
+
+.query p {
+    width: 38%;
+    float: left;
+    /* margin-right: 150px;   */
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.46;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4a5057;
+}
+
+.query p a {
+    color: #4a5057;
+    text-decoration: underline;
+}
+
+.query a button {
+    /* width:18%; */
+    float: right;
+    border-color: #2863eb;
+    border-radius: 5px;
+    color: #2863eb;
+    padding:11px 20px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    background-color: inherit;
+    text-align: left;
+}
+
+.payment {
+    width: 100%;
+    float: left;
+}
+
+.payment h4 {
+    /* margin-top: 70px; */
+    margin: 20px 0px;
+    font-family: Inter-SemiBold;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4a5057;
+}
+
+.consumption {
+    margin-bottom: 12px;
+}
+
+.tables_left {
+    /* float:left; */
+    width: 100%;
+    margin-right: 20px;
+}
+
+/*Video consumption*/
+
+.Video_consumption {
+    width: 57%;
+    float: left;
+}
+
+.Video_consumption_heading {
+    margin-right: 5px;
+    font-family: Inter-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #6f7c8b;
+   
+}
+
+
+.Video_consumption_date {
+    font-family: Inter-Regular;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4a5057;
+}
+
+.Video_consumption a {
+    color: #2863eb;
+    text-decoration: underline;
+    font-size: 14px;
+    font-family: Inter-Regular;
+
+}
+
+.Video_consumption table {
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    background-color: white;
+    text-align: left;
+    margin: 10px 0px 30px 0px;
+    border-collapse: collapse;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.Video_consumption table tbody tr td {
+    padding: 20px 30px 20px 22px;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
+
+}
+
+.Video_consumption table tbody tr {
+    border-bottom: 1px solid #ecedef;
+
+}
+
+.current_video_cost {
+    font-family: Inter-SemiBold;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #212b36;
+}
+.current_video_cost td{
+    font-weight: bold !important;
+}
+/*Right table*/
+
+.tables_right {
+    width: 41%;
+    float: right;
+}
+
+.tables_right .payment_details span {
+    font-family: Inter-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6f7c8b;
+}
+
+.paymentDet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.payment_details_heading {
+    font-family: Inter-Semibold;
+    font-size: 22px;
+    color: #212b36;
+    font-weight: 600;
+}
+
+.payment_details_date {
+    margin-right: 10px;
+}
+
+.payment_details a {
+    font-family: Inter-Regular;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: right;
+  color: #2863eb;
+    text-decoration: underline;
+    font-family: Inter-Regular;
+    cursor: pointer;
+}
+
+.payment_details table {
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    background-color: white;
+    text-align: left;
+    margin: 10px 0px 30px 0px;
+    width: 100%;
+    margin-top: 13px;
+    border-collapse: collapse;
+    font-family: Inter-Regular;
+    border-radius: 4px;
+}
+
+.payment_details table tbody tr {
+    border-bottom: 1px solid #ecedef;
+}
+
+.payment_details table tbody tr td {
+    padding: 20px;
+    font-family: Inter-Regular;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #212b36;
+}
+
+.payment_details table tbody tr td img {
+    margin-right: 10px;
+}
+
+
+.payment_details table tbody tr .text_align {
+    text-align: right;
+    padding: 10px 30px 10px 25px;
+}
+
+/*Data cunsumption*/
+.data_consumption {
+    width: 53%;
+    float: left;
+}
+
+.data_consumption_heading {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: Inter-Semibold;
+    margin-right: 3px;
+    color: #212b36;
+}
+
+.data_consumption_date {
+    font-family: Inter-Regular;
+    font-size: 16px;
+    color: #4a5057;
+}
+
+.data_consumption a {
+    color: #2863eb;
+    text-decoration: underline;
+    font-size: 14px;
+    font-family: Inter-Regular;
+    margin-left: 10px;
+}
+
+.data_consumption table {
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    background-color: white;
+    text-align: left;
+    margin: 10px 0px 30px 0px;
+    /* width:48%; */
+    border-collapse: collapse;
+    font-family: Inter-Regular;
+    font-size: 14px;
+}
+
+.data_consumption table tbody tr {
+    border-bottom: 1px solid #ecedef;
+}
+
+.data_consumption table tbody tr td {
+    padding: 10px 17px;
+    color: #212b36;
+}
+
+.data_consumption table tbody tr .views {
+    padding: 10px 10px 10px 35px;
+}
+
+
+
+.view_payment_history {
+    margin-top: 1px;
+}
+
+/* ------BILIING PLANS----------- */
+.plans_container {
+    width: 100%;
+    float: left;
+}
+
+.plans_card {
+    width: 30%;
+    float: left;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0px 15px 15px 0px;
+    background-color: #ffff;
+    text-align: center;
+}
+
+.plan_heading {
+    font-family: Inter-Medium;
+    text-align: center;
+}
+
+.plans_card h3 {
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.plans_card span {
+    font-weight: initial;
+    font-size: 18px;
+}
+
+.content_key {
+    display: initial;
+}
+
+.plan_subscribe {
+    width: 100%;
+    float: left;
+    margin: 20px 0px;
+}
+
+.plan_subscribe_btn {
+    background-color: #2863eb;
+    color: #ffff;
+}
+
+/*---------media quries of billing-------------*/
+@media screen and (max-width:1024px) {
+    .query p {
+        width: 65%;
+        float: left;
+        margin-right: 0;
+    }
+
+    .query a button {
+        /* width:23%; */
+        float: right;
+        margin-bottom: 3em;
+    }
+
+    .tables_left {
+        float: left;
+        width: 100%;
+    }
+    .Video_consumption{
+        width: 100%;
+        float: left;
+    }
+    .Video_consumption table tbody tr td {
+        padding: 10px 60px 10px 20px;
+        color: #212b36;
+    }
+
+    .tables_left .Video_consumption span a {
+        margin-left: 18em;
+    }
+
+    .tables_right {
+        width: 100%;
+
+    }
+
+    .tables_right .payment_details table {
+        box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+        background-color: white;
+        text-align: left;
+        margin: 10px 0px 30px 0px;
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    .tables_right .payment_details span a {
+        margin-left: 8.5em;
+    }
+
+    .payment_details table tbody tr .text_align {
+        text-align: right;
+        padding: 10px 30px 10px 118px;
+    }
+
+    .data_consumption {
+        width: 100%;
+        float: left;
+    }
+
+    .data_consumption table {
+        box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+        background-color: white;
+        text-align: left;
+        margin: 10px 0px 30px 0px;
+        width: 100%;
+    }
+
+    .data_consumption table tbody tr td {
+        padding: 10px 60px 10px 20px;
+        color: #212b36;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .tables_left .Video_consumption span a {
+        margin-left: 0em;
+    }
+
+    .Video_consumption_date {
+        margin-right: 2.0em;
+    }
+
+    .Video_consumption table tbody tr td {
+        padding: 10px 23px 10px 20px;
+        color: #212b36;
+
+    }
+
+    .data_consumption_date {
+        margin-right: 2.5em;
+    }
+
+    .tables_right .payment_details table {
+        box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+        background-color: white;
+        text-align: left;
+        margin: 10px 0px 30px 0px;
+        width: 92%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    .tables_right .payment_details span a {
+        margin-left: 5em;
+    }
+
+    .payment_details table tbody tr td {
+        padding: 10px 56px 10px 20px;
+        color: #212b36;
+
+    }
+
+    .data_consumption table tbody tr td {
+        padding: 10px 50px 10px 20px;
+        color: #212b36;
+    }
+
+    .data_consumption table {
+        box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+        background-color: white;
+        text-align: left;
+        margin: 10px 0px 30px 0px;
+        width: 100%;
+    }
+}

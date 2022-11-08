@@ -1,0 +1,69 @@
+.wrapper_signup {
+    background-color: #f4f6f8;
+    width: 100%;
+    float: left;
+    height: 100vh;
+    display: table;
+}
+
+.main_signup {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+}
+
+.logo_title {
+
+    margin-bottom: 1rem;
+}
+
+.signup_title {
+    font-family: Inter-Medium;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.18;
+    color: #211d1d;
+}
+
+.signup_area {
+    width: 668px;
+    padding: 30px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px 0px #ddd;
+    border-radius: 6px;
+    /* height: 174px; */
+}
+
+.signup_area p {
+    padding: 0px 8em;
+    padding-top: 0px;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    color: #4a5057;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    margin-bottom: 20px;
+}
+.signup_area img{
+    margin: 10px 0px 20px 0px;
+}
+
+
+
+@media (min-width: 320px) and (max-width: 440px) {
+    .signup_area {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 1200px) and (max-width: 1280px) {}

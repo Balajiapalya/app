@@ -1,0 +1,135 @@
+/*signing keys*/
+
+
+.wrapper_signing_keys .head {
+    margin-bottom: 8px;
+    width: 100%;
+    float: left;
+}
+
+.wrapper_signing_keys .head p {
+    width: 71%;
+    float: left;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.46;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4a5057;
+}
+
+
+.wrapper_signing_keys .head button {
+    text-transform: capitalize;
+    height: 40px;
+    width: 178px;
+    float: right;
+    color: #2863eb;
+    border-color: #2863eb;
+    border-radius: 3px;
+    background-color: #f4f6f8;
+    padding: 12px 35px 11px 36px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+/* .wrapper_signing_keys .table{
+    margin-top: 5em;
+} */
+.wrapper_signing_keys .table table {
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 4px;
+}
+
+.wrapper_signing_keys .table table thead tr {
+    height: 48px;
+
+}
+
+.wrapper_signing_keys .table table thead tr th {
+    text-align: left;
+    padding-left: 12px;
+    font-family: Inter-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: #212b36;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.wrapper_signing_keys .table table tbody {
+    background-color: white;
+}
+
+.wrapper_signing_keys .table table tbody tr {
+    border-bottom: 1px solid #ecedef;
+
+
+}
+
+.wrapper_signing_keys .table table tbody tr td {
+    padding:20px 16px 20px 12px;
+    color: #212b36;
+    word-break: break-all;
+    font-family: Inter-Regular;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.46;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+.wrapper_signing_keys .table table tbody tr td img {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+
+.wrapper_signing_keys .table table tbody tr td a {
+    color: blue;
+    text-decoration: underline;
+
+}
+
+.wrapper_signing_keys .table table tbody tr td tr {
+    border: none;
+    height: 3px;
+    ;
+}
+
+.wrapper_signing_keys .table table tbody tr {
+    border-bottom: 1px solid #8080804d 0.9;
+    /* height: 54px; */
+}
+/* popup */
+.no_display{
+    display:none;
+}
+.display{
+    display:block;
+}
+
+
+/*---------------------Media quries of signing keys-------------------*/
+
+
+
+

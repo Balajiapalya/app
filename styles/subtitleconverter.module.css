@@ -1,0 +1,138 @@
+/* Subtitleconvertor */
+.Subtitleconvertor_title h1{
+  font-size: 28px;
+  font-family: Inter-Medium;
+  padding-right: 10px;
+  margin: 20px 0px;
+
+}
+.Subtitleconvertor_title p{
+  font-family: Inter-Regular;
+  font-size: 14px;
+}
+ .upload_file{
+  border: 1px solid #fff;
+  background-color: #fff;
+  width: 100%;
+  float: left;
+  font-family:Inter-Regular;
+}
+.upload_file h2{
+  font-family: Inter-Medium;
+  font-size: 22px;
+  padding-right: 10px;
+  margin: 20px;  
+}
+ .select_output h2{
+  font-family: Inter-Medium;
+  font-size: 22px;
+  padding-right: 10px;
+  margin: 20px;
+}
+.upload_btn_wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.padding{
+  padding-left: 205px;
+}
+.files_uploded{
+  margin-left: 20px;
+}
+  
+.btn { 
+  color: #212b36;
+  padding: 10px 49px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: #fff;
+  border: solid 1px rgba(99, 115, 129, 0.3);
+  margin: 0px 20px 20px;
+  font-family: Inter-Medium;
+}
+.upload_btn_wrapper p img{
+  width: 20px;
+  padding-right: 5px;
+}
+.upload_btn_wrapper h5{
+  padding-left: 20px;
+  margin-top: 0px;
+}
+.upload_btn_wrapper p{
+  margin-bottom: 0px;
+}
+.upload_btn_wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+
+}
+.select_output{
+  border: 1px solid #fff;
+  background-color: #fff;
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+}
+.Subtitleconvertor{
+  padding: 50px 5%;
+}
+
+  
+.model_selection{
+ width: 40%;
+ margin: 0px 20px 20px;
+ border-bottom: 2px solid #ddd;
+ border-radius: 0;
+ padding: 9px;
+ outline: none;
+ font-family:Inter-Regular;
+ color: #212b36;
+ background-color: white;
+ border: solid 1px rgba(99, 115, 129, 0.3);
+ transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.model_btn{
+  margin: 0px 20px 20px;
+}
+.model_canel_btn{
+  background-color: #2863eb;
+  color: #2863eb;
+  border: 1px solid #2863eb;
+  font-family: OpenSans-SemiBold;
+  font-size: 14px;
+  color: #fff;
+}
+
+.convertfile{
+  border: 1px solid #fff;
+  background-color: #fff;
+  width: 100%;
+  float: left;  
+  text-align: center;
+}
+.convertfile img{
+  margin-top: 30px;
+}
+.model_save_btn{
+  background-color: #fff;
+  color: #2863eb;
+  border: 1px solid #2863eb;
+  font-family: OpenSans-SemiBold;
+  font-size: 14px;
+    
+}
+  
+.convertfile h3{
+  font-size: 20px;
+  font-family: Inter-Regular;
+  padding-right: 10px;
+  margin: 20px;
+}
+.convertfile a{
+  color: #2863eb;
+}
