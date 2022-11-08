@@ -48,10 +48,10 @@ export const org_list_billing_plans = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/plans?time=${CurrentDate}`
 }
 export const list_org_subscriptions = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/${localStorage.getItem("uuid")}/subscriptions?time=${CurrentDate}`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/subscriptions?time=${CurrentDate}`
 }
 export const get_account_info = () => {
-    return `${BILLING_BASE_URL()}/services/api/v1/${localStorage.getItem("uuid")}/account?time=${CurrentDate}`
+    return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/account?time=${CurrentDate}`
 }
 export const payment_history = () => {
     return `${BILLING_BASE_URL()}/services/api/v1/${uuid}/payment/history?time=${CurrentDate}`
@@ -206,7 +206,7 @@ export const realtime_views = (env, fromDate, interval) => {
     return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
 }
 export const org_stats = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${localStorage.getItem('uuid')}&from=${pastdate}&to=${CurrentDate}`
+    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${uuid}&from=${pastdate}&to=${CurrentDate}`
 }
 //embed
 export const get_video_playback_url = (asset_id) => {
@@ -277,6 +277,7 @@ if (process.browser) {
     uuid_token = localStorage.getItem("uuid");
 }
 const uuid = uuid_token;
+
 let headers = {
     'Authorization': `Bearer ${token}`
 };

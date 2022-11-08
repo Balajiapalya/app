@@ -85,7 +85,7 @@ export default function Metrics({ id }) {
                     maxRotation: 0,
                     minRotation: 0,
                     font: {
-                        size: 12,
+//                        size: 12,
 
                     },
                     color: '#5d6381'
@@ -95,12 +95,12 @@ export default function Metrics({ id }) {
                 grid: {
                     display: false
                 },
-                max: 5,
-                min: 0,
+//                max: 5,
+//                min: 0,
                 ticks: {
                     stepSize: 1,
                     font: {
-                        size: 12,
+//                        size: 12,
 
                     },
                     color: '#5d6381'
@@ -114,8 +114,8 @@ export default function Metrics({ id }) {
             {
                 data: videoviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
-                barThickness: 20,
-                borderRadius: 2,
+//                barThickness: 20,
+//                borderRadius: 2,
             },
         ],
     };
@@ -125,8 +125,8 @@ export default function Metrics({ id }) {
             {
                 data: divicesviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
-                barThickness: 20,
-                borderRadius: 2,
+//                barThickness: 20,
+//                borderRadius: 2,
             },
         ],
     }
@@ -136,8 +136,8 @@ export default function Metrics({ id }) {
             {
                 data: playerviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
-                barThickness: 20,
-                borderRadius: 2,
+//                barThickness: 20,
+//                borderRadius: 2,
             },
 
         ],
@@ -149,8 +149,8 @@ export default function Metrics({ id }) {
             {
                 data: Osviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
-                barThickness: 20,
-                borderRadius: 2,
+//                barThickness: 20,
+//                borderRadius: 2,
             },
         ],
     }
@@ -160,8 +160,8 @@ export default function Metrics({ id }) {
             {
                 data: applicationsviews.map((item, key) => item?.count),
                 backgroundColor: 'rgba(53, 162, 235, 1)',
-                barThickness: 20,
-                borderRadius: 2,
+//                barThickness: 20,
+//                borderRadius: 2,
             },
         ],
     }

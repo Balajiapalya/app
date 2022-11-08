@@ -281,8 +281,8 @@
             axios.post(`https://api-test.videograph.ai/video/services/api/v1/contents?time=${Date.now()}`, postData, { headers })
                 .then(response => {
                     if (response && response.data && response.data.data && response.data.code == 200) {
-                        let ResponseData = JSON.stringify(response.data.data,undefined,1);
-                        document.getElementById('response').value = ResponseData;
+                        let ResponseData = JSON.stringify(response.data.data);
+                        document.getElementById('response').innerText = ResponseData;
                         Id = response.data.data.contentId;
                         linkObj = `https://dashboard-test.videograph.ai/videos/embed?videoId=${Id}`;
                         document.getElementById('link').innerText = linkObj;
