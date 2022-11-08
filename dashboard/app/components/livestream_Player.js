@@ -61,6 +61,7 @@ const Livestream_Player = (props) => {
   const [player, setPlayer] = useState(undefined)
   
   useEffect(() => {
+    
     var url =props?.playback_url;
     // Api.Get_Env_item()
     //   .then((response) => {
