@@ -1,10 +1,9 @@
-import styles from '../../styles/analytics_tabs.module.css'
-import Layout from '../../components/common/layout'
-import Analytics_tabs from '../../components/analyticstabs'
-import Live_Analytics_tabs from '../../components/liveanalyticstabs';
+import styles from '../../../styles/analytics_tabs.module.css'
+import Layout from '../../../components/common/layout'
+import Live_Analytics_tabs from '../../../components/liveanalyticstabs';
 import { useEffect, useState, createContext, useRef } from 'react';
-import Api from '../../components/api/api';
-import Overview from '../../components/analytics_tabs/overview';
+import Api from '../../../components/api/api';
+import Overview from '../../../components/analytics_tabs/live/overview';
 
 const EnvValue = createContext()
 export default function Analytics_live() {

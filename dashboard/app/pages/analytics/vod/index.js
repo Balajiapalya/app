@@ -1,9 +1,9 @@
-import styles from '../../styles/analytics_tabs.module.css'
-import Layout from '../../components/common/layout'
-import Analytics_tabs from '../../components/analyticstabs'
+import styles from '../../../styles/analytics_tabs.module.css'
+import Layout from '../../../components/common/layout'
+import Analytics_tabs from '../../../components/analyticstabs'
 import { useEffect, useState, createContext, useRef } from 'react';
-import Api from '../../components/api/api';
-import Overview from '../../components/analytics_tabs/overview';
+import Api from '../../../components/api/api';
+import Overview from '../../../components/analytics_tabs/vod/overview';
 
 const EnvValue = createContext()
 export default function Analytics_index() {

@@ -69,20 +69,20 @@ function Navbar() {
                             <Link href='/videos'><a className={router.pathname == '/videos' || router.pathname == '/videos/video' ? `${styles.activate}` : ''}><img src={router.pathname == '/videos' || router.pathname == '/videos/video' ? '/images/iconmaterial-video-library(white).svg' : '/images/iconmaterial-video-library.svg'} alt='icon'></img><span>Videos</span></a></Link>
                         </li>
                         <li className={styles.analytics_menu} >
-                            <a onClick={() => setdropdown(!opendropdown)} className={router.pathname == '/analytics_Vod' || router.pathname == '/analytics_Live' ? `${styles.activate}` : ''}><img src={router.pathname == '/analytics_Vod' || router.pathname == '/analytics_Live' ? '/images/iconsimple-googleanalytics(white).svg' : '/images/iconsimple-googleanalytics.svg'} alt='icon'></img><span>Analytics</span></a>
+                            <a onClick={() => setdropdown(!opendropdown)} className={router.pathname.startsWith('/analytics/')? `${styles.activate}` : ''}><img src={router.pathname == '/analytics_Vod' || router.pathname == '/analytics_Live' ? '/images/iconsimple-googleanalytics(white).svg' : '/images/iconsimple-googleanalytics.svg'} alt='icon'></img><span>Analytics</span></a>
                             {opendropdown ?
                                 <div>
                                     <ul className={styles.list}>
                                         <li>
-                                            <Link href='/analytics_Vod'>
-                                                <a className={router.pathname == '/analytics_Vod'? `${styles.activate}` : ''}>
+                                            <Link href='/analytics/vod'>
+                                                <a className={router.pathname == '/analytics/vod'? `${styles.activate}` : ''}>
                                                     <span> Videos (VOD)</span>
                                                 </a>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href='/analytics_Live'>
-                                            <a className={router.pathname == '/analytics_Live'? `${styles.activate}` : ''}>
+                                            <Link href='/analytics/live'>
+                                            <a className={router.pathname == '/analytics/live'? `${styles.activate}` : ''}>
                                                 <span>Live Streaming</span>
                                             </a>
                                             </Link>

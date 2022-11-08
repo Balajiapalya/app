@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styles from '../styles/tabs.module.css';
-import Overview from "./live_analytics_tabs/overview";
-import Metrics from "./live_analytics_tabs/metrics";
+import Overview from "./analytics_tabs/live/overview";
+import Metrics from "./analytics_tabs/live/metrics";
 
 function Live_Analytics_tabs({id}) {
     const [toggleState, setToggleState] = useState(1);
