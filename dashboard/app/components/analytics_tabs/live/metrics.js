@@ -227,14 +227,14 @@ export default function Metrics({ id }) {
 
     const Usage_statistics_data = (toDate, fromDate) => {
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, toDate, fromDate)
+            Api.Usage_statistics(valueEnv, toDate && toDate.getTime(), fromDate, 'LIVE')
                 .then(res => {
                     set_amountstreamed(res && res.data && res.data.data && res.data.data.totalUsageRecords && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0] && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs);
                 })
         }
     };
     const Views_statistics_data = (toDate, fromDate) => {
-        Api.Views_statistics(valueEnv, toDate, fromDate)
+        Api.Views_statistics(valueEnv, toDate, fromDate, 'LIVE')
             .then(res => {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);

@@ -64,7 +64,7 @@ export default function Overview({ setToggleState }) {
     const Usage_statistics_data = () => {
         const fromDate = new Date().setDate(new Date().getDate() - 7);
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, fromDate)
+            Api.Usage_statistics(valueEnv,new Date().getTime(), fromDate)
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
@@ -79,7 +79,7 @@ export default function Overview({ setToggleState }) {
     };
     const Views_statistics_data = () => {
         if (valueEnv) {
-            Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+            Api.Views_statistics(valueEnv,new Date().getTime(), new Date().setDate(new Date().getDate() - 7))
                 .then(res => {
                     set_viewsStatistics(res.data.data)
                     setdeviceviews(res.data.data.deviceViews)
@@ -91,7 +91,7 @@ export default function Overview({ setToggleState }) {
     };
     const Realtime_views = () => {
         if (valueEnv) {
-            Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1800000).getTime(),Date.now(), "1m")
+            Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1860000).getTime(),Date.now()-60000, "1m")
                 .then(res => {
                     totalviewers((res.data.data.views).reverse()[0])
                     set_realtime(res.data.data.views)

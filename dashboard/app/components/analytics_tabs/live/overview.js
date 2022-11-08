@@ -63,7 +63,7 @@ export default function Overview({ setToggleState }) {
     const Usage_statistics_data = () => {
         const fromDate = new Date().setDate(new Date().getDate() - 7);
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, fromDate)
+            Api.Usage_statistics(valueEnv, new Date().getTime(), fromDate, 'LIVE')
                 .then(res => {
                     set_usagestatistics(res.data.data.totalUsageRecords)
                     set_encoded_line(res.data.data.periodicUsageGroupings)
@@ -78,7 +78,7 @@ export default function Overview({ setToggleState }) {
     };
     const Views_statistics_data = () => {
         if (valueEnv) {
-            Api.Views_statistics(valueEnv, new Date().setDate(new Date().getDate() - 7))
+            Api.Views_statistics(valueEnv,new Date().getTime(), new Date().setDate(new Date().getDate() - 7), 'LIVE')
                 .then(res => {
                     set_viewsStatistics(res.data.data)
                     setdeviceviews(res.data.data.deviceViews)
@@ -90,7 +90,7 @@ export default function Overview({ setToggleState }) {
     };
     const Realtime_views = () => {
         if (valueEnv) {
-            Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1800000).getTime(),Date.now(), "1m")
+            Api.Realtime_views(valueEnv, new Date(new Date().getTime() - 1860000).getTime(),Date.now()-60000, "1m", 'LIVE')
                 .then(res => {
                     totalviewers((res.data.data.views).reverse()[0])
                     set_realtime(res.data.data.views)
@@ -238,11 +238,12 @@ export default function Overview({ setToggleState }) {
             }
         }
     };
+
     const encoded_linedata = {
         labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
-                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordEncodingUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == 'RecordLiveStreamProcessingUsage' || r.usage == 'RecordLiveRecordingProcessingUsage').map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
                 fill: true,
                 backgroundColor: "rgba(0,128,0,0.2)",
                 borderColor: "rgba(0,128,0,0.5)",
@@ -251,24 +252,12 @@ export default function Overview({ setToggleState }) {
             },
         ]
     };
-    const stored_linedata = {
-        labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
-        datasets: [
-            {
-                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStorageUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
-                fill: true,
-                backgroundColor: "rgb(255,174,66,0.2)",
-                borderColor: "rgb(255,174,66,1)",
-                borderWidth: 1,
-                pointRadius: 0,
-            },
-        ]
-    };
+
     const streamed_line = {
         labels: encoded_line.map((line, key) => new Date(line?.timestamp)),
         datasets: [
             {
-                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == "RecordStreamingUsage").map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
+                data: encoded_line.map(u => u.usageRecords.filter(r => r.usage == 'RecordLiveStreamStreamingUsage' || r.usage == 'RecordLiveRecordingStreamingUsage').map(r => r.amountInSecs).reduce((s, a) => s + a, 0)),
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)",
@@ -338,62 +327,32 @@ export default function Overview({ setToggleState }) {
                 <div className={styles.encoded_video}>
                     <h5 className={styles.video_type_heading}>Encoded</h5>
                     <div className={styles.video_type_content}>
-                        {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordEncodingUsage').map((item, key) =>
-                            <div key={key}>
-                                {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs / 60)} mins</h5>
-                            </div>
+                        {[usagestatistics == "" ? <h5>0</h5> : [parseInt(usagestatistics.filter(record => record.usage == 'RecordLiveStreamProcessingUsage' || record.usage == 'RecordLiveRecordingProcessingUsage')
+                                                                                        .map((item, key) => item.amountInSecs).reduce(function(a,b) {return a+b}, 0)/60)].map(mins =>
+                            <div><h5>{mins} mins</h5></div>
                         )]}
-
-
                     </div>
                     <div className={styles.line_chart}>
                         <Line options={Lineoptions} data={encoded_linedata} />
                     </div>
                     <div className={styles.timeperiod}>
-                        <span >Total minutes of videos encoded in last 7 days.</span>
-                    </div>
-                </div>
-
-                <div className={styles.encoded_video}>
-                    <h5 className={styles.video_type_heading}>Stored</h5>
-                    <div className={styles.video_type_content}>
-                        {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordStorageUsage').map((item, key) =>
-
-                            <div key={key}>
-                                {/* {console.log(item.amountInSecs)} */}
-                                {/* <h5>{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs / 60)} mins</h5>
-                            </div>
-                        )]}
-
-                    </div>
-                    <div className={styles.line_chart}>
-                        <Line options={Lineoptions} data={stored_linedata} />
-                    </div>
-                    <div className={styles.timeperiod}>
-                        <span >Total minutes of videos stored in last 7 days.</span>
+                        <span >Total minutes of content encoded in last 7 days.</span>
                     </div>
                 </div>
 
                 <div className={styles.encoded_video}>
                     <h5 className={styles.video_type_heading}>Streamed</h5>
                     <div className={styles.video_type_content}>
-                        {[usagestatistics == "" ? <h5>0</h5> : usagestatistics.filter(record => record.usage == 'RecordStreamingUsage').map((item, key) =>
-                            <div key={key}>
-
-                                {/* <h5 >{parseInt(item.amountInSecs / 3600)} hrs {parseInt(parseInt(item.amountInSecs % 3600) / 60)} mins {parseInt(item.amountInSecs % 60)} secs</h5> */}
-                                <h5>{parseInt(item.amountInSecs / 60)} mins</h5>
-                            </div>
+                        {[usagestatistics == "" ? <h5>0</h5> : [parseInt(usagestatistics.filter(record => record.usage == 'RecordLiveStreamStreamingUsage' || record.usage == 'RecordLiveRecordingStreamingUsage')
+                                                                                                                .map((item, key) => item.amountInSecs).reduce(function(a,b) {return a+b}, 0)/60)].map(mins =>
+                            <div><h5>{mins} mins</h5></div>
                         )]}
-
-
                     </div>
                     <div className={styles.line_chart}>
                         <Line options={Lineoptions} data={streamed_line} />
                     </div>
                     <div className={styles.timeperiod}>
-                        <span >Total minutes of videos streamed in last 7 days.</span>
+                        <span >Total minutes of content streamed in last 7 days.</span>
                     </div>
                 </div>
             </div>

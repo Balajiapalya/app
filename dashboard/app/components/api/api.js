@@ -184,29 +184,26 @@ export const delSigningKey = (id) => {
     return `${PROFILE_BASE_URL()}/services/api/v1/signingkeys/${id}?time=${CurrentDate}`;
 }
 //statistics
-export const usage_statistics = (env, toDate, fromDate) => {
-    if (fromDate == undefined) {
-        return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&interval=1d&time=${CurrentDate}`;
-    }
-    else {
-        return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=1d&time=${CurrentDate}`;
-    }
-
+export const usage_statistics = (env, toDate, fromDate, category) => {
+    if(fromDate == undefined) fromDate = pastdate
+    if(category == undefined) category = 'VOD'
+    if(toDate == undefined) toDate = CurrentDate
+    return `${DATA_BASE_URL()}/services/api/v1/usage?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=1d&category=${category}`;
 }
-export const views_statistics = (env, toDate, fromDate) => {
-    if (fromDate == undefined) {
-        return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${pastdate}&to=${CurrentDate}&time=${CurrentDate}`
-    } else {
-        return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${toDate}&time=${CurrentDate}`
-    }
+export const views_statistics = (env, toDate, fromDate, category) => {
+    if(fromDate == undefined) fromDate = pastdate
+    if(category == undefined) category = 'VOD'
+    if(toDate == undefined) toDate = CurrentDate
+    return `${DATA_BASE_URL()}/services/api/v1/views?environmentId=${env}&from=${fromDate}&to=${toDate}&category=${category}`
 }
-
-
-export const realtime_views = (env, fromDate,toDate, interval) => {
-    return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=${interval}`
+export const realtime_views = (env, fromDate,toDate, interval, category) => {
+    if(category == undefined) category = 'VOD'
+    if(toDate == undefined) toDate = CurrentDate
+    return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=${interval}&category=${category}`
 }
-export const org_stats = () => {
-    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${localStorage.getItem('uuid')}&from=${pastdate}&to=${CurrentDate}`
+export const org_stats = (category) => {
+    if(category == undefined) category = 'VOD'
+    return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${localStorage.getItem('uuid')}&from=${pastdate}&to=${CurrentDate}&category=${category}`
 }
 //embed
 export const get_video_playback_url = (asset_id) => {
@@ -731,16 +728,16 @@ const Api = {
         }),
 
     //Statistics
-    Usage_statistics: (env, toDate, fromDate) =>
+    Usage_statistics: (env, toDate, fromDate,category) =>
         loginHandledAxios({
             method: 'GET',
-            url: usage_statistics(env, toDate, fromDate),
+            url: usage_statistics(env, toDate, fromDate,category),
             headers: headers,
         }),
-    Views_statistics: (env, toDate, fromDate) =>
+    Views_statistics: (env, toDate, fromDate,category) =>
         loginHandledAxios({
             method: 'GET',
-            url: views_statistics(env, toDate, fromDate),
+            url: views_statistics(env, toDate, fromDate,category),
             headers: headers,
         }),
     EditApiAccessToken: (value, accessId) =>
@@ -750,16 +747,16 @@ const Api = {
             url: editAccessToken(accessId),
             headers: headers
         }),
-    Realtime_views: (env, fromDate,toDate, interval) =>
+    Realtime_views: (env, fromDate,toDate, interval,category) =>
         loginHandledAxios({
             method: 'GET',
-            url: realtime_views(env, fromDate,toDate, interval),
+            url: realtime_views(env, fromDate,toDate, interval,category),
             headers: headers,
         }),
-    Org_stats: () =>
+    Org_stats: (category) =>
         loginHandledAxios({
             method: 'GET',
-            url: org_stats(),
+            url: org_stats(category),
             headers: headers,
         }),
     Get_Playback_URL: (ast_id) =>
