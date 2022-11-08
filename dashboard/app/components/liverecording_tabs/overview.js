@@ -33,7 +33,7 @@ export default function Overview() {
                         setplayer_toggle(res.data.data.playbackUrl)
                     } else {
                         setplayback(false)
-                        if (res.data.data.status == 'Processing' || res.data.data.status == 'Processing (Stream Idle)' || res.data.data.status == 'Processing (Stream Starting)' || res.data.data.status == 'Processing (Stream Stopping)') {
+                        if (res.data.data.status.startsWith('Processing')) {
                             // setplayer_toggle('')
 
                             const handlerender = () => {
@@ -93,7 +93,7 @@ export default function Overview() {
         if (i.status == 'Active') {
             Api.Live_status_stop(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing' || res.data.data.status == 'Processing (Stream Running)' || res.data.data.status == 'Processing (Stream Starting)') {
+                if (res.data.data.status.startsWith('Processing')) {
                     const handlerender = () => {
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setplayer([res.data.data])
@@ -114,7 +114,7 @@ export default function Overview() {
         else {
             Api.Live_status_start(i.streamUUID).then((res) => {
                 setStatus(res.data.data.status);
-                if (res.data.data.status == 'Processing' || res.data.data.status == 'Processing (Stream Idle)' || res.data.data.status == 'Processing (Stream Starting)') {
+                if (res.data.data.status.startsWith('Processing')) {
                     const handlerender = () => {
                         Api.Live_stream_data(streamuuid).then((res) => {
                             setplayer([res.data.data])
@@ -226,6 +226,12 @@ export default function Overview() {
 
                                             <td className={styles.content}>{status} <img src={`/images/asset_status/${status}.png`} /></td>
                                             {/* {playback == false ? <td><span> Inactive</span></td> : <td><span> Active</span><img src={`/images/asset_status/Ready.png`} /></td>} */}
+                                            {i.activeSince &&
+                                                <tr>
+                                                    <td className={styles.title}>Active Since</td>
+                                                    <td className={styles.content}>{created(i.activeSince)}</td>
+                                                </tr>
+                                            }
                                         </tr>
                                     </div>
                                 </tbody>
