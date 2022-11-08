@@ -4,8 +4,7 @@ import Api from '../api/api';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, PointElement, LineElement, Filler } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { Line } from "react-chartjs-2";
-
-import { EnvValue } from '../../pages/analytics_Vod';
+import { EnvValue } from '../../pages/analytics_Live';
 import { geoEqualEarth, geoPath } from "d3-geo"
 import { feature, mesh } from "topojson-client"
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";

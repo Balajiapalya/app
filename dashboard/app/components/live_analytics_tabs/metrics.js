@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import styles from '../../styles/analytics_tabs.module.css';
 import "react-datepicker/dist/react-datepicker.css";
 import Api from '../api/api';
-import { EnvValue } from '../../pages/analytics_Vod';
+import { EnvValue } from '../../pages/analytics_Live';
 import { useRouter } from 'next/router';
 import { geoEqualEarth, geoPath } from "d3-geo"
 import { feature, mesh } from "topojson-client"

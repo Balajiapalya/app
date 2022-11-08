@@ -166,8 +166,21 @@
 /* .tools:hover .list{
     display: block;
 } */
+.analytics_menu:hover{
+    cursor: pointer;
+}
+.analytics_menu:hover .list{
+    cursor: pointer;
+    display: block;
+}
 .list {
-    padding-top: 15px;
+    display: none;
+    position: relative;
+    left: 50px;
+    top: -10px;
+}
+.list li{
+    padding: 5px;
 }
 
 /* .list a:hover{

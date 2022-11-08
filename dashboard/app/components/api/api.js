@@ -202,8 +202,8 @@ export const views_statistics = (env, toDate, fromDate) => {
 }
 
 
-export const realtime_views = (env, fromDate, interval) => {
-    return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${CurrentDate}&interval=${interval}`
+export const realtime_views = (env, fromDate,toDate, interval) => {
+    return `${DATA_BASE_URL()}/services/api/v1/realtime_views?environmentId=${env}&from=${fromDate}&to=${toDate}&interval=${interval}`
 }
 export const org_stats = () => {
     return `${DATA_BASE_URL()}/services/api/v1/org_stats?organizationId=${localStorage.getItem('uuid')}&from=${pastdate}&to=${CurrentDate}`
@@ -750,10 +750,10 @@ const Api = {
             url: editAccessToken(accessId),
             headers: headers
         }),
-    Realtime_views: (env, fromDate, interval) =>
+    Realtime_views: (env, fromDate,toDate, interval) =>
         loginHandledAxios({
             method: 'GET',
-            url: realtime_views(env, fromDate, interval),
+            url: realtime_views(env, fromDate,toDate, interval),
             headers: headers,
         }),
     Org_stats: () =>
