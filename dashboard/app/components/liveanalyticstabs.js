@@ -1,9 +1,9 @@
 import { useState } from "react"
 import styles from '../styles/tabs.module.css';
-import Metrics from "./analytics_tabs/vod/metrics";
-import Overview from "./analytics_tabs/vod/overview";
+import Overview from "./analytics_tabs/live/overview";
+import Metrics from "./analytics_tabs/live/metrics";
 
-function Analytics_tabs({id}) {
+function Live_Analytics_tabs({id}) {
     const [toggleState, setToggleState] = useState(1);
 
     const toggleTab = (index) => {
@@ -47,4 +47,4 @@ function Analytics_tabs({id}) {
     )
 }
 
-export default Analytics_tabs;
+export default Live_Analytics_tabs;

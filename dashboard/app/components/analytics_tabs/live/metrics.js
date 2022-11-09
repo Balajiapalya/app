@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
-import styles from '../../styles/analytics_tabs.module.css';
+import styles from '../../../styles/analytics_tabs.module.css';
 import "react-datepicker/dist/react-datepicker.css";
-import Api from '../api/api';
-import { EnvValue } from '../../pages/analytics/index'
+import Api from '../../api/api';
+import { EnvValue } from '../../../pages/analytics/live';
 import { useRouter } from 'next/router';
 import { geoEqualEarth, geoPath } from "d3-geo"
 import { feature, mesh } from "topojson-client"
@@ -227,14 +227,14 @@ export default function Metrics({ id }) {
 
     const Usage_statistics_data = (toDate, fromDate) => {
         if (valueEnv) {
-            Api.Usage_statistics(valueEnv, toDate, fromDate)
+            Api.Usage_statistics(valueEnv, toDate && toDate.getTime(), fromDate, 'LIVE')
                 .then(res => {
                     set_amountstreamed(res && res.data && res.data.data && res.data.data.totalUsageRecords && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0] && res.data.data.totalUsageRecords.filter(record => record.usage == 'RecordStreamingUsage')[0].amountInSecs);
                 })
         }
     };
     const Views_statistics_data = (toDate, fromDate) => {
-        Api.Views_statistics(valueEnv, toDate, fromDate)
+        Api.Views_statistics(valueEnv, toDate, fromDate, 'LIVE')
             .then(res => {
                 set_viewsStatistics(res.data.data);
                 setvideoviews(res.data.data.videoViews);

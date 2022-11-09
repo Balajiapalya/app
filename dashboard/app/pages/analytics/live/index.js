@@ -1,12 +1,12 @@
-import styles from '../../styles/analytics_tabs.module.css'
-import Layout from '../../components/common/layout'
-import Analytics_tabs from '../../components/analyticstabs'
+import styles from '../../../styles/analytics_tabs.module.css'
+import Layout from '../../../components/common/layout'
+import Live_Analytics_tabs from '../../../components/liveanalyticstabs';
 import { useEffect, useState, createContext, useRef } from 'react';
-import Api from '../../components/api/api';
-import Overview from '../../components/analytics_tabs/overview';
+import Api from '../../../components/api/api';
+import Overview from '../../../components/analytics_tabs/live/overview';
 
 const EnvValue = createContext()
-export default function Analytics_index() {
+export default function Analytics_live() {
     const [envSelect, setEnvSelect] = useState([]);
     const [uuid, setuuid] = useState()
     const [vidDropdown, setVidDropdown] = useState()
@@ -171,10 +171,10 @@ export default function Analytics_index() {
 
                         <div className={styles.header}>
                             <h2>
-                                Analytics
+                               Live Analytics
                             </h2>
                             <EnvValue.Provider value={process.browser && localStorage.getItem('envuuid')}>
-                                <Analytics_tabs id={id}/>
+                                <Live_Analytics_tabs id={id}/>
                             </EnvValue.Provider>
                         </div>
                     </div>
@@ -184,7 +184,7 @@ export default function Analytics_index() {
         </div>
     )
 }
-Analytics_index.getLayout = function getLayout(page) {
+Analytics_live.getLayout = function getLayout(page) {
     return (
         <Layout>
             <div className="wrapper_body">
